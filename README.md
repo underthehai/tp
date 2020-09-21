@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
+[![CI Status](https://github.com/AY2021S1-CS2103-T14-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103-T14-3/tp/actions)
 
 ![Ui](docs/images/Ui.png)
 
@@ -27,4 +27,4 @@ Relevant information can be retrieved right when and where you need them. With W
 
 #### Acknowledgement
 
-We would like to acknowledge the original source of the code, AddressBook-Level3 project created by SE-EDU initiative at https://se-education.org
+This project is based on the AddressBook-Level3 project created by the [SE-EDU](https://se-education.org) initiative.
