@@ -250,7 +250,7 @@ Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 
 Examples:
 *  `edit -person n/John m/81234567 p/E1234567H` Edits the mobile number and passport number of `John` Person
-*  `edit 2 m/87452183` Edits the mobile number of the 2nd person
+*  `edit 2 m/87452183` Edits the mobile number of the 2nd person\
 
 Example: `add -accommodation n/Hard Rock Hotel l/Sentosa c/SGD500 n/2`
 
