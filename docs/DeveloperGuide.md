@@ -269,11 +269,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | advanced user                              | have shortcuts for commands  | execute commands faster proficiently    |
 | `*`      | user                                       | have a feature to search  | find and filter my desired items efficiently  |
 
-
-
-
-
-
+*{More to be added}*
 
 
 ### Use cases
