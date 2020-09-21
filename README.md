@@ -18,11 +18,13 @@ Every pinned destination, travel plan and schedule can be quickly added, modifie
 Relevant information can be retrieved right when and where you need them. With WanderLust, creating a travel plan and schedule will be simple and hassle-free.
 
 
-####Site Map
+#### Site Map
+
 * [User Guide](/docs/UserGuide.md)
 * [Developer Guide](/docs/DeveloperGuide.md)
 * [About Us](/docs/AboutUs.md)
 * [Contact Us](/docs/ContactUs.md)
 
-####Acknowledgement
-* We would like to acknowledge the original source of the code, AddressBook-Level3 project created by SE-EDU initiative at https://se-education.org
+#### Acknowledgement
+
+We would like to acknowledge the original source of the code, AddressBook-Level3 project created by SE-EDU initiative at https://se-education.org
