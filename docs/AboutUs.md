@@ -2,58 +2,63 @@
 layout: page
 title: About Us
 ---
+Wanderlust was developed by [Team CS2103-T14-3](https://github.com/orgs/AY2021S1-CS2103-T14-3/people).
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### John Doe
+### Prof. Damith C. Rajapakse
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/damith.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+
+[[github](https://github.com/damithc)]
 
 * Role: Project Advisor
 
-### Jane Doe
+### Lim Hai Shan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/underthehai.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/underthehai)]
 
-* Role: Team Lead
+* Role: Developer
 * Responsibilities: UI
 
-### Johnny Doe
+### Lye Yi Xian
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/lyeyixian.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/lyeyixian)]
+
+* Role: Team Lead
+* Responsibilities: Data
+
+### Teo Jia wei
+
+<img src="images/jiaweiteo.png" width="200px">
+
+[[github](https://github.com/jiaweiteo)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Timothy Ong Jing Kai
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/timjkong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/timjkong)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role:  Developer
+* Responsibilities: Dev Ops + Threading 
 
-### James Doe
+### Toh Xuan Ning Jeanne
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jeannetoh99.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jeannetoh99)]
 
 * Role: Developer
 * Responsibilities: UI
