@@ -61,10 +61,10 @@ _This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PL
 
 Format:
 ```
-goto NAME_OF_TRAVEL_PLAN 
+goto NAME_OF_TRAVEL_PLAN
 show contacts
 ```
-Example: 
+Example:
 ```
 goto Europe Plan
 show contacts
@@ -74,10 +74,10 @@ show contacts
 
 Shows the list of accommodations added to the travel plan, in order they were added.
 _This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before accessing accommodations._
-   
+
 Format:
 ```
-goto NAME_OF_TRAVEL_PLAN 
+goto NAME_OF_TRAVEL_PLAN
 show accommodations
 ```
 Example:
