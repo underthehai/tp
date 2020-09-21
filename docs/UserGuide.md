@@ -64,7 +64,7 @@ Command | Parameters | Description
 `delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
 `edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
 `goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
-`show LIST_OF_OBJECTS` | `LIST_OF_OBJECTS` wishlist / nameOfTravelPlan / contacts / accomdation / <empty> | Show the specific list of objects given. If <listOfObjects> is empty, WanderLust will show the current travel plan the user is at.
+`show LIST_OF_OBJECTS` | `LIST_OF_OBJECTS` wishlist / nameOfTravelPlan / contacts / accommodation / \<empty\> / | Show the specific list of objects given. If \<listOfObjects\> is empty, WanderLust will show the current travel plan the user is at.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
@@ -122,37 +122,6 @@ Name of Tag | Description
   e.g `n/NAME [l/LOCATION]` can be used as `n/Cultural Visit l/Lourve Museum` or as `n/Cultural Visit`.
 
 </div>
-## Goto
-
-The goto command is used to navigate to various directories within the travel planner. The GUI display depends on the 
-state of the current directory, which is changed using the goto command. On start, the default directory of the program 
-is `wishlist`.<br/>
-<br/>
-
->Directories in Wanderlust include: 
->1. `wishlist`
->2. `NAME_OF_TRAVEL_PLAN`<br/>
-
-<br/>
-This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without 
-having to type their names in each command. This also means that **some commands can only be used locally within a 
-certain directory, and responses to these commands will depend on the current directory.** Commands that can be used 
-globally and locally are tagged (G) and (L) respectively in the **features section** of this user guide. <br/>
-<br/>
-
-### 1. Goto a Travel Plan (G)
-Navigates the UI to a specific travel plan.<br/>
-<br/>
-Format: `goto NAME_OF_TRAVEL_PLAN`<br/>
-<br/>
-Example: `goto Europe`
-
-### 2. Goto Wishlist (G)
-Navigates the UI to the wishlist.<br/>
-<br/>
-Format: `goto wishlist`<br/>
-<br/>
-Example: `goto wishlist`
 
 ## Goto
 
@@ -282,7 +251,6 @@ Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 Examples:
 *  `edit -person n/John m/81234567 p/E1234567H` Edits the mobile number and passport number of `John` Person
 *  `edit 2 m/87452183` Edits the mobile number of the 2nd person
-=======
 
 Example: `add -accommodation n/Hard Rock Hotel l/Sentosa c/SGD500 n/2`
 
@@ -290,7 +258,6 @@ Example: `add -accommodation n/Hard Rock Hotel l/Sentosa c/SGD500 n/2`
 
 #### 1. Viewing the Wishlist (G)
 
-<<<<<<< HEAD
 Shows the list of activities added to the wishlist, in the order they were added.
 
 Format: `show wishlist`
