@@ -87,22 +87,65 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing: 'edit'
 
-Edits an existing person in the address book.
+#### Editing a TravelPlan
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Edits an existing TravelPlan in the address book.
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+Format: `edit -travelplan INDEX n/NAME [sd/START_DATE ed/END_DATE]​`
+
+* Edits the TravelPlan at the specified `INDEX` or name. 
+* Users must include the name of the travel plan or the corresponding index. 
+* Format of date is in DD-MM-YYYY
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `edit -travelplan n/France sd/15-09-2020 ed/30-09-2020` Edits the start date and end date of the `France` TravelPlan.
+
+#### Editing an Activity
+
+Edits an existing Activity in the address book and updates the travel plan/wishlist in the current directory
+
+Format: `edit -activity INDEX n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]​`
+
+* Edits the Activity at the specified `INDEX` or name. 
+* The index refers to the index number shown in the displayed activity list. The index **must be a positive integer** 1, 2, 3, ,,,
+* Users must include the name of activity or the corresponding index. 
+* Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock)
+* At least one of the optional fields must be provided.
+
+Examples:
+*  `edit -activity n/Universal Studios Singapore i/5 l/Sentosa d/16-09-2020` Edits the location and date of the `Universal Studios Singapore` activity
+*  `edit -activity 2 n/Singapore Zoo t/Animals` Edits the tag of the 2nd Activity to be `Animals` and clears all existing tags.
+
+#### Editing an Accommodation
+
+Edits existing Accommodation in the address book.
+
+Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
+
+* Edits the Accommodation at the specified `INDEX` or name. 
+* Users must include the name of Accommodation, or an index
+* The index refers to the index number shown in the displayed accommodation list. The index **must be a positive integer** 1, 2, 3, ,,,
+* At least one of the optional fields must be provided.
+
+Examples:
+*  `edit -accommodation n/Hard Rock Hotel c/SGD500 n/2` Edits the cost and nights of `Hard Rock Hotel` Accommodation
+*  `edit -accomodation 2 c/SGD250` Edits the cost of the 2nd Accommodation to be `SGD250`
+
+#### Editing a Person : `edit`
+
+Edits existing Person in the address book.
+
+Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
+
+* Edits an existing person object’s information and updates the corresponding travel plan in the current directory
+* The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+
+Examples:
+*  `edit -person n/John m/81234567 p/E1234567H` Edits the mobile number and passport number of `John` Person
+*  `edit 2 m/87452183` Edits the mobile number of the 2nd person
 
 ### Locating persons by name: `find`
 
