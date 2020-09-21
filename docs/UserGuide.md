@@ -2,39 +2,74 @@
 layout: page
 title: User Guide
 ---
+#Wanderlust v1.2 User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+## Introduction
+
+WanderLust helps tech-savvy travellers to plan their trips in a structured and efficient manner by providing them with a holistic travel planner. 
+It is optimized for CLI users so that destinations and details can be added faster by typing in commands.
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Setting up [Coming soon]
 
-1. Ensure you have Java `11` or above installed in your Computer.
+--------------------------------------------------------------------------------------------------------------------
+## Command Summary
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+There are a total of 5 general commands. 
+The table briefly describes the commands and its usage. Full details will be given in the next section.
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+Command | Parameters | Description
+------------ | ------------- | ------------- 
+`add -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Creates the given object type
+`delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
+`edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
+`goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
+`show LIST_OF_OBJECTS` | `LIST_OF_OBJECTS` wishlist / nameOfTravelPlan / contacts / accomdation / <empty> | Show the specific list of objects given. If <listOfObjects> is empty, WanderLust will show the current travel plan the user is at.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+--------------------------------------------------------------------------------------------------------------------
+##Tags
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+The table below shows the type of tag each different object can be assigned to. 
+Do note that tags are optional when creating the object.
 
-   * **`list`** : Lists all contacts.
+####Activity Tag
+Name of Tag | Description
+------------ | -------------
+`l/LOCATION` | Location/ Address of the activity.
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity. 
+`c/cost` | Cost of the activity, if any.
+`d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
+####Accommodation Tag
+Name of Tag | Description
+------------ | -------------
+`l/LOCATION` | Location/ Address of the accommodation.
+`n/NIGHTS` | Number of nights to be spent in the accommodation.
+`c/cost` | Cost of the accommodation, if any.
 
-   * **`clear`** : Deletes all contacts.
+####Person Tag
+Name of Tag | Description
+------------ | -------------
+`m/MOBILE_NUMBER` | Mobile number of the person cell phone
+`p/PASSPORT_NUMBER` | Passport number of the person passport
 
-   * **`exit`** : Exits the app.
+####Travel Plan Tag
+Name of Tag | Description
+------------ | -------------
+`sd/START_DATE` | Start date of travel in the format of DD-MM-YYYY
+`ed/END_DATE | End date of travel in the format of DD-MM-YYYY
 
-1. Refer to the [Features](#features) below for details of each command.
+####Wishlist Tag
+Name of Tag | Description
+------------ | -------------
+`l/LOCATION` | Location/ Address of the activity.
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity. 
+`c/cost` | Cost of the activity, if any.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -42,137 +77,58 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `add -activity n/NAME`, `NAME` is a parameter which can be used as `add -activity n/Cultural Visit`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g `n/NAME [l/LOCATION]` can be used as `n/Cultural Visit l/Lourve Museum` or as `n/Cultural Visit`.
 
 </div>
 
-### Viewing help : `help`
+## Add
 
-Shows a message explaning how to access the help page.
+###Adding a Travel Plan (G)
+Creates a new travel plan and adds it to Wanderlust’s travel planner. 
+Start and end date can be optional, but they must exist as a pair. Format of date is in DD-MM-YYYY.
 
-![help message](images/helpMessage.png)
-
-Format: `help`
+Format: `add -travelplan n/NAME [sd/START_DATE ed/END_DATE]`
 
 
-### Adding a person: `add`
+Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 
-Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+###Adding an Activity (L)
+Creates a new activity and adds it to the travel plan/wishlist in the current directory.  Date and time can be optional, but they must exist as a pair. 
+Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
+Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]`
 
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-### Listing all persons : `list`
+Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/SGD88 d/16-09-2020 t/1000`
 
-Shows a list of all persons in the address book.
 
-Format: `list`
+###Adding an Accommodation (L)
+Creates new accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
+This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before adding accommodations.
 
-### Editing a person : `edit`
+Format: `add -accommodation n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]`
 
-Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Example: `add -accommodation n/Hard Rock Hotel l/Sentosa c/SGD500 n/2`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+###Adding a Person (L)
+Creates a person object that contains basic information about the user and 
+other travellers and adds it to the travel plan in the current directory.
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+Format: `add -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]`
 
-### Locating persons by name: `find`
 
-Finds persons whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
-
-### Deleting a person : `delete`
-
-Deletes the specified person from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Archiving data files `[coming in v2.0]`
-
-_{explain the feature here}_
+Example: `add -person n/John m/81234567 p/E1234567H`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+## FAQ [Coming soon]
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Command summary
-
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
