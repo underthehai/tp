@@ -2,7 +2,7 @@
 layout: page
 title: About Us
 ---
-Wanderlust was developed by Team [Team CS2103-T14-3](https://github.com/orgs/AY2021S1-CS2103-T14-3/people).
+Wanderlust was developed by [Team CS2103-T14-3](https://github.com/orgs/AY2021S1-CS2103-T14-3/people).
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
