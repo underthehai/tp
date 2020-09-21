@@ -236,7 +236,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* Need some place to their store travel plans in an organised manner
+* Need a place to their store travel plans in an organised manner
 * prefer desktop apps over other types
 * CLI proficient
 * prefers typing to mouse interactions
