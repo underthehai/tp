@@ -274,30 +274,210 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Wanderlust` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: UC01 - Navigate to a specific travel plan**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to navigate to a specific travel plan
+2.  Wanderlust shows that the current directory is on that travel plan
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The specific travel plan doesn't exist.
+    * 1a1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC02 - Navigate to the wishlist**
+
+**MSS**
+
+1.  User requests to navigate to the wishlist
+2.  Wanderlust shows that the current directory is on the wishlist
 
     Use case ends.
 
+**Use case: UC03 - Add a travel plan**
+
+**MSS**
+
+1.  User requests to add a travel plan
+2.  Wanderlust shows the newly created travel plan
+
+    Use case ends.
+    
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The input command format is invalid.
+    * 1a1. Wanderlust shows an error message.
+    
+      Use case ends.
+    
+**Use case: UC04 - Add an activity**
 
-  Use case ends.
+**MSS**
 
-* 3a. The given index is invalid.
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to add an activity
+3.  Wanderlust shows the added activities in the current directory
 
-    * 3a1. AddressBook shows an error message.
+    Use case ends.
+    
+**Extensions**
 
-      Use case resumes at step 2.
+* 1a. User is at the top directory.
+    * 1a1. User requests to add an activity.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+    
+    Use case resumes at step 2.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC05 - Add an accommodation**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to add an accommodation
+3.  Wanderlust shows the added accommodation in the current travel plan
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to add accommodation.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC06 - Add a person**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to add a person
+3.  Wanderlust shows the added person in the current travel plan
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to add a person.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC07 - Delete a travel plan**
+
+**MSS**
+
+1.  User requests to delete a travel plan
+2.  Wanderlust shows that the travel plan has been deleted.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The input command format is invalid.
+    * 1a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC08 - Delete an activity**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to delete an activity
+3.  Wanderlust shows that the activity has been deleted
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to delete an activity.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+    
+    Use case resumes at step 2.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC09 - Delete an accommodation**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to delete an accommodation
+3.  Wanderlust shows that the accommodation has been deleted
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to delete accommodation.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC10 - Delete a person**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to delete a person
+3.  Wanderlust shows that the person has been deleted
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to delete a person.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
 
 *{More to be added}*
 
