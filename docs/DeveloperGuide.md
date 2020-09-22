@@ -236,13 +236,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* Need a place to their store travel plans in an organised manner
 * prefer desktop apps over other types
-* can type fast
+* CLI proficient
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**:
+* Manage travel plans faster and wishlist faster than using Excel sheets/Mouse-driven Apps
 
 
 ### User stories
@@ -251,14 +252,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | new user                                   | read the user guide            | be familiar with the usages and features                |
+| `* * *`  | user                                       | save travel activities in a wishlist               | use it for future travel plans      |
+| `* * *`  | user                                       | add items to a travel plan             | note down important items related to my travel plan      |
+| `* * *`  | user                                       | delete an item       | remove unwanted items              |
+| `* * *`  | user                                       | modify an item       | edit any last minute changes              |
+| `* * *`  | frequent user                                       | have a list of items    | easily see my travel plans              |
+| `* * *`  | user                                       | be able to switch between travel plans   | navigate to travel plans easily              |
+| `* *`    | user                                       | add notes to each travel plan  | refer to them while travelling                          |
+| `* *`    | user                                       | input accommodation details         | easily remember where I am going to stay           |
+| `* *`    | user                                       | input cost of activity  | track the price of each activities easily                      |
+| `* *`    | user                                       | input timing to an activity         | create a schedule for my travel plan               |
+| `* *`    | user                                       | record essential personal details         | have a easy time in making bookings using these details             |
+| `* *`    | user                                       | sort items  | view my items in a preferred manner            |
+| `* *`    | user                                       | create priority levels for activities | rank the level of importance of each activities    |
+| `*`      | advanced user                              | have shortcuts for commands  | execute commands faster proficiently    |
+| `*`      | user                                       | have a feature to search  | find and filter my desired items efficiently  |
 
 *{More to be added}*
+
 
 ### Use cases
 
