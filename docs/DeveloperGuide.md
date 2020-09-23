@@ -406,6 +406,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
+* 1b. The travel plan specified does not exist.
+    * 1b1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
 **Use case: UC08 - Delete an activity**
 
 **MSS**
@@ -432,6 +437,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. Wanderlust shows an error message.
     
       Use case ends.
+      
+* 2b. The activity specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+      Use case ends.
 
 **Use case: UC09 - Delete an accommodation**
 
@@ -455,6 +465,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. Wanderlust shows an error message.
     
       Use case ends.
+      
+* 2b. The accommodation specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+      Use case ends.
 
 **Use case: UC10 - Delete a person**
 
@@ -476,6 +491,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+* 2b. The person specified does not exist.
+    * 2b1. Wanderlust shows an error message.
     
       Use case ends.
 
