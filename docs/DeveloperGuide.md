@@ -707,8 +707,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Accommodation**: Minimally includes the `name`, we can add information about `location`, `cost` and `nights` to it
 * **Person**: Contains information about a given person `name`, `mobile number` and `passport number` 
 * **Directory**: The three possible directories are `top`, `travelplan`, `wishlist`
+* **Navigate**: Use the `goto` command to move between directories
 * **View**: A command that provides a list of specified items
-
+ 
 *{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 
