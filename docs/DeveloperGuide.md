@@ -702,13 +702,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Wishlist**: A list of potential activities
-* **Travel plan**: A list of accommodations and activities in a specified location
+* **Travel plan**: A list of accommodations and activities in a specified location that can include `start_date` and `end_date`
 * **Activity**: Minimally includes the `name`, we can add information about level of importance, `cost`, `location`, `timestamp` and `tags` to it
 * **Accommodation**: Minimally includes the `name`, we can add information about `location`, `cost` and `nights` to it
 * **Person**: Contains information about a given person `name`, `mobile number` and `passport number` 
 * **Directory**: The three possible directories are `top`, `travelplan`, `wishlist`
 * **Navigate**: Use the `goto` command to move between directories
-* **View**: A command that provides a list of specified items
+* **View**: Use the `show` command to provide a list of specified items
  
 *{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
