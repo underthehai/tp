@@ -691,11 +691,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1.  Should work on any mainstream OS_ as long as it has Java `11` or above installed.
+2.  The travel planner should be able to hold up to 1000 activities without a noticeable sluggishness in performance for typical usage.
+3.  Should be able to respond to user commands within 1 second.
+4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5.  Should be a single-user product.
+6.  Users familiar with JSON should be able to read and edit the storage file.
+7.  Should work without internet connection.
 
 ### Glossary
 
