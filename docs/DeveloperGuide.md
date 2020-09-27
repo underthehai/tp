@@ -499,6 +499,194 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
 
+**Use case: UC11 - Edit a travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1)</ins> 
+2. User requests to edit travel plan
+3. Wanderlust shows that the travel plan has been edited
+
+   Use case ends.
+    
+**Extensions**
+
+*  1a. User is at the top directory.
+ 
+     Use case resumes at step 2.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+     Use case ends.
+      
+* 2b. The travel plan specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+     Use case ends.
+  
+**Use case: UC12 - Edit an activity**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to edit an activity
+3.  Wanderlust shows that the activity has been edited
+
+     Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to edit an activity.
+    * 1a2. Wanderlust shows an error message.
+
+     Use case ends.
+    
+* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+    
+     Use case resumes at step 2.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+* 2b. The activity specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC13 - Edit an accommodation**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to edit an accommodation
+3.  Wanderlust shows that the accommodation has been edited
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to edit accommodation.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+* 2b. The accommodation specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+      Use case ends.
+
+**Use case: UC14 - Edit a person**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to edit a person
+3.  Wanderlust shows that the person has been edited
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to edit a person.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+* 2b. The person specified does not exist.
+    * 2b1. Wanderlust shows an error message.
+    
+      Use case ends.
+      
+
+**Use case: UC15 - View activities**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to view activities
+3.  Wanderlust shows the list of activities
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to view activities.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+    
+    Use case resumes at step 2.    
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends.   
+               
+**Use case: UC16 - View contacts in travel plan**
+
+**MSS**
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+2.  User requests to view contacts
+3.  Wanderlust shows the list of contacts
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is at the top directory.
+    * 1a1. User requests to view contacts.
+    * 1a2. Wanderlust shows an error message.
+
+    Use case ends.
+    
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+    
+      Use case ends. 
+                 
+**Use case: UC17 - View accommodation in travel plan**
+ 
+ **MSS**
+ 
+ 1.  User <ins>navigates to a specific travel plan (UC1)</ins>
+ 2.  User requests to view accommodation
+ 3.  Wanderlust shows the list of accommodation
+ 
+     Use case ends.
+     
+ **Extensions**
+ 
+ * 1a. User is at the top directory.
+     * 1a1. User requests to view accommodation.
+     * 1a2. Wanderlust shows an error message.
+ 
+     Use case ends.
+     
+ * 2a. The input command format is invalid.
+     * 2a1. Wanderlust shows an error message.
+     
+       Use case ends.    
+              
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -513,7 +701,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+* **Wishlist**: A list of potential activities
+* **Travel plan**: A list of accommodations and activities in a specified location that can include `start_date` and `end_date`
+* **Activity**: Minimally includes the `name`, we can add information about level of importance, `cost`, `location`, `timestamp` and `tags` to it
+* **Accommodation**: Minimally includes the `name`, we can add information about `location`, `cost` and `nights` to it
+* **Person**: Contains information about a given person `name`, `mobile number` and `passport number` 
+* **Directory**: The three possible directories are `top`, `travelplan`, `wishlist`
+* **Navigate**: Use the `goto` command to move between directories
+* **View**: Use the `show` command to provide a list of specified items
+ 
+*{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
