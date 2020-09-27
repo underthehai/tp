@@ -39,17 +39,17 @@ public class Friend {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both friends of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two friends.
      */
-    public boolean isSameFriend(Friend otherPerson) {
-        if (otherPerson == this) {
+    public boolean isSameFriend(Friend otherFriend) {
+        if (otherFriend == this) {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getPassport().equals(getPassport()));
+        return otherFriend != null
+                && otherFriend.getName().equals(getName())
+                && (otherFriend.getPhone().equals(getPhone()) || otherFriend.getPassport().equals(getPassport()));
     }
 
     /**
@@ -66,10 +66,10 @@ public class Friend {
             return false;
         }
 
-        Friend otherPerson = (Friend) other;
-        return otherPerson.getName().equals(getName())
-                && otherPerson.getPassport().equals(getPassport())
-                && otherPerson.getPhone().equals(getPhone());
+        Friend otherFriend = (Friend) other;
+        return otherFriend.getName().equals(getName())
+                && otherFriend.getPassport().equals(getPassport())
+                && otherFriend.getPhone().equals(getPhone());
     }
 
     @Override
