@@ -171,7 +171,7 @@ Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 Creates a new activity and adds it to the travel plan/wishlist in the current directory.  Date and time can be optional, but they must exist as a pair. 
 Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
-Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]`
+Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME] [t/tags]`
 
 
 Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/SGD88 d/16-09-2020 t/1000`
@@ -191,6 +191,42 @@ Format: `add -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]`
 
 
 Example: `add -person n/John m/81234567 p/E1234567H`
+
+## Delete
+
+### 1. Deleting a Travel Plan (G)
+
+Deletes a TravelPlan object. Users must include either the name or the index of the travel plan.
+
+Format: `delete -travelplan n/NAME​`
+
+Example: `delete -travelplan n/France`
+
+### 2. Deleting an Activity (L)
+
+Deletes an Activity object from the travel plan/wishlist in the current directory.  Users must include the name of activity or the corresponding index.
+
+Format: `delete -activity n/NAME`
+
+Example: `delete -activity n/Universal Studios Singapore`
+
+### 3. Deleting an Accommodation (L)
+
+Deletes an Accommodation object from the travel plan in the current directory. Command must include the name of the accommodation or the corresponding index.
+_This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before deleting accommodations._
+
+Format: `delete -accommodation n/NAME​`
+
+Example: `delete -accommodation n/Hard Rock Hotel`
+
+### 4. Deleting a Person (L)
+
+Deletes a Person object from the travel plan in the current directory. Command must include the name of the Person object or the corresponding index.
+_This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before deleting a person._
+
+Format: `delete -person n/NAME`
+
+Example: `delete -person n/John`
 
 ## Edit
 
@@ -213,6 +249,7 @@ Edits an existing Activity in the address book and updates the travel plan/wishl
 
 Format: `edit -activity INDEX n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]​`
 
+* Navigate to specified travel plan or wishlist.
 * Edits the Activity at the specified `INDEX` or name. 
 * The index refers to the index number shown in the displayed activity list. The index **must be a positive integer** 1, 2, 3, ,,,
 * Users must include the name of activity or the corresponding index. 
@@ -225,10 +262,11 @@ Examples:
 
 #### 3. Editing an Accommodation (L)
 
-Edits existing Accommodation in the address book.
+Edits existing Accommodation in the address book. This command can only be used within a travel plan. 
 
 Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
 
+* User navigates to specified travel plan.
 * Edits the Accommodation at the specified `INDEX` or name. 
 * Users must include the name of Accommodation, or an index
 * The index refers to the index number shown in the displayed accommodation list. The index **must be a positive integer** 1, 2, 3, ,,,
@@ -240,10 +278,11 @@ Examples:
 
 #### 4. Editing a Person (L)
 
-Edits existing Person in the address book.
+Edits existing Person in the address book. This command can only be used within a travel plan. 
 
 Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 
+* Navigate to specified travel plan.
 * Edits an existing person object’s information and updates the corresponding travel plan in the current directory
 * The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
