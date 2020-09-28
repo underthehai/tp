@@ -1,10 +1,10 @@
 package seedu.address.model.activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Date {
     public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format YYYY-MM-DD HH:mm "
