@@ -6,7 +6,7 @@ title: User Guide
 
 ## Introduction
 
-WanderLust helps tech-savvy travellers to plan their trips in a structured and efficient manner by providing them with a holistic travel planner. 
+WanderLust helps tech-savvy travellers to plan their trips in a structured and efficient manner by providing them with a holistic travel planner.
 It is optimized for CLI users so that destinations and details can be added faster by typing in commands.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -55,11 +55,11 @@ It is optimized for CLI users so that destinations and details can be added fast
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
 
-There are a total of 5 general commands. 
+There are a total of 5 general commands.
 The table briefly describes the commands and its usage. Full details will be given in the next section.
 
 Command | Parameters | Description
------------- | ------------- | ------------- 
+------------ | ------------- | -------------
 `add -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Creates the given object type
 `delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
 `edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
@@ -69,14 +69,14 @@ Command | Parameters | Description
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
 
-The table below shows the type of tag each different object can be assigned to. 
+The table below shows the type of tag each different object can be assigned to.
 Do note that tags are optional when creating the object.
 
 #### Activity Tag
 Name of Tag | Description
 ------------ | -------------
 `l/LOCATION` | Location/ Address of the activity.
-`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity. 
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity.
 `c/cost` | Cost of the activity, if any.
 `d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
@@ -104,7 +104,7 @@ Name of Tag | Description
 Name of Tag | Description
 ------------ | -------------
 `l/LOCATION` | Location/ Address of the activity.
-`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity. 
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity.
 `c/cost` | Cost of the activity, if any.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -125,19 +125,19 @@ Name of Tag | Description
 
 ## Goto
 
-The goto command is used to navigate to various directories within the travel planner. The GUI display depends on the 
-state of the current directory, which is changed using the goto command. On start, the default directory of the program 
+The goto command is used to navigate to various directories within the travel planner. The GUI display depends on the
+state of the current directory, which is changed using the goto command. On start, the default directory of the program
 is `wishlist`.<br/>
 <br/>
 
->Directories in Wanderlust include: 
+>Directories in Wanderlust include:
 >1. `wishlist`
 >2. `NAME_OF_TRAVEL_PLAN`<br/>
 
 <br/>
-This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without 
-having to type their names in each command. This also means that **some commands can only be used locally within a 
-certain directory, and responses to these commands will depend on the current directory.** Commands that can be used 
+This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
+having to type their names in each command. This also means that **some commands can only be used locally within a
+certain directory, and responses to these commands will depend on the current directory.** Commands that can be used
 globally and locally are tagged (G) and (L) respectively in the **features section** of this user guide. <br/>
 <br/>
 
@@ -158,7 +158,7 @@ Example: `goto wishlist`
 ## Add
 
 #### 1. Adding a Travel Plan (G)
-Creates a new travel plan and adds it to Wanderlust’s travel planner. 
+Creates a new travel plan and adds it to Wanderlust’s travel planner.
 Start and end date can be optional, but they must exist as a pair. Format of date is in DD-MM-YYYY.
 
 Format: `add -travelplan n/NAME [sd/START_DATE ed/END_DATE]`
@@ -168,7 +168,7 @@ Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 
 
 #### 2. Adding an Activity (L)
-Creates a new activity and adds it to the travel plan/wishlist in the current directory.  Date and time can be optional, but they must exist as a pair. 
+Creates a new activity and adds it to the travel plan/wishlist in the current directory.  Date and time can be optional, but they must exist as a pair.
 Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
 Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME] [t/tags]`
@@ -184,7 +184,7 @@ This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN
 Format: `add -accommodation n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]`
 
 ### 4. Adding a Person (L)
-Creates a person object that contains basic information about the user and 
+Creates a person object that contains basic information about the user and
 other travellers and adds it to the travel plan in the current directory.
 
 Format: `add -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]`
@@ -236,8 +236,8 @@ Edits an existing TravelPlan in the address book.
 
 Format: `edit -travelplan INDEX n/NAME [sd/START_DATE ed/END_DATE]​`
 
-* Edits the TravelPlan at the specified `INDEX` or name. 
-* Users must include the name of the travel plan or the corresponding index. 
+* Edits the TravelPlan at the specified `INDEX` or name.
+* Users must include the name of the travel plan or the corresponding index.
 * Format of date is in DD-MM-YYYY
 
 Examples:
@@ -250,9 +250,9 @@ Edits an existing Activity in the address book and updates the travel plan/wishl
 Format: `edit -activity INDEX n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]​`
 
 * Navigate to specified travel plan or wishlist.
-* Edits the Activity at the specified `INDEX` or name. 
+* Edits the Activity at the specified `INDEX` or name.
 * The index refers to the index number shown in the displayed activity list. The index **must be a positive integer** 1, 2, 3, ,,,
-* Users must include the name of activity or the corresponding index. 
+* Users must include the name of activity or the corresponding index.
 * Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock)
 * At least one of the optional fields must be provided.
 
@@ -262,12 +262,12 @@ Examples:
 
 #### 3. Editing an Accommodation (L)
 
-Edits existing Accommodation in the address book. This command can only be used within a travel plan. 
+Edits existing Accommodation in the address book. This command can only be used within a travel plan.
 
 Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
 
 * User navigates to specified travel plan.
-* Edits the Accommodation at the specified `INDEX` or name. 
+* Edits the Accommodation at the specified `INDEX` or name.
 * Users must include the name of Accommodation, or an index
 * The index refers to the index number shown in the displayed accommodation list. The index **must be a positive integer** 1, 2, 3, ,,,
 * At least one of the optional fields must be provided.
@@ -278,7 +278,7 @@ Examples:
 
 #### 4. Editing a Person (L)
 
-Edits existing Person in the address book. This command can only be used within a travel plan. 
+Edits existing Person in the address book. This command can only be used within a travel plan.
 
 Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 

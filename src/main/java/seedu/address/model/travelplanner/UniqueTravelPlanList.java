@@ -14,10 +14,11 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of travel plans that enforces uniqueness between its elements and does not allow nulls.
- * A travel plan is considered unique by comparing using {@code TravelPlan#isSameTravelPlan(TravelPlan)}. As such, adding and updating of
- * travel plans uses TravelPlan#isSameTravelPlan(TravelPlan) for equality so as to ensure that the travel plan being added or updated is
- * unique in terms of identity in the UniqueTravelPlanList. However, the removal of a travel plan uses TravelPlan#equals(Object) so
- * as to ensure that the travel plan with exactly the same fields will be removed.
+ * A travel plan is considered unique by comparing using {@code TravelPlan#isSameTravelPlan(TravelPlan)}. As such,
+ * adding and updating of travel plans uses TravelPlan#isSameTravelPlan(TravelPlan) for equality so as to ensure that
+ * the travel plan being added or updated is unique in terms of identity in the UniqueTravelPlanList. However, the
+ * removal of a travel plan uses TravelPlan#equals(Object) so as to ensure that the travel plan with exactly the same
+ * fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -52,7 +53,8 @@ public class UniqueTravelPlanList implements Iterable<TravelPlan> {
     /**
      * Replaces the travel plan {@code target} in the list with {@code editedTravelPlan}.
      * {@code target} must exist in the list.
-     * The travel plan identity of {@code editedTravelPlan} must not be the same as another existing travel plan in the list.
+     * The travel plan identity of {@code editedTravelPlan} must not be the same as another existing travel plan in the
+     * list.
      */
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);

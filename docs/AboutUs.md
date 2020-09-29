@@ -52,7 +52,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/timjkong)]
 
 * Role:  Developer
-* Responsibilities: Dev Ops + Threading 
+* Responsibilities: Dev Ops + Threading
 
 ### Toh Xuan Ning Jeanne
 
