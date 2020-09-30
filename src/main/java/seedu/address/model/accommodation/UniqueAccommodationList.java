@@ -15,9 +15,10 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of accommodations that enforces uniqueness between its elements and does not allow nulls.
- * An accommodation is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Accommodation#isSameAccommodation(Accommodation) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of an accommodation uses Accommodation#equals(Object) so
+ * An accommodation is considered unique by comparing using {@code Person#isSamePerson(Person)}.
+ * As such, adding and updating of persons uses Accommodation#isSameAccommodation(Accommodation) for equality
+ * so as to ensure that the person being added or updated is unique in terms of identity in the UniquePersonList.
+ * However, the removal of an accommodation uses Accommodation#equals(Object) so
  * as to ensure that the accommodation with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
@@ -53,7 +54,8 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
     /**
      * Replaces the accommodation {@code target} in the list with {@code editedAccommodation}.
      * {@code target} must exist in the list.
-     * The accommodation identity of {@code editedAccommodation} must not be the same as another existing accommodation in the list.
+     * The accommodation identity of {@code editedAccommodation} must not be the same as
+     * another existing accommodation in the list.
      */
     public void setPerson(Accommodation target, Accommodation editedAccommodation) {
         requireAllNonNull(target, editedAccommodation);
