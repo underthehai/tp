@@ -13,4 +13,10 @@ public interface ReadOnlyTravelPlanner {
      */
     ObservableList<TravelPlan> getTravelPlanList();
 
+    /**
+     * Returns an unmodifiable view of the wishlist.
+     * This list will not contain any duplicate activities.
+     */
+    ObservableList<Activity> getWishlist();
+
 }

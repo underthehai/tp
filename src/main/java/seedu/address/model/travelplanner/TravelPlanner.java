@@ -17,6 +17,7 @@ import seedu.address.model.travelplanner.UniqueTravelPlanList;
 public class TravelPlanner implements ReadOnlyTravelPlanner {
 
     private final UniqueTravelPlanList travelPlans;
+    private final UniqueActivityList wishlist;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -27,6 +28,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      */
     {
         travelPlans = new UniqueTravelPlanList();
+        wishlist = new UniqueActivityList();
     }
 
     public TravelPlanner() {}
@@ -50,12 +52,21 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
+     * Replaces the contents of the wishlist with {@code wishlist}.
+     * {@code wishlist} must not contain duplicate activities.
+     */
+    public void setWishlist(List<Activity> wishlist) {
+        this.wishlist.setActivities(wishlist);
+    }
+
+    /**
      * Resets the existing data of this {@code TravelPlanner} with {@code newData}.
      */
     public void resetData(ReadOnlyTravelPlanner newData) {
         requireNonNull(newData);
 
         setTravelPlans(newData.getTravelPlanList());
+        setWishlist(newData.getWishlist());
     }
 
     //// person-level operations
@@ -69,11 +80,26 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
+     * Returns true if an activity with the same identity as {@code activity} exists in the wishlist.
+     */
+    public boolean hasActivity(Activity activity) {
+        requireNonNull(activity);
+        return wishlist.contains(activity);
+    }
+
+    /**
      * Adds a travel plan to the travel planner.
      * The travel plan must not already exist in the travel planner.
      */
     public void addTravelPlan(TravelPlan tP) {
         travelPlans.add(tP);
+    }
+
+    /**
+     * Adds an activity to the wishlist.
+     */
+    public void addActivity(Activity activity) {
+        wishlist.add(activity);
     }
 
     /**
@@ -89,6 +115,18 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
+     * Replaces the given activity {@code target} in the list with {@code editedActivity}.
+     * {@code target} must exist in the wishlist.
+     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the
+     * wishlist.
+     */
+    public void setActivity(Activity target, Activity editedActivity) {
+        requireNonNull(editedActivity);
+
+        wishlist.setActivity(target, editedActivity);
+    }
+
+    /**
      * Removes {@code key} from this {@code TravelPlanner}.
      * {@code key} must exist in the travel planner.
      */
@@ -96,11 +134,19 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
         travelPlans.remove(key);
     }
 
+    /**
+     * Removes {@code key} from this {@code Wishlist}.
+     * {@code key} must exist in the wishlist.
+     */
+    public void removeActivity(Activity key) {
+        wishlist.remove(key);
+    }
     //// util methods
 
     @Override
     public String toString() {
-        return travelPlans.asUnmodifiableObservableList().size() + " travel plans";
+        return travelPlans.asUnmodifiableObservableList().size() + " travel plans\n"
+                + wishlist.asUnmodifiableObservableList().size() + " activities";
         // TODO: refine later
     }
 
@@ -110,14 +156,21 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     @Override
+    public ObservableList<Activity> getWishlist() {
+        return wishlist.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TravelPlanner // instanceof handles nulls
-                && travelPlans.equals(((TravelPlanner) other).travelPlans));
+                && travelPlans.equals(((TravelPlanner) other).travelPlans)
+                && wishlist.equals(((Wishlist) other).wishlist));
     }
 
     @Override
     public int hashCode() {
+        // TODO: need consider wishlist's hashcode also
         return travelPlans.hashCode();
     }
 }
