@@ -1,4 +1,4 @@
-package seedu.address.model.travelplan;
+package seedu.address.model.commons;
 
 public interface ReadOnlyActivityList {
 

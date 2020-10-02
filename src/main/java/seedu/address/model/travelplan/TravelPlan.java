@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.tag.Tag;
 
 /**
