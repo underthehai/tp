@@ -4,6 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.commons.Name;
+
 /**
  * Represents a Friend in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -11,9 +13,11 @@ import java.util.Objects;
 public class Friend {
 
     // Identity fields
-    private final seedu.address.model.friend.Name name;
-    private final seedu.address.model.friend.Passport passport;
-    private final seedu.address.model.friend.Phone phone;
+    private final Name name;
+
+    // Data fields
+    private final Passport passport;
+    private final Phone phone;
 
 
     /**
@@ -39,8 +43,7 @@ public class Friend {
     }
 
     /**
-     * Returns true if both friends of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two friends.
+     * Returns true if both friends are of the same name
      */
     public boolean isSameFriend(Friend otherFriend) {
         if (otherFriend == this) {
@@ -48,8 +51,7 @@ public class Friend {
         }
 
         return otherFriend != null
-                && otherFriend.getName().equals(getName())
-                && (otherFriend.getPhone().equals(getPhone()) || otherFriend.getPassport().equals(getPassport()));
+                && otherFriend.getName().equals(getName());
     }
 
     /**

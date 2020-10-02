@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
+import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.friend.Name;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
 
@@ -22,18 +22,18 @@ public class FriendBuilder {
      * Creates a {@code FriendBuilder} with the default details.
      */
     public FriendBuilder() {
-        name = new seedu.address.model.friend.Name(DEFAULT_NAME);
-        passport = new seedu.address.model.friend.Passport(DEFAULT_PASSPORT);
-        phone = new seedu.address.model.friend.Phone(DEFAULT_PHONE);
+        name = new Name(DEFAULT_NAME);
+        passport = new Passport(DEFAULT_PASSPORT);
+        phone = new Phone(DEFAULT_PHONE);
     }
 
     /**
-     * Initializes the FriendBuilder with the data of {@code personToCopy}.
+     * Initializes the FriendBuilder with the data of {@code friendToCopy}.
      */
-    public FriendBuilder(Friend personToCopy) {
-        name = personToCopy.getName();
-        passport = personToCopy.getPassport();
-        phone = personToCopy.getPhone();
+    public FriendBuilder(Friend friendToCopy) {
+        name = friendToCopy.getName();
+        passport = friendToCopy.getPassport();
+        phone = friendToCopy.getPhone();
     }
 
     /**
@@ -53,7 +53,7 @@ public class FriendBuilder {
     }
 
     /**
-     * Sets the {@code Passport} of the {@code Person} that we are building.
+     * Sets the {@code Passport} of the {@code Friend} that we are building.
      */
     public FriendBuilder withPassport(String passport) {
         this.passport = new Passport(passport);

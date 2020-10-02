@@ -1,7 +1,7 @@
 package seedu.address.model.util;
 
+import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.friend.Name;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
 

@@ -50,7 +50,7 @@ public class UniqueFriendList implements Iterable<Friend> {
     }
 
     /**
-     * Replaces the friend {@code target} in the list with {@code editedPerson}.
+     * Replaces the friend {@code target} in the list with {@code editedFriend}.
      * {@code target} must exist in the list.
      * The friend identity of {@code editedFriend} must not be the same as another existing friend in the list.
      */
