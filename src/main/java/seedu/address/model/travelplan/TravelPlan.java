@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -156,7 +157,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
         return otherTravelPlan != null
                 && otherTravelPlan.getName().equals(getName())
                 && (otherTravelPlan.getStartDate().equals(getStartDate())
-                || otherTravelPlan.getEndDate().equals(getEndDate());
+                || otherTravelPlan.getEndDate().equals(getEndDate()));
     }
 
     @Override

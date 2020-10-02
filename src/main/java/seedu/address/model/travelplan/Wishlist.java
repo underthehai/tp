@@ -108,8 +108,8 @@ public class Wishlist implements ReadOnlyActivityList {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ActivityList // instanceof handles nulls
-                && activities.equals(((ActivityList) other).activities));
+                || (other instanceof Wishlist // instanceof handles nulls
+                && activities.equals(((Wishlist) other).activities));
     }
 
     @Override
