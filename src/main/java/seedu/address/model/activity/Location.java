@@ -44,8 +44,8 @@ public class Location {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof seedu.address.model.activity.Location // instanceof handles nulls
-                && value.equals(((seedu.address.model.activity.Location) other).value)); // state check
+                || (other instanceof Location // instanceof handles nulls
+                && value.equals(((Location) other).value)); // state check
     }
 
     @Override

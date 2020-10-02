@@ -23,7 +23,6 @@ public class Activity {
     private final Cost cost;
     private final Importance levelOfImportance;
     private final Date date;
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -35,7 +34,6 @@ public class Activity {
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
         this.date = date;
-        this.tags.addAll(tags);
     }
 
     public Name getName() {
@@ -56,14 +54,6 @@ public class Activity {
 
     public Date getDate() {
         return date;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     /**
@@ -98,14 +88,13 @@ public class Activity {
                 && otherActivity.getLocation().equals(getLocation())
                 && otherActivity.getCost().equals(getCost())
                 && otherActivity.getLevelOfImportance().equals(getLevelOfImportance())
-                && otherActivity.getDate().equals(getDate())
-                && otherActivity.getTags().equals(getTags());
+                && otherActivity.getDate().equals(getDate());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, location, cost, levelOfImportance, date, tags);
+        return Objects.hash(name, location, cost, levelOfImportance, date);
     }
 
     @Override
@@ -121,7 +110,6 @@ public class Activity {
                 .append(" Cost: ")
                 .append(getDate())
                 .append(" Date: ");
-        getTags().forEach(builder::append);
         return builder.toString();
     }
 

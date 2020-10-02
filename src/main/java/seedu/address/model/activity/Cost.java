@@ -11,12 +11,12 @@ public class Cost {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be a positive integer";
-    public static final String VALIDATION_REGEX = "\\d+";
+            "Cost should only contain numbers, and it should be a positive integer";
+    public static final String VALIDATION_REGEX = "/^(?!(?:0|0\\.0|0\\.00)$)[+]?\\d+(\\.\\d|\\.\\d[0-9])?$/\n";
     public final String value;
 
     /**
-     * Constructs a {@code Phone}.
+     * Constructs a {@code Cost}.
      *
      * @param cost A valid cost.
      */
