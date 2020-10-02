@@ -97,8 +97,10 @@ public class Wishlist implements ReadOnlyActivityList {
 
     @Override
     public String toString() {
-        return activities.asUnmodifiableObservableList().size() + " activities";
-        // TODO: refine later
+        final StringBuilder builder = new StringBuilder();
+        builder.append(" Wishlist: ");
+        getActivityList().forEach(builder::append);
+        return builder.toString();
     }
 
     @Override
