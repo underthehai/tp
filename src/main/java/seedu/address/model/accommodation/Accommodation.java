@@ -5,8 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Date;
 import java.util.Objects;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Name;
+import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+
 
 /**
  * Represents an Accommodation in the travel plan.
@@ -18,18 +20,18 @@ public class Accommodation {
     private final Date startDate;
     private final Date endDate;
     private final Cost cost;
-    private final Address address;
+    private final Location location;
 
     /**
      * Every field must be present and not null.
      */
-    public Accommodation(Name name, Date startDate, Date endDate, Cost cost, Address address) {
-        requireAllNonNull(name, startDate, endDate, cost, address);
+    public Accommodation(Name name, Date startDate, Date endDate, Cost cost, Location location) {
+        requireAllNonNull(name, startDate, endDate, cost, location);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.cost = cost;
-        this.address = address;
+        this.location = location;
     }
 
     public Name getName() {
@@ -48,8 +50,8 @@ public class Accommodation {
         return cost;
     }
 
-    public Address getAddress() {
-        return address;
+    public Location getLocation() {
+        return location;
     }
 
     /** Returns true if both accommodations have the same name, startDate and endDate fields. */
@@ -84,13 +86,13 @@ public class Accommodation {
                 && otherAccommodation.getStartDate().equals(getStartDate())
                 && otherAccommodation.getEndDate().equals(getEndDate())
                 && otherAccommodation.getCost().equals(getCost())
-                && otherAccommodation.getAddress().equals(getAddress());
+                && otherAccommodation.getLocation().equals(getLocation());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, startDate, endDate, cost, address);
+        return Objects.hash(name, startDate, endDate, cost, location);
     }
 
     @Override
@@ -102,7 +104,7 @@ public class Accommodation {
                 .append(" - ")
                 .append(getEndDate())
                 .append(" Address: ")
-                .append(getAddress())
+                .append(getLocation())
                 .append(" Cost: ")
                 .append(getCost());
         return builder.toString();

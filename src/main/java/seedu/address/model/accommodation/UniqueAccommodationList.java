@@ -10,8 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.exceptions.AccommodationNotFoundException;
 import seedu.address.model.accommodation.exceptions.DuplicateAccommodationException;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of accommodations that enforces uniqueness between its elements and does not allow nulls.
@@ -46,7 +44,7 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
     public void add(Accommodation toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateAccommodationException();
         }
         internalList.add(toAdd);
     }
@@ -57,16 +55,16 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
      * The accommodation identity of {@code editedAccommodation} must not be the same as
      * another existing accommodation in the list.
      */
-    public void setPerson(Accommodation target, Accommodation editedAccommodation) {
+    public void setAccommodation(Accommodation target, Accommodation editedAccommodation) {
         requireAllNonNull(target, editedAccommodation);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new AccommodationNotFoundException();
         }
 
         if (!target.isSameAccommodation(editedAccommodation) && contains(editedAccommodation)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateAccommodationException();
         }
 
         internalList.set(index, editedAccommodation);
