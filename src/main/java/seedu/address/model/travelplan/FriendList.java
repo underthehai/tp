@@ -7,7 +7,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.UniqueFriendList;
-import seedu.address.model.travelplan.ReadOnlyFriendList;
 
 /**
  * Wraps all data at the friend list level

@@ -5,8 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.model.travelplan.Activity;
 
 /**
  * Wraps all data at the travel plan level
@@ -71,7 +72,7 @@ public class Wishlist implements ReadOnlyActivityList {
      * The activity must not already exist in the wishlist.
      */
     public void addActivity(Activity p) {
-        activites.add(p);
+        activities.add(p);
     }
 
     /**

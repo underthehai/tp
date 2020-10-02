@@ -5,8 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.model.travelplan.Activity;
 
 /**
  * Wraps all data at the travel plan level
@@ -71,7 +72,7 @@ public class ActivityList implements ReadOnlyActivityList {
      * The activity must not already exist in the activity list.
      */
     public void addActivity(Activity activity) {
-        activites.add(activity);
+        activities.add(activity);
     }
 
     /**

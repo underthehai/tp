@@ -7,8 +7,12 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.collections.ObservableList;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -99,11 +103,11 @@ public class TravelPlan implements ReadOnlyTravelPlan {
      * travel plan object in the corresponding travel plan object list.
      */
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
-        if (travelPlanObject instanceof Accommodation) {
+        if (editedTravelPlanObject instanceof Accommodation) {
             accommodations.setAccommodation((Accommodation) target, (Accommodation) editedTravelPlanObject);
-        } else if (travelPlanObject instanceof Activity) {
+        } else if (editedTravelPlanObject instanceof Activity) {
             activities.setActivity((Activity) target, (Activity) editedTravelPlanObject);
-        } else {    // if travelPlanObject instanceof Friend
+        } else {    // if editedTravelPlanObject instanceof Friend
             friends.setFriend((Friend) target, (Friend) editedTravelPlanObject);
         }
     }
@@ -113,11 +117,11 @@ public class TravelPlan implements ReadOnlyTravelPlan {
      * {@code key} must exist in the corresponding travel plan object list.
      */
     public void removeTravelPlanObject(TravelPlanObject key) {
-        if (travelPlanObject instanceof Accommodation) {
+        if (key instanceof Accommodation) {
             accommodations.removeAccommodation((Accommodation) key);
-        } else if (travelPlanObject instanceof Activity) {
+        } else if (key instanceof Activity) {
             activities.removeActivity((Activity) key);
-        } else {    // if travelPlanObject instanceof Friend
+        } else {    // if key instanceof Friend
             friends.removeFriend((Friend) key);
         }
     }
@@ -181,17 +185,17 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     
     @Override
     public ObservableList<Accommodation> getAccommodationList() {
-        return accommodations.asUnmodifiableObservableList();
+        return accommodations.getAccommodationList() ;
     }
 
     @Override
     public ObservableList<Activity> getActivityList() {
-        return activities.asUnmodifiableObservableList();
+        return activities.getActivityList();
     }
 
     @Override
     public ObservableList<Friend> getFriendList() {
-        return friends.asUnmodifiableObservableList();
+        return friends.getFriendList();
     }
 
     @Override
