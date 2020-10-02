@@ -24,8 +24,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 [[github](http://github.com/underthehai)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Developer (In charge of Model)
+* Responsibilities: Testing
 
 ### Lye Yi Xian
 
@@ -33,8 +33,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 [[github](http://github.com/lyeyixian)]
 
-* Role: Team Lead
-* Responsibilities: Data
+* Role: Team Lead (In charge of Storage)
+* Responsibilities: Integration, Deliverables and deadlines
 
 ### Teo Jia wei
 
@@ -42,8 +42,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 [[github](https://github.com/jiaweiteo)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Developer (In charge of Model)
+* Responsibilities: Scheduling and tracking, Documentation, Integration
 
 ### Timothy Ong Jing Kai
 
@@ -51,8 +51,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 [[github](http://github.com/timjkong)]
 
-* Role:  Developer
-* Responsibilities: Dev Ops + Threading
+* Role:  Developer (In charge of Logic)
+* Responsibilities: Code quality
 
 ### Toh Xuan Ning Jeanne
 
@@ -60,5 +60,5 @@ We are a team based in the [School of Computing, National University of Singapor
 
 [[github](http://github.com/jeannetoh99)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Developer (In charge of Ui)
+* Responsibilities: Documentation
