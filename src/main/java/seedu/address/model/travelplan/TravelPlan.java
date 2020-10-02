@@ -185,15 +185,15 @@ public class TravelPlan {
     }
 
     //// travel plan data methods
-    
+
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.getAccommodationList();
     }
-    
+
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
-    
+
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
     }
