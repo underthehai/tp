@@ -171,7 +171,7 @@ Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 Creates a new activity and adds it to the travel plan/wishlist in the current directory.  Date and time can be optional, but they must exist as a pair. 
 Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
-Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]`
+Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME] [t/tags]`
 
 
 Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/SGD88 d/16-09-2020 t/1000`
@@ -249,6 +249,7 @@ Edits an existing Activity in the address book and updates the travel plan/wishl
 
 Format: `edit -activity INDEX n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]​`
 
+* Navigate to specified travel plan or wishlist.
 * Edits the Activity at the specified `INDEX` or name. 
 * The index refers to the index number shown in the displayed activity list. The index **must be a positive integer** 1, 2, 3, ,,,
 * Users must include the name of activity or the corresponding index. 
@@ -261,10 +262,11 @@ Examples:
 
 #### 3. Editing an Accommodation (L)
 
-Edits existing Accommodation in the address book.
+Edits existing Accommodation in the address book. This command can only be used within a travel plan. 
 
 Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
 
+* User navigates to specified travel plan.
 * Edits the Accommodation at the specified `INDEX` or name. 
 * Users must include the name of Accommodation, or an index
 * The index refers to the index number shown in the displayed accommodation list. The index **must be a positive integer** 1, 2, 3, ,,,
@@ -276,10 +278,11 @@ Examples:
 
 #### 4. Editing a Person (L)
 
-Edits existing Person in the address book.
+Edits existing Person in the address book. This command can only be used within a travel plan. 
 
 Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 
+* Navigate to specified travel plan.
 * Edits an existing person object’s information and updates the corresponding travel plan in the current directory
 * The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
