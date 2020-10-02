@@ -19,7 +19,7 @@ import seedu.address.model.tag.Tag;
  * Wraps all data at the travel-plan level
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class TravelPlan implements ReadOnlyTravelPlan {
+public class TravelPlan {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
 
@@ -185,18 +185,15 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     }
 
     //// travel plan data methods
-
-    @Override
+    
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.getAccommodationList();
     }
-
-    @Override
+    
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
-
-    @Override
+    
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
     }
