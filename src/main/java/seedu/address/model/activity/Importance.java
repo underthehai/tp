@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Importance {
     public static final String MESSAGE_CONSTRAINTS =
-            "Importance Level should only contain numbers, and it should range from 1 - 5, with 5 being" +
-                    "the most important while 1 being the least important";
+            "Importance Level should only contain numbers, and it should range from 1 - 5, with 5 being"
+                    + "the most important while 1 being the least important";
     public static final String VALIDATION_REGEX = "\\d[1-5]";
     public final String value;
 
