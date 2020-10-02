@@ -30,7 +30,7 @@ public class Wishlist implements ReadOnlyActivityList {
     public Wishlist() {}
 
     /**
-     * Creates an AddressBook using the Activitys in the {@code toBeCopied}
+     * Creates an Wishlist using the Activitys in the {@code toBeCopied}
      */
     public Wishlist(ReadOnlyActivityList toBeCopied) {
         this();
@@ -40,7 +40,7 @@ public class Wishlist implements ReadOnlyActivityList {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code activities}.
+     * Replaces the contents of the activity list with {@code activities}.
      * {@code activities} must not contain duplicate activities.
      */
     public void setActivities(List<Activity> activities) {
@@ -48,7 +48,7 @@ public class Wishlist implements ReadOnlyActivityList {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code Wishlist} with {@code newData}.
      */
     public void resetData(ReadOnlyActivityList newData) {
         requireNonNull(newData);
@@ -56,10 +56,10 @@ public class Wishlist implements ReadOnlyActivityList {
         setActivities(newData.getActivityList());
     }
 
-    //// person-level operations
+    //// activity-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if an activity with the same identity as {@code activity} exists in the wishlist.
      */
     public boolean hasActivity(Activity activity) {
         requireNonNull(activity);
@@ -67,17 +67,17 @@ public class Wishlist implements ReadOnlyActivityList {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds an activity to the wishlist.
+     * The activity must not already exist in the wishlist.
      */
     public void addActivity(Activity p) {
         activites.add(p);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedActivity}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedActivity} must not be the same as another existing person in the address book.
+     * Replaces the given activity {@code target} in the list with {@code editedActivity}.
+     * {@code target} must exist in the wishlist.
+     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the wishlist.
      */
     public void setActivity(Activity target, Activity editedActivity) {
         requireNonNull(editedActivity);
@@ -86,8 +86,8 @@ public class Wishlist implements ReadOnlyActivityList {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code Wishlist}.
+     * {@code key} must exist in the wishlist.
      */
     public void removeActivity(Activity key) {
         activities.remove(key);

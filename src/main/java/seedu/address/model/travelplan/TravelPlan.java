@@ -56,7 +56,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     }
 
     /**
-     * Returns if the start date is before or on the same day as end date.
+     * Returns true if the start date is before or on the same day as end date.
      */
     public static boolean isValidStartAndEndDate(TravelDate startDate, TravelDate endDate) {
         return startDate.value.compareTo(endDate.value) <= 0;
@@ -110,7 +110,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
 
     /**
      * Removes {@code key} from the corresponding travel plan object list.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the corresponding travel plan object list.
      */
     public void removeTravelPlanObject(TravelPlanObject key) {
         if (travelPlanObject instanceof Accommodation) {

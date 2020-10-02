@@ -60,7 +60,7 @@ public class FriendList implements ReadOnlyFriendList {
     //// friend-level operations
 
     /**
-     * Returns true if a friend with the same identity as {@code friend} exists in the address book.
+     * Returns true if a friend with the same identity as {@code friend} exists in the friend list.
      */
     public boolean hasFriend(Friend friend) {
         requireNonNull(friend);
@@ -68,8 +68,8 @@ public class FriendList implements ReadOnlyFriendList {
     }
 
     /**
-     * Adds a friend to the address book.
-     * The friend must not already exist in the address book.
+     * Adds a friend to the friend list.
+     * The friend must not already exist in the friend list.
      */
     public void addFriend(Friend p) {
         friends.add(p);
@@ -77,8 +77,8 @@ public class FriendList implements ReadOnlyFriendList {
 
     /**
      * Replaces the given friend {@code target} in the list with {@code editedFriend}.
-     * {@code target} must exist in the address book.
-     * The friend identity of {@code editedFriend} must not be the same as another existing friend in the address book.
+     * {@code target} must exist in the friend list.
+     * The friend identity of {@code editedFriend} must not be the same as another existing friend in the friend list.
      */
     public void setFriend(Friend target, Friend editedFriend) {
         requireNonNull(editedFriend);
@@ -88,7 +88,7 @@ public class FriendList implements ReadOnlyFriendList {
 
     /**
      * Removes {@code key} from this {@code seedu.address.model.FriendList}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the friend list.
      */
     public void removeFriend(Friend key) {
         friends.remove(key);
