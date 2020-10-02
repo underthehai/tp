@@ -1,7 +1,13 @@
 package seedu.address.model.activity;
 
+import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 
@@ -18,18 +24,19 @@ public class Activity {
     private final Location location;
     private final Cost cost;
     private final Importance levelOfImportance;
-    private final Date date;
+    private LocalDateTime activityDateTime;
 
     /**
      * Every field must be present and not null.
      */
-    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, Date date) {
+    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, String date) {
         requireAllNonNull(name, location, cost, levelOfImportance, date);
         this.name = name;
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.date = date;
+        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+
     }
 
     public Name getName() {
@@ -48,8 +55,8 @@ public class Activity {
         return levelOfImportance;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getActivityDateTime() {
+        return activityDateTime;
     }
 
     /**
@@ -84,13 +91,13 @@ public class Activity {
                 && otherActivity.getLocation().equals(getLocation())
                 && otherActivity.getCost().equals(getCost())
                 && otherActivity.getLevelOfImportance().equals(getLevelOfImportance())
-                && otherActivity.getDate().equals(getDate());
+                && otherActivity.getActivityDateTime().equals(getActivityDateTime());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, location, cost, levelOfImportance, date);
+        return Objects.hash(name, location, cost, levelOfImportance, activityDateTime);
     }
 
     @Override
@@ -104,8 +111,8 @@ public class Activity {
                 .append(" Importance Level: ")
                 .append(getCost())
                 .append(" Cost: ")
-                .append(getDate())
-                .append(" Date: ");
+                .append(getActivityDateTime())
+                .append(" Date and time: ");
         return builder.toString();
     }
 

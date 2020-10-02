@@ -1,9 +1,10 @@
-package seedu.address.model.activity;
+package seedu.address.model.commons;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.activity.Activity;
 
 /**
  * Tests that a {@code Activity}'s {@code Name} matches any of the keywords given.
