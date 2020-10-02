@@ -1,7 +1,7 @@
 package seedu.address.model.travelplan;
 
+import seedu.address.model.commons.Name;
+
 public abstract class TravelPlanObject {
-    public Name getName() {
-        
-    }
+    public abstract Name getName();
 }
