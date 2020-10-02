@@ -22,7 +22,7 @@ import seedu.address.model.tag.Tag;
 public class TravelPlan implements ReadOnlyTravelPlan {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
-    
+
     // Identity fields
     private final Name name;
     private final TravelDate startDate;
@@ -34,6 +34,9 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     private final FriendList friends = new FriendList();
     private final Set<Tag> tags = new HashSet<>();
 
+    /**
+     * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
+     */
     public TravelPlan(Name name, TravelDate startDate, TravelDate endDate, Set<Tag> tags) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.name = name;
@@ -43,11 +46,11 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     }
 
     /**
-     * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied}, 
+     * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
     public TravelPlan(Name name, TravelDate startDate, TravelDate endDate, Set<Tag> tags,
-                      ReadOnlyAccommodationList accommodationsToBeCopied, 
+                      ReadOnlyAccommodationList accommodationsToBeCopied,
                       ReadOnlyActivityList activitiesToBeCopied,
                       ReadOnlyFriendList friendsTobeCopied) {
         this.name = name;
@@ -63,9 +66,9 @@ public class TravelPlan implements ReadOnlyTravelPlan {
      * Returns true if the start date is before or on the same day as end date.
      */
     public static boolean isValidStartAndEndDate(TravelDate startDate, TravelDate endDate) {
-        return startDate.value.compareTo(endDate.value) <= 0;
+        return startDate.getValue().compareTo(endDate.getValue()) <= 0;
     }
-    
+
     //// travel plan object-level operations
 
     /**
@@ -77,7 +80,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
             return accommodations.hasAccommodation((Accommodation) travelPlanObject);
         } else if (travelPlanObject instanceof Activity) {
             return activities.hasActivity((Activity) travelPlanObject);
-        } else {    // if travelPlanObject instanceof Friend
+        } else { // if travelPlanObject instanceof Friend
             return friends.hasFriend((Friend) travelPlanObject);
         }
     }
@@ -91,7 +94,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
             accommodations.addAccommodation((Accommodation) travelPlanObject);
         } else if (travelPlanObject instanceof Activity) {
             activities.addActivity((Activity) travelPlanObject);
-        } else {    // if travelPlanObject instanceof Friend
+        } else { // if travelPlanObject instanceof Friend
             friends.addFriend((Friend) travelPlanObject);
         }
     }
@@ -99,7 +102,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     /**
      * Replaces the given travel plan object {@code target} in the list with {@code editedTravelPlanObject}.
      * {@code target} must exist in the corresponding travel plan object list.
-     * The travel plan object identity of {@code editedTravelPlanObject} must not be the same as another existing 
+     * The travel plan object identity of {@code editedTravelPlanObject} must not be the same as another existing
      * travel plan object in the corresponding travel plan object list.
      */
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
@@ -107,7 +110,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
             accommodations.setAccommodation((Accommodation) target, (Accommodation) editedTravelPlanObject);
         } else if (editedTravelPlanObject instanceof Activity) {
             activities.setActivity((Activity) target, (Activity) editedTravelPlanObject);
-        } else {    // if editedTravelPlanObject instanceof Friend
+        } else { // if editedTravelPlanObject instanceof Friend
             friends.setFriend((Friend) target, (Friend) editedTravelPlanObject);
         }
     }
@@ -121,7 +124,7 @@ public class TravelPlan implements ReadOnlyTravelPlan {
             accommodations.removeAccommodation((Accommodation) key);
         } else if (key instanceof Activity) {
             activities.removeActivity((Activity) key);
-        } else {    // if key instanceof Friend
+        } else { // if key instanceof Friend
             friends.removeFriend((Friend) key);
         }
     }
@@ -182,10 +185,10 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     }
 
     //// travel plan data methods
-    
+
     @Override
     public ObservableList<Accommodation> getAccommodationList() {
-        return accommodations.getAccommodationList() ;
+        return accommodations.getAccommodationList();
     }
 
     @Override
@@ -215,6 +218,4 @@ public class TravelPlan implements ReadOnlyTravelPlan {
     public int hashCode() {
         return Objects.hash(name, startDate, endDate, tags, accommodations, activities, friends);
     }
-    
 }
-

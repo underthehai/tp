@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.tag.Tag;
-import seedu.address.model.travelplan.TravelPlanObject;
 
 /**
  * Represents a Person in the address book.

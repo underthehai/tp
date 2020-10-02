@@ -77,7 +77,8 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     /**
      * Replaces the given accommodation {@code target} in the list with {@code editedAccommodation}.
      * {@code target} must exist in the accommodation list.
-     * The accommodation identity of {@code editedAccommodation} must not be the same as another existing accommodation in the accommodation list.
+     * The accommodation identity of {@code editedAccommodation} must not be the same as another existing accommodation
+     * in the accommodation list.
      */
     public void setAccommodation(Accommodation target, Accommodation editedAccommodation) {
         requireNonNull(editedAccommodation);

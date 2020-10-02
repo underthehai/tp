@@ -78,7 +78,8 @@ public class ActivityList implements ReadOnlyActivityList {
     /**
      * Replaces the given activity {@code target} in the list with {@code editedActivity}.
      * {@code target} must exist in the activity list.
-     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the activity list.
+     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the
+     * activity list.
      */
     public void setActivity(Activity target, Activity editedActivity) {
         requireNonNull(editedActivity);

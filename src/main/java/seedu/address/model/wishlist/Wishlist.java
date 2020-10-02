@@ -78,7 +78,8 @@ public class Wishlist implements ReadOnlyActivityList {
     /**
      * Replaces the given activity {@code target} in the list with {@code editedActivity}.
      * {@code target} must exist in the wishlist.
-     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the wishlist.
+     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the
+     * wishlist.
      */
     public void setActivity(Activity target, Activity editedActivity) {
         requireNonNull(editedActivity);

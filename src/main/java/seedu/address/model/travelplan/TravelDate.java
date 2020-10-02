@@ -22,7 +22,7 @@ public class TravelDate {
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
     public static final DateFormat STYLIZED_DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy");
 
-    public Date value;
+    private Date value;
 
     /**
      * Constructs a {@code TravelDate}.
@@ -53,6 +53,10 @@ public class TravelDate {
         } catch (ParseException ex) {
             return false;
         }
+    }
+
+    public Date getValue() {
+        return value;
     }
 
     @Override
