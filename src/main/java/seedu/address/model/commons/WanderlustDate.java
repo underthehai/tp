@@ -10,9 +10,9 @@ import java.util.Date;
 
 /**
  * Represents a TravelPlan's start/end date in the travel planner.
- * Guarantees: immutable; is valid as declared in {@link #isValidTravelDate(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDate(String)}
  */
-public class TravelDate {
+public class WanderlustDate {
     public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format YYYY-MM-DD.";
 
     /*
@@ -25,13 +25,13 @@ public class TravelDate {
     private Date value;
 
     /**
-     * Constructs a {@code TravelDate}.
+     * Constructs a {@code WanderlustDate}.
      *
      * @param date A valid travel date.
      */
-    public TravelDate(String date) {
+    public WanderlustDate(String date) {
         requireNonNull(date);
-        checkArgument(isValidTravelDate(date), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
         try {
             value = STYLIZED_DATE_FORMAT.parse(date);
         } catch (ParseException ex) {
@@ -43,7 +43,7 @@ public class TravelDate {
     /**
      * Returns if a given string is a valid travel date.
      */
-    public static boolean isValidTravelDate(String test) {
+    public static boolean isValidWanderlustDate(String test) {
         if (!test.matches(VALIDATION_REGEX)) {
             return false;
         }
@@ -67,8 +67,8 @@ public class TravelDate {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TravelDate // instanceof handles nulls
-                && value.equals(((TravelDate) other).value)); // state check
+                || (other instanceof WanderlustDate // instanceof handles nulls
+                && value.equals(((WanderlustDate) other).value)); // state check
     }
 
     @Override

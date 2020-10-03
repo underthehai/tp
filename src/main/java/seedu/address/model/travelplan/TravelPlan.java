@@ -12,7 +12,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.model.commons.TravelDate;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.tag.Tag;
 
@@ -26,8 +26,8 @@ public class TravelPlan {
 
     // Identity fields
     private final Name name;
-    private final TravelDate startDate;
-    private final TravelDate endDate;
+    private final WanderlustDate startDate;
+    private final WanderlustDate endDate;
 
     // Data fields
     private final ActivityList activities = new ActivityList();
@@ -38,7 +38,7 @@ public class TravelPlan {
     /**
      * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
      */
-    public TravelPlan(Name name, TravelDate startDate, TravelDate endDate, Set<Tag> tags) {
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.startDate = startDate;
@@ -50,7 +50,7 @@ public class TravelPlan {
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
-    public TravelPlan(Name name, TravelDate startDate, TravelDate endDate, Set<Tag> tags,
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags,
                       ReadOnlyAccommodationList accommodationsToBeCopied,
                       ReadOnlyActivityList activitiesToBeCopied,
                       ReadOnlyFriendList friendsTobeCopied) {
@@ -66,7 +66,7 @@ public class TravelPlan {
     /**
      * Returns true if the start date is before or on the same day as end date.
      */
-    public static boolean isValidStartAndEndDate(TravelDate startDate, TravelDate endDate) {
+    public static boolean isValidStartAndEndDate(WanderlustDate startDate, WanderlustDate endDate) {
         return startDate.getValue().compareTo(endDate.getValue()) <= 0;
     }
 
@@ -138,11 +138,11 @@ public class TravelPlan {
         return name;
     }
 
-    public TravelDate getStartDate() {
+    public WanderlustDate getStartDate() {
         return startDate;
     }
 
-    public TravelDate getEndDate() {
+    public WanderlustDate getEndDate() {
         return endDate;
     }
 
