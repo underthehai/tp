@@ -14,7 +14,7 @@ import static java.util.Objects.requireNonNull;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path wanderlustFilePath = Paths.get("data" , "wanderlust.json");
+    private Path travelPlannerFilePath = Paths.get("data" , "travelplanner.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -35,7 +35,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setWanderlustFilePath(newUserPrefs.getWanderlustFilePath());
+        setTravelPlannerFilePath(newUserPrefs.getTravelPlannerFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -47,13 +47,13 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getWanderlustFilePath() {
-        return wanderlustFilePath;
+    public Path getTravelPlannerFilePath() {
+        return travelPlannerFilePath;
     }
 
-    public void setWanderlustFilePath(Path wanderlustFilePath) {
-        requireNonNull(wanderlustFilePath);
-        this.wanderlustFilePath = wanderlustFilePath;
+    public void setTravelPlannerFilePath(Path travelPlannerFilePath) {
+        requireNonNull(travelPlannerFilePath);
+        this.travelPlannerFilePath = travelPlannerFilePath;
     }
 
     @Override
@@ -68,19 +68,19 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && wanderlustFilePath.equals(o.wanderlustFilePath);
+                && travelPlannerFilePath.equals(o.travelPlannerFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, wanderlustFilePath);
+        return Objects.hash(guiSettings, travelPlannerFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + wanderlustFilePath);
+        sb.append("\nLocal data file location : " + travelPlannerFilePath);
         return sb.toString();
     }
 
