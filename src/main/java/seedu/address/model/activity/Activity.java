@@ -9,13 +9,14 @@ import java.util.Objects;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
+import seedu.address.model.travelplan.TravelPlanObject;
 
 
 /**
  * Represents an Activity in the travel plan.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Activity {
+public class Activity extends TravelPlanObject {
 
     //Identity fields
     private final Name name;

@@ -5,12 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.commons.Name;
+import seedu.address.model.travelplan.TravelPlanObject;
 
 /**
  * Represents a Friend in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Friend {
+public class Friend extends TravelPlanObject {
 
     // Identity fields
     private final Name name;
