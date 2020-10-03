@@ -89,7 +89,7 @@ public class UniqueActivityList implements Iterable<Activity> {
      * Replaces the contents of this list with {@code activities}.
      * {@code activities} must not contain duplicate activities.
      */
-    public void setPersons(List<Activity> activities) {
+    public void setActivities(List<Activity> activities) {
         requireAllNonNull(activities);
         if (!activitiesAreUnique(activities)) {
             throw new DuplicateActivityException();
