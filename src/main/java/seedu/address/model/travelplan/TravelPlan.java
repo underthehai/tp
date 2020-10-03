@@ -12,6 +12,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.tag.Tag;
 
