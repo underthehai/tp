@@ -3,6 +3,7 @@ package seedu.address.model.travelplanner;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.AddressBook;
@@ -171,6 +172,6 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     @Override
     public int hashCode() {
         // TODO: need consider wishlist's hashcode also
-        return travelPlans.hashCode();
+        return Objects.hash(travelPlans, wishlist);
     }
 }
