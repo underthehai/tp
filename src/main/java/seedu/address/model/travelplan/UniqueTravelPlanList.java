@@ -1,4 +1,4 @@
-package seedu.address.model.travelplanner;
+package seedu.address.model.travelplan;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -8,9 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.travelplan.exceptions.DuplicateTravelPlanException;
+import seedu.address.model.travelplan.exceptions.TravelPlanNotFoundException;
 
 /**
  * A list of travel plans that enforces uniqueness between its elements and does not allow nulls.

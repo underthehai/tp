@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Person;
-import seedu.address.model.travelplanner.UniqueTravelPlanList;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.UniqueActivityList;
+import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplan.UniqueTravelPlanList;
 
 /**
  * Wraps all data at the travel planner level
@@ -166,7 +166,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
         return other == this // short circuit if same object
                 || (other instanceof TravelPlanner // instanceof handles nulls
                 && travelPlans.equals(((TravelPlanner) other).travelPlans)
-                && wishlist.equals(((Wishlist) other).wishlist));
+                && wishlist.equals(((TravelPlanner) other).wishlist));
     }
 
     @Override

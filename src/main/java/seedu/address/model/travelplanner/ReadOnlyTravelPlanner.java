@@ -1,6 +1,8 @@
 package seedu.address.model.travelplanner;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Unmodifiable view of a travel planner
