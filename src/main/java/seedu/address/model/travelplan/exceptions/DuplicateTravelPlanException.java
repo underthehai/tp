@@ -1,7 +1,8 @@
 package seedu.address.model.travelplan.exceptions;
 
 /**
- * Signals that the operation will result in duplicate TravelPlans (TravelPlans are considered duplicates if they have the same
+ * Signals that the operation will result in duplicate TravelPlans (TravelPlans are considered duplicates if they have
+ * the same
  * identity).
  */
 public class DuplicateTravelPlanException extends RuntimeException {
