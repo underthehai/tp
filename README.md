@@ -7,14 +7,14 @@ title: User Guide
 
 ![Ui](docs/images/Ui.png)
 
-Travel inspirations come in bits and pieces. 
+Travel inspirations come in bits and pieces.
 At the start of every travel planning, we often only have a vague idea of the activities we are interested in and not a concrete schedule that optimises our travel time and satisfaction.
 
 
-As a result, travel planning is often a hot mess with little structure. 
+As a result, travel planning is often a hot mess with little structure.
 
-WanderLust aims to create an efficient and organised way for travellers to plan out their trips. 
-Every pinned destination, travel plan and schedule can be quickly added, modified and retrieved right from the CLI -- an extremely streamlined and quick process for the CLI-proficient traveller. 
+WanderLust aims to create an efficient and organised way for travellers to plan out their trips.
+Every pinned destination, travel plan and schedule can be quickly added, modified and retrieved right from the CLI -- an extremely streamlined and quick process for the CLI-proficient traveller.
 Relevant information can be retrieved right when and where you need them. With WanderLust, creating a travel plan and schedule will be simple and hassle-free.
 
 
