@@ -3,11 +3,11 @@ package seedu.address.model.travelplanner;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 
-import javafx.collections.ObservableList;
 
 /**
  * The API of the Model component.
@@ -94,14 +94,16 @@ public interface Model {
     /**
      * Replaces the given travel plan {@code target} with {@code editedTravelPlan}.
      * {@code target} must exist in the travel planner.
-     * The travel plan identity of {@code editedTravelPlan} must not be the same as another existing travel plan in the travel planner.
+     * The travel plan identity of {@code editedTravelPlan} must not be the same as another existing travel plan in the
+     * travel planner.
      */
     void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan);
 
     /**
      * Replaces the given activity {@code target} with {@code editedActivity}.
      * {@code target} must exist in the wishlist.
-     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the wishlist.
+     * The activity identity of {@code editedActivity} must not be the same as another existing activity in the
+     * wishlist.
      */
     void setActivity(Activity target, Activity editedActivity);
 
