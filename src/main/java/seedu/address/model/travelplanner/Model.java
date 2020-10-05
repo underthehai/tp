@@ -1,12 +1,13 @@
 package seedu.address.model.travelplanner;
 
-import javafx.collections.ObservableList;
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 
-import java.nio.file.Path;
-import java.util.function.Predicate;
+import javafx.collections.ObservableList;
 
 /**
  * The API of the Model component.
