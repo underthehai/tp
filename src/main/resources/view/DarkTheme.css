@@ -128,6 +128,7 @@
     -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 24px;
     -fx-text-fill: #010504;
+    -fx-label-padding: 5px 0px 20px 0px;
 }
 
 .cell_medium_label {
@@ -359,4 +360,15 @@
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
+}
+.block_label {
+    -fx-label-padding: 5px 0px 5px 0px;
+}
+
+.middle_label {
+    -fx-text-alignment: center;
+}
+
+.centralise {
+    -fx-content-display: center;
 }

@@ -27,11 +27,11 @@ public class TravelPlanPanel extends UiPart<Region> {
     private Label endDate;
 
     /**
-     * Creates a {@code TravelObjectListPanel} with the given {@code ObservableList}.
+     * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
     public TravelPlanPanel(TravelPlan travelPlan) {
         super(FXML);
-        name.setText(travelPlan.getName().activityName);
+        name.setText(travelPlan.getName().toString());
         startDate.setText(travelPlan.getStartDate().toString());
         endDate.setText(travelPlan.getEndDate().toString());
     }

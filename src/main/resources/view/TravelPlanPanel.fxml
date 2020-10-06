@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.ListView?>
 <VBox fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="15" />
+    </padding>
     <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
-    <FlowPane fx:id="startEndDate" styleClass="cell_small_label">
-        <Label fx:id="startDate" text="\$startDate" />
-        <Label text="  to  " />
-        <Label fx:id="endDate" text="\$endDate" />
+    <FlowPane fx:id="startEndDate">
+        <Label fx:id="startDate" styleClass="cell_small_label" text="\$startDate" />
+        <Label styleClass="cell_small_label" text="  to  " />
+        <Label fx:id="endDate" styleClass="cell_small_label" text="\$endDate" />
     </FlowPane>
+    <VBox fx:id="travelObjectLists">
+        <padding>
+            <Insets top="20"/>
+        </padding>
+        <Label fx:id="accommodations" styleClass="cell_medium_label, block_label" text="Accommodations"/>
+        <Label fx:id="friends" styleClass="cell_medium_label, block_label" text="Travel Friends"/>
+        <Label fx:id="activities" styleClass="cell_medium_label, block_label" text="Activities"/>
+        <Label fx:id="schedule" styleClass="cell_medium_label, block_label" text="Schedule"/>
+    </VBox>
 </VBox>

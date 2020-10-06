@@ -37,13 +37,14 @@
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
-          <VBox fx:id="travelPlanner" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
-            <StackPane fx:id="travelPlannerPlaceholder" VBox.vgrow="ALWAYS"/>
+          <VBox fx:id="travelPlanner" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+            <StackPane fx:id="travelPlannerPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="travelPlan" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+          <VBox fx:id="travelPlan" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
             <StackPane fx:id="travelPlanPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="travelObjectList" minWidth="400" prefWidth="400" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+          <VBox fx:id="travelObjectList" styleClass="pane-with-border" minWidth="400" prefWidth="400" 
+                VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <StackPane fx:id="travelObjectListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </HBox>

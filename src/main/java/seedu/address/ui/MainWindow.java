@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -19,6 +20,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplan.TravelPlanObject;
+import seedu.address.model.travelplanner.TravelPlanner;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -33,12 +36,20 @@ public class MainWindow extends UiPart<Stage> {
     private Stage primaryStage;
     private Logic logic;
     
-    private final TravelPlan currentDirectoryStub = new TravelPlan(new Name("Test"), new WanderlustDate("2020-12-12"), 
+    private final TravelPlan currentDirectoryStub = new TravelPlan(new Name("Test"),
+            new WanderlustDate("2020-12-12"), 
             new WanderlustDate("2020-12-20"));
+    
+    private final TravelPlan anotherDiretoryStub = new TravelPlan(new Name("Test 2"),
+            new WanderlustDate("2023-05-05"),
+            new WanderlustDate("2023-06-06"));
+    
+    private final TravelPlanner travelPlannerStub;
 
     // Independent Ui parts residing in this Ui container
+    private TravelPlannerPanel travelPlannerPanel;
     private TravelPlanPanel travelPlanPanel;
-    private TravelObjectListPanel travelObjectListPanel;
+    private TravelPlanObjectListPanel travelPlanObjectListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -47,6 +58,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+    
+    @FXML
+    private StackPane travelPlannerPanelPlaceholder;
     
     @FXML
     private StackPane travelPlanPanelPlaceholder;
@@ -65,6 +79,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
+        
+        // Set stubs
+        travelPlannerStub = new TravelPlanner();
+        travelPlannerStub.addTravelPlan(currentDirectoryStub);
+        travelPlannerStub.addTravelPlan(anotherDiretoryStub);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -120,13 +139,17 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        
+        // To be replaced with actual travel planner
+        travelPlannerPanel = new TravelPlannerPanel(travelPlannerStub);
+        travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
         // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
         travelPlanPanel = new TravelPlanPanel(currentDirectoryStub); 
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
         
-        travelObjectListPanel = new TravelObjectListPanel(logic.getFilteredPersonList());
-        travelObjectListPanelPlaceholder.getChildren().add(travelObjectListPanel.getRoot());
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredPersonList());
+        travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -178,8 +201,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public TravelObjectListPanel getPersonListPanel() {
-        return travelObjectListPanel;
+    public TravelPlanObjectListPanel getPersonListPanel() {
+        return travelPlanObjectListPanel;
     }
 
     /**
