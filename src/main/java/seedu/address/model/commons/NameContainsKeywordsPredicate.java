@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
- * Tests that a {@code TravelPlanObject}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code TravelPlanObject}'s or {@code TravelPlan}'s {@code Name} matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<TravelPlanObject> {
+public class NameContainsKeywordsPredicate implements Predicate<Object> {
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
@@ -16,9 +17,17 @@ public class NameContainsKeywordsPredicate implements Predicate<TravelPlanObject
     }
 
     @Override
-    public boolean test(TravelPlanObject tPObj) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tPObj.getName().name, keyword));
+    public boolean test(Object obj) {
+        if (obj instanceof TravelPlan) {
+            return keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(((TravelPlan) obj).getName().name, keyword));
+        } else if (obj instanceof TravelPlanObject) {
+            return keywords.stream()
+                    .anyMatch(keyword ->
+                            StringUtil.containsWordIgnoreCase(((TravelPlanObject) obj).getName().name, keyword));
+        } else {
+            return false;
+        }
     }
 
     @Override
