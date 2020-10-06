@@ -9,7 +9,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.accommodation.UniqueAccommodationList;
 
 /**
- * Wraps all data at the address-book level
+ * Represents the list of Accommodations in a travel plan
  * Duplicates are not allowed (by .isSameAccommodation comparison)
  */
 public class AccommodationList implements ReadOnlyAccommodationList {
@@ -30,7 +30,7 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     public AccommodationList() {}
 
     /**
-     * Creates an seedu.address.model.travelplan.AccommodationList using the Accommodations in the {@code toBeCopied}
+     * Creates an AccommodationList using the Accommodations in the {@code toBeCopied}
      */
     public AccommodationList(AccommodationList toBeCopied) {
         this();
@@ -48,7 +48,7 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     }
 
     /**
-     * Resets the existing data of this {@code seedu.address.model.travelplan.AccommodationList} with {@code newData}.
+     * Resets the existing data of this {@code AccommodationList} with {@code newData}.
      */
     public void resetData(ReadOnlyAccommodationList newData) {
         requireNonNull(newData);
@@ -87,7 +87,7 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     }
 
     /**
-     * Removes {@code key} from this {@code seedu.address.model.travelplan.AccommodationList}.
+     * Removes {@code key} from this {@code AccommodationList}.
      * {@code key} must exist in the accommodation list.
      */
     public void removeAccommodation(Accommodation key) {
