@@ -2,8 +2,8 @@ package seedu.address.model.activity;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.TypicalActivities.ZOO;
 import static seedu.address.testutil.TypicalActivities.THEMEPARK;
+import static seedu.address.testutil.TypicalActivities.ZOO;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,20 +22,20 @@ public class ActivityTest {
         assertFalse(ZOO.isSameActivity(null));
 
         // different Cost and Location -> returns true
-        Activity editedZOO = new ActivityBuilder(ZOO).withCost("10").withLocation("123 Pasir Ris Road").build();
-        assertTrue(ZOO.isSameActivity(editedZOO));
+        Activity editedZoo = new ActivityBuilder(ZOO).withCost("10").withLocation("123 Pasir Ris Road").build();
+        assertTrue(ZOO.isSameActivity(editedZoo));
 
         // different name -> returns false
-        editedZOO = new ActivityBuilder(ZOO).withName("Singapore Mandai Bird Park").build();
-        assertFalse(ZOO.isSameActivity(editedZOO));
+        editedZoo = new ActivityBuilder(ZOO).withName("Singapore Mandai Bird Park").build();
+        assertFalse(ZOO.isSameActivity(editedZoo));
 
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Activity ZOOCopy = new ActivityBuilder(ZOO).build();
-        assertTrue(ZOO.equals(ZOOCopy));
+        Activity zooCopy = new ActivityBuilder(ZOO).build();
+        assertTrue(ZOO.equals(zooCopy));
 
         // same object -> returns true
         assertTrue(ZOO.equals(ZOO));
@@ -50,23 +50,23 @@ public class ActivityTest {
         assertFalse(ZOO.equals(THEMEPARK));
 
         // different name -> returns false
-        Activity editedZOO = new ActivityBuilder(ZOO).withName("Park").build();
-        assertFalse(ZOO.equals(editedZOO));
+        Activity editedZoo = new ActivityBuilder(ZOO).withName("Park").build();
+        assertFalse(ZOO.equals(editedZoo));
 
         // different Cost -> returns false
-        editedZOO = new ActivityBuilder(ZOO).withCost("10").build();
-        assertFalse(ZOO.equals(editedZOO));
+        editedZoo = new ActivityBuilder(ZOO).withCost("10").build();
+        assertFalse(ZOO.equals(editedZoo));
 
         // different Location -> returns false
-        editedZOO = new ActivityBuilder(ZOO).withLocation("123 Pasir Ris Park").build();
-        assertFalse(ZOO.equals(editedZOO));
+        editedZoo = new ActivityBuilder(ZOO).withLocation("123 Pasir Ris Park").build();
+        assertFalse(ZOO.equals(editedZoo));
 
         // different level of importance -> returns false
-        editedZOO = new ActivityBuilder(ZOO).withLevelOfImportance("1").build();
-        assertFalse(ZOO.equals(editedZOO));
+        editedZoo = new ActivityBuilder(ZOO).withLevelOfImportance("1").build();
+        assertFalse(ZOO.equals(editedZoo));
 
         // different date and time -> returns false
-        editedZOO = new ActivityBuilder(ZOO).withDateTime("2020-12-31 12:00").build();
-        assertFalse(ZOO.equals(editedZOO));
+        editedZoo = new ActivityBuilder(ZOO).withDateTime("2020-12-31 12:00").build();
+        assertFalse(ZOO.equals(editedZoo));
     }
 }

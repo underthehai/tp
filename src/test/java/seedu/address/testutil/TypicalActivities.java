@@ -1,14 +1,13 @@
 package seedu.address.testutil;
 
-import seedu.address.model.activity.Activity;
-import seedu.address.model.commons.Name;
-import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.travelplan.TravelPlan;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.travelplan.TravelPlan;
 
 public class TypicalActivities {
 

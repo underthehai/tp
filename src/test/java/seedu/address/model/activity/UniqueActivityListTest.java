@@ -1,21 +1,21 @@
 package seedu.address.model.activity;
 
-import org.junit.jupiter.api.Test;
-
-import seedu.address.model.activity.exceptions.ActivityNotFoundException;
-import seedu.address.model.activity.exceptions.DuplicateActivityException;
-
-import seedu.address.testutil.ActivityBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalActivities.THEMEPARK;
+import static seedu.address.testutil.TypicalActivities.ZOO;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalActivities.ZOO;
-import static seedu.address.testutil.TypicalActivities.THEMEPARK;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.activity.exceptions.ActivityNotFoundException;
+import seedu.address.model.activity.exceptions.DuplicateActivityException;
+import seedu.address.testutil.ActivityBuilder;
 
 public class UniqueActivityListTest {
     private final UniqueActivityList uniqueActivityList = new UniqueActivityList();
@@ -39,8 +39,8 @@ public class UniqueActivityListTest {
     @Test
     public void contains_activityWithSameIdentityFieldsInList_returnsTrue() {
         uniqueActivityList.add(ZOO);
-        Activity editedZOO = new ActivityBuilder(ZOO).withLocation("2020-10-10 12:00").build();
-        assertTrue(uniqueActivityList.contains(editedZOO));
+        Activity editedZoo = new ActivityBuilder(ZOO).withLocation("2020-10-10 12:00").build();
+        assertTrue(uniqueActivityList.contains(editedZoo));
     }
 
     @Test
@@ -81,10 +81,10 @@ public class UniqueActivityListTest {
     @Test
     public void setActivity_editedActivityHasSameIdentity_success() {
         uniqueActivityList.add(ZOO);
-        Activity editedZOO = new ActivityBuilder(ZOO).withLocation("2020-10-10 12:00").build();
-        uniqueActivityList.setActivity(ZOO, editedZOO);
+        Activity editedZoo = new ActivityBuilder(ZOO).withLocation("2020-10-10 12:00").build();
+        uniqueActivityList.setActivity(ZOO, editedZoo);
         UniqueActivityList expecteduniqueActivityList = new UniqueActivityList();
-        expecteduniqueActivityList.add(editedZOO);
+        expecteduniqueActivityList.add(editedZoo);
         assertEquals(expecteduniqueActivityList, uniqueActivityList);
     }
 
@@ -154,13 +154,13 @@ public class UniqueActivityListTest {
     @Test
     public void setActivities_listWithDuplicateActivities_throwsDuplicateActivityException() {
         List<Activity> listWithDuplicateActivities = Arrays.asList(ZOO, ZOO);
-        assertThrows(DuplicateActivityException.class,
-                () -> uniqueActivityList.setActivities(listWithDuplicateActivities));
+        assertThrows(DuplicateActivityException.class, ()
+            -> uniqueActivityList.setActivities(listWithDuplicateActivities));
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueActivityList.asUnmodifiableObservableList().remove(0));
+            -> uniqueActivityList.asUnmodifiableObservableList().remove(0));
     }
 }

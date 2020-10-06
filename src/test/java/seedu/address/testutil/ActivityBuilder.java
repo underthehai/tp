@@ -1,14 +1,13 @@
 package seedu.address.testutil;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.person.Person;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class ActivityBuilder {
 
@@ -42,13 +41,13 @@ public class ActivityBuilder {
     /**
      * Initializes the ActivityBuilder with the data of {@code ActivityToCopy}.
      */
-    public ActivityBuilder(Activity ActivityToCopy) {
-        name = ActivityToCopy.getName();
-        location = ActivityToCopy.getLocation();
-        cost = ActivityToCopy.getCost();
-        levelOfImportance = ActivityToCopy.getLevelOfImportance();
-        activityDateTime = ActivityToCopy.getActivityDateTime();
-        dateTime = ActivityToCopy.getStringDateTime();
+    public ActivityBuilder(Activity activityToCopy) {
+        name = activityToCopy.getName();
+        location = activityToCopy.getLocation();
+        cost = activityToCopy.getCost();
+        levelOfImportance = activityToCopy.getLevelOfImportance();
+        activityDateTime = activityToCopy.getActivityDateTime();
+        dateTime = activityToCopy.getStringDateTime();
     }
 
     /**
