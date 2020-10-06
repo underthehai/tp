@@ -16,9 +16,6 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.commons.Name;
-import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.util.SampleWanderlustDataUtil;
 
@@ -34,14 +31,6 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
-
-    private final TravelPlan currentDirectoryStub = new TravelPlan(new Name("Test"),
-            new WanderlustDate("2020-12-12"),
-            new WanderlustDate("2020-12-20"));
-
-    private final TravelPlan anotherDirectoryStub = new TravelPlan(new Name("Test 2"),
-            new WanderlustDate("2023-05-05"),
-            new WanderlustDate("2023-06-06"));
 
     private final ReadOnlyTravelPlanner travelPlannerStub = SampleWanderlustDataUtil.getSampleTravelPlanner();
 
@@ -139,13 +128,13 @@ public class MainWindow extends UiPart<Stage> {
         travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
         // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
-        travelPlanPanel = new TravelPlanPanel(currentDirectoryStub);
+        travelPlanPanel = new TravelPlanPanel(travelPlannerStub.getTravelPlanList().get(1));
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
 
         // To be replaced with:
         // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
-                .getFriendTpoList());
+                .getActivityTpoList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

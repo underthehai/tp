@@ -12,7 +12,7 @@ import seedu.address.ui.UiPart;
  */
 public class FriendCard extends UiPart<Region> {
 
-    private static final String FXML = "FriendListCard.fxml";
+    private static final String FXML = "./cards/FriendListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
