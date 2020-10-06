@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
 
 /**
@@ -24,6 +25,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
+    private Directory directory;
+    private TravelPlan currentTravelPlan;
 
     /**
      * Initializes a ModelManager with the given travelPlanner and userPrefs.
@@ -38,6 +41,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
+        directory = this.travelPlanner.getWishlistAsDirectory();
     }
 
     public ModelManager() {
@@ -98,19 +102,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasActivity(Activity activity) {
-        requireNonNull(activity);
-        return travelPlanner.hasActivity(activity);
-    }
-
-    @Override
     public void deleteTravelPlan(TravelPlan target) {
         travelPlanner.removeTravelPlan(target);
-    }
-
-    @Override
-    public void deleteActivity(Activity target) {
-        travelPlanner.removeActivity(target);
     }
 
     @Override
@@ -120,16 +113,29 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addActivity(Activity activity) {
-        travelPlanner.addActivity(activity);
-        updateFilteredWishlist(PREDICATE_SHOW_ALL_ACTIVITY);
-    }
-
-    @Override
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);
 
         travelPlanner.setTravelPlan(target, editedTravelPlan);
+    }
+
+    //=========== Wishlist =============================================================
+
+    @Override
+    public boolean hasActivity(Activity activity) {
+        requireNonNull(activity);
+        return travelPlanner.hasActivity(activity);
+    }
+
+    @Override
+    public void deleteActivity(Activity target) {
+        travelPlanner.removeActivity(target);
+    }
+
+    @Override
+    public void addActivity(Activity activity) {
+        travelPlanner.addActivity(activity);
+        updateFilteredWishlist(PREDICATE_SHOW_ALL_ACTIVITY);
     }
 
     @Override
@@ -137,6 +143,53 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedActivity);
 
         travelPlanner.setActivity(target, editedActivity);
+    }
+
+    //=========== Directory =============================================================
+
+    @Override
+    public void setDirectory(Directory dir) {
+        directory = dir;
+    }
+
+    @Override
+    public Directory getDirectory() {
+        return directory;
+    }
+
+    /**
+     * Sets the current travel plan to the current directory.
+     */
+    private void setCurrentTravelPlan() {
+        if (directory.isTravelPlan()) {
+            currentTravelPlan = (TravelPlan) directory;
+        }
+    }
+
+    //=========== TravelPlanObject =============================================================
+
+    @Override
+    public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
+        setCurrentTravelPlan();
+        return currentTravelPlan.hasTravelPlanObject(tPObj);
+    }
+
+    @Override
+    public void deleteTravelPlanObject(TravelPlanObject tPObj) {
+        setCurrentTravelPlan();
+        currentTravelPlan.removeTravelPlanObject(tPObj);
+    }
+
+    @Override
+    public void addTravelPlanObject(TravelPlanObject tPObj) {
+        setCurrentTravelPlan();
+        currentTravelPlan.addTravelPlanObject(tPObj);
+    }
+
+    @Override
+    public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
+        setCurrentTravelPlan();
+        currentTravelPlan.setTravelPlanObject(target, editedTravelPlanObject);
     }
 
     //=========== Filtered TravelPlan List Accessors =============================================================
