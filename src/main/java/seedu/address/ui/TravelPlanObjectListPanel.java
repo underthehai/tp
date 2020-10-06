@@ -12,7 +12,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.person.Person;
-import seedu.address.model.travelplan.TravelPlanObject;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.ui.cards.AccommodationCard;
 import seedu.address.ui.cards.ActivityCard;
 import seedu.address.ui.cards.FriendCard;

@@ -18,9 +18,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplan.TravelPlanObject;
 import seedu.address.model.travelplanner.TravelPlanner;
 
 /**

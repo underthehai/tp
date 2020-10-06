@@ -2,22 +2,19 @@ package seedu.address.model.travelplan;
 
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.tag.Tag;
 
 /**
- * Wraps all data at the travel-plan level
+ * Represents a travel plan in the travel planner
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
 public class TravelPlan {
