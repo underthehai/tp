@@ -10,7 +10,10 @@ public class NameCard extends UiPart<Region> {
 
     @FXML
     private Label name;
-    
+
+    /**
+     * Creates a {@code NameCard} with the given {@code value}.
+     */
     public NameCard(String value) {
         super(FXML);
         name.setText(value);

@@ -1,12 +1,9 @@
 package seedu.address.model.travelplan;
 
-import static java.util.stream.Collectors.toList;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
@@ -174,29 +171,29 @@ public class TravelPlan extends Directory {
     }
 
     //// travel plan data methods
-    
+
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.getAccommodationList();
     }
 
-    public ObservableList<TravelPlanObject> getAccommodationTPOList() {
-        return accommodations.getTPOList();
+    public ObservableList<TravelPlanObject> getAccommodationTpoList() {
+        return accommodations.getTpoList();
     }
 
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
-    
-    public ObservableList<TravelPlanObject> getActivityTPOList() {
-        return activities.getTPOList();
+
+    public ObservableList<TravelPlanObject> getActivityTpoList() {
+        return activities.getTpoList();
     }
 
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
     }
 
-    public ObservableList<TravelPlanObject> getFriendTPOList() {
-        return friends.getTPOList();
+    public ObservableList<TravelPlanObject> getFriendTpoList() {
+        return friends.getTpoList();
     }
 
     @Override

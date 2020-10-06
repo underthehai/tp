@@ -23,7 +23,7 @@ public class AccommodationCard extends UiPart<Region> {
      */
 
     public final Accommodation accommodation;
-    
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -45,7 +45,7 @@ public class AccommodationCard extends UiPart<Region> {
         this.accommodation = accommodation;
         id.setText(displayedIndex + ". ");
         name.setText(accommodation.getName().toString());
-        startToEndDates.setText(accommodation.getStartDate().toString() + " to " 
+        startToEndDates.setText(accommodation.getStartDate().toString() + " to "
                 + accommodation.getEndDate().toString());
         cost.setText("Cost: $" + accommodation.getCost().toString());
         address.setText("Location: " + accommodation.getLocation().toString());

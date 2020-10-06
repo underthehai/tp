@@ -110,8 +110,8 @@ public class AccommodationList implements ReadOnlyAccommodationList {
         return accommodations.asUnmodifiableObservableList();
     }
 
-    public ObservableList<TravelPlanObject> getTPOList() {
-        return accommodations.asUnmodifiableObservableTPOList();
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return accommodations.asUnmodifiableObservableTpoList();
     }
 
     @Override

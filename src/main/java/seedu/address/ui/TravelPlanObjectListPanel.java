@@ -10,9 +10,8 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
-import seedu.address.model.friend.Friend;
-import seedu.address.model.person.Person;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.friend.Friend;
 import seedu.address.ui.cards.AccommodationCard;
 import seedu.address.ui.cards.ActivityCard;
 import seedu.address.ui.cards.FriendCard;
@@ -35,11 +34,9 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         travelPlanObjectListView.setItems(travelPlanObjectList);
         travelPlanObjectListView.setCellFactory(listView -> new TravelPlanObjectListViewCell());
     }
-    
-    
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the respective 
+     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the respective
      * {@code ActivityCard}, {@code FriendCard} or {@code AccommodationCard}.
      */
     class TravelPlanObjectListViewCell extends ListCell<TravelPlanObject> {

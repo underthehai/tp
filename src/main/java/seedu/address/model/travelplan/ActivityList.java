@@ -111,8 +111,8 @@ public class ActivityList implements ReadOnlyActivityList {
         return activities.asUnmodifiableObservableList();
     }
 
-    public ObservableList<TravelPlanObject> getTPOList() {
-        return activities.asUnmodifiableObservableTPOList();
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return activities.asUnmodifiableObservableTpoList();
     }
 
     @Override

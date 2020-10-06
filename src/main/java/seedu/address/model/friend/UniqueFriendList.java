@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -13,8 +12,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.exceptions.DuplicateFriendException;
 import seedu.address.model.friend.exceptions.FriendNotFoundException;
-import seedu.address.model.travelplan.TravelPlan;
-
 
 /**
  * A list of friends that enforces uniqueness between its elements and does not allow nulls.
@@ -113,11 +110,11 @@ public class UniqueFriendList implements Iterable<Friend> {
      * Returns the backing list as an unmodifiable {@code ObservableList}, with each Friend object
      * typecast to TravelPlanObject (TPO).
      */
-    public ObservableList<TravelPlanObject> asUnmodifiableObservableTPOList() {
+    public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
         return internalList.stream().map(item -> (TravelPlanObject) item)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
     }
-    
+
     @Override
     public Iterator<Friend> iterator() {
         return internalList.iterator();

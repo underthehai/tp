@@ -9,7 +9,6 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.ui.cards.NameCard;
 
 /**
@@ -18,7 +17,7 @@ import seedu.address.ui.cards.NameCard;
 public class TravelPlannerPanel extends UiPart<Region> {
     private static final String FXML = "TravelPlannerPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TravelPlanPanel.class);
-    
+
     @FXML
     private ListView<TravelPlan> travelPlanListView;
 

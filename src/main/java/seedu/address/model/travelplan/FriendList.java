@@ -108,9 +108,9 @@ public class FriendList implements ReadOnlyFriendList {
     public ObservableList<Friend> getFriendList() {
         return friends.asUnmodifiableObservableList();
     }
-    
-    public ObservableList<TravelPlanObject> getTPOList() {
-        return friends.asUnmodifiableObservableTPOList();
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return friends.asUnmodifiableObservableTpoList();
     }
 
     @Override

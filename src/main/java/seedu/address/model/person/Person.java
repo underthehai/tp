@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.tag.Tag;
-import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents a Person in the address book.
@@ -36,7 +35,7 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
     }
-    
+
     public Name getName() {
         return name;
     }

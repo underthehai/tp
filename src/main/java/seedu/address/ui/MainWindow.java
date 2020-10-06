@@ -1,10 +1,7 @@
 package seedu.address.ui;
 
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -20,11 +17,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.util.SampleWanderlustDataUtil;
 
 /**
@@ -39,15 +34,15 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
-    
+
     private final TravelPlan currentDirectoryStub = new TravelPlan(new Name("Test"),
-            new WanderlustDate("2020-12-12"), 
+            new WanderlustDate("2020-12-12"),
             new WanderlustDate("2020-12-20"));
-    
+
     private final TravelPlan anotherDirectoryStub = new TravelPlan(new Name("Test 2"),
             new WanderlustDate("2023-05-05"),
             new WanderlustDate("2023-06-06"));
-    
+
     private final ReadOnlyTravelPlanner travelPlannerStub = SampleWanderlustDataUtil.getSampleTravelPlanner();
 
     // Independent Ui parts residing in this Ui container
@@ -62,10 +57,10 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
-    
+
     @FXML
     private StackPane travelPlannerPanelPlaceholder;
-    
+
     @FXML
     private StackPane travelPlanPanelPlaceholder;
 
@@ -138,19 +133,19 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        
+
         // To be replaced with actual travel planner
         travelPlannerPanel = new TravelPlannerPanel(travelPlannerStub);
         travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
         // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
-        travelPlanPanel = new TravelPlanPanel(currentDirectoryStub); 
+        travelPlanPanel = new TravelPlanPanel(currentDirectoryStub);
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
-        
-        // To be replaced with: 
+
+        // To be replaced with:
         // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
-                .getFriendTPOList());
+                .getFriendTpoList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

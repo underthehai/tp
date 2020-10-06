@@ -112,7 +112,7 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
      * Returns the backing list as an unmodifiable {@code ObservableList}, with each Activity object
      * typecast to TravelPlanObject (TPO).
      */
-    public ObservableList<TravelPlanObject> asUnmodifiableObservableTPOList() {
+    public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
         return internalList.stream().map(item -> (TravelPlanObject) item)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
     }
