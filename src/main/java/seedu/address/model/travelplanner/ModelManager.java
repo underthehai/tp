@@ -11,10 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 
 /**
