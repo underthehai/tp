@@ -139,6 +139,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered wishlist */
     ObservableList<Activity> getFilteredWishlist();
 
+    /** Returns an unmodifiable view of the filtered travel plan object list */
+    ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList();
+
     /**
      * Updates the filter of the filtered travel plan list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
@@ -152,6 +155,12 @@ public interface Model {
     void updateFilteredWishlist(Predicate<Activity> predicate);
 
     /**
+     * Updates the filter of the filtered travel plan object list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTravelPlanObjectList(Predicate<TravelPlanObject> predicate);
+
+    /**
      * Replaces the directory with {@code dir}.
      * {@code dir} must exist in the travel planner.
      */
@@ -162,4 +171,18 @@ public interface Model {
      */
     Directory getDirectory();
 
+    /**
+     * Sets the current filtered travel plan object list to activity list.
+     */
+    void setToActivityList();
+
+    /**
+     * Sets the current filtered travel plan object list to accommodation list.
+     */
+    void setToAccommodationList();
+
+    /**
+     * Sets the current filtered travel plan object list to friend list.
+     */
+    void setToFriendList();
 }

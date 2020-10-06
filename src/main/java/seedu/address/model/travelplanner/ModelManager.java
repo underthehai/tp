@@ -11,8 +11,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 
 /**
@@ -27,6 +29,7 @@ public class ModelManager implements Model {
     private final FilteredList<Activity> filteredWishlist;
     private Directory directory;
     private TravelPlan currentTravelPlan;
+    private FilteredList<? extends TravelPlanObject> currentFilteredTravelPlanObjectList;
 
     /**
      * Initializes a ModelManager with the given travelPlanner and userPrefs.
@@ -150,6 +153,7 @@ public class ModelManager implements Model {
     @Override
     public void setDirectory(Directory dir) {
         directory = dir;
+        setCurrentTravelPlan();
     }
 
     @Override
@@ -163,32 +167,47 @@ public class ModelManager implements Model {
     private void setCurrentTravelPlan() {
         if (directory.isTravelPlan()) {
             currentTravelPlan = (TravelPlan) directory;
+            currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
         }
+    }
+
+    @Override
+    public void setToActivityList() {
+        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
+    }
+
+    @Override
+    public void setToAccommodationList() {
+        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getAccommodationList());
+    }
+
+    @Override
+    public void setToFriendList() {
+        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getFriendList());
     }
 
     //=========== TravelPlanObject =============================================================
 
     @Override
     public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
-        setCurrentTravelPlan();
+        requireNonNull(tPObj);
         return currentTravelPlan.hasTravelPlanObject(tPObj);
     }
 
     @Override
     public void deleteTravelPlanObject(TravelPlanObject tPObj) {
-        setCurrentTravelPlan();
         currentTravelPlan.removeTravelPlanObject(tPObj);
     }
 
     @Override
     public void addTravelPlanObject(TravelPlanObject tPObj) {
-        setCurrentTravelPlan();
         currentTravelPlan.addTravelPlanObject(tPObj);
     }
 
     @Override
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
-        setCurrentTravelPlan();
+        requireAllNonNull(target, editedTravelPlanObject);
+
         currentTravelPlan.setTravelPlanObject(target, editedTravelPlanObject);
     }
 
@@ -210,6 +229,7 @@ public class ModelManager implements Model {
     }
 
     //=========== Filtered Wishlist List Accessors =============================================================
+
     /**
      * Returns an unmodifiable view of the list of {@code Activity} backed by the internal list of
      * {@code Wishlist}
@@ -223,6 +243,23 @@ public class ModelManager implements Model {
     public void updateFilteredWishlist(Predicate<Activity> predicate) {
         requireNonNull(predicate);
         filteredWishlist.setPredicate(predicate);
+    }
+
+    //=========== Filtered TravelPLanObject List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ? extends TravelPlanObject} backed by the internal list of
+     * {@code TravelPlan}
+     */
+    @Override
+    public ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList() {
+        return currentFilteredTravelPlanObjectList;
+    }
+
+    @Override
+    public void updateFilteredTravelPlanObjectList(Predicate<TravelPlanObject> predicate) {
+        requireNonNull(predicate);
+        currentFilteredTravelPlanObjectList.setPredicate(predicate);
     }
 
     @Override
