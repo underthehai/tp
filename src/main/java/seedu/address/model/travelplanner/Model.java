@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
 
 
@@ -68,6 +69,11 @@ public interface Model {
     boolean hasActivity(Activity activity);
 
     /**
+     * Returns true if a travel plan object with the same identity as {@code tPObj} exists in the travel plan.
+     */
+    boolean hasTravelPlanObject(TravelPlanObject tPObj);
+
+    /**
      * Deletes the given travel plan.
      * The travel plan must exist in the travel planner.
      */
@@ -80,6 +86,12 @@ public interface Model {
     void deleteActivity(Activity target);
 
     /**
+     * Deletes the given travel plan object.
+     * The travel plan object must exist in the travel plan.
+     */
+    void deleteTravelPlanObject(TravelPlanObject tPObj);
+
+    /**
      * Adds the given travel plan.
      * {@code travelPlan} must not already exist in the travel planner.
      */
@@ -90,6 +102,12 @@ public interface Model {
      * {@code activity} must not already exist in the wishlist.
      */
     void addActivity(Activity activity);
+
+    /**
+     * Adds the given travel plan object.
+     * {@code tpObj} must not already exist in the travel plan.
+     */
+    void addTravelPlanObject(TravelPlanObject tPObj);
 
     /**
      * Replaces the given travel plan {@code target} with {@code editedTravelPlan}.
@@ -107,11 +125,22 @@ public interface Model {
      */
     void setActivity(Activity target, Activity editedActivity);
 
+    /**
+     * Replaces the given travel plan object {@code target} with {@code editedTravelPlanObject}.
+     * {@code target} must exist in the travel plan.
+     * The travel plan object identity of {@code editedTravelPlanObject} must not be the same as another existing travel
+     * plan object in the travel plan.
+     */
+    void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject);
+
     /** Returns an unmodifiable view of the filtered travel plan list */
     ObservableList<TravelPlan> getFilteredTravelPlanList();
 
     /** Returns an unmodifiable view of the filtered wishlist */
     ObservableList<Activity> getFilteredWishlist();
+
+    /** Returns an unmodifiable view of the filtered travel plan object list */
+    ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList();
 
     /**
      * Updates the filter of the filtered travel plan list to filter by the given {@code predicate}.
@@ -124,4 +153,36 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredWishlist(Predicate<Activity> predicate);
+
+    /**
+     * Updates the filter of the filtered travel plan object list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTravelPlanObjectList(Predicate<TravelPlanObject> predicate);
+
+    /**
+     * Replaces the directory with {@code dir}.
+     * {@code dir} must exist in the travel planner.
+     */
+    void setDirectory(Directory dir);
+
+    /**
+     * Returns the current directory that the wanderlust is currently in.
+     */
+    Directory getDirectory();
+
+    /**
+     * Sets the current filtered travel plan object list to activity list.
+     */
+    void setToActivityList();
+
+    /**
+     * Sets the current filtered travel plan object list to accommodation list.
+     */
+    void setToAccommodationList();
+
+    /**
+     * Sets the current filtered travel plan object list to friend list.
+     */
+    void setToFriendList();
 }
