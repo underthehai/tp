@@ -32,7 +32,7 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     /**
      * Creates an seedu.address.model.travelplan.AccommodationList using the Accommodations in the {@code toBeCopied}
      */
-    public AccommodationList(AccommodationList toBeCopied) {
+    public AccommodationList(ReadOnlyAccommodationList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
