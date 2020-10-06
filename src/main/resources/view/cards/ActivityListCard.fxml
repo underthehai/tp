@@ -29,7 +29,7 @@
             <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
             <Label fx:id="cost" styleClass="cell_small_label" text="\$cost" />
             <Label fx:id="levelOfImportance" styleClass="cell_small_label" text="\$levelOfImportance" />
-            <Label fx:id="activityDateTime" styleClass="cell_small_label" text="\$activityDateTime" /> 
+            <Label fx:id="activityDateTime" styleClass="cell_small_label" text="\$activityDateTime" />
         </VBox>
     </GridPane>
 </HBox>

@@ -32,7 +32,7 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-        
+
         <HBox styleClass="pane-with-border" HBox.hgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
@@ -43,7 +43,7 @@
           <VBox fx:id="travelPlan" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
             <StackPane fx:id="travelPlanPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="travelObjectList" styleClass="pane-with-border" minWidth="400" prefWidth="400" 
+          <VBox fx:id="travelObjectList" styleClass="pane-with-border" minWidth="400" prefWidth="400"
                 VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <StackPane fx:id="travelObjectListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
