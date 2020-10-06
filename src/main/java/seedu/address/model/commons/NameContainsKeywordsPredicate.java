@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.activity.Activity;
 
 /**
- * Tests that a {@code Activity}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code TravelPlanObject}'s {@code Name} matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Activity> {
+public class NameContainsKeywordsPredicate implements Predicate<TravelPlanObject> {
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
@@ -17,9 +16,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Activity> {
     }
 
     @Override
-    public boolean test(Activity activity) {
+    public boolean test(TravelPlanObject tPObj) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(activity.getName().activityName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tPObj.getName().name, keyword));
     }
 
     @Override

@@ -5,10 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.commons.Name;
-import seedu.address.model.travelplan.TravelPlanObject;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
- * Represents a Friend in the address book.
+ * Represents a Friend in the travel plan.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Friend extends TravelPlanObject {
@@ -56,8 +56,8 @@ public class Friend extends TravelPlanObject {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both friends have the same identity and data fields.
+     * This defines a stronger notion of equality between two friends.
      */
     @Override
     public boolean equals(Object other) {
