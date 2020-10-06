@@ -79,6 +79,7 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
         if (!internalList.remove(toRemove)) {
             throw new ActivityNotFoundException();
         }
+
     }
 
     public void setActivities(UniqueActivityList replacement) {
