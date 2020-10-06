@@ -13,20 +13,20 @@ import seedu.address.model.person.Person;
 /**
  * Panel containing the list of persons.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class TravelObjectListPanel extends UiPart<Region> {
+    private static final String FXML = "TravelObjectListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(TravelObjectListPanel.class);
 
     @FXML
-    private ListView<Person> personListView;
+    private ListView<Person> travelObjectListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code TravelObjectListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public TravelObjectListPanel(ObservableList<Person> personList) {
         super(FXML);
-        personListView.setItems(personList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
+        travelObjectListView.setItems(personList);
+        travelObjectListView.setCellFactory(listView -> new PersonListViewCell());
     }
 
     /**

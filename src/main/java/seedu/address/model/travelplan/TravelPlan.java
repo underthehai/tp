@@ -33,31 +33,28 @@ public class TravelPlan {
     private final ActivityList activities = new ActivityList();
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
-     * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
+     * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
-    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags) {
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.tags.addAll(tags);
     }
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
-    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags,
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate,
                       ReadOnlyAccommodationList accommodationsToBeCopied,
                       ReadOnlyActivityList activitiesToBeCopied,
                       ReadOnlyFriendList friendsTobeCopied) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.tags.addAll(tags);
         accommodations.resetData(accommodationsToBeCopied);
         activities.resetData(activitiesToBeCopied);
         friends.resetData(friendsTobeCopied);
@@ -147,14 +144,6 @@ public class TravelPlan {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-    /**
      * Returns true if both travel plans of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two travel plans.
      */
@@ -176,9 +165,7 @@ public class TravelPlan {
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")
-                .append(getEndDate())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(getEndDate());
         builder.append(accommodations)
                 .append(activities)
                 .append(friends);
@@ -206,7 +193,6 @@ public class TravelPlan {
                 && name.equals(((TravelPlan) other).name)
                 && startDate.equals(((TravelPlan) other).startDate)
                 && endDate.equals(((TravelPlan) other).endDate)
-                && getTags().equals(((TravelPlan) other).getTags())
                 && accommodations.equals(((TravelPlan) other).accommodations)
                 && activities.equals(((TravelPlan) other).activities)
                 && friends.equals(((TravelPlan) other).friends));
@@ -214,6 +200,6 @@ public class TravelPlan {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, startDate, endDate, tags, accommodations, activities, friends);
+        return Objects.hash(name, startDate, endDate, accommodations, activities, friends);
     }
 }

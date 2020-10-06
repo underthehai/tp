@@ -16,6 +16,9 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -29,9 +32,13 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
+    
+    private final TravelPlan currentDirectoryStub = new TravelPlan(new Name("Test"), new WanderlustDate("2020-12-12"), 
+            new WanderlustDate("2020-12-20"));
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private TravelPlanPanel travelPlanPanel;
+    private TravelObjectListPanel travelObjectListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -40,9 +47,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+    
+    @FXML
+    private StackPane travelPlanPanelPlaceholder;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane travelObjectListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,8 +120,13 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
+        travelPlanPanel = new TravelPlanPanel(currentDirectoryStub); 
+        travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
+        
+        travelObjectListPanel = new TravelObjectListPanel(logic.getFilteredPersonList());
+        travelObjectListPanelPlaceholder.getChildren().add(travelObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -163,8 +178,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public TravelObjectListPanel getPersonListPanel() {
+        return travelObjectListPanel;
     }
 
     /**

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<VBox fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
+    <FlowPane fx:id="startEndDate" styleClass="cell_small_label">
+        <Label fx:id="startDate" text="\$startDate" />
+        <Label text="  to  " />
+        <Label fx:id="endDate" text="\$endDate" />
+    </FlowPane>
+</VBox>
