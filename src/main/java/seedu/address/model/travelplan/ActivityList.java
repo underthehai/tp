@@ -10,7 +10,7 @@ import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
 
 /**
- * Wraps all data at the travel plan level
+ * Represents the list of activities in a travel plan
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
 public class ActivityList implements ReadOnlyActivityList {
