@@ -24,7 +24,7 @@ import seedu.address.model.travelplanner.Directory;
  *
  * @see Activity#isSameActivity(Activity)
  */
-public class UniqueActivityList extends Directory implements Iterable<Activity>  {
+public class UniqueActivityList extends Directory implements Iterable<Activity> {
 
     private final ObservableList<Activity> internalList = FXCollections.observableArrayList();
     private final ObservableList<Activity> internalUnmodifiableList =
@@ -79,7 +79,6 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
         if (!internalList.remove(toRemove)) {
             throw new ActivityNotFoundException();
         }
-
     }
 
     public void setActivities(UniqueActivityList replacement) {
