@@ -26,6 +26,7 @@ public class Activity extends TravelPlanObject {
     private final Cost cost;
     private final Importance levelOfImportance;
     private LocalDateTime activityDateTime;
+    private String dateTime;
 
     /**
      * Every field must be present and not null.
@@ -36,7 +37,8 @@ public class Activity extends TravelPlanObject {
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+        this.dateTime = date;
+        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm"));
 
     }
 
@@ -58,6 +60,10 @@ public class Activity extends TravelPlanObject {
 
     public LocalDateTime getActivityDateTime() {
         return activityDateTime;
+    }
+
+    public String getStringDateTime() {
+        return dateTime;
     }
 
     /**

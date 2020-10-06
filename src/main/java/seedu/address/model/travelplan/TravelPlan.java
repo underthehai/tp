@@ -35,6 +35,8 @@ public class TravelPlan {
     private final FriendList friends = new FriendList();
     private final Set<Tag> tags = new HashSet<>();
 
+
+
     /**
      * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
      */
@@ -45,6 +47,7 @@ public class TravelPlan {
         this.endDate = endDate;
         this.tags.addAll(tags);
     }
+
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
