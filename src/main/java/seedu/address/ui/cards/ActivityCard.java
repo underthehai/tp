@@ -1,5 +1,7 @@
 package seedu.address.ui.cards;
 
+import java.time.format.DateTimeFormatter;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -47,10 +49,11 @@ public class ActivityCard extends UiPart<Region> {
         this.activity = activity;
         id.setText(displayedIndex + ". ");
         name.setText(activity.getName().toString());
-        address.setText(activity.getLocation().toString());
-        cost.setText(activity.getCost().toString());
-        levelOfImportance.setText(activity.getLevelOfImportance().toString());
-        activityDateTime.setText(activity.getActivityDateTime().toString());
+        address.setText("Location: " + activity.getLocation().toString());
+        cost.setText("Cost: $" + activity.getCost().toString());
+        levelOfImportance.setText("Importance: " + activity.getLevelOfImportance().toString());
+        activityDateTime.setText("Date & Time: " + activity.getActivityDateTime()
+                .format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm")));
     }
 
     @Override

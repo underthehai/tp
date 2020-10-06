@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.ui.cards.NameCard;
 
@@ -24,7 +25,7 @@ public class TravelPlannerPanel extends UiPart<Region> {
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
-    public TravelPlannerPanel(TravelPlanner travelPlanner) {
+    public TravelPlannerPanel(ReadOnlyTravelPlanner travelPlanner) {
         super(FXML);
         travelPlanListView.setItems(travelPlanner.getTravelPlanList());
         travelPlanListView.setCellFactory(travelPlan -> new TravelPlanListViewCell());

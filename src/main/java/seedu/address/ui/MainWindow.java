@@ -1,7 +1,9 @@
 package seedu.address.ui;
 
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +23,9 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.TravelPlanner;
+import seedu.address.model.util.SampleWanderlustDataUtil;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -40,11 +44,11 @@ public class MainWindow extends UiPart<Stage> {
             new WanderlustDate("2020-12-12"), 
             new WanderlustDate("2020-12-20"));
     
-    private final TravelPlan anotherDiretoryStub = new TravelPlan(new Name("Test 2"),
+    private final TravelPlan anotherDirectoryStub = new TravelPlan(new Name("Test 2"),
             new WanderlustDate("2023-05-05"),
             new WanderlustDate("2023-06-06"));
     
-    private final TravelPlanner travelPlannerStub;
+    private final ReadOnlyTravelPlanner travelPlannerStub = SampleWanderlustDataUtil.getSampleTravelPlanner();
 
     // Independent Ui parts residing in this Ui container
     private TravelPlannerPanel travelPlannerPanel;
@@ -79,11 +83,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
-        
-        // Set stubs
-        travelPlannerStub = new TravelPlanner();
-        travelPlannerStub.addTravelPlan(currentDirectoryStub);
-        travelPlannerStub.addTravelPlan(anotherDiretoryStub);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -148,7 +147,10 @@ public class MainWindow extends UiPart<Stage> {
         travelPlanPanel = new TravelPlanPanel(currentDirectoryStub); 
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
         
-        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredPersonList());
+        // To be replaced with: 
+        // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
+                .getFriendTPOList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -199,10 +201,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public TravelPlanObjectListPanel getPersonListPanel() {
-        return travelPlanObjectListPanel;
     }
 
     /**

@@ -36,7 +36,7 @@ public class Activity extends TravelPlanObject {
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
     }
 

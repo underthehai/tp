@@ -1,0 +1,123 @@
+package seedu.address.model.util;
+
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.Importance;
+import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Friend;
+import seedu.address.model.friend.Passport;
+import seedu.address.model.friend.Phone;
+import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
+import seedu.address.model.travelplanner.TravelPlanner;
+
+public class SampleWanderlustDataUtil {
+    public static TravelPlan SAMPLE_TRAVEL_PLAN_1 = new TravelPlan(new Name("Trip to Hawaii"),
+            new WanderlustDate("2020-11-01"), new WanderlustDate("2020-12-31"));
+    public static TravelPlan SAMPLE_TRAVEL_PLAN_2 = new TravelPlan(new Name("Netherlands Getaway"),
+            new WanderlustDate("2021-01-01"), new WanderlustDate("2021-12-31"));
+    
+    public static Friend[] getSampleFriends1() {
+        return new Friend[] {
+                new Friend(new Name("Alex Yeoh"), new Passport("M1234567"), new Phone("87438807")),
+                new Friend(new Name("Bernice Yu"), new Passport("E1234567"), new Phone("99272758")),
+                new Friend(new Name("Charlotte Oliveiro"), new Passport("C1234567"), new Phone("93210283")),
+                new Friend(new Name("David Li"), new Passport("D1234567"), new Phone("991031282"))
+        };
+    }
+
+    public static Friend[] getSampleFriends2() {
+        return new Friend[] {
+                new Friend(new Name("Lye Yi Xian"), new Passport("G7654321"), new Phone("92421847")),
+                new Friend(new Name("Teo Jia Wei"), new Passport("S7654321"), new Phone("81238032")),
+                new Friend(new Name("Timothy Ong"), new Passport("R7654321"), new Phone("91274810")),
+                new Friend(new Name("Lim Hai Shan"), new Passport("B7654321"), new Phone("89002939")),
+                new Friend(new Name("Jeanne Toh"), new Passport("J7654321"), new Phone("88234200"))
+        };
+    }
+
+    public static Accommodation[] getSampleAccommodations1() {
+        return new Accommodation[] {
+                new Accommodation(new Name("Pooh's House"), new WanderlustDate("2020-12-12"),
+                        new WanderlustDate("2020-12-31"), new Cost("50"), new Location("100 Acre Woods")),
+                new Accommodation(new Name("Hogwarts"), new WanderlustDate("2020-11-11"),
+                        new WanderlustDate("2020-11-25"), new Cost("10000"), new Location("London"))
+        };
+    }
+
+    public static Accommodation[] getSampleAccommodations2() {
+        return new Accommodation[] {
+                new Accommodation(new Name("River Island"), new WanderlustDate("2021-07-12"),
+                        new WanderlustDate("2021-08-31"), new Cost("6000"), new Location("Stardew Valley")),
+                new Accommodation(new Name("Snow Cabin"), new WanderlustDate("2021-09-01"),
+                        new WanderlustDate("2020-09-25"), new Cost("200"), new Location("Ice Valley"))
+        };
+    }
+
+    public static Activity[] getSampleActivities1() {
+        return new Activity[] {
+                new Activity(new Name("Bungee Jumping"), new Location("Sentosa"), new Cost("200"),
+                        new Importance("2"), "2020-12-12 11:00"),
+                new Activity(new Name("Eat Bingsu"), new Location("Snowflake Street"), new Cost("5"),
+                        new Importance("3"), "2020-12-23 17:00"),
+                new Activity(new Name("Cherry Picking"), new Location("The Woods"), new Cost("50"),
+                        new Importance("5"), "2020-12-13 09:00"),
+                new Activity(new Name("Music Festival"), new Location("Tomorrowland Avenue"), new Cost("500"),
+                        new Importance("1"), "2020-12-12 23:59")
+        };
+    }
+
+    public static Activity[] getSampleActivities2() {
+        return new Activity[] {
+                new Activity(new Name("Ice Fishing"), new Location("Ice Park"), new Cost("20"),
+                        new Importance("5"), "2021-07-22 23:00"),
+                new Activity(new Name("Visit the National Museum"), new Location("Museum Lane 5"), new Cost("5"),
+                        new Importance("2"), "2021-06-09 17:40"),
+                new Activity(new Name("Ice Skating"), new Location("Skating Rink Avenue"), new Cost("30"),
+                        new Importance("1"), "2021-01-05 09:21"),
+                new Activity(new Name("Mountain Climbing"), new Location("Tomorrowland"), new Cost("100"),
+                        new Importance("4"), "2021-02-23 20:59")
+        };
+    }
+    
+    public static TravelPlan getSampleTravelPlan(TravelPlan sampleTravelPlan, Activity[] sampleActivities, 
+            Accommodation[] sampleAccommodations, Friend[] sampleFriends) {
+        for (Friend sampleFriend : sampleFriends) {
+            sampleTravelPlan.addTravelPlanObject(sampleFriend);
+        }
+        for (Activity sampleActivity : sampleActivities) {
+            sampleTravelPlan.addTravelPlanObject(sampleActivity);
+        }
+        for (Accommodation sampleAccommodation : sampleAccommodations) {
+            sampleTravelPlan.addTravelPlanObject(sampleAccommodation);
+        }
+        return sampleTravelPlan;
+    }
+    
+    public static TravelPlan[] getSampleTravelPlans() {
+        return new TravelPlan[] {
+                getSampleTravelPlan(SAMPLE_TRAVEL_PLAN_1, getSampleActivities1(), getSampleAccommodations1(), 
+                        getSampleFriends1()), 
+                getSampleTravelPlan(SAMPLE_TRAVEL_PLAN_2, getSampleActivities2(), getSampleAccommodations2(),
+                        getSampleFriends2())
+        };
+    }
+    
+    public static ReadOnlyTravelPlanner getSampleTravelPlanner() {
+        TravelPlanner tp = new TravelPlanner();
+        for (TravelPlan sampleTravelPlan: getSampleTravelPlans()) {
+            tp.addTravelPlan(sampleTravelPlan);
+        }
+        for (Activity sampleActivity : getSampleActivities1()) {
+            tp.addActivity(sampleActivity);
+        }
+        for (Activity sampleActivity : getSampleActivities2()) {
+            tp.addActivity(sampleActivity);
+        }
+        return tp;
+    }
+}

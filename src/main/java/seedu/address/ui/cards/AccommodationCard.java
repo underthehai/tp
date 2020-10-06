@@ -31,9 +31,7 @@ public class AccommodationCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label startDate;
-    @FXML
-    private Label endDate;
+    private Label startToEndDates;
     @FXML
     private Label cost;
     @FXML
@@ -47,10 +45,10 @@ public class AccommodationCard extends UiPart<Region> {
         this.accommodation = accommodation;
         id.setText(displayedIndex + ". ");
         name.setText(accommodation.getName().toString());
-        startDate.setText(accommodation.getStartDate().toString());
-        endDate.setText(accommodation.getEndDate().toString());
-        cost.setText(accommodation.getCost().toString());
-        address.setText(accommodation.getLocation().toString());
+        startToEndDates.setText(accommodation.getStartDate().toString() + " to " 
+                + accommodation.getEndDate().toString());
+        cost.setText("Cost: $" + accommodation.getCost().toString());
+        address.setText("Location: " + accommodation.getLocation().toString());
     }
 
     @Override

@@ -5,11 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.exceptions.ActivityNotFoundException;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Directory;
 
 /**
@@ -104,6 +106,15 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
      */
     public ObservableList<Activity> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}, with each Activity object
+     * typecast to TravelPlanObject (TPO).
+     */
+    public ObservableList<TravelPlanObject> asUnmodifiableObservableTPOList() {
+        return internalList.stream().map(item -> (TravelPlanObject) item)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
     }
 
     @Override

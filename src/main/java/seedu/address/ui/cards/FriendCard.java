@@ -43,8 +43,8 @@ public class FriendCard extends UiPart<Region> {
         this.friend = friend;
         id.setText(displayedIndex + ". ");
         name.setText(friend.getName().toString());
-        passport.setText(friend.getPassport().toString());
-        phone.setText(friend.getPhone().toString());
+        passport.setText("Passport: " + friend.getPassport().toString());
+        phone.setText("phone: " + friend.getPhone().toString());
     }
 
     @Override

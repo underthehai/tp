@@ -14,7 +14,7 @@ import seedu.address.model.commons.TravelPlanObject;
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Person extends TravelPlanObject {
+public class Person {
 
     // Identity fields
     private final Name name;

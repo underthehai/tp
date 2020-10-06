@@ -35,9 +35,12 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         travelPlanObjectListView.setItems(travelPlanObjectList);
         travelPlanObjectListView.setCellFactory(listView -> new TravelPlanObjectListViewCell());
     }
+    
+    
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the respective 
+     * {@code ActivityCard}, {@code FriendCard} or {@code AccommodationCard}.
      */
     class TravelPlanObjectListViewCell extends ListCell<TravelPlanObject> {
         @Override
@@ -48,9 +51,7 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                if (travelPlanObject instanceof Person) { // For testing purposes only, to be removed
-                    setGraphic(new PersonCard((Person) travelPlanObject, getIndex() + 1).getRoot());   
-                } else if (travelPlanObject instanceof Activity) {
+                if (travelPlanObject instanceof Activity) {
                     setGraphic(new ActivityCard((Activity) travelPlanObject, getIndex() + 1).getRoot());
                 } else if (travelPlanObject instanceof Accommodation) {
                     setGraphic(new AccommodationCard((Accommodation) travelPlanObject, getIndex() + 1).getRoot());
