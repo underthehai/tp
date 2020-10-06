@@ -12,12 +12,13 @@ import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.travelplanner.Directory;
 
 /**
  * Represents a travel plan in the travel planner
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class TravelPlan {
+public class TravelPlan extends Directory {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
 
@@ -181,6 +182,16 @@ public class TravelPlan {
 
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
+    }
+
+    @Override
+    public boolean isTravelPlan() {
+        return true;
+    }
+
+    @Override
+    public boolean isWishlist() {
+        return false;
     }
 
     @Override
