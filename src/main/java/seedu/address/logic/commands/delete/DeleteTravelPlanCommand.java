@@ -3,6 +3,7 @@ package seedu.address.logic.commands.delete;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplan.TravelPlan;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
-public class DeleteTravelPlanCommand extends DeleteCommand{
+public class DeleteTravelPlanCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "travelplan";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -45,7 +46,7 @@ public class DeleteTravelPlanCommand extends DeleteCommand{
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
+                || (other instanceof DeleteTravelPlanCommand // instanceof handles nulls
                 && targetIndex.equals(((DeleteTravelPlanCommand) other).targetIndex)); // state check
     }
 }

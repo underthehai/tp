@@ -3,10 +3,10 @@ package seedu.address.logic.commands.delete;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
-import seedu.address.model.accommodation.Accommodation;
 
 import java.util.List;
 
@@ -32,31 +32,22 @@ public class DeleteAccommodationCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Accommodation> lastShownList = model.getFilteredAccommodationList();
-
-        Directory currentDir = model.getDirectory();
-        TravelPlan travelPlan = null;
-
-        if (currentDir.isTravelPlan()) {
-            travelPlan = (TravelPlan) currentDir;
-        }
+        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
         }
 
-        Accommodation accommodationToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject accommodationToDelete = lastShownList.get(targetIndex.getZeroBased());
 
-        travelPlan.removeTravelPlanObject(accommodationToDelete);
-
-        model.deleteAccommodation(accommodationToDelete, travelPlan);
+        model.deleteTravelPlanObject(accommodationToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ACCOMMODATION_SUCCESS, accommodationToDelete));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
+                || (other instanceof DeleteAccommodationCommand // instanceof handles nulls
+                && targetIndex.equals(((DeleteAccommodationCommand) other).targetIndex)); // state check
     }
 }

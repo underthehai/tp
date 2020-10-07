@@ -3,9 +3,9 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.delete.DeleteCommand;
-import seedu.address.logic.commands.delete.DeleteAccommodationCommand;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.delete.DeleteActivityCommand;
+import seedu.address.logic.commands.delete.DeleteAccommodationCommand;
 import seedu.address.logic.commands.delete.DeleteFriendCommand;
 import seedu.address.logic.commands.delete.DeleteTravelPlanCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -14,6 +14,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new DeleteCommand object
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
+
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand

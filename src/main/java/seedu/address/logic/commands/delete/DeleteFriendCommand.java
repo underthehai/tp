@@ -3,9 +3,9 @@ package seedu.address.logic.commands.delete;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.friend.Friend;
-import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 
 import java.util.List;
@@ -32,31 +32,22 @@ public class DeleteFriendCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Friend> lastShownList = model.getFilteredFriendList();
-
-        Directory currentDir = model.getDirectory();
-        TravelPlan travelPlan = null;
-
-        if (currentDir.isTravelPlan()) {
-            travelPlan = (TravelPlan) currentDir;
-        }
+        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
-        Friend friendToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject friendToDelete = lastShownList.get(targetIndex.getZeroBased());
 
-        travelPlan.removeTravelPlanObject(friendToDelete);
-
-        model.deleteFriend(friendToDelete, travelPlan);
+        model.deleteTravelPlanObject(friendToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
+                || (other instanceof DeleteFriendCommand // instanceof handles nulls
                 && targetIndex.equals(((DeleteFriendCommand) other).targetIndex)); // state check
     }
 }

@@ -3,9 +3,9 @@ package seedu.address.logic.commands.delete;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 
 import java.util.List;
@@ -32,31 +32,22 @@ public class DeleteActivityCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Activity> lastShownList = model.getFilteredActivityList();
-
-        Directory currentDir = model.getDirectory();
-        TravelPlan travelPlan = null;
-
-        if (currentDir.isTravelPlan()) {
-            travelPlan = (TravelPlan) currentDir;
-        }
+        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        Activity activityToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject activityToDelete = lastShownList.get(targetIndex.getZeroBased());
 
-        travelPlan.removeTravelPlanObject(activityToDelete);
-
-        model.deleteActivityFromTravelPlan(activityToDelete, travelPlan);
+        model.deleteTravelPlanObject(activityToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
+                || (other instanceof DeleteActivityCommand // instanceof handles nulls
                 && targetIndex.equals(((DeleteActivityCommand) other).targetIndex)); // state check
     }
 }
