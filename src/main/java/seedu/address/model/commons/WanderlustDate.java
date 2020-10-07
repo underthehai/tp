@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a TravelPlan's start/end date in the travel planner.
@@ -55,7 +56,7 @@ public class WanderlustDate {
 
     @Override
     public String toString() {
-        return value.toString();
+        return value.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
     }
 
     @Override
