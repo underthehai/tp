@@ -2,16 +2,12 @@ package seedu.address.model.activity;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.travelplan.TravelPlanObject;
-
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents an Activity in the travel plan.
@@ -75,7 +71,7 @@ public class Activity extends TravelPlanObject {
     }
 
     /**
-     * Returns true if both activites have the same identity and data fields.
+     * Returns true if both activities have the same identity and data fields.
      * This defines a stronger notion of equality between two activities.
      */
     @Override

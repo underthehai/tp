@@ -142,6 +142,15 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     public void removeActivity(Activity key) {
         wishlist.remove(key);
     }
+
+    /**
+     * Returns the wishlist as a UniqueActivityList.
+     * Used to initialize the directory.
+     */
+    public UniqueActivityList getWishlistAsDirectory() {
+        return wishlist;
+    }
+
     //// util methods
 
     @Override
