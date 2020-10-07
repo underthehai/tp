@@ -5,11 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.exceptions.AccommodationNotFoundException;
 import seedu.address.model.accommodation.exceptions.DuplicateAccommodationException;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * A list of accommodations that enforces uniqueness between its elements and does not allow nulls.
@@ -104,6 +106,15 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
      */
     public ObservableList<Accommodation> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}, with each Accommodation object
+     * typecast to TravelPlanObject (TPO).
+     */
+    public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
+        return internalList.stream().map(item -> (TravelPlanObject) item)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
     }
 
     @Override
