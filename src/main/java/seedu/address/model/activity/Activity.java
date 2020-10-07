@@ -9,6 +9,7 @@ import java.util.Objects;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlanObject;
 
 
@@ -25,7 +26,7 @@ public class Activity extends TravelPlanObject {
     private final Location location;
     private final Cost cost;
     private final Importance levelOfImportance;
-    private LocalDateTime activityDateTime;
+    private WanderlustDateTime activityDateTime;
 
     /**
      * Every field must be present and not null.
@@ -36,7 +37,7 @@ public class Activity extends TravelPlanObject {
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+        this.activityDateTime = new WanderlustDateTime(date);
 
     }
 
@@ -56,7 +57,7 @@ public class Activity extends TravelPlanObject {
         return levelOfImportance;
     }
 
-    public LocalDateTime getActivityDateTime() {
+    public WanderlustDateTime getActivityDateTime() {
         return activityDateTime;
     }
 
