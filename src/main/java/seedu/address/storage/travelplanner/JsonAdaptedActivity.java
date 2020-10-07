@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
@@ -95,7 +96,7 @@ public class JsonAdaptedActivity {
                     WanderlustDateTime.class.getSimpleName()));
         }
         if (!WanderlustDateTime.isValidWanderlustDateTime(dateTime)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(WanderlustDateTime.MESSAGE_CONSTRAINTS);
         }
         final WanderlustDateTime modelDateTime = new WanderlustDateTime(dateTime);
 
