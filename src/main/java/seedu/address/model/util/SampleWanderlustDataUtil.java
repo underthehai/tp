@@ -3,6 +3,7 @@ package seedu.address.model.util;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
@@ -60,26 +61,26 @@ public class SampleWanderlustDataUtil {
     public static Activity[] getSampleActivities1() {
         return new Activity[] {
             new Activity(new Name("Bungee Jumping"), new Location("Sentosa"), new Cost("200"),
-                    new Importance("2"), "2020-12-12 11:00"),
+                    new Importance("2"), new WanderlustDateTime("2020-12-12 11:00")),
             new Activity(new Name("Eat Bingsu"), new Location("Snowflake Street"), new Cost("5"),
-                    new Importance("3"), "2020-12-23 17:00"),
+                    new Importance("3"), new WanderlustDateTime("2020-12-23 17:00")),
             new Activity(new Name("Cherry Picking"), new Location("The Woods"), new Cost("50"),
-                    new Importance("5"), "2020-12-13 09:00"),
+                    new Importance("5"), new WanderlustDateTime("2020-12-13 09:00")),
             new Activity(new Name("Music Festival"), new Location("Tomorrowland Avenue"), new Cost("500"),
-                    new Importance("1"), "2020-12-12 23:59")
+                    new Importance("1"), new WanderlustDateTime("2020-12-12 23:59"))
         };
     }
 
     public static Activity[] getSampleActivities2() {
         return new Activity[] {
             new Activity(new Name("Ice Fishing"), new Location("Ice Park"), new Cost("20"),
-                    new Importance("5"), "2021-07-22 23:00"),
+                    new Importance("5"), new WanderlustDateTime("2021-07-22 23:00")),
             new Activity(new Name("Visit the National Museum"), new Location("Museum Lane 5"), new Cost("5"),
-                    new Importance("2"), "2021-06-09 17:40"),
+                    new Importance("2"), new WanderlustDateTime("2021-06-09 17:40")),
             new Activity(new Name("Ice Skating"), new Location("Skating Rink Avenue"), new Cost("30"),
-                    new Importance("1"), "2021-01-05 09:21"),
+                    new Importance("1"), new WanderlustDateTime("2021-01-05 09:21")),
             new Activity(new Name("Mountain Climbing"), new Location("Tomorrowland"), new Cost("100"),
-                    new Importance("4"), "2021-02-23 20:59")
+                    new Importance("4"), new WanderlustDateTime("2021-02-23 20:59"))
         };
     }
 

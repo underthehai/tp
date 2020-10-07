@@ -10,7 +10,6 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 
-
 /**
  * Represents an Accommodation in the travel plan.
  * Guarantees: details are present and not null, field values are validated, immutable.
