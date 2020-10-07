@@ -2,25 +2,23 @@ package seedu.address.model.travelplan;
 
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.travelplanner.Directory;
 
 /**
- * Wraps all data at the travel-plan level
+ * Represents a travel plan in the travel planner
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class TravelPlan {
+public class TravelPlan extends Directory {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
 
@@ -33,31 +31,28 @@ public class TravelPlan {
     private final ActivityList activities = new ActivityList();
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
      */
-    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags) {
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.tags.addAll(tags);
     }
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
-    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags,
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate,
                       ReadOnlyAccommodationList accommodationsToBeCopied,
                       ReadOnlyActivityList activitiesToBeCopied,
                       ReadOnlyFriendList friendsTobeCopied) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.tags.addAll(tags);
         accommodations.resetData(accommodationsToBeCopied);
         activities.resetData(activitiesToBeCopied);
         friends.resetData(friendsTobeCopied);
@@ -147,14 +142,6 @@ public class TravelPlan {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-    /**
      * Returns true if both travel plans of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two travel plans.
      */
@@ -176,9 +163,7 @@ public class TravelPlan {
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")
-                .append(getEndDate())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(getEndDate());
         builder.append(accommodations)
                 .append(activities)
                 .append(friends);
@@ -200,13 +185,22 @@ public class TravelPlan {
     }
 
     @Override
+    public boolean isTravelPlan() {
+        return true;
+    }
+
+    @Override
+    public boolean isWishlist() {
+        return false;
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TravelPlan // instanceof handles nulls
                 && name.equals(((TravelPlan) other).name)
                 && startDate.equals(((TravelPlan) other).startDate)
                 && endDate.equals(((TravelPlan) other).endDate)
-                && getTags().equals(((TravelPlan) other).getTags())
                 && accommodations.equals(((TravelPlan) other).accommodations)
                 && activities.equals(((TravelPlan) other).activities)
                 && friends.equals(((TravelPlan) other).friends));
@@ -214,6 +208,6 @@ public class TravelPlan {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, startDate, endDate, tags, accommodations, activities, friends);
+        return Objects.hash(name, startDate, endDate, accommodations, activities, friends);
     }
 }
