@@ -17,7 +17,7 @@ import seedu.address.ui.cards.ActivityCard;
 import seedu.address.ui.cards.FriendCard;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of travel plan objects.
  */
 public class TravelPlanObjectListPanel extends UiPart<Region> {
     private static final String FXML = "TravelPlanObjectListPanel.fxml";

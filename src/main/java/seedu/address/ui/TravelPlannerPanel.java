@@ -31,7 +31,8 @@ public class TravelPlannerPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the {@code Wishlist} or name of a {@code TravelPlan} using a
+     * {@code NameCard}.
      */
     class TravelPlanListViewCell extends ListCell<TravelPlan> {
         @Override

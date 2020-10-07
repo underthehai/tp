@@ -33,7 +33,7 @@
           </Menu>
         </MenuBar>
 
-        <HBox styleClass="pane-with-border" HBox.hgrow="ALWAYS">
+        <HBox styleClass="pane-with-border" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
