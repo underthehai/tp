@@ -27,7 +27,8 @@ public class Activity extends TravelPlanObject {
     /**
      * Every field must be present and not null.
      */
-    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, WanderlustDateTime activityDateTime) {
+    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance,
+                    WanderlustDateTime activityDateTime) {
         requireAllNonNull(name, location, cost, levelOfImportance, activityDateTime);
         this.name = name;
         this.location = location;

@@ -2,6 +2,7 @@ package seedu.address.storage.travelplanner;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
@@ -55,7 +56,8 @@ public class JsonAdaptedFriend {
         final Name modelName = new Name(name);
 
         if (passport == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Passport.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Passport.class.getSimpleName()));
         }
         if (!Passport.isValidPassport(passport)) {
             throw new IllegalValueException(Passport.MESSAGE_CONSTRAINTS);

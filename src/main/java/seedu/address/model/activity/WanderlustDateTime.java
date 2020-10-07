@@ -21,8 +21,8 @@ public class WanderlustDateTime {
      */
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    public String dateTime;
-    private LocalDateTime value;
+    public final String dateTime;
+    private final LocalDateTime value;
 
     /**
      * Constructs a {@code WanderlustDateTime}.
@@ -32,6 +32,7 @@ public class WanderlustDateTime {
     public WanderlustDateTime(String dateTime) {
         requireNonNull(dateTime);
         checkArgument(isValidWanderlustDateTime(dateTime), MESSAGE_CONSTRAINTS);
+        this.dateTime = dateTime;
         value = LocalDateTime.parse(dateTime);
     }
 

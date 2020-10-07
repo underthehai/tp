@@ -1,15 +1,15 @@
 package seedu.address.storage.travelplanner;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.ReadOnlyUserPrefs;
 import seedu.address.model.travelplanner.UserPrefs;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 /**
  * Manages storage of TravelPlanner data in local storage.
@@ -59,7 +59,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyTravelPlanner> readTravelPlanner(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyTravelPlanner> readTravelPlanner(Path filePath)
+            throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
         return travelPlannerStorage.readTravelPlanner(filePath);
     }

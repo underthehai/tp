@@ -2,6 +2,7 @@ package seedu.address.storage.travelplanner;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
