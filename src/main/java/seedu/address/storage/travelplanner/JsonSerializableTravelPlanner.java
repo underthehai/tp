@@ -67,6 +67,7 @@ public class JsonSerializableTravelPlanner {
             if (travelPlanner.hasActivity(activity)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ACTIVITY);
             }
+            travelPlanner.addActivity(activity);
         }
 
         return travelPlanner;
