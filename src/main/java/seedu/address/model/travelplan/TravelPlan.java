@@ -47,9 +47,9 @@ public class TravelPlan extends Directory {
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate,
-                      ReadOnlyAccommodationList accommodationsToBeCopied,
-                      ReadOnlyActivityList activitiesToBeCopied,
-                      ReadOnlyFriendList friendsTobeCopied) {
+                      ActivityList activitiesToBeCopied,
+                      AccommodationList accommodationsToBeCopied,
+                      FriendList friendsTobeCopied) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
