@@ -6,6 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -22,7 +23,9 @@ public class WanderlustDate {
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
     public static final DateFormat STYLIZED_DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy");
 
-    private Date value;
+
+    public final String date;
+    private final LocalDate value;
 
     /**
      * Constructs a {@code WanderlustDate}.
@@ -32,12 +35,9 @@ public class WanderlustDate {
     public WanderlustDate(String date) {
         requireNonNull(date);
         checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
-        try {
-            value = STYLIZED_DATE_FORMAT.parse(date);
-        } catch (ParseException ex) {
-            // This is unexpected as the date should have been validated above.
-            System.err.println("Unexpected error: Error parsing date string.");
-        }
+
+        this.date = date;
+        value = LocalDate.parse(date);
     }
 
     /**
@@ -55,7 +55,7 @@ public class WanderlustDate {
         }
     }
 
-    public Date getValue() {
+    public LocalDate getValue() {
         return value;
     }
 

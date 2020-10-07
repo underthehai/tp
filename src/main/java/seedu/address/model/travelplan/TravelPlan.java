@@ -12,6 +12,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.tag.Tag;
@@ -50,10 +51,10 @@ public class TravelPlan {
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
-    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate, Set<Tag> tags,
-                      ReadOnlyAccommodationList accommodationsToBeCopied,
-                      ReadOnlyActivityList activitiesToBeCopied,
-                      ReadOnlyFriendList friendsTobeCopied) {
+    public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate,
+                      ActivityList activitiesToBeCopied,
+                      AccommodationList accommodationsToBeCopied,
+                      FriendList friendsTobeCopied) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
