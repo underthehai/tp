@@ -24,6 +24,8 @@ public class Activity extends TravelPlanObject {
     private final Cost cost;
     private final Importance levelOfImportance;
     private WanderlustDateTime activityDateTime;
+    private String dateTime;
+
 
     /**
      * Every field must be present and not null.
@@ -35,6 +37,7 @@ public class Activity extends TravelPlanObject {
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
         this.activityDateTime = new WanderlustDateTime(date);
+        this.dateTime = date;
 
     }
 
@@ -56,6 +59,10 @@ public class Activity extends TravelPlanObject {
 
     public WanderlustDateTime getActivityDateTime() {
         return activityDateTime;
+    }
+
+    public String getStringDateTime() {
+        return dateTime;
     }
 
     /**

@@ -32,6 +32,8 @@ public class TravelPlan extends Directory {
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
 
+
+
     /**
      * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
      */
@@ -41,6 +43,7 @@ public class TravelPlan extends Directory {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
