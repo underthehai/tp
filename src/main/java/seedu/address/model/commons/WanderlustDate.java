@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Represents a TravelPlan's start/end date in the travel planner.
@@ -22,7 +23,8 @@ public class WanderlustDate {
     public static final String VALIDATION_REGEX = "\\d{4}-[01]\\d-[0-3]\\d";
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
 
-    private LocalDate value;
+    public final String date;
+    private final LocalDate value;
 
     /**
      * Constructs a {@code WanderlustDate}.
@@ -32,7 +34,8 @@ public class WanderlustDate {
     public WanderlustDate(String date) {
         requireNonNull(date);
         checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
-        value = LocalDate.parse(date);
+
+        this.date = date;
     }
 
     /**

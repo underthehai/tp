@@ -1,3 +1,4 @@
+  
 package seedu.address.model.travelplanner;
 
 import java.nio.file.Path;
