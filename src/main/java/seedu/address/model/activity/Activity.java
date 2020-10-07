@@ -2,15 +2,12 @@ package seedu.address.model.activity;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
-
 
 /**
  * Represents an Activity in the travel plan.
@@ -25,19 +22,19 @@ public class Activity extends TravelPlanObject {
     private final Location location;
     private final Cost cost;
     private final Importance levelOfImportance;
-    private LocalDateTime activityDateTime;
+    private final WanderlustDateTime activityDateTime;
 
     /**
      * Every field must be present and not null.
      */
-    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, String date) {
-        requireAllNonNull(name, location, cost, levelOfImportance, date);
+    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance,
+                    WanderlustDateTime activityDateTime) {
+        requireAllNonNull(name, location, cost, levelOfImportance, activityDateTime);
         this.name = name;
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-
+        this.activityDateTime = activityDateTime;
     }
 
     public Name getName() {
@@ -56,7 +53,7 @@ public class Activity extends TravelPlanObject {
         return levelOfImportance;
     }
 
-    public LocalDateTime getActivityDateTime() {
+    public WanderlustDateTime getActivityDateTime() {
         return activityDateTime;
     }
 

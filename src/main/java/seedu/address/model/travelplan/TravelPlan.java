@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
@@ -47,9 +46,9 @@ public class TravelPlan extends Directory {
      * {@code activitiesToBeCopied} and {@code friendsTobeCopied}
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate,
-                      ReadOnlyAccommodationList accommodationsToBeCopied,
-                      ReadOnlyActivityList activitiesToBeCopied,
-                      ReadOnlyFriendList friendsTobeCopied) {
+                      ActivityList activitiesToBeCopied,
+                      AccommodationList accommodationsToBeCopied,
+                      FriendList friendsTobeCopied) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
