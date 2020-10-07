@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.ListView?>
+<VBox fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="5" />
+    </padding>
+    <Pane>
+        <padding>
+            <Insets top="5" right="5" bottom="50" left="5" />
+        </padding>
+        <Label fx:id="Wanderlust" styleClass="cell_big_label" text="Wanderlust" />
+    </Pane>
+    <ListView fx:id="travelPlanListView" VBox.vgrow="ALWAYS" />
+</VBox>

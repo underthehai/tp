@@ -33,7 +33,7 @@ public class WanderlustDateTime {
         requireNonNull(dateTime);
         checkArgument(isValidWanderlustDateTime(dateTime), MESSAGE_CONSTRAINTS);
         this.dateTime = dateTime;
-        value = LocalDateTime.parse(dateTime);
+        value = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
     /**
@@ -68,6 +68,5 @@ public class WanderlustDateTime {
     public int hashCode() {
         return value.hashCode();
     }
-
 
 }

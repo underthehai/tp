@@ -32,7 +32,7 @@ public class TravelPlan extends Directory {
     private final FriendList friends = new FriendList();
 
     /**
-     * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
+     * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
@@ -175,12 +175,24 @@ public class TravelPlan extends Directory {
         return accommodations.getAccommodationList();
     }
 
+    public ObservableList<TravelPlanObject> getAccommodationTpoList() {
+        return accommodations.getTpoList();
+    }
+
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
 
+    public ObservableList<TravelPlanObject> getActivityTpoList() {
+        return activities.getTpoList();
+    }
+
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
+    }
+
+    public ObservableList<TravelPlanObject> getFriendTpoList() {
+        return friends.getTpoList();
     }
 
     @Override
