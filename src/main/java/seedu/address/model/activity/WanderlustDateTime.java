@@ -1,14 +1,13 @@
 package seedu.address.model.activity;
 
-import seedu.address.model.commons.WanderlustDate;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class WanderlustDateTime {
     public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format YYYY-MM-DD HH:mm.";
@@ -42,10 +41,10 @@ public class WanderlustDateTime {
      * Returns if a given string is a valid travel date.
      */
     public static boolean isValidWanderlustDate(String test) {
-        try{
+        try {
             VALID_DATE_STRING.parse(test);
             return true;
-        }catch(ParseException e){
+        } catch (ParseException e) {
             return false;
         }
     }
