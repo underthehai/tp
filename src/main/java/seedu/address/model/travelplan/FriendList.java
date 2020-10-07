@@ -9,7 +9,7 @@ import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.UniqueFriendList;
 
 /**
- * Represents the list of friends in a travel plan
+ * Wraps all data at the friend list level
  * Duplicates are not allowed (by .isSameFriend comparison)
  */
 public class FriendList implements ReadOnlyFriendList {

@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Location {
     /**
-     * Represents Activity's or Accommodation's location in the Travel plan.
+     * Represents a Activity's location in the Travel plan.
      * Guarantees: immutable; is valid as declared in {@link #isValidLocation(String)}
      */
     public static final String MESSAGE_CONSTRAINTS = "Location can take any values, and it should not be blank";

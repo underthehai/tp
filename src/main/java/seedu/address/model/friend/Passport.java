@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's passport in the travel plan.
+ * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidPassport(String)}
  */
 public class Passport {
@@ -26,7 +26,7 @@ public class Passport {
     }
 
     /**
-     * Returns true if a given string is a valid passport.
+     * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPassport(String test) {
         return test.matches(VALIDATION_REGEX);

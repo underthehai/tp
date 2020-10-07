@@ -6,8 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Represents a TravelPlan's start/end date in the travel planner.
@@ -21,8 +20,9 @@ public class WanderlustDate {
      */
     public static final String VALIDATION_REGEX = "\\d{4}-[01]\\d-[0-3]\\d";
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
+    public static final DateFormat STYLIZED_DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy");
 
-    private LocalDate value;
+    private Date value;
 
     /**
      * Constructs a {@code WanderlustDate}.
@@ -32,7 +32,12 @@ public class WanderlustDate {
     public WanderlustDate(String date) {
         requireNonNull(date);
         checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
-        value = LocalDate.parse(date);
+        try {
+            value = STYLIZED_DATE_FORMAT.parse(date);
+        } catch (ParseException ex) {
+            // This is unexpected as the date should have been validated above.
+            System.err.println("Unexpected error: Error parsing date string.");
+        }
     }
 
     /**
@@ -50,13 +55,13 @@ public class WanderlustDate {
         }
     }
 
-    public LocalDate getValue() {
+    public Date getValue() {
         return value;
     }
 
     @Override
     public String toString() {
-        return value.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return value.toString();
     }
 
     @Override

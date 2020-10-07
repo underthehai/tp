@@ -13,10 +13,10 @@ import seedu.address.model.accommodation.exceptions.DuplicateAccommodationExcept
 
 /**
  * A list of accommodations that enforces uniqueness between its elements and does not allow nulls.
- * An accommodation is considered unique by comparing using {@code Accommodation#isSameAccommodation(Accommodation)}.
- * As such, adding and updating of accommodation uses Accommodation#isSameAccommodation(Accommodation) for equality
- * so as to ensure that the accommodation being added or updated is unique in terms of identity in the
- * UniqueAccommodationList. However, the removal of an accommodation uses Accommodation#equals(Object) so
+ * An accommodation is considered unique by comparing using {@code Person#isSamePerson(Person)}.
+ * As such, adding and updating of persons uses Accommodation#isSameAccommodation(Accommodation) for equality
+ * so as to ensure that the person being added or updated is unique in terms of identity in the UniquePersonList.
+ * However, the removal of an accommodation uses Accommodation#equals(Object) so
  * as to ensure that the accommodation with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
