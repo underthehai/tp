@@ -4,29 +4,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalFriends.ALICE;
-import static seedu.address.testutil.TypicalFriends.VALID_PHONE_BOB;
-import static seedu.address.testutil.TypicalFriends.getTypicalFriendList;
+import static seedu.address.testutil.ConstructorUtils.VALID_PHONE_B;
+import static seedu.address.testutil.typicals.TypicalFriends.ALICE;
+import static seedu.address.testutil.typicals.TypicalFriends.getTypicalFriendList;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.exceptions.DuplicateFriendException;
-import seedu.address.testutil.FriendBuilder;
+import seedu.address.testutil.builders.FriendBuilder;
 
 public class FriendListTest {
 
-    /**
-     * NOT DONE: WAITING FOR CommandTestUtil TO BE UPDATED.
-     */
-    
     private final FriendList friendList = new FriendList();
 
     @Test
@@ -49,8 +45,8 @@ public class FriendListTest {
     @Test
     public void resetData_withDuplicateFriends_throwsDuplicateFriendException() {
         // Two friends with the same identity fields
-        Friend editedZoo = new FriendBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
-        List<Friend> newFriends = Arrays.asList(ALICE, editedZoo);
+        Friend editedAlice = new FriendBuilder(ALICE).withPhone(VALID_PHONE_B).build();
+        List<Friend> newFriends = Arrays.asList(ALICE, editedAlice);
         FriendListStub newData = new FriendListStub(newFriends);
 
         assertThrows(DuplicateFriendException.class, () -> friendList.resetData(newData));
@@ -75,7 +71,7 @@ public class FriendListTest {
     @Test
     public void hasFriend_friendWithSameIdentityFieldsInFriendList_returnsTrue() {
         friendList.addFriend(ALICE);
-        Friend editedAlice = new FriendBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
+        Friend editedAlice = new FriendBuilder(ALICE).withPhone(VALID_PHONE_B).build();
         assertTrue(friendList.hasFriend(editedAlice));
     }
 

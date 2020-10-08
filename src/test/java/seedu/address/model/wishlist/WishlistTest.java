@@ -4,22 +4,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalActivities.ARCHERY;
-import static seedu.address.testutil.TypicalActivities.getTypicalWishlist;
+import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
+import static seedu.address.testutil.typicals.TypicalActivities.getTypicalWishlist;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.testutil.ActivityBuilder;
+import seedu.address.testutil.builders.ActivityBuilder;
 
 public class WishlistTest {
 

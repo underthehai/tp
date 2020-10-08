@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.builders;
 
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;

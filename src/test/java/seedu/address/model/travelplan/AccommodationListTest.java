@@ -1,30 +1,27 @@
-package seedu.address.model;
+package seedu.address.model.travelplan;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.ConstructorUtils.VALID_COST_B;
+import static seedu.address.testutil.typicals.TypicalAccommodations.ALICEHOTEL;
+import static seedu.address.testutil.typicals.TypicalAccommodations.getTypicalAccommodationList;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.accommodation.exceptions.DuplicateAccommodationException;
-import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.ReadOnlyAccommodationList;
+import seedu.address.testutil.builders.AccommodationBuilder;
 
 public class AccommodationListTest {
-
-    /**
-     * NOT DONE: WAITING FOR AccommodationBuilder, TypicalAccommodations, CommandTestUtil TO BE UPDATED.
-     * Once updated, check to see if "Identity" tests make sense.
-     */
 
     private final AccommodationList accommodationList = new AccommodationList();
 
@@ -40,7 +37,7 @@ public class AccommodationListTest {
 
     @Test
     public void resetData_withValidReadOnlyAccommodationList_replacesData() {
-        AccommodationList newData = getTypicalAccommodationList();
+        AccommodationList newData = getTypicalAccommodationList(1);
         accommodationList.resetData(newData);
         assertEquals(newData, accommodationList);
     }
@@ -48,9 +45,8 @@ public class AccommodationListTest {
     @Test
     public void resetData_withDuplicateAccommodations_throwsDuplicateAccommodationException() {
         // Two accommodations with the same identity fields
-        Accommodation editedAlice = new AccommodationBuilder(ALICE).withCost(VALID_COST_BOB)
-                .build();
-        List<Accommodation> newAccommodations = Arrays.asList(ALICE, editedAlice);
+        Accommodation editedAliceHotel = new AccommodationBuilder(ALICEHOTEL).withCost(VALID_COST_B).build();
+        List<Accommodation> newAccommodations = Arrays.asList(ALICEHOTEL, editedAliceHotel);
         AccommodationListStub newData = new AccommodationListStub(newAccommodations);
 
         assertThrows(DuplicateAccommodationException.class, () -> accommodationList.resetData(newData));
@@ -63,26 +59,26 @@ public class AccommodationListTest {
 
     @Test
     public void hasAccommodation_accommodationNotInAccommodationList_returnsFalse() {
-        assertFalse(accommodationList.hasAccommodation(ALICE));
+        assertFalse(accommodationList.hasAccommodation(ALICEHOTEL));
     }
 
     @Test
     public void hasAccommodation_accommodationInAccommodationList_returnsTrue() {
-        accommodationList.addAccommodation(ALICE);
-        assertTrue(accommodationList.hasAccommodation(ALICE));
+        accommodationList.addAccommodation(ALICEHOTEL);
+        assertTrue(accommodationList.hasAccommodation(ALICEHOTEL));
     }
 
     @Test
     public void hasAccommodation_accommodationWithSameIdentityFieldsInAccommodationList_returnsTrue() {
-        accommodationList.addAccommodation(ALICE);
-        Accommodation editedAlice = new AccommodationBuilder(ALICE).withCost(VALID_COST_BOB)
-                .build();
-        assertTrue(accommodationList.hasAccommodation(editedAlice));
+        accommodationList.addAccommodation(ALICEHOTEL);
+        Accommodation editedAliceHotel = new AccommodationBuilder(ALICEHOTEL).withCost(VALID_COST_B).build();
+        assertTrue(accommodationList.hasAccommodation(editedAliceHotel));
     }
 
     @Test
     public void getAccommodationList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> accommodationList.getAccommodationList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                accommodationList.getAccommodationList().remove(0));
     }
 
     /**

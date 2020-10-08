@@ -1,6 +1,5 @@
-package seedu.address.testutil;
+package seedu.address.testutil.builders;
 
-import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.AccommodationList;
@@ -12,7 +11,7 @@ public class TravelPlanBuilder {
     public static final String DEFAULT_NAME = "Trip to Hawaii";
     public static final String DEFAULT_START_DATE = "2020-12-12";
     public static final String DEFAULT_END_DATE = "2020-12-25";
-    
+
     private Name name;
     private WanderlustDate startDate;
     private WanderlustDate endDate;
@@ -91,7 +90,7 @@ public class TravelPlanBuilder {
         this.friendList = friendList;
         return this;
     }
-    
+
     public TravelPlan build() {
         return new TravelPlan(name, startDate, endDate, activityList, accommodationList, friendList);
     }

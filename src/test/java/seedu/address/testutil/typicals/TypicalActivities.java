@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.typicals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import java.util.List;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.ActivityList;
 import seedu.address.model.wishlist.Wishlist;
+import seedu.address.testutil.builders.ActivityBuilder;
 
 public class TypicalActivities {
 
@@ -26,7 +27,7 @@ public class TypicalActivities {
             .withCost("2").withLevelOfImportance("1")
             .withLocation("Dunkin Donut Palace")
             .withDateTime("2020-11-11 11:00").build();
-    
+
     public static final Activity ZOO = new ActivityBuilder().withName("Singapore Mandai Zoo")
             .withCost("100").withLevelOfImportance("3")
             .withLocation("124 Mandai Road")
@@ -74,7 +75,7 @@ public class TypicalActivities {
         }
         return al;
     }
-    
+
     public static List<Activity> getTypicalActivities1() {
         return new ArrayList<>(Arrays.asList(ARCHERY, BUNGEEJUMPING, CAMPING, DONUTDATE));
     }

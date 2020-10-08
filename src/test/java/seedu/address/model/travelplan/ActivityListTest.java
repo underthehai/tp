@@ -4,22 +4,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalActivities.ARCHERY;
-import static seedu.address.testutil.TypicalActivities.getTypicalActivityList;
+import static seedu.address.testutil.typicals.TypicalActivities.ZOO;
+import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivityList;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.testutil.ActivityBuilder;
+import seedu.address.testutil.builders.ActivityBuilder;
 
 public class ActivityListTest {
 
@@ -37,7 +37,7 @@ public class ActivityListTest {
 
     @Test
     public void resetData_withValidReadOnlyActivityList_replacesData() {
-        ActivityList newData = getTypicalActivityList(1);
+        ActivityList newData = getTypicalActivityList(2);
         activityList.resetData(newData);
         assertEquals(newData, activityList);
     }
@@ -45,8 +45,8 @@ public class ActivityListTest {
     @Test
     public void resetData_withDuplicateActivities_throwsDuplicateActivityException() {
         // Two activities with the same identity fields
-        Activity editedZoo = new ActivityBuilder(ARCHERY).build();
-        List<Activity> newActivities = Arrays.asList(ARCHERY, editedZoo);
+        Activity editedZoo = new ActivityBuilder(ZOO).build();
+        List<Activity> newActivities = Arrays.asList(ZOO, editedZoo);
         ActivityListStub newData = new ActivityListStub(newActivities);
 
         assertThrows(DuplicateActivityException.class, () -> activityList.resetData(newData));
@@ -59,13 +59,13 @@ public class ActivityListTest {
 
     @Test
     public void hasActivity_activityNotInActivityList_returnsFalse() {
-        assertFalse(activityList.hasActivity(ARCHERY));
+        assertFalse(activityList.hasActivity(ZOO));
     }
 
     @Test
     public void hasActivity_activityInActivityList_returnsTrue() {
-        activityList.addActivity(ARCHERY);
-        assertTrue(activityList.hasActivity(ARCHERY));
+        activityList.addActivity(ZOO);
+        assertTrue(activityList.hasActivity(ZOO));
     }
 
     @Test

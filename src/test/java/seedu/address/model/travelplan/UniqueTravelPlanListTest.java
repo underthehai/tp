@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalTravelPlans.AUSTRALIA_TRIP;
-import static seedu.address.testutil.TypicalTravelPlans.BOSTON_TRIP;
+import static seedu.address.testutil.ConstructorUtils.VALID_ACCOMMODATION_LIST_B;
+import static seedu.address.testutil.ConstructorUtils.VALID_ACTIVITY_LIST_B;
+import static seedu.address.testutil.ConstructorUtils.VALID_FRIEND_LIST_B;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.BOSTON_TRIP;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,10 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.travelplan.exceptions.DuplicateTravelPlanException;
 import seedu.address.model.travelplan.exceptions.TravelPlanNotFoundException;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplan.UniqueTravelPlanList;
-import seedu.address.testutil.TravelPlanBuilder;
-import seedu.address.testutil.TypicalTravelPlans;
+import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class UniqueTravelPlanListTest {
 
@@ -43,12 +43,12 @@ public class UniqueTravelPlanListTest {
     @Test
     public void contains_travelPlanWithSameIdentityFieldsInList_returnsTrue() {
         uniqueTravelPlanList.add(AUSTRALIA_TRIP);
-        TravelPlan editedAlice = new TravelPlanBuilder(AUSTRALIA_TRIP)
-                .withAccommodationList(TypicalTravelPlans.VALID_ACCOMMODATION_LIST_BOSTON)
-                .withActivityList(TypicalTravelPlans.VALID_ACTIVITY_LIST_BOSTON)
-                .withFriendList(TypicalTravelPlans.VALID_FRIEND_LIST_BOSTON)
+        TravelPlan editedAustraliaTrip = new TravelPlanBuilder(AUSTRALIA_TRIP)
+                .withAccommodationList(VALID_ACCOMMODATION_LIST_B)
+                .withActivityList(VALID_ACTIVITY_LIST_B)
+                .withFriendList(VALID_FRIEND_LIST_B)
                 .build();
-        assertTrue(uniqueTravelPlanList.contains(editedAlice));
+        assertTrue(uniqueTravelPlanList.contains(editedAustraliaTrip));
     }
 
     @Test
@@ -69,14 +69,14 @@ public class UniqueTravelPlanListTest {
 
     @Test
     public void setTravelPlan_nullEditedTravelPlan_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, null));
+        assertThrows(NullPointerException.class, () ->
+                uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, null));
     }
 
     @Test
     public void setTravelPlan_targetTravelPlanNotInList_throwsTravelPlanNotFoundException() {
-        assertThrows(TravelPlanNotFoundException.class,
-                () -> uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, AUSTRALIA_TRIP));
+        assertThrows(TravelPlanNotFoundException.class, () ->
+                uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, AUSTRALIA_TRIP));
     }
 
     @Test
@@ -91,14 +91,14 @@ public class UniqueTravelPlanListTest {
     @Test
     public void setTravelPlan_editedTravelPlanHasSameIdentity_success() {
         uniqueTravelPlanList.add(AUSTRALIA_TRIP);
-        TravelPlan editedAlice = new TravelPlanBuilder(AUSTRALIA_TRIP)
-                .withAccommodationList(TypicalTravelPlans.VALID_ACCOMMODATION_LIST_BOSTON)
-                .withActivityList(TypicalTravelPlans.VALID_ACTIVITY_LIST_BOSTON)
-                .withFriendList(TypicalTravelPlans.VALID_FRIEND_LIST_BOSTON)
+        TravelPlan editedAustraliaTrip = new TravelPlanBuilder(AUSTRALIA_TRIP)
+                .withAccommodationList(VALID_ACCOMMODATION_LIST_B)
+                .withActivityList(VALID_ACTIVITY_LIST_B)
+                .withFriendList(VALID_FRIEND_LIST_B)
                 .build();
-        uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, editedAlice);
+        uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, editedAustraliaTrip);
         UniqueTravelPlanList expectedUniqueTravelPlanList = new UniqueTravelPlanList();
-        expectedUniqueTravelPlanList.add(editedAlice);
+        expectedUniqueTravelPlanList.add(editedAustraliaTrip);
         assertEquals(expectedUniqueTravelPlanList, uniqueTravelPlanList);
     }
 
@@ -115,8 +115,8 @@ public class UniqueTravelPlanListTest {
     public void setTravelPlan_editedTravelPlanHasNonUniqueIdentity_throwsDuplicateTravelPlanException() {
         uniqueTravelPlanList.add(AUSTRALIA_TRIP);
         uniqueTravelPlanList.add(BOSTON_TRIP);
-        assertThrows(DuplicateTravelPlanException.class,
-                () -> uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, BOSTON_TRIP));
+        assertThrows(DuplicateTravelPlanException.class, () ->
+                uniqueTravelPlanList.setTravelPlan(AUSTRALIA_TRIP, BOSTON_TRIP));
     }
 
     @Test
@@ -139,8 +139,8 @@ public class UniqueTravelPlanListTest {
 
     @Test
     public void setTravelPlans_nullUniqueTravelPlanList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> uniqueTravelPlanList.setTravelPlans((UniqueTravelPlanList) null));
+        assertThrows(NullPointerException.class, () ->
+                uniqueTravelPlanList.setTravelPlans((UniqueTravelPlanList) null));
     }
 
     @Test
@@ -170,13 +170,13 @@ public class UniqueTravelPlanListTest {
     @Test
     public void setTravelPlans_listWithDuplicateTravelPlans_throwsDuplicateTravelPlanException() {
         List<TravelPlan> listWithDuplicateTravelPlans = Arrays.asList(AUSTRALIA_TRIP, AUSTRALIA_TRIP);
-        assertThrows(DuplicateTravelPlanException.class,
-                () -> uniqueTravelPlanList.setTravelPlans(listWithDuplicateTravelPlans));
+        assertThrows(DuplicateTravelPlanException.class, () ->
+                uniqueTravelPlanList.setTravelPlans(listWithDuplicateTravelPlans));
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueTravelPlanList.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                uniqueTravelPlanList.asUnmodifiableObservableList().remove(0));
     }
 }

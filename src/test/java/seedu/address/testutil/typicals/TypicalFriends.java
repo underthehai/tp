@@ -1,22 +1,17 @@
-package seedu.address.testutil;
+package seedu.address.testutil.typicals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.friend.Friend;
-import seedu.address.model.person.Person;
 import seedu.address.model.travelplan.FriendList;
+import seedu.address.testutil.builders.FriendBuilder;
 
 /**
  * A utility class containing a list of {@code Friend} objects to be used in tests.
  */
 public class TypicalFriends {
-    
-    public static final String VALID_PHONE_ALICE = "94351253";
-    public static final String VALID_PHONE_BOB = "98765432";
-    public static final String VALID_PASSPORT_ALICE = "A1234567";
-    public static final String VALID_PASSPORT_BOB = "B1234567";
 
     public static final Friend ALICE = new FriendBuilder().withName("Alice Pauline")
             .withPassport("A1234567")
@@ -30,22 +25,22 @@ public class TypicalFriends {
     public static final Friend DANIEL = new FriendBuilder().withName("Daniel Meier")
             .withPassport("D1234567")
             .withPhone("87652533").build();
-    
+
     public static final Friend ELLE = new FriendBuilder().withName("Elle Meyer")
             .withPassport("E1234567")
             .withPhone("94822241").build();
     public static final Friend FIONA = new FriendBuilder().withName("Fiona Kunz")
             .withPassport("F7654321")
-            .withPhone("9482427").build();
+            .withPhone("94822427").build();
     public static final Friend GEORGE = new FriendBuilder().withName("George Best")
             .withPassport("G7654321")
-            .withPhone("9482442").build();
+            .withPhone("94824142").build();
     public static final Friend HOON = new FriendBuilder().withName("Hoon Meier")
             .withPassport("H7654321")
-            .withPhone("8482424").build();
+            .withPhone("84824224").build();
     public static final Friend IDA = new FriendBuilder().withName("Ida Mueller")
             .withPassport("I7654321")
-            .withPhone("8482131").build();
+            .withPhone("84821631").build();
 
     private TypicalFriends() {} // prevents instantiation
 
@@ -71,5 +66,5 @@ public class TypicalFriends {
     public static List<Friend> getTypicalFriends2() {
         return new ArrayList<>(Arrays.asList(ELLE, FIONA, GEORGE, HOON, IDA));
     }
-    
+
 }
