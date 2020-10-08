@@ -1,29 +1,26 @@
-package seedu.address.logic.commands.edit;
+package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
 import java.util.List;
-import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Directory;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 
 
@@ -41,26 +38,26 @@ public class EditActivityCommand extends EditCommand {
             + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
             + "[" + PREFIX_COST + "COST] "
-            + "[" + PREFIX_START_DATE + "START_DATE] "
-            + "[" + PREFIX_END_DATE + "END_DATE] "
+            + "[" + PREFIX_START + "START_DATE] "
+            + "[" + PREFIX_END + "END_DATE] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "Hard Rock Hotel"
             + PREFIX_IMPORTANCE + "2"
             + PREFIX_LOCATION + "Sentosa"
             + PREFIX_COST + "SGD500"
-            + PREFIX_START_DATE + "20 September 2020"
-            + PREFIX_END_DATE + "30 September 2020";
+            + PREFIX_START + "20 September 2020"
+            + PREFIX_END + "30 September 2020";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";
 
     private final Index targetIndex;
-    private final EditActivityDescriptor editActivityDescriptor;
+    private final EditDescriptor editActivityDescriptor;
 
     /**
      * Constructor for editactivity command
      */
-    public EditActivityCommand(Index targetIndex, EditActivityDescriptor editActivityDescriptor) {
+    public EditActivityCommand(Index targetIndex, EditDescriptor editActivityDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
         this.editActivityDescriptor = editActivityDescriptor;
@@ -72,20 +69,13 @@ public class EditActivityCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        //Directory class in model (TBD)
-        Directory currentDir = model.getDirectory();
-        TravelPlan travelPlan = null;
+        List<? extends TravelPlanObject> lastShownList = model.getDirectory().getActivityList();
 
-        if (currentDir.isTravelPlan()) {
-            travelPlan = (TravelPlan) currentDir;
-        }
-
-        List<Activity> lastShownList = travelPlan.getActivityList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
+        Activity activityToEdit = (Activity) lastShownList.get(targetIndex.getZeroBased());
         Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
 
         if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
@@ -102,7 +92,7 @@ public class EditActivityCommand extends EditCommand {
      * Edits the importance, cost, location, startime, end time
      */
     private static Activity createEditedActivity(Activity activityToEdit,
-                                                 EditActivityDescriptor editActivityDescriptor) {
+                                                 EditDescriptor editActivityDescriptor) {
         assert activityToEdit != null;
 
         Name updatedName = editActivityDescriptor.getName().orElse(activityToEdit.getName());
@@ -123,105 +113,6 @@ public class EditActivityCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditActivityCommand) other).targetIndex)); // state check
-    }
-
-    /**
-     * Stores the details to edit the activity with. Each non-empty field value will replace the
-     * corresponding field value of the activity.
-     */
-    public static class EditActivityDescriptor {
-
-        private Name name;
-        private Location location;
-        private Cost cost;
-        private Importance levelOfImportance;
-        private WanderlustDateTime activityDateTime;
-
-
-        public EditActivityDescriptor() {
-        }
-
-        /**
-         * Copy constructor.
-         */
-        public EditActivityDescriptor(EditActivityDescriptor toCopy) {
-            setName(toCopy.name);
-            setLocation(toCopy.location);
-            setCost(toCopy.cost);
-            setLevelOfImportance(toCopy.levelOfImportance);
-            setActivityDateTime(toCopy.activityDateTime);
-        }
-
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, location, cost, levelOfImportance, activityDateTime);
-        }
-
-        public void setName(Name name) {
-            this.name = name;
-        }
-
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
-        }
-
-        public void setLocation(Location location) {
-            this.location = location;
-        }
-
-        public Optional<Location> getLocation() {
-            return Optional.ofNullable(location);
-        }
-
-        public void setCost(Cost cost) {
-            this.cost = cost;
-        }
-
-        public Optional<Cost> getCost() {
-            return Optional.ofNullable(cost);
-        }
-
-        public void setLevelOfImportance(Importance importance) {
-            this.levelOfImportance = levelOfImportance;
-        }
-
-        public Optional<Importance> getLevelOfImportance() {
-            return Optional.ofNullable(levelOfImportance);
-        }
-
-
-        public void setActivityDateTime(WanderlustDateTime activityDateTime) {
-            this.activityDateTime = activityDateTime;
-        }
-
-        public Optional<WanderlustDateTime> getActivityDateTime() {
-            return Optional.ofNullable(activityDateTime);
-        }
-
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditActivityDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditActivityDescriptor e = (EditActivityDescriptor) other;
-
-            return getName().equals(e.getName())
-                    && getCost().equals(e.getCost())
-                    && getLocation().equals((e.getCost()))
-                    && getLevelOfImportance().equals(e.getLevelOfImportance())
-                    && getActivityDateTime().equals((e.activityDateTime));
-        }
     }
 
 }

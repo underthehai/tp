@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.edit;
+package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
@@ -11,14 +11,13 @@ import java.util.Optional;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
 
 /**
@@ -42,12 +41,12 @@ public class EditFriendCommand extends EditCommand {
     public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in friend list.";
 
     private final Index targetIndex;
-    private final EditFriendDescriptor editFriendDescriptor;
+    private final EditDescriptor editFriendDescriptor;
 
     /**
      * Constructor for edit friend command
      */
-    public EditFriendCommand(Index targetIndex, EditFriendDescriptor editFriendDescriptor) {
+    public EditFriendCommand(Index targetIndex, EditDescriptor editFriendDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
         this.editFriendDescriptor = editFriendDescriptor;
@@ -57,21 +56,13 @@ public class EditFriendCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        //Directory class in model (TBD)
-        Directory currentDir = model.getDirectory();
-        TravelPlan travelPlan = null;
-
-        if (currentDir.isTravelPlan()) {
-            travelPlan = (TravelPlan) currentDir;
-        }
-
-        List<Friend> lastShownList = travelPlan.getFriendList();
+        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
+        Friend friendToEdit = (Friend) lastShownList.get(targetIndex.getZeroBased());
         Friend editedFriend = createEditedFriend(friendToEdit, editFriendDescriptor);
 
         if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {
@@ -87,7 +78,7 @@ public class EditFriendCommand extends EditCommand {
      * edited with {@code editFriendDescriptor}.
      * Edits the name, passport, mobile phone
      */
-    private static Friend createEditedFriend(Friend friendToEdit, EditFriendDescriptor editFriendDescriptor) {
+    private static Friend createEditedFriend(Friend friendToEdit, EditDescriptor editFriendDescriptor) {
         assert friendToEdit != null;
 
         Name updatedName = editFriendDescriptor.getName().orElse(friendToEdit.getName());
@@ -105,80 +96,6 @@ public class EditFriendCommand extends EditCommand {
                 && targetIndex.equals(((EditFriendCommand) other).targetIndex)); // state check
     }
 
-    /**
-     * Stores the details to edit the friend with. Each non-empty field value will replace the
-     * corresponding field value of the friend.
-     */
-    public static class EditFriendDescriptor {
-
-        private Name name;
-        private Passport passport;
-        private Phone phone;
-
-
-        public EditFriendDescriptor() {
-        }
-
-        /**
-         * Copy constructor.
-         */
-        public EditFriendDescriptor(EditFriendDescriptor toCopy) {
-            setName(toCopy.name);
-            setPassport(toCopy.passport);
-            setPhone(toCopy.phone);
-        }
-
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, passport, phone);
-        }
-
-        public void setName(Name name) {
-            this.name = name;
-        }
-
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
-        }
-
-        public void setPassport(Passport passport) {
-            this.passport = passport;
-        }
-
-        public Optional<Passport> getPassport() {
-            return Optional.ofNullable(passport);
-        }
-
-        public void setPhone(Phone phone) {
-            this.phone = phone;
-        }
-
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditFriendDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditFriendDescriptor e = (EditFriendDescriptor) other;
-
-            return getName().equals(e.getName())
-                    && getPassport().equals(e.getPassport())
-                    && getPhone().equals(e.getPhone());
-        }
-    }
 
 
 }
