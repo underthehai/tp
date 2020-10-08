@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.activity.exceptions.ActivityNotFoundException;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.travelplanner.Directory;
 
 /**
  * A list of activities that enforces uniqueness between its elements and does not allow nulls.
@@ -26,7 +25,7 @@ import seedu.address.model.travelplanner.Directory;
  *
  * @see Activity#isSameActivity(Activity)
  */
-public class UniqueActivityList extends Directory implements Iterable<Activity> {
+public class UniqueActivityList implements Iterable<Activity> {
 
     private final ObservableList<Activity> internalList = FXCollections.observableArrayList();
     private final ObservableList<Activity> internalUnmodifiableList =
@@ -115,16 +114,6 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
     public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
         return internalList.stream().map(item -> (TravelPlanObject) item)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
-    }
-
-    @Override
-    public boolean isTravelPlan() {
-        return false;
-    }
-
-    @Override
-    public boolean isWishlist() {
-        return true;
     }
 
     @Override

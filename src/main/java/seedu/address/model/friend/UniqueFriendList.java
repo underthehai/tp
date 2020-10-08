@@ -92,7 +92,7 @@ public class UniqueFriendList implements Iterable<Friend> {
      */
     public void setFriends(List<Friend> friends) {
         requireAllNonNull(friends);
-        if (!personsAreUnique(friends)) {
+        if (!friendsAreUnique(friends)) {
             throw new DuplicateFriendException();
         }
 
@@ -135,7 +135,7 @@ public class UniqueFriendList implements Iterable<Friend> {
     /**
      * Returns true if {@code friends} contains only unique friends.
      */
-    private boolean personsAreUnique(List<Friend> friends) {
+    private boolean friendsAreUnique(List<Friend> friends) {
         for (int i = 0; i < friends.size() - 1; i++) {
             for (int j = i + 1; j < friends.size(); j++) {
                 if (friends.get(i).isSameFriend(friends.get(j))) {
