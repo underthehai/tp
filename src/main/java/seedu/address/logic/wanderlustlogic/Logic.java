@@ -24,7 +24,7 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the Travelplan.
+     * Returns the Travel planner.
      *
      * @see seedu.address.model.Model#getAddressBook()
      */
