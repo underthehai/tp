@@ -53,8 +53,8 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
-     * Replaces the contents of the wishlist with {@code wishlist}.
-     * {@code wishlist} must not contain duplicate activities.
+     * Replaces the contents of the wishlist with {@code activities}.
+     * {@code activities} must not contain duplicate activities.
      */
     public void setWishlist(List<Activity> activities) {
         this.wishlist.setActivities(activities);
@@ -140,7 +140,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
-     * Returns the wishlist as a UniqueActivityList.
+     * Returns the wishlist as a Wishlist.
      * Used to initialize the directory.
      */
     public Wishlist getWishlistAsDirectory() {
