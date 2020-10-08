@@ -11,7 +11,7 @@ import seedu.address.testutil.builders.ActivityBuilder;
 
 public class TypicalActivities {
 
-    public static final Activity ARCHERY = new ActivityBuilder().withName("Archery!")
+    public static final Activity ARCHERY = new ActivityBuilder().withName("Archery")
             .withCost("100.50").withLevelOfImportance("1")
             .withLocation("92 Archery Avenue")
             .withDateTime("2020-09-09 09:00").build();

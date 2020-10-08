@@ -37,10 +37,10 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         travelPlanObjectListView.setCellFactory(listView -> new TravelPlanObjectListViewCell());
     }
 
-    public ObservableList<TravelPlanObject> toObservableTpoList(ObservableList<? extends TravelPlanObject> list) {
+    private ObservableList<TravelPlanObject> toObservableTpoList(ObservableList<? extends TravelPlanObject> list) {
         return list.stream().map(item -> (TravelPlanObject) item)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
-    }   
+    }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the respective

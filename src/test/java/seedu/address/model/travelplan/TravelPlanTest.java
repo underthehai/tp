@@ -18,10 +18,6 @@ import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class TravelPlanTest {
 
-    /**
-     * NOT DONE: WAITING FOR AccommodationBuilder, TypicalAccommodations TO BE UPDATED.
-     */
-
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         TravelPlan travelPlan = new TravelPlanBuilder().build();

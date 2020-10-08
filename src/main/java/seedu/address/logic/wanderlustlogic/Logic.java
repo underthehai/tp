@@ -7,7 +7,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 
 /**
@@ -24,14 +27,25 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the Travel planner.
+     * Returns the TravelPlanner.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.travelplanner.Model#getTravelPlanner()
      */
     ReadOnlyTravelPlanner getTravelPlanner();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<TravelPlan> getFilteredTravelPlan();
+    /** Returns an unmodifiable view of the filtered list of travelPlans. */
+    ObservableList<TravelPlan> getFilteredTravelPlanList();
+
+    /** Returns an unmodifiable view of the filtered list of wishlist activities. */
+    ObservableList<Activity> getFilteredWishlist();
+
+    /** Returns an unmodifiable view of the filtered list of travelPlanObjects. */
+    ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList();
+
+    /**
+     * Returns the current directory.
+     */
+    Directory getDirectory();
 
     /**
      * Returns the user prefs' address book file path.
