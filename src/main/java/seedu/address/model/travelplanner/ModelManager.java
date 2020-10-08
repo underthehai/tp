@@ -26,7 +26,6 @@ public class ModelManager implements Model {
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
     private Directory directory;
-    private TravelPlan currentTravelPlan;
     private FilteredList<? extends TravelPlanObject> currentFilteredTravelPlanObjectList;
 
     /**
@@ -151,7 +150,6 @@ public class ModelManager implements Model {
     @Override
     public void setDirectory(Directory dir) {
         directory = dir;
-        setCurrentTravelPlan();
     }
 
     @Override
@@ -159,29 +157,26 @@ public class ModelManager implements Model {
         return directory;
     }
 
-    /**
-     * Sets the current travel plan to the current directory.
-     */
-    private void setCurrentTravelPlan() {
-        if (directory.isTravelPlan()) {
-            currentTravelPlan = (TravelPlan) directory;
-            currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
-        }
-    }
+    //========== TravelPlanObjectList ===================================================
 
     @Override
     public void setToActivityList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
+        currentFilteredTravelPlanObjectList = new FilteredList<>(directory.getActivityList());
     }
 
     @Override
     public void setToAccommodationList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getAccommodationList());
+        assert directory instanceof TravelPlan
+                : "Directory must be set to a TravelPlan to call setToAccommodationList.";
+        TravelPlan tp = (TravelPlan) directory;
+        currentFilteredTravelPlanObjectList = new FilteredList<>(tp.getAccommodationList());
     }
 
     @Override
     public void setToFriendList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getFriendList());
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setToFriendList.";
+        TravelPlan tp = (TravelPlan) directory;
+        currentFilteredTravelPlanObjectList = new FilteredList<>(tp.getFriendList());
     }
 
     //=========== TravelPlanObject =============================================================
@@ -189,24 +184,34 @@ public class ModelManager implements Model {
     @Override
     public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        return currentTravelPlan.hasTravelPlanObject(tPObj);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call hasTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        return tp.hasTravelPlanObject(tPObj);
     }
 
     @Override
     public void deleteTravelPlanObject(TravelPlanObject tPObj) {
-        currentTravelPlan.removeTravelPlanObject(tPObj);
+        requireNonNull(tPObj);
+        assert directory instanceof TravelPlan
+                : "Directory must be set to a TravelPlan to call deleteTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.removeTravelPlanObject(tPObj);
     }
 
     @Override
     public void addTravelPlanObject(TravelPlanObject tPObj) {
-        currentTravelPlan.addTravelPlanObject(tPObj);
+        requireNonNull(tPObj);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call addTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.addTravelPlanObject(tPObj);
     }
 
     @Override
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         requireAllNonNull(target, editedTravelPlanObject);
-
-        currentTravelPlan.setTravelPlanObject(target, editedTravelPlanObject);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.setTravelPlanObject(target, editedTravelPlanObject);
     }
 
     //=========== Filtered TravelPlan List Accessors =============================================================

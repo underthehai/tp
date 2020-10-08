@@ -196,16 +196,6 @@ public class TravelPlan extends Directory {
     }
 
     @Override
-    public boolean isTravelPlan() {
-        return true;
-    }
-
-    @Override
-    public boolean isWishlist() {
-        return false;
-    }
-
-    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TravelPlan // instanceof handles nulls

@@ -7,9 +7,9 @@ import java.util.Objects;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
-import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplan.UniqueTravelPlanList;
+import seedu.address.model.wishlist.Wishlist;
 
 /**
  * Wraps all data at the travel planner level
@@ -18,7 +18,7 @@ import seedu.address.model.travelplan.UniqueTravelPlanList;
 public class TravelPlanner implements ReadOnlyTravelPlanner {
 
     private final UniqueTravelPlanList travelPlans;
-    private final UniqueActivityList wishlist;
+    private final Wishlist wishlist;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -29,7 +29,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      */
     {
         travelPlans = new UniqueTravelPlanList();
-        wishlist = new UniqueActivityList();
+        wishlist = new Wishlist();
     }
 
     public TravelPlanner() {}
@@ -56,8 +56,8 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * Replaces the contents of the wishlist with {@code wishlist}.
      * {@code wishlist} must not contain duplicate activities.
      */
-    public void setWishlist(List<Activity> wishlist) {
-        this.wishlist.setActivities(wishlist);
+    public void setWishlist(List<Activity> activities) {
+        this.wishlist.setActivities(activities);
     }
 
     /**
@@ -84,8 +84,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * Returns true if an activity with the same identity as {@code activity} exists in the wishlist.
      */
     public boolean hasActivity(Activity activity) {
-        requireNonNull(activity);
-        return wishlist.contains(activity);
+        return wishlist.hasActivity(activity);
     }
 
     /**
@@ -100,7 +99,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * Adds an activity to the wishlist.
      */
     public void addActivity(Activity activity) {
-        wishlist.add(activity);
+        wishlist.addActivity(activity);
     }
 
     /**
@@ -111,7 +110,6 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      */
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireNonNull(editedTravelPlan);
-
         travelPlans.setTravelPlan(target, editedTravelPlan);
     }
 
@@ -122,8 +120,6 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * wishlist.
      */
     public void setActivity(Activity target, Activity editedActivity) {
-        requireNonNull(editedActivity);
-
         wishlist.setActivity(target, editedActivity);
     }
 
@@ -140,14 +136,14 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * {@code key} must exist in the wishlist.
      */
     public void removeActivity(Activity key) {
-        wishlist.remove(key);
+        wishlist.removeActivity(key);
     }
 
     /**
      * Returns the wishlist as a UniqueActivityList.
      * Used to initialize the directory.
      */
-    public UniqueActivityList getWishlistAsDirectory() {
+    public Wishlist getWishlistAsDirectory() {
         return wishlist;
     }
 
@@ -156,7 +152,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     @Override
     public String toString() {
         return travelPlans.asUnmodifiableObservableList().size() + " travel plans\n"
-                + wishlist.asUnmodifiableObservableList().size() + " activities";
+                + wishlist.getActivityList().size() + " activities";
         // TODO: refine later
     }
 
@@ -167,7 +163,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
 
     @Override
     public ObservableList<Activity> getWishlist() {
-        return wishlist.asUnmodifiableObservableList();
+        return wishlist.getActivityList();
     }
 
     @Override
