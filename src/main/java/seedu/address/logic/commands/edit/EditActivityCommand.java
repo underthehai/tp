@@ -1,14 +1,13 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,16 +16,16 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
-import seedu.address.model.commons.Name;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
-import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.commons.Name;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
-import seedu.address.model.activity.Activity;
+
 
 /**
  * Edits an existing Activity in the address book and updates the travel plan/wishlist in the current directory
@@ -58,6 +57,9 @@ public class EditActivityCommand extends EditCommand {
     private final Index targetIndex;
     private final EditActivityDescriptor editActivityDescriptor;
 
+    /**
+     * Constructor for editactivity command
+     */
     public EditActivityCommand(Index targetIndex, EditActivityDescriptor editActivityDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
@@ -66,7 +68,6 @@ public class EditActivityCommand extends EditCommand {
 
 
     //handling the travelplan activity
-    //TODO wishlist activity
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -100,17 +101,21 @@ public class EditActivityCommand extends EditCommand {
      * edited with {@code editActivityDescriptor}.
      * Edits the importance, cost, location, startime, end time
      */
-    private static Activity createEditedActivity(Activity activityToEdit, EditActivityDescriptor editActivityDescriptor) {
+    private static Activity createEditedActivity(Activity activityToEdit,
+                                                 EditActivityDescriptor editActivityDescriptor) {
         assert activityToEdit != null;
 
         Name updatedName = editActivityDescriptor.getName().orElse(activityToEdit.getName());
 
         Location updatedlocation = editActivityDescriptor.getLocation().orElse(activityToEdit.getLocation());
         Cost updatedCost = editActivityDescriptor.getCost().orElse(activityToEdit.getCost());
-        Importance updatedLevelOfImportance = editActivityDescriptor.getLevelOfImportance().orElse(activityToEdit.getLevelOfImportance());
-        WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime().orElse(activityToEdit.getActivityDateTime());
+        Importance updatedLevelOfImportance = editActivityDescriptor.getLevelOfImportance()
+                .orElse(activityToEdit.getLevelOfImportance());
+        WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime()
+                .orElse(activityToEdit.getActivityDateTime());
 
-        return new Activity(updatedName, updatedlocation, updatedCost, updatedLevelOfImportance, updatedActivityDateTime);
+        return new Activity(updatedName, updatedlocation, updatedCost, updatedLevelOfImportance,
+                updatedActivityDateTime);
     }
 
     @Override

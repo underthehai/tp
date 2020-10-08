@@ -1,13 +1,12 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -15,13 +14,11 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplan.FriendList;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
+import seedu.address.model.travelplan.FriendList;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 
@@ -38,8 +35,8 @@ public class EditTravelPlanCommand extends EditCommand {
             + "[" + PREFIX_START_DATE + "STARTDATE] "
             + "[" + PREFIX_END_DATE + "ENDDATE] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_START_DATE +" jan 20 2020 "
-            + PREFIX_END_DATE +" jan 30 2020";
+            + PREFIX_START_DATE + " jan 20 2020 "
+            + PREFIX_END_DATE + " jan 30 2020";
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
     public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";
@@ -47,6 +44,7 @@ public class EditTravelPlanCommand extends EditCommand {
     private final Index targetIndex;
     private final EditTravelPlanDescriptor editTravelPlanDescriptor;
 
+    /** Constructor for edit travel plan*/
     public EditTravelPlanCommand(Index targetIndex, EditTravelPlanDescriptor editTravelPlanDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
@@ -81,11 +79,13 @@ public class EditTravelPlanCommand extends EditCommand {
      * Creates and returns a {@code TravelPlan} with the details of {@code travelPlanToEdit}
      * edited with {@code editTravelPlanDescriptor}.
      */
-    private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit, EditTravelPlanDescriptor editTravelPlanDescriptor) {
+    private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit,
+                                                     EditTravelPlanDescriptor editTravelPlanDescriptor) {
         assert travelPlanToEdit != null;
 
         Name updatedName = editTravelPlanDescriptor.getName().orElse(travelPlanToEdit.getName());
-        WanderlustDate updatedStartDate = editTravelPlanDescriptor.getStartDate().orElse(travelPlanToEdit.getStartDate());
+        WanderlustDate updatedStartDate = editTravelPlanDescriptor.getStartDate()
+                .orElse(travelPlanToEdit.getStartDate());
         WanderlustDate updatedEndDate = editTravelPlanDescriptor.getEndDate().orElse(travelPlanToEdit.getEndDate());
 
         //obtain data list from original travelplan
@@ -113,7 +113,8 @@ public class EditTravelPlanCommand extends EditCommand {
         private WanderlustDate startDate;
         private WanderlustDate endDate;
 
-        public EditTravelPlanDescriptor() {}
+        public EditTravelPlanDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -134,6 +135,7 @@ public class EditTravelPlanCommand extends EditCommand {
         public void setName(Name name) {
             this.name = name;
         }
+
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
@@ -141,6 +143,7 @@ public class EditTravelPlanCommand extends EditCommand {
         public void setStartDate(WanderlustDate startDate) {
             this.startDate = startDate;
         }
+
         public Optional<WanderlustDate> getStartDate() {
             return Optional.ofNullable(startDate);
         }
@@ -148,6 +151,7 @@ public class EditTravelPlanCommand extends EditCommand {
         public void setEndDate(WanderlustDate endDate) {
             this.endDate = endDate;
         }
+
         public Optional<WanderlustDate> getEndDate() {
             return Optional.ofNullable(endDate);
         }

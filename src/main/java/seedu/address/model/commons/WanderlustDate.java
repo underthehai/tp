@@ -8,7 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * Represents a TravelPlan's start/end date in the travel planner.
@@ -34,8 +33,8 @@ public class WanderlustDate {
     public WanderlustDate(String date) {
         requireNonNull(date);
         checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
-
         this.date = date;
+        value = LocalDate.parse(date);
     }
 
     /**

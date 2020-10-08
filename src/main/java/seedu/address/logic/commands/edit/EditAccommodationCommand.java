@@ -1,11 +1,11 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.commons.Name;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
@@ -39,18 +39,19 @@ public class EditAccommodationCommand extends EditCommand {
             + "[" + PREFIX_LOCATION + "LOCATION] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "Hard Rock Hotel"
-            + PREFIX_START_DATE +" jan 20 2020 "
-            + PREFIX_END_DATE +" jan 30 2020"
+            + PREFIX_START_DATE + " jan 20 2020 "
+            + PREFIX_END_DATE + " jan 30 2020"
             + PREFIX_LOCATION + "Sentosa"
             + PREFIX_COST + "SGD500";
 
 
-    public static final String MESSAGE_EDIT_Accommodation_SUCCESS = "Edited Accommodation: %1$s";
-    public static final String MESSAGE_DUPLICATE_Accommodation = "This accommodation already exists in the travelplan.";
+    public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
+    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the travelplan.";
 
     private final Index targetIndex;
     private final EditAccommodationDescriptor editAccommodationDescriptor;
 
+    /** Constructor for edit accommodation*/
     public EditAccommodationCommand(Index targetIndex, EditAccommodationDescriptor editAccommodationDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
@@ -78,14 +79,15 @@ public class EditAccommodationCommand extends EditCommand {
         Accommodation accommodationToEdit = lastShownList.get(targetIndex.getZeroBased());
         Accommodation editedAccommodation = createEditedAccommodation(accommodationToEdit, editAccommodationDescriptor);
 
-        if (!accommodationToEdit.isSameAccommodation(editedAccommodation) && travelPlan.hasTravelPlanObject(editedAccommodation)) {
-            throw new CommandException(MESSAGE_DUPLICATE_Accommodation);
+        if (!accommodationToEdit.isSameAccommodation(editedAccommodation)
+                && travelPlan.hasTravelPlanObject(editedAccommodation)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
 
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
 
 
-        return new CommandResult(String.format(MESSAGE_EDIT_Accommodation_SUCCESS, editedAccommodation));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
     }
 
     /**
@@ -93,7 +95,8 @@ public class EditAccommodationCommand extends EditCommand {
      * edited with {@code editAccommodationDescriptor}.
      * Edits the name location cost sd ed
      */
-    private static Accommodation createEditedAccommodation(Accommodation accommodationToEdit, EditAccommodationDescriptor editAccommodationDescriptor) {
+    private static Accommodation createEditedAccommodation(Accommodation accommodationToEdit,
+                                                           EditAccommodationDescriptor editAccommodationDescriptor) {
         assert accommodationToEdit != null;
 
         Name updatedName;
@@ -174,6 +177,7 @@ public class EditAccommodationCommand extends EditCommand {
         public void setStartDate(WanderlustDate startDate) {
             this.startDate = startDate;
         }
+
         public Optional<WanderlustDate> getStartDate() {
             return Optional.ofNullable(startDate);
         }
@@ -181,6 +185,7 @@ public class EditAccommodationCommand extends EditCommand {
         public void setEndDate(WanderlustDate endDate) {
             this.endDate = endDate;
         }
+
         public Optional<WanderlustDate> getEndDate() {
             return Optional.ofNullable(endDate);
         }

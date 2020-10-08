@@ -1,9 +1,9 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,12 +14,12 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.commons.Name;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
-import seedu.address.model.friend.Friend;
 
 /**
  * Edits existing Friend in the address book. This command can only be used within a travel plan.
@@ -44,6 +44,9 @@ public class EditFriendCommand extends EditCommand {
     private final Index targetIndex;
     private final EditFriendDescriptor editFriendDescriptor;
 
+    /**
+     * Constructor for edit friend command
+     */
     public EditFriendCommand(Index targetIndex, EditFriendDescriptor editFriendDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;

@@ -3,12 +3,12 @@ package seedu.address.model.accommodation;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.commons.TravelPlanObject;
-
+import seedu.address.model.commons.WanderlustDate;
 
 /**
  * Represents an Accommodation in the travel plan.
