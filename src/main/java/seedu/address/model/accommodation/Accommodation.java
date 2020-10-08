@@ -7,7 +7,7 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.travelplan.TravelPlanObject;
+import seedu.address.model.commons.TravelPlanObject;
 
 
 /**

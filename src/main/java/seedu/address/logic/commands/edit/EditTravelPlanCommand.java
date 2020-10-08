@@ -18,17 +18,15 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.FriendList;
-import seedu.address.model.travelplanner.Model;
-import seedu.address.model.travelplan.ReadOnlyAccommodationList;
-import seedu.address.model.travelplan.ReadOnlyFriendList;
 import seedu.address.model.travelplan.TravelPlan;
-
+import seedu.address.model.travelplan.FriendList;
+import seedu.address.model.travelplan.AccommodationList;
+import seedu.address.model.travelplan.ActivityList;
+import seedu.address.model.travelplanner.Model;
 
 
 /**
- * Edit start date or end date
+ * Edit name start date or end date of travelplan
  */
 public class EditTravelPlanCommand extends EditCommand {
     public static final String COMMAND_WORD = "travelplan";
@@ -91,14 +89,11 @@ public class EditTravelPlanCommand extends EditCommand {
         WanderlustDate updatedEndDate = editTravelPlanDescriptor.getEndDate().orElse(travelPlanToEdit.getEndDate());
 
         //obtain data list from original travelplan
-        ReadOnlyActivityList activities = (ReadOnlyActivityList) travelPlanToEdit.getActivityList();
-        ReadOnlyAccommodationList accommodations = (AccommodationList) travelPlanToEdit.getAccommodationList();
-        ReadOnlyFriendList friends = (FriendList) travelPlanToEdit.getFriendList();
-        Set<Tag> tags = travelPlanToEdit.getTags();
+        ActivityList activities = (ActivityList) travelPlanToEdit.getActivityList();
+        AccommodationList accommodations = (AccommodationList) travelPlanToEdit.getAccommodationList();
+        FriendList friends = (FriendList) travelPlanToEdit.getFriendList();
 
-
-        // TODO: get data fields (TBD)
-        return new TravelPlan(updatedName, updatedStartDate, updatedEndDate, tags, accommodations, activities, friends);
+        return new TravelPlan(updatedName, updatedStartDate, updatedEndDate, activities, accommodations, friends);
     }
 
     @Override

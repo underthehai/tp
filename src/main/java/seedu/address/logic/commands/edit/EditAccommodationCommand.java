@@ -21,11 +21,11 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
 
 /**
  * Edits existing Accommodation in the address book. This command can only be used within a travel plan.
- * n sd en l c
  */
 public class EditAccommodationCommand extends EditCommand {
     public static final String COMMAND_WORD = "accommodation";
@@ -60,7 +60,6 @@ public class EditAccommodationCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Accommodation> lastShownList = model.getFilteredAccommodationList();
 
         //Directory class in model (TBD)
         Directory currentDir = model.getDirectory();
@@ -69,6 +68,8 @@ public class EditAccommodationCommand extends EditCommand {
         if (currentDir.isTravelPlan()) {
             travelPlan = (TravelPlan) currentDir;
         }
+
+        List<Accommodation> lastShownList = travelPlan.getAccommodationList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
@@ -81,7 +82,9 @@ public class EditAccommodationCommand extends EditCommand {
             throw new CommandException(MESSAGE_DUPLICATE_Accommodation);
         }
 
-        model.setAccommodation(accommodationToEdit, editedAccommodation, travelPlan);
+        model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
+
+
         return new CommandResult(String.format(MESSAGE_EDIT_Accommodation_SUCCESS, editedAccommodation));
     }
 

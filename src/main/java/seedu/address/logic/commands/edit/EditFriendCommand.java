@@ -17,12 +17,12 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.friend.Friend;
 
 /**
  * Edits existing Friend in the address book. This command can only be used within a travel plan.
- * n m p
  */
 public class EditFriendCommand extends EditCommand {
     public static final String COMMAND_WORD = "friend";
@@ -53,7 +53,6 @@ public class EditFriendCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Friend> lastShownList = model.getFilteredFriendList();
 
         //Directory class in model (TBD)
         Directory currentDir = model.getDirectory();
@@ -62,6 +61,8 @@ public class EditFriendCommand extends EditCommand {
         if (currentDir.isTravelPlan()) {
             travelPlan = (TravelPlan) currentDir;
         }
+
+        List<Friend> lastShownList = travelPlan.getFriendList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
@@ -74,7 +75,7 @@ public class EditFriendCommand extends EditCommand {
             throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
 
-        model.setFriend(friendToEdit, editedFriend, travelPlan);
+        model.setTravelPlanObject(friendToEdit, editedFriend);
         return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend));
     }
 

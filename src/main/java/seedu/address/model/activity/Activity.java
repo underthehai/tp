@@ -37,17 +37,6 @@ public class Activity extends TravelPlanObject {
         this.activityDateTime = activityDateTime;
     }
 
-    //Constructor for edit activity
-    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, LocalDateTime date) {
-        requireAllNonNull(name, location, cost, levelOfImportance, date);
-        this.name = name;
-        this.location = location;
-        this.cost = cost;
-        this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = date;
-
-    }
-
     public Name getName() {
         return name;
     }

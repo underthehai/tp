@@ -18,16 +18,19 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.activity.Importance;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.activity.Activity;
 
 /**
  * Edits an existing Activity in the address book and updates the travel plan/wishlist in the current directory
- * Edits the importance, cost, datetime, location, nights
+ * Edits the importance, cost, location, startdate, enddate
  */
 public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
@@ -46,7 +49,8 @@ public class EditActivityCommand extends EditCommand {
             + "i/2"
             + "l/Sentosa"
             + "c/SGD500"
-            + "d/20 September 1430";
+            + "sd/20 September 2020"
+            + "ed/30 September 2020";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";
@@ -66,7 +70,6 @@ public class EditActivityCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Activity> lastShownList = model.getFilteredActivityList();
 
         //Directory class in model (TBD)
         Directory currentDir = model.getDirectory();
@@ -76,6 +79,7 @@ public class EditActivityCommand extends EditCommand {
             travelPlan = (TravelPlan) currentDir;
         }
 
+        List<Activity> lastShownList = travelPlan.getActivityList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
@@ -87,14 +91,14 @@ public class EditActivityCommand extends EditCommand {
             throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
         }
 
-        model.setActivityOnTravelPlan(activityToEdit, editedActivity, travelPlan);
+        model.setTravelPlanObject(activityToEdit, editedActivity);
         return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
     }
 
     /**
      * Creates and returns a {@code Activity} with the details of {@code activityToEdit}
      * edited with {@code editActivityDescriptor}.
-     * Edits the importance, cost, datetime, location, nights
+     * Edits the importance, cost, location, startime, end time
      */
     private static Activity createEditedActivity(Activity activityToEdit, EditActivityDescriptor editActivityDescriptor) {
         assert activityToEdit != null;
@@ -104,7 +108,7 @@ public class EditActivityCommand extends EditCommand {
         Location updatedlocation = editActivityDescriptor.getLocation().orElse(activityToEdit.getLocation());
         Cost updatedCost = editActivityDescriptor.getCost().orElse(activityToEdit.getCost());
         Importance updatedLevelOfImportance = editActivityDescriptor.getLevelOfImportance().orElse(activityToEdit.getLevelOfImportance());
-        LocalDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime().orElse(activityToEdit.getActivityDateTime());
+        WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime().orElse(activityToEdit.getActivityDateTime());
 
         return new Activity(updatedName, updatedlocation, updatedCost, updatedLevelOfImportance, updatedActivityDateTime);
     }
@@ -126,7 +130,7 @@ public class EditActivityCommand extends EditCommand {
         private Location location;
         private Cost cost;
         private Importance levelOfImportance;
-        private LocalDateTime activityDateTime;
+        private WanderlustDateTime activityDateTime;
 
 
         public EditActivityDescriptor() {
@@ -183,11 +187,11 @@ public class EditActivityCommand extends EditCommand {
         }
 
 
-        public void setActivityDateTime(LocalDateTime activityDateTime) {
+        public void setActivityDateTime(WanderlustDateTime activityDateTime) {
             this.activityDateTime = activityDateTime;
         }
 
-        public Optional<LocalDateTime> getActivityDateTime() {
+        public Optional<WanderlustDateTime> getActivityDateTime() {
             return Optional.ofNullable(activityDateTime);
         }
 
