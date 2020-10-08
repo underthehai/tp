@@ -23,7 +23,7 @@ public class Activity extends TravelPlanObject {
     private final Location location;
     private final Cost cost;
     private final Importance levelOfImportance;
-    private WanderlustDateTime activityDateTime;
+    private final WanderlustDateTime activityDateTime;
 
 
     /**
