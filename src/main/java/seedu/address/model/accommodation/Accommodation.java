@@ -16,9 +16,12 @@ import seedu.address.model.commons.WanderlustDate;
  */
 public class Accommodation extends TravelPlanObject {
 
+    // identity fields
     private final Name name;
     private final WanderlustDate startDate;
     private final WanderlustDate endDate;
+
+    // attributes
     private final Cost cost;
     private final Location location;
 

@@ -174,6 +174,10 @@ public class TravelPlan extends Directory {
 
     //// travel plan data methods
 
+    public AccommodationList getAccommodations() {
+        return accommodations;
+    }
+
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.getAccommodationList();
     }
@@ -182,12 +186,20 @@ public class TravelPlan extends Directory {
         return accommodations.getTpoList();
     }
 
+    public ActivityList getActivities() {
+        return activities;
+    }
+
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
 
     public ObservableList<TravelPlanObject> getActivityTpoList() {
         return activities.getTpoList();
+    }
+
+    public FriendList getFriends() {
+        return friends;
     }
 
     public ObservableList<Friend> getFriendList() {
