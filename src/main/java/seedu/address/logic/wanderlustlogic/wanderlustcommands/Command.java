@@ -1,7 +1,6 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.travelplanner.Model;
 
 /**

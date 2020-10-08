@@ -6,7 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
@@ -16,6 +15,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.HelpCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ListCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 
 /**
  * Parses user input.

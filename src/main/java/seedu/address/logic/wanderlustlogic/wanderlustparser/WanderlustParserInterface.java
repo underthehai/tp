@@ -1,7 +1,7 @@
 package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 
 /**
  * Represents a Parser that is able to parse user input into a {@code Command} of type {@code T}.

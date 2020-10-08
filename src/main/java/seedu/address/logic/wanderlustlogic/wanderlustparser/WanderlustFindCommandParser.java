@@ -4,8 +4,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import java.util.Arrays;
 
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 
