@@ -12,7 +12,9 @@ public class Cost {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Cost should only contain numbers, and it should be a positive integer";
+
     public static final String VALIDATION_REGEX = "\\p{Digit}+(.\\p{Digit}\\p{Digit})?";
+
     public final String value;
 
     /**
