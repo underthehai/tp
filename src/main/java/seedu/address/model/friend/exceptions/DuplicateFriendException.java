@@ -6,6 +6,6 @@ package seedu.address.model.friend.exceptions;
  */
 public class DuplicateFriendException extends RuntimeException {
     public DuplicateFriendException() {
-        super("This operation will result in duplicate Friend");
+        super("This operation will result in duplicate friends");
     }
 }
