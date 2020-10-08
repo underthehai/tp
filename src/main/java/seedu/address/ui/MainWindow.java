@@ -124,7 +124,8 @@ public class MainWindow extends UiPart<Stage> {
         travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
 
-        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
+                logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

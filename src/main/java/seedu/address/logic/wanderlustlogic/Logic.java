@@ -7,8 +7,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
-import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
@@ -39,8 +40,14 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of wishlist activities. */
     ObservableList<Activity> getFilteredWishlist();
 
-    /** Returns an unmodifiable view of the filtered list of travelPlanObjects. */
-    ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList();
+    /** Returns an unmodifiable view of the filtered list of activities. */
+    ObservableList<Activity> getFilteredActivityList();
+
+    /** Returns an unmodifiable view of the filtered list of accommodations. */
+    ObservableList<Accommodation> getFilteredAccommodationList();
+
+    /** Returns an unmodifiable view of the filtered list of friends. */
+    ObservableList<Friend> getFilteredFriendList();
 
     /**
      * Returns the current directory.

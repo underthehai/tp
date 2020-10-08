@@ -16,6 +16,7 @@ import seedu.address.model.commons.TravelPlanObject;
  */
 public class ActivityList implements ReadOnlyActivityList {
 
+    public static final ObservableList<Activity> EMPTY_ACTIVITY_LIST = new ActivityList().getActivityList();
     private final UniqueActivityList activities;
 
     /*
