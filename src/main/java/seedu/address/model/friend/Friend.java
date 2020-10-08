@@ -93,5 +93,4 @@ public class Friend extends TravelPlanObject {
         return builder.toString();
     }
 
-
 }

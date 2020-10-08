@@ -40,8 +40,8 @@ public class Passport {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Phone // instanceof handles nulls
-                && value.equals(((Phone) other).value)); // state check
+                || (other instanceof Passport // instanceof handles nulls
+                && value.equals(((Passport) other).value)); // state check
     }
 
     @Override
