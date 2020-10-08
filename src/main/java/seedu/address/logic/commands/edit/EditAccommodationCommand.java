@@ -62,7 +62,6 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        //Directory class in model (TBD)
         Directory currentDir = model.getDirectory();
         TravelPlan travelPlan = null;
 
@@ -99,14 +98,16 @@ public class EditAccommodationCommand extends EditCommand {
                                                            EditAccommodationDescriptor editAccommodationDescriptor) {
         assert accommodationToEdit != null;
 
-        Name updatedName;
-        Location location;
-        Cost cost;
-        WanderlustDate startDate;
-        WanderlustDate endDate;
+        Name updatedName = editAccommodationDescriptor.getName().orElse(accommodationToEdit.getName());
+        Location updatedLocation = editAccommodationDescriptor.getLocation().orElse(accommodationToEdit.getLocation());
+        Cost updatedCost = editAccommodationDescriptor.getCost().orElse(accommodationToEdit.getCost());
+        WanderlustDate updatedStartDate = editAccommodationDescriptor.getStartDate()
+                .orElse(accommodationToEdit.getStartDate());
+        WanderlustDate updatedEndDate = editAccommodationDescriptor.getEndDate()
+                .orElse(accommodationToEdit.getEndDate());
 
 
-        return null;
+        return new Accommodation(updatedName, updatedStartDate, updatedEndDate, updatedCost, updatedLocation);
     }
 
     @Override

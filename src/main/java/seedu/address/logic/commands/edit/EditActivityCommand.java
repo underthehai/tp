@@ -44,12 +44,12 @@ public class EditActivityCommand extends EditCommand {
             + "[" + PREFIX_START_DATE + "START_DATE] "
             + "[" + PREFIX_END_DATE + "END_DATE] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + "n/Hard Rock Hotel"
-            + "i/2"
-            + "l/Sentosa"
-            + "c/SGD500"
-            + "sd/20 September 2020"
-            + "ed/30 September 2020";
+            + PREFIX_NAME + "Hard Rock Hotel"
+            + PREFIX_IMPORTANCE + "2"
+            + PREFIX_LOCATION + "Sentosa"
+            + PREFIX_COST + "SGD500"
+            + PREFIX_START_DATE + "20 September 2020"
+            + PREFIX_END_DATE + "30 September 2020";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";

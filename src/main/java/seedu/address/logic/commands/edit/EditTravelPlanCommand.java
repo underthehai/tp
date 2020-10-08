@@ -35,6 +35,7 @@ public class EditTravelPlanCommand extends EditCommand {
             + "[" + PREFIX_START_DATE + "STARTDATE] "
             + "[" + PREFIX_END_DATE + "ENDDATE] "
             + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_NAME + " Trip to Japan "
             + PREFIX_START_DATE + " jan 20 2020 "
             + PREFIX_END_DATE + " jan 30 2020";
 
@@ -44,7 +45,9 @@ public class EditTravelPlanCommand extends EditCommand {
     private final Index targetIndex;
     private final EditTravelPlanDescriptor editTravelPlanDescriptor;
 
-    /** Constructor for edit travel plan*/
+    /**
+     * Constructor for edit travel plan
+     */
     public EditTravelPlanCommand(Index targetIndex, EditTravelPlanDescriptor editTravelPlanDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;

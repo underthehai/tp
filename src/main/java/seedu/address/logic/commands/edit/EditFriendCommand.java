@@ -34,9 +34,9 @@ public class EditFriendCommand extends EditCommand {
             + "[" + PREFIX_PASSPORT + "PASSPORT] "
             + "[" + PREFIX_MOBILE + "MOBILE_PHONE] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "John"
-            + PREFIX_PASSPORT + "E1234567H"
-            + PREFIX_MOBILE + "81234567";
+            + PREFIX_NAME + "John "
+            + PREFIX_PASSPORT + "E1234567H "
+            + PREFIX_MOBILE + "81234567 ";
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
     public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in friend list.";
