@@ -2,12 +2,15 @@ package seedu.address.model.activity;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents an Activity in the travel plan.
@@ -23,6 +26,7 @@ public class Activity extends TravelPlanObject {
     private final Cost cost;
     private final Importance levelOfImportance;
     private final WanderlustDateTime activityDateTime;
+    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -35,6 +39,20 @@ public class Activity extends TravelPlanObject {
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
         this.activityDateTime = activityDateTime;
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance,
+                    WanderlustDateTime activityDateTime, Set<Tag> tags) {
+        requireAllNonNull(name, location, cost, levelOfImportance, activityDateTime);
+        this.name = name;
+        this.location = location;
+        this.cost = cost;
+        this.levelOfImportance = levelOfImportance;
+        this.activityDateTime = activityDateTime;
+        this.tags.addAll(tags);
     }
 
     public Name getName() {
@@ -55,6 +73,10 @@ public class Activity extends TravelPlanObject {
 
     public WanderlustDateTime getActivityDateTime() {
         return activityDateTime;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
     }
 
     /**

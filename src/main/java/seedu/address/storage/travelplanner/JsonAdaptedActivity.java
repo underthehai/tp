@@ -32,7 +32,8 @@ public class JsonAdaptedActivity {
                                @JsonProperty("location") String location,
                                @JsonProperty("cost") String cost,
                                @JsonProperty("levelOfImportance") String levelOfImportance,
-                               @JsonProperty("dateTime") String dateTime) {
+                               @JsonProperty("dateTime") String dateTime,
+                               @JsonProperty("tags") String tags) {
         this.name = name;
         this.location = location;
         this.cost = cost;
