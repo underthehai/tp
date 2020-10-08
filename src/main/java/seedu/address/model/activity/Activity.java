@@ -35,7 +35,6 @@ public class Activity extends TravelPlanObject {
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
         this.activityDateTime = activityDateTime;
-
     }
 
     //Constructor for edit activity

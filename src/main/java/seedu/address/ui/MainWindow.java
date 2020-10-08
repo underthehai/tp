@@ -16,6 +16,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
+import seedu.address.model.util.SampleWanderlustDataUtil;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -30,8 +32,12 @@ public class MainWindow extends UiPart<Stage> {
     private Stage primaryStage;
     private Logic logic;
 
+    private final ReadOnlyTravelPlanner travelPlannerStub = SampleWanderlustDataUtil.getSampleTravelPlanner();
+
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private TravelPlannerPanel travelPlannerPanel;
+    private TravelPlanPanel travelPlanPanel;
+    private TravelPlanObjectListPanel travelPlanObjectListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -42,7 +48,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane travelPlannerPanelPlaceholder;
+
+    @FXML
+    private StackPane travelPlanPanelPlaceholder;
+
+    @FXML
+    private StackPane travelObjectListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,8 +122,20 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        // To be replaced with actual travel planner
+        travelPlannerPanel = new TravelPlannerPanel(travelPlannerStub);
+        travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
+
+        // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
+        travelPlanPanel = new TravelPlanPanel(travelPlannerStub.getTravelPlanList().get(1));
+        travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
+
+        // To be replaced with:
+        // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
+                .getActivityTpoList());
+        travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -161,10 +185,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**

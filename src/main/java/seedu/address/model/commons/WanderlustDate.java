@@ -59,7 +59,7 @@ public class WanderlustDate {
 
     @Override
     public String toString() {
-        return value.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return value.format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
     }
 
     @Override
