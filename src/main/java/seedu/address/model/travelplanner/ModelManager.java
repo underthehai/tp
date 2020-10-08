@@ -42,6 +42,7 @@ public class ModelManager implements Model {
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
         directory = this.travelPlanner.getWishlistAsDirectory();
+        currentFilteredTravelPlanObjectList = new FilteredList<>(directory.getActivityList());
     }
 
     public ModelManager() {
