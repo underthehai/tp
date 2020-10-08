@@ -33,7 +33,7 @@ public class FriendList implements ReadOnlyFriendList {
     /**
      * Creates an seedu.address.model.FriendList using the Friends in the {@code toBeCopied}
      */
-    public FriendList(FriendList toBeCopied) {
+    public FriendList(ReadOnlyFriendList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
