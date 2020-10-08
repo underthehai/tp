@@ -503,7 +503,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User <ins>navigates to a specific travel plan (UC1)</ins> 
+1. User <ins>navigates to a specific travel plan (UC1)</ins>
 2. User requests to edit travel plan
 3. Wanderlust shows that the travel plan has been edited
 
@@ -633,12 +633,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. User <ins>navigates to the wishlist (UC2)</ins>.
 
-    Use case resumes at step 2.    
+    Use case resumes at step 2.
 
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
 
-      Use case ends.   
+      Use case ends.
 
 **Use case: UC16 - View contacts in travel plan**
 
@@ -661,7 +661,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
 
-      Use case ends. 
+      Use case ends.
 
 **Use case: UC17 - View accommodation in travel plan**
 
@@ -680,7 +680,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a2. Wanderlust shows an error message.
 
     Use case ends.
-     
+
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
 
@@ -706,11 +706,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Travel plan**: A list of accommodations and activities in a specified location that can include `start_date` and `end_date`
 * **Activity**: Minimally includes the `name`, we can add information about level of importance, `cost`, `location`, `timestamp` and `tags` to it
 * **Accommodation**: Minimally includes the `name`, we can add information about `location`, `cost` and `nights` to it
-* **Person**: Contains information about a given person `name`, `mobile number` and `passport number` 
+* **Person**: Contains information about a given person `name`, `mobile number` and `passport number`
 * **Directory**: The three possible directories are `top`, `travelplan`, `wishlist`
 * **Navigate**: Use the `goto` command to move between directories
 * **View**: Use the `show` command to provide a list of specified items
- 
+
 *{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 

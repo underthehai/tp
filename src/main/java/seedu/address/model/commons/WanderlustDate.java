@@ -22,7 +22,8 @@ public class WanderlustDate {
     public static final String VALIDATION_REGEX = "\\d{4}-[01]\\d-[0-3]\\d";
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
 
-    private LocalDate value;
+    public final String date;
+    private final LocalDate value;
 
     /**
      * Constructs a {@code WanderlustDate}.
@@ -32,6 +33,7 @@ public class WanderlustDate {
     public WanderlustDate(String date) {
         requireNonNull(date);
         checkArgument(isValidWanderlustDate(date), MESSAGE_CONSTRAINTS);
+        this.date = date;
         value = LocalDate.parse(date);
     }
 
@@ -56,7 +58,7 @@ public class WanderlustDate {
 
     @Override
     public String toString() {
-        return value.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return value.format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
     }
 
     @Override

@@ -9,7 +9,6 @@ import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
 
-
 /**
  * Represents an Activity in the travel plan.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -23,8 +22,7 @@ public class Activity extends TravelPlanObject {
     private final Location location;
     private final Cost cost;
     private final Importance levelOfImportance;
-    private WanderlustDateTime activityDateTime;
-
+    private final WanderlustDateTime activityDateTime;
 
     /**
      * Every field must be present and not null.

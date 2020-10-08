@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.accommodation.UniqueAccommodationList;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of Accommodations in a travel plan
@@ -107,6 +108,10 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     @Override
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return accommodations.asUnmodifiableObservableTpoList();
     }
 
     @Override
