@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
+import seedu.address.logic.Logic; /** TO BE REPLACED WITH NEW LOGIC */
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -123,7 +123,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        // To be replaced with actual travel planner
+        // To be replaced with travelPlannerPanel = new TravelPlannerPanel(logic.getFilteredTravelPlanList());
         travelPlannerPanel = new TravelPlannerPanel(travelPlannerStub);
         travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
@@ -134,7 +134,7 @@ public class MainWindow extends UiPart<Stage> {
         // To be replaced with:
         // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
-                .getActivityTpoList());
+                .getActivityList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
