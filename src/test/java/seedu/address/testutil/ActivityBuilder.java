@@ -1,8 +1,5 @@
 package seedu.address.testutil;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
@@ -24,7 +21,6 @@ public class ActivityBuilder {
     private Cost cost;
     private Importance levelOfImportance;
     private WanderlustDateTime activityDateTime;
-    private String dateTime;
 
     /**
      * Creates a {@code ActivityBuilder} with the default details.
@@ -34,7 +30,6 @@ public class ActivityBuilder {
         location = new Location(DEFAULT_LOCATION);
         cost = new Cost(DEFAULT_COST);
         levelOfImportance = new Importance(DEFAULT_LEVELOFIMPORTANCE);
-        dateTime = DEFAULT_ACTIVITYDATETIME;
         activityDateTime = new WanderlustDateTime(DEFAULT_ACTIVITYDATETIME);
     }
 
@@ -47,7 +42,6 @@ public class ActivityBuilder {
         cost = activityToCopy.getCost();
         levelOfImportance = activityToCopy.getLevelOfImportance();
         activityDateTime = activityToCopy.getActivityDateTime();
-        dateTime = activityToCopy.getStringDateTime();
     }
 
     /**
@@ -85,13 +79,12 @@ public class ActivityBuilder {
     /**
      * Sets the {@code activityDateTime} of the {@code Activity} that we are building.
      */
-    public ActivityBuilder withDateTime(String activityDatetime) {
-        this.activityDateTime = new WanderlustDateTime(DEFAULT_ACTIVITYDATETIME);
-        this.dateTime = activityDatetime;
+    public ActivityBuilder withDateTime(String activityDateTime) {
+        this.activityDateTime = new WanderlustDateTime(activityDateTime);
         return this;
     }
 
     public Activity build() {
-        return new Activity(name, location, cost, levelOfImportance, dateTime);
+        return new Activity(name, location, cost, levelOfImportance, activityDateTime);
     }
 }

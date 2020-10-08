@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
@@ -6,21 +6,21 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.EditCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ExitCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.HelpCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ListCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteCommand;
 
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class WanderlustParser {
 
     /**
      * Used for initial separation of command word and args.
@@ -45,19 +45,19 @@ public class AddressBookParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            return new WanderlustAddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            return new WanderlustEditCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            return new WanderlustDeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            return new WanderlustFindCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();

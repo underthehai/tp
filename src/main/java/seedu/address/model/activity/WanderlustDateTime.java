@@ -6,41 +6,40 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-
+/**
+ * Represents a Activity's date time in a travel plan.
+ * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDateTime(String)}
+ */
 public class WanderlustDateTime {
     public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format YYYY-MM-DD HH:mm.";
 
     /*
-     * Dates must be in the format YYYY-MM-DD HH:mm.
+     * Date time must be in the format YYYY-MM-DD HH:mm.
      */
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    public static final DateFormat STYLIZED_DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy HH:mm");
 
-    private String dateTime;
-    private Date value;
+    public final String dateTime;
+    private final LocalDateTime value;
 
     /**
-     * Constructs a {@code WanderlustDate}.
+     * Constructs a {@code WanderlustDateTime}.
      *
      * @param dateTime A valid date and time.
      */
     public WanderlustDateTime(String dateTime) {
         requireNonNull(dateTime);
-        checkArgument(isValidWanderlustDate(dateTime), MESSAGE_CONSTRAINTS);
-        try {
-            value = STYLIZED_DATE_FORMAT.parse(dateTime);
-        } catch (ParseException ex) {
-            // This is unexpected as the date should have been validated above.
-            System.err.println("Unexpected error: Error parsing date string.");
-        }
+        checkArgument(isValidWanderlustDateTime(dateTime), MESSAGE_CONSTRAINTS);
+        this.dateTime = dateTime;
+        value = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
     /**
-     * Returns if a given string is a valid travel date.
+     * Returns if a given string is a valid activity date time.
      */
-    public static boolean isValidWanderlustDate(String test) {
+    public static boolean isValidWanderlustDateTime(String test) {
         try {
             VALID_DATE_STRING.parse(test);
             return true;
@@ -49,13 +48,13 @@ public class WanderlustDateTime {
         }
     }
 
-    public Date getValue() {
+    public LocalDateTime getValue() {
         return value;
     }
 
     @Override
     public String toString() {
-        return value.toString();
+        return value.format(DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm"));
     }
 
     @Override
@@ -69,6 +68,5 @@ public class WanderlustDateTime {
     public int hashCode() {
         return value.hashCode();
     }
-
 
 }

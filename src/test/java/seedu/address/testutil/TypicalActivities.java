@@ -35,7 +35,7 @@ public class TypicalActivities {
      */
     public static TravelPlan getTypicalTravelPlan() {
         TravelPlan tp = new TravelPlan(new Name("plan"), new WanderlustDate("10-10-2020"),
-                new WanderlustDate("20-10-2020"), null);
+                new WanderlustDate("20-10-2020"));
         for (Activity activity : getTypicalActivities()) {
             tp.addTravelPlanObject(activity);
         }

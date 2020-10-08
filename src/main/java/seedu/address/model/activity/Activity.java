@@ -24,21 +24,19 @@ public class Activity extends TravelPlanObject {
     private final Cost cost;
     private final Importance levelOfImportance;
     private WanderlustDateTime activityDateTime;
-    private String dateTime;
 
 
     /**
      * Every field must be present and not null.
      */
-    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance, String date) {
-        requireAllNonNull(name, location, cost, levelOfImportance, date);
+    public Activity(Name name, Location location, Cost cost, Importance levelOfImportance,
+                    WanderlustDateTime activityDateTime) {
+        requireAllNonNull(name, location, cost, levelOfImportance, activityDateTime);
         this.name = name;
         this.location = location;
         this.cost = cost;
         this.levelOfImportance = levelOfImportance;
-        this.activityDateTime = new WanderlustDateTime(date);
-        this.dateTime = date;
-
+        this.activityDateTime = activityDateTime;
     }
 
     public Name getName() {
@@ -59,10 +57,6 @@ public class Activity extends TravelPlanObject {
 
     public WanderlustDateTime getActivityDateTime() {
         return activityDateTime;
-    }
-
-    public String getStringDateTime() {
-        return dateTime;
     }
 
     /**

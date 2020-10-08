@@ -1,6 +1,7 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
-import seedu.address.model.Model;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.travelplanner.Model;
 
 /**
  * Format full help instructions for every command for display.
