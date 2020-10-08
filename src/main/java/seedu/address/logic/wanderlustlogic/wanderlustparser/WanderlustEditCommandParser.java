@@ -2,8 +2,8 @@ package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_TAG;
@@ -43,18 +43,19 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
         }
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-//        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-//            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
-//        }
+        //        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+        //            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+        //        }
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
-//        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
-//            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_LOCATION).get()));
-//        }
+        //        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
+        //            editPersonDescriptor.setAddress(ParserUtil.parseLocation(argMultimap
+        //                    .getValue(PREFIX_LOCATION).get()));
+        //        }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {

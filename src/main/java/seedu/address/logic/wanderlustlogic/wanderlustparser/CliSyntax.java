@@ -18,6 +18,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_START = new Prefix("sd/");
     public static final Prefix PREFIX_END = new Prefix("ed/");
 
-
-    public static final Prefix PREFIX_PHONE = new Prefix("p/");     // keep so it compiles, delete later_
+    // keep so it compiles, delete later_
+    public static final Prefix PREFIX_PHONE = new Prefix("p/");
 }

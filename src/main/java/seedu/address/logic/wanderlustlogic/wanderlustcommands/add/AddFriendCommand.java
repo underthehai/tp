@@ -23,7 +23,7 @@ public class AddFriendCommand extends AddCommand {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_MOBILE + "91234567 "
-            + PREFIX_PASSPORT+ "p12345678 ";
+            + PREFIX_PASSPORT + "p12345678 ";
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";

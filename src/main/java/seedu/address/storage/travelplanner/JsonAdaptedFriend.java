@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Mobile;
+import seedu.address.model.friend.Passport;
 
 /**
  * Jackson-friendly version of {@link Friend}.

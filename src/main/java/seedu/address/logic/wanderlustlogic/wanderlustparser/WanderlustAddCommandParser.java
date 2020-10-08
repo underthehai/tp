@@ -55,7 +55,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
             return parseActivity(args);
 
         case AddAccommodationCommand.COMMAND_WORD:
-            return parseAccommodation(args) ;
+            return parseAccommodation(args);
 
         case AddFriendCommand.COMMAND_WORD:
             return parseFriend(args);
