@@ -101,16 +101,12 @@ public class Activity extends TravelPlanObject {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Name: ")
-                .append(getLocation())
-                .append(" Location: ")
-                .append(getLevelOfImportance())
-                .append(" Importance Level: ")
-                .append(getCost())
-                .append(" Cost: ")
-                .append(getActivityDateTime())
-                .append(" Date and time: ");
+        builder.append(getName()).append("\n")
+                .append("Location: ").append(getLocation()).append("\n")
+                .append("Importance Level: ").append(getLevelOfImportance()).append("\n")
+                .append("Cost: ").append(getCost()).append("\n")
+                .append("Date and time: ").append(getActivityDateTime());
+                
         return builder.toString();
     }
 

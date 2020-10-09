@@ -84,10 +84,10 @@ public class Friend extends TravelPlanObject {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Passport number: ")
-                .append(getPassport())
-                .append(" Mobile phone: ")
+        builder.append(getName()).append("\n")
+                .append("Passport number: ")
+                .append(getPassport()).append("\n")
+                .append("Mobile phone: ")
                 .append(getPhone());
 
         return builder.toString();
