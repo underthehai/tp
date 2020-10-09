@@ -36,13 +36,13 @@ public class DeleteActivityCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
+        List<? extends TravelPlanObject> filteredActivityList = model.getFilteredActivityList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredActivityList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        TravelPlanObject activityToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject activityToDelete = filteredActivityList.get(targetIndex.getZeroBased());
 
         model.deleteTravelPlanObject(activityToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));

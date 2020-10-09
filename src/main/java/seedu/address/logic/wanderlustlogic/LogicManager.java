@@ -1,6 +1,6 @@
 package seedu.address.logic.wanderlustlogic;
 
-//import java.io.IOException;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
@@ -12,17 +12,21 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.WanderlustParser;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.storage.Storage;
+import seedu.address.storage.travelplanner.Storage;
 
 /**
  * The main LogicManager of the app.
  */
 public class LogicManager implements Logic {
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
-    private final Logger logger = LogsCenter.getLogger(seedu.address.logic.LogicManager.class);
+    private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
     private final Model model;
     private final Storage storage;
@@ -45,11 +49,11 @@ public class LogicManager implements Logic {
         Command command = wanderlustParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-        //        try {
-        //            storage.saveAddressBook(model.getTravelPlanner());
-        //        } catch (IOException ioe) {
-        //            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
-        //        }
+        try {
+            storage.saveTravelPlanner(model.getTravelPlanner());
+        } catch (IOException ioe) {
+            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+        }
 
         return commandResult;
     }
@@ -60,8 +64,33 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<TravelPlan> getFilteredTravelPlan() {
+    public ObservableList<TravelPlan> getFilteredTravelPlanList() {
         return model.getFilteredTravelPlanList();
+    }
+
+    @Override
+    public ObservableList<Activity> getFilteredWishlist() {
+        return model.getFilteredWishlist();
+    }
+
+    @Override
+    public ObservableList<Activity> getFilteredActivityList() {
+        return model.getFilteredActivityList();
+    }
+
+    @Override
+    public ObservableList<Accommodation> getFilteredAccommodationList() {
+        return model.getFilteredAccommodationList();
+    }
+
+    @Override
+    public ObservableList<Friend> getFilteredFriendList() {
+        return model.getFilteredFriendList();
+    }
+
+    @Override
+    public Directory getDirectory() {
+        return model.getDirectory();
     }
 
     @Override

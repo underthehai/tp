@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalActivities.THEMEPARK;
-import static seedu.address.testutil.TypicalActivities.ZOO;
+import static seedu.address.testutil.typicals.TypicalActivities.THEMEPARK;
+import static seedu.address.testutil.typicals.TypicalActivities.ZOO;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.activity.exceptions.ActivityNotFoundException;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
-import seedu.address.testutil.ActivityBuilder;
+import seedu.address.testutil.builders.ActivityBuilder;
 
 public class UniqueActivityListTest {
     private final UniqueActivityList uniqueActivityList = new UniqueActivityList();

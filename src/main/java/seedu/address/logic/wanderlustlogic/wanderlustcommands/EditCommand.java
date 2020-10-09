@@ -68,7 +68,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList(); //dummy code
+        List<? extends TravelPlanObject> lastShownList = model.getFilteredActivityList(); //dummy code
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX); //dummy code
