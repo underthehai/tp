@@ -8,12 +8,13 @@ import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.travelplanner.Directory;
 
 /**
  * Wraps all data at the travel plan level
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class Wishlist implements ReadOnlyActivityList {
+public class Wishlist extends Directory implements ReadOnlyActivityList {
 
     private final UniqueActivityList activities;
 

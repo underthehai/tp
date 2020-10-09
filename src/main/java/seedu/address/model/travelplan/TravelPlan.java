@@ -31,8 +31,10 @@ public class TravelPlan extends Directory {
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
 
+
+
     /**
-     * Creates an empty TravelPlan with only the name, startDate, endDate and tags.
+     * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
@@ -40,6 +42,7 @@ public class TravelPlan extends Directory {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
@@ -171,26 +174,40 @@ public class TravelPlan extends Directory {
 
     //// travel plan data methods
 
+    public AccommodationList getAccommodations() {
+        return accommodations;
+    }
+
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.getAccommodationList();
+    }
+
+    public ObservableList<TravelPlanObject> getAccommodationTpoList() {
+        return accommodations.getTpoList();
+    }
+
+    public ActivityList getActivities() {
+        return activities;
     }
 
     public ObservableList<Activity> getActivityList() {
         return activities.getActivityList();
     }
 
+    public ObservableList<TravelPlanObject> getActivityTpoList() {
+        return activities.getTpoList();
+    }
+
+    public FriendList getFriends() {
+        return friends;
+    }
+
     public ObservableList<Friend> getFriendList() {
         return friends.getFriendList();
     }
 
-    @Override
-    public boolean isTravelPlan() {
-        return true;
-    }
-
-    @Override
-    public boolean isWishlist() {
-        return false;
+    public ObservableList<TravelPlanObject> getFriendTpoList() {
+        return friends.getTpoList();
     }
 
     @Override
