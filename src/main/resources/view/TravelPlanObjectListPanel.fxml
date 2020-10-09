@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
 
-<TabPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-      <Tab text="Activities " closable="false">
+ <TabPane VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      <Tab closable="false" text="Activities ">
             <VBox>
-                  <ListView fx:id="activityListView" />
+                  <ListView fx:id="activityListView" VBox.vgrow="ALWAYS" />
             </VBox>
       </Tab>
-      <Tab text="Accommodations " closable="false">
+      <Tab closable="false" text="Accommodations ">
             <VBox>
-                  <ListView fx:id="accommodationListView" />
+                  <ListView fx:id="accommodationListView" VBox.vgrow="ALWAYS" />
             </VBox>
       </Tab>
-      <Tab text="Friends " closable="false">
+      <Tab closable="false" text="Friends ">
             <VBox>
-                  <ListView fx:id="friendListView" />
+                  <ListView fx:id="friendListView" VBox.vgrow="ALWAYS" />
             </VBox>
       </Tab>
 </TabPane>
+
