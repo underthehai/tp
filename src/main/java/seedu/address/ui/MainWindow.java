@@ -12,13 +12,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.util.SampleWanderlustDataUtil;
-
+import seedu.address.logic.wanderlustlogic.Logic;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
@@ -31,8 +28,6 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
-
-    private final ReadOnlyTravelPlanner travelPlannerStub = SampleWanderlustDataUtil.getSampleTravelPlanner();
 
     // Independent Ui parts residing in this Ui container
     private TravelPlannerPanel travelPlannerPanel;
@@ -123,24 +118,20 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        // To be replaced with actual travel planner
-        travelPlannerPanel = new TravelPlannerPanel(travelPlannerStub);
+        travelPlannerPanel = new TravelPlannerPanel(logic.getFilteredTravelPlanList());
         travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
-        // To be replaced with: travelPlanPanel = new TravelPlanPanel(logic.getCurrentDirectory())
-        travelPlanPanel = new TravelPlanPanel(travelPlannerStub.getTravelPlanList().get(1));
+        travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
 
-        // To be replaced with:
-        // travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredTravelPlanObjectList());
-        travelPlanObjectListPanel = new TravelPlanObjectListPanel(travelPlannerStub.getTravelPlanList().get(1)
-                .getActivityTpoList());
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
+                logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getTravelPlannerFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);

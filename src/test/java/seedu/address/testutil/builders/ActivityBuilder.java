@@ -80,7 +80,7 @@ public class ActivityBuilder {
      * Sets the {@code activityDateTime} of the {@code Activity} that we are building.
      */
     public ActivityBuilder withDateTime(String activityDateTime) {
-        this.activityDateTime = new WanderlustDateTime(DEFAULT_ACTIVITYDATETIME);
+        this.activityDateTime = new WanderlustDateTime(activityDateTime);
         return this;
     }
 

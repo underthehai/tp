@@ -5,8 +5,10 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 
 
@@ -139,8 +141,14 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered wishlist */
     ObservableList<Activity> getFilteredWishlist();
 
-    /** Returns an unmodifiable view of the filtered travel plan object list */
-    ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList();
+    /** Returns an unmodifiable view of the filtered activity list */
+    ObservableList<Activity> getFilteredActivityList();
+
+    /** Returns an unmodifiable view of the filtered accommodation list */
+    ObservableList<Accommodation> getFilteredAccommodationList();
+
+    /** Returns an unmodifiable view of the filtered friend list */
+    ObservableList<Friend> getFilteredFriendList();
 
     /**
      * Updates the filter of the filtered travel plan list to filter by the given {@code predicate}.
@@ -155,10 +163,22 @@ public interface Model {
     void updateFilteredWishlist(Predicate<Activity> predicate);
 
     /**
-     * Updates the filter of the filtered travel plan object list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered activity list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredTravelPlanObjectList(Predicate<TravelPlanObject> predicate);
+    void updateFilteredActivityList(Predicate<Activity> predicate);
+
+    /**
+     * Updates the filter of the filtered accommodation list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAccommodationList(Predicate<Accommodation> predicate);
+
+    /**
+     * Updates the filter of the filtered friend list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredFriendList(Predicate<Friend> predicate);
 
     /**
      * Replaces the directory with {@code dir}.
@@ -170,19 +190,4 @@ public interface Model {
      * Returns the current directory that the wanderlust is currently in.
      */
     Directory getDirectory();
-
-    /**
-     * Sets the current filtered travel plan object list to activity list.
-     */
-    void setToActivityList();
-
-    /**
-     * Sets the current filtered travel plan object list to accommodation list.
-     */
-    void setToAccommodationList();
-
-    /**
-     * Sets the current filtered travel plan object list to friend list.
-     */
-    void setToFriendList();
 }
