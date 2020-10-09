@@ -9,12 +9,12 @@ import java.util.regex.Pattern;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ExitCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.HelpCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ListCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 
 /**
@@ -45,7 +45,7 @@ public class WanderlustParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            return new WanderlustAddCommandParser().parse(arguments);
+        //    return new WanderlustAddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new WanderlustEditCommandParser().parse(arguments);

@@ -1,16 +1,14 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
 
 import java.util.List;
-import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.Name;
@@ -31,11 +29,11 @@ public class EditFriendCommand extends EditCommand {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PASSPORT + "PASSPORT] "
-            + "[" + PREFIX_MOBILE + "MOBILE_PHONE] "
+            + "[" + PREFIX_PHONE + "MOBILE_PHONE] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "John "
             + PREFIX_PASSPORT + "E1234567H "
-            + PREFIX_MOBILE + "81234567 ";
+            + PREFIX_PHONE + "81234567 ";
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
     public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in friend list.";

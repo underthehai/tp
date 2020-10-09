@@ -2,7 +2,15 @@ package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.*;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -10,8 +18,12 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.*;
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.*;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditAccommodationCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditActivityCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditFriendCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditTravelPlanCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
@@ -28,7 +40,7 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_COST,
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                         PREFIX_PHONE, PREFIX_LOCATION, PREFIX_PASSPORT, PREFIX_START, PREFIX_END, PREFIX_DATETIME);
 
         try {
@@ -71,7 +83,7 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
      * If {@code tags} contain only one element which is an empty string, it will be parsed into a
      * {@code Set<Tag>} containing zero tags.
      */
-    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException, seedu.address.logic.parser.exceptions.ParseException {
+    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
         assert tags != null;
 
         if (tags.isEmpty()) {

@@ -1,16 +1,14 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.List;
-import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.Name;

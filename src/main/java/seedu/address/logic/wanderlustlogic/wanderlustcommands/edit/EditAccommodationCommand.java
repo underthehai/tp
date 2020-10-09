@@ -1,11 +1,11 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplanner.Model;
 
 /**

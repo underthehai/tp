@@ -11,13 +11,12 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
-import seedu.address.model.commons.Location;
-import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.commons.Name;
 import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
-import seedu.address.model.friend.Friend;
 import seedu.address.model.tag.Tag;
 
 /**
