@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.friend.Phone;
 
 /**
  * Jackson-friendly version of {@link Friend}.
@@ -37,7 +37,7 @@ public class JsonAdaptedFriend {
     public JsonAdaptedFriend(Friend source) {
         name = source.getName().name;
         passport = source.getPassport().value;
-        phone = source.getPhone().value;
+        phone = source.getMobile().value;
     }
 
     /**
@@ -65,14 +65,14 @@ public class JsonAdaptedFriend {
         final Passport modelPassport = new Passport(passport);
 
         if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Mobile.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Mobile.isValidMobile(phone)) {
+            throw new IllegalValueException(Mobile.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Mobile modelMobile = new Mobile(phone);
 
-        return new Friend(modelName, modelPassport, modelPhone);
+        return new Friend(modelName, modelPassport, modelMobile);
     }
 
 }

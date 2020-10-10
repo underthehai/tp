@@ -15,8 +15,8 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.friend.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -131,36 +131,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code Phone} is invalid.
-     */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        return new Phone(trimmedPhone);
-    }
-
-    /**
-     * Parses a {@code String importance} into a {@code Importance}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code importance} is invalid.
-     */
-    public static Importance parseLevelOfImportance(String importance) throws ParseException {
-        requireNonNull(importance);
-        String trimmedImportance = importance.trim();
-        if (!Importance.isValidImportance(trimmedImportance)) {
-            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
-        }
-        return new Importance(trimmedImportance);
-    }
-
-    /**
      * Parses a {@code String activityDateTime} into a {@code WanderlustDateTime}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -202,4 +172,65 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * Parses a {@code String importance} into a {@code Importance}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code importance} is invalid.
+     */
+    public static Importance parseImportance(String importance) throws ParseException {
+        requireNonNull(importance);
+        String trimmedImportance = importance.trim();
+        if (!Importance.isValidImportance(trimmedImportance)) {
+            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
+        }
+        return new Importance(trimmedImportance);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code WanderlustDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code WanderlustDate} is invalid.
+     */
+    public static WanderlustDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!WanderlustDate.isValidWanderlustDate(trimmedDate)) {
+            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
+        }
+        return new WanderlustDate(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String dateTime} into a {@code WanderlustDateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code WanderlustDateTime} is invalid.
+     */
+    public static WanderlustDateTime parseDateTime(String dateTime) throws ParseException {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        if (!WanderlustDateTime.isValidWanderlustDateTime(trimmedDateTime)) {
+            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
+        }
+        return new WanderlustDateTime(trimmedDateTime);
+    }
+
+    /**
+     * Parses a {@code String mobile} into a {@code Mobile}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code mobile} is invalid.
+     */
+    public static Mobile parseMobile(String mobile) throws ParseException {
+        requireNonNull(mobile);
+        String trimmedMobile = mobile.trim();
+        if (!Mobile.isValidMobile(trimmedMobile)) {
+            throw new ParseException(Mobile.MESSAGE_CONSTRAINTS);
+        }
+        return new Mobile(trimmedMobile);
+    }
+
 }

@@ -5,14 +5,15 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.Optional;
 
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.ArgumentMultimap;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.ParserUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
@@ -22,8 +23,8 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.friend.Phone;
 
 /**
  * Class to build description
@@ -37,7 +38,7 @@ public class EditDescriptor {
     private WanderlustDate startDate;
     private WanderlustDate endDate;
     private Passport passport;
-    private Phone phone;
+    private Mobile mobile;
     private Importance levelOfImportance;
     private WanderlustDateTime activityDateTime;
 
@@ -58,8 +59,8 @@ public class EditDescriptor {
      * Returns true if at least one field is edited.
      */
     public boolean isAnyFieldEdited() {
-        return CollectionUtil.isAnyNonNull(name, location, cost, levelOfImportance, activityDateTime,
-                phone, passport, startDate, endDate);
+        return CollectionUtil.isAnyNonNull(name, location, cost, levelOfImportance, activityDateTime, mobile, passport,
+                startDate, endDate);
     }
 
     /**
@@ -91,11 +92,11 @@ public class EditDescriptor {
         if (source.getValue(PREFIX_PASSPORT).isPresent()) {
             editItemnDescriptor.setPassport(ParserUtil.parsePassport(source.getValue(PREFIX_PASSPORT).get()));
         }
-        if (source.getValue(PREFIX_PHONE).isPresent()) {
-            editItemnDescriptor.setPhone(ParserUtil.parsePhone(source.getValue(PREFIX_PHONE).get()));
+        if (source.getValue(PREFIX_MOBILE).isPresent()) {
+            editItemnDescriptor.setMobile(ParserUtil.parseMobile(source.getValue(PREFIX_MOBILE).get()));
         }
         if (source.getValue(PREFIX_IMPORTANCE).isPresent()) {
-            editItemnDescriptor.setLevelOfImportance(ParserUtil.parseLevelOfImportance(source
+            editItemnDescriptor.setLevelOfImportance(ParserUtil.parseImportance(source
                     .getValue(PREFIX_IMPORTANCE).get()));
         }
         if (source.getValue(PREFIX_DATETIME).isPresent()) {
@@ -103,6 +104,9 @@ public class EditDescriptor {
                     .get()));
         }
 
+        if (!editItemnDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+        }
         return editItemnDescriptor;
 
     }
@@ -172,12 +176,12 @@ public class EditDescriptor {
         return Optional.ofNullable(passport);
     }
 
-    public void setPhone(Phone phone) {
-        this.phone = phone;
+    public void setMobile(Mobile mobile) {
+        this.mobile = mobile;
     }
 
-    public Optional<Phone> getPhone() {
-        return Optional.ofNullable(phone);
+    public Optional<Mobile> getMobile() {
+        return Optional.ofNullable(mobile);
     }
 
 

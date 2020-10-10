@@ -7,9 +7,9 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.Collection;
@@ -41,7 +41,7 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
-                        PREFIX_PHONE, PREFIX_LOCATION, PREFIX_PASSPORT, PREFIX_START, PREFIX_END, PREFIX_DATETIME);
+                        PREFIX_MOBILE, PREFIX_LOCATION, PREFIX_PASSPORT, PREFIX_START, PREFIX_END, PREFIX_DATETIME);
 
         try {
 
@@ -50,7 +50,6 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
             Index index = ParserUtil.parseIndex(keywords[2]);
 
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
-
 
             switch (editType) {
 

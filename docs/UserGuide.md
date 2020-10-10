@@ -91,7 +91,7 @@ Name of Tag | Description
 #### Person Tag
 Name of Tag | Description
 ------------ | -------------
-`m/MOBILE_NUMBER` | Mobile number of the person cell phone
+`m/MOBILE_NUMBER` | Mobile number of the person cell mobile
 `p/PASSPORT_NUMBER` | Passport number of the person passport
 
 #### Travel Plan Tag
