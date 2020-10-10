@@ -17,7 +17,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.tag.Tag;
+// import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -71,10 +71,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String Cost} into a {@code Cost}.
+     * Parses a {@code String cost} into a {@code Cost}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code Cost} is invalid.
+     * @throws ParseException if the given {@code cost} is invalid.
      */
     public static Cost parseCost(String cost) throws ParseException {
         requireNonNull(cost);
@@ -130,33 +130,17 @@ public class ParserUtil {
         return new WanderlustDateTime(trimmedActivityDateTime);
     }
 
-
-    /**
-     * Parses a {@code String location} into an {@code Location}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code location} is invalid.
-     */
-    public static Location parseLocation(String location) throws ParseException {
-        requireNonNull(location);
-        String trimmedLocation = location.trim();
-        if (!Address.isValidAddress(trimmedLocation)) {
-            throw new ParseException(Location.MESSAGE_CONSTRAINTS);
-        }
-        return new Location(trimmedLocation);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
-        }
-        return tagSet;
-    }
+//     /**
+//      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+//      */
+//     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
+//         requireNonNull(tags);
+//         final Set<Tag> tagSet = new HashSet<>();
+//         for (String tagName : tags) {
+//             tagSet.add(parseTag(tagName));
+//         }
+//         return tagSet;
+//     }
 
     /**
      * Parses a {@code String importance} into a {@code Importance}.
@@ -173,20 +157,7 @@ public class ParserUtil {
         return new Importance(trimmedImportance);
     }
 
-    /**
-     * Parses a {@code String cost} into a {@code Cost}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code cost} is invalid.
-     */
-    public static Cost parseCost(String cost) throws ParseException {
-        requireNonNull(cost);
-        String trimmedCost = cost.trim();
-        if (!Cost.isValidCost(trimmedCost)) {
-            throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
-        }
-        return new Cost(trimmedCost);
-    }
+
 
     /**
      * Parses a {@code String date} into a {@code WanderlustDate}.
