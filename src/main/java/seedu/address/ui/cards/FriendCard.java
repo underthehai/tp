@@ -33,7 +33,7 @@ public class FriendCard extends UiPart<Region> {
     @FXML
     private Label passport;
     @FXML
-    private Label phone;
+    private Label mobile;
 
     /**
      * Creates a {@code FriendCard} with the given {@code Friend} and index to display.
@@ -44,7 +44,7 @@ public class FriendCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(friend.getName().toString());
         passport.setText("Passport: " + friend.getPassport().toString());
-        phone.setText("Phone: " + friend.getMobile().toString());
+        mobile.setText("Phone: " + friend.getMobile().toString());
     }
 
     @Override
