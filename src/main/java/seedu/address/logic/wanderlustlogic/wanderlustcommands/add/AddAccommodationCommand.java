@@ -14,7 +14,7 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.travelplanner.Model;
 
 public class AddAccommodationCommand extends AddCommand {
-    public static final String COMMAND_WORD = "-accommodation";
+    public static final String COMMAND_WORD = "accommodation";
 
     public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
             + ": Adds an accommodation to the current travel plan\n"

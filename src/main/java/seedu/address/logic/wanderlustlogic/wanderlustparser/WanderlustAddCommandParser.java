@@ -32,7 +32,6 @@ import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.travelplan.TravelPlan;
 
 /**
@@ -47,7 +46,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
      */
     public AddCommand parse(String args) throws ParseException {
         String[] keywords = args.split(" ");
-        String addType = keywords[0].substring(1);
+        String addType = keywords[1].substring(1);
 
         switch (addType) {
 
@@ -89,9 +88,8 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
         Cost cost = ParserUtil.parseCost(argMultimap.getValue(PREFIX_COST).get());
         WanderlustDateTime dateTime = ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_DATETIME).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Activity activity = new Activity(name, location, cost, importance, dateTime, tagList);
+        Activity activity = new Activity(name, location, cost, importance, dateTime);
 
         return new AddActivityCommand(activity);
     }

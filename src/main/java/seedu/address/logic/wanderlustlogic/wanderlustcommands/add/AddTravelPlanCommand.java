@@ -12,7 +12,7 @@ import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 public class AddTravelPlanCommand extends AddCommand {
-    public static final String COMMAND_WORD = "-travelplan";
+    public static final String COMMAND_WORD = "travelplan";
 
     public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
             + ": Adds a travel plan to the travel planner\n"

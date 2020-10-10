@@ -12,7 +12,7 @@ import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplanner.Model;
 
 public class AddFriendCommand extends AddCommand {
-    public static final String COMMAND_WORD = "-friend";
+    public static final String COMMAND_WORD = "friend";
 
     public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
             + ": Adds a friend to the current travel plan or wishlist\n"
@@ -25,8 +25,8 @@ public class AddFriendCommand extends AddCommand {
             + PREFIX_MOBILE + "91234567 "
             + PREFIX_PASSPORT + "p12345678 ";
 
-    public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
+    public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This friend already exists in the travel plan";
 
     private final Friend toAdd;
 

@@ -15,7 +15,7 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplanner.Model;
 
 public class AddActivityCommand extends AddCommand {
-    public static final String COMMAND_WORD = "-activity";
+    public static final String COMMAND_WORD = "activity";
 
     public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
             + ": Adds an activity to the current travel plan or wishlist\n"
