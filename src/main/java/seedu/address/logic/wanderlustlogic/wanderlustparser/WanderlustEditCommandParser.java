@@ -43,8 +43,8 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                         PREFIX_MOBILE, PREFIX_LOCATION, PREFIX_PASSPORT, PREFIX_START, PREFIX_END, PREFIX_DATETIME);
 
-        try {
 
+        try {
             String[] keywords = args.split(" ");
             String editType = keywords[1].substring(1);
             Index index = ParserUtil.parseIndex(keywords[2]);
