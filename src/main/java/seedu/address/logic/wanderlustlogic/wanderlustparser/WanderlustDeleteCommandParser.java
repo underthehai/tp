@@ -23,8 +23,8 @@ public class WanderlustDeleteCommandParser implements WanderlustParserInterface<
     public DeleteCommand parse(String args) throws ParseException {
         try {
             String[] keywords = args.split(" ");
-            String deleteType = keywords[0].substring(1);
-            Index index = ParserUtil.parseIndex(keywords[1]);
+            String deleteType = keywords[1].substring(1);
+            Index index = ParserUtil.parseIndex(keywords[2]);
 
             switch (deleteType) {
 

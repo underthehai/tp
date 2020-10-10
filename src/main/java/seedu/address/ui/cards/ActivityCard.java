@@ -50,7 +50,7 @@ public class ActivityCard extends UiPart<Region> {
         address.setText("Location: " + activity.getLocation().toString());
         cost.setText("Cost: $" + activity.getCost().toString());
         levelOfImportance.setText("Importance: " + activity.getLevelOfImportance().toString());
-        activityDateTime.setText("Date & Time: " + activity.getActivityDateTime().getValue());
+        activityDateTime.setText("Date & Time: " + activity.getActivityDateTime().toString());
     }
 
     @Override

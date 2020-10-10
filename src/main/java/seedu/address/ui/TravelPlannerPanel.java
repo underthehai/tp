@@ -2,13 +2,13 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.ui.cards.NameCard;
 
 /**
@@ -24,9 +24,9 @@ public class TravelPlannerPanel extends UiPart<Region> {
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
-    public TravelPlannerPanel(ReadOnlyTravelPlanner travelPlanner) {
+    public TravelPlannerPanel(ObservableList<TravelPlan> travelPlanList) {
         super(FXML);
-        travelPlanListView.setItems(travelPlanner.getTravelPlanList());
+        travelPlanListView.setItems(travelPlanList);
         travelPlanListView.setCellFactory(travelPlan -> new TravelPlanListViewCell());
     }
 

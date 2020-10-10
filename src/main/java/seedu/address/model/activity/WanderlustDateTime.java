@@ -61,7 +61,7 @@ public class WanderlustDateTime {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof WanderlustDateTime // instanceof handles nulls
-                && value.equals(((WanderlustDateTime) other).value)); // state check
+                && dateTime.equals(((WanderlustDateTime) other).dateTime)); // state check
     }
 
     @Override

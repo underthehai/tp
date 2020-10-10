@@ -15,6 +15,9 @@ import seedu.address.model.commons.TravelPlanObject;
  */
 public class AccommodationList implements ReadOnlyAccommodationList {
 
+    public static final ObservableList<Accommodation> EMPTY_ACCOMMODATION_LIST =
+            new AccommodationList().getAccommodationList();
+
     private final UniqueAccommodationList accommodations;
 
     /*
