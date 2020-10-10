@@ -2,14 +2,13 @@ package seedu.address.model.accommodation;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Date;
 import java.util.Objects;
 
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
-
+import seedu.address.model.commons.WanderlustDate;
 
 /**
  * Represents an Accommodation in the travel plan.
@@ -17,16 +16,19 @@ import seedu.address.model.commons.TravelPlanObject;
  */
 public class Accommodation extends TravelPlanObject {
 
+    // identity fields
     private final Name name;
-    private final Date startDate;
-    private final Date endDate;
+    private final WanderlustDate startDate;
+    private final WanderlustDate endDate;
+
+    // attributes
     private final Cost cost;
     private final Location location;
 
     /**
      * Every field must be present and not null.
      */
-    public Accommodation(Name name, Date startDate, Date endDate, Cost cost, Location location) {
+    public Accommodation(Name name, WanderlustDate startDate, WanderlustDate endDate, Cost cost, Location location) {
         requireAllNonNull(name, startDate, endDate, cost, location);
         this.name = name;
         this.startDate = startDate;
@@ -39,11 +41,11 @@ public class Accommodation extends TravelPlanObject {
         return name;
     }
 
-    public Date getStartDate() {
+    public WanderlustDate getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public WanderlustDate getEndDate() {
         return endDate;
     }
 

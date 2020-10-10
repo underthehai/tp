@@ -7,12 +7,16 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.accommodation.UniqueAccommodationList;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of Accommodations in a travel plan
  * Duplicates are not allowed (by .isSameAccommodation comparison)
  */
 public class AccommodationList implements ReadOnlyAccommodationList {
+
+    public static final ObservableList<Accommodation> EMPTY_ACCOMMODATION_LIST =
+            new AccommodationList().getAccommodationList();
 
     private final UniqueAccommodationList accommodations;
 
@@ -107,6 +111,10 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     @Override
     public ObservableList<Accommodation> getAccommodationList() {
         return accommodations.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return accommodations.asUnmodifiableObservableTpoList();
     }
 
     @Override

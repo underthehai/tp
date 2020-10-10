@@ -2,6 +2,8 @@ package seedu.address.model.travelplanner;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.travelplan.AccommodationList.EMPTY_ACCOMMODATION_LIST;
+import static seedu.address.model.travelplan.FriendList.EMPTY_FRIEND_LIST;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
@@ -11,8 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 
 /**
@@ -26,8 +30,9 @@ public class ModelManager implements Model {
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
     private Directory directory;
-    private TravelPlan currentTravelPlan;
-    private FilteredList<? extends TravelPlanObject> currentFilteredTravelPlanObjectList;
+    private FilteredList<Activity> filteredActivityList;
+    private FilteredList<Accommodation> filteredAccommodationList;
+    private FilteredList<Friend> filteredFriendList;
 
     /**
      * Initializes a ModelManager with the given travelPlanner and userPrefs.
@@ -42,7 +47,12 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        directory = this.travelPlanner.getWishlistAsDirectory();
+        directory = this.travelPlanner.getTravelPlanList().get(0);
+        filteredActivityList = new FilteredList<>(directory.getActivityList());
+        filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
+                ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
+        filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
+                ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
     }
 
     public ModelManager() {
@@ -151,7 +161,6 @@ public class ModelManager implements Model {
     @Override
     public void setDirectory(Directory dir) {
         directory = dir;
-        setCurrentTravelPlan();
     }
 
     @Override
@@ -159,54 +168,39 @@ public class ModelManager implements Model {
         return directory;
     }
 
-    /**
-     * Sets the current travel plan to the current directory.
-     */
-    private void setCurrentTravelPlan() {
-        if (directory.isTravelPlan()) {
-            currentTravelPlan = (TravelPlan) directory;
-            currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
-        }
-    }
-
-    @Override
-    public void setToActivityList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getActivityList());
-    }
-
-    @Override
-    public void setToAccommodationList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getAccommodationList());
-    }
-
-    @Override
-    public void setToFriendList() {
-        currentFilteredTravelPlanObjectList = new FilteredList<>(currentTravelPlan.getFriendList());
-    }
-
     //=========== TravelPlanObject =============================================================
 
     @Override
     public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        return currentTravelPlan.hasTravelPlanObject(tPObj);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call hasTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        return tp.hasTravelPlanObject(tPObj);
     }
 
     @Override
     public void deleteTravelPlanObject(TravelPlanObject tPObj) {
-        currentTravelPlan.removeTravelPlanObject(tPObj);
+        requireNonNull(tPObj);
+        assert directory instanceof TravelPlan
+                : "Directory must be set to a TravelPlan to call deleteTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.removeTravelPlanObject(tPObj);
     }
 
     @Override
     public void addTravelPlanObject(TravelPlanObject tPObj) {
-        currentTravelPlan.addTravelPlanObject(tPObj);
+        requireNonNull(tPObj);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call addTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.addTravelPlanObject(tPObj);
     }
 
     @Override
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         requireAllNonNull(target, editedTravelPlanObject);
-
-        currentTravelPlan.setTravelPlanObject(target, editedTravelPlanObject);
+        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setTravelPlanObject.";
+        TravelPlan tp = (TravelPlan) directory;
+        tp.setTravelPlanObject(target, editedTravelPlanObject);
     }
 
     //=========== Filtered TravelPlan List Accessors =============================================================
@@ -250,14 +244,36 @@ public class ModelManager implements Model {
      * {@code TravelPlan}
      */
     @Override
-    public ObservableList<? extends TravelPlanObject> getFilteredTravelPlanObjectList() {
-        return currentFilteredTravelPlanObjectList;
+    public ObservableList<Activity> getFilteredActivityList() {
+        return filteredActivityList;
     }
 
     @Override
-    public void updateFilteredTravelPlanObjectList(Predicate<TravelPlanObject> predicate) {
+    public void updateFilteredActivityList(Predicate<Activity> predicate) {
         requireNonNull(predicate);
-        currentFilteredTravelPlanObjectList.setPredicate(predicate);
+        filteredActivityList.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Friend> getFilteredFriendList() {
+        return filteredFriendList;
+    }
+
+    @Override
+    public void updateFilteredFriendList(Predicate<Friend> predicate) {
+        requireNonNull(predicate);
+        filteredFriendList.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Accommodation> getFilteredAccommodationList() {
+        return filteredAccommodationList;
+    }
+
+    @Override
+    public void updateFilteredAccommodationList(Predicate<Accommodation> predicate) {
+        requireNonNull(predicate);
+        filteredAccommodationList.setPredicate(predicate);
     }
 
     @Override

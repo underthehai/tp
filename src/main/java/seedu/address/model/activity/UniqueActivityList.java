@@ -5,12 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.exceptions.ActivityNotFoundException;
 import seedu.address.model.activity.exceptions.DuplicateActivityException;
-import seedu.address.model.travelplanner.Directory;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * A list of activities that enforces uniqueness between its elements and does not allow nulls.
@@ -24,7 +25,7 @@ import seedu.address.model.travelplanner.Directory;
  *
  * @see Activity#isSameActivity(Activity)
  */
-public class UniqueActivityList extends Directory implements Iterable<Activity> {
+public class UniqueActivityList implements Iterable<Activity> {
 
     private final ObservableList<Activity> internalList = FXCollections.observableArrayList();
     private final ObservableList<Activity> internalUnmodifiableList =
@@ -106,14 +107,13 @@ public class UniqueActivityList extends Directory implements Iterable<Activity> 
         return internalUnmodifiableList;
     }
 
-    @Override
-    public boolean isTravelPlan() {
-        return false;
-    }
-
-    @Override
-    public boolean isWishlist() {
-        return true;
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}, with each Activity object
+     * typecast to TravelPlanObject (TPO).
+     */
+    public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
+        return internalList.stream().map(item -> (TravelPlanObject) item)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
     }
 
     @Override

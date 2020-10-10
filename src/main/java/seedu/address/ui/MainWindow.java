@@ -12,11 +12,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-
+import seedu.address.logic.wanderlustlogic.Logic;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
@@ -31,7 +30,9 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private TravelPlannerPanel travelPlannerPanel;
+    private TravelPlanPanel travelPlanPanel;
+    private TravelPlanObjectListPanel travelPlanObjectListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -42,7 +43,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane travelPlannerPanelPlaceholder;
+
+    @FXML
+    private StackPane travelPlanPanelPlaceholder;
+
+    @FXML
+    private StackPane travelObjectListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,13 +117,21 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        travelPlannerPanel = new TravelPlannerPanel(logic.getFilteredTravelPlanList());
+        travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
+
+        travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
+        travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
+
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
+                logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
+        travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getTravelPlannerFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -161,10 +176,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**

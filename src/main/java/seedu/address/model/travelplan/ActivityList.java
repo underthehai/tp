@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of activities in a travel plan
@@ -15,6 +16,7 @@ import seedu.address.model.commons.ReadOnlyActivityList;
  */
 public class ActivityList implements ReadOnlyActivityList {
 
+    public static final ObservableList<Activity> EMPTY_ACTIVITY_LIST = new ActivityList().getActivityList();
     private final UniqueActivityList activities;
 
     /*
@@ -108,6 +110,10 @@ public class ActivityList implements ReadOnlyActivityList {
     @Override
     public ObservableList<Activity> getActivityList() {
         return activities.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return activities.asUnmodifiableObservableTpoList();
     }
 
     @Override

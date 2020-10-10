@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.UniqueFriendList;
 
@@ -14,6 +15,7 @@ import seedu.address.model.friend.UniqueFriendList;
  */
 public class FriendList implements ReadOnlyFriendList {
 
+    public static final ObservableList<Friend> EMPTY_FRIEND_LIST = new FriendList().getFriendList();
     private final UniqueFriendList friends;
 
     /*
@@ -106,6 +108,10 @@ public class FriendList implements ReadOnlyFriendList {
     @Override
     public ObservableList<Friend> getFriendList() {
         return friends.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return friends.asUnmodifiableObservableTpoList();
     }
 
     @Override

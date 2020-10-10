@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.builders;
 
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
