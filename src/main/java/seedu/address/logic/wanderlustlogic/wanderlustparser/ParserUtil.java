@@ -71,10 +71,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String Cost} into a {@code Cost}.
+     * Parses a {@code String cost} into a {@code Cost}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code Cost} is invalid.
+     * @throws ParseException if the given {@code cost} is invalid.
      */
     public static Cost parseCost(String cost) throws ParseException {
         requireNonNull(cost);
@@ -156,6 +156,7 @@ public class ParserUtil {
         }
         return new Importance(trimmedImportance);
     }
+
 
     /**
      * Parses a {@code String date} into a {@code WanderlustDate}.
