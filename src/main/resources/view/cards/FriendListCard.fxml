@@ -27,7 +27,7 @@
                 <Label fx:id="name" text="\$first" styleClass="cell_medium_label" />
             </HBox>
             <Label fx:id="passport" styleClass="cell_small_label" text="\$passport" />
-            <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+            <Label fx:id="mobile" styleClass="cell_small_label" text="\$mobile" />
         </VBox>
     </GridPane>
 </HBox>

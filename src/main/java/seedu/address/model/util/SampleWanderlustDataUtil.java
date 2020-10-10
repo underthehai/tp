@@ -9,8 +9,8 @@ import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.friend.Phone;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.TravelPlanner;
@@ -23,20 +23,20 @@ public class SampleWanderlustDataUtil {
 
     public static Friend[] getSampleFriends1() {
         return new Friend[] {
-            new Friend(new Name("Alex Yeoh"), new Passport("M1234567"), new Phone("87438807")),
-            new Friend(new Name("Bernice Yu"), new Passport("E1234567"), new Phone("99272758")),
-            new Friend(new Name("Charlotte Oliveiro"), new Passport("C1234567"), new Phone("93210283")),
-            new Friend(new Name("David Li"), new Passport("D1234567"), new Phone("991031282"))
+            new Friend(new Name("Alex Yeoh"), new Passport("M1234567"), new Mobile("87438807")),
+            new Friend(new Name("Bernice Yu"), new Passport("E1234567"), new Mobile("99272758")),
+            new Friend(new Name("Charlotte Oliveiro"), new Passport("C1234567"), new Mobile("93210283")),
+            new Friend(new Name("David Li"), new Passport("D1234567"), new Mobile("991031282"))
         };
     }
 
     public static Friend[] getSampleFriends2() {
         return new Friend[] {
-            new Friend(new Name("Lye Yi Xian"), new Passport("G7654321"), new Phone("92421847")),
-            new Friend(new Name("Teo Jia Wei"), new Passport("S7654321"), new Phone("81238032")),
-            new Friend(new Name("Timothy Ong"), new Passport("R7654321"), new Phone("91274810")),
-            new Friend(new Name("Lim Hai Shan"), new Passport("B7654321"), new Phone("89002939")),
-            new Friend(new Name("Jeanne Toh"), new Passport("J7654321"), new Phone("88234200"))
+            new Friend(new Name("Lye Yi Xian"), new Passport("G7654321"), new Mobile("92421847")),
+            new Friend(new Name("Teo Jia Wei"), new Passport("S7654321"), new Mobile("81238032")),
+            new Friend(new Name("Timothy Ong"), new Passport("R7654321"), new Mobile("91274810")),
+            new Friend(new Name("Lim Hai Shan"), new Passport("B7654321"), new Mobile("89002939")),
+            new Friend(new Name("Jeanne Toh"), new Passport("J7654321"), new Mobile("88234200"))
         };
     }
 
