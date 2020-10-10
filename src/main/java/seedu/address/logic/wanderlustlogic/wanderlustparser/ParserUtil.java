@@ -199,8 +199,8 @@ public class ParserUtil {
     public static Mobile parseMobile(String mobile) throws ParseException {
         requireNonNull(mobile);
         String trimmedMobile = mobile.trim();
-        if (!Importance.isValidImportance(trimmedMobile)) {
-            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
+        if (!Mobile.isValidMobile(trimmedMobile)) {
+            throw new ParseException(Mobile.MESSAGE_CONSTRAINTS);
         }
         return new Mobile(trimmedMobile);
     }
@@ -215,7 +215,7 @@ public class ParserUtil {
         requireNonNull(passport);
         String trimmedPassport = passport.trim();
         if (!Passport.isValidPassport(trimmedPassport)) {
-            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Passport.MESSAGE_CONSTRAINTS);
         }
         return new Passport(trimmedPassport);
     }
