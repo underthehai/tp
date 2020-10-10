@@ -9,9 +9,16 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.activity.Importance;
+import seedu.address.model.activity.WanderlustDateTime;
+import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Mobile;
+import seedu.address.model.friend.Passport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -67,21 +74,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
-        }
-        return new Address(trimmedAddress);
-    }
-
-    /**
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -94,6 +86,21 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String location} into an {@code Location}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code location} is invalid.
+     */
+    public static Location parseLocation(String location) throws ParseException {
+        requireNonNull(location);
+        String trimmedLocation = location.trim();
+        if (!Address.isValidAddress(trimmedLocation)) {
+            throw new ParseException(Location.MESSAGE_CONSTRAINTS);
+        }
+        return new Location(trimmedLocation);
     }
 
     /**
@@ -121,5 +128,95 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String importance} into a {@code Importance}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code importance} is invalid.
+     */
+    public static Importance parseImportance(String importance) throws ParseException {
+        requireNonNull(importance);
+        String trimmedImportance = importance.trim();
+        if (!Importance.isValidImportance(trimmedImportance)) {
+            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
+        }
+        return new Importance(trimmedImportance);
+    }
+
+    /**
+     * Parses a {@code String cost} into a {@code Cost}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code cost} is invalid.
+     */
+    public static Cost parseCost(String cost) throws ParseException {
+        requireNonNull(cost);
+        String trimmedCost = cost.trim();
+        if (!Cost.isValidCost(trimmedCost)) {
+            throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
+        }
+        return new Cost(trimmedCost);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code WanderlustDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code WanderlustDate} is invalid.
+     */
+    public static WanderlustDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!WanderlustDate.isValidWanderlustDate(trimmedDate)) {
+            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
+        }
+        return new WanderlustDate(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String dateTime} into a {@code WanderlustDateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code WanderlustDateTime} is invalid.
+     */
+    public static WanderlustDateTime parseDateTime(String dateTime) throws ParseException {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        if (!WanderlustDateTime.isValidWanderlustDateTime(trimmedDateTime)) {
+            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
+        }
+        return new WanderlustDateTime(trimmedDateTime);
+    }
+
+    /**
+     * Parses a {@code String mobile} into a {@code Mobile}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code mobile} is invalid.
+     */
+    public static Mobile parseMobile(String mobile) throws ParseException {
+        requireNonNull(mobile);
+        String trimmedMobile = mobile.trim();
+        if (!Mobile.isValidMobile(trimmedMobile)) {
+            throw new ParseException(Mobile.MESSAGE_CONSTRAINTS);
+        }
+        return new Mobile(trimmedMobile);
+    }
+
+    /**
+     * Parses a {@code String passport} into a {@code Passport}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code passport} is invalid.
+     */
+    public static Passport parsePassport(String passport) throws ParseException {
+        requireNonNull(passport);
+        String trimmedPassport = passport.trim();
+        if (!Passport.isValidPassport(trimmedPassport)) {
+            throw new ParseException(Passport.MESSAGE_CONSTRAINTS);
+        }
+        return new Passport(trimmedPassport);
     }
 }

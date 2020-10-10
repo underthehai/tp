@@ -2,8 +2,8 @@ package seedu.address.testutil.builders;
 
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.friend.Phone;
 
 /**
  * A utility class to help with building Friend objects.
@@ -16,7 +16,7 @@ public class FriendBuilder {
 
     private Name name;
     private Passport passport;
-    private Phone phone;
+    private Mobile mobile;
 
     /**
      * Creates a {@code FriendBuilder} with the default details.
@@ -24,7 +24,7 @@ public class FriendBuilder {
     public FriendBuilder() {
         name = new Name(DEFAULT_NAME);
         passport = new Passport(DEFAULT_PASSPORT);
-        phone = new Phone(DEFAULT_PHONE);
+        mobile = new Mobile(DEFAULT_PHONE);
     }
 
     /**
@@ -33,7 +33,7 @@ public class FriendBuilder {
     public FriendBuilder(Friend friendToCopy) {
         name = friendToCopy.getName();
         passport = friendToCopy.getPassport();
-        phone = friendToCopy.getPhone();
+        mobile = friendToCopy.getMobile();
     }
 
     /**
@@ -48,7 +48,7 @@ public class FriendBuilder {
      * Sets the {@code Phone} of the {@code Friend} that we are building.
      */
     public FriendBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+        this.mobile = new Mobile(phone);
         return this;
     }
 
@@ -61,6 +61,6 @@ public class FriendBuilder {
     }
 
     public Friend build() {
-        return new Friend(name, passport, phone);
+        return new Friend(name, passport, mobile);
     }
 }
