@@ -46,8 +46,8 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
         try {
 
             String[] keywords = args.split(" ");
-            String editType = keywords[0].substring(1);
-            Index index = ParserUtil.parseIndex(keywords[1]);
+            String editType = keywords[1].substring(1);
+            Index index = ParserUtil.parseIndex(keywords[2]);
 
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 

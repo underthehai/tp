@@ -61,9 +61,12 @@ public class EditTravelPlanCommand extends EditCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
         }
 
+
+        //modify travelplan
         TravelPlan travelPlanToEdit = lastShownList.get(targetIndex.getZeroBased());
         TravelPlan editedTravelPlan = createEditedTravelPlan(travelPlanToEdit, editTravelPlanDescriptor);
 
+        //check for duplicated travel plan
         if (!travelPlanToEdit.isSameTravelPlan(editedTravelPlan) && model.hasTravelPlan(editedTravelPlan)) {
             throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
@@ -87,9 +90,9 @@ public class EditTravelPlanCommand extends EditCommand {
         WanderlustDate updatedEndDate = editTravelPlanDescriptor.getEndDate().orElse(travelPlanToEdit.getEndDate());
 
         //obtain data list from original travelplan
-        ActivityList activities = (ActivityList) travelPlanToEdit.getActivityList();
-        AccommodationList accommodations = (AccommodationList) travelPlanToEdit.getAccommodationList();
-        FriendList friends = (FriendList) travelPlanToEdit.getFriendList();
+        ActivityList activities = travelPlanToEdit.getActivities();
+        AccommodationList accommodations = travelPlanToEdit.getAccommodations();
+        FriendList friends = travelPlanToEdit.getFriends();
 
         return new TravelPlan(updatedName, updatedStartDate, updatedEndDate, activities, accommodations, friends);
     }

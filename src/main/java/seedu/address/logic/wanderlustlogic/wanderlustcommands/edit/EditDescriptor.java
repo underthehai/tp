@@ -99,7 +99,7 @@ public class EditDescriptor {
                     .getValue(PREFIX_IMPORTANCE).get()));
         }
         if (source.getValue(PREFIX_DATETIME).isPresent()) {
-            editItemnDescriptor.setActivityDateTime(ParserUtil.parseActivityDateTime(source.getValue(PREFIX_NAME)
+            editItemnDescriptor.setActivityDateTime(ParserUtil.parseActivityDateTime(source.getValue(PREFIX_DATETIME)
                     .get()));
         }
 
@@ -133,7 +133,7 @@ public class EditDescriptor {
     }
 
     public void setLevelOfImportance(Importance importance) {
-        this.levelOfImportance = levelOfImportance;
+        this.levelOfImportance = importance;
     }
 
     public Optional<Importance> getLevelOfImportance() {
