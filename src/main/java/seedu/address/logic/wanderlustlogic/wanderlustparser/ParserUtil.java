@@ -206,15 +206,15 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String importance} into a {@code Importance}.
+     * Parses a {@code String passport} into a {@code Passport}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code importance} is invalid.
+     * @throws ParseException if the given {@code passport} is invalid.
      */
     public static Passport parsePassport(String passport) throws ParseException {
         requireNonNull(passport);
         String trimmedPassport = passport.trim();
-        if (!Importance.isValidImportance(trimmedPassport)) {
+        if (!Passport.isValidPassport(trimmedPassport)) {
             throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
         }
         return new Passport(trimmedPassport);

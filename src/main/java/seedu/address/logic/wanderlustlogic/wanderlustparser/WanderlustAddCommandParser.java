@@ -12,7 +12,6 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_TAG;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddAccommodationCommand;
