@@ -35,13 +35,13 @@ public class DeleteFriendCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
+        List<? extends TravelPlanObject> filteredFriendList = model.getFilteredFriendList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredFriendList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
-        TravelPlanObject friendToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject friendToDelete = filteredFriendList.get(targetIndex.getZeroBased());
 
         model.deleteTravelPlanObject(friendToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete));

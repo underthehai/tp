@@ -36,13 +36,13 @@ public class DeleteAccommodationCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
+        List<? extends TravelPlanObject> filteredAccommodationList = model.getFilteredAccommodationList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredAccommodationList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
         }
 
-        TravelPlanObject accommodationToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlanObject accommodationToDelete = filteredAccommodationList.get(targetIndex.getZeroBased());
 
         model.deleteTravelPlanObject(accommodationToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ACCOMMODATION_SUCCESS, accommodationToDelete));
