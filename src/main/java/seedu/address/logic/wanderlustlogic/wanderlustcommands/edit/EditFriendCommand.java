@@ -12,7 +12,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.friend.Phone;
@@ -54,13 +53,13 @@ public class EditFriendCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
+        List<Friend> lastShownList = model.getFilteredFriendList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        Friend friendToEdit = (Friend) lastShownList.get(targetIndex.getZeroBased());
+        Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
         Friend editedFriend = createEditedFriend(friendToEdit, editFriendDescriptor);
 
         if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {

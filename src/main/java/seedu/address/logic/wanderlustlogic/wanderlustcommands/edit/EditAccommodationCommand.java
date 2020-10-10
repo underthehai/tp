@@ -17,7 +17,6 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplanner.Model;
 
@@ -59,13 +58,13 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<? extends TravelPlanObject> lastShownList = model.getFilteredTravelPlanObjectList();
+        List<Accommodation> lastShownList = model.getFilteredAccommodationList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
         }
 
-        Accommodation accommodationToEdit = (Accommodation) lastShownList.get(targetIndex.getZeroBased());
+        Accommodation accommodationToEdit = lastShownList.get(targetIndex.getZeroBased());
         Accommodation editedAccommodation = createEditedAccommodation(accommodationToEdit, editAccommodationDescriptor);
 
         if (!accommodationToEdit.isSameAccommodation(editedAccommodation)

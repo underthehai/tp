@@ -20,7 +20,6 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 
 
@@ -69,13 +68,13 @@ public class EditActivityCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<? extends TravelPlanObject> lastShownList = model.getDirectory().getActivityList();
+        List<Activity> lastShownList = model.getFilteredActivityList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
-        Activity activityToEdit = (Activity) lastShownList.get(targetIndex.getZeroBased());
+        Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
         Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
 
         if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {

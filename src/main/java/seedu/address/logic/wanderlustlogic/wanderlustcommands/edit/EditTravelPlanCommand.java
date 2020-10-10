@@ -61,12 +61,9 @@ public class EditTravelPlanCommand extends EditCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
         }
 
-
-        //modify travelplan
         TravelPlan travelPlanToEdit = lastShownList.get(targetIndex.getZeroBased());
         TravelPlan editedTravelPlan = createEditedTravelPlan(travelPlanToEdit, editTravelPlanDescriptor);
 
-        //check for duplicated travel plan
         if (!travelPlanToEdit.isSameTravelPlan(editedTravelPlan) && model.hasTravelPlan(editedTravelPlan)) {
             throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
