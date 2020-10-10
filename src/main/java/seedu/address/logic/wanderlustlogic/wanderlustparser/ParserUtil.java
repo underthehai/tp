@@ -86,21 +86,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String endDate} into a {@code WanderlustDate}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code endDate} is invalid.
-     */
-    public static WanderlustDate parseEndDate(String endDate) throws ParseException {
-        requireNonNull(endDate);
-        String trimmedEndDate = endDate.trim();
-        if (!WanderlustDate.isValidWanderlustDate(trimmedEndDate)) {
-            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
-        }
-        return new WanderlustDate(trimmedEndDate);
-    }
-
-    /**
      * Parses a {@code String passport} into a {@code Passport}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -130,20 +115,19 @@ public class ParserUtil {
         return new WanderlustDateTime(trimmedActivityDateTime);
     }
 
-
     /**
-     * Parses a {@code String location} into an {@code Location}.
+     * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code location} is invalid.
+     * @throws ParseException if the given {@code tag} is invalid.
      */
-    public static Location parseLocation(String location) throws ParseException {
-        requireNonNull(location);
-        String trimmedLocation = location.trim();
-        if (!Address.isValidAddress(trimmedLocation)) {
-            throw new ParseException(Location.MESSAGE_CONSTRAINTS);
+    public static Tag parseTag(String tag) throws ParseException {
+        requireNonNull(tag);
+        String trimmedTag = tag.trim();
+        if (!Tag.isValidTagName(trimmedTag)) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
-        return new Location(trimmedLocation);
+        return new Tag(trimmedTag);
     }
 
     /**
@@ -171,21 +155,6 @@ public class ParserUtil {
             throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
         }
         return new Importance(trimmedImportance);
-    }
-
-    /**
-     * Parses a {@code String cost} into a {@code Cost}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code cost} is invalid.
-     */
-    public static Cost parseCost(String cost) throws ParseException {
-        requireNonNull(cost);
-        String trimmedCost = cost.trim();
-        if (!Cost.isValidCost(trimmedCost)) {
-            throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
-        }
-        return new Cost(trimmedCost);
     }
 
     /**

@@ -84,10 +84,10 @@ public class EditDescriptor {
             editItemnDescriptor.setCost(ParserUtil.parseCost(source.getValue(PREFIX_COST).get()));
         }
         if (source.getValue(PREFIX_START).isPresent()) {
-            editItemnDescriptor.setStartDate(ParserUtil.parseStartDate(source.getValue(PREFIX_START).get()));
+            editItemnDescriptor.setStartDate(ParserUtil.parseDate(source.getValue(PREFIX_START).get()));
         }
         if (source.getValue(PREFIX_END).isPresent()) {
-            editItemnDescriptor.setEndDate(ParserUtil.parseEndDate(source.getValue(PREFIX_END).get()));
+            editItemnDescriptor.setEndDate(ParserUtil.parseDate(source.getValue(PREFIX_END).get()));
         }
         if (source.getValue(PREFIX_PASSPORT).isPresent()) {
             editItemnDescriptor.setPassport(ParserUtil.parsePassport(source.getValue(PREFIX_PASSPORT).get()));
