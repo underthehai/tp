@@ -91,7 +91,7 @@ Name of Tag | Description
 #### Person Tag
 Name of Tag | Description
 ------------ | -------------
-`m/MOBILE_NUMBER` | Mobile number of the person cell phone
+`m/MOBILE_NUMBER` | Mobile number of the person cell mobile
 `p/PASSPORT_NUMBER` | Passport number of the person passport
 
 #### Travel Plan Tag
@@ -264,7 +264,7 @@ Examples:
 
 Edits existing Accommodation in the address book. This command can only be used within a travel plan.
 
-Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
+Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [ni/NIGHTS]​`
 
 * User navigates to specified travel plan.
 * Edits the Accommodation at the specified `INDEX` or name.
@@ -273,23 +273,23 @@ Format: `edit -accommodation INDEX n/NAME [l/LOCATION] [c/COST] [n/NIGHTS]​`
 * At least one of the optional fields must be provided.
 
 Examples:
-*  `edit -accommodation n/Hard Rock Hotel c/SGD500 n/2` Edits the cost and nights of `Hard Rock Hotel` Accommodation
+*  `edit -accommodation n/Hard Rock Hotel c/SGD500 ni/2` Edits the cost and nights of `Hard Rock Hotel` Accommodation
 *  `edit -accomodation 2 c/SGD250` Edits the cost of the 2nd Accommodation to be `SGD250`
 
-#### 4. Editing a Person (L)
+#### 4. Editing a Friend (L)
 
-Edits existing Person in the address book. This command can only be used within a travel plan.
+Edits existing Friend in the address book. This command can only be used within a travel plan.
 
-Format: `edit -person n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
+Format: `edit -friend n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
 
 * Navigate to specified travel plan.
-* Edits an existing person object’s information and updates the corresponding travel plan in the current directory
-* The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits an existing friend object’s information and updates the corresponding travel plan in the current directory
+* The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
 Examples:
-*  `edit -person n/John m/81234567 p/E1234567H` Edits the mobile number and passport number of `John` Person
-*  `edit 2 m/87452183` Edits the mobile number of the 2nd person\
+*  `edit -friend n/John m/81234567 p/E1234567H` Edits the mobile number and passport number of `John` Friend
+*  `edit 2 m/87452183` Edits the mobile number of the 2nd friend\
 
 Example: `add -accommodation n/Hard Rock Hotel l/Sentosa c/SGD500 n/2`
 

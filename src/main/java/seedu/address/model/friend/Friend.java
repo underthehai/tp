@@ -18,17 +18,17 @@ public class Friend extends TravelPlanObject {
 
     // Data fields
     private final Passport passport;
-    private final Phone phone;
+    private final Mobile mobile;
 
 
     /**
      * Every field must be present and not null.
      */
-    public Friend(Name name, Passport passport, Phone phone) {
-        requireAllNonNull(name, passport, phone);
+    public Friend(Name name, Passport passport, Mobile mobile) {
+        requireAllNonNull(name, passport, mobile);
         this.name = name;
         this.passport = passport;
-        this.phone = phone;
+        this.mobile = mobile;
     }
 
     public Name getName() {
@@ -39,8 +39,8 @@ public class Friend extends TravelPlanObject {
         return passport;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Mobile getMobile() {
+        return mobile;
     }
 
     /**
@@ -72,13 +72,13 @@ public class Friend extends TravelPlanObject {
         Friend otherFriend = (Friend) other;
         return otherFriend.getName().equals(getName())
                 && otherFriend.getPassport().equals(getPassport())
-                && otherFriend.getPhone().equals(getPhone());
+                && otherFriend.getMobile().equals(getMobile());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, passport, phone);
+        return Objects.hash(name, passport, mobile);
     }
 
     @Override
@@ -88,8 +88,7 @@ public class Friend extends TravelPlanObject {
                 .append(" Passport number: ")
                 .append(getPassport())
                 .append(" Mobile phone: ")
-                .append(getPhone());
-
+                .append(getMobile());
         return builder.toString();
     }
 
