@@ -47,7 +47,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        directory = this.travelPlanner.getTravelPlanList().get(0);
+        // Changed cos test case is not working cant get(0) if empty
+        directory = this.travelPlanner.getWishlistAsDirectory();
         filteredActivityList = new FilteredList<>(directory.getActivityList());
         filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
                 ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
