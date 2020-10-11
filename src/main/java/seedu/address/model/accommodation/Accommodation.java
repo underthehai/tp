@@ -101,14 +101,14 @@ public class Accommodation extends TravelPlanObject {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Date: ")
+        builder.append(getName()).append("\n")
+                .append("Date: ")
                 .append(getStartDate())
                 .append(" - ")
-                .append(getEndDate())
-                .append(" Address: ")
-                .append(getLocation())
-                .append(" Cost: ")
+                .append(getEndDate()).append("\n")
+                .append("Address: ")
+                .append(getLocation()).append("\n")
+                .append("Cost: ")
                 .append(getCost());
         return builder.toString();
     }

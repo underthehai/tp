@@ -1,23 +1,37 @@
 package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_TAG;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddAccommodationCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddActivityCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddFriendCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddTravelPlanCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.Importance;
+import seedu.address.model.activity.WanderlustDateTime;
+import seedu.address.model.commons.Cost;
+import seedu.address.model.commons.Location;
+import seedu.address.model.commons.Name;
+import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Friend;
+import seedu.address.model.friend.Mobile;
+import seedu.address.model.friend.Passport;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -30,23 +44,127 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+        String[] keywords = args.split(" ");
+        String addType = keywords[1].substring(1);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
-                || !argMultimap.getPreamble().isEmpty()) {
+        switch (addType) {
+
+        case AddActivityCommand.COMMAND_WORD:
+            return parseActivity(args);
+
+        case AddAccommodationCommand.COMMAND_WORD:
+            return parseAccommodation(args);
+
+        case AddFriendCommand.COMMAND_WORD:
+            return parseFriend(args);
+
+        case AddTravelPlanCommand.COMMAND_WORD:
+            return parseTravelPlan(args);
+
+        default:
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+
+        }
+    }
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddActivityCommand
+     * and returns an AddActivityCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddActivityCommand parseActivity(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
+                        PREFIX_DATETIME, PREFIX_TAG);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
+                PREFIX_DATETIME) || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddActivityCommand.MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Importance importance = ParserUtil.parseImportance(argMultimap.getValue(PREFIX_IMPORTANCE).get());
+        Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
+        Cost cost = ParserUtil.parseCost(argMultimap.getValue(PREFIX_COST).get());
+        WanderlustDateTime dateTime = ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_DATETIME).get());
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Activity activity = new Activity(name, location, cost, importance, dateTime);
 
-        return new AddCommand(person);
+        return new AddActivityCommand(activity);
+    }
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddAccommodationCommand
+     * and returns an AddAccommodationCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddAccommodationCommand parseAccommodation(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_LOCATION, PREFIX_COST, PREFIX_START, PREFIX_END);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION, PREFIX_COST, PREFIX_START, PREFIX_END)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddAccommodationCommand.MESSAGE_USAGE));
+        }
+
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
+        Cost cost = ParserUtil.parseCost(argMultimap.getValue(PREFIX_COST).get());
+        WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
+        WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
+
+        Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
+
+        return new AddAccommodationCommand(accommodation);
+    }
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddFriendCommand
+     * and returns an AddFriendCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddFriendCommand parseFriend(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_MOBILE, PREFIX_PASSPORT);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_MOBILE, PREFIX_PASSPORT)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddFriendCommand.MESSAGE_USAGE));
+        }
+
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Mobile mobile = ParserUtil.parseMobile(argMultimap.getValue(PREFIX_MOBILE).get());
+        Passport passport = ParserUtil.parsePassport(argMultimap.getValue(PREFIX_PASSPORT).get());
+
+        Friend friend = new Friend(name, passport, mobile);
+
+        return new AddFriendCommand(friend);
+    }
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddTravelPlanCommand
+     * and returns an AddTravelPlanCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public AddTravelPlanCommand parseTravelPlan(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_START, PREFIX_END)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddTravelPlanCommand.MESSAGE_USAGE));
+        }
+
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
+        WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
+
+        TravelPlan travelPlan = new TravelPlan(name, startDate, endDate);
+
+        return new AddTravelPlanCommand(travelPlan);
     }
 
     /**
