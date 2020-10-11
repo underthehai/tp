@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.BOSTON_TRIP;
