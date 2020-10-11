@@ -1,7 +1,8 @@
 package seedu.address.model.travelplanner;
 
-import org.junit.jupiter.api.Test;
 import static seedu.address.testutil.Assert.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class UserPrefsTest {
 

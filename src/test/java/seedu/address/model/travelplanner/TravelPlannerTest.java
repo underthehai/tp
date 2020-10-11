@@ -1,27 +1,28 @@
 package seedu.address.model.travelplanner;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplan.exceptions.DuplicateTravelPlanException;
-import seedu.address.testutil.builders.ActivityBuilder;
-import seedu.address.testutil.builders.TravelPlanBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
+import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivityList;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static seedu.address.testutil.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
-import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivityList;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
+import org.junit.jupiter.api.Test;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplan.exceptions.DuplicateTravelPlanException;
+import seedu.address.testutil.builders.ActivityBuilder;
+import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class TravelPlannerTest {
 
@@ -115,9 +116,9 @@ public class TravelPlannerTest {
         assertThrows(UnsupportedOperationException.class, () -> travelPlanner.getWishlist().remove(0));
     }
 
-        /**
-         * A stub ReadOnlyTravelPlanner whose travel plan list and wishlist can violate interface constraints.
-         */
+    /**
+     * A stub ReadOnlyTravelPlanner whose travel plan list and wishlist can violate interface constraints.
+     */
     private static class TravelPlannerStub implements ReadOnlyTravelPlanner {
         private final ObservableList<TravelPlan> travelPlans = FXCollections.observableArrayList();
         private final ObservableList<Activity> wishlist = FXCollections.observableArrayList();

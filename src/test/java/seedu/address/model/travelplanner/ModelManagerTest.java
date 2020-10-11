@@ -1,18 +1,19 @@
 package seedu.address.model.travelplanner;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.testutil.builders.TravelPlannerBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.BOSTON_TRIP;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static seedu.address.testutil.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.BOSTON_TRIP;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.GuiSettings;
+import seedu.address.testutil.builders.TravelPlannerBuilder;
 
 public class ModelManagerTest {
 
