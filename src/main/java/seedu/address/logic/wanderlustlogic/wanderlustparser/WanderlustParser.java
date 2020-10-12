@@ -32,7 +32,7 @@ public class WanderlustParser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format or is missing the command type
      */
     public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
@@ -42,34 +42,38 @@ public class WanderlustParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        try {
+            switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-        //    return new WanderlustAddCommandParser().parse(arguments);
+            case AddCommand.COMMAND_WORD:
+                return new WanderlustAddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new WanderlustEditCommandParser().parse(arguments);
+            case EditCommand.COMMAND_WORD:
+                return new WanderlustEditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new WanderlustDeleteCommandParser().parse(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return new WanderlustDeleteCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new WanderlustFindCommandParser().parse(arguments);
+            case FindCommand.COMMAND_WORD:
+                return new WanderlustFindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+            case HelpCommand.COMMAND_WORD:
+                return new HelpCommand();
 
-        default:
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            default:
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            }
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(Command.MESSAGE_MISSING_TYPE);
         }
     }
 
