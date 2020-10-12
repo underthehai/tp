@@ -35,40 +35,38 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
-
+        String[] keywords = args.split(" ");
+        String editType = keywords[1].substring(1);
         try {
-            String[] keywords = args.split(" ");
-            String editType = keywords[1].substring(1);
-            Index index = ParserUtil.parseIndex(keywords[2]);
-
             switch (editType) {
 
             case EditActivityCommand.COMMAND_WORD:
-                return parseActivity(index, args);
+                return parseActivity(args);
 
             case EditAccommodationCommand.COMMAND_WORD:
-                return parseAccommodation(index, args);
+                return parseAccommodation(args);
 
             case EditFriendCommand.COMMAND_WORD:
-                return parseFriend(index, args);
+                return parseFriend(args);
 
             case EditTravelPlanCommand.COMMAND_WORD:
-                return parseTravelPlan(index, args);
+                return parseTravelPlan(args);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
 
             }
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
-
-
     }
 
-    EditActivityCommand parseActivity(Index index, String args) throws ParseException {
+    EditActivityCommand parseActivity(String args) throws ParseException {
         try {
+            String[] keywords = args.split(" ");
+            Index index = ParserUtil.parseIndex(keywords[2]);
+
             ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                     PREFIX_LOCATION, PREFIX_DATETIME);
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -76,11 +74,15 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
             return new EditActivityCommand(index, editDescriptor);
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.MESSAGE_USAGE));
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.SPECIFY_INDEX));
         }
     }
 
-    EditAccommodationCommand parseAccommodation(Index index, String args) throws ParseException {
+    EditAccommodationCommand parseAccommodation(String args) throws ParseException {
         try {
+            String[] keywords = args.split(" ");
+            Index index = ParserUtil.parseIndex(keywords[2]);
             ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
                     PREFIX_START, PREFIX_END);
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -89,11 +91,15 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
         } catch (ParseException e) {
             throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditAccommodationCommand.MESSAGE_USAGE)));
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditAccommodationCommand.SPECIFY_INDEX));
         }
     }
 
-    EditFriendCommand parseFriend(Index index, String args) throws ParseException {
+    EditFriendCommand parseFriend(String args) throws ParseException {
         try {
+            String[] keywords = args.split(" ");
+            Index index = ParserUtil.parseIndex(keywords[2]);
             ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
                     PREFIX_MOBILE);
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
@@ -101,17 +107,23 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
             return new EditFriendCommand(index, editDescriptor);
         } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditFriendCommand.MESSAGE_USAGE));
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditFriendCommand.SPECIFY_INDEX));
         }
     }
 
-    EditTravelPlanCommand parseTravelPlan(Index index, String args) throws ParseException {
+    EditTravelPlanCommand parseTravelPlan(String args) throws ParseException {
         try {
+            String[] keywords = args.split(" ");
+            Index index = ParserUtil.parseIndex(keywords[2]);
             ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
             EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 
             return new EditTravelPlanCommand(index, editDescriptor);
         } catch (ParseException e) {
             throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTravelPlanCommand.MESSAGE_USAGE)));
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTravelPlanCommand.SPECIFY_INDEX));
         }
     }
 

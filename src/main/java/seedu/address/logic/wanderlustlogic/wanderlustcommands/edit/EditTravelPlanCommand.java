@@ -33,9 +33,9 @@ public class EditTravelPlanCommand extends EditCommand {
             + "[" + PREFIX_START + "STARTDATE] "
             + "[" + PREFIX_END + "ENDDATE] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + " Trip to Japan "
-            + PREFIX_START + " jan 20 2020 "
-            + PREFIX_END + " jan 30 2020";
+            + PREFIX_NAME + "Trip to Japan "
+            + PREFIX_START + "2020-01-20 "
+            + PREFIX_END + " 2020-01-30";
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
     public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";

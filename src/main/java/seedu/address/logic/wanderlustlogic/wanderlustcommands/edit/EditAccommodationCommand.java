@@ -30,15 +30,16 @@ public class EditAccommodationCommand extends EditCommand {
             + ": Edits the accommodation identified by the index number used in the displayed accommodation list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "[" + PREFIX_COST + "COST]"
             + "[" + PREFIX_START + "STARTDATE] "
             + "[" + PREFIX_END + "ENDDATE] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Hard Rock Hotel"
-            + PREFIX_START + " jan 20 2020 "
-            + PREFIX_END + " jan 30 2020"
-            + PREFIX_LOCATION + "Sentosa"
-            + PREFIX_COST + "SGD500";
+            + PREFIX_NAME + "Hard Rock Hotel "
+            + PREFIX_LOCATION + "Sentosa "
+            + PREFIX_COST + "$500 "
+            + PREFIX_START + "2020-07-10"
+            + PREFIX_END + "2020-07-20";
 
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
@@ -74,7 +75,6 @@ public class EditAccommodationCommand extends EditCommand {
 
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
 
-
         return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
     }
 
@@ -105,6 +105,4 @@ public class EditAccommodationCommand extends EditCommand {
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)); // state check
     }
-
-
 }

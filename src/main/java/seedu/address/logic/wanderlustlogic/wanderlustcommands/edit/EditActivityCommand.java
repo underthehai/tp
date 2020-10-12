@@ -1,12 +1,7 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.*;
 
 import java.util.List;
 
@@ -31,21 +26,20 @@ public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the travel plan identified by the index number used in the displayed travel planner list.\n"
+            + ": Edits the activity identified by the index number used in the displayed travel planner list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
             + "[" + PREFIX_COST + "COST] "
-            + "[" + PREFIX_START + "START_DATE] "
-            + "[" + PREFIX_END + "END_DATE] "
+            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
+            + "[" + PREFIX_DATETIME + "DATETIME]"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Hard Rock Hotel"
-            + PREFIX_IMPORTANCE + "2"
-            + PREFIX_LOCATION + "Sentosa"
-            + PREFIX_COST + "SGD500"
-            + PREFIX_START + "20 September 2020"
-            + PREFIX_END + "30 September 2020";
+            + PREFIX_NAME + "Ice Fishing "
+            + PREFIX_IMPORTANCE + "2 "
+            + PREFIX_LOCATION + "Ice Park "
+            + PREFIX_COST + "$50 "
+            + PREFIX_START + "2020-05-05 "
+            + PREFIX_END + "2020-05-10";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";
