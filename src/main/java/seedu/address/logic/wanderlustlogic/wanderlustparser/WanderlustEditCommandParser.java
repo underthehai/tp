@@ -12,11 +12,6 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditAccommodationCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditActivityCommand;
@@ -25,7 +20,6 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescripto
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditFriendCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditTravelPlanCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -35,13 +29,11 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
-                        PREFIX_MOBILE, PREFIX_LOCATION, PREFIX_PASSPORT, PREFIX_START, PREFIX_END, PREFIX_DATETIME);
 
 
         try {
@@ -49,21 +41,19 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
             String editType = keywords[1].substring(1);
             Index index = ParserUtil.parseIndex(keywords[2]);
 
-            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
-
             switch (editType) {
 
             case EditActivityCommand.COMMAND_WORD:
-                return new EditActivityCommand(index, editDescriptor);
+                return parseActivity(index, args);
 
             case EditAccommodationCommand.COMMAND_WORD:
-                return new EditAccommodationCommand(index, editDescriptor);
+                return parseAccommodation(index, args);
 
             case EditFriendCommand.COMMAND_WORD:
-                return new EditFriendCommand(index, editDescriptor);
+                return parseFriend(index, args);
 
             case EditTravelPlanCommand.COMMAND_WORD:
-                return new EditTravelPlanCommand(index, editDescriptor);
+                return parseTravelPlan(index, args);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
@@ -77,19 +67,53 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
 
     }
 
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Tag>} containing zero tags.
-     */
-    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
-        assert tags != null;
+    EditActivityCommand parseActivity(Index index, String args) throws ParseException {
+        try {
+            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
+                    PREFIX_LOCATION, PREFIX_DATETIME);
+            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 
-        if (tags.isEmpty()) {
-            return Optional.empty();
+            return new EditActivityCommand(index, editDescriptor);
+        } catch (ParseException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.MESSAGE_USAGE));
         }
-        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-        return Optional.of(ParserUtil.parseTags(tagSet));
     }
+
+    EditAccommodationCommand parseAccommodation(Index index, String args) throws ParseException {
+        try {
+            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
+                    PREFIX_START, PREFIX_END);
+            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+
+            return new EditAccommodationCommand(index, editDescriptor);
+        } catch (ParseException e) {
+            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditAccommodationCommand.MESSAGE_USAGE)));
+        }
+    }
+
+    EditFriendCommand parseFriend(Index index, String args) throws ParseException {
+        try {
+            ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
+                    PREFIX_MOBILE);
+            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
+
+            return new EditFriendCommand(index, editDescriptor);
+        } catch (ParseException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditFriendCommand.MESSAGE_USAGE));
+        }
+    }
+
+    EditTravelPlanCommand parseTravelPlan(Index index, String args) throws ParseException {
+        try {
+            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
+            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+
+            return new EditTravelPlanCommand(index, editDescriptor);
+        } catch (ParseException e) {
+            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTravelPlanCommand.MESSAGE_USAGE)));
+        }
+    }
+
 
 }

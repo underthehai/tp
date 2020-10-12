@@ -47,15 +47,6 @@ public class EditDescriptor {
     }
 
     /**
-     * Copy constructor
-     *
-     * @param toCopy contain field to copy over
-     */
-    public EditDescriptor(EditDescriptor toCopy) {
-
-    }
-
-    /**
      * Returns true if at least one field is edited.
      */
     public boolean isAnyFieldEdited() {
