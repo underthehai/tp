@@ -1,7 +1,11 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.*;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
 
 import java.util.List;
 
@@ -20,7 +24,7 @@ import seedu.address.model.travelplanner.Model;
 
 /**
  * Edits an existing Activity in the address book and updates the travel plan/wishlist in the current directory
- * Edits the importance, cost, location, startdate, enddate
+ * An activity contains the field name, location, cost, level of importance and date time
  */
 public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
@@ -38,8 +42,7 @@ public class EditActivityCommand extends EditCommand {
             + PREFIX_IMPORTANCE + "2 "
             + PREFIX_LOCATION + "Ice Park "
             + PREFIX_COST + "$50 "
-            + PREFIX_START + "2020-05-05 "
-            + PREFIX_END + "2020-05-10";
+            + PREFIX_DATETIME + " 2020-05-05 14:30";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";
@@ -48,7 +51,7 @@ public class EditActivityCommand extends EditCommand {
     private final EditDescriptor editActivityDescriptor;
 
     /**
-     * Constructor for editactivity command
+     * Constructor for edit activity command
      */
     public EditActivityCommand(Index targetIndex, EditDescriptor editActivityDescriptor) {
         super(targetIndex);
@@ -57,7 +60,6 @@ public class EditActivityCommand extends EditCommand {
     }
 
 
-    //handling the travelplan activity
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -81,8 +83,9 @@ public class EditActivityCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Activity} with the details of {@code activityToEdit}
-     * edited with {@code editActivityDescriptor}.
-     * Edits the importance, cost, location, startime, end time
+     * @param activityToEdit contains the old fields
+     * @param editActivityDescriptor contains updated fields
+     * @return Activity to be updated in the activity list
      */
     private static Activity createEditedActivity(Activity activityToEdit,
                                                  EditDescriptor editActivityDescriptor) {

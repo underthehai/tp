@@ -22,6 +22,7 @@ import seedu.address.model.travelplanner.Model;
 
 /**
  * Edits existing Accommodation in the address book. This command can only be used within a travel plan.
+ * An accommodation contains the field name, location, cost, start date and end date
  */
 public class EditAccommodationCommand extends EditCommand {
     public static final String COMMAND_WORD = "accommodation";
@@ -80,8 +81,9 @@ public class EditAccommodationCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}
-     * edited with {@code editAccommodationDescriptor}.
-     * Edits the name location cost sd ed
+     * @param accommodationToEdit contains the old fields
+     * @param editAccommodationDescriptor contains updated fields
+     * @return Accommodation to be updated in the accommodation list
      */
     private static Accommodation createEditedAccommodation(Accommodation accommodationToEdit,
                                                            EditDescriptor editAccommodationDescriptor) {

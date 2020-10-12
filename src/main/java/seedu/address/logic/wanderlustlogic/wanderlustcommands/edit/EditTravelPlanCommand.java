@@ -21,7 +21,8 @@ import seedu.address.model.travelplanner.Model;
 
 
 /**
- * Edit name start date or end date of travelplan
+ * Edits an existing TravelPlan in the address book.
+ * A travelplan contains the field name, start date and end date
  */
 public class EditTravelPlanCommand extends EditCommand {
     public static final String COMMAND_WORD = "travelplan";
@@ -61,24 +62,22 @@ public class EditTravelPlanCommand extends EditCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
         }
 
-
-        //modify travelplan
         TravelPlan travelPlanToEdit = lastShownList.get(targetIndex.getZeroBased());
         TravelPlan editedTravelPlan = createEditedTravelPlan(travelPlanToEdit, editTravelPlanDescriptor);
 
-        //check for duplicated travel plan
         if (!travelPlanToEdit.isSameTravelPlan(editedTravelPlan) && model.hasTravelPlan(editedTravelPlan)) {
             throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
 
-        //update travelplan
         model.setTravelPlan(travelPlanToEdit, editedTravelPlan);
         return new CommandResult(String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan));
     }
 
     /**
      * Creates and returns a {@code TravelPlan} with the details of {@code travelPlanToEdit}
-     * edited with {@code editTravelPlanDescriptor}.
+     * @param travelPlanToEdit contains the old fields
+     * @param editTravelPlanDescriptor contains updated fields
+     * @return TravelPlan to be updated in the travelplan list
      */
     private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit,
                                                      EditDescriptor editTravelPlanDescriptor) {

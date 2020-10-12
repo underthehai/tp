@@ -92,7 +92,8 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
             throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditAccommodationCommand.MESSAGE_USAGE)));
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditAccommodationCommand.SPECIFY_INDEX));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditAccommodationCommand.SPECIFY_INDEX));
         }
     }
 
@@ -121,9 +122,11 @@ public class WanderlustEditCommandParser implements WanderlustParserInterface<Ed
 
             return new EditTravelPlanCommand(index, editDescriptor);
         } catch (ParseException e) {
-            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTravelPlanCommand.MESSAGE_USAGE)));
+            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditTravelPlanCommand.MESSAGE_USAGE)));
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTravelPlanCommand.SPECIFY_INDEX));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditTravelPlanCommand.SPECIFY_INDEX));
         }
     }
 
