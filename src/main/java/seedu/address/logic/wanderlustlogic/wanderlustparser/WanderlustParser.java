@@ -45,7 +45,7 @@ public class WanderlustParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-        //    return new WanderlustAddCommandParser().parse(arguments);
+            return new WanderlustAddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new WanderlustEditCommandParser().parse(arguments);
