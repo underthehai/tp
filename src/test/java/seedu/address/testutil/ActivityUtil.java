@@ -45,4 +45,15 @@ public class ActivityUtil {
                 .append(" "));
         return sb.toString();
     }
+
+    /**
+     * Returns edited activity for editActivity Command.
+     * @param descriptor EditDescriptor
+     * @return string for edit command.
+     */
+    public static String getNewEditActivityDescriptorDetails(EditDescriptor descriptor) {
+        StringBuilder sb = new StringBuilder();
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append("Change Name").append(" "));
+        return sb.toString();
+    }
 }

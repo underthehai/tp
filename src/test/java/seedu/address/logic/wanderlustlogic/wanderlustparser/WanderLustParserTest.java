@@ -27,6 +27,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.Name;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.testutil.ActivityUtil;
 import seedu.address.testutil.EditActivityDescriptorBuilder;
@@ -61,9 +62,10 @@ public class WanderLustParserTest {
     public void parseCommand_edit() throws Exception {
         Activity activity = new ActivityBuilder().build();
         EditDescriptor descriptor = new EditActivityDescriptorBuilder(activity);
+        descriptor.setName(new Name("Change name"));
         EditActivityCommand command = (EditActivityCommand) parser.parseCommand(EditCommand.COMMAND_WORD
                 + " -activity " + INDEX_FIRST_TRAVELPLAN.getOneBased() + " "
-                + ActivityUtil.getEditActivityDescriptorDetails(descriptor));
+                + ActivityUtil.getNewEditActivityDescriptorDetails(descriptor));
         assertEquals(new EditActivityCommand(INDEX_FIRST_TRAVELPLAN, descriptor), command);
     }
 
