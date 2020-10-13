@@ -26,6 +26,11 @@ public class TypicalTravelPlans {
             .withAccommodationList(getTypicalAccommodationList(2))
             .withActivityList(getTypicalActivityList(2))
             .withFriendList(getTypicalFriendList(2)).build();
+    public static final TravelPlan SINGAPORE_TRIP = new TravelPlanBuilder().withName("Trip to Singapore")
+            .withStartDate("2020-02-02").withEndDate("2020-02-03")
+            .withAccommodationList(getTypicalAccommodationList(1))
+            .withActivityList(getTypicalActivityList(1))
+            .withFriendList(getTypicalFriendList(1)).build();
 
     private TypicalTravelPlans() {} // prevents instantiation
 
