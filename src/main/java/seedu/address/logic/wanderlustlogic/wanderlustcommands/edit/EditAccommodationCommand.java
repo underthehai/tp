@@ -49,7 +49,9 @@ public class EditAccommodationCommand extends EditCommand {
     private final Index targetIndex;
     private final EditDescriptor editAccommodationDescriptor;
 
-    /** Constructor for edit accommodation*/
+    /**
+     * Constructor for edit accommodation
+     */
     public EditAccommodationCommand(Index targetIndex, EditDescriptor editAccommodationDescriptor) {
         super(targetIndex);
         this.targetIndex = targetIndex;
@@ -81,7 +83,8 @@ public class EditAccommodationCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}
-     * @param accommodationToEdit contains the old fields
+     *
+     * @param accommodationToEdit         contains the old fields
      * @param editAccommodationDescriptor contains updated fields
      * @return Accommodation to be updated in the accommodation list
      */
@@ -105,6 +108,7 @@ public class EditAccommodationCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)) // state check
+                && editAccommodationDescriptor.equals(((EditAccommodationCommand) other).editAccommodationDescriptor);
     }
 }

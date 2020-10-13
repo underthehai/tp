@@ -83,7 +83,8 @@ public class EditActivityCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Activity} with the details of {@code activityToEdit}
-     * @param activityToEdit contains the old fields
+     *
+     * @param activityToEdit         contains the old fields
      * @param editActivityDescriptor contains updated fields
      * @return Activity to be updated in the activity list
      */
@@ -108,7 +109,8 @@ public class EditActivityCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditActivityCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditActivityCommand) other).targetIndex)) // state check
+                && editActivityDescriptor.equals(((EditActivityCommand) other).editActivityDescriptor);
     }
 
 }

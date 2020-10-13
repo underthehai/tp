@@ -57,7 +57,7 @@ public class EditFriendCommand extends EditCommand {
         List<Friend> lastShownList = model.getFilteredFriendList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
         Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
@@ -73,7 +73,8 @@ public class EditFriendCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Friend} with the details of {@code friendToEdit}
-     * @param friendToEdit contains the old fields
+     *
+     * @param friendToEdit         contains the old fields
      * @param editFriendDescriptor contains updated fields
      * @return Friend to be updated in the friend list
      */
@@ -92,9 +93,9 @@ public class EditFriendCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditFriendCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditFriendCommand) other).targetIndex)) // state check
+                && editFriendDescriptor.equals(((EditFriendCommand) other).editFriendDescriptor);
     }
-
 
 
 }
