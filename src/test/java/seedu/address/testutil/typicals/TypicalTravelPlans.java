@@ -39,9 +39,10 @@ public class TypicalTravelPlans {
      */
     public static TravelPlanner getTypicalTravelPlanner() {
         TravelPlanner travelPlanner = new TravelPlanner();
-        for (Activity activity : getTypicalActivities1()) {
-            travelPlanner.addActivity(activity);
-        }
+        // I didn't include wishlist first in my storage test
+//        for (Activity activity : getTypicalActivities1()) {
+//            travelPlanner.addActivity(activity);
+//        }
         for (TravelPlan travelPlan : getTypicalTravelPlans()) {
             travelPlanner.addTravelPlan(travelPlan);
         }

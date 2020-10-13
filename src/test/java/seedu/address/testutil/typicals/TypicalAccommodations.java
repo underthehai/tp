@@ -22,6 +22,7 @@ public class TypicalAccommodations {
     public static final Accommodation DANHOTEL = new AccommodationBuilder().withName("Danny's Lodge")
             .withStartDate("2020-04-04").withEndDate("2020-05-05")
             .withCost("400").withLocation("1 Den Street").build();
+
     public static final Accommodation ELLEHOTEL = new AccommodationBuilder().withName("Elle's")
             .withStartDate("2020-05-05").withEndDate("2020-06-06")
             .withCost("500").withLocation("333 Elmo's World").build();
