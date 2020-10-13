@@ -52,6 +52,15 @@ public class EditDescriptor {
      * @param toCopy contain field to copy over
      */
     public EditDescriptor(EditDescriptor toCopy) {
+        toCopy.getName().ifPresent(this::setName);
+        toCopy.getLocation().ifPresent(this::setLocation);
+        toCopy.getCost().ifPresent(this::setCost);
+        toCopy.getStartDate().ifPresent(this::setStartDate);
+        toCopy.getEndDate().ifPresent(this::setEndDate);
+        toCopy.getPassport().ifPresent(this::setPassport);
+        toCopy.getMobile().ifPresent(this::setMobile);
+        toCopy.getLevelOfImportance().ifPresent(this::setLevelOfImportance);
+        toCopy.getActivityDateTime().ifPresent(this::setActivityDateTime);
 
     }
 

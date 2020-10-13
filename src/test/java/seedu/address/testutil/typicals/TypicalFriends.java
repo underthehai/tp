@@ -15,32 +15,32 @@ public class TypicalFriends {
 
     public static final Friend ALICE = new FriendBuilder().withName("Alice Pauline")
             .withPassport("A1234567")
-            .withPhone("94351253").build();
+            .withMobile("94351253").build();
     public static final Friend BENSON = new FriendBuilder().withName("Benson Meier")
             .withPassport("B1234567")
-            .withPhone("98765432").build();
+            .withMobile("98765432").build();
     public static final Friend CARL = new FriendBuilder().withName("Carl Kurz")
             .withPassport("C1234567")
-            .withPhone("95352563").build();
+            .withMobile("95352563").build();
     public static final Friend DANIEL = new FriendBuilder().withName("Daniel Meier")
             .withPassport("D1234567")
-            .withPhone("87652533").build();
+            .withMobile("87652533").build();
 
     public static final Friend ELLE = new FriendBuilder().withName("Elle Meyer")
             .withPassport("E1234567")
-            .withPhone("94822241").build();
+            .withMobile("94822241").build();
     public static final Friend FIONA = new FriendBuilder().withName("Fiona Kunz")
             .withPassport("F7654321")
-            .withPhone("94822427").build();
+            .withMobile("94822427").build();
     public static final Friend GEORGE = new FriendBuilder().withName("George Best")
             .withPassport("G7654321")
-            .withPhone("94824142").build();
+            .withMobile("94824142").build();
     public static final Friend HOON = new FriendBuilder().withName("Hoon Meier")
             .withPassport("H7654321")
-            .withPhone("84824224").build();
+            .withMobile("84824224").build();
     public static final Friend IDA = new FriendBuilder().withName("Ida Mueller")
             .withPassport("I7654321")
-            .withPhone("84821631").build();
+            .withMobile("84821631").build();
 
     private TypicalFriends() {} // prevents instantiation
 
