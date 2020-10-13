@@ -2,6 +2,7 @@ package seedu.address.storage.travelplanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import java.nio.file.Path;
 
@@ -60,27 +61,12 @@ public class StorageManagerTest {
     // Need Help Here!!
     @Test
     public void travelPlannerReadSave() throws Exception {
-        Accommodation accommodation = new AccommodationBuilder().withName("acc").withStartDate("2020-02-02").withEndDate("2020-02-03").build();
-        AccommodationList accommodationList = new AccommodationList();
-        accommodationList.addAccommodation(accommodation);
-        Activity activity = new ActivityBuilder().withName("act").withCost("30").withDateTime("2020-02-02 14:00").withLevelOfImportance("5").withLocation("sg").build();
-        ActivityList activityList = new ActivityList();
-        activityList.addActivity(activity);
-        Friend friend = new FriendBuilder().withName("fr").withPassport("A1234567").withPhone("12345678").build();
-        FriendList friendList = new FriendList();
-        friendList.addFriend(friend);
-        TravelPlan travelPlan = new TravelPlanBuilder().withName("tp").withStartDate("2020-02-02").withEndDate("2020-02-03")
-                .withAccommodationList(accommodationList)
-                .withFriendList(friendList)
-//                .withActivityList(activityList)
-                .build();
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
          * {@link JsonTravelPlannerStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonTravelPlannerStorageTest} class.
          */
-        TravelPlanner original = new TravelPlanner();
-        original.addTravelPlan(travelPlan);
+        TravelPlanner original = getTypicalTravelPlanner();
         storageManager.saveTravelPlanner(original);
         ReadOnlyTravelPlanner retrieved = storageManager.readTravelPlanner().get();
         assertEquals(original, new TravelPlanner(retrieved));
