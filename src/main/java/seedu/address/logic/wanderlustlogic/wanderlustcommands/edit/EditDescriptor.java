@@ -46,6 +46,10 @@ public class EditDescriptor {
 
     }
 
+    /**
+     * Copy constructor
+     * @param toCopy contains information about all possible fields
+     */
     public EditDescriptor(EditDescriptor toCopy) {
         toCopy.getName().ifPresent(this::setName);
         toCopy.getLocation().ifPresent(this::setLocation);
