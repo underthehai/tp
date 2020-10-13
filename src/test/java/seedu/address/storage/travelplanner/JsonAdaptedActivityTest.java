@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.travelplanner.JsonAdaptedActivity.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
 
 public class JsonAdaptedActivityTest {
     private static final String INVALID_NAME = "R@chel";
