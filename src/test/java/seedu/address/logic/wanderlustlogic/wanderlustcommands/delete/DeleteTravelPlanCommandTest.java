@@ -7,6 +7,7 @@ import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTest
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTravelPlanAtIndex;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_TRAVELPLAN;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND_TRAVELPLAN;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN_TRAVELPLAN;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import org.junit.jupiter.api.Test;
@@ -69,9 +70,7 @@ public class DeleteTravelPlanCommandTest {
     public void execute_invalidIndexFilteredList_throwsCommandException() {
         showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
 
-        Index outOfBoundIndex = INDEX_SECOND_TRAVELPLAN;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getTravelPlanner().getTravelPlanList().size());
+        Index outOfBoundIndex = INDEX_TEN_TRAVELPLAN;
 
         DeleteTravelPlanCommand deleteTravelPlanCommand = new DeleteTravelPlanCommand(outOfBoundIndex);
 

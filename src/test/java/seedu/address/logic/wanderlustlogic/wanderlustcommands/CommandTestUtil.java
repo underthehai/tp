@@ -190,7 +190,7 @@ public class CommandTestUtil {
 
         TravelPlan tp = model.getFilteredTravelPlanList().get(targetIndex.getZeroBased());
         final String[] splitName = tp.getName().name.split("\\s+");
-        model.updateFilteredTravelPlanList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredTravelPlanList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[2])));
 
         assertEquals(1, model.getFilteredTravelPlanList().size());
     }
