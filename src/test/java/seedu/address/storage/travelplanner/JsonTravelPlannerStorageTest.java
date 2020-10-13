@@ -1,40 +1,23 @@
 package seedu.address.storage.travelplanner;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.friend.Friend;
-import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.ActivityList;
-import seedu.address.model.travelplan.FriendList;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.TravelPlanner;
-import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.testutil.builders.AccommodationBuilder;
-import seedu.address.testutil.builders.ActivityBuilder;
-import seedu.address.testutil.builders.FriendBuilder;
-import seedu.address.testutil.builders.TravelPlanBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.SINGAPORE_TRIP;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.typicals.TypicalPersons.ALICE;
-import static seedu.address.testutil.typicals.TypicalPersons.HOON;
-import static seedu.address.testutil.typicals.TypicalPersons.IDA;
-import static seedu.address.testutil.typicals.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.SINGAPORE_TRIP;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
+import seedu.address.model.travelplanner.TravelPlanner;
 
 public class JsonTravelPlannerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths

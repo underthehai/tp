@@ -1,17 +1,18 @@
 package seedu.address.storage.travelplanner;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.storage.travelplanner.JsonAdaptedActivity.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.storage.travelplanner.JsonAdaptedActivity.MISSING_FIELD_MESSAGE_FORMAT;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
 
 public class JsonAdaptedActivityTest {
     private static final String INVALID_NAME = "R@chel";

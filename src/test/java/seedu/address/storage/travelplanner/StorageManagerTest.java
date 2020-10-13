@@ -11,20 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.friend.Friend;
-import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.ActivityList;
-import seedu.address.model.travelplan.FriendList;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
-import seedu.address.testutil.builders.AccommodationBuilder;
-import seedu.address.testutil.builders.ActivityBuilder;
-import seedu.address.testutil.builders.FriendBuilder;
-import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class StorageManagerTest {
 

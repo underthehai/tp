@@ -1,23 +1,28 @@
 package seedu.address.storage.travelplanner;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.testutil.Assert.assertThrows;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.testutil.typicals.TypicalTravelPlans;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.Assert.assertThrows;
-
 public class JsonSerializableTravelPlannerTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableTravelPlannerTest");
-    private static final Path TYPICAL_TRAVEL_PLANS_FILE = TEST_DATA_FOLDER.resolve("typicalTravelPlansTravelPlanner.json");
-    private static final Path INVALID_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER.resolve("invalidTravelPlanTravelPlanner.json");
-    private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER.resolve("duplicateTravelPlanTravelPlanner.json");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
+            "JsonSerializableTravelPlannerTest");
+    private static final Path TYPICAL_TRAVEL_PLANS_FILE = TEST_DATA_FOLDER
+            .resolve("typicalTravelPlansTravelPlanner.json");
+    private static final Path INVALID_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
+            .resolve("invalidTravelPlanTravelPlanner.json");
+    private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
+            .resolve("duplicateTravelPlanTravelPlanner.json");
 
     @Test
     public void toModelType_typicalTravelPlansFile_success() throws Exception {
