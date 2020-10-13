@@ -101,7 +101,8 @@ public class EditTravelPlanCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditTravelPlanCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditTravelPlanCommand) other).targetIndex)) // state check
+                && editTravelPlanDescriptor.equals(((EditTravelPlanCommand) other).editTravelPlanDescriptor);
     }
 
 }

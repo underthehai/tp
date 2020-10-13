@@ -103,7 +103,8 @@ public class EditAccommodationCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)) // state check
+                && editAccommodationDescriptor.equals(((EditAccommodationCommand) other).editAccommodationDescriptor);
     }
 
 

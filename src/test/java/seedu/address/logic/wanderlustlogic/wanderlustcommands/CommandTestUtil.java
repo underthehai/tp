@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditAccommodationDescriptorBuilder;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditActivityDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditFriendDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
@@ -148,6 +150,30 @@ public class CommandTestUtil {
                 .withPassport(VALID_PASSPORT_BOB).build();
     }
 
+    public static final EditDescriptor DESC_HOME;
+    public static final EditDescriptor DESC_INN;
+
+    static {
+        DESC_HOME = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_HOME).withCost(VALID_COST_HOME)
+                .withLocation(VALID_LOCATION_HOME).withStartDate(VALID_START_DATE_HOME)
+                .withEndDate(VALID_END_DATE_HOME).build();
+        DESC_INN = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_INN).withCost(VALID_COST_INN)
+                .withLocation(VALID_LOCATION_INN).withStartDate(VALID_START_DATE_INN)
+                .withEndDate(VALID_END_DATE_INN).build();
+    }
+
+    public static final EditDescriptor DESC_ZOO;
+    public static final EditDescriptor DESC_SKI;
+
+    static {
+        DESC_ZOO = new EditActivityDescriptorBuilder().withName(VALID_NAME_ZOO).withCost(VALID_COST_ZOO)
+                .withLocation(VALID_LOCATION_ZOO).withImportance(VALID_LEVELOFIMPORTANCE_ZOO)
+                .withDateTime(VALID_ACTIVITYDATETIME_SKI).build();
+
+        DESC_SKI = new EditActivityDescriptorBuilder().withName(VALID_NAME_SKI).withCost(VALID_COST_SKI)
+                .withLocation(VALID_LOCATION_SKI).withImportance(VALID_LEVELOFIMPORTANCE_SKI)
+                .withDateTime(VALID_ACTIVITYDATETIME_SKI).build();
+    }
 
 
     /**
