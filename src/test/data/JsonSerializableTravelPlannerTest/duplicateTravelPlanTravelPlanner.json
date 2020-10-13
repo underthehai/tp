@@ -1,0 +1,25 @@
+{
+  "travelPlans": [ {
+    "name" : "Trip to Hawaii",
+    "startDate" : "2020-11-01",
+    "endDate" : "2020-12-31",
+    "activities" : [ {
+      "name" : "Bungee Jumping",
+      "location" : "Sentosa",
+      "cost" : "200",
+      "dateTime" : "2020-12-12 11:00",
+      "importance" : "2"
+    } ]
+  }, {
+    "name" : "Trip to Hawaii",
+    "startDate" : "2020-11-01",
+    "endDate" : "2020-12-31",
+    "activities" : [ {
+      "name" : "Eat Bingsu",
+      "location" : "Snowflake Street",
+      "cost" : "5",
+      "dateTime" : "2020-12-23 17:00",
+      "importance" : "3"
+    } ]
+  } ]
+}
