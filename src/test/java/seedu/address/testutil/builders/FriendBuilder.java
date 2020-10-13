@@ -12,7 +12,7 @@ public class FriendBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_PASSPORT = "M1234567";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_MOBILE = "85355255";
 
     private Name name;
     private Passport passport;
@@ -24,7 +24,7 @@ public class FriendBuilder {
     public FriendBuilder() {
         name = new Name(DEFAULT_NAME);
         passport = new Passport(DEFAULT_PASSPORT);
-        mobile = new Mobile(DEFAULT_PHONE);
+        mobile = new Mobile(DEFAULT_MOBILE);
     }
 
     /**
@@ -45,10 +45,10 @@ public class FriendBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Friend} that we are building.
+     * Sets the {@code Mobile} of the {@code Friend} that we are building.
      */
-    public FriendBuilder withPhone(String phone) {
-        this.mobile = new Mobile(phone);
+    public FriendBuilder withMobile(String mobile) {
+        this.mobile = new Mobile(mobile);
         return this;
     }
 
