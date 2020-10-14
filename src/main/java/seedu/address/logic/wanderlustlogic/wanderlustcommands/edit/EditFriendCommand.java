@@ -15,10 +15,12 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 /**
- * Edits existing Friend in the address book. This command can only be used within a travel plan.
+ * Edits existing Friend in the address book. This command can only be used within the travel plan directory.
+ * A friend contains the field name, passport, mobile
  */
 public class EditFriendCommand extends EditCommand {
     public static final String COMMAND_WORD = "friend";
@@ -28,10 +30,10 @@ public class EditFriendCommand extends EditCommand {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PASSPORT + "PASSPORT] "
-            + "[" + PREFIX_MOBILE + "MOBILE_PHONE] "
+            + "[" + PREFIX_MOBILE + "MOBILE_PHONE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "John "
-            + PREFIX_PASSPORT + "E1234567H "
+            + PREFIX_PASSPORT + "E1234567 "
             + PREFIX_MOBILE + "81234567 ";
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
@@ -53,10 +55,14 @@ public class EditFriendCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        if (!(model.getDirectory() instanceof TravelPlan)) {
+            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        }
+
         List<Friend> lastShownList = model.getFilteredFriendList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
         Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
@@ -72,8 +78,10 @@ public class EditFriendCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Friend} with the details of {@code friendToEdit}
-     * edited with {@code editFriendDescriptor}.
-     * Edits the name, passport, mobile phone
+     *
+     * @param friendToEdit         contains the old fields
+     * @param editFriendDescriptor contains updated fields
+     * @return Friend to be updated in the friend list
      */
     private static Friend createEditedFriend(Friend friendToEdit, EditDescriptor editFriendDescriptor) {
         assert friendToEdit != null;
@@ -90,9 +98,10 @@ public class EditFriendCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditFriendCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditFriendCommand) other).targetIndex)) // state check
+                && (editFriendDescriptor.equals(((EditFriendCommand) other).editFriendDescriptor)
+                || editFriendDescriptor.isSameDescriptor(((EditFriendCommand) other).editFriendDescriptor));
     }
-
 
 
 }

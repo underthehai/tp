@@ -26,7 +26,7 @@ public class AddTravelPlanCommand extends AddCommand {
             + PREFIX_END + "30-09-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New travel plan added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This travel plan already exists in the travel planner";
+    public static final String MESSAGE_DUPLICATE_TRAVEL_PLAN = "This travel plan already exists in the travel planner";
 
     private final TravelPlan toAdd;
 
@@ -43,7 +43,7 @@ public class AddTravelPlanCommand extends AddCommand {
         requireNonNull(model);
 
         if (model.hasTravelPlan(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            throw new CommandException(MESSAGE_DUPLICATE_TRAVEL_PLAN);
         }
 
         model.addTravelPlan(toAdd);

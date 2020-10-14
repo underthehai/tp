@@ -47,8 +47,8 @@ public class FriendBuilder {
     /**
      * Sets the {@code Mobile} of the {@code Friend} that we are building.
      */
-    public FriendBuilder withMobile(String mobile) {
-        this.mobile = new Mobile(mobile);
+    public FriendBuilder withMobile(String phone) {
+        this.mobile = new Mobile(phone);
         return this;
     }
 
