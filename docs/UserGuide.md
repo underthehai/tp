@@ -249,7 +249,7 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
-Example: `edit 3 n/John m/91234567 p/E7654321`
+Example: `edit -friend 3 n/John m/91234567 p/E7654321`
 
 --------------------------------------------------------------------------------------------------------------------
 
