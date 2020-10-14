@@ -114,7 +114,8 @@ public class EditActivityCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditActivityCommand) other).targetIndex)) // state check
-                && editActivityDescriptor.equals(((EditActivityCommand) other).editActivityDescriptor);
+                && (editActivityDescriptor.equals(((EditActivityCommand) other).editActivityDescriptor)
+                || editActivityDescriptor.isSameDescriptor(((EditActivityCommand) other).editActivityDescriptor));
     }
 
 }

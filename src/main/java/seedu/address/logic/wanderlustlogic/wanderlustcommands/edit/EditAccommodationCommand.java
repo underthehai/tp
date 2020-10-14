@@ -115,6 +115,8 @@ public class EditAccommodationCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditAccommodationCommand) other).targetIndex)) // state check
-                && editAccommodationDescriptor.equals(((EditAccommodationCommand) other).editAccommodationDescriptor);
+                && (editAccommodationDescriptor.equals(((EditAccommodationCommand) other).editAccommodationDescriptor)
+                || editAccommodationDescriptor.isSameDescriptor(((EditAccommodationCommand) other)
+                .editAccommodationDescriptor));
     }
 }

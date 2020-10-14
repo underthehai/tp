@@ -102,7 +102,9 @@ public class EditTravelPlanCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditTravelPlanCommand) other).targetIndex)) // state check
-                && editTravelPlanDescriptor.equals(((EditTravelPlanCommand) other).editTravelPlanDescriptor);
+                && (editTravelPlanDescriptor.equals(((EditTravelPlanCommand) other).editTravelPlanDescriptor)
+                || (editTravelPlanDescriptor.isSameDescriptor(((EditTravelPlanCommand) other)
+                .editTravelPlanDescriptor)));
     }
 
 }
