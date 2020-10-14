@@ -51,7 +51,7 @@ public class GoToCommand extends Command {
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, TRAVEL_PLAN + " " + travelPlanToGo.getName()));
         } else {
             List<Activity> wishlistToGo = model.getFilteredWishlist();
-            model.setDirectory(targetIndex.getZeroBased());
+            model.setDirectory(-1);
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, WISHLIST));
         }
     }
@@ -60,6 +60,7 @@ public class GoToCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof GoToCommand // instanceof handles nulls
-                && targetIndex.equals(((GoToCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((GoToCommand) other).targetIndex)) // state check
+                && isTravelPlan == (((GoToCommand) other).isTravelPlan);
     }
 }

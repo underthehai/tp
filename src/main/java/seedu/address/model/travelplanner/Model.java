@@ -197,4 +197,5 @@ public interface Model {
      */
     boolean isDirectoryTypeTravelPlan();
 
+    ObservableDirectory getObservableDirectory();
 }
