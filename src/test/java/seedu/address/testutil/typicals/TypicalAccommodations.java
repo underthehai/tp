@@ -1,5 +1,16 @@
 package seedu.address.testutil.typicals;
 
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_COST_HOME;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_COST_INN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_END_DATE_HOME;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_END_DATE_INN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_LOCATION_HOME;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_LOCATION_INN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_NAME_HOME;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_NAME_INN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_START_DATE_HOME;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_START_DATE_INN;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +33,7 @@ public class TypicalAccommodations {
     public static final Accommodation DANHOTEL = new AccommodationBuilder().withName("Danny's Lodge")
             .withStartDate("2020-04-04").withEndDate("2020-05-05")
             .withCost("400").withLocation("1 Den Street").build();
+
     public static final Accommodation ELLEHOTEL = new AccommodationBuilder().withName("Elle's")
             .withStartDate("2020-05-05").withEndDate("2020-06-06")
             .withCost("500").withLocation("333 Elmo's World").build();
@@ -31,6 +43,15 @@ public class TypicalAccommodations {
     public static final Accommodation GEORGEHOTEL = new AccommodationBuilder().withName("George and Georgina")
             .withStartDate("2020-07-07").withEndDate("2020-08-08")
             .withCost("700").withLocation("7 GeorgeTown").build();
+
+    // Manually added - Accommodations' details found in {@code CommandTestUtil}
+    public static final Accommodation HOME = new AccommodationBuilder().withName(VALID_NAME_HOME)
+            .withStartDate(VALID_START_DATE_HOME).withEndDate(VALID_END_DATE_HOME)
+            .withCost(VALID_COST_HOME).withLocation(VALID_LOCATION_HOME).build();
+
+    public static final Accommodation INN = new AccommodationBuilder().withName(VALID_NAME_INN)
+            .withStartDate(VALID_START_DATE_INN).withEndDate(VALID_END_DATE_INN)
+            .withCost(VALID_COST_INN).withLocation(VALID_LOCATION_INN).build();
 
     private TypicalAccommodations() {} // prevents instantiation
 
