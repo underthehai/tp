@@ -18,6 +18,7 @@ import java.util.List;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.TravelPlanner;
+import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class TypicalTravelPlans {
@@ -54,10 +55,10 @@ public class TypicalTravelPlans {
         TravelPlanner travelPlanner = new TravelPlanner();
 
         for (Activity activity : getTypicalActivities1()) {
-            travelPlanner.addActivity(activity);
+            travelPlanner.addActivity(new ActivityBuilder(activity).build());
         }
         for (TravelPlan travelPlan : getTypicalTravelPlans()) {
-            travelPlanner.addTravelPlan(travelPlan);
+            travelPlanner.addTravelPlan(new TravelPlanBuilder(travelPlan).build());
         }
         return travelPlanner;
     }

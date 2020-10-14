@@ -65,7 +65,7 @@ public class TypicalAccommodations {
         List<Accommodation> accommodations = set == 1 ? getTypicalAccommodations1() : getTypicalAccommodations2();
         AccommodationList al = new AccommodationList();
         for (Accommodation accommodation : accommodations) {
-            al.addAccommodation(accommodation);
+            al.addAccommodation(new AccommodationBuilder(accommodation).build());
         }
         return al;
     }

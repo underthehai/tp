@@ -1,6 +1,6 @@
 package seedu.address.storage.travelplanner;
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
-//import seedu.address.model.travelplanner.TravelPlanner;
-//import seedu.address.testutil.typicals.TypicalTravelPlans;
+import seedu.address.model.travelplanner.TravelPlanner;
+import seedu.address.testutil.typicals.TypicalTravelPlans;
 
 public class JsonSerializableTravelPlannerTest {
 
@@ -24,15 +24,14 @@ public class JsonSerializableTravelPlannerTest {
     private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
             .resolve("duplicateTravelPlanTravelPlanner.json");
 
-    //TODO: RESOLVE
-    /*@Test
+    @Test
     public void toModelType_typicalTravelPlansFile_success() throws Exception {
         JsonSerializableTravelPlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_TRAVEL_PLANS_FILE,
                 JsonSerializableTravelPlanner.class).get();
         TravelPlanner travelPlannerFromFile = dataFromFile.toModelType();
         TravelPlanner typicalTravelPlansTravelPlanner = TypicalTravelPlans.getTypicalTravelPlanner();
         assertEquals(travelPlannerFromFile, typicalTravelPlansTravelPlanner);
-    }*/
+    }
 
     @Test
     public void toModelType_invalidTravelPlanFile_throwsIllegalValueException() throws Exception {
