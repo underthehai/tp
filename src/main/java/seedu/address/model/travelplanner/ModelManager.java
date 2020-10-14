@@ -29,6 +29,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
+    private boolean isTravelPlan;
     private Directory directory;
     private FilteredList<Activity> filteredActivityList;
     private FilteredList<Accommodation> filteredAccommodationList;
@@ -47,6 +48,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
+        isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
         filteredActivityList = new FilteredList<>(directory.getActivityList());
         filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
@@ -162,6 +164,7 @@ public class ModelManager implements Model {
     @Override
     public void setDirectory(int index, boolean isTravelPlan) {
         if (isTravelPlan) {
+            this.isTravelPlan = isTravelPlan;
             directory = travelPlanner.getTravelPlanList().get(index);
             filteredActivityList = new FilteredList<>(directory.getActivityList());
             filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
@@ -169,14 +172,22 @@ public class ModelManager implements Model {
             filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
                     ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
         } else {
+            this.isTravelPlan = isTravelPlan;
             directory = travelPlanner.getWishlistAsDirectory();
-            filteredActivityList = new FilteredList<>(directory.getActivityList());
         }
     }
 
     @Override
     public Directory getDirectory() {
         return directory;
+    }
+
+    @Override
+    public boolean isDirectoryTypeTravelPlan() {
+        if (isTravelPlan) {
+            return true;
+        }
+        return false;
     }
 
     //=========== TravelPlanObject =============================================================
