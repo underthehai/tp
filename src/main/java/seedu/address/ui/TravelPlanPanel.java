@@ -8,6 +8,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
+import seedu.address.model.travelplanner.ObservableDirectory;
 
 
 /**

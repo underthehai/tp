@@ -16,6 +16,8 @@ import seedu.address.logic.wanderlustlogic.Logic;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.travelplanner.ObservableDirectory;
+
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
@@ -123,6 +125,8 @@ public class MainWindow extends UiPart<Stage> {
 
         travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
+        ObservableDirectory dir = logic.getObservableDirectory();
+        dir.get().addListener((v, oldValue, newValue) -> handleDirectoryChange());
 
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
                 logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
@@ -136,6 +140,15 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
+
+    private void handleDirectoryChange() {
+        travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
+        travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
+
+        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
+                logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
+        travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
     }
 
     /**

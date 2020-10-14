@@ -30,6 +30,7 @@ public class ModelManager implements Model {
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
     private Directory directory;
+    private ObservableDirectory observableDirectory;
     private FilteredList<Activity> filteredActivityList;
     private FilteredList<Accommodation> filteredAccommodationList;
     private FilteredList<Friend> filteredFriendList;
@@ -48,6 +49,7 @@ public class ModelManager implements Model {
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
         directory = this.travelPlanner.getTravelPlanList().get(1);
+        observableDirectory = new ObservableDirectory(directory);
         filteredActivityList = new FilteredList<>(directory.getActivityList());
         filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
                 ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
@@ -162,6 +164,7 @@ public class ModelManager implements Model {
     @Override
     public void setDirectory(int index) {
         directory = travelPlanner.getTravelPlanList().get(index);
+        observableDirectory.get().setValue(directory);
         filteredActivityList = new FilteredList<>(directory.getActivityList());
         filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
                 ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
@@ -172,6 +175,10 @@ public class ModelManager implements Model {
     @Override
     public Directory getDirectory() {
         return directory;
+    }
+
+    public ObservableDirectory getObservableDirectory() {
+        return observableDirectory;
     }
 
     //=========== TravelPlanObject =============================================================
