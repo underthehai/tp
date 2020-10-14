@@ -14,7 +14,6 @@ import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.testutil.typicals.TypicalTravelPlans;
 
 public class JsonSerializableTravelPlannerTest {
-
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
             "JsonSerializableTravelPlannerTest");
     private static final Path TYPICAL_TRAVEL_PLANS_FILE = TEST_DATA_FOLDER
