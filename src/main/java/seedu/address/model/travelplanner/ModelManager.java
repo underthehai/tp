@@ -53,7 +53,6 @@ public class ModelManager implements Model {
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
         filteredFriendList = new FilteredList<>(observableDirectory.getObservableFriendList());
-
     }
 
     public ModelManager() {
