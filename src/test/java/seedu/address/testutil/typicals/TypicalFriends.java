@@ -52,7 +52,7 @@ public class TypicalFriends {
     // Manually added - Friends' details found in {@code CommandTestUtil}
     public static final Friend AMY = new FriendBuilder().withName(VALID_NAME_AMY)
             .withMobile(VALID_MOBILE_AMY).withPassport(VALID_PASSPORT_AMY).build();
-    
+
     public static final Friend BOB = new FriendBuilder().withName(VALID_NAME_BOB)
             .withMobile(VALID_MOBILE_BOB).withPassport(VALID_PASSPORT_BOB).build();
 

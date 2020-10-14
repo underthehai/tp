@@ -128,7 +128,7 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
-    
+
     public static final String COMMAND_PREFIX_DESC = " -";
 
     public static final EditDescriptor DESC_EUROPE;

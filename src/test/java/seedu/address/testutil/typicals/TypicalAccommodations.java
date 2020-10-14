@@ -47,7 +47,7 @@ public class TypicalAccommodations {
     public static final Accommodation HOME = new AccommodationBuilder().withName(VALID_NAME_HOME)
             .withStartDate(VALID_START_DATE_HOME).withEndDate(VALID_END_DATE_HOME)
             .withCost(VALID_COST_HOME).withLocation(VALID_LOCATION_HOME).build();
-    
+
     public static final Accommodation INN = new AccommodationBuilder().withName(VALID_NAME_INN)
             .withStartDate(VALID_START_DATE_INN).withEndDate(VALID_END_DATE_INN)
             .withCost(VALID_COST_INN).withLocation(VALID_LOCATION_INN).build();
