@@ -12,6 +12,7 @@ import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.Model;
+import seedu.address.model.travelplanner.ObservableDirectory;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.ReadOnlyUserPrefs;
 
@@ -176,4 +177,10 @@ public class ModelStub implements Model {
     public Directory getDirectory() {
         throw new AssertionError("This method should not be called.");
     }
+
+    @Override
+    public ObservableDirectory getObservableDirectory() {
+        throw new AssertionError("This method should not be called.");
+    }
+
 }

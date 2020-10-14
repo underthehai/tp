@@ -88,11 +88,11 @@
       "dateTime" : "2020-10-11 12:00",
       "importance" : "5"
     }, {
-      "name" : "Gore Mountain Skiing Resort",
-      "location" : "793 Peaceful Valley Rd",
-      "cost" : "300",
-      "dateTime" : "2020-12-12 12:00",
-      "importance" : "4"
+      "name" : "Gore Mountain Ski Resort",
+      "location" : "124 Ski Avenue",
+      "cost" : "200",
+      "dateTime" : "2020-12-10 12:00",
+      "importance" : "5"
     }, {
       "name" : "Treetop Walk",
       "location" : "601 Island Club Rd",
