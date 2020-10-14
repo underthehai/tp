@@ -1,5 +1,12 @@
 package seedu.address.testutil.typicals;
 
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_MOBILE_AMY;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_MOBILE_BOB;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_PASSPORT_AMY;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_PASSPORT_BOB;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,6 +48,14 @@ public class TypicalFriends {
     public static final Friend IDA = new FriendBuilder().withName("Ida Mueller")
             .withPassport("I7654321")
             .withMobile("84821631").build();
+
+    // Manually added - Friends' details found in {@code CommandTestUtil}
+    public static final Friend AMY = new FriendBuilder().withName(VALID_NAME_AMY)
+            .withMobile(VALID_MOBILE_AMY).withPassport(VALID_PASSPORT_AMY).build();
+
+    public static final Friend BOB = new FriendBuilder().withName(VALID_NAME_BOB)
+            .withMobile(VALID_MOBILE_BOB).withPassport(VALID_PASSPORT_BOB).build();
+
 
     private TypicalFriends() {} // prevents instantiation
 
