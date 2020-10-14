@@ -20,6 +20,7 @@ import seedu.address.testutil.builders.FriendBuilder;
  */
 public class TypicalFriends {
 
+    //Friend
     public static final Friend ALICE = new FriendBuilder().withName("Alice Pauline")
             .withPassport("A1234567")
             .withMobile("94351253").build();
