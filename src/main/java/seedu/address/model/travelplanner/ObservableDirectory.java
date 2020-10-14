@@ -19,7 +19,7 @@ public class ObservableDirectory {
     private ObservableList<Friend> observableFriendList = FXCollections.observableArrayList();
     private ObservableList<Object> observableDirectoryInformation = FXCollections.observableArrayList();
     private Directory directory;
-    ObjectProperty<Directory> dir = new SimpleObjectProperty<>();
+    private ObjectProperty<Directory> dir = new SimpleObjectProperty<>();
 
     /**
      * Instantiates an observable view of the current directory.
