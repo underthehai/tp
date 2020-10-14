@@ -26,7 +26,7 @@ public class AddFriendCommand extends AddCommand {
             + PREFIX_PASSPORT + "p12345678 ";
 
     public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This friend already exists in the travel plan";
+    public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in the travel plan";
 
     private final Friend toAdd;
 
@@ -43,7 +43,7 @@ public class AddFriendCommand extends AddCommand {
         requireNonNull(model);
 
         if (model.hasTravelPlanObject(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
 
         model.addTravelPlanObject(toAdd);
