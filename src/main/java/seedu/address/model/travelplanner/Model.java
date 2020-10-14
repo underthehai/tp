@@ -191,4 +191,5 @@ public interface Model {
      */
     Directory getDirectory();
 
+    ObservableDirectory getObservableDirectory();
 }
