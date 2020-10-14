@@ -47,7 +47,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        directory = this.travelPlanner.getTravelPlanList().get(1);
+        directory = this.travelPlanner.getWishlistAsDirectory();
         filteredActivityList = new FilteredList<>(directory.getActivityList());
         filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
                 ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
@@ -160,13 +160,17 @@ public class ModelManager implements Model {
 
 
     @Override
-    public void setDirectory(int index) {
-        directory = travelPlanner.getTravelPlanList().get(index);
-        filteredActivityList = new FilteredList<>(directory.getActivityList());
-        filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
-        filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
+    public void setDirectory(int index, boolean isTravelPlan) {
+        if (isTravelPlan) {
+            directory = travelPlanner.getTravelPlanList().get(index);
+            filteredActivityList = new FilteredList<>(directory.getActivityList());
+            filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
+                    ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
+            filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
+                    ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
+        } else {
+            directory = travelPlanner.getWishlistAsDirectory();
+        }
     }
 
     @Override

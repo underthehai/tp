@@ -15,7 +15,7 @@ public class GoToCommandTest {
         try {
             String travelPlanName = "Europe";
             Index index = TypicalIndexes.INDEX_FIRST_PERSON;
-            GoToCommand expectedCommand = new GoToCommand(index);
+            GoToCommand expectedCommand = new GoToCommand(index, true);
             Assertions.assertTrue(expectedCommand.equals(new WanderlustGoToCommandParser().parse("1")));
         } catch (ParseException pe) {
             System.out.println("Invalid index!");
@@ -27,7 +27,7 @@ public class GoToCommandTest {
         try {
             String travelPlanName = "Europe";
             Index index = TypicalIndexes.INDEX_FIRST_PERSON;
-            GoToCommand expectedCommand = new GoToCommand(index);
+            GoToCommand expectedCommand = new GoToCommand(index, false);
             Assertions.assertFalse(expectedCommand.equals(new WanderlustGoToCommandParser().parse("2")));
         } catch (ParseException pe) {
             System.out.println("Invalid index!");
