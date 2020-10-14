@@ -19,13 +19,23 @@ public class WanderlustGoToCommandParser implements WanderlustParserInterface<Go
      */
     public GoToCommand parse(String args) throws ParseException {
         try {
-            Index index = ParserUtil.parseIndex(args);
-            return new GoToCommand(index);
+            String[] keywords = args.split(" ");
+            String directoryType = keywords[1].substring(1);
+
+            switch (directoryType) {
+            case GoToCommand.TRAVEL_PLAN:
+                Index index = ParserUtil.parseIndex(keywords[2]);
+                return new GoToCommand(index, true);
+
+            case GoToCommand.WISHLIST:
+                return new GoToCommand(ParserUtil.parseIndex("1000"), false);
+
+            default:
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
+            }
         } catch (ParseException pe) {
             throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE), pe);
         }
     }
-
-
 }
