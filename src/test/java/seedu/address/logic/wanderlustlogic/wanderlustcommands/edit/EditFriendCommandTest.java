@@ -46,7 +46,7 @@ public class EditFriendCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
         expectedModel.setDirectory(1);
-        expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
+        //expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
@@ -77,7 +77,7 @@ public class EditFriendCommandTest {
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
         expectedModel.setDirectory(1);
 
-        expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
+        //expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
     }

@@ -45,9 +45,9 @@ public class EditAccommodationCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
         expectedModel.setDirectory(1);
-        expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
+        //expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
 
 
         assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
@@ -82,7 +82,8 @@ public class EditAccommodationCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
         expectedModel.setDirectory(1);
-        expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
+        //expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
+
 
         assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
     }
