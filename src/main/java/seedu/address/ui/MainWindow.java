@@ -16,6 +16,7 @@ import seedu.address.logic.wanderlustlogic.Logic;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.model.travelplanner.Directory;
 import seedu.address.model.travelplanner.ObservableDirectory;
 
 /**
@@ -126,7 +127,7 @@ public class MainWindow extends UiPart<Stage> {
         travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
         ObservableDirectory dir = logic.getObservableDirectory();
-        dir.get().addListener((v, oldValue, newValue) -> handleDirectoryChange());
+        dir.get().addListener((v, oldValue, newValue) -> handleDirectoryChange(newValue));
 
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
                 logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
@@ -142,13 +143,8 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    private void handleDirectoryChange() {
-        travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
-        travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
-
-        travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
-                logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
-        travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
+    private void handleDirectoryChange(Directory directory) {
+        travelPlanPanel.setDirectory(directory);
     }
 
     /**
