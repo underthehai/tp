@@ -1,7 +1,6 @@
 package seedu.address.testutil.typicals;
 
 import static seedu.address.testutil.typicals.TypicalAccommodations.getTypicalAccommodationList;
-import static seedu.address.testutil.typicals.TypicalAccommodations.getTypicalAccommodations1;
 import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivities1;
 import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivityList;
 import static seedu.address.testutil.typicals.TypicalFriends.getTypicalFriendList;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.TravelPlanner;
