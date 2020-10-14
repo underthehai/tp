@@ -74,7 +74,6 @@ public class EditActivityCommand extends EditCommand {
 
             Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
             Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
-
             if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
             }
