@@ -64,7 +64,6 @@ public class EditActivityCommand extends EditCommand {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (isTravelPlan) {
-
             List<Activity> lastShownList = model.getFilteredActivityList();
 
             if (targetIndex.getZeroBased() >= lastShownList.size()) {
@@ -73,9 +72,11 @@ public class EditActivityCommand extends EditCommand {
 
             Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
             Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
+
             if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
             }
+
             model.setTravelPlanObject(activityToEdit, editedActivity);
             return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
         } else {

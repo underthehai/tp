@@ -34,13 +34,15 @@ public class EditActivityCommandTest {
 
     @BeforeEach
     public void setup() {
-        //inside a travelplan
         model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+        //inside a travelplan
         model.setDirectory(1);
     }
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+
         Activity editedActivity = new ActivityBuilder(ARCHERY).build();
         EditDescriptor descriptor = new EditActivityDescriptorBuilder(editedActivity).build();
         EditActivityCommand editActivityCommand = new EditActivityCommand(INDEX_FIRST, descriptor);
@@ -50,8 +52,7 @@ public class EditActivityCommandTest {
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
         expectedModel.setDirectory(1);
 
-        //expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
-
+//        expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
     }
@@ -89,6 +90,8 @@ public class EditActivityCommandTest {
 
     @Test
     public void execute_duplicateActivityUnfilteredList_failure() {
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+
         Activity firstActivity = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());
         EditDescriptor descriptor = new EditActivityDescriptorBuilder(firstActivity).build();
         EditActivityCommand editActivityCommand = new EditActivityCommand(INDEX_SECOND, descriptor);
@@ -98,6 +101,7 @@ public class EditActivityCommandTest {
 
     @Test
     public void execute_duplicateActivityFilteredList_failure() {
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
 
         // edit Activity in filtered list into a duplicate in address book
         Activity activityInList = model.getFilteredActivityList().get(INDEX_SECOND.getZeroBased());

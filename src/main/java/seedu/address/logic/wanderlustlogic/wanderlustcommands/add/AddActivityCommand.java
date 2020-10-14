@@ -51,7 +51,6 @@ public class AddActivityCommand extends AddCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
-
         if (isTravelPlan) {
             if (model.hasTravelPlanObject(toAdd)) {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
