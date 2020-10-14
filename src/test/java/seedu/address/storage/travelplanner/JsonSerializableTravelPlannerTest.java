@@ -14,7 +14,6 @@ import seedu.address.commons.util.JsonUtil;
 //import seedu.address.testutil.typicals.TypicalTravelPlans;
 
 public class JsonSerializableTravelPlannerTest {
-
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
             "JsonSerializableTravelPlannerTest");
     private static final Path TYPICAL_TRAVEL_PLANS_FILE = TEST_DATA_FOLDER
@@ -23,6 +22,7 @@ public class JsonSerializableTravelPlannerTest {
             .resolve("invalidTravelPlanTravelPlanner.json");
     private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
             .resolve("duplicateTravelPlanTravelPlanner.json");
+
 
     //TODO: RESOLVE
     /*@Test
