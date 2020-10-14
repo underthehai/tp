@@ -47,11 +47,11 @@ public class GoToCommand extends Command {
             }
 
             TravelPlan travelPlanToGo = lastShownList.get(targetIndex.getZeroBased());
-            model.setDirectory(targetIndex.getZeroBased(), true);
+            model.setDirectory(targetIndex.getZeroBased());
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, TRAVEL_PLAN + " " + travelPlanToGo.getName()));
         } else {
             List<Activity> wishlistToGo = model.getFilteredWishlist();
-            model.setDirectory(targetIndex.getZeroBased(), false);
+            model.setDirectory(targetIndex.getZeroBased());
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, WISHLIST));
         }
     }

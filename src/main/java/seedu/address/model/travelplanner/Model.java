@@ -184,7 +184,7 @@ public interface Model {
      * Replaces the directory with the directory at {@code index}.
      * {@code index} must exist in the travel planner.
      */
-    void setDirectory(int index, boolean isTravelPlan);
+    void setDirectory(int index);
 
     /**
      * Returns the current directory that the wanderlust is currently in.

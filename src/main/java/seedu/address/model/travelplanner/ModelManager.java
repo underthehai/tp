@@ -162,8 +162,8 @@ public class ModelManager implements Model {
 
 
     @Override
-    public void setDirectory(int index, boolean isTravelPlan) {
-        if (isTravelPlan) {
+    public void setDirectory(int index) {
+        if (index >= 0) {
             this.isTravelPlan = isTravelPlan;
             directory = travelPlanner.getTravelPlanList().get(index);
             filteredActivityList = new FilteredList<>(directory.getActivityList());
