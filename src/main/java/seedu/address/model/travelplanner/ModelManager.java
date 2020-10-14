@@ -2,8 +2,6 @@ package seedu.address.model.travelplanner;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.model.travelplan.AccommodationList.EMPTY_ACCOMMODATION_LIST;
-import static seedu.address.model.travelplan.FriendList.EMPTY_FRIEND_LIST;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
@@ -29,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
+    private ObservableDirectory observableDirectory;
     private Directory directory;
     private FilteredList<Activity> filteredActivityList;
     private FilteredList<Accommodation> filteredAccommodationList;
@@ -48,11 +47,10 @@ public class ModelManager implements Model {
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
         directory = this.travelPlanner.getWishlistAsDirectory();
-        filteredActivityList = new FilteredList<>(directory.getActivityList());
-        filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
-        filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
+        observableDirectory = new ObservableDirectory(directory);
+        filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
+        filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
+        filteredFriendList = new FilteredList<>(observableDirectory.getObservableFriendList());
     }
 
     public ModelManager() {
@@ -126,7 +124,6 @@ public class ModelManager implements Model {
     @Override
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);
-
         travelPlanner.setTravelPlan(target, editedTravelPlan);
     }
 
@@ -141,12 +138,14 @@ public class ModelManager implements Model {
     @Override
     public void deleteActivity(Activity target) {
         travelPlanner.removeActivity(target);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
     public void addActivity(Activity activity) {
         travelPlanner.addActivity(activity);
         updateFilteredWishlist(PREDICATE_SHOW_ALL_ACTIVITY);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
@@ -154,6 +153,7 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedActivity);
 
         travelPlanner.setActivity(target, editedActivity);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     //=========== Directory =============================================================
@@ -166,11 +166,7 @@ public class ModelManager implements Model {
         } else {
             directory = travelPlanner.getTravelPlanList().get(index);
         }
-        filteredActivityList = new FilteredList<>(directory.getActivityList());
-        filteredAccommodationList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
-        filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
-                ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
@@ -195,6 +191,7 @@ public class ModelManager implements Model {
                 : "Directory must be set to a TravelPlan to call deleteTravelPlanObject.";
         TravelPlan tp = (TravelPlan) directory;
         tp.removeTravelPlanObject(tPObj);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
@@ -203,6 +200,7 @@ public class ModelManager implements Model {
         assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call addTravelPlanObject.";
         TravelPlan tp = (TravelPlan) directory;
         tp.addTravelPlanObject(tPObj);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
@@ -211,6 +209,7 @@ public class ModelManager implements Model {
         assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setTravelPlanObject.";
         TravelPlan tp = (TravelPlan) directory;
         tp.setTravelPlanObject(target, editedTravelPlanObject);
+        observableDirectory.setObservableDirectory(directory);
     }
 
     //=========== Filtered TravelPlan List Accessors =============================================================
