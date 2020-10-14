@@ -48,7 +48,7 @@ public class DeleteActivityCommandTest {
         // we only expect the expectedModel to delete the activity. (Both actual and expected model have different
         // memory space too. This causing it to fail the test case.
 
-        // expectedModel.deleteTravelPlanObject(activityToDelete);
+         expectedModel.deleteTravelPlanObject(activityToDelete);
 
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);

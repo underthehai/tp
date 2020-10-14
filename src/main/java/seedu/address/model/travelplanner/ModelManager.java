@@ -314,7 +314,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return travelPlanner.equals(other.travelPlanner)
                 && userPrefs.equals(other.userPrefs)
-                && filteredTravelPlans.equals(other.filteredTravelPlans);
+                && filteredTravelPlans.equals(other.filteredTravelPlans)
+                && filteredWishlist.equals(other.filteredWishlist);
     }
 
 }
