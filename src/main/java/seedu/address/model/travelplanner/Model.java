@@ -191,5 +191,11 @@ public interface Model {
      */
     Directory getDirectory();
 
+    /**
+     * Checks if Directory is travelplan or wishlist.
+     * @return true if travelplan, false if wishlist.
+     */
+    boolean isDirectoryTypeTravelPlan();
+
     ObservableDirectory getObservableDirectory();
 }

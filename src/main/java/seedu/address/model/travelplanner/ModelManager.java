@@ -27,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
+    private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
     private int directoryIndex;
     private Directory directory;
@@ -47,6 +48,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
+        isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
         directoryIndex = -1;
         observableDirectory = new ObservableDirectory(directory);
@@ -164,10 +166,14 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
+        directory = this.travelPlanner.getWishlistAsDirectory();
+
         if (index == -1) {
+            isTravelPlan = false;
             directoryIndex = -1;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
+            isTravelPlan = true;
             directoryIndex = index;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
@@ -179,8 +185,18 @@ public class ModelManager implements Model {
         return directory;
     }
 
+    @Override
+    public boolean isDirectoryTypeTravelPlan() {
+        if (isTravelPlan) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public ObservableDirectory getObservableDirectory() {
         return observableDirectory;
+
     }
 
     //=========== TravelPlanObject =============================================================
@@ -310,7 +326,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return travelPlanner.equals(other.travelPlanner)
                 && userPrefs.equals(other.userPrefs)
-                && filteredTravelPlans.equals(other.filteredTravelPlans);
+                && filteredTravelPlans.equals(other.filteredTravelPlans)
+                && filteredWishlist.equals(other.filteredWishlist);
     }
 
 }

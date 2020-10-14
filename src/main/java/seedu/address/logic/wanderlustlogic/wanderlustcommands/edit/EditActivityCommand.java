@@ -19,7 +19,6 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 
@@ -60,29 +59,43 @@ public class EditActivityCommand extends EditCommand {
         this.editActivityDescriptor = editActivityDescriptor;
     }
 
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!(model.getDirectory() instanceof TravelPlan)) {
-            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+        if (isTravelPlan) {
+            List<Activity> lastShownList = model.getFilteredActivityList();
+
+            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
+            }
+
+            Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
+            Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
+
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
+
+            model.setTravelPlanObject(activityToEdit, editedActivity);
+            return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
+        } else {
+            List<Activity> lastShownList = model.getFilteredWishlist();
+
+            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
+            }
+
+            Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
+            Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
+
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
+
+            model.setActivity(activityToEdit, editedActivity);
+            return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
         }
-
-        List<Activity> lastShownList = model.getFilteredActivityList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
-        }
-
-        Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
-
-        if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
-        }
-
-        model.setTravelPlanObject(activityToEdit, editedActivity);
-        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
     }
 
     /**

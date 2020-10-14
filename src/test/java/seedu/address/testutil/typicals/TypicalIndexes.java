@@ -12,4 +12,7 @@ public class TypicalIndexes {
     public static final Index INDEX_FIRST_TRAVELPLAN = Index.fromOneBased(1);
     public static final Index INDEX_SECOND_TRAVELPLAN = Index.fromOneBased(2);
     public static final Index INDEX_TEN_TRAVELPLAN = Index.fromOneBased(10);
+    public static final Index INDEX_FIRST = Index.fromOneBased(1);
+    public static final Index INDEX_SECOND = Index.fromOneBased(2);
+    public static final Index INDEX_THIRD = Index.fromOneBased(3);
 }

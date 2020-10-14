@@ -210,4 +210,31 @@ public class EditDescriptor {
         return this.name.equals(toCompare.getName().get());
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof EditDescriptor)) {
+            return false;
+        }
+
+        // state check
+        EditDescriptor e = (EditDescriptor) other;
+
+        return getName().equals(e.getName())
+                && getActivityDateTime().equals(e.getActivityDateTime())
+                && getLocation().equals(e.getLocation())
+                && getCost().equals(e.getCost())
+                && getStartDate().equals(e.getStartDate())
+                && getEndDate().equals(e.getEndDate())
+                && getPassport().equals(e.getPassport())
+                && getMobile().equals(e.getMobile())
+                && getLevelOfImportance().equals(e.getLevelOfImportance())
+                && getActivityDateTime().equals(e.getActivityDateTime());
+
+    }
 }
