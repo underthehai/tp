@@ -91,7 +91,7 @@ public class EditFriendCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditFriendCommand) other).targetIndex)) // state check
-                && editFriendDescriptor.equals(((EditFriendCommand) other).editFriendDescriptor); //check same descriptor
+                && editFriendDescriptor.equals(((EditFriendCommand) other).editFriendDescriptor);
     }
 
 

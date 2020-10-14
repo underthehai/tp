@@ -1,12 +1,10 @@
 package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.parser.exceptions.ParseException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteActivityCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
-import seedu.address.logic.wanderlustlogic.wanderlustparser.WanderlustDeleteCommandParser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Contains helper methods for testing command parsers.
@@ -50,8 +48,8 @@ public class WanderlustCommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is successful and the command created
-     * equals to {@code expectedCommand}.
+     * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is
+     * successful and the command created equals to {@code expectedCommand}.
      */
     public static void assertWanderLustParseEditCommandSuccess(WanderlustEditCommandParser parser, String userInput,
                                                     EditCommand expectedCommand) {
@@ -72,8 +70,8 @@ public class WanderlustCommandParserTestUtil {
      }
 
      /**
-      * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful and the error message
-      * equals to {@code expectedMessage}.
+      * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
+      * and the error message equals to {@code expectedMessage}.
      */
     public static void assertWanderLustParseEditCommandFailure(WanderlustEditCommandParser parser, String userInput,
                                                     String expectedMessage) {

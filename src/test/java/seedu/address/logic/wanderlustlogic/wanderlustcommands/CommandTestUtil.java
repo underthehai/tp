@@ -1,7 +1,6 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;

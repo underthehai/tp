@@ -1,9 +1,11 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.*;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -52,7 +54,7 @@ public class EditDescriptorTest {
     }
 
     @Test
-    void buildFromSource_validArgumentMultimap_returnsModifiedEditDescriptor(){
+    void buildFromSource_validArgumentMultimap_returnsModifiedEditDescriptor() {
         String args = NAME_DESC_AMY;
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME);
