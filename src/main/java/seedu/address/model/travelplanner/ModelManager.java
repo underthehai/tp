@@ -174,7 +174,6 @@ public class ModelManager implements Model {
         } else if (index == - 1){
             this.isTravelPlan = isTravelPlan;
             directory = travelPlanner.getWishlistAsDirectory();
-        }
     }
 
     @Override
