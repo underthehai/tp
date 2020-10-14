@@ -171,7 +171,7 @@ public class ModelManager implements Model {
                     ? ((TravelPlan) directory).getAccommodationList() : EMPTY_ACCOMMODATION_LIST);
             filteredFriendList = new FilteredList<>(directory instanceof TravelPlan
                     ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
-        } else {
+        } else if (index == - 1){
             this.isTravelPlan = isTravelPlan;
             directory = travelPlanner.getWishlistAsDirectory();
         }
