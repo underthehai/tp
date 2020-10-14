@@ -164,9 +164,13 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
+        directory = this.travelPlanner.getWishlistAsDirectory();
+
         if (index == -1) {
+            isTravelPlan = false;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
+            isTravelPlan = true;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
         observableDirectory.setObservableDirectory(directory);

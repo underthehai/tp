@@ -28,7 +28,7 @@ public class WanderlustGoToCommandParser implements WanderlustParserInterface<Go
                 return new GoToCommand(index, true);
 
             case GoToCommand.WISHLIST:
-                return new GoToCommand(ParserUtil.parseIndex("1000"), false);
+                return new GoToCommand(ParserUtil.parseIndex("1"), false);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
