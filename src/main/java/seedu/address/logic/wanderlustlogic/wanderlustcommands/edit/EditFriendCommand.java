@@ -15,6 +15,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 /**
@@ -32,7 +33,7 @@ public class EditFriendCommand extends EditCommand {
             + "[" + PREFIX_MOBILE + "MOBILE_PHONE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "John "
-            + PREFIX_PASSPORT + "E1234567H "
+            + PREFIX_PASSPORT + "E1234567 "
             + PREFIX_MOBILE + "81234567 ";
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
@@ -53,6 +54,10 @@ public class EditFriendCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if(!(model.getDirectory() instanceof TravelPlan)){
+            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        }
 
         List<Friend> lastShownList = model.getFilteredFriendList();
 

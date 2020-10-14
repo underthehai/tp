@@ -19,6 +19,7 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 
@@ -63,6 +64,9 @@ public class EditActivityCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if(!(model.getDirectory() instanceof TravelPlan)){
+            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        }
 
         List<Activity> lastShownList = model.getFilteredActivityList();
 
