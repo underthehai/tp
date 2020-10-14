@@ -10,7 +10,6 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
-import seedu.address.model.wishlist.Wishlist;
 
 
 public class GoToCommand extends Command {
