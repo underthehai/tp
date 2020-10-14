@@ -53,6 +53,7 @@ public class ModelManager implements Model {
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
         filteredFriendList = new FilteredList<>(observableDirectory.getObservableFriendList());
+
     }
 
     public ModelManager() {
@@ -182,6 +183,12 @@ public class ModelManager implements Model {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public ObservableDirectory getObservableDirectory() {
+        return observableDirectory;
+
     }
 
     //=========== TravelPlanObject =============================================================

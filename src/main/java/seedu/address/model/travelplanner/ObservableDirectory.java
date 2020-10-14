@@ -1,5 +1,7 @@
 package seedu.address.model.travelplanner;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
@@ -17,6 +19,7 @@ public class ObservableDirectory {
     private ObservableList<Friend> observableFriendList = FXCollections.observableArrayList();
     private ObservableList<Object> observableDirectoryInformation = FXCollections.observableArrayList();
     private Directory directory;
+    private ObjectProperty<Directory> dir = new SimpleObjectProperty<>();
 
     /**
      * Instantiates an observable view of the current directory.
@@ -24,11 +27,16 @@ public class ObservableDirectory {
      */
     public ObservableDirectory(Directory directory) {
         this.directory = directory;
+        dir.setValue(directory);
         this.observableActivityList.setAll(directory.getActivityList());
         if (directory instanceof TravelPlan) {
             this.observableAccommodationList.setAll(((TravelPlan) directory).getAccommodationList());
             this.observableFriendList.setAll(((TravelPlan) directory).getFriendList());
         }
+    }
+
+    public ObjectProperty<Directory> get() {
+        return dir;
     }
 
     public ObservableList<Activity> getObservableActivityList() {
@@ -45,6 +53,7 @@ public class ObservableDirectory {
 
     public void setObservableDirectory(Directory directory) {
         this.directory = directory;
+        dir.setValue(directory);
         setObservableActivityList(directory.getActivityList());
         if (directory instanceof TravelPlan) {
             setObservableAccommodationList(((TravelPlan) directory).getAccommodationList());
