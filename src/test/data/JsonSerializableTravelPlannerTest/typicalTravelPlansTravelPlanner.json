@@ -1,0 +1,169 @@
+{
+  "_comment": "TravelPlanner save file which contains the same TravelPlan values as in TypicalTravelPlans#getTypicalTravelPlanner()",
+  "travelPlans" : [ {
+    "name" : "Trip to Australia",
+    "startDate" : "2020-01-01",
+    "endDate" : "2020-12-12",
+    "activities" : [ {
+      "name" : "Archery",
+      "location" : "92 Archery Avenue",
+      "cost" : "100.50",
+      "dateTime" : "2020-09-09 09:00",
+      "importance" : "1"
+    }, {
+      "name" : "Bungee Jumping",
+      "location" : "1 BungeeJump Gateway",
+      "cost" : "225.99",
+      "dateTime" : "2020-01-01 14:00",
+      "importance" : "5"
+    }, {
+      "name" : "Camping",
+      "location" : "100 Secret Woods",
+      "cost" : "10",
+      "dateTime" : "2020-10-11 20:00",
+      "importance" : "2"
+    }, {
+      "name" : "Donut Date",
+      "location" : "Dunkin Donut Palace",
+      "cost" : "2",
+      "dateTime" : "2020-11-11 11:00",
+      "importance" : "1"
+    } ],
+    "accommodations" : [ {
+      "name" : "Alice Hotel",
+      "startDate" : "2020-01-01",
+      "endDate" : "2020-02-02",
+      "cost" : "100",
+      "location" : "109 Alice Avenue"
+    }, {
+      "name" : "Hostel by Bob",
+      "startDate" : "2020-02-02",
+      "endDate" : "2020-03-03",
+      "cost" : "200",
+      "location" : "9 Balestier Road"
+    }, {
+      "name" : "Carl's Farmhouse",
+      "startDate" : "2020-03-03",
+      "endDate" : "2020-04-04",
+      "cost" : "300",
+      "location" : "999 Calihan Street"
+    }, {
+      "name" : "Danny's Lodge",
+      "startDate" : "2020-04-04",
+      "endDate" : "2020-05-05",
+      "cost" : "400",
+      "location" : "1 Den Street"
+    } ],
+    "friends" : [ {
+      "name" : "Alice Pauline",
+      "passport" : "A1234567",
+      "phone" : "94351253"
+    }, {
+      "name" : "Benson Meier",
+      "passport" : "B1234567",
+      "phone" : "98765432"
+    }, {
+      "name" : "Carl Kurz",
+      "passport" : "C1234567",
+      "phone" : "95352563"
+    }, {
+      "name" : "Daniel Meier",
+      "passport" : "D1234567",
+      "phone" : "87652533"
+    } ]
+  }, {
+    "name" : "Trip to Boston",
+    "startDate" : "2020-03-03",
+    "endDate" : "2021-11-11",
+    "activities" : [ {
+      "name" : "Singapore Mandai Zoo",
+      "location" : "124 Mandai Road",
+      "cost" : "100",
+      "dateTime" : "2020-10-10 12:00",
+      "importance" : "3"
+    }, {
+      "name" : "Universal Studios Singapore",
+      "location" : "8 Sentosa Gateway",
+      "cost" : "80",
+      "dateTime" : "2020-10-11 12:00",
+      "importance" : "5"
+    }, {
+      "name" : "Gore Mountain Skiing Resort",
+      "location" : "793 Peaceful Valley Rd",
+      "cost" : "300",
+      "dateTime" : "2020-12-12 12:00",
+      "importance" : "4"
+    }, {
+      "name" : "Treetop Walk",
+      "location" : "601 Island Club Rd",
+      "cost" : "0",
+      "dateTime" : "2020-01-10 12:00",
+      "importance" : "2"
+    } ],
+    "accommodations" : [ {
+      "name" : "Elle's",
+      "startDate" : "2020-05-05",
+      "endDate" : "2020-06-06",
+      "cost" : "500",
+      "location" : "333 Elmo's World"
+    }, {
+      "name" : "Fiona Hotel",
+      "startDate" : "2020-06-06",
+      "endDate" : "2020-07-07",
+      "cost" : "600",
+      "location" : "Fall Home"
+    }, {
+      "name" : "George and Georgina",
+      "startDate" : "2020-07-07",
+      "endDate" : "2020-08-08",
+      "cost" : "700",
+      "location" : "7 GeorgeTown"
+    } ],
+    "friends" : [ {
+      "name" : "Elle Meyer",
+      "passport" : "E1234567",
+      "phone" : "94822241"
+    }, {
+      "name" : "Fiona Kunz",
+      "passport" : "F7654321",
+      "phone" : "94822427"
+    }, {
+      "name" : "George Best",
+      "passport" : "G7654321",
+      "phone" : "94824142"
+    }, {
+      "name" : "Hoon Meier",
+      "passport" : "H7654321",
+      "phone" : "84824224"
+    }, {
+      "name" : "Ida Mueller",
+      "passport" : "I7654321",
+      "phone" : "84821631"
+    } ]
+  } ],
+  "wishlist" : [ {
+    "name" : "Archery",
+    "location" : "92 Archery Avenue",
+    "cost" : "100.50",
+    "dateTime" : "2020-09-09 09:00",
+    "importance" : "1"
+  }, {
+    "name" : "Bungee Jumping",
+    "location" : "1 BungeeJump Gateway",
+    "cost" : "225.99",
+    "dateTime" : "2020-01-01 14:00",
+    "importance" : "5"
+  }, {
+    "name" : "Camping",
+    "location" : "100 Secret Woods",
+    "cost" : "10",
+    "dateTime" : "2020-10-11 20:00",
+    "importance" : "2"
+  }, {
+    "name" : "Donut Date",
+    "location" : "Dunkin Donut Palace",
+    "cost" : "2",
+    "dateTime" : "2020-11-11 11:00",
+    "importance" : "1"
+  } ]
+}

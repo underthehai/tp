@@ -174,6 +174,10 @@ public class ModelManager implements Model {
         return directory;
     }
 
+    public ObservableDirectory getObservableDirectory() {
+        return observableDirectory;
+    }
+
     //=========== TravelPlanObject =============================================================
 
     @Override
