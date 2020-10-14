@@ -74,7 +74,6 @@ public class EditActivityCommandTest {
     }
 
 
-    //HELPS it passes the test on its own, but when running the class, test fails TODO:resolve test failure
     @Test
     public void execute_duplicateActivityUnfilteredList_failure() {
         Activity firstActivity = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());

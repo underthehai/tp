@@ -14,23 +14,20 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditAccommodationDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditActivityDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditFriendDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
+import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.TravelPlanner;
-
-import java.util.Arrays;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.model.commons.NameContainsKeywordsPredicate;
-
 
 /**
  * Contains helper methods for testing commands.

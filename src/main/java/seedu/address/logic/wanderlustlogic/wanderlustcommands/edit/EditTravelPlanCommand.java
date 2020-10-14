@@ -21,21 +21,22 @@ import seedu.address.model.travelplanner.Model;
 
 
 /**
- * Edit name start date or end date of travelplan
+ * Edits an existing TravelPlan in the address book.
+ * A travelplan contains the field name, start date and end date
  */
 public class EditTravelPlanCommand extends EditCommand {
     public static final String COMMAND_WORD = "travelplan";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the travel plan identified by the index number used in the displayed travel planner list.\n"
+            + ": Edits the travel plan identified by the index number used in the displayed travel plan list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_START + "STARTDATE] "
-            + "[" + PREFIX_END + "ENDDATE] "
+            + "[" + PREFIX_START + "START_DATE] "
+            + "[" + PREFIX_END + "END_DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + " Trip to Japan "
-            + PREFIX_START + " jan 20 2020 "
-            + PREFIX_END + " jan 30 2020";
+            + PREFIX_NAME + "Trip to Japan "
+            + PREFIX_START + "2020-01-20 "
+            + PREFIX_END + " 2020-01-30";
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
     public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";
@@ -61,24 +62,23 @@ public class EditTravelPlanCommand extends EditCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
         }
 
-
-        //modify travelplan
         TravelPlan travelPlanToEdit = lastShownList.get(targetIndex.getZeroBased());
         TravelPlan editedTravelPlan = createEditedTravelPlan(travelPlanToEdit, editTravelPlanDescriptor);
 
-        //check for duplicated travel plan
         if (!travelPlanToEdit.isSameTravelPlan(editedTravelPlan) && model.hasTravelPlan(editedTravelPlan)) {
             throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
 
-        //update travelplan
         model.setTravelPlan(travelPlanToEdit, editedTravelPlan);
         return new CommandResult(String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan));
     }
 
     /**
      * Creates and returns a {@code TravelPlan} with the details of {@code travelPlanToEdit}
-     * edited with {@code editTravelPlanDescriptor}.
+     *
+     * @param travelPlanToEdit         contains the old fields
+     * @param editTravelPlanDescriptor contains updated fields
+     * @return TravelPlan to be updated in the travelplan list
      */
     private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit,
                                                      EditDescriptor editTravelPlanDescriptor) {
@@ -102,7 +102,9 @@ public class EditTravelPlanCommand extends EditCommand {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
                 && targetIndex.equals(((EditTravelPlanCommand) other).targetIndex)) // state check
-                && editTravelPlanDescriptor.equals(((EditTravelPlanCommand) other).editTravelPlanDescriptor);
+                && (editTravelPlanDescriptor.equals(((EditTravelPlanCommand) other).editTravelPlanDescriptor)
+                || (editTravelPlanDescriptor.isSameDescriptor(((EditTravelPlanCommand) other)
+                .editTravelPlanDescriptor)));
     }
 
 }
