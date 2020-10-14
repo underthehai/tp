@@ -60,11 +60,9 @@ public class EditActivityCommand extends EditCommand {
         this.editActivityDescriptor = editActivityDescriptor;
     }
 
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (isTravelPlan) {
             List<Activity> lastShownList = model.getFilteredActivityList();
