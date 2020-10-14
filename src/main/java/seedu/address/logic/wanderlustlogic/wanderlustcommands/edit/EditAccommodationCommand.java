@@ -45,8 +45,8 @@ public class EditAccommodationCommand extends EditCommand {
 
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the " +
-            "accommodation list";
+    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the "
+            + "accommodation list";
 
     private final Index targetIndex;
     private final EditDescriptor editAccommodationDescriptor;
@@ -64,7 +64,7 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if(!(model.getDirectory() instanceof TravelPlan)){
+        if (!(model.getDirectory() instanceof TravelPlan)) {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 

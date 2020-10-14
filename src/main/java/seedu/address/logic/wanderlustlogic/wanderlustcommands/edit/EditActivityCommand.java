@@ -64,7 +64,7 @@ public class EditActivityCommand extends EditCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if(!(model.getDirectory() instanceof TravelPlan)){
+        if (!(model.getDirectory() instanceof TravelPlan)) {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
