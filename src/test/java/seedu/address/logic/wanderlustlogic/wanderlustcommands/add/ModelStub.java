@@ -182,4 +182,5 @@ public class ModelStub implements Model {
     public ObservableDirectory getObservableDirectory() {
         throw new AssertionError("This method should not be called.");
     }
+
 }
