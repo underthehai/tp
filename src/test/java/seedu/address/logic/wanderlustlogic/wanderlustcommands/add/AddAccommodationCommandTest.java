@@ -14,12 +14,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.testutil.builders.AccommodationBuilder;
-import seedu.address.testutil.builders.ActivityBuilder;
+import seedu.address.testutil.typicals.TypicalAccommodations;
 
 
 public class AddAccommodationCommandTest {
@@ -30,7 +29,7 @@ public class AddAccommodationCommandTest {
     }
 
     @Test
-    public void execute_activityAcceptedByModel_addSuccessful() throws Exception {
+    public void execute_accommodationAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingAccommodationAdded modelStub = new ModelStubAcceptingAccommodationAdded();
         Accommodation validAccommodation = new AccommodationBuilder().build();
 
@@ -42,39 +41,26 @@ public class AddAccommodationCommandTest {
     }
 
     @Test
-    public void execute_duplicateActivity_throwsCommandException() {
-        Activity validActivity = new ActivityBuilder().build();
-        AddActivityCommand addActivityCommand = new AddActivityCommand(validActivity);
-        ModelStub modelStub = new ModelStubWithAccommodation(validActivity);
+    public void execute_duplicateAccommodation_throwsCommandException() {
+        Accommodation validAccommodation = new AccommodationBuilder().build();
+        AddAccommodationCommand addAccommodationCommand = new AddAccommodationCommand(validAccommodation);
+        ModelStub modelStub = new ModelStubWithAccommodation(validAccommodation);
 
-        assertThrows(CommandException.class, AddActivityCommand.MESSAGE_DUPLICATE_ACTIVITY,
-                () -> addActivityCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddAccommodationCommand.MESSAGE_DUPLICATE_ACCOMMODATION, () ->
+                addAccommodationCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Accommodation hotelAlice = new AccommodationBuilder()
-                .withName("Hotel Alice")
-                .withStartDate("2020-10-11")
-                .withEndDate("2020-10-16")
-                .withLocation("Alice Road")
-                .withCost("300")
-                .build();
-        Accommodation hotelBob = new AccommodationBuilder()
-                .withName("Hotel Alice")
-                .withStartDate("2020-10-17")
-                .withEndDate("2020-10-23")
-                .withLocation("Bob Road")
-                .withCost("200")
-                .build();
-        AddAccommodationCommand addAliceCommand = new AddAccommodationCommand(hotelAlice);
-        AddAccommodationCommand addBobCommand = new AddAccommodationCommand(hotelBob);
+
+        AddAccommodationCommand addAliceCommand = new AddAccommodationCommand(TypicalAccommodations.ALICEHOTEL);
+        AddAccommodationCommand addBobCommand = new AddAccommodationCommand(TypicalAccommodations.BOBHOTEL);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddAccommodationCommand addAliceCommandCopy = new AddAccommodationCommand(hotelAlice);
+        AddAccommodationCommand addAliceCommandCopy = new AddAccommodationCommand(TypicalAccommodations.ALICEHOTEL);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -99,8 +85,9 @@ public class AddAccommodationCommandTest {
         }
 
         @Override
-        public boolean hasActivity(Activity activity) {
-            requireNonNull(activity);
+        public boolean hasTravelPlanObject(TravelPlanObject travelPlanObject) {
+            requireNonNull(travelPlanObject);
+            Accommodation accommodation = (Accommodation) travelPlanObject;
             return this.accommodation.isSameAccommodation(accommodation);
         }
     }
