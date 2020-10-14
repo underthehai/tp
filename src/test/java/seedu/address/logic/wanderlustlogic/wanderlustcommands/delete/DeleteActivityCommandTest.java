@@ -10,6 +10,7 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND_TRAVEL
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN_TRAVELPLAN;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
@@ -25,7 +26,13 @@ import seedu.address.model.travelplanner.UserPrefs;
  */
 public class DeleteActivityCommandTest {
 
-    private Model model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+    private Model model;
+
+    @BeforeEach
+    public void setUp() {
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+        model.setDirectory(0);
+    }
 
     @Test
     public void execute_validIndexUnfilteredList_success() {

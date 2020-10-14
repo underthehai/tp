@@ -46,7 +46,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        directory = this.travelPlanner.getTravelPlanList().get(1);
+        directory = this.travelPlanner.getWishlistAsDirectory();
         observableDirectory = new ObservableDirectory(directory);
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
@@ -161,7 +161,11 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
-        directory = travelPlanner.getTravelPlanList().get(index);
+        if (index == -1) {
+            directory = travelPlanner.getWishlistAsDirectory();
+        } else {
+            directory = travelPlanner.getTravelPlanList().get(index);
+        }
         observableDirectory.setObservableDirectory(directory);
     }
 
