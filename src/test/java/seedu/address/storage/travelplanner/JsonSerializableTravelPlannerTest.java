@@ -22,7 +22,7 @@ public class JsonSerializableTravelPlannerTest {
             .resolve("invalidTravelPlanTravelPlanner.json");
     private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
             .resolve("duplicateTravelPlanTravelPlanner.json");
-    
+
     @Test
     public void toModelType_typicalTravelPlansFile_success() throws Exception {
         JsonSerializableTravelPlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_TRAVEL_PLANS_FILE,
