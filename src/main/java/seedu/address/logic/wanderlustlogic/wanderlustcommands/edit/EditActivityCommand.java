@@ -2,11 +2,10 @@ package seedu.address.logic.wanderlustlogic.wanderlustcommands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
+import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_START;
 
 import java.util.List;
 
@@ -20,41 +19,40 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
 
 /**
  * Edits an existing Activity in the address book and updates the travel plan/wishlist in the current directory
- * Edits the importance, cost, location, startdate, enddate
+ * An activity contains the field name, location, cost, level of importance and date time
  */
 public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the travel plan identified by the index number used in the displayed travel planner list.\n"
+            + ": Edits the activity identified by the index number used in the displayed activity list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
             + "[" + PREFIX_COST + "COST] "
-            + "[" + PREFIX_START + "START_DATE] "
-            + "[" + PREFIX_END + "END_DATE] "
+            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
+            + "[" + PREFIX_DATETIME + "DATETIME]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Hard Rock Hotel"
-            + PREFIX_IMPORTANCE + "2"
-            + PREFIX_LOCATION + "Sentosa"
-            + PREFIX_COST + "SGD500"
-            + PREFIX_START + "20 September 2020"
-            + PREFIX_END + "30 September 2020";
+            + PREFIX_NAME + "Ice Fishing "
+            + PREFIX_IMPORTANCE + "2 "
+            + PREFIX_LOCATION + "Ice Park "
+            + PREFIX_COST + "50 "
+            + PREFIX_DATETIME + " 2020-05-05 14:30";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in Wanderlust.";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list.";
 
     private final Index targetIndex;
     private final EditDescriptor editActivityDescriptor;
 
     /**
-     * Constructor for editactivity command
+     * Constructor for edit activity command
      */
     public EditActivityCommand(Index targetIndex, EditDescriptor editActivityDescriptor) {
         super(targetIndex);
@@ -63,13 +61,11 @@ public class EditActivityCommand extends EditCommand {
     }
 
 
-    //handling the travelplan activity
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
-
         if (isTravelPlan) {
-            requireNonNull(model);
 
             List<Activity> lastShownList = model.getFilteredActivityList();
 
@@ -107,8 +103,10 @@ public class EditActivityCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Activity} with the details of {@code activityToEdit}
-     * edited with {@code editActivityDescriptor}.
-     * Edits the importance, cost, location, startime, end time
+     *
+     * @param activityToEdit         contains the old fields
+     * @param editActivityDescriptor contains updated fields
+     * @return Activity to be updated in the activity list
      */
     private static Activity createEditedActivity(Activity activityToEdit,
                                                  EditDescriptor editActivityDescriptor) {
@@ -131,7 +129,9 @@ public class EditActivityCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditCommand // instanceof handles nulls
-                && targetIndex.equals(((EditActivityCommand) other).targetIndex)); // state check
+                && targetIndex.equals(((EditActivityCommand) other).targetIndex)) // state check
+                && (editActivityDescriptor.equals(((EditActivityCommand) other).editActivityDescriptor)
+                || editActivityDescriptor.isSameDescriptor(((EditActivityCommand) other).editActivityDescriptor));
     }
 
 }

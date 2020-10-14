@@ -32,7 +32,7 @@ public class AddAccommodationCommand extends AddCommand {
             + PREFIX_END + "30-09-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New accommodation added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This accommodation already exists in the travel plan";
+    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the travel plan";
 
     private final Accommodation toAdd;
 
@@ -49,7 +49,7 @@ public class AddAccommodationCommand extends AddCommand {
         requireNonNull(model);
 
         if (model.hasTravelPlanObject(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
 
         model.addTravelPlanObject(toAdd);

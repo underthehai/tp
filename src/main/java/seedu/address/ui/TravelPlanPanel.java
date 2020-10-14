@@ -23,15 +23,13 @@ public class TravelPlanPanel extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
-    private Label startDate;
-    @FXML
-    private Label endDate;
+    private Label startDateToEndDate;
 
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
     public TravelPlanPanel(Directory directory) {
-        super(directory instanceof TravelPlan ? TravelPlanFXML : WishlistFXML);
+        super(TravelPlanFXML);
         this.directory = directory;
         update();
     }
@@ -43,10 +41,11 @@ public class TravelPlanPanel extends UiPart<Region> {
         if (directory instanceof TravelPlan) {
             TravelPlan travelPlan = (TravelPlan) directory;
             name.setText(travelPlan.getName().toString());
-            startDate.setText(travelPlan.getStartDate().toString());
-            endDate.setText(travelPlan.getEndDate().toString());
+            startDateToEndDate.setText(travelPlan.getStartDate().toString() + " to "
+                    + travelPlan.getEndDate().toString());
         } else {
             name.setText("Wishlist");
+            startDateToEndDate.setText("");
         }
     }
 
