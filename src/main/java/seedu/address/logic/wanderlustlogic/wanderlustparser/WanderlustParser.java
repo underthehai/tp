@@ -69,11 +69,7 @@ public class WanderlustParser {
 
             case HelpCommand.COMMAND_WORD:
                 return new HelpCommand();
-
-            default:
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
-
-
+                
             case GoToCommand.COMMAND_WORD:
                 return new WanderlustGoToCommandParser().parse(arguments);
 
