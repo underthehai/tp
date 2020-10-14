@@ -69,7 +69,6 @@ public class WanderlustParser {
 
             case HelpCommand.COMMAND_WORD:
                 return new HelpCommand();
-                
             case GoToCommand.COMMAND_WORD:
                 return new WanderlustGoToCommandParser().parse(arguments);
 
