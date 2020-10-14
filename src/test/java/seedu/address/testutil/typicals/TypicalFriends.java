@@ -57,6 +57,7 @@ public class TypicalFriends {
     public static final Friend BOB = new FriendBuilder().withName(VALID_NAME_BOB)
             .withMobile(VALID_MOBILE_BOB).withPassport(VALID_PASSPORT_BOB).build();
 
+
     private TypicalFriends() {} // prevents instantiation
 
     /**

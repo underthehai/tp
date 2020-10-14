@@ -19,12 +19,15 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditAccommodationDescriptorBuilder;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditActivityDescriptorBuilder;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditFriendDescriptorBuilder;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.TravelPlanner;
-import seedu.address.testutil.EditTravelPlanDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -141,6 +144,41 @@ public class CommandTestUtil {
                 .withStartDate(VALID_START_DATE_NYC).withEndDate(VALID_END_DATE_NYC).build();
     }
 
+    public static final EditDescriptor DESC_AMY;
+    public static final EditDescriptor DESC_BOB;
+
+    static {
+        DESC_AMY = new EditFriendDescriptorBuilder().withName(VALID_NAME_AMY).withMobile(VALID_MOBILE_AMY)
+                .withPassport(VALID_PASSPORT_AMY).build();
+        DESC_BOB = new EditFriendDescriptorBuilder().withName(VALID_MOBILE_BOB).withMobile(VALID_MOBILE_BOB)
+                .withPassport(VALID_PASSPORT_BOB).build();
+    }
+
+    public static final EditDescriptor DESC_HOME;
+    public static final EditDescriptor DESC_INN;
+
+    static {
+        DESC_HOME = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_HOME).withCost(VALID_COST_HOME)
+                .withLocation(VALID_LOCATION_HOME).withStartDate(VALID_START_DATE_HOME)
+                .withEndDate(VALID_END_DATE_HOME).build();
+        DESC_INN = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_INN).withCost(VALID_COST_INN)
+                .withLocation(VALID_LOCATION_INN).withStartDate(VALID_START_DATE_INN)
+                .withEndDate(VALID_END_DATE_INN).build();
+    }
+
+    public static final EditDescriptor DESC_ZOO;
+    public static final EditDescriptor DESC_SKI;
+
+    static {
+        DESC_ZOO = new EditActivityDescriptorBuilder().withName(VALID_NAME_ZOO).withCost(VALID_COST_ZOO)
+                .withLocation(VALID_LOCATION_ZOO).withImportance(VALID_LEVELOFIMPORTANCE_ZOO)
+                .withDateTime(VALID_ACTIVITYDATETIME_SKI).build();
+
+        DESC_SKI = new EditActivityDescriptorBuilder().withName(VALID_NAME_SKI).withCost(VALID_COST_SKI)
+                .withLocation(VALID_LOCATION_SKI).withImportance(VALID_LEVELOFIMPORTANCE_SKI)
+                .withDateTime(VALID_ACTIVITYDATETIME_SKI).build();
+    }
+
     /**
      * Executes the given {@code command}, confirms that <br>
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
@@ -183,6 +221,7 @@ public class CommandTestUtil {
         assertEquals(expectedTravelPlanner, actualModel.getTravelPlanner());
         assertEquals(expectedFilteredList, actualModel.getFilteredTravelPlanList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
