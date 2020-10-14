@@ -31,8 +31,10 @@ import seedu.address.model.friend.Passport;
  */
 public class EditDescriptor {
 
-    //all possible fields
+    //identity
     private Name name;
+
+    //all possible fields
     private Location location;
     private Cost cost;
     private WanderlustDate startDate;
@@ -49,10 +51,18 @@ public class EditDescriptor {
     /**
      * Copy constructor
      *
-     * @param toCopy contain field to copy over
+     * @param toCopy contains information about all possible fields
      */
     public EditDescriptor(EditDescriptor toCopy) {
-
+        toCopy.getName().ifPresent(this::setName);
+        toCopy.getLocation().ifPresent(this::setLocation);
+        toCopy.getCost().ifPresent(this::setCost);
+        toCopy.getStartDate().ifPresent(this::setStartDate);
+        toCopy.getEndDate().ifPresent(this::setEndDate);
+        toCopy.getPassport().ifPresent(this::setPassport);
+        toCopy.getMobile().ifPresent(this::setMobile);
+        toCopy.getLevelOfImportance().ifPresent(this::setLevelOfImportance);
+        toCopy.getActivityDateTime().ifPresent(this::setActivityDateTime);
     }
 
     /**
@@ -184,5 +194,20 @@ public class EditDescriptor {
         return Optional.ofNullable(mobile);
     }
 
+    /**
+     * Descriptors are considered as the same if both descriptor have the same name
+     *
+     * @param other name to check
+     */
+    public boolean isSameDescriptor(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof EditDescriptor)) {
+            return false;
+        }
+        EditDescriptor toCompare = (EditDescriptor) other;
+        return this.name.equals(toCompare.getName().get());
+    }
 
 }

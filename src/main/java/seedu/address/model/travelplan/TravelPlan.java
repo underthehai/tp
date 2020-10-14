@@ -1,6 +1,7 @@
 package seedu.address.model.travelplan;
 
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
@@ -37,6 +38,7 @@ public class TravelPlan extends Directory {
      * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
+        requireAllNonNull(name, startDate, endDate);
         checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.startDate = startDate;
@@ -52,6 +54,7 @@ public class TravelPlan extends Directory {
                       ActivityList activitiesToBeCopied,
                       AccommodationList accommodationsToBeCopied,
                       FriendList friendsTobeCopied) {
+        requireAllNonNull(name, startDate, endDate);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;

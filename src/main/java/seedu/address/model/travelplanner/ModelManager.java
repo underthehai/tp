@@ -29,6 +29,7 @@ public class ModelManager implements Model {
     private final FilteredList<Activity> filteredWishlist;
     private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
+    private int directoryIndex;
     private Directory directory;
     private FilteredList<Activity> filteredActivityList;
     private FilteredList<Accommodation> filteredAccommodationList;
@@ -49,11 +50,11 @@ public class ModelManager implements Model {
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
         isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
+        directoryIndex = -1;
         observableDirectory = new ObservableDirectory(directory);
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
         filteredFriendList = new FilteredList<>(observableDirectory.getObservableFriendList());
-
     }
 
     public ModelManager() {
@@ -128,6 +129,7 @@ public class ModelManager implements Model {
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);
         travelPlanner.setTravelPlan(target, editedTravelPlan);
+        setDirectory(directoryIndex);
     }
 
     //=========== Wishlist =============================================================
@@ -166,9 +168,11 @@ public class ModelManager implements Model {
     public void setDirectory(int index) {
         if (index == -1) {
             isTravelPlan = false;
+            directoryIndex = -1;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
             isTravelPlan = true;
+            directoryIndex = index;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
         observableDirectory.setObservableDirectory(directory);
