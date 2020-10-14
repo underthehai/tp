@@ -23,15 +23,16 @@ public class JsonSerializableTravelPlannerTest {
     private static final Path DUPLICATE_TRAVEL_PLAN_FILE = TEST_DATA_FOLDER
             .resolve("duplicateTravelPlanTravelPlanner.json");
 
-    // TODO:
-    //    @Test
-    //    public void toModelType_typicalTravelPlansFile_success() throws Exception {
-    //        JsonSerializableTravelPlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_TRAVEL_PLANS_FILE,
-    //                JsonSerializableTravelPlanner.class).get();
-    //        TravelPlanner travelPlannerFromFile = dataFromFile.toModelType();
-    //        TravelPlanner typicalTravelPlansTravelPlanner = TypicalTravelPlans.getTypicalTravelPlanner();
-    //        assertEquals(travelPlannerFromFile, typicalTravelPlansTravelPlanner);
-    //    }
+
+    //TODO: RESOLVE
+    /*@Test
+    public void toModelType_typicalTravelPlansFile_success() throws Exception {
+        JsonSerializableTravelPlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_TRAVEL_PLANS_FILE,
+                JsonSerializableTravelPlanner.class).get();
+        TravelPlanner travelPlannerFromFile = dataFromFile.toModelType();
+        TravelPlanner typicalTravelPlansTravelPlanner = TypicalTravelPlans.getTypicalTravelPlanner();
+        assertEquals(travelPlannerFromFile, typicalTravelPlansTravelPlanner);
+    }*/
 
     @Test
     public void toModelType_invalidTravelPlanFile_throwsIllegalValueException() throws Exception {
