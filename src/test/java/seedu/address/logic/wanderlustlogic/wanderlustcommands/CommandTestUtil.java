@@ -1,6 +1,7 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_END;
@@ -24,6 +25,11 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.TravelPlanner;
+
+import java.util.Arrays;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.model.commons.NameContainsKeywordsPredicate;
 
 
 /**
@@ -174,7 +180,6 @@ public class CommandTestUtil {
                 .withDateTime(VALID_ACTIVITYDATETIME_SKI).build();
     }
 
-
     /**
      * Executes the given {@code command}, confirms that <br>
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
@@ -217,5 +222,20 @@ public class CommandTestUtil {
         assertEquals(expectedTravelPlanner, actualModel.getTravelPlanner());
         assertEquals(expectedFilteredList, actualModel.getFilteredTravelPlanList());
     }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showTravelPlanAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredTravelPlanList().size());
+
+        TravelPlan tp = model.getFilteredTravelPlanList().get(targetIndex.getZeroBased());
+        final String[] splitName = tp.getName().name.split("\\s+");
+        model.updateFilteredTravelPlanList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[2])));
+
+        assertEquals(1, model.getFilteredTravelPlanList().size());
+    }
+
 
 }
