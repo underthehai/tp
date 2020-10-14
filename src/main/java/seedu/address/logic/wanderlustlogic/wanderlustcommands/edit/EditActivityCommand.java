@@ -77,7 +77,6 @@ public class EditActivityCommand extends EditCommand {
             if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
             }
-
             model.setTravelPlanObject(activityToEdit, editedActivity);
             return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
         } else {
