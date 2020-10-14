@@ -30,7 +30,6 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.testutil.ActivityUtil;
-import seedu.address.testutil.EditActivityDescriptorBuilder;
 import seedu.address.testutil.builders.ActivityBuilder;
 
 
@@ -58,10 +57,10 @@ public class WanderLustParserTest {
         assertEquals(new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN), command);
     }
 
+    //checks if commands are equal
     @Test
     public void parseCommand_edit() throws Exception {
-        Activity activity = new ActivityBuilder().build();
-        EditDescriptor descriptor = new EditActivityDescriptorBuilder(activity);
+        EditDescriptor descriptor = new EditDescriptor();
         descriptor.setName(new Name("Change name"));
         EditActivityCommand command = (EditActivityCommand) parser.parseCommand(EditCommand.COMMAND_WORD
                 + " -activity " + INDEX_FIRST_TRAVELPLAN.getOneBased() + " "
