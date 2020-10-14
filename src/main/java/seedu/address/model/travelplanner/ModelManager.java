@@ -170,6 +170,7 @@ public class ModelManager implements Model {
                     ? ((TravelPlan) directory).getFriendList() : EMPTY_FRIEND_LIST);
         } else {
             directory = travelPlanner.getWishlistAsDirectory();
+            filteredActivityList = new FilteredList<>(directory.getActivityList());
         }
     }
 
