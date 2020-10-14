@@ -13,6 +13,7 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
@@ -26,8 +27,14 @@ import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.FriendBuilder;
 
 public class EditFriendCommandTest {
+    private Model model;
 
-    private Model model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+    @BeforeEach
+    public void setup() {
+        //inside a travelplan
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+        model.setDirectory(1);
+    }
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -38,6 +45,7 @@ public class EditFriendCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend);
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        expectedModel.setDirectory(1);
         expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
 
@@ -67,6 +75,8 @@ public class EditFriendCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend);
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        expectedModel.setDirectory(1);
+
         expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);

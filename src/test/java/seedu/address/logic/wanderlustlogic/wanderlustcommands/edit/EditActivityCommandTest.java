@@ -14,6 +14,7 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
@@ -26,9 +27,17 @@ import seedu.address.model.travelplanner.ModelManager;
 import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.ActivityBuilder;
 
+//temp handling within travelplan only, wishlist directory tests to be added
 public class EditActivityCommandTest {
 
-    private Model model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+    private Model model;
+
+    @BeforeEach
+    public void setup() {
+        //inside a travelplan
+        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+        model.setDirectory(1);
+    }
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -39,6 +48,8 @@ public class EditActivityCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        expectedModel.setDirectory(1);
+
         expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
 
@@ -53,6 +64,7 @@ public class EditActivityCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        expectedModel.setDirectory(1);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
     }
@@ -68,6 +80,8 @@ public class EditActivityCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        expectedModel.setDirectory(1);
+
         expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
