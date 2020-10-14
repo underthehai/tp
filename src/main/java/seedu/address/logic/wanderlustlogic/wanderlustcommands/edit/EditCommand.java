@@ -22,7 +22,7 @@ public abstract class EditCommand extends Command {
             + "Edits an activity to the current travel plan using the format:\n"
             + "edit -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/DATE_AND_TIME\n"
             + "Edits an accommodation to the current travel plan using the format:\n"
-            + "edit -accommodation n/NAME l/LOCATION c/COST n/NIGHTS\n"
+            + "edit -accommodation n/NAME l/LOCATION c/COST sd/START_DATE ed/END_DATE\n"
             + "Edits a friend to the current travel plan using the format:\n"
             + "edit -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
 

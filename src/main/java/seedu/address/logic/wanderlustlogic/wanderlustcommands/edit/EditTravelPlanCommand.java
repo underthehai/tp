@@ -28,11 +28,11 @@ public class EditTravelPlanCommand extends EditCommand {
     public static final String COMMAND_WORD = "travelplan";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the travel plan identified by the index number used in the displayed travel planner list.\n"
+            + ": Edits the travel plan identified by the index number used in the displayed travel plan list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_START + "STARTDATE] "
-            + "[" + PREFIX_END + "ENDDATE] "
+            + "[" + PREFIX_START + "START_DATE] "
+            + "[" + PREFIX_END + "END_DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "Trip to Japan "
             + PREFIX_START + "2020-01-20 "

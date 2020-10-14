@@ -18,7 +18,7 @@ import seedu.address.model.friend.Passport;
 import seedu.address.model.travelplanner.Model;
 
 /**
- * Edits existing Friend in the address book. This command can only be used within a travel plan.
+ * Edits existing Friend in the address book. This command can only be used within the travel plan directory.
  * A friend contains the field name, passport, mobile
  */
 public class EditFriendCommand extends EditCommand {
@@ -29,7 +29,7 @@ public class EditFriendCommand extends EditCommand {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PASSPORT + "PASSPORT] "
-            + "[" + PREFIX_MOBILE + "MOBILE_PHONE] "
+            + "[" + PREFIX_MOBILE + "MOBILE_PHONE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "John "
             + PREFIX_PASSPORT + "E1234567H "

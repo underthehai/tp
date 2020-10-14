@@ -21,7 +21,7 @@ import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplanner.Model;
 
 /**
- * Edits existing Accommodation in the address book. This command can only be used within a travel plan.
+ * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.
  * An accommodation contains the field name, location, cost, start date and end date
  */
 public class EditAccommodationCommand extends EditCommand {
@@ -33,18 +33,19 @@ public class EditAccommodationCommand extends EditCommand {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
             + "[" + PREFIX_COST + "COST]"
-            + "[" + PREFIX_START + "STARTDATE] "
-            + "[" + PREFIX_END + "ENDDATE] "
+            + "[" + PREFIX_START + "START_DATE] "
+            + "[" + PREFIX_END + "END_DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "Hard Rock Hotel "
             + PREFIX_LOCATION + "Sentosa "
-            + PREFIX_COST + "$500 "
+            + PREFIX_COST + "500 "
             + PREFIX_START + "2020-07-10"
             + PREFIX_END + "2020-07-20";
 
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the travelplan.";
+    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the " +
+            "accommodation list";
 
     private final Index targetIndex;
     private final EditDescriptor editAccommodationDescriptor;
