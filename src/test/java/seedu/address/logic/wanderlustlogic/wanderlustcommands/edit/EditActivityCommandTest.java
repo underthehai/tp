@@ -55,9 +55,9 @@ public class EditActivityCommandTest {
     public void execute_filteredList_success() {
 
         Activity ActivityInFilteredList = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());
-        Activity editedActivity = new ActivityBuilder(ActivityInFilteredList).withName(VALID_NAME_BOB).build();
+        Activity editedActivity = new ActivityBuilder(ActivityInFilteredList).withName(VALID_NAME_ZOO).build();
         EditActivityCommand EditActivityCommand = new EditActivityCommand(INDEX_FIRST,
-                new EditActivityDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditActivityDescriptorBuilder().withName(VALID_NAME_ZOO).build());
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
@@ -90,7 +90,7 @@ public class EditActivityCommandTest {
     @Test
     public void execute_invalidActivityIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredActivityList().size() + 1);
-        EditDescriptor descriptor = new EditActivityDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDescriptor descriptor = new EditActivityDescriptorBuilder().withName(VALID_NAME_ZOO).build();
         EditActivityCommand EditActivityCommand = new EditActivityCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(EditActivityCommand, model, Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);

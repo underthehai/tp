@@ -56,9 +56,9 @@ public class EditAccommodationCommandTest {
     public void execute_filteredList_success() {
 
         Accommodation AccommodationInFilteredList = model.getFilteredAccommodationList().get(INDEX_FIRST.getZeroBased());
-        Accommodation editedAccommodation = new AccommodationBuilder(AccommodationInFilteredList).withName(VALID_NAME_BOB).build();
+        Accommodation editedAccommodation = new AccommodationBuilder(AccommodationInFilteredList).withName(VALID_NAME_INN).build();
         EditAccommodationCommand EditAccommodationCommand = new EditAccommodationCommand(INDEX_FIRST,
-                new EditAccommodationDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditAccommodationDescriptorBuilder().withName(VALID_NAME_INN).build());
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation);
 
@@ -91,7 +91,7 @@ public class EditAccommodationCommandTest {
     @Test
     public void execute_invalidAccommodationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredAccommodationList().size() + 1);
-        EditDescriptor descriptor = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDescriptor descriptor = new EditAccommodationDescriptorBuilder().withName(VALID_NAME_INN).build();
         EditAccommodationCommand EditAccommodationCommand = new EditAccommodationCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(EditAccommodationCommand, model, Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);

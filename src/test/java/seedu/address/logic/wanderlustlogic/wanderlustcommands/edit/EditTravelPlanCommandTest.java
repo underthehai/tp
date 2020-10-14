@@ -55,9 +55,9 @@ public class EditTravelPlanCommandTest {
     public void execute_filteredList_success() {
 
         TravelPlan TravelPlanInFilteredList = model.getFilteredTravelPlanList().get(INDEX_FIRST.getZeroBased());
-        TravelPlan editedTravelPlan = new TravelPlanBuilder(TravelPlanInFilteredList).withName(VALID_NAME_BOB).build();
+        TravelPlan editedTravelPlan = new TravelPlanBuilder(TravelPlanInFilteredList).withName(VALID_NAME_NYC).build();
         EditTravelPlanCommand EditTravelPlanCommand = new EditTravelPlanCommand(INDEX_FIRST,
-                new EditTravelPlanDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditTravelPlanDescriptorBuilder().withName(VALID_NAME_NYC).build());
 
         String expectedMessage = String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan);
 
@@ -90,7 +90,7 @@ public class EditTravelPlanCommandTest {
     @Test
     public void execute_invalidTravelPlanIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredTravelPlanList().size() + 1);
-        EditDescriptor descriptor = new EditTravelPlanDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDescriptor descriptor = new EditTravelPlanDescriptorBuilder().withName(VALID_NAME_NYC).build();
         EditTravelPlanCommand EditTravelPlanCommand = new EditTravelPlanCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(EditTravelPlanCommand, model, Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
