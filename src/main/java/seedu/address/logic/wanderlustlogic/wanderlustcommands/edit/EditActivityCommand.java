@@ -63,15 +63,10 @@ public class EditActivityCommand extends EditCommand {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         requireNonNull(model);
-        if (!(model.getDirectory() instanceof TravelPlan)) {
-            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
-        }
-
+        
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (isTravelPlan) {
-            requireNonNull(model);
-
             List<Activity> lastShownList = model.getFilteredActivityList();
 
             if (targetIndex.getZeroBased() >= lastShownList.size()) {
