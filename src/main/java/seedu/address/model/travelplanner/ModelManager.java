@@ -325,9 +325,7 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return travelPlanner.equals(other.travelPlanner)
-                && userPrefs.equals(other.userPrefs)
-                && filteredTravelPlans.equals(other.filteredTravelPlans)
-                && filteredWishlist.equals(other.filteredWishlist);
+                && userPrefs.equals(other.userPrefs);
     }
 
 }

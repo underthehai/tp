@@ -9,11 +9,11 @@ import seedu.address.model.commons.Name;
 
 public class ActivityBuilder {
 
-    public static final String DEFAULT_NAME = "Singapore Mandai Zoo";
-    public static final String DEFAULT_LOCATION = "124 Mandai Road";
+    public static final String DEFAULT_NAME = "Archery";
+    public static final String DEFAULT_LOCATION = "33 Spring Valley";
     public static final String DEFAULT_COST = "100";
-    public static final String DEFAULT_LEVELOFIMPORTANCE = "3";
-    public static final String DEFAULT_ACTIVITYDATETIME = "2020-10-10 12:00";
+    public static final String DEFAULT_LEVELOFIMPORTANCE = "2";
+    public static final String DEFAULT_ACTIVITYDATETIME = "2020-10-10 11:00";
 
 
     private Name name;

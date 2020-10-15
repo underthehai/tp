@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -83,7 +84,9 @@ public class UniqueTravelPlanList implements Iterable<TravelPlan> {
 
     public void setTravelPlans(UniqueTravelPlanList replacement) {
         requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
+        internalList.setAll(replacement.internalList.stream()
+                .map(tp -> new TravelPlan(tp))
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -96,7 +99,7 @@ public class UniqueTravelPlanList implements Iterable<TravelPlan> {
             throw new DuplicateTravelPlanException();
         }
 
-        internalList.setAll(travelPlans);
+        internalList.setAll(travelPlans.stream().map(tp -> new TravelPlan(tp)).collect(Collectors.toList()));
     }
 
     /**

@@ -20,6 +20,7 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
@@ -75,10 +76,10 @@ public class DeleteActivityCommandTest {
         String expectedMessage = String.format(DeleteActivityCommand.MESSAGE_DELETE_ACTIVITY_SUCCESS,
                 activityToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         expectedModel.setDirectory(0);
-        // expectedModel.deleteTravelPlanObject(activityToDelete);
+        expectedModel.deleteTravelPlanObject(activityToDelete);
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
     }

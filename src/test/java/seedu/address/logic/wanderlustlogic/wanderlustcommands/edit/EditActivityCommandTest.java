@@ -9,7 +9,6 @@ import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTest
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditActivityCommand.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditActivityCommand.MESSAGE_EDIT_ACTIVITY_SUCCESS;
-import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
@@ -24,6 +23,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditA
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.ActivityBuilder;
 
@@ -36,23 +36,21 @@ public class EditActivityCommandTest {
     public void setup() {
         model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
         //inside a travelplan
-        model.setDirectory(1);
+        model.setDirectory(0);
     }
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        model = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
-
-        Activity editedActivity = new ActivityBuilder(ARCHERY).build();
+        Activity editedActivity = new ActivityBuilder().build();
         EditDescriptor descriptor = new EditActivityDescriptorBuilder(editedActivity).build();
         EditActivityCommand editActivityCommand = new EditActivityCommand(INDEX_FIRST, descriptor);
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        expectedModel.setDirectory(1);
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
 
-        // expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
+        expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
     }
@@ -64,8 +62,8 @@ public class EditActivityCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        expectedModel.setDirectory(1);
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
     }
@@ -80,9 +78,9 @@ public class EditActivityCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        expectedModel.setDirectory(1);
-        // expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
         assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
     }

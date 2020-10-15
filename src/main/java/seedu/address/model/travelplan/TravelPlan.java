@@ -32,8 +32,6 @@ public class TravelPlan extends Directory {
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
 
-
-
     /**
      * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
@@ -44,7 +42,6 @@ public class TravelPlan extends Directory {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
@@ -61,6 +58,26 @@ public class TravelPlan extends Directory {
         accommodations.resetData(accommodationsToBeCopied);
         activities.resetData(activitiesToBeCopied);
         friends.resetData(friendsTobeCopied);
+    }
+
+    /**
+     * Creates a TravelPlan using the TravelPlan in the {@code toBeCopied}
+     */
+    public TravelPlan(TravelPlan toBeCopied) {
+        requireAllNonNull(toBeCopied.name, toBeCopied.startDate, toBeCopied.endDate);
+        this.name = toBeCopied.name;
+        this.startDate = toBeCopied.startDate;
+        this.endDate = toBeCopied.endDate;
+        resetData(toBeCopied);
+    }
+
+    /**
+     * Resets the existing data of this {@code TravelPlan} with {@code newData}.
+     */
+    public void resetData(TravelPlan newData) {
+        accommodations.resetData(newData.getAccommodations());
+        activities.resetData(newData.getActivities());
+        friends.resetData(newData.getFriends());
     }
 
     /**

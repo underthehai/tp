@@ -18,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
@@ -42,8 +43,9 @@ public class DeleteFriendCommandTest {
         String expectedMessage = String.format(DeleteFriendCommand.MESSAGE_DELETE_FRIEND_SUCCESS,
                 friendToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        //        expectedModel.deleteTravelPlanObject(friendToDelete);
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        expectedModel.deleteTravelPlanObject(friendToDelete);
 
         assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
     }
@@ -58,7 +60,7 @@ public class DeleteFriendCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        //        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
 
         Friend friendToDelete = model.getFilteredFriendList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
         DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(INDEX_FIRST_TRAVELPLAN);
@@ -66,8 +68,9 @@ public class DeleteFriendCommandTest {
         String expectedMessage = String.format(DeleteFriendCommand.MESSAGE_DELETE_FRIEND_SUCCESS,
                 friendToDelete);
 
-        Model expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        //        expectedModel.deleteTravelPlanObject(friendToDelete);
+        Model expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        expectedModel.deleteTravelPlanObject(friendToDelete);
         showNoFriendList(expectedModel);
 
         assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
