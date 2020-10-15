@@ -51,12 +51,8 @@ public class DeleteActivityCommandTest {
 
         ModelManager expectedModel = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
 
-        // Idk why but why this is called, both actual model and expectedModel will delete the activity even though
-        // we only expect the expectedModel to delete the activity. (Both actual and expected model have different
-        // memory space too. This causing it to fail the test case.
-
         expectedModel.setDirectory(0);
-        // expectedModel.deleteTravelPlanObject(activityToDelete);
+        expectedModel.deleteTravelPlanObject(activityToDelete);
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
     }
@@ -81,10 +77,8 @@ public class DeleteActivityCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
 
-
         expectedModel.setDirectory(0);
         // expectedModel.deleteTravelPlanObject(activityToDelete);
-
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
     }

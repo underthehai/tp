@@ -70,7 +70,7 @@ public class TypicalFriends {
         List<Friend> friends = set == 1 ? getTypicalFriends1() : getTypicalFriends2();
         FriendList fl = new FriendList();
         for (Friend friend : friends) {
-            fl.addFriend(friend);
+            fl.addFriend(new FriendBuilder(friend).build());
         }
         return fl;
     }
