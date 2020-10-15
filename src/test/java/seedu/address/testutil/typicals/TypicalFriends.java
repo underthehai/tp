@@ -20,6 +20,7 @@ import seedu.address.testutil.builders.FriendBuilder;
  */
 public class TypicalFriends {
 
+    //Friend
     public static final Friend ALICE = new FriendBuilder().withName("Alice Pauline")
             .withPassport("A1234567")
             .withMobile("94351253").build();
@@ -69,7 +70,7 @@ public class TypicalFriends {
         List<Friend> friends = set == 1 ? getTypicalFriends1() : getTypicalFriends2();
         FriendList fl = new FriendList();
         for (Friend friend : friends) {
-            fl.addFriend(friend);
+            fl.addFriend(new FriendBuilder(friend).build());
         }
         return fl;
     }

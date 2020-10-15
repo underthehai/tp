@@ -63,7 +63,7 @@ Command | Parameters | Description
 ## Tags
 
 The table below shows the type of tag each different object can be assigned to.
-Do note that tags are optional when creating the object.
+Do note that tags are compulsory when creating the object.
 
 #### Activity Tag
 Name of Tag | Description
@@ -109,9 +109,6 @@ Name of Tag | Description
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add -activity n/NAME`, `NAME` is a parameter which can be used as `add -activity n/Cultural Visit`.
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [l/LOCATION]` can be used as `n/Cultural Visit l/Lourve Museum` or as `n/Cultural Visit`.
-
 </div>
 
 ## Goto
@@ -123,7 +120,7 @@ is `wishlist`.<br/>
 
 >Directories in Wanderlust include:
 >1. `wishlist`
->2. `NAME_OF_TRAVEL_PLAN`<br/>
+>2. `travelplan index`<br/>
 
 <br/>
 This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
@@ -135,16 +132,16 @@ globally and locally are tagged (G) and (L) respectively in the **features secti
 ### 1. Goto a Travel Plan (G)
 Navigates the UI to a specific travel plan.
 
-Format: `goto NAME_OF_TRAVEL_PLAN`
+Format: `goto -travelplan index`
 
-Example: `goto Europe`
+Example: `goto -travelplan 2`
 
 ### 2. Goto Wishlist (G)
 Navigates the UI to the wishlist.
 
-Format: `goto wishlist`
+Format: `goto -wishlist`
 
-Example: `goto wishlist`
+Example: `goto -wishlist`
 
 ## Add
 
@@ -152,7 +149,7 @@ Example: `goto wishlist`
 Creates a new travel plan and adds it to Wanderlust’s travel planner.
 Start and end date can be optional, but they must exist as a pair. Format of date is in DD-MM-YYYY.
 
-Format: `add -travelplan n/NAME [sd/START_DATE ed/END_DATE]`
+Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
 Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 
@@ -161,16 +158,16 @@ Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
 Creates a new activity and adds it to the travel plan/wishlist in the current directory. Date and time can be optional, but they must exist as a pair.
 Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
-Format: `add -activity n/NAME [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]`
+Format: `add -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
-Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/16-09-2020`
+Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/16-09-2020 10:10`
 
 
 ### 3. Adding an Accommodation (L)
 Creates a new accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
 This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before adding accommodations.
 
-Format: `add -accommodation n/NAME [l/LOCATION] [c/COST] [sd/START_DATE] [ed/END_DATE]`
+Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
 
 Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2020-10-11 ed/2020-10-15`
 
@@ -178,7 +175,7 @@ Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2020-10-11
 Creates a person object that contains basic information about the user and
 other travellers and adds it to the travel plan in the current directory.
 
-Format: `add -friend n/NAME [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]`
+Format: `add -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
 
 Example: `add -friend n/John m/81234567 p/E1234567H`
 
@@ -205,7 +202,7 @@ Example: `delete -activity 3`
 Deletes an accommodation at a given index from the travel plan in the current directory. 
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before deleting accommodations.
 
-Format: `delete -accommodation INDEX​`
+Format: `delete -accommodation INDEX`
 
 Example: `delete -accommodation 2`
 
@@ -224,7 +221,7 @@ Example: `delete -friend 1`
 
 Edits an existing travel plan in the travel planner by its index. 
 
-Format: `edit -travelplan INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE]​`
+Format: `edit -travelplan INDEX n/NAME sd/YYYY-MM-DD ed/YYYY-MM-DD​`
 
 Example: `edit -travelplan 1 n/Paris sd/2020-10-11 ed/2020-10-15`
 
@@ -232,7 +229,7 @@ Example: `edit -travelplan 1 n/Paris sd/2020-10-11 ed/2020-10-15`
 
 Edits an existing activity in the the travel plan/wishlist in the current directory.
 
-Format: `edit -activity INDEX [n/NAME] [i/LEVEL_OF_IMPORTANCE] [l/LOCATION] [c/COST] [d/DATE_AND_TIME]​`
+Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15:00`
 
@@ -241,7 +238,7 @@ Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15
 Edits an existing accommodation in the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing an accommodation.
 
-Format: `edit -accommodation INDEX [n/NAME] [l/LOCATION] [c/COST] [sd/START_DATE] [ed/END_DATE]​`
+Format: `edit -accommodation INDEX n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD​`
 
 Example: `edit -accommodation 3 n/The Hotel l/Bukit Timah c/60 sd/2020-10-11 ed/2020-10-15`
 
@@ -250,9 +247,9 @@ Example: `edit -accommodation 3 n/The Hotel l/Bukit Timah c/60 sd/2020-10-11 ed/
 Edits an existing friend in the in the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing a friend.
 
-Format: `edit -friend INDEX [n/NAME] [m/MOBILE_NUMBER] [p/PASSPORT_NUMBER]​`
+Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
-Example: `edit 3 n/John m/91234567 p/E7654321`
+Example: `edit -friend 3 n/John m/91234567 p/E7654321`
 
 --------------------------------------------------------------------------------------------------------------------
 
