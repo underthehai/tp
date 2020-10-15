@@ -23,6 +23,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditT
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
@@ -38,9 +39,8 @@ public class EditTravelPlanCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setTravelPlan(model.getFilteredTravelPlanList().get(0), editedTravelPlan);
-
 
         assertCommandSuccess(editTravelPlanCommand, model, expectedMessage, expectedModel);
     }
@@ -52,7 +52,7 @@ public class EditTravelPlanCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         assertCommandSuccess(editTravelPlanCommand, model, expectedMessage, expectedModel);
     }
@@ -67,7 +67,7 @@ public class EditTravelPlanCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setTravelPlan(model.getFilteredTravelPlanList().get(0), editedTravelPlan);
 
         assertCommandSuccess(editTravelPlanCommand, model, expectedMessage, expectedModel);

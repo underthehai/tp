@@ -31,6 +31,7 @@ public class Friend extends TravelPlanObject {
         this.mobile = mobile;
     }
 
+    @Override
     public Name getName() {
         return name;
     }
