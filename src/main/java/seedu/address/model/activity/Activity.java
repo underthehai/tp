@@ -37,6 +37,7 @@ public class Activity extends TravelPlanObject {
         this.activityDateTime = activityDateTime;
     }
 
+    @Override
     public Name getName() {
         return name;
     }

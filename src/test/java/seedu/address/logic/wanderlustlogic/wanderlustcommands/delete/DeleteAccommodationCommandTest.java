@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTravelPlanAtIndex;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN_TRAVELPLAN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTpoAtIndex;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -38,8 +38,8 @@ public class DeleteAccommodationCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Accommodation accommodationToDelete = model.getFilteredAccommodationList()
-                .get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteAccommodationCommand deleteAccommodationCommand = new DeleteAccommodationCommand(INDEX_FIRST_TRAVELPLAN);
+                .get(INDEX_FIRST.getZeroBased());
+        DeleteAccommodationCommand deleteAccommodationCommand = new DeleteAccommodationCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(deleteAccommodationCommand.MESSAGE_DELETE_ACCOMMODATION_SUCCESS,
                 accommodationToDelete);
@@ -61,11 +61,11 @@ public class DeleteAccommodationCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        // showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTpoAtIndex(model, INDEX_FIRST, "Accommodation");
 
         Accommodation accommodationToDelete = model.getFilteredAccommodationList()
-                .get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteAccommodationCommand deleteAccommodationCommand = new DeleteAccommodationCommand(INDEX_FIRST_TRAVELPLAN);
+                .get(INDEX_FIRST.getZeroBased());
+        DeleteAccommodationCommand deleteAccommodationCommand = new DeleteAccommodationCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteAccommodationCommand.MESSAGE_DELETE_ACCOMMODATION_SUCCESS,
                 accommodationToDelete);
@@ -80,9 +80,9 @@ public class DeleteAccommodationCommandTest {
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTpoAtIndex(model, INDEX_FIRST, "Accommodation");
 
-        Index outOfBoundIndex = INDEX_TEN_TRAVELPLAN;
+        Index outOfBoundIndex = INDEX_TEN;
 
         DeleteAccommodationCommand deleteAccommodationCommand = new DeleteAccommodationCommand(outOfBoundIndex);
 
@@ -91,14 +91,14 @@ public class DeleteAccommodationCommandTest {
 
     @Test
     public void equals() {
-        DeleteAccommodationCommand deleteFirstCommand = new DeleteAccommodationCommand(INDEX_FIRST_TRAVELPLAN);
-        DeleteAccommodationCommand deleteSecondCommand = new DeleteAccommodationCommand(INDEX_SECOND_TRAVELPLAN);
+        DeleteAccommodationCommand deleteFirstCommand = new DeleteAccommodationCommand(INDEX_FIRST);
+        DeleteAccommodationCommand deleteSecondCommand = new DeleteAccommodationCommand(INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteAccommodationCommand deleteFirstCommandCopy = new DeleteAccommodationCommand(INDEX_FIRST_TRAVELPLAN);
+        DeleteAccommodationCommand deleteFirstCommandCopy = new DeleteAccommodationCommand(INDEX_FIRST);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

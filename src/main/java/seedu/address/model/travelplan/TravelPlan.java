@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
@@ -18,7 +19,7 @@ import seedu.address.model.travelplanner.Directory;
  * Represents a travel plan in the travel planner
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class TravelPlan extends Directory {
+public class TravelPlan extends Directory implements Nameable {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
 
@@ -151,6 +152,7 @@ public class TravelPlan extends Directory {
 
     //// travel plan identity methods
 
+    @Override
     public Name getName() {
         return name;
     }
