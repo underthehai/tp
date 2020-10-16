@@ -35,7 +35,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     public TravelPlanner() {}
 
     /**
-     * Creates an TravelPlanner using the TravelPlans in the {@code toBeCopied}
+     * Creates a TravelPlanner using the TravelPlans in the {@code toBeCopied}
      */
     public TravelPlanner(ReadOnlyTravelPlanner toBeCopied) {
         this();

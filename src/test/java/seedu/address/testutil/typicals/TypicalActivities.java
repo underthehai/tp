@@ -82,7 +82,7 @@ public class TypicalActivities {
         List<Activity> activities = set == 1 ? getTypicalActivities1() : getTypicalActivities2();
         ActivityList al = new ActivityList();
         for (Activity activity : activities) {
-            al.addActivity(activity);
+            al.addActivity(new ActivityBuilder(activity).build());
         }
         return al;
     }

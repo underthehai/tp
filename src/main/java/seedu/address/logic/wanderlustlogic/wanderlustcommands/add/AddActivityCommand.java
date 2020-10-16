@@ -1,6 +1,5 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands.add;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PREFIX_DATETIME;
@@ -51,13 +50,18 @@ public class AddActivityCommand extends AddCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+        if (isTravelPlan) {
+            if (model.hasTravelPlanObject(toAdd)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
 
-        if (model.hasTravelPlanObject(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            model.addTravelPlanObject(toAdd);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        } else {
+            model.addActivity(toAdd);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         }
-
-        model.addTravelPlanObject(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
     @Override

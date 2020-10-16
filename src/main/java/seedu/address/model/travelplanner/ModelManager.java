@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
@@ -27,6 +28,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
+    private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
     private int directoryIndex;
     private Directory directory;
@@ -47,6 +49,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
+        isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
         directoryIndex = -1;
         observableDirectory = new ObservableDirectory(directory);
@@ -164,10 +167,14 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
+        directory = this.travelPlanner.getWishlistAsDirectory();
+
         if (index == -1) {
+            isTravelPlan = false;
             directoryIndex = -1;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
+            isTravelPlan = true;
             directoryIndex = index;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
@@ -179,8 +186,18 @@ public class ModelManager implements Model {
         return directory;
     }
 
+    @Override
+    public boolean isDirectoryTypeTravelPlan() {
+        if (isTravelPlan) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public ObservableDirectory getObservableDirectory() {
         return observableDirectory;
+
     }
 
     //=========== TravelPlanObject =============================================================
@@ -233,7 +250,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredTravelPlanList(Predicate<TravelPlan> predicate) {
+    public void updateFilteredTravelPlanList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredTravelPlans.setPredicate(predicate);
     }
@@ -250,7 +267,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredWishlist(Predicate<Activity> predicate) {
+    public void updateFilteredWishlist(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredWishlist.setPredicate(predicate);
     }
@@ -267,7 +284,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredActivityList(Predicate<Activity> predicate) {
+    public void updateFilteredActivityList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredActivityList.setPredicate(predicate);
     }
@@ -278,7 +295,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredFriendList(Predicate<Friend> predicate) {
+    public void updateFilteredFriendList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredFriendList.setPredicate(predicate);
     }
@@ -289,7 +306,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredAccommodationList(Predicate<Accommodation> predicate) {
+    public void updateFilteredAccommodationList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredAccommodationList.setPredicate(predicate);
     }
@@ -310,7 +327,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return travelPlanner.equals(other.travelPlanner)
                 && userPrefs.equals(other.userPrefs)
-                && filteredTravelPlans.equals(other.filteredTravelPlans);
+                && filteredTravelPlans.equals(other.filteredTravelPlans)
+                && filteredWishlist.equals(other.filteredWishlist);
     }
 
 }
