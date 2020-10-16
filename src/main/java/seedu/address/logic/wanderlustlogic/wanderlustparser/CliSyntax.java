@@ -19,5 +19,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_END = new Prefix("ed/");
 
     // keep so it compiles, delete later_
+    // TODO:
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
 }

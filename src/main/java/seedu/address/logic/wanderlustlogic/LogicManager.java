@@ -94,6 +94,7 @@ public class LogicManager implements Logic {
         return model.getDirectory();
     }
 
+    // TODO:
     public ObservableDirectory getObservableDirectory() {
         return model.getObservableDirectory();
     }
