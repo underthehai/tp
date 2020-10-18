@@ -17,6 +17,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** Takes the value -1 if no tab changes are required. Otherwise, represents the index of the tab to set
+     *  the travelPlanObjectListPanel to.
+     */
     private final int travelPlanObjectType;
 
     /**

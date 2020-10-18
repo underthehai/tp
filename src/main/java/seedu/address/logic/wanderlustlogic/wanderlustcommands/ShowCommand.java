@@ -5,13 +5,16 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplanner.Model;
 
+/**
+ * Navigates and display the specified travel plan object based on user input.
+ */
 public class ShowCommand extends Command {
     public static final String COMMAND_WORD = "show";
-    public static final String ACTIVITY = "activity";
-    public static final String ACCOMMODATION = "accommodation";
-    public static final String FRIEND = "friend";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Show the respective travel plan object tab identified by the keyword.\n"
@@ -30,11 +33,11 @@ public class ShowCommand extends Command {
      */
     public ShowCommand(String travelPlanObjectType) {
         travelPlanObjectString = travelPlanObjectType;
-        if (travelPlanObjectString.equals(ACTIVITY)) {
+        if (travelPlanObjectString.equals(Activity.TPO_WORD)) {
             travelPLanObjectType = 0;
-        } else if (travelPlanObjectString.equals(ACCOMMODATION)) {
+        } else if (travelPlanObjectString.equals(Accommodation.TPO_WORD)) {
             travelPLanObjectType = 1;
-        } else if (travelPlanObjectString.equals(FRIEND)) {
+        } else if (travelPlanObjectString.equals(Friend.TPO_WORD)) {
             travelPLanObjectType = 2;
         } else {
             travelPLanObjectType = -1;

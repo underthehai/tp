@@ -52,6 +52,10 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
 
     }
 
+    /**
+     * Navigates the travel plan object panel depending on the index given.
+     * @param index id tagged to each travel plan object.
+     */
     public void changeTabView(int index) {
         pane.getSelectionModel().select(index);
     }
