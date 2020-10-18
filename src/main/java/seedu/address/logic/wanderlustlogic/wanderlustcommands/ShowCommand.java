@@ -64,7 +64,7 @@ public class ShowCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof GoToCommand // instanceof handles nulls
+                || (other instanceof ShowCommand // instanceof handles nulls
                 && travelPlanObjectString.equals(((ShowCommand) other).travelPlanObjectString)) // state check
                 && travelPLanObjectType == (((ShowCommand) other).travelPLanObjectType);
     }
