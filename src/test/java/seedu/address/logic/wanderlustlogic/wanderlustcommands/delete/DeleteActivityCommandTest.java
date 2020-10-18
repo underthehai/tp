@@ -4,10 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTpoAtIndex;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTravelPlanAtIndex;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN_TRAVELPLAN;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +21,7 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
@@ -43,8 +45,8 @@ public class DeleteActivityCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        TravelPlanObject activityToDelete = model.getFilteredActivityList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN);
+        TravelPlanObject activityToDelete = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());
+        DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteActivityCommand.MESSAGE_DELETE_ACTIVITY_SUCCESS,
                 activityToDelete);
@@ -67,27 +69,29 @@ public class DeleteActivityCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-//         showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTpoAtIndex(model, INDEX_FIRST, "Activity");
 
-        Activity activityToDelete = model.getFilteredActivityList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN);
+        Activity activityToDelete = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());
+        DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteActivityCommand.MESSAGE_DELETE_ACTIVITY_SUCCESS,
                 activityToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         expectedModel.setDirectory(0);
-//        expectedModel.deleteTravelPlanObject(activityToDelete);
+
+        expectedModel.deleteTravelPlanObject(activityToDelete);
+        showNoActivityList(expectedModel);
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTravelPlanAtIndex(model, INDEX_FIRST);
 
-        Index outOfBoundIndex = INDEX_TEN_TRAVELPLAN;
+        Index outOfBoundIndex = INDEX_TEN;
 
         DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(outOfBoundIndex);
 
@@ -96,14 +100,14 @@ public class DeleteActivityCommandTest {
 
     @Test
     public void equals() {
-        DeleteActivityCommand deleteFirstCommand = new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN);
-        DeleteActivityCommand deleteSecondCommand = new DeleteActivityCommand(INDEX_SECOND_TRAVELPLAN);
+        DeleteActivityCommand deleteFirstCommand = new DeleteActivityCommand(INDEX_FIRST);
+        DeleteActivityCommand deleteSecondCommand = new DeleteActivityCommand(INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteActivityCommand deleteFirstCommandCopy = new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN);
+        DeleteActivityCommand deleteFirstCommandCopy = new DeleteActivityCommand(INDEX_FIRST);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

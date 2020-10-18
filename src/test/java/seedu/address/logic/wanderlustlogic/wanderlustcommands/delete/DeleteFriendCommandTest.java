@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTravelPlanAtIndex;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND_TRAVELPLAN;
-import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN_TRAVELPLAN;
+import static seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandTestUtil.showTpoAtIndex;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
@@ -36,14 +37,15 @@ public class DeleteFriendCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Friend friendToDelete = model.getFilteredFriendList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(INDEX_FIRST_TRAVELPLAN);
+        Friend friendToDelete = model.getFilteredFriendList().get(INDEX_FIRST.getZeroBased());
+        DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteFriendCommand.MESSAGE_DELETE_FRIEND_SUCCESS,
                 friendToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        //        expectedModel.deleteTravelPlanObject(friendToDelete);
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        expectedModel.deleteTravelPlanObject(friendToDelete);
 
         assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
     }
@@ -58,16 +60,17 @@ public class DeleteFriendCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        //        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTpoAtIndex(model, INDEX_FIRST, "Friend");
 
-        Friend friendToDelete = model.getFilteredFriendList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
-        DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(INDEX_FIRST_TRAVELPLAN);
+        Friend friendToDelete = model.getFilteredFriendList().get(INDEX_FIRST.getZeroBased());
+        DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(DeleteFriendCommand.MESSAGE_DELETE_FRIEND_SUCCESS,
                 friendToDelete);
 
-        Model expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
-        //        expectedModel.deleteTravelPlanObject(friendToDelete);
+        Model expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        expectedModel.deleteTravelPlanObject(friendToDelete);
         showNoFriendList(expectedModel);
 
         assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
@@ -75,9 +78,9 @@ public class DeleteFriendCommandTest {
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+        showTpoAtIndex(model, INDEX_FIRST, "Friend");
 
-        Index outOfBoundIndex = INDEX_TEN_TRAVELPLAN;
+        Index outOfBoundIndex = INDEX_TEN;
 
         DeleteFriendCommand deleteFriendCommand = new DeleteFriendCommand(outOfBoundIndex);
 
@@ -86,14 +89,14 @@ public class DeleteFriendCommandTest {
 
     @Test
     public void equals() {
-        DeleteFriendCommand deleteFirstCommand = new DeleteFriendCommand(INDEX_FIRST_TRAVELPLAN);
-        DeleteFriendCommand deleteSecondCommand = new DeleteFriendCommand(INDEX_SECOND_TRAVELPLAN);
+        DeleteFriendCommand deleteFirstCommand = new DeleteFriendCommand(INDEX_FIRST);
+        DeleteFriendCommand deleteSecondCommand = new DeleteFriendCommand(INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteFriendCommand deleteFirstCommandCopy = new DeleteFriendCommand(INDEX_FIRST_TRAVELPLAN);
+        DeleteFriendCommand deleteFirstCommandCopy = new DeleteFriendCommand(INDEX_FIRST);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

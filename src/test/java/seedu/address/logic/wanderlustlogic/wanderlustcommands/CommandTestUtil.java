@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditDescriptor;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditAccommodationDescriptorBuilder;
@@ -25,6 +26,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditF
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
+import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.TravelPlanner;
@@ -223,8 +225,8 @@ public class CommandTestUtil {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
-     * {@code model}'s address book.
+     * Updates {@code model}'s filtered travelplan list to show only the travel plan at the given {@code targetIndex} in
+     * the {@code model}'s travel planner.
      */
     public static void showTravelPlanAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTravelPlanList().size());
@@ -235,4 +237,48 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredTravelPlanList().size());
     }
+
+    /**
+     * Updates {@code model}'s filtered travel plan object list to show only the travel plan objects at the given
+     * {@code targetIndex} in the {@code model}'s respective filtered list.
+     */
+    public static void showTpoAtIndex(Model model, Index targetIndex, String tpoType) {
+        ObservableList<? extends TravelPlanObject> filteredList;
+
+        switch (tpoType) {
+        case "Activity":
+            filteredList = model.getFilteredActivityList();
+            break;
+        case "Accommodation":
+            filteredList = model.getFilteredAccommodationList();
+            break;
+        case "Friend":
+            filteredList = model.getFilteredFriendList();
+            break;
+        default:
+            throw new IllegalStateException("Unexpected tpoType value: " + tpoType);
+        }
+
+        assertTrue(targetIndex.getZeroBased() < filteredList.size());
+
+        TravelPlanObject travelPlanObject = filteredList.get(targetIndex.getZeroBased());
+        final String[] splitName = travelPlanObject.getName().name.split("\\s+");
+
+        switch (tpoType) {
+        case "Activity":
+            model.updateFilteredActivityList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+            break;
+        case "Accommodation":
+            model.updateFilteredAccommodationList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+            break;
+        case "Friend":
+            model.updateFilteredFriendList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+            break;
+        default:
+            throw new IllegalStateException("Unexpected tpoType value: " + tpoType);
+        }
+
+        assertEquals(1, filteredList.size());
+    }
+
 }

@@ -23,6 +23,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditA
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.AccommodationBuilder;
 
@@ -45,7 +46,7 @@ public class EditAccommodationCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation);
 
-        ModelManager expectedModel = new ModelManager(getTypicalTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
         expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
 
@@ -60,7 +61,7 @@ public class EditAccommodationCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
 
         assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
@@ -78,10 +79,9 @@ public class EditAccommodationCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
-        //expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
-
+        expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
 
         assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
     }

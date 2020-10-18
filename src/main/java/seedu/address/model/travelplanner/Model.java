@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
@@ -17,10 +18,10 @@ import seedu.address.model.travelplan.TravelPlan;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<TravelPlan> PREDICATE_SHOW_ALL_TRAVEL_PLAN = unused -> true;
+    Predicate<Nameable> PREDICATE_SHOW_ALL_TRAVEL_PLAN = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Activity> PREDICATE_SHOW_ALL_ACTIVITY = unused -> true;
+    Predicate<Nameable> PREDICATE_SHOW_ALL_ACTIVITY = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -154,31 +155,31 @@ public interface Model {
      * Updates the filter of the filtered travel plan list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredTravelPlanList(Predicate<TravelPlan> predicate);
+    void updateFilteredTravelPlanList(Predicate<Nameable> predicate);
 
     /**
      * Updates the filter of the filtered wishlist to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredWishlist(Predicate<Activity> predicate);
+    void updateFilteredWishlist(Predicate<Nameable> predicate);
 
     /**
      * Updates the filter of the filtered activity list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredActivityList(Predicate<Activity> predicate);
+    void updateFilteredActivityList(Predicate<Nameable> predicate);
 
     /**
      * Updates the filter of the filtered accommodation list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredAccommodationList(Predicate<Accommodation> predicate);
+    void updateFilteredAccommodationList(Predicate<Nameable> predicate);
 
     /**
      * Updates the filter of the filtered friend list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredFriendList(Predicate<Friend> predicate);
+    void updateFilteredFriendList(Predicate<Nameable> predicate);
 
     /**
      * Replaces the directory with the directory at {@code index}.

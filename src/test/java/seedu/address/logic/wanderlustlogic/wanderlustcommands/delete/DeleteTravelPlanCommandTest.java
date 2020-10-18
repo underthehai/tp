@@ -17,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
@@ -35,7 +36,7 @@ public class DeleteTravelPlanCommandTest {
         String expectedMessage = String.format(DeleteTravelPlanCommand.MESSAGE_DELETE_TRAVELPLAN_SUCCESS,
                 travelPlanToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.deleteTravelPlan(travelPlanToDelete);
 
         assertCommandSuccess(deleteTravelPlanCommand, model, expectedMessage, expectedModel);
@@ -59,7 +60,7 @@ public class DeleteTravelPlanCommandTest {
         String expectedMessage = String.format(DeleteTravelPlanCommand.MESSAGE_DELETE_TRAVELPLAN_SUCCESS,
                 travelPlanToDelete);
 
-        Model expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.deleteTravelPlan(travelPlanToDelete);
         showNoTravelPlan(expectedModel);
 

@@ -37,6 +37,7 @@ public class Accommodation extends TravelPlanObject {
         this.location = location;
     }
 
+    @Override
     public Name getName() {
         return name;
     }

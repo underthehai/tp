@@ -23,6 +23,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditF
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ModelManager;
+import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 import seedu.address.testutil.builders.FriendBuilder;
 
@@ -44,10 +45,9 @@ public class EditFriendCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
-        //expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
-
+        expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
     }
@@ -59,7 +59,7 @@ public class EditFriendCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
     }
@@ -74,10 +74,10 @@ public class EditFriendCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend);
 
-        ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
 
-        //expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
+        expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
         assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
     }

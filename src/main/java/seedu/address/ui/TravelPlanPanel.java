@@ -15,7 +15,6 @@ import seedu.address.model.travelplanner.Directory;
  */
 public class TravelPlanPanel extends UiPart<Region> {
     private static final String TravelPlanFXML = "TravelPlanPanel.fxml";
-    private static final String WishlistFXML = "WishlistPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TravelPlanPanel.class);
 
     private Directory directory;

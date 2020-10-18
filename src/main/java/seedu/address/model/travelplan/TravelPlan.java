@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Name;
+import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
@@ -18,7 +19,7 @@ import seedu.address.model.travelplanner.Directory;
  * Represents a travel plan in the travel planner
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class TravelPlan extends Directory {
+public class TravelPlan extends Directory implements Nameable {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
 
@@ -32,8 +33,6 @@ public class TravelPlan extends Directory {
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
 
-
-
     /**
      * Creates an empty TravelPlan with only the name, startDate and endDate.
      */
@@ -44,7 +43,6 @@ public class TravelPlan extends Directory {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
 
     /**
      * Creates an TravelPlan using the Accommodations, Activities and Friends in the {@code accommodationsToBeCopied},
@@ -61,6 +59,26 @@ public class TravelPlan extends Directory {
         accommodations.resetData(accommodationsToBeCopied);
         activities.resetData(activitiesToBeCopied);
         friends.resetData(friendsTobeCopied);
+    }
+
+    /**
+     * Creates a TravelPlan using the TravelPlan in the {@code toBeCopied}
+     */
+    public TravelPlan(TravelPlan toBeCopied) {
+        requireAllNonNull(toBeCopied.name, toBeCopied.startDate, toBeCopied.endDate);
+        this.name = toBeCopied.name;
+        this.startDate = toBeCopied.startDate;
+        this.endDate = toBeCopied.endDate;
+        resetData(toBeCopied);
+    }
+
+    /**
+     * Resets the existing data of this {@code TravelPlan} with {@code newData}.
+     */
+    public void resetData(TravelPlan newData) {
+        accommodations.resetData(newData.getAccommodations());
+        activities.resetData(newData.getActivities());
+        friends.resetData(newData.getFriends());
     }
 
     /**
@@ -134,6 +152,7 @@ public class TravelPlan extends Directory {
 
     //// travel plan identity methods
 
+    @Override
     public Name getName() {
         return name;
     }

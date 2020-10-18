@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
@@ -249,7 +250,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredTravelPlanList(Predicate<TravelPlan> predicate) {
+    public void updateFilteredTravelPlanList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredTravelPlans.setPredicate(predicate);
     }
@@ -266,7 +267,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredWishlist(Predicate<Activity> predicate) {
+    public void updateFilteredWishlist(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredWishlist.setPredicate(predicate);
     }
@@ -283,7 +284,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredActivityList(Predicate<Activity> predicate) {
+    public void updateFilteredActivityList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredActivityList.setPredicate(predicate);
     }
@@ -294,7 +295,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredFriendList(Predicate<Friend> predicate) {
+    public void updateFilteredFriendList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredFriendList.setPredicate(predicate);
     }
@@ -305,7 +306,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredAccommodationList(Predicate<Accommodation> predicate) {
+    public void updateFilteredAccommodationList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredAccommodationList.setPredicate(predicate);
     }
