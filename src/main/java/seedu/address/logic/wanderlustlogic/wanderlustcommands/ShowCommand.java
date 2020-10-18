@@ -25,7 +25,7 @@ public class ShowCommand extends Command {
 
     private final String travelPlanObjectString;
 
-    private int travelPLanObjectType;
+    private int travelPlanObjectType;
 
     /**
      * Constructor for ShowCommand.
@@ -34,13 +34,13 @@ public class ShowCommand extends Command {
     public ShowCommand(String travelPlanObjectType) {
         travelPlanObjectString = travelPlanObjectType;
         if (travelPlanObjectString.equals(Activity.TPO_WORD)) {
-            travelPLanObjectType = 0;
+            this.travelPlanObjectType = 0;
         } else if (travelPlanObjectString.equals(Accommodation.TPO_WORD)) {
-            travelPLanObjectType = 1;
+            this.travelPlanObjectType = 1;
         } else if (travelPlanObjectString.equals(Friend.TPO_WORD)) {
-            travelPLanObjectType = 2;
+            this.travelPlanObjectType = 2;
         } else {
-            travelPLanObjectType = -1;
+            this.travelPlanObjectType = -1;
         }
     }
 
@@ -49,16 +49,16 @@ public class ShowCommand extends Command {
         requireNonNull(model);
         boolean isDirectoryTravelPlan = model.isDirectoryTypeTravelPlan();
 
-        if (!isDirectoryTravelPlan && travelPLanObjectType != 0) {
+        if (!isDirectoryTravelPlan && travelPlanObjectType != 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_SHOW_AT_WISHLIST);
         }
 
-        if (travelPLanObjectType < 0) {
+        if (travelPlanObjectType < 0) {
             throw new CommandException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
         }
 
-        return new CommandResult(String.format(MESSAGE_SHOW_SUCCESS, travelPlanObjectString), travelPLanObjectType);
+        return new CommandResult(String.format(MESSAGE_SHOW_SUCCESS, travelPlanObjectString), travelPlanObjectType);
     }
 
     @Override
@@ -66,6 +66,6 @@ public class ShowCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof ShowCommand // instanceof handles nulls
                 && travelPlanObjectString.equals(((ShowCommand) other).travelPlanObjectString)) // state check
-                && travelPLanObjectType == (((ShowCommand) other).travelPLanObjectType);
+                && travelPlanObjectType == (((ShowCommand) other).travelPlanObjectType);
     }
 }
