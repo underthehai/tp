@@ -67,7 +67,7 @@ public class DeleteActivityCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        // showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
+//         showTravelPlanAtIndex(model, INDEX_FIRST_TRAVELPLAN);
 
         Activity activityToDelete = model.getFilteredActivityList().get(INDEX_FIRST_TRAVELPLAN.getZeroBased());
         DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand(INDEX_FIRST_TRAVELPLAN);
@@ -78,7 +78,7 @@ public class DeleteActivityCommandTest {
         ModelManager expectedModel = new ModelManager(model.getTravelPlanner(), new UserPrefs());
 
         expectedModel.setDirectory(0);
-        // expectedModel.deleteTravelPlanObject(activityToDelete);
+//        expectedModel.deleteTravelPlanObject(activityToDelete);
 
         assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
     }
