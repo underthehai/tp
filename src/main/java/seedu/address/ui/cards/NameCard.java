@@ -6,7 +6,7 @@ import javafx.scene.layout.Region;
 import seedu.address.ui.UiPart;
 
 public class NameCard extends UiPart<Region> {
-    private static final String FXML = "./cards/NameCard.fxml";
+    private static final String FXML = "cards/NameCard.fxml";
 
     @FXML
     private Label name;
