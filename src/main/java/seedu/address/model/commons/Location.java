@@ -19,9 +19,9 @@ public class Location {
     public final String value;
 
     /**
-     * Constructs an {@code Address}.
+     * Constructs an {@code Location}.
      *
-     * @param location A valid address.
+     * @param location A valid location.
      */
     public Location(String location) {
         requireNonNull(location);

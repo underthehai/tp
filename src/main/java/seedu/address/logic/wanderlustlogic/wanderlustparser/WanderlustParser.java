@@ -19,7 +19,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 
 /**
- * Parses user input.
+ * Parses user input from UI and execute commands based on user input.
  */
 public class WanderlustParser {
 
@@ -69,6 +69,7 @@ public class WanderlustParser {
 
             case HelpCommand.COMMAND_WORD:
                 return new HelpCommand();
+
             case GoToCommand.COMMAND_WORD:
                 return new WanderlustGoToCommandParser().parse(arguments);
 
