@@ -13,7 +13,6 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import java.util.Optional;
 
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.ArgumentMultimap;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.ParserUtil;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;

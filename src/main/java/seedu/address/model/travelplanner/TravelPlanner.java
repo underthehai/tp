@@ -176,7 +176,6 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
 
     @Override
     public int hashCode() {
-        // TODO: need consider wishlist's hashcode also
         return Objects.hash(travelPlans, wishlist);
     }
 }
