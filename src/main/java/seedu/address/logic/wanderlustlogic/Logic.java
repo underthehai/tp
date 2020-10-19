@@ -12,6 +12,7 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Directory;
+import seedu.address.model.travelplanner.Model;
 import seedu.address.model.travelplanner.ObservableDirectory;
 import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
 
@@ -31,7 +32,7 @@ public interface Logic {
     /**
      * Returns the TravelPlanner.
      *
-     * @see seedu.address.model.travelplanner.Model#getTravelPlanner()
+     * @see Model#getTravelPlanner()
      */
     ReadOnlyTravelPlanner getTravelPlanner();
 
@@ -58,7 +59,7 @@ public interface Logic {
     ObservableDirectory getObservableDirectory();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' travel planner file path.
      */
     Path getTravelPlannerFilePath();
 

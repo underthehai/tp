@@ -17,6 +17,11 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** Takes the value -1 if no tab changes are required. Otherwise, represents the index of the tab to set
+     *  the travelPlanObjectListPanel to.
+     */
+    private final int travelPlanObjectType;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -24,6 +29,7 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.travelPlanObjectType = -1;
     }
 
     /**
@@ -32,6 +38,18 @@ public class CommandResult {
      */
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser}, {@code travelPlanObjectType}
+     * and other fields set to their default value.
+     * Used for ShowCommand
+     */
+    public CommandResult(String feedbackToUser, int travelPLanObjectType) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = false;
+        this.exit = false;
+        this.travelPlanObjectType = travelPLanObjectType;
     }
 
     public String getFeedbackToUser() {
@@ -44,6 +62,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public int getTravelPlanObjectType() {
+        return travelPlanObjectType;
     }
 
     @Override
@@ -60,12 +82,13 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && travelPlanObjectType == otherCommandResult.travelPlanObjectType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, travelPlanObjectType);
     }
 
 }

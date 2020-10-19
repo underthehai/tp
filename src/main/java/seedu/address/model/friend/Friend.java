@@ -13,6 +13,8 @@ import seedu.address.model.commons.TravelPlanObject;
  */
 public class Friend extends TravelPlanObject {
 
+    public static final String TPO_WORD = "friend";
+
     // Identity fields
     private final Name name;
 
