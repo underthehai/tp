@@ -25,7 +25,7 @@ import seedu.address.model.travelplanner.TravelPlanner;
 import seedu.address.model.travelplanner.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
+ * Contains integration tests and unit tests for
  * {@code DeleteActivityCommand}.
  */
 public class DeleteActivityCommandTest {

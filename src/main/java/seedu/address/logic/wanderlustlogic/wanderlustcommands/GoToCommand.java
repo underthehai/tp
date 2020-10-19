@@ -10,7 +10,9 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
-
+/**
+ * Navigates to the specific directory which can be either a travel plan or a directory.
+ */
 public class GoToCommand extends Command {
     public static final String COMMAND_WORD = "goto";
     public static final String TRAVEL_PLAN = "travelplan";

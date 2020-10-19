@@ -16,6 +16,8 @@ import seedu.address.model.commons.WanderlustDate;
  */
 public class Accommodation extends TravelPlanObject {
 
+    public static final String TPO_WORD = "accommodation";
+
     // identity fields
     private final Name name;
     private final WanderlustDate startDate;

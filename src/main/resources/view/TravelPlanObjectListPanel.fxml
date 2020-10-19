@@ -5,18 +5,18 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 
- <TabPane VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-      <Tab closable="false" text="Activities ">
+ <TabPane VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="pane">
+      <Tab closable="false" text="Activities " fx:id="0">
             <VBox>
                   <ListView fx:id="activityListView" VBox.vgrow="ALWAYS" />
             </VBox>
       </Tab>
-      <Tab closable="false" text="Accommodations ">
+      <Tab closable="false" text="Accommodations " fx:id="1">
             <VBox>
                   <ListView fx:id="accommodationListView" VBox.vgrow="ALWAYS" />
             </VBox>
       </Tab>
-      <Tab closable="false" text="Friends ">
+      <Tab closable="false" text="Friends " fx:id="2">
             <VBox>
                   <ListView fx:id="friendListView" VBox.vgrow="ALWAYS" />
             </VBox>

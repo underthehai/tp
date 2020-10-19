@@ -6,7 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ExitCommand;
@@ -14,6 +13,8 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.GoToCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.HelpCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ListCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ShowCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
@@ -72,6 +73,9 @@ public class WanderlustParser {
 
             case GoToCommand.COMMAND_WORD:
                 return new WanderlustGoToCommandParser().parse(arguments);
+
+            case ShowCommand.COMMAND_WORD:
+                return new WanderlustShowCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
