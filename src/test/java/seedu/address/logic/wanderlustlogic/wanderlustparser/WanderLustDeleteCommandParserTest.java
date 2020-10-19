@@ -1,8 +1,8 @@
 package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustDeleteParseSuccess;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseFailure;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;

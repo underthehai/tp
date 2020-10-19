@@ -28,8 +28,8 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the DeleteCommand parsing of {@code userInput} by {@code parser} is successful and the command created
-     * equals to {@code expectedCommand}.
+     * Asserts that the DeleteCommand parsing of {@code userInput} by {@code parser} is successful
+     * and the command created equals to {@code expectedCommand}.
      */
     public static void assertWanderLustDeleteParseSuccess(WanderlustDeleteCommandParser parser, String userInput,
                                                           DeleteActivityCommand expectedCommand) {
