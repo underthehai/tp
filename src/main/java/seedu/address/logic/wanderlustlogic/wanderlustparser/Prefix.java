@@ -2,7 +2,7 @@ package seedu.address.logic.wanderlustlogic.wanderlustparser;
 
 /**
  * A prefix that marks the beginning of an argument in an arguments string.
- * E.g. 't/' in 'add James t/ friend'.
+ * E.g. 'n/' in 'add -activity n/Eat'.
  */
 public class Prefix {
     private final String prefix;
@@ -33,7 +33,7 @@ public class Prefix {
             return true;
         }
 
-        seedu.address.logic.parser.Prefix otherPrefix = (seedu.address.logic.parser.Prefix) obj;
+        Prefix otherPrefix = (Prefix) obj;
         return otherPrefix.getPrefix().equals(getPrefix());
     }
 }

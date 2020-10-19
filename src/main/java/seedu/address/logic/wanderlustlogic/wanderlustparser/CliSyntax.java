@@ -7,7 +7,6 @@ public class CliSyntax {
 
     /* Prefix definitions */
     public static final Prefix PREFIX_NAME = new Prefix("n/");
-    public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_LOCATION = new Prefix("l/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_IMPORTANCE = new Prefix("i/");
@@ -18,7 +17,4 @@ public class CliSyntax {
     public static final Prefix PREFIX_START = new Prefix("sd/");
     public static final Prefix PREFIX_END = new Prefix("ed/");
 
-    // keep so it compiles, delete later_
-    // TODO:
-    public static final Prefix PREFIX_PHONE = new Prefix("p/");
 }

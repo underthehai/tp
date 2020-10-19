@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.accommodation.Accommodation;
@@ -31,6 +32,10 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
     @FXML
     private ListView<Friend> friendListView;
 
+    @FXML
+    private TabPane pane;
+
+
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
@@ -43,6 +48,16 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         accommodationListView.setCellFactory(listView -> new AccommodationListViewCell());
         friendListView.setItems(friends);
         friendListView.setCellFactory(listView -> new FriendListViewCell());
+        pane.getSelectionModel().select(0);
+
+    }
+
+    /**
+     * Navigates the travel plan object panel depending on the index given.
+     * @param index id tagged to each travel plan object.
+     */
+    public void changeTabView(int index) {
+        pane.getSelectionModel().select(index);
     }
 
     /**
