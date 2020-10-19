@@ -19,7 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddTravelPlanCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;

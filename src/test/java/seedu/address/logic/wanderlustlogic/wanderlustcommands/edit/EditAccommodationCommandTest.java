@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditAccommodationDescriptorBuilder;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.travelplanner.Model;
