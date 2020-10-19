@@ -11,6 +11,9 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.wanderlust.Model;
 
+/**
+ * Deletes a travel plan in the travel planner identified using the index from the travel planner list.
+ */
 public class DeleteTravelPlanCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "travelplan";
 

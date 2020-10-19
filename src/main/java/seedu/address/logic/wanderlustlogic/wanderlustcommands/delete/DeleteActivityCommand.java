@@ -12,7 +12,9 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.wanderlust.Model;
 
-
+/**
+ * Deletes an activity in a travel plan or wishlist identified using the index from the travel plan or wishlist.
+ */
 public class DeleteActivityCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "activity";
 

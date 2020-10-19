@@ -22,7 +22,7 @@ import seedu.address.model.wanderlust.TravelPlanner;
 import seedu.address.model.wanderlust.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
+ * Contains integration tests and unit tests for
  * {@code DeleteFriendCommand}.
  */
 public class DeleteFriendCommandTest {

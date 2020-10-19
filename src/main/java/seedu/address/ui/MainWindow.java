@@ -198,6 +198,10 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
+            if (commandResult.getTravelPlanObjectType() != -1) {
+                travelPlanObjectListPanel.changeTabView(commandResult.getTravelPlanObjectType());
+            }
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }

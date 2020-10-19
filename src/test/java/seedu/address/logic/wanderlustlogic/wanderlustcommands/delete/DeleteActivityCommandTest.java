@@ -25,7 +25,7 @@ import seedu.address.model.wanderlust.TravelPlanner;
 import seedu.address.model.wanderlust.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
+ * Contains integration tests and unit tests for
  * {@code DeleteActivityCommand}.
  */
 public class DeleteActivityCommandTest {
@@ -80,6 +80,7 @@ public class DeleteActivityCommandTest {
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         expectedModel.setDirectory(0);
+
         expectedModel.deleteTravelPlanObject(activityToDelete);
         showNoActivityList(expectedModel);
 

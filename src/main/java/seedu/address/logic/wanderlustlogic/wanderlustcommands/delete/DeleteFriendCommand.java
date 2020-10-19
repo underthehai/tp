@@ -11,6 +11,9 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.wanderlust.Model;
 
+/**
+ * Deletes a friend in a travel plan identified using the index from the travel plan.
+ */
 public class DeleteFriendCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "friend";
 

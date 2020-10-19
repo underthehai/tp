@@ -11,7 +11,9 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.Command
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.wanderlust.Model;
 
-
+/**
+ * Deletes an accommodation in a travel plan identified using the index from the travel plan.
+ */
 public class DeleteAccommodationCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "accommodation";
 
