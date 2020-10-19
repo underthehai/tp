@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteActivityCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.WanderlustDeleteCommandParser;
+import seedu.address.logic.wanderlustlogic.wanderlustparser.WanderlustFindCommandParser;
 
 /**
  * Contains helper methods for testing command parsers.
@@ -26,13 +28,27 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is successful and the command created
+     * Asserts that the DeleteCommand parsing of {@code userInput} by {@code parser} is successful and the command created
      * equals to {@code expectedCommand}.
      */
-    public static void assertWanderLustParseSuccess(WanderlustDeleteCommandParser parser, String userInput,
-                                                    DeleteActivityCommand expectedCommand) {
+    public static void assertWanderLustDeleteParseSuccess(WanderlustDeleteCommandParser parser, String userInput,
+                                                          DeleteActivityCommand expectedCommand) {
         try {
             seedu.address.logic.wanderlustlogic.wanderlustcommands.Command command = parser.parse(userInput);
+            assertEquals(expectedCommand, command);
+        } catch (seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException pe) {
+            throw new IllegalArgumentException("Invalid userInput.", pe);
+        }
+    }
+
+    /**
+     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} is successful and the command created
+     * equals to {@code expectedCommand}.
+     */
+    public static void assertWanderLustFindParseSuccess(WanderlustFindCommandParser parser, String userInput,
+                                                        FindCommand expectedCommand) {
+        try {
+            FindCommand command = parser.parse(userInput);
             assertEquals(expectedCommand, command);
         } catch (seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException pe) {
             throw new IllegalArgumentException("Invalid userInput.", pe);
