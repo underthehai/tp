@@ -80,6 +80,7 @@ public class DeleteActivityCommandTest {
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
         expectedModel.setDirectory(0);
+
         expectedModel.deleteTravelPlanObject(activityToDelete);
         showNoActivityList(expectedModel);
 
