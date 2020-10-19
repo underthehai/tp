@@ -6,7 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ExitCommand;
@@ -14,6 +13,8 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.FindCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.GoToCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.HelpCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ListCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.ShowCommand;
+import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.copy.CopyCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.copy.MoveCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteCommand;
@@ -21,7 +22,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.EditCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 
 /**
- * Parses user input.
+ * Parses user input from UI and execute commands based on user input.
  */
 public class WanderlustParser {
 
@@ -80,6 +81,9 @@ public class WanderlustParser {
 
             case MoveCommand.COMMAND_WORD:
                 return new WanderlustMoveCommandParser().parse(arguments);
+
+            case ShowCommand.COMMAND_WORD:
+                return new WanderlustShowCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

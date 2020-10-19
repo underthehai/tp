@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class WanderlustDateTime {
     public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format YYYY-MM-DD HH:mm.";
 
-    /*
+    /**
      * Date time must be in the format YYYY-MM-DD HH:mm.
      */
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd HH:mm");
