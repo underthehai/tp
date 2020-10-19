@@ -7,7 +7,6 @@ import java.util.List;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
-import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplanner.Model;
 
@@ -31,7 +30,7 @@ public class GoToCommand extends Command {
 
     /**
      * Constructor for GoToCommand.
-     * @param targetIndex index of travelplan to goto.
+     * @param targetIndex index of travel plan to goto.
      */
     public GoToCommand(Index targetIndex, boolean isTravelPlan) {
         this.targetIndex = targetIndex;
@@ -52,7 +51,6 @@ public class GoToCommand extends Command {
             model.setDirectory(targetIndex.getZeroBased());
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, TRAVEL_PLAN + " " + travelPlanToGo.getName()));
         } else {
-            List<Activity> wishlistToGo = model.getFilteredWishlist();
             model.setDirectory(-1);
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, WISHLIST));
         }
