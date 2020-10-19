@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.model.travelplanner.Directory;
+import seedu.address.model.wanderlust.Directory;
 
 /**
  * Wraps all data at the travel plan level

@@ -21,10 +21,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.ClearCommand;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Model;
-import seedu.address.model.travelplanner.ModelManager;
-import seedu.address.model.travelplanner.TravelPlanner;
-import seedu.address.model.travelplanner.UserPrefs;
+import seedu.address.model.wanderlust.Model;
+import seedu.address.model.wanderlust.ModelManager;
+import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.model.wanderlust.UserPrefs;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class EditTravelPlanCommandTest {

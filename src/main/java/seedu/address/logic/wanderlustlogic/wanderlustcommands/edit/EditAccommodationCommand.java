@@ -19,7 +19,7 @@ import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Model;
+import seedu.address.model.wanderlust.Model;
 
 /**
  * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.

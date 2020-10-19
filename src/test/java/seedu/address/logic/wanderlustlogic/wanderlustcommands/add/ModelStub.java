@@ -11,11 +11,11 @@ import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Directory;
-import seedu.address.model.travelplanner.Model;
-import seedu.address.model.travelplanner.ObservableDirectory;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.ReadOnlyUserPrefs;
+import seedu.address.model.wanderlust.Directory;
+import seedu.address.model.wanderlust.Model;
+import seedu.address.model.wanderlust.ObservableDirectory;
+import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
+import seedu.address.model.wanderlust.ReadOnlyUserPrefs;
 
 public class ModelStub implements Model {
 

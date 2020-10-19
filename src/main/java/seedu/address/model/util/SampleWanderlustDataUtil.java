@@ -12,8 +12,8 @@ import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.TravelPlanner;
+import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
+import seedu.address.model.wanderlust.TravelPlanner;
 
 public class SampleWanderlustDataUtil {
     private static TravelPlan sampleTravelPlan1 = new TravelPlan(new Name("Trip to Hawaii"),

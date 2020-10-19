@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.travelplanner.Model;
-import seedu.address.model.travelplanner.ModelManager;
-import seedu.address.model.travelplanner.TravelPlanner;
-import seedu.address.model.travelplanner.UserPrefs;
+import seedu.address.model.wanderlust.Model;
+import seedu.address.model.wanderlust.ModelManager;
+import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.model.wanderlust.UserPrefs;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for

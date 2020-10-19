@@ -1,7 +1,7 @@
 package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
-import seedu.address.model.travelplanner.Model;
+import seedu.address.model.wanderlust.Model;
 
 /**
  * Represents a command with hidden internal logic and the ability to be executed.

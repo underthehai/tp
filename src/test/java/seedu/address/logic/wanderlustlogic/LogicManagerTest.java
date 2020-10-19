@@ -25,13 +25,13 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.add.AddTravelPlanC
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Model;
-import seedu.address.model.travelplanner.ModelManager;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.UserPrefs;
-import seedu.address.storage.travelplanner.JsonTravelPlannerStorage;
-import seedu.address.storage.travelplanner.JsonUserPrefsStorage;
-import seedu.address.storage.travelplanner.StorageManager;
+import seedu.address.model.wanderlust.Model;
+import seedu.address.model.wanderlust.ModelManager;
+import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
+import seedu.address.model.wanderlust.UserPrefs;
+import seedu.address.storage.wanderlust.JsonTravelPlannerStorage;
+import seedu.address.storage.wanderlust.JsonUserPrefsStorage;
+import seedu.address.storage.wanderlust.StorageManager;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class LogicManagerTest {

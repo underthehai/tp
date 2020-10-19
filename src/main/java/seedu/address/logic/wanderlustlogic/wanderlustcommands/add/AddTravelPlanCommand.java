@@ -9,7 +9,7 @@ import static seedu.address.logic.wanderlustlogic.wanderlustparser.CliSyntax.PRE
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Model;
+import seedu.address.model.wanderlust.Model;
 
 public class AddTravelPlanCommand extends AddCommand {
     public static final String COMMAND_WORD = "travelplan";

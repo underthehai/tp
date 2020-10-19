@@ -16,8 +16,8 @@ import seedu.address.logic.wanderlustlogic.Logic;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
-import seedu.address.model.travelplanner.Directory;
-import seedu.address.model.travelplanner.ObservableDirectory;
+import seedu.address.model.wanderlust.Directory;
+import seedu.address.model.wanderlust.ObservableDirectory;
 
 /**
  * The Main Window. Provides the basic application layout containing

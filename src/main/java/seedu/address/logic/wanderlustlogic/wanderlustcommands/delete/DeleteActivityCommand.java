@@ -10,7 +10,7 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.travelplanner.Model;
+import seedu.address.model.wanderlust.Model;
 
 
 public class DeleteActivityCommand extends DeleteCommand {

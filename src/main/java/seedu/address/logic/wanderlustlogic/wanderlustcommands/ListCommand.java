@@ -2,7 +2,7 @@ package seedu.address.logic.wanderlustlogic.wanderlustcommands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.model.travelplanner.Model;
+import seedu.address.model.wanderlust.Model;
 
 /**
  * Lists all persons in the address book to the user.

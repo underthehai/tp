@@ -15,8 +15,8 @@ import seedu.address.logic.wanderlustlogic.wanderlustcommands.CommandResult;
 import seedu.address.logic.wanderlustlogic.wanderlustcommands.exceptions.CommandException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
-import seedu.address.model.travelplanner.TravelPlanner;
+import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
+import seedu.address.model.wanderlust.TravelPlanner;
 import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.typicals.TypicalActivities;
 

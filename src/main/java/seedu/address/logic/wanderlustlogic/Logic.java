@@ -11,9 +11,9 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.travelplanner.Directory;
-import seedu.address.model.travelplanner.ObservableDirectory;
-import seedu.address.model.travelplanner.ReadOnlyTravelPlanner;
+import seedu.address.model.wanderlust.Directory;
+import seedu.address.model.wanderlust.ObservableDirectory;
+import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
 
 /**
  * API of the Logic component
@@ -31,7 +31,7 @@ public interface Logic {
     /**
      * Returns the TravelPlanner.
      *
-     * @see seedu.address.model.travelplanner.Model#getTravelPlanner()
+     * @see seedu.address.model.wanderlust.Model#getTravelPlanner()
      */
     ReadOnlyTravelPlanner getTravelPlanner();
 
