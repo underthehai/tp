@@ -33,7 +33,7 @@ import seedu.address.testutil.ActivityUtil;
 import seedu.address.testutil.builders.ActivityBuilder;
 
 
-public class WanderLustParserTest {
+public class ParserTest {
 
     private final Parser parser = new Parser();
 

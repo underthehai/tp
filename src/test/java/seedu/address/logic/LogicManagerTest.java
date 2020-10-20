@@ -29,9 +29,9 @@ import seedu.address.model.wanderlust.Model;
 import seedu.address.model.wanderlust.ModelManager;
 import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
 import seedu.address.model.wanderlust.UserPrefs;
-import seedu.address.storage.wanderlust.JsonTravelPlannerStorage;
-import seedu.address.storage.wanderlust.JsonUserPrefsStorage;
-import seedu.address.storage.wanderlust.StorageManager;
+import seedu.address.storage.JsonTravelPlannerStorage;
+import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.StorageManager;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class LogicManagerTest {

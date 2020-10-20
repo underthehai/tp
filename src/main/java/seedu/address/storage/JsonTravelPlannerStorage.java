@@ -1,4 +1,4 @@
-package seedu.address.storage.wanderlust;
+package seedu.address.storage;
 
 import static java.util.Objects.requireNonNull;
 

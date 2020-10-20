@@ -1,7 +1,7 @@
 package seedu.address.storage.wanderlust;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.storage.wanderlust.JsonAdaptedAccommodation.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.storage.JsonAdaptedAccommodation.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.typicals.TypicalAccommodations.ALICEHOTEL;
 
@@ -12,6 +12,7 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
+import seedu.address.storage.JsonAdaptedAccommodation;
 
 public class JsonAdaptedAccommodationTest {
     private static final String INVALID_NAME = "R@chel";

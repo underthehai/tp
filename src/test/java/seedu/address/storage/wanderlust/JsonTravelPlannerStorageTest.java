@@ -18,6 +18,7 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
 import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.storage.JsonTravelPlannerStorage;
 
 public class JsonTravelPlannerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths

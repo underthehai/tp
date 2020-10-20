@@ -1,7 +1,7 @@
 package seedu.address.storage.wanderlust;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.storage.wanderlust.JsonAdaptedFriend.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.storage.JsonAdaptedFriend.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.typicals.TypicalFriends.ALICE;
 
@@ -11,6 +11,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
+import seedu.address.storage.JsonAdaptedFriend;
 
 public class JsonAdaptedFriendTest {
     private static final String INVALID_NAME = "R@chel";

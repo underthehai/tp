@@ -20,7 +20,7 @@ import seedu.address.model.wanderlust.Directory;
 import seedu.address.model.wanderlust.Model;
 import seedu.address.model.wanderlust.ObservableDirectory;
 import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
-import seedu.address.storage.wanderlust.Storage;
+import seedu.address.storage.Storage;
 
 /**
  * The main LogicManager of the app.

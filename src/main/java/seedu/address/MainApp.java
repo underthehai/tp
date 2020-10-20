@@ -22,12 +22,12 @@ import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
 import seedu.address.model.wanderlust.ReadOnlyUserPrefs;
 import seedu.address.model.wanderlust.TravelPlanner;
 import seedu.address.model.wanderlust.UserPrefs;
-import seedu.address.storage.wanderlust.JsonTravelPlannerStorage;
-import seedu.address.storage.wanderlust.JsonUserPrefsStorage;
-import seedu.address.storage.wanderlust.Storage;
-import seedu.address.storage.wanderlust.StorageManager;
-import seedu.address.storage.wanderlust.TravelPlannerStorage;
-import seedu.address.storage.wanderlust.UserPrefsStorage;
+import seedu.address.storage.JsonTravelPlannerStorage;
+import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.Storage;
+import seedu.address.storage.StorageManager;
+import seedu.address.storage.TravelPlannerStorage;
+import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 

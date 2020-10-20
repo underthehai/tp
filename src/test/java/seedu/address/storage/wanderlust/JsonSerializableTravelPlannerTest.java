@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.storage.JsonSerializableTravelPlanner;
 import seedu.address.testutil.typicals.TypicalTravelPlans;
 
 public class JsonSerializableTravelPlannerTest {
