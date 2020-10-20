@@ -9,7 +9,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Deletes a friend in a travel plan identified using the index from the travel plan.

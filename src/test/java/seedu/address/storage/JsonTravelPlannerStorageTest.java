@@ -1,4 +1,4 @@
-package seedu.address.storage.wanderlust;
+package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,9 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
-import seedu.address.model.wanderlust.TravelPlanner;
-import seedu.address.storage.JsonTravelPlannerStorage;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.TravelPlanner;
 
 public class JsonTravelPlannerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths

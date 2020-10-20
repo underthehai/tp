@@ -1,6 +1,6 @@
 package seedu.address.logic.command;
 
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Terminates the program.

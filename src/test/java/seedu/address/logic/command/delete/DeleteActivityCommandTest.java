@@ -19,10 +19,10 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.wanderlust.Model;
-import seedu.address.model.wanderlust.ModelManager;
-import seedu.address.model.wanderlust.TravelPlanner;
-import seedu.address.model.wanderlust.UserPrefs;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.TravelPlanner;
+import seedu.address.model.UserPrefs;
 
 /**
  * Contains integration tests and unit tests for

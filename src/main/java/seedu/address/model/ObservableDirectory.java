@@ -1,4 +1,4 @@
-package seedu.address.model.wanderlust;
+package seedu.address.model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

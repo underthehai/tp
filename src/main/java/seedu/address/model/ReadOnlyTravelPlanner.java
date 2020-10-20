@@ -1,4 +1,4 @@
-package seedu.address.model.wanderlust;
+package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;

@@ -1,4 +1,4 @@
-package seedu.address.model.wanderlust;
+package seedu.address.model;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;

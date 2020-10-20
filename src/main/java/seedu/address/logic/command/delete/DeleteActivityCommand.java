@@ -10,7 +10,7 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Deletes an activity in a travel plan or wishlist identified using the index from the travel plan or wishlist.

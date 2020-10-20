@@ -17,7 +17,7 @@ import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
 import seedu.address.model.travelplan.FriendList;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 
 /**

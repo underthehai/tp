@@ -1,4 +1,4 @@
-package seedu.address.storage.wanderlust;
+package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -14,8 +14,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.wanderlust.UserPrefs;
-import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.model.UserPrefs;
 
 public class JsonUserPrefsStorageTest {
 

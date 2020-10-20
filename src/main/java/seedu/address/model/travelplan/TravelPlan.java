@@ -13,7 +13,7 @@ import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.wanderlust.Directory;
+import seedu.address.model.Directory;
 
 /**
  * Represents a travel plan in the travel planner

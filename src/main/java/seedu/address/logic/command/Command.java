@@ -1,7 +1,7 @@
 package seedu.address.logic.command;
 
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Represents a command with hidden internal logic and the ability to be executed.

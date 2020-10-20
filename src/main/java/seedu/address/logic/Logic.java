@@ -11,10 +11,10 @@ import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.Directory;
-import seedu.address.model.wanderlust.Model;
-import seedu.address.model.wanderlust.ObservableDirectory;
-import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
+import seedu.address.model.Directory;
+import seedu.address.model.Model;
+import seedu.address.model.ObservableDirectory;
+import seedu.address.model.ReadOnlyTravelPlanner;
 
 /**
  * API of the Logic component

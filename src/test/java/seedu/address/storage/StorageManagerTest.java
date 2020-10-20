@@ -1,4 +1,4 @@
-package seedu.address.storage.wanderlust;
+package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -11,12 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
-import seedu.address.model.wanderlust.TravelPlanner;
-import seedu.address.model.wanderlust.UserPrefs;
-import seedu.address.storage.JsonTravelPlannerStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.StorageManager;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.TravelPlanner;
+import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
 

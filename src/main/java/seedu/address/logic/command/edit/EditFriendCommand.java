@@ -16,7 +16,7 @@ import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Edits existing Friend in the address book. This command can only be used within the travel plan directory.

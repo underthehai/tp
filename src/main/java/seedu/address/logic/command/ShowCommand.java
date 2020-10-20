@@ -8,7 +8,7 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Navigates and display the specified travel plan object based on user input.

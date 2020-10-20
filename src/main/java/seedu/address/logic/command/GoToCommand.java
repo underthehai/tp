@@ -8,7 +8,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Navigates to the specific directory which can be either a travel plan or a directory.

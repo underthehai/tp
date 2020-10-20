@@ -28,8 +28,8 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.Model;
-import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.model.Model;
+import seedu.address.model.TravelPlanner;
 
 /**
  * Contains helper methods for testing commands.

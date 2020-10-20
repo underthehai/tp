@@ -16,8 +16,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.wanderlust.Directory;
-import seedu.address.model.wanderlust.ObservableDirectory;
+import seedu.address.model.Directory;
+import seedu.address.model.ObservableDirectory;
 
 /**
  * The Main Window. Provides the basic application layout containing

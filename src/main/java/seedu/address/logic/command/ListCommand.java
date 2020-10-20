@@ -2,7 +2,7 @@ package seedu.address.logic.command;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 /**
  * Lists all persons in the address book to the user.

@@ -1,4 +1,4 @@
-package seedu.address.model.wanderlust;
+package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -18,6 +18,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.TravelPlanner;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.travelplan.exceptions.DuplicateTravelPlanException;

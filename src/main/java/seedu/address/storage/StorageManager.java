@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
-import seedu.address.model.wanderlust.ReadOnlyUserPrefs;
-import seedu.address.model.wanderlust.UserPrefs;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 
 /**
  * Manages storage of TravelPlanner data in local storage.

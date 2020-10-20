@@ -17,7 +17,7 @@ import java.util.List;
 
 import seedu.address.model.activity.Activity;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.model.TravelPlanner;
 import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 

@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.wanderlust.ReadOnlyTravelPlanner;
-import seedu.address.model.wanderlust.TravelPlanner;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.TravelPlanner;
 
 /**
  * Represents a storage for {@link TravelPlanner}.

@@ -19,7 +19,7 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.model.wanderlust.Model;
+import seedu.address.model.Model;
 
 
 /**
