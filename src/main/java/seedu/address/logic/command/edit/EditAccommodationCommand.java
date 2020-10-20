@@ -13,13 +13,13 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
+import seedu.address.model.Model;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.Model;
 
 /**
  * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.

@@ -5,17 +5,17 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.Directory;
+import seedu.address.model.Model;
+import seedu.address.model.ObservableDirectory;
+import seedu.address.model.ReadOnlyTravelPlanner;
+import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.Directory;
-import seedu.address.model.Model;
-import seedu.address.model.ObservableDirectory;
-import seedu.address.model.ReadOnlyTravelPlanner;
-import seedu.address.model.ReadOnlyUserPrefs;
 
 public class ModelStub implements Model {
 

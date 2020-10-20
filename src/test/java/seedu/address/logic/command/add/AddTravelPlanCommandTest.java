@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 import seedu.address.testutil.typicals.TypicalTravelPlans;
 

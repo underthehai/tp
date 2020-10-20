@@ -12,7 +12,6 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
-import seedu.address.storage.JsonAdaptedAccommodation;
 
 public class JsonAdaptedAccommodationTest {
     private static final String INVALID_NAME = "R@chel";

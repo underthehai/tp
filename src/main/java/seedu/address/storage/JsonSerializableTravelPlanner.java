@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * An Immutable TravelPlanner that is serializable to JSON format.

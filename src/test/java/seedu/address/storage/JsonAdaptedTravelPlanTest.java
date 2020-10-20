@@ -17,10 +17,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
-import seedu.address.storage.JsonAdaptedAccommodation;
-import seedu.address.storage.JsonAdaptedActivity;
-import seedu.address.storage.JsonAdaptedFriend;
-import seedu.address.storage.JsonAdaptedTravelPlan;
 
 public class JsonAdaptedTravelPlanTest {
     private static final String INVALID_NAME = "R@chel";

@@ -8,8 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.model.friend.Friend;
 import seedu.address.model.Model;
+import seedu.address.model.friend.Friend;
 
 public class AddFriendCommand extends AddCommand {
     public static final String COMMAND_WORD = "friend";

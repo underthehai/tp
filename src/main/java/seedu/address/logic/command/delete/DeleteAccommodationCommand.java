@@ -8,8 +8,8 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.Model;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Deletes an accommodation in a travel plan identified using the index from the travel plan.

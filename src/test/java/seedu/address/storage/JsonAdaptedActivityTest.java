@@ -13,7 +13,6 @@ import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
-import seedu.address.storage.JsonAdaptedActivity;
 
 public class JsonAdaptedActivityTest {
     private static final String INVALID_NAME = "R@chel";

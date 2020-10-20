@@ -7,15 +7,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.activity.Activity;
-import seedu.address.model.friend.Friend;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.Directory;
 import seedu.address.model.Model;
 import seedu.address.model.ObservableDirectory;
 import seedu.address.model.ReadOnlyTravelPlanner;
-
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.friend.Friend;
+import seedu.address.model.travelplan.TravelPlan;
 /**
  * API of the Logic component
  */

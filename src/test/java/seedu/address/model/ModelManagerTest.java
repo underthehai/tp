@@ -13,9 +13,6 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.ModelManager;
-import seedu.address.model.TravelPlanner;
-import seedu.address.model.UserPrefs;
 import seedu.address.testutil.builders.TravelPlannerBuilder;
 
 public class ModelManagerTest {

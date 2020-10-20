@@ -20,11 +20,11 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.ClearCommand;
 import seedu.address.logic.command.edit.builder.EditTravelPlanDescriptorBuilder;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class EditTravelPlanCommandTest {

@@ -8,8 +8,8 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.model.Model;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Deletes a travel plan in the travel planner identified using the index from the travel planner list.
