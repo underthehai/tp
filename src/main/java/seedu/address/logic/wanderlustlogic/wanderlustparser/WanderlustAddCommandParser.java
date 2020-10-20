@@ -78,7 +78,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
                         PREFIX_DATETIME, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
-                PREFIX_DATETIME) || !argMultimap.getPreamble().isEmpty()) {
+                PREFIX_DATETIME) || !argMultimap.getPreamble().equals("-activity")) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddActivityCommand.MESSAGE_USAGE));
         }
 
@@ -103,7 +103,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_LOCATION, PREFIX_COST, PREFIX_START, PREFIX_END);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION, PREFIX_COST, PREFIX_START, PREFIX_END)
-                || !argMultimap.getPreamble().isEmpty()) {
+                || !argMultimap.getPreamble().equals("-accommodation")) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAccommodationCommand.MESSAGE_USAGE));
         }
@@ -129,7 +129,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_MOBILE, PREFIX_PASSPORT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_MOBILE, PREFIX_PASSPORT)
-                || !argMultimap.getPreamble().isEmpty()) {
+                || !argMultimap.getPreamble().equals("-friend")) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddFriendCommand.MESSAGE_USAGE));
         }
@@ -153,7 +153,7 @@ public class WanderlustAddCommandParser implements WanderlustParserInterface<Add
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_START, PREFIX_END)
-                || !argMultimap.getPreamble().isEmpty()) {
+                || !argMultimap.getPreamble().equals("-travelplan")) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTravelPlanCommand.MESSAGE_USAGE));
         }
