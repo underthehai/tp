@@ -78,7 +78,6 @@ public class EditActivityCommandTest {
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 
-
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(0);
 
