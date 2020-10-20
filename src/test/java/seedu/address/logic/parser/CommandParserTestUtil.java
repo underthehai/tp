@@ -2,10 +2,9 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.Command;
-import seedu.address.logic.wanderlustlogic.wanderlustcommands.delete.DeleteActivityCommand;
-import seedu.address.logic.wanderlustlogic.wanderlustparser.WanderlustDeleteCommandParser;
-import seedu.address.logic.wanderlustlogic.wanderlustparser.exceptions.ParseException;
+import seedu.address.logic.command.Command;
+import seedu.address.logic.command.delete.DeleteActivityCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Contains helper methods for testing command parsers.
@@ -16,7 +15,7 @@ public class CommandParserTestUtil {
      * Asserts that the parsing of {@code userInput} by {@code parser} is successful and the command created
      * equals to {@code expectedCommand}.
      */
-    public static void assertWanderLustParseSuccess(WanderlustDeleteCommandParser parser, String userInput,
+    public static void assertWanderLustParseSuccess(DeleteCommandParser parser, String userInput,
                                                     DeleteActivityCommand expectedCommand) {
         try {
             Command command = parser.parse(userInput);
@@ -30,7 +29,7 @@ public class CommandParserTestUtil {
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
      */
-    public static void assertWanderLustParseFailure(WanderlustDeleteCommandParser parser, String userInput,
+    public static void assertWanderLustParseFailure(DeleteCommandParser parser, String userInput,
                                                     String expectedMessage) {
         try {
             parser.parse(userInput);
