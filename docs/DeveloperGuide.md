@@ -151,7 +151,7 @@ displays the respective `activity`, `accommodation` and `friend` list in the UI 
 Both `TravelPLannerPanel` and `TravelPlanObjectListPanel` make use of JavaFX's `ListView` to display the list of `travelplan`
 or `activity`/`accommodation`/`friend` respectively.
 
-`TravelPlanPanel` utilizes JavaFX's `Panel` to display the `name` and `date` of the directory, if applicable.
+`TravelPlannerPanel` utilizes JavaFX's `Label` to display the `name` of the directory.
 
 `TravelPlanObjectListPanel` utilizes `TabPane` and `Tab` to display the different `activity`/`accommodation`/`friend` tabs 
 respectively.
