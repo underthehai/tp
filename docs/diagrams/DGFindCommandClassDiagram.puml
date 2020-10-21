@@ -8,7 +8,7 @@ Package Model <<Rectangle>> {
     Interface Predicate <<Interface>>
     Interface Nameable <<Interface>>
     Class NameContainsKeywordsPredicate
-    Class TravelPlanObject
+    Class "{abstract}\nTravelPlanObject" as TravelPlanObject
     Class Activity
     Class Accommodation
     Class Friend
