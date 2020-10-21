@@ -158,7 +158,7 @@ respectively.
 
 The class diagram below shows the relevant classes involved:
 
-![GoToDirectoryClassDiagram](images/GoToUiClassDiagram.png)
+![GoToUiClassDiagram](images/GoToUiClassDiagram.png)
 
 #### Navigating between directories
 
@@ -173,11 +173,11 @@ has been navigated to.
 
 The activity diagram below illustrates the flow of execution when the UI decides which directory to view:
 
-![GoToDirectoryActivityDiagram](images/GoToUiActivityDiagram.png)
+![GoToUiActivityDiagram](images/GoToUiActivityDiagram.png)
 
 Below is a sequence diagram that shows a scenario whereby the UI navigates to a specified `travelplan` in `Wanderlust`:
 
-![GoToDirectorySequenceDiagram](images/GoToUiSequenceDiagram.png)
+![GoToUiSequenceDiagram](images/GoToUiSequenceDiagram.png)
 
 #### Design Consideration:
 
