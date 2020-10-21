@@ -9,7 +9,7 @@ end box
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":WanderLustParser" as WanderLustParser LOGIC_COLOR
-participant ":WanderLustGoToCommandParser" as WanderLustGoToCommandParser LOGIC_COLOR
+participant ":GoToCommandParser" as GoToCommandParser LOGIC_COLOR
 participant ":GoToCommand" as GoToCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
@@ -26,28 +26,28 @@ activate LogicManager
 LogicManager -> WanderLustParser :parseCommand("goto -travelplan 2")
 activate WanderLustParser
 
-create WanderLustGoToCommandParser
-WanderLustParser -> WanderLustGoToCommandParser
-activate WanderLustGoToCommandParser
+create GoToCommandParser
+WanderLustParser -> GoToCommandParser
+activate GoToCommandParser
 
-WanderLustGoToCommandParser --> WanderLustParser
-deactivate WanderLustGoToCommandParser
+GoToCommandParser --> WanderLustParser
+deactivate GoToCommandParser
 
-WanderLustParser -> WanderLustGoToCommandParser :parse(" -travelplan 2")
-activate WanderLustGoToCommandParser
+WanderLustParser -> GoToCommandParser :parse(" -travelplan 2")
+activate GoToCommandParser
 
 create GoToCommand
-WanderLustGoToCommandParser --> GoToCommand
+GoToCommandParser --> GoToCommand
 activate GoToCommand
 
-GoToCommand --> WanderLustGoToCommandParser :command
+GoToCommand --> GoToCommandParser :command
 deactivate GoToCommand
 
-WanderLustGoToCommandParser --> WanderLustParser :command
-deactivate WanderLustGoToCommandParser
+GoToCommandParser --> WanderLustParser :command
+deactivate GoToCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-WanderLustGoToCommandParser -[hidden]-> WanderLustParser :command
-destroy WanderLustGoToCommandParser
+GoToCommandParser -[hidden]-> WanderLustParser :command
+destroy GoToCommandParser
 
 WanderLustParser --> LogicManager :command
 deactivate WanderLustParser

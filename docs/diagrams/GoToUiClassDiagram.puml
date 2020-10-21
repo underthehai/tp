@@ -11,7 +11,7 @@ MainWindow *-down-> TravelPlanObjectListPanel
 MainWindow *-down-> TravelPlanPanel
 MainWindow *-down-> TravelPlannerPanel
 
-TravelPlanPanel -down-> NameCard
+TravelPlannerPanel -down-> NameCard
 
 TravelPlanObjectListPanel -down-> ActivityCard
 TravelPlanObjectListPanel -down-> AccommodationCard
