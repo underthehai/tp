@@ -138,14 +138,14 @@ This section describes some noteworthy details on how certain features are imple
 #### Implementation
 
 *Wanderlust*'s Ui supports navigating to different *travel plans** or *wishlist* so that users can view their desired
-*travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users 
+*travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users
 can use the `goto` command to navigate to their desired directory.
 
-`TravelPlannerPanel`, `TravelPlanPanel` and `TravelPlanObjectListPanel` provide the core components for the display of 
-*Wanderlust*. When we are in the directory of *travelplan* or *wishlist*, `MainWindow` renders all 3 of the above 
+`TravelPlannerPanel`, `TravelPlanPanel` and `TravelPlanObjectListPanel` provide the core components for the display of
+*Wanderlust*. When we are in the directory of *travelplan* or *wishlist*, `MainWindow` renders all 3 of the above
 components. `TravelPlannerPanel` highlights the directory we are currently in, `TravelPlanPanel` displays the `name` of the
 directory and if it is a *travelplan*, it will show the `date` of the *travelplan* as well. Lastly, `TravelPlanObjectListPanel`
-displays the respective `activity`, `accommodation` and `friend` list in the UI of a particular directory. Do note that 
+displays the respective `activity`, `accommodation` and `friend` list in the UI of a particular directory. Do note that
 `wishlist` should not contain any `accommodation` or `friend` list. (The UI should not be displaying anything)
 
 Both `TravelPLannerPanel` and `TravelPlanObjectListPanel` make use of JavaFX's `ListView` to display the list of `travelplan`
@@ -153,7 +153,7 @@ or `activity`/`accommodation`/`friend` respectively.
 
 `TravelPlannerPanel` utilizes JavaFX's `Label` to display the `name` of the directory.
 
-`TravelPlanObjectListPanel` utilizes `TabPane` and `Tab` to display the different `activity`/`accommodation`/`friend` tabs 
+`TravelPlanObjectListPanel` utilizes `TabPane` and `Tab` to display the different `activity`/`accommodation`/`friend` tabs
 respectively.
 
 The class diagram below shows the relevant classes involved:
@@ -165,10 +165,10 @@ The class diagram below shows the relevant classes involved:
 `MainWindow` and `CommandResult` facilitates the navigation between directories.
 
 Firstly, `MainWindow#fillInnerParts()` initializes an `OberservableDirectory` which **listens** to any directory changes.
-`MainWindow#executeCommand()` is then called when user enters a `goto` command into the application. `MainWindow#executeCommand()` 
-initializes all changes to what is displayed by the UI by calling `Logic#execute()` which returns a `CommandResult`. 
-From `Logic#execute()`, `MainWindow#handleDirectoryChange()` will navigate the current directory to the one input by the user, changing the 
-UI to view the new directory. From `CommandResult`, the `ResultDisplay` Ui will then output a text specifying which directory 
+`MainWindow#executeCommand()` is then called when user enters a `goto` command into the application. `MainWindow#executeCommand()`
+initializes all changes to what is displayed by the UI by calling `Logic#execute()` which returns a `CommandResult`.
+From `Logic#execute()`, `MainWindow#handleDirectoryChange()` will navigate the current directory to the one input by the user, changing the
+UI to view the new directory. From `CommandResult`, the `ResultDisplay` Ui will then output a text specifying which directory
 has been navigated to.
 
 The activity diagram below illustrates the flow of execution when the UI decides which directory to view:
@@ -187,12 +187,43 @@ Aspect: How navigation between directory works
   - Pros: Main Window will always be listen to any changes in directory, allowing UI to switch fast
   - Cons: More work has to be done to sync up the UI with the model as we have to create an ObservableDirectory class and
   link to the model manager.
-  
+
 - **Alternative 2**: Passing the Directory as a parameter in CommandResult method
   - Pros: Easy to implement since we just have to return a new CommandResult which has an additional parameter of Directory.
   - Cons: Break the abstraction layer as Commands (Logic) should not have to be aware of how the Model is working.
 
+### Adding a TravelPlan or TravelPlanObject
 
+#### Implementation
+
+*Wanderlust*'s Ui allows users to add a `TravelPlan` to the `TravelPlanner`, an `Activity` to the `Wishlist` and a `TravelPlanObject`
+to the `TravelPlan` in the current directory.
+
+`MainWindow#executeCommand()` is called when the user enters a `add` command into the application. `MainWindow#executeCommand()`
+adds the TravelPlan/TravelPlanObject by calling `Logic#execute()` which returns a `CommandResult`. `Logic#execute()` also sets the
+the `Directory` of the `ObservableDirectory` to the updated `Directory` after adding the TravelPlan/TravelPlanObject so the Ui displays
+the updated list of `TravelPlan`s/`TravelPlanObject`s. From `CommandResult`, the `ResultDisplay` Ui will then output a text confirming
+to the user that the command was successfully executed.
+
+The activity diagram below shows a scenario whereby a user adds inputs an add command:
+
+![AddActivityDiagram](images/AddActivityDiagram.png)
+
+The sequence diagram below shows a scenario whereby a user adds an `Activity` to the `TravelPlan`/`Wishlist` in the current directory:
+
+![AddActivitySequenceDiagram](images/AddActivitySequenceDiagram.png)
+
+#### Design Consideration:
+
+Aspect: How to add `TravelPlanObject`s to the `TravelPlan` in the current `Directory`
+
+- **Alternative 1 (Current Choice)**: Use individual add commands for each sub-class of `TravelPlanObject`.
+  - Pros: Greater abstraction and a more logical implementation since there is a command for each sub-class.
+  - Cons: Greater repetition of code.
+
+- **Alternative 2**: Using a `AddTravelPlanObjectCommand` class.
+  - Pros: Lesser repetition of code.
+  - Cons: Lesser abstraction.
 
 ### \[Proposed\] Undo/redo feature
 
