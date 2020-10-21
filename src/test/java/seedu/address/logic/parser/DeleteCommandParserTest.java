@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustDeleteParseSuccess;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseSuccess;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertWanderLustParseSuccess(parser, " -activity 1 ", new DeleteActivityCommand(INDEX_FIRST_PERSON));
+        assertWanderLustDeleteParseSuccess(parser, " -activity 1 ", new DeleteActivityCommand(INDEX_FIRST_PERSON));
     }
 
     @Test
