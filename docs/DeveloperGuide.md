@@ -137,7 +137,11 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Implementation
 
+<<<<<<< HEAD
 *Wanderlust*'s Ui supports navigating to different *travel plans* or *wishlist* so that users can view their desired
+=======
+*Wanderlust*'s Ui supports navigating to different *travel plans** or *wishlist* so that users can view their desired
+>>>>>>> 2a5a5a3bcce887e03175099db9afa04f236e6fc2
 *travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users
 can use the `goto` command to navigate to their desired directory.
 
@@ -192,6 +196,41 @@ Aspect: How navigation between directory works
   - Pros: Easy to implement since we just have to return a new CommandResult which has an additional parameter of Directory.
   - Cons: Break the abstraction layer as Commands (Logic) should not have to be aware of how the Model is working.
 
+
+### Adding a TravelPlan or TravelPlanObject
+
+#### Implementation
+
+*Wanderlust*'s Ui allows users to add a `TravelPlan` to the `TravelPlanner`, an `Activity` to the `Wishlist` and a `TravelPlanObject`
+to the `TravelPlan` in the current directory.
+
+`MainWindow#executeCommand()` is called when the user enters a `add` command into the application. `MainWindow#executeCommand()`
+adds the TravelPlan/TravelPlanObject by calling `Logic#execute()` which returns a `CommandResult`. `Logic#execute()` also sets the
+the `Directory` of the `ObservableDirectory` to the updated `Directory` after adding the TravelPlan/TravelPlanObject so the Ui displays
+the updated list of `TravelPlan`s/`TravelPlanObject`s. From `CommandResult`, the `ResultDisplay` Ui will then output a text confirming
+to the user that the command was successfully executed.
+
+The activity diagram below shows a scenario whereby a user adds inputs an add command:
+
+![AddActivityDiagram](images/AddActivityDiagram.png)
+
+The sequence diagram below shows a scenario whereby a user adds an `Activity` to the `TravelPlan`/`Wishlist` in the current directory:
+
+![AddActivitySequenceDiagram](images/AddActivitySequenceDiagram.png)
+
+#### Design Consideration:
+
+Aspect: How to add `TravelPlanObject`s to the `TravelPlan` in the current `Directory`
+
+- **Alternative 1 (Current Choice)**: Use individual add commands for each sub-class of `TravelPlanObject`.
+  - Pros: Greater abstraction and a more logical implementation since there is a command for each sub-class.
+  - Cons: Greater repetition of code.
+
+- **Alternative 2**: Using a `AddTravelPlanObjectCommand` class.
+  - Pros: Lesser repetition of code.
+  - Cons: Lesser abstraction.
+
+
 ### Copy feature
 
 #### Implementation
@@ -239,7 +278,6 @@ Aspect: How to duplicate activity *(deep/shallow copy)*
     - Pros: Best of both worlds. Allows for flexibility and convenience at the same time.
     - Cons: Harder to implement. Users need a way to differentiate deep/shallow copies to avoid unintentionally editing
     a shallow copy. Potentially more edge cases to think about and handle.
-
 
 ### \[Proposed\] Undo/redo feature
 
