@@ -123,7 +123,7 @@ public class ModelManager implements Model {
     @Override
     public void addTravelPlan(TravelPlan travelPlan) {
         travelPlanner.addTravelPlan(travelPlan);
-        updateFilteredTravelPlanList(PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+        updateFilteredTravelPlanList(SHOW_ALL);
     }
 
     @Override

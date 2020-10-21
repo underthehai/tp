@@ -18,7 +18,7 @@ import seedu.address.model.travelplan.TravelPlan;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Nameable> PREDICATE_SHOW_ALL_TRAVEL_PLAN = unused -> true;
+    Predicate<Nameable> SHOW_ALL = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Nameable> PREDICATE_SHOW_ALL_ACTIVITY = unused -> true;

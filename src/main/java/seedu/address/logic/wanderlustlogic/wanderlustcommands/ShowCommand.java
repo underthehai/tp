@@ -60,13 +60,13 @@ public class ShowCommand extends Command {
 
         switch (travelPlanObjectString) {
         case Activity.TPO_WORD:
-            model.updateFilteredActivityList(Model.PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+            model.updateFilteredActivityList(Model.SHOW_ALL);
             break;
         case Accommodation.TPO_WORD:
-            model.updateFilteredAccommodationList(Model.PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+            model.updateFilteredAccommodationList(Model.SHOW_ALL);
             break;
         case Friend.TPO_WORD:
-            model.updateFilteredFriendList(Model.PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+            model.updateFilteredFriendList(Model.SHOW_ALL);
             break;
         default:
             throw new CommandException(
