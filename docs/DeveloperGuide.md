@@ -275,10 +275,9 @@ Aspect: How edit executes
   - Pros: Only require the index shown on the UI to identify the travelplan object to be edited
   - Cons: More work has to be done to sync the retrieval of lists of travel plan object that corresponds to the current travelplan directory
   
-- **Alternative 2**: Require the user to switch tabs to edit the specified travelplan object
+- **Alternative 2**: Require the user to switch travel plan object tabs within the travelplan to edit the specified travelplan object
   - Pros: User will not require to specify the type of travelplan object to be edited
-  - Cons: Model has to be linked to the UI, breaking abstraction barrier
-
+  - Cons: Require user to specify editing of a travelplan object or travelplan
 
 ### Adding a TravelPlan or TravelPlanObject
 
