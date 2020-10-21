@@ -235,7 +235,7 @@ Editing can be done to travelplan objects such as `Friend`, `Accommodation` and 
 `Index` provide standardisation between the components to refer to a specific travel plan object or travelplan.
 
 `EditCommand` uses `EditDescriptor` to create an edited object.
-`EditDescriptor` provides method to build a new object based fields specified within the user input.
+`EditDescriptor` provides method `buildFromSource(source)` to build a new object based fields specified within the user input.
 
 Each object has a specific set of valid fields that can be modified. 
 - `Activity`: Name, Importance, Cost, DateTime, Location 
@@ -262,6 +262,9 @@ Given below is an example usage scenario and how the edit mechanism behaves at e
 ![EditActivityDiagram](images/EditActivityDiagram.png)
 
 Below is a sequence diagram that shows a scenario whereby the user edits a specified activity in Wanderlust
+
+The TravelPlan Object or TravelPlan by calling `Logic#execute()` which returns a `CommandResult`. From `CommandResult`, the Ui will then 
+show a message about the successful edited object.
 
 ![EditSequenceDiagram](images/EditSequenceDiagram.png)
 
