@@ -13,8 +13,8 @@ MainWindow *-down-> TravelPlannerPanel
 
 TravelPlanPanel -down-> NameCard
 
-TravelPlannerPanel -down-> ActivityCard
-TravelPlannerPanel -down-> AccommodationCard
-TravelPlannerPanel -down-> FriendCard
+TravelPlanObjectListPanel -down-> ActivityCard
+TravelPlanObjectListPanel -down-> AccommodationCard
+TravelPlanObjectListPanel -down-> FriendCard
 
 @enduml
