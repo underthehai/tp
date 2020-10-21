@@ -58,6 +58,21 @@ public class ShowCommand extends Command {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
         }
 
+        switch (travelPlanObjectString) {
+        case Activity.TPO_WORD:
+            model.updateFilteredActivityList(Model.PREDICATE_SHOW_ALL);
+            break;
+        case Accommodation.TPO_WORD:
+            model.updateFilteredAccommodationList(Model.PREDICATE_SHOW_ALL);
+            break;
+        case Friend.TPO_WORD:
+            model.updateFilteredFriendList(Model.PREDICATE_SHOW_ALL);
+            break;
+        default:
+            throw new CommandException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
+        }
+
         return new CommandResult(String.format(MESSAGE_SHOW_SUCCESS, travelPlanObjectString), travelPlanObjectType);
     }
 
