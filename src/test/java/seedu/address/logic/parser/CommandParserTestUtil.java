@@ -14,12 +14,13 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class CommandParserTestUtil {
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is successful and the command created
+     * Asserts that the parsing of {@code userInput} by {@code wanderlustParser} is successful and the command created
      * equals to {@code expectedCommand}.
      */
-    public static void assertParseSuccess(Parser parser, String userInput, Command expectedCommand) {
+    public static void assertParseSuccess(WanderlustParser wanderlustParser, String userInput,
+                                          Command expectedCommand) {
         try {
-            Command command = parser.parseCommand(userInput);
+            Command command = wanderlustParser.parseCommand(userInput);
             assertEquals(expectedCommand, command);
         } catch (ParseException pe) {
             throw new IllegalArgumentException("Invalid userInput.", pe);
@@ -57,7 +58,7 @@ public class CommandParserTestUtil {
     /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
-     @@ -35,4 +51,18 @@ public static void assertParseFailure(Parser parser, String userInput, String ex
+     @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
      assertEquals(expectedMessage, pe.getMessage());
      }
      }
@@ -93,7 +94,7 @@ public class CommandParserTestUtil {
     /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
-     @@ -35,4 +51,18 @@ public static void assertParseFailure(Parser parser, String userInput, String ex
+     @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
      assertEquals(expectedMessage, pe.getMessage());
      }
      }
