@@ -44,6 +44,7 @@ public class JsonTravelPlannerStorage implements TravelPlannerStorage {
      */
     public Optional<ReadOnlyTravelPlanner> readTravelPlanner(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
+        assert filePath != null;
 
         Optional<JsonSerializableTravelPlanner> jsonTravelPlanner = JsonUtil.readJsonFile(
                 filePath, JsonSerializableTravelPlanner.class);
