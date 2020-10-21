@@ -26,7 +26,7 @@ activate FindCommandParser
 FindCommandParser --> WanderlustParser
 deactivate FindCommandParser
 
-WanderlustParser -> FindCommandParser : parse("-activity sighseeing")
+WanderlustParser -> FindCommandParser : parse(" -activity sighseeing")
 activate FindCommandParser
 
 create FindActivityCommand
