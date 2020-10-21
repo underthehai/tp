@@ -138,14 +138,14 @@ This section describes some noteworthy details on how certain features are imple
 #### Implementation
 
 *Wanderlust*'s Ui supports navigating to different *travel plans* or *wishlist* so that users can view their desired
-*travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users 
+*travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users
 can use the `goto` command to navigate to their desired directory.
 
-`TravelPlannerPanel`, `TravelPlanPanel` and `TravelPlanObjectListPanel` provide the core components for the display of 
-*Wanderlust*. When we are in the directory of *travelplan* or *wishlist*, `MainWindow` renders all 3 of the above 
+`TravelPlannerPanel`, `TravelPlanPanel` and `TravelPlanObjectListPanel` provide the core components for the display of
+*Wanderlust*. When we are in the directory of *travelplan* or *wishlist*, `MainWindow` renders all 3 of the above
 components. `TravelPlannerPanel` highlights the directory we are currently in, `TravelPlanPanel` displays the `name` of the
 directory and if it is a *travelplan*, it will show the `date` of the *travelplan* as well. Lastly, `TravelPlanObjectListPanel`
-displays the respective `activity`, `accommodation` and `friend` list in the UI of a particular directory. Do note that 
+displays the respective `activity`, `accommodation` and `friend` list in the UI of a particular directory. Do note that
 `wishlist` should not contain any `accommodation` or `friend` list. (The UI should not be displaying anything)
 
 Both `TravelPlannerPanel` and `TravelPlanObjectListPanel` make use of JavaFX's `ListView` to display the list of `travelplan`
@@ -153,7 +153,7 @@ or `activity`/`accommodation`/`friend` respectively.
 
 `TravelPlannerPanel` utilizes JavaFX's `Label` to display the `name` of the directory.
 
-`TravelPlanObjectListPanel` utilizes `TabPane` and `Tab` to display the different `activity`/`accommodation`/`friend` tabs 
+`TravelPlanObjectListPanel` utilizes `TabPane` and `Tab` to display the different `activity`/`accommodation`/`friend` tabs
 respectively.
 
 The class diagram below shows the relevant classes involved:
@@ -165,10 +165,10 @@ The class diagram below shows the relevant classes involved:
 `MainWindow` and `CommandResult` facilitates the navigation between directories.
 
 Firstly, `MainWindow#fillInnerParts()` initializes an `OberservableDirectory` which **listens** to any directory changes.
-`MainWindow#executeCommand()` is then called when user enters a `goto` command into the application. `MainWindow#executeCommand()` 
-initializes all changes to what is displayed by the UI by calling `Logic#execute()` which returns a `CommandResult`. 
-From `Logic#execute()`, `MainWindow#handleDirectoryChange()` will navigate the current directory to the one input by the user, changing the 
-UI to view the new directory. From `CommandResult`, the `ResultDisplay` Ui will then output a text specifying which directory 
+`MainWindow#executeCommand()` is then called when user enters a `goto` command into the application. `MainWindow#executeCommand()`
+initializes all changes to what is displayed by the UI by calling `Logic#execute()` which returns a `CommandResult`.
+From `Logic#execute()`, `MainWindow#handleDirectoryChange()` will navigate the current directory to the one input by the user, changing the
+UI to view the new directory. From `CommandResult`, the `ResultDisplay` Ui will then output a text specifying which directory
 has been navigated to.
 
 The activity diagram below illustrates the flow of execution when the UI decides which directory to view:
@@ -187,7 +187,7 @@ Aspect: How navigation between directory works
   - Pros: Main Window will always be listen to any changes in directory, allowing UI to switch fast
   - Cons: More work has to be done to sync up the UI with the model as we have to create an ObservableDirectory class and
   link to the model manager.
-  
+
 - **Alternative 2**: Passing the Directory as a parameter in CommandResult method
   - Pros: Easy to implement since we just have to return a new CommandResult which has an additional parameter of Directory.
   - Cons: Break the abstraction layer as Commands (Logic) should not have to be aware of how the Model is working.
@@ -236,7 +236,7 @@ Aspect: How to duplicate activity *(deep/shallow copy)*
     - Pros: Only one instance of each activity means users can update all copies of the activity at once.
     - Cons: Less flexibility to change a copied activity without affecting other copies.
 - **Alternative 3**: Have variations of the copy command to allow both deep/shallow copy.
-    - Pros: Best of both worlds. Allows for flexiblity and convenience at the same time. 
+    - Pros: Best of both worlds. Allows for flexibility and convenience at the same time.
     - Cons: Harder to implement. Users need a way to differentiate deep/shallow copies to avoid unintentionally editing
     a shallow copy. Potentially more edge cases to think about and handle.
 
