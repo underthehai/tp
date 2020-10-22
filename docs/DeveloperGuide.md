@@ -166,11 +166,7 @@ The following activity diagram summarizes what happens when a user executes the 
 
 #### Implementation
 
-<<<<<<< HEAD
 *Wanderlust*'s Ui supports navigating to different *travel plans* or *wishlist* so that users can view their desired
-=======
-*Wanderlust*'s Ui supports navigating to different *travel plans** or *wishlist* so that users can view their desired
->>>>>>> 2a5a5a3bcce887e03175099db9afa04f236e6fc2
 *travel plan* or *wishlist* easily. Starting up *Wanderlust* will show the default view of a *wishlist* and users
 can use the `goto` command to navigate to their desired directory.
 
