@@ -59,7 +59,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-![Structure of the UI Component](images/UIClassDiagram.png)
+![Structure of the UI Component](images/UiClassDiagram.png)
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103-T14-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
