@@ -232,10 +232,10 @@ The proposed editing mechanism is facilitated by `EditDescriptor`, `Index` and `
 Editing can be done to travelplan objects such as `Friend`, `Accommodation` and `Activity` or to `TravelPlan`.
 
 `EditCommand` uses `Index` to identify the object to be modified.
-`Index` provide standardisation between the components to refer to a specific travel plan object or travelplan.
+`Index` provides standardisation between the components to refer to a specific travel plan object or travelplan within a list.
 
 `EditCommand` uses `EditDescriptor` to create an edited object.
-`EditDescriptor` provides method `buildFromSource(source)` to build a new object based fields specified within the user input.
+`EditDescriptor` provides method `buildFromSource(source)` to store and access edited fields specified within the user input.
 
 Each object has a specific set of valid fields that can be modified. 
 - `Activity`: Name, Importance, Cost, DateTime, Location 
@@ -250,8 +250,10 @@ Hence, child classes of EditCommand accounts for editing valid types of field. E
 - `EditFriendCommand`
 - `EditTravelPlanCommand`
 
-`EditCommand` accounts for duplicated objects.
-Two objects are considered the same when they have the same name.
+`EditCommand` accounts for duplicated objects. 
+`Activity` and `Friend` contain duplicates when two instances have the same name.
+`Accommodation` contains duplicates when two instances have the same name, startDate and endDate
+`TravelPlan` contains duplicates when two instances have the same name and same startDate or endDate
 When the editing of an object results in a duplicated edited object within travelplan list or travelplan object list, an error will be thrown.
 
 Given below is the class diagram showing relevant classes involved
@@ -277,7 +279,7 @@ Aspect: How edit executes
   
 - **Alternative 2**: Require the user to switch travel plan object tabs within the travelplan to edit the specified travelplan object
   - Pros: User will not require to specify the type of travelplan object to be edited
-  - Cons: Require user to specify editing of a travelplan object or travelplan
+  - Cons: Still require user to specify editing of a travelplan object or travelplan
 
 ### Adding a TravelPlan or TravelPlanObject
 
