@@ -111,14 +111,14 @@ public class EditActivityCommand extends EditCommand {
 
         Name updatedName = editActivityDescriptor.getName().orElse(activityToEdit.getName());
 
-        Location updatedlocation = editActivityDescriptor.getLocation().orElse(activityToEdit.getLocation());
+        Location updatedLocation = editActivityDescriptor.getLocation().orElse(activityToEdit.getLocation());
         Cost updatedCost = editActivityDescriptor.getCost().orElse(activityToEdit.getCost());
         Importance updatedLevelOfImportance = editActivityDescriptor.getLevelOfImportance()
                 .orElse(activityToEdit.getLevelOfImportance());
         WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime()
                 .orElse(activityToEdit.getActivityDateTime());
 
-        return new Activity(updatedName, updatedlocation, updatedCost, updatedLevelOfImportance,
+        return new Activity(updatedName, updatedLocation, updatedCost, updatedLevelOfImportance,
                 updatedActivityDateTime);
     }
 
