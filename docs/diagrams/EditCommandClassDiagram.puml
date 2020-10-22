@@ -25,16 +25,6 @@ EditFriendCommand -[#blue]- EditDescriptor
 EditTravelPlanCommand -[#blue]- EditDescriptor
 
 
-EditAccommodationCommand -[#red]- Accommodation :modifies >
-EditActivityCommand -[#red]- Activity :modifies >
-EditFriendCommand -[#red]- Friend :modifies >
-EditTravelPlanCommand -[#red]- TravelPlan :modifies >
-
-Class TravelPlan
-TravelPlanObject <|-- Accommodation
-TravelPlanObject <|-- Friend
-TravelPlanObject <|-- Activity
-
 
 
 @enduml
