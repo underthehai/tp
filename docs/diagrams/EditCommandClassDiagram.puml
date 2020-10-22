@@ -1,0 +1,30 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+
+Abstract Command
+Abstract EditCommand
+
+Command <|-- EditCommand
+
+EditCommand -down- Index :target
+
+EditCommand <|-- EditActivityCommand
+EditCommand <|-- EditAccommodationCommand
+EditCommand <|-- EditFriendCommand
+EditCommand <|-- EditTravelPlanCommand
+
+Class EditDescriptor
+
+EditAccommodationCommand -[#blue]- EditDescriptor
+EditActivityCommand -[#blue]- EditDescriptor
+EditFriendCommand -[#blue]- EditDescriptor
+EditTravelPlanCommand -[#blue]- EditDescriptor
+
+
+
+
+@enduml

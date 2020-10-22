@@ -1,0 +1,131 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":WanderlustParser" as WanderlustParser LOGIC_COLOR
+
+participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
+participant ":EditDescriptor" as EditDescriptor LOGIC_COLOR
+
+participant ":EditActivityCommand" as EditActivityCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("edit -activity 1 i/2 n/Ice Skating")
+activate LogicManager
+
+LogicManager -> WanderlustParser : parseCommand("edit -activity 1 i/2 n/Ice Skating")
+activate WanderlustParser
+
+create EditCommandParser
+WanderlustParser -> EditCommandParser
+
+activate EditCommandParser
+EditCommandParser --> WanderlustParser
+deactivate EditCommandParser
+
+WanderlustParser -> EditCommandParser : parse("-activity 1 i/2 n/Ice Skating")
+activate EditCommandParser
+
+
+
+EditCommandParser -> EditCommandParser : parseActivity("1 i/2 n/Ice Skating")
+activate EditCommandParser
+
+create EditDescriptor
+
+EditCommandParser -> EditDescriptor : buildFromSource(i/2 n/Ice Skating)
+EditDescriptor --> EditCommandParser : editActivityDescriptor
+
+create EditActivityCommand
+EditCommandParser -> EditActivityCommand
+activate EditActivityCommand
+EditActivityCommand --> EditCommandParser
+deactivate EditActivityCommand
+
+
+EditCommandParser --> EditCommandParser : editCommand
+deactivate EditCommandParser
+
+
+EditCommandParser --> WanderlustParser : editCommand
+deactivate EditCommandParser
+
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+EditCommandParser -[hidden]-> WanderlustParser
+destroy EditCommandParser
+
+WanderlustParser --> LogicManager : editCommand
+deactivate WanderlustParser
+
+LogicManager -> EditActivityCommand : execute()
+activate EditActivityCommand
+
+    alt isTravelPlan
+
+    EditActivityCommand -> Model : getFilteredActivityList()
+    activate Model
+
+    Model --> EditActivityCommand: lastShownList
+    deactivate Model
+
+    EditActivityCommand -> EditActivityCommand : createEditedActivity
+    activate EditActivityCommand
+
+    EditActivityCommand -> EditDescriptor
+    activate EditDescriptor
+    EditDescriptor --> EditActivityCommand
+    deactivate EditDescriptor
+
+    EditActivityCommand --> EditActivityCommand : editedActivity
+    deactivate EditActivityCommand
+
+    EditActivityCommand -> Model: setTravelPlanObject(activityToEdit, editedActivity)
+    activate Model
+    Model --> EditActivityCommand
+    deactivate Model
+
+else else
+
+    EditActivityCommand -> Model : getFilteredActivityList()
+    activate Model
+
+    Model --> EditActivityCommand: lastShownList
+    deactivate Model
+
+    EditActivityCommand -> EditActivityCommand : createEditedActivity
+    activate EditActivityCommand
+
+        EditActivityCommand -> EditDescriptor
+        activate EditDescriptor
+        EditDescriptor --> EditActivityCommand
+        deactivate EditDescriptor
+
+    EditActivityCommand --> EditActivityCommand : editedActivity
+    deactivate EditActivityCommand
+
+    EditActivityCommand -> Model: setActivity(activityToEdit, editedActivity)
+    activate Model
+    Model --> EditActivityCommand
+    deactivate Model
+
+end
+
+create CommandResult
+EditActivityCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditActivityCommand
+deactivate CommandResult
+
+EditActivityCommand --> LogicManager : CommandResult
+deactivate EditActivityCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
