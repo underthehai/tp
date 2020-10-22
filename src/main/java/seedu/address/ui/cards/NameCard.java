@@ -14,8 +14,8 @@ public class NameCard extends UiPart<Region> {
     /**
      * Creates a {@code NameCard} with the given {@code value}.
      */
-    public NameCard(String value) {
+    public NameCard(String value, int displayedIndex) {
         super(FXML);
-        name.setText(value);
+        name.setText(displayedIndex + ". " + value);
     }
 }

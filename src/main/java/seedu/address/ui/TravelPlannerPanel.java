@@ -43,7 +43,7 @@ public class TravelPlannerPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new NameCard(travelPlan.getName().toString()).getRoot());
+                setGraphic(new NameCard(travelPlan.getName().toString(), getIndex() + 1).getRoot());
             }
         }
     }
