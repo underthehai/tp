@@ -4,10 +4,11 @@
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":WanderlustParser" as WanderlustParser LOGIC_COLOR
+
 participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
-participant ":EditCommand" as EditCommand LOGIC_COLOR
-participant ":EditActivityCommand" as EditActivityCommand LOGIC_COLOR
 participant ":EditDescriptor" as EditDescriptor LOGIC_COLOR
+
+participant ":EditActivityCommand" as EditActivityCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -31,56 +32,35 @@ deactivate EditCommandParser
 WanderlustParser -> EditCommandParser : parse("-activity 1 i/2 n/Ice Skating")
 activate EditCommandParser
 
-create EditCommand
-EditCommandParser -> EditCommand
-activate EditCommand
-
-EditCommand --> EditCommandParser
-deactivate EditCommand
-
-EditCommand -> EditCommand : parseActivity("i/2 n/Ice Skating")
-activate EditCommand
 
 
-create EditActivityCommand
-EditCommand -> EditActivityCommand
-activate EditActivityCommand
-
+EditCommandParser -> EditCommandParser : parseActivity("1 i/2 n/Ice Skating")
+activate EditCommandParser
 
 create EditDescriptor
-EditActivityCommand -> EditDescriptor
-activate EditDescriptor
-EditDescriptor --> EditActivityCommand
-deactivate EditDescriptor
-deactivate EditActivityCommand
 
+EditCommandParser -> EditDescriptor : buildFromSource(i/2 n/Ice Skating)
+EditDescriptor --> EditCommandParser : editActivityDescriptor
 
-EditActivityCommand -> EditDescriptor : buildFromSource(i/2 n/Ice Skating)
+create EditActivityCommand
+EditCommandParser -> EditActivityCommand
 activate EditActivityCommand
-
-activate EditDescriptor
-EditDescriptor --> EditActivityCommand : commandresult
-deactivate EditDescriptor
-
-
-
-EditActivityCommand --> EditCommand : commandresult
-
+EditActivityCommand --> EditCommandParser
 deactivate EditActivityCommand
 
-EditCommand --> EditCommandParser : commandresult
-deactivate EditCommand
 
-EditCommand -[hidden]-> WanderlustParser
-destroy EditCommand
-
-EditCommandParser --> WanderlustParser : commandresult
+EditCommandParser --> EditCommandParser : editCommand
 deactivate EditCommandParser
+
+
+EditCommandParser --> WanderlustParser : editCommand
+deactivate EditCommandParser
+
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 EditCommandParser -[hidden]-> WanderlustParser
 destroy EditCommandParser
 
-WanderlustParser --> LogicManager : commandresult
+WanderlustParser --> LogicManager : editCommand
 deactivate WanderlustParser
 
 LogicManager -> EditActivityCommand : execute()
@@ -95,7 +75,15 @@ activate EditActivityCommand
     deactivate Model
 
     EditActivityCommand -> EditActivityCommand : createEditedActivity
-    activate Model
+    activate EditActivityCommand
+
+    EditActivityCommand -> EditDescriptor
+    activate EditDescriptor
+    EditDescriptor --> EditActivityCommand
+    deactivate EditDescriptor
+
+    EditActivityCommand --> EditActivityCommand : editedActivity
+    deactivate EditActivityCommand
 
     EditActivityCommand -> Model: setTravelPlanObject(activityToEdit, editedActivity)
     activate Model
@@ -111,10 +99,17 @@ else else
     deactivate Model
 
     EditActivityCommand -> EditActivityCommand : createEditedActivity
-    activate Model
+    activate EditActivityCommand
 
+        EditActivityCommand -> EditDescriptor
+        activate EditDescriptor
+        EditDescriptor --> EditActivityCommand
+        deactivate EditDescriptor
 
-    EditActivityCommand -> Model: setTravelPlanObject(activityToEdit, editedActivity)
+    EditActivityCommand --> EditActivityCommand : editedActivity
+    deactivate EditActivityCommand
+
+    EditActivityCommand -> Model: setActivity(activityToEdit, editedActivity)
     activate Model
     Model --> EditActivityCommand
     deactivate Model
