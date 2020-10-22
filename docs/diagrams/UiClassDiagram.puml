@@ -65,6 +65,7 @@ HelpWindow -down-|> UiPart
 TravelPlannerPanel ..> Model
 TravelPlanPanel ..> Model
 TravelPlanObjectListPanel ..> Model
+TravelPlanObjectListPanel .[hidden].> Model
 AccommodationCard ..> Model
 ActivityCard ..> Model
 FriendCard ..> Model
