@@ -9,6 +9,8 @@ public class NameCard extends UiPart<Region> {
     private static final String FXML = "cards/NameCard.fxml";
 
     @FXML
+    private Label id;
+    @FXML
     private Label name;
 
     /**
@@ -16,6 +18,7 @@ public class NameCard extends UiPart<Region> {
      */
     public NameCard(String value, int displayedIndex) {
         super(FXML);
-        name.setText(displayedIndex + ". " + value);
+        id.setText(displayedIndex + ". ");
+        name.setText(value);
     }
 }
