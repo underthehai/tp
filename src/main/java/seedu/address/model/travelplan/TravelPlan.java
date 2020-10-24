@@ -94,7 +94,8 @@ public class TravelPlan extends Directory implements Nameable {
      * Returns true if a travel plan object with the same identity as {@code travelPlanObject} exists in the travel plan
      * object's list.
      */
-    public boolean hasTravelPlanObject(TravelPlanObject travelPlanObject) {
+    @Override
+    public boolean has(TravelPlanObject travelPlanObject) {
         if (travelPlanObject instanceof Accommodation) {
             return accommodations.hasAccommodation((Accommodation) travelPlanObject);
         } else if (travelPlanObject instanceof Activity) {
@@ -108,7 +109,8 @@ public class TravelPlan extends Directory implements Nameable {
      * Adds a travel plan object to its corresponding list.
      * The travel plan object must not already exist in its corresponding list.
      */
-    public void addTravelPlanObject(TravelPlanObject travelPlanObject) {
+    @Override
+    public void add(TravelPlanObject travelPlanObject) {
         if (travelPlanObject instanceof Accommodation) {
             accommodations.addAccommodation((Accommodation) travelPlanObject);
         } else if (travelPlanObject instanceof Activity) {
@@ -124,7 +126,8 @@ public class TravelPlan extends Directory implements Nameable {
      * The travel plan object identity of {@code editedTravelPlanObject} must not be the same as another existing
      * travel plan object in the corresponding travel plan object list.
      */
-    public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
+    @Override
+    public void set(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         if (editedTravelPlanObject instanceof Accommodation) {
             accommodations.setAccommodation((Accommodation) target, (Accommodation) editedTravelPlanObject);
         } else if (editedTravelPlanObject instanceof Activity) {
@@ -138,7 +141,8 @@ public class TravelPlan extends Directory implements Nameable {
      * Removes {@code key} from the corresponding travel plan object list.
      * {@code key} must exist in the corresponding travel plan object list.
      */
-    public void removeTravelPlanObject(TravelPlanObject key) {
+    @Override
+    public void remove(TravelPlanObject key) {
         if (key instanceof Accommodation) {
             accommodations.removeAccommodation((Accommodation) key);
         } else if (key instanceof Activity) {
@@ -163,6 +167,11 @@ public class TravelPlan extends Directory implements Nameable {
 
     public WanderlustDate getEndDate() {
         return endDate;
+    }
+
+    @Override
+    public boolean isTravelPlan() {
+        return true;
     }
 
     /**

@@ -9,6 +9,7 @@ import seedu.address.model.Directory;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
 import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Wraps all data at the travel plan level
@@ -68,12 +69,25 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         return activities.contains(activity);
     }
 
+    @Override
+    public boolean has(TravelPlanObject travelPlanObject) {
+        requireNonNull(travelPlanObject);
+        assert travelPlanObject instanceof Activity;
+        return activities.contains((Activity) travelPlanObject);
+    }
+
     /**
      * Adds an activity to the wishlist.
      * The activity must not already exist in the wishlist.
      */
     public void addActivity(Activity p) {
         activities.add(p);
+    }
+
+    @Override
+    public void add(TravelPlanObject travelPlanObject) {
+        assert travelPlanObject instanceof Activity;
+        activities.add((Activity) travelPlanObject);
     }
 
     /**
@@ -88,6 +102,13 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         activities.setActivity(target, editedActivity);
     }
 
+    @Override
+    public void set(TravelPlanObject travelPlanObject, TravelPlanObject editedTravelPlanObject) {
+        requireNonNull(editedTravelPlanObject);
+        assert travelPlanObject instanceof Activity;
+        activities.setActivity((Activity) travelPlanObject, (Activity) editedTravelPlanObject);
+    }
+
     /**
      * Removes {@code key} from this {@code Wishlist}.
      * {@code key} must exist in the wishlist.
@@ -96,7 +117,18 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         activities.remove(key);
     }
 
+    @Override
+    public void remove(TravelPlanObject travelPlanObject) {
+        assert travelPlanObject instanceof Activity;
+        activities.remove((Activity) travelPlanObject);
+    }
+
     //// util methods
+
+    @Override
+    public boolean isTravelPlan() {
+        return false;
+    }
 
     @Override
     public String toString() {
