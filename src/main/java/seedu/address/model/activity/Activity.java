@@ -52,6 +52,10 @@ public class Activity extends TravelPlanObject {
         return cost;
     }
 
+    public String getCostAsString() {
+        return cost.getValue();
+    }
+
     public Importance getLevelOfImportance() {
         return levelOfImportance;
     }
