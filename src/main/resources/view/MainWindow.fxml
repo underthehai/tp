@@ -40,7 +40,7 @@
           <VBox fx:id="travelPlanner" styleClass="pane-without-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
             <StackPane fx:id="travelPlannerPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="travelObjectL  ist" minWidth="400" prefWidth="400"
+          <VBox fx:id="travelObjectList" minWidth="400" prefWidth="400"
                 VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <padding>
               <Insets left="20" />

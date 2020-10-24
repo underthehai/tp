@@ -96,6 +96,14 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         activities.remove(key);
     }
 
+    public String getTotalCost() {
+        int totalCost = 0;
+        for (Activity activity : activities) {
+            totalCost += Integer.parseInt(activity.getCostAsString());
+        }
+        return Integer.toString(totalCost);
+    }
+
     //// util methods
 
     @Override

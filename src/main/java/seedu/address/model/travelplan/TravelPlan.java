@@ -148,6 +148,23 @@ public class TravelPlan extends Directory implements Nameable {
         }
     }
 
+    /**
+     * Generates the total cost of the travel plan, considering the cost of activities and accommodations.
+     * @return String Total cost in string.
+     */
+    public String getTotalCost() {
+        int totalCost = 0;
+        for (int i = 0; i < activities.getActivityList().size(); i++) {
+            Activity tempActivity = activities.getActivityList().get(i);
+            totalCost += Integer.parseInt(tempActivity.getCostAsString());
+        }
+        for (int i = 0; i < accommodations.getAccommodationList().size(); i++) {
+            Accommodation tempAccommodation = accommodations.getAccommodationList().get(i);
+            totalCost += Integer.parseInt(tempAccommodation.getCostAsString());
+        }
+        return Integer.toString(totalCost);
+    }
+
     //// util methods
 
     //// travel plan identity methods
