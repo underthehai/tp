@@ -39,6 +39,10 @@ public class UniqueActivityList implements Iterable<Activity> {
         return internalList.stream().anyMatch(toCheck::isSameActivity);
     }
 
+    public ObservableList<Activity> getInternalList() {
+        return internalList;
+    }
+
     /**
      * Adds an activity to the list.
      * The activity must not already exist in the list.

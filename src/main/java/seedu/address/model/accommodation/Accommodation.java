@@ -56,6 +56,10 @@ public class Accommodation extends TravelPlanObject {
         return cost;
     }
 
+    public int getCostAsInt() {
+        return Integer.parseInt(cost.getValue());
+    }
+
     public String getCostAsString() {
         return cost.getValue();
     }

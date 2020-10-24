@@ -145,4 +145,8 @@ public class UniqueFriendList implements Iterable<Friend> {
         }
         return true;
     }
+
+    public ObservableList<Friend> getInternalList() {
+        return internalList;
+    }
 }

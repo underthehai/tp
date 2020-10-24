@@ -116,6 +116,9 @@ public class ActivityList implements ReadOnlyActivityList {
         return activities.asUnmodifiableObservableTpoList();
     }
 
+    public UniqueActivityList getModifiableActivityList() {
+        return activities;
+    }
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

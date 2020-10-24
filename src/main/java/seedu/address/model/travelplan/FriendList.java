@@ -95,6 +95,14 @@ public class FriendList implements ReadOnlyFriendList {
         friends.remove(key);
     }
 
+    /**
+     * Getter for modeifiable friend list.
+     * @return UniqueFriendList
+     */
+    public UniqueFriendList getModifiableFriendList() {
+        return friends;
+    }
+
     //// util methods
 
     @Override
