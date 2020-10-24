@@ -5,12 +5,20 @@
 <?import javafx.geometry.Insets?>
 
 <?import javafx.scene.control.ListView?>
-<VBox fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
-    </padding>
-    <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <FlowPane fx:id="startEndDate">
-        <Label fx:id="startDateToEndDate" styleClass="cell_small_label" text="\$startDateToEndDate" />
+        <padding>
+            <Insets top="15" bottom="0" left="10" right="5"/>
+        </padding>
+        <ImageView fitWidth="40" fitHeight="40" >
+            <image>
+                <Image url="images/airplane.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="name" styleClass="cell_big_label" text="\$first" style="-fx-padding: 0 0 0 20;"/>
+        <Label fx:id="startDateToEndDate" styleClass="cell_small_label" text="\$startDateToEndDate"
+               style="-fx-padding: 5 0 20 20;" />
     </FlowPane>
-</VBox>
+</StackPane>

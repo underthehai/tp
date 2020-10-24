@@ -8,13 +8,12 @@
 <?import javafx.scene.control.ListCell?>
 <VBox fx:id="travelPlanPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
-        <Insets top="5" right="5" bottom="5" left="5" />
+        <Insets top="5" right="5" bottom="5" left="10" />
     </padding>
-    <Pane>
-        <padding>
-            <Insets top="5" right="5" bottom="50" left="5" />
-        </padding>
+    <Pane style="-fx-padding: 0 0 100 0;">
         <Label fx:id="Wanderlust" styleClass="cell_big_label" text="Wanderlust" />
     </Pane>
-    <ListView fx:id="travelPlanListView" VBox.vgrow="ALWAYS" />
+    <Label text="Wishlist" styleClass="header_label"/>
+    <Label text="Travel Plans" styleClass="header_label"/>
+    <ListView fx:id="travelPlanListView" styleClass="list-view" VBox.vgrow="ALWAYS"/>
 </VBox>
