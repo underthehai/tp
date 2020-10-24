@@ -27,7 +27,7 @@ public class ModelManager implements Model {
     private final TravelPlanner travelPlanner;
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
-    private final FilteredList<Activity> filteredWishlist;
+    private FilteredList<Activity> filteredWishlist;
     private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
     private int directoryIndex;

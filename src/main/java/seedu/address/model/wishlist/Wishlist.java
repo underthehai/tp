@@ -119,6 +119,10 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         return activities.asUnmodifiableObservableList();
     }
 
+    public UniqueActivityList getUniqueActivityList() {
+        return activities;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

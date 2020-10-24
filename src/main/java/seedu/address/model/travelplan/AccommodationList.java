@@ -128,4 +128,8 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     public int hashCode() {
         return accommodations.hashCode();
     }
+
+    public UniqueAccommodationList getModifiableAccommodationList() {
+        return accommodations;
+    }
 }

@@ -39,6 +39,10 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
         return internalList.stream().anyMatch(toCheck::isSameAccommodation);
     }
 
+    public ObservableList<Accommodation> getInternalList() {
+        return internalList;
+    }
+
     /**
      * Adds an accommodation to the list.
      * The accommodation must not already exist in the list.
