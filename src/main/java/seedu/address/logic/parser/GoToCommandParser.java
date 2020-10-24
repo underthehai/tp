@@ -17,6 +17,7 @@ public class GoToCommandParser implements Parser<GoToCommand> {
      * @throws ParseException if the user input does not conform the expected format.
      */
     public GoToCommand parse(String args) throws ParseException {
+
         try {
             String[] keywords = args.split(" ");
             String directoryType = keywords[1].substring(1);
