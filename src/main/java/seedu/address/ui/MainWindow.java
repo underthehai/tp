@@ -9,6 +9,7 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -18,6 +19,7 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Directory;
 import seedu.address.model.ObservableDirectory;
+import seedu.address.model.wishlist.Wishlist;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -71,8 +73,8 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
 
         // Configure the UI
+        loadFonts();
         setWindowDefaultSize(logic.getGuiSettings());
-
         setAccelerators();
 
         helpWindow = new HelpWindow();
@@ -116,6 +118,10 @@ public class MainWindow extends UiPart<Stage> {
         });
     }
 
+    private void loadFonts() {
+        Font.loadFont(MainWindow.class.getResource("/fonts/Notera_PersonalUseOnly.ttf").toExternalForm(), 80);
+    }
+
     /**
      * Fills up all the placeholders of this window.
      */
@@ -132,6 +138,7 @@ public class MainWindow extends UiPart<Stage> {
         travelPlanObjectListPanel = new TravelPlanObjectListPanel(logic.getFilteredActivityList(),
                 logic.getFilteredAccommodationList(), logic.getFilteredFriendList());
         travelObjectListPanelPlaceholder.getChildren().add(travelPlanObjectListPanel.getRoot());
+        travelPlanObjectListPanel.setActivityTabVisibleOnly();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -145,6 +152,11 @@ public class MainWindow extends UiPart<Stage> {
 
     private void handleDirectoryChange(Directory directory) {
         travelPlanPanel.setDirectory(directory);
+        if (directory instanceof Wishlist) {
+            travelPlanObjectListPanel.setActivityTabVisibleOnly();
+        } else {
+            travelPlanObjectListPanel.setAllTabsVisible();
+        }
     }
 
     /**
