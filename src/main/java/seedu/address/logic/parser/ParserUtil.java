@@ -15,7 +15,7 @@ import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
 
 /**
- * Contains utility methods used for parsing strings in the various *Parser classes.
+ * Contains utility methods used for parsing strings in the various *WanderlustParser classes.
  */
 public class ParserUtil {
 
