@@ -137,17 +137,17 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Implementation
 
-Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements 
+Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements
 `Predicate<Nameable>` and has the **test** method overriden with a custom implementations.
- 
-The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:  
+
+The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:
 * loops through the **keywords** (of type `List<String>`) and return true if there is any match with the `Nameable`
 
 `Nameable` provides the following operation:
 * `Nameable#getName()` - Return the name attribute of a `TravelPlanObject`
 
-`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)` 
-(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and 
+`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)`
+(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and
 automatically reflected on the Ui.
 
 The class diagram shows the relevant classes involved:
@@ -221,6 +221,61 @@ Aspect: How navigation between directory works
   - Pros: Easy to implement since we just have to return a new CommandResult which has an additional parameter of Directory.
   - Cons: Break the abstraction layer as Commands (Logic) should not have to be aware of how the Model is working.
 
+### Editing Information
+
+#### Implementation
+The proposed editing mechanism is facilitated by `EditDescriptor`, `Index` and `EditCommand` which extends `Command`.
+Editing can be done to travelplan objects such as `Friend`, `Accommodation` and `Activity` or to `TravelPlan`.
+
+`EditCommand` uses `Index` to identify the object to be modified.
+`Index` provides standardisation between the components to refer to a specific travel plan object or travelplan within a list.
+
+`EditCommand` uses `EditDescriptor` to create an edited object.
+`EditDescriptor` provides method `buildFromSource(source)` to store and access edited fields specified within the user input.
+
+Each object has a specific set of valid fields that can be modified.
+- `Activity`: Name, Importance, Cost, DateTime, Location
+- `Accommodation`: Name, StartDate, EndDate, Location, Cost
+- `Friend`: Name, Passport, Mobile
+- `TravelPlan`: Name, StartDate, EndDate
+
+EditCommand must have at least one field that is edited. Any fields that are invalid will throw an error.
+Hence, child classes of EditCommand accounts for editing valid types of field. Each of the following classes extends `EditCommand`
+- `EditActivityCommand`
+- `EditAccommodationCommand`
+- `EditFriendCommand`
+- `EditTravelPlanCommand`
+
+`EditCommand` accounts for duplicated objects.
+`Activity` and `Friend` contain duplicates when two instances have the same name.
+`Accommodation` contains duplicates when two instances have the same name, startDate and endDate
+`TravelPlan` contains duplicates when two instances have the same name and same startDate or endDate
+When the editing of an object results in a duplicated edited object within travelplan list or travelplan object list, an error will be thrown.
+
+Given below is the class diagram showing relevant classes involved
+![EditCommandClassDiagramDiagram](images/EditCommandClassDiagram.png)
+
+#### Editing a TravelPlan or TravelPlanObject
+Given below is an example usage scenario and how the edit mechanism behaves at each step.
+![EditActivityDiagram](images/EditActivityDiagram.png)
+
+Below is a sequence diagram that shows a scenario whereby the user edits a specified activity in Wanderlust
+
+The TravelPlan Object or TravelPlan by calling `Logic#execute()` which returns a `CommandResult`. From `CommandResult`, the Ui will then
+show a message about the successful edited object.
+
+![EditSequenceDiagram](images/EditSequenceDiagram.png)
+
+### Design Consideration
+Aspect: How edit executes
+
+- **Alternative 1 (Current Choice)**: Editing in the current travelplan directory
+  - Pros: Only require the index shown on the UI to identify the travelplan object to be edited
+  - Cons: More work has to be done to sync the retrieval of lists of travel plan object that corresponds to the current travelplan directory
+
+- **Alternative 2**: Require the user to switch travel plan object tabs within the travelplan to edit the specified travelplan object
+  - Pros: User will not require to specify the type of travelplan object to be edited
+  - Cons: Still require user to specify editing of a travelplan object or travelplan
 
 ### Adding a TravelPlan or TravelPlanObject
 
