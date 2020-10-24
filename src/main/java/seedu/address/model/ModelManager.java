@@ -51,7 +51,7 @@ public class ModelManager implements Model {
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
         isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
-        directoryIndex = -1;
+        directoryIndex = -1; // TODO: MAGIC NUMBER
         observableDirectory = new ObservableDirectory(directory);
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
@@ -234,6 +234,7 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedTravelPlanObject);
         assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setTravelPlanObject.";
         TravelPlan tp = (TravelPlan) directory;
+        Directory d = tp;
         tp.setTravelPlanObject(target, editedTravelPlanObject);
         observableDirectory.setObservableDirectory(directory);
     }
