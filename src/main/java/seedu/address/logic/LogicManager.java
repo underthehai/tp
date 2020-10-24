@@ -10,7 +10,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.command.Command;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.WanderlustParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Directory;
 import seedu.address.model.Model;
@@ -31,7 +31,7 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final Parser parser;
+    private final WanderlustParser wanderlustParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -39,7 +39,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        parser = new Parser();
+        wanderlustParser = new WanderlustParser();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = parser.parseCommand(commandText);
+        Command command = wanderlustParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {

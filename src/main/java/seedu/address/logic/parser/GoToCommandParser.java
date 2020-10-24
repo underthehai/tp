@@ -9,7 +9,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new GoToCommand object.
  */
-public class GoToCommandParser implements ParserInterface<GoToCommand> {
+public class GoToCommandParser implements Parser<GoToCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the GoToCommand
