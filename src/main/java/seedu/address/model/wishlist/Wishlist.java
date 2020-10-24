@@ -103,10 +103,10 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     }
 
     @Override
-    public void set(TravelPlanObject travelPlanObject, TravelPlanObject editedTravelPlanObject) {
+    public void set(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         requireNonNull(editedTravelPlanObject);
-        assert travelPlanObject instanceof Activity;
-        activities.setActivity((Activity) travelPlanObject, (Activity) editedTravelPlanObject);
+        assert target instanceof Activity && editedTravelPlanObject instanceof Activity;
+        activities.setActivity((Activity) target, (Activity) editedTravelPlanObject);
     }
 
     /**
