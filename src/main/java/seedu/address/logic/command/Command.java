@@ -12,7 +12,8 @@ public abstract class Command {
             + "COMMAND_WORD -accommodation\n"
             + "COMMAND_WORD -activity\n"
             + "COMMAND_WORD -friend\n"
-            + "COMMAND_WORD -travelplan\n";
+            + "COMMAND_WORD -travelplan\n"
+            + "COMMAND_WORD -wishlist\n";
 
     /**
      * Executes the command and returns the result message.

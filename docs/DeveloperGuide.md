@@ -204,20 +204,20 @@ Editing can be done to travelplan objects such as `Friend`, `Accommodation` and 
 `EditCommand` uses `EditDescriptor` to create an edited object.
 `EditDescriptor` provides method `buildFromSource(source)` to store and access edited fields specified within the user input.
 
-Each object has a specific set of valid fields that can be modified. 
-- `Activity`: Name, Importance, Cost, DateTime, Location 
+Each object has a specific set of valid fields that can be modified.
+- `Activity`: Name, Importance, Cost, DateTime, Location
 - `Accommodation`: Name, StartDate, EndDate, Location, Cost
 - `Friend`: Name, Passport, Mobile
 - `TravelPlan`: Name, StartDate, EndDate
 
-EditCommand must have at least one field that is edited. Any fields that are invalid will throw an error. 
+EditCommand must have at least one field that is edited. Any fields that are invalid will throw an error.
 Hence, child classes of EditCommand accounts for editing valid types of field. Each of the following classes extends `EditCommand`
 - `EditActivityCommand`
 - `EditAccommodationCommand`
 - `EditFriendCommand`
 - `EditTravelPlanCommand`
 
-`EditCommand` accounts for duplicated objects. 
+`EditCommand` accounts for duplicated objects.
 `Activity` and `Friend` contain duplicates when two instances have the same name.
 `Accommodation` contains duplicates when two instances have the same name, startDate and endDate
 `TravelPlan` contains duplicates when two instances have the same name and same startDate or endDate
@@ -232,18 +232,18 @@ Given below is an example usage scenario and how the edit mechanism behaves at e
 
 Below is a sequence diagram that shows a scenario whereby the user edits a specified activity in Wanderlust
 
-The TravelPlan Object or TravelPlan by calling `Logic#execute()` which returns a `CommandResult`. From `CommandResult`, the Ui will then 
+The TravelPlan Object or TravelPlan by calling `Logic#execute()` which returns a `CommandResult`. From `CommandResult`, the Ui will then
 show a message about the successful edited object.
 
 ![EditSequenceDiagram](images/EditSequenceDiagram.png)
 
-### Design Consideration 
+### Design Consideration
 Aspect: How edit executes
 
 - **Alternative 1 (Current Choice)**: Editing in the current travelplan directory
   - Pros: Only require the index shown on the UI to identify the travelplan object to be edited
   - Cons: More work has to be done to sync the retrieval of lists of travel plan object that corresponds to the current travelplan directory
-  
+
 - **Alternative 2**: Require the user to switch travel plan object tabs within the travelplan to edit the specified travelplan object
   - Pros: User will not require to specify the type of travelplan object to be edited
   - Cons: Still require user to specify editing of a travelplan object or travelplan

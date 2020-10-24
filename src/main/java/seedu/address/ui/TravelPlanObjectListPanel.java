@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
@@ -35,6 +36,10 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
     @FXML
     private TabPane pane;
 
+    private Tab activityTab;
+    private Tab accommodationTab;
+    private Tab friendTab;
+
 
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
@@ -49,7 +54,9 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         friendListView.setItems(friends);
         friendListView.setCellFactory(listView -> new FriendListViewCell());
         pane.getSelectionModel().select(0);
-
+        this.activityTab = pane.getTabs().get(0);
+        this.accommodationTab = pane.getTabs().get(1);
+        this.friendTab = pane.getTabs().get(2);
     }
 
     /**
@@ -58,6 +65,17 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
      */
     public void changeTabView(int index) {
         pane.getSelectionModel().select(index);
+    }
+
+    public void setActivityTabVisibleOnly() {
+        pane.getTabs().removeAll(accommodationTab, friendTab);
+    }
+
+    public void setAllTabsVisible() {
+        if (pane.getTabs().size() == 1) {
+            pane.getTabs().add(accommodationTab);
+            pane.getTabs().add(friendTab);
+        }
     }
 
     /**

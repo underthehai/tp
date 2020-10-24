@@ -36,7 +36,7 @@ import seedu.address.model.travelplan.TravelPlan;
 /**
  * Parses input arguments and creates a new AddCommand object
  */
-public class AddCommandParser implements ParserInterface<AddCommand> {
+public class AddCommandParser implements Parser<AddCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
