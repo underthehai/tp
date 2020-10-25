@@ -188,10 +188,7 @@ public class ModelManager implements Model {
 
     @Override
     public boolean isDirectoryTypeTravelPlan() {
-        if (isTravelPlan) {
-            return true;
-        }
-        return false;
+        return directory.isTravelPlan();
     }
 
     @Override
