@@ -40,6 +40,11 @@ It is optimized for CLI users so that destinations and details can be added fast
         2. [Editing an Activity (L)](#2-editing-an-activity-l)
         3. [Editing an Accommodation (L)](#3-editing-an-accommodation-l)
         4. [Editing a Person (L)](#4-editing-a-person-l)
+    * [Find](#find)
+        1. [How it works](#how-it-works)
+        2. [Finding activities (L)](#1-finding-activities-l)
+        3. [Finding accommodations (L)](#2-finding-accommodations-l)
+        4. [Finding friends (L)](#3-finding-friends-l)
 * [FAQ \[Coming soon\]](#faq-coming-soon)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -58,6 +63,7 @@ Command | Parameters | Description
 `delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
 `edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
 `goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
+`find -OBJECT` | `OBJECT` activity/ accommodation/ person | Finds the given object type whose names contain any of the given keywords
 
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
@@ -250,6 +256,42 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
 Example: `edit -friend 3 n/John m/91234567 p/E7654321`
+
+## Find
+
+### How it works
+
+* The search is case-insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the name is searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+
+### 1. Finding activities (L)
+
+Finds activities in the travel plan/wishlist in the current directory whose names contain any of the given keywords.
+
+Format: `find -activity KEYWORD [MORE_KEYWORDS]`
+
+Example: `find -activity visits`
+
+### 2. Finding accommodations (L)
+
+Finds accommodations in the travel plan in the current directory whose names contain any of the given keywords.
+This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before finding accommodations.
+
+Format: `find -accommodation KEYWORD [MORE_KEYWORDS]`
+
+Example: `find -accommodation hotel`
+
+### 3. Finding friends (L)
+
+Finds friends in the travel plan in the current directory whose names contain any of the given keywords.
+This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before finding friends.
+
+Format: `find -friend KEYWORD [MORE_KEYWORDS]`
+
+Example: `find -friend John` 
 
 --------------------------------------------------------------------------------------------------------------------
 
