@@ -168,11 +168,9 @@ public class ModelManager implements Model {
         directory = this.travelPlanner.getWishlistAsDirectory();
 
         if (index == -1) {
-            isTravelPlan = false;
             directoryIndex = -1;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
-            isTravelPlan = true;
             directoryIndex = index;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
