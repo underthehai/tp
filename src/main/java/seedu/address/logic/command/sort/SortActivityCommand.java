@@ -41,62 +41,46 @@ public class SortActivityCommand extends SortCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+        UniqueActivityList uniqueActivityList;
+        ObservableList<Activity> internalList;
         if (isTravelPlan) {
             TravelPlan travelPlan = (TravelPlan) model.getDirectory();
             ActivityList activityList = travelPlan.getActivities();
-            UniqueActivityList uniqueActivityList = activityList.getModifiableActivityList();
-            ObservableList<Activity> internalList = uniqueActivityList.getInternalList();
-
-            switch (keyword) {
-
-            case SortCommand.KEYWORD_COST:
-                Comparator<Activity> costComparator = Comparator.comparingInt(Activity::getCostAsInt);
-                FXCollections.sort(internalList, costComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), costComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
-
-            case SortCommand.KEYWORD_IMPORTANCE:
-                Comparator<Activity> importanceComparator = Comparator.comparingInt(Activity::getImportanceAsInt);
-                FXCollections.sort(internalList, importanceComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), importanceComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
-
-            case SortCommand.KEYWORD_DATE:
-                Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
-                FXCollections.sort(internalList, dateComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), dateComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME));
-
-            default:
-                throw new CommandException(MESSAGE_INVALID_KEYWORD);
-            }
+            uniqueActivityList = activityList.getModifiableActivityList();
         } else {
             Wishlist wishlist = (Wishlist) model.getDirectory();
-            UniqueActivityList uniqueActivityList = wishlist.getUniqueActivityList();
-            ObservableList<Activity> internalList = uniqueActivityList.getInternalList();
-            switch (keyword) {
+            uniqueActivityList = wishlist.getUniqueActivityList();
+        }
+        internalList = uniqueActivityList.getInternalList();
 
-            case SortCommand.KEYWORD_COST:
-                Comparator<Activity> costComparator = Comparator.comparingInt(Activity::getCostAsInt);
-                FXCollections.sort(internalList, costComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), costComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
+        switch (keyword) {
 
-            case SortCommand.KEYWORD_IMPORTANCE:
-                Comparator<Activity> importanceComparator = Comparator.comparingInt(Activity::getImportanceAsInt);
-                FXCollections.sort(internalList, importanceComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), importanceComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
+        case SortCommand.KEYWORD_COST:
+            Comparator<Activity> costComparator = Comparator.comparingInt(Activity::getCostAsInt);
+            FXCollections.sort(internalList, costComparator);
+            FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), costComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
 
-            case SortCommand.KEYWORD_DATE:
-                Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
-                FXCollections.sort(internalList, dateComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), dateComparator);
-                return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME));
+        case SortCommand.KEYWORD_IMPORTANCE:
+            Comparator<Activity> importanceComparator = Comparator.comparingInt(Activity::getImportanceAsInt);
+            FXCollections.sort(internalList, importanceComparator);
+            FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), importanceComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
 
-            default:
-                throw new CommandException(MESSAGE_INVALID_KEYWORD);
-            }
+        case SortCommand.KEYWORD_DATE:
+            Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
+            FXCollections.sort(internalList, dateComparator);
+            FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), dateComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME));
+
+        case SortCommand.KEYWORD_NAME:
+            Comparator<Activity> nameComapator = Comparator.comparing(d -> d.getName().toString());
+            FXCollections.sort(internalList, nameComapator);
+            FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), nameComapator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_NAME));
+
+        default:
+            throw new CommandException(MESSAGE_INVALID_KEYWORD);
         }
     }
 

@@ -62,7 +62,13 @@ public class SortAccommodationCommand extends SortCommand {
             Comparator<Accommodation> dateComparator = Comparator.comparing(d -> d.getStartDate().getValue());
             FXCollections.sort(internalList, dateComparator);
             FXCollections.sort(model.getObservableDirectory().getObservableAccommodationList(), dateComparator);
-            return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_DATETIME));
+            return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_DATE));
+
+        case SortCommand.KEYWORD_NAME:
+            Comparator<Accommodation> nameComapator = Comparator.comparing(d -> d.getName().toString());
+            FXCollections.sort(internalList, nameComapator);
+            FXCollections.sort(model.getObservableDirectory().getObservableAccommodationList(), nameComapator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_NAME));
 
         default:
             throw new CommandException(MESSAGE_INVALID_KEYWORD);
