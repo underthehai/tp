@@ -28,7 +28,6 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
-    private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
     private int directoryIndex;
     private Directory directory;
@@ -49,7 +48,6 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
         directoryIndex = -1;
         observableDirectory = new ObservableDirectory(directory);
