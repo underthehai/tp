@@ -1,5 +1,7 @@
 package seedu.address.model.accommodation;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
@@ -32,11 +34,19 @@ public class Accommodation extends TravelPlanObject {
      */
     public Accommodation(Name name, WanderlustDate startDate, WanderlustDate endDate, Cost cost, Location location) {
         requireAllNonNull(name, startDate, endDate, cost, location);
+        checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_INVALID_STARTANDENDDATE);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.cost = cost;
         this.location = location;
+    }
+
+    /**
+     * Returns true if the start date is before or on the same day as end date.
+     */
+    public static boolean isValidStartAndEndDate(WanderlustDate startDate, WanderlustDate endDate) {
+        return startDate.getValue().compareTo(endDate.getValue()) <= 0;
     }
 
     @Override
