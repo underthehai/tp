@@ -180,6 +180,14 @@ public class TravelPlan extends Directory implements Nameable {
                 || otherTravelPlan.getEndDate().equals(getEndDate()));
     }
 
+    public int getNumOfDays() {
+        return endDate.getValue().compareTo(startDate.getValue());
+    }
+
+    public String dateTitle() {
+        return getStartDate().toString() + " to " + getEndDate().toString() + " (" + getNumOfDays() + " days)";
+    }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -187,7 +195,8 @@ public class TravelPlan extends Directory implements Nameable {
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")
-                .append(getEndDate());
+                .append(getEndDate()).append(" ")
+                .append("(").append(getNumOfDays()).append(")").append("\n");
         builder.append(accommodations)
                 .append(activities)
                 .append(friends);

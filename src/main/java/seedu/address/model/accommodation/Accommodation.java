@@ -32,6 +32,10 @@ public class Accommodation extends TravelPlanObject {
      */
     public Accommodation(Name name, WanderlustDate startDate, WanderlustDate endDate, Cost cost, Location location) {
         requireAllNonNull(name, startDate, endDate, cost, location);
+
+        assert endDate.getValue().compareTo(startDate.getValue()) >= 0
+                : "end date should not be earlier than start date";
+
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,6 +76,13 @@ public class Accommodation extends TravelPlanObject {
                 && otherAccommodation.getEndDate().equals(getEndDate());
     }
 
+    public int getNumOfDays() {
+        return endDate.getValue().compareTo(startDate.getValue());
+    }
+
+    public String dateString() {
+        return getStartDate().toString() + " to " + getEndDate().toString() + " (" + getNumOfDays() + " days)";
+    }
 
     /**
      * Returns true if both accommodations have identical fields.

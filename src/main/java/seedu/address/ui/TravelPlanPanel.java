@@ -40,8 +40,7 @@ public class TravelPlanPanel extends UiPart<Region> {
         if (directory instanceof TravelPlan) {
             TravelPlan travelPlan = (TravelPlan) directory;
             name.setText(travelPlan.getName().toString());
-            startDateToEndDate.setText(travelPlan.getStartDate().toString() + " to "
-                    + travelPlan.getEndDate().toString());
+            startDateToEndDate.setText(travelPlan.dateTitle());
         } else {
             name.setText("Wishlist");
             startDateToEndDate.setText("");
