@@ -28,7 +28,6 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
-    private boolean isTravelPlan;
     private ObservableDirectory observableDirectory;
     private int directoryIndex;
     private Directory directory;
@@ -49,7 +48,6 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getWishlist());
-        isTravelPlan = false;
         directory = this.travelPlanner.getWishlistAsDirectory();
         directoryIndex = -1;
         observableDirectory = new ObservableDirectory(directory);
@@ -170,11 +168,9 @@ public class ModelManager implements Model {
         directory = this.travelPlanner.getWishlistAsDirectory();
 
         if (index == -1) {
-            isTravelPlan = false;
             directoryIndex = -1;
             directory = travelPlanner.getWishlistAsDirectory();
         } else {
-            isTravelPlan = true;
             directoryIndex = index;
             directory = travelPlanner.getTravelPlanList().get(index);
         }
@@ -188,10 +184,7 @@ public class ModelManager implements Model {
 
     @Override
     public boolean isDirectoryTypeTravelPlan() {
-        if (isTravelPlan) {
-            return true;
-        }
-        return false;
+        return directory.isTravelPlan();
     }
 
     @Override
@@ -205,36 +198,27 @@ public class ModelManager implements Model {
     @Override
     public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call hasTravelPlanObject.";
-        TravelPlan tp = (TravelPlan) directory;
-        return tp.hasTravelPlanObject(tPObj);
+        return directory.has(tPObj);
     }
 
     @Override
     public void deleteTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        assert directory instanceof TravelPlan
-                : "Directory must be set to a TravelPlan to call deleteTravelPlanObject.";
-        TravelPlan tp = (TravelPlan) directory;
-        tp.removeTravelPlanObject(tPObj);
+        directory.remove(tPObj);
         observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
     public void addTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call addTravelPlanObject.";
-        TravelPlan tp = (TravelPlan) directory;
-        tp.addTravelPlanObject(tPObj);
+        directory.add(tPObj);
         observableDirectory.setObservableDirectory(directory);
     }
 
     @Override
     public void setTravelPlanObject(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         requireAllNonNull(target, editedTravelPlanObject);
-        assert directory instanceof TravelPlan : "Directory must be set to a TravelPlan to call setTravelPlanObject.";
-        TravelPlan tp = (TravelPlan) directory;
-        tp.setTravelPlanObject(target, editedTravelPlanObject);
+        directory.set(target, editedTravelPlanObject);
         observableDirectory.setObservableDirectory(directory);
     }
 
