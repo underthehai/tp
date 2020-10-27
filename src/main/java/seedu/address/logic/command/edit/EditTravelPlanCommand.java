@@ -49,6 +49,9 @@ public class EditTravelPlanCommand extends EditCommand {
      */
     public EditTravelPlanCommand(Index targetIndex, EditDescriptor editTravelPlanDescriptor) {
         super(targetIndex);
+
+        assert !editTravelPlanDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editTravelPlanDescriptor = editTravelPlanDescriptor;
     }

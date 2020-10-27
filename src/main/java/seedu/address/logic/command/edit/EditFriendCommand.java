@@ -47,6 +47,9 @@ public class EditFriendCommand extends EditCommand {
      */
     public EditFriendCommand(Index targetIndex, EditDescriptor editFriendDescriptor) {
         super(targetIndex);
+
+        assert !editFriendDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editFriendDescriptor = editFriendDescriptor;
     }

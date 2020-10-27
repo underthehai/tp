@@ -1,5 +1,6 @@
 package seedu.address.logic.command.edit;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
@@ -73,9 +74,33 @@ public class EditDescriptor {
     }
 
     /**
+     * Ensures that only the valid fields have been edited using the EditDescriptor
+     * @param type a String that specify the type of object to check valid fields.
+     * @return true if invalid field(s) has/have been edited.
+     */
+    public boolean wrongFieldEdited(String type) {
+
+        switch (type) {
+        case "activity":
+            return CollectionUtil.isAnyNonNull(mobile, passport, startDate, endDate);
+
+        case "accommodation":
+            return CollectionUtil.isAnyNonNull(levelOfImportance, activityDateTime, mobile, passport);
+
+        case "friend":
+            return CollectionUtil.isAnyNonNull(location, cost, levelOfImportance, activityDateTime, startDate, endDate);
+
+        case "travelplan":
+            return CollectionUtil.isAnyNonNull(location, cost, levelOfImportance, activityDateTime, mobile, passport);
+        default:
+            return false;
+        }
+    }
+
+    /**
      * Provides editdescriptor for edit commands
      *
-     * @param source of tokenized fields
+     * @param source of tokenized fields that are valid according to the type specified
      * @return editdescriptor
      */
     public static EditDescriptor buildFromSource(ArgumentMultimap source) throws ParseException {
@@ -116,6 +141,7 @@ public class EditDescriptor {
         if (!editItemnDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
+
         return editItemnDescriptor;
 
     }

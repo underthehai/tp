@@ -53,9 +53,14 @@ public class EditAccommodationCommand extends EditCommand {
 
     /**
      * Constructor for edit accommodation
+     *
+     * @param editAccommodationDescriptor should contain valid edited fields
      */
     public EditAccommodationCommand(Index targetIndex, EditDescriptor editAccommodationDescriptor) {
         super(targetIndex);
+
+        assert !editAccommodationDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editAccommodationDescriptor = editAccommodationDescriptor;
     }
