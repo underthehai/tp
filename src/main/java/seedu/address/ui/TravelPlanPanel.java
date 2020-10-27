@@ -44,21 +44,18 @@ public class TravelPlanPanel extends UiPart<Region> {
      * Updates the JavaFX properties of {@code TravelPlanPanel} according to the directory.
      */
     public void update() {
-        if (directory instanceof TravelPlan) {
-            TravelPlan travelPlan = (TravelPlan) directory;
-            String cost = travelPlan.getTotalCost();
-            name.setText(travelPlan.getName().toString());
-            totalCost.setText(TOTAL_COST + cost);
-            startDateToEndDate.setText(travelPlan.getStartDate().toString() + " to "
-                    + travelPlan.getEndDate().toString());
+        String cost = directory.getTotalCost();
+        name.setText(directory.getName().toString());
+        totalCost.setText(TOTAL_COST + cost);
+
+        if (directory.isTravelPlan()) {
+            startDateToEndDate.setText(directory.getStartDate().toString() + " to "
+                    + directory.getEndDate().toString());
         } else {
-            name.setText("Wishlist");
-            Wishlist wishlist = (Wishlist) directory;
-            String cost = wishlist.getTotalCost();
-            totalCost.setText(TOTAL_COST + cost);
             startDateToEndDate.setText("");
         }
     }
+
 
     public void setDirectory(Directory directory) {
         this.directory = directory;
