@@ -32,7 +32,7 @@ public class ParserUtil {
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
 
-        try{
+        try {
             Integer.parseInt(oneBasedIndex);
         } catch (java.lang.NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.SPECIFY_INDEX));

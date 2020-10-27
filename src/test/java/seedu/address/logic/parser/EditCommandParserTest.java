@@ -7,7 +7,9 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.command.add.AddCommand;
 import seedu.address.logic.command.edit.EditActivityCommand;
+import seedu.address.logic.command.edit.EditCommand;
 import seedu.address.logic.command.edit.EditDescriptor;
 import seedu.address.logic.command.edit.EditFriendCommand;
 import seedu.address.model.commons.Name;
@@ -29,7 +31,7 @@ public class EditCommandParserTest {
     //Parse EditActivity
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertWanderLustParseEditCommandFailure(parser, " -activity a",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.MESSAGE_USAGE));
+        assertWanderLustParseEditCommandFailure(parser, " -activity i/2",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.SPECIFY_INDEX));
     }
 }
