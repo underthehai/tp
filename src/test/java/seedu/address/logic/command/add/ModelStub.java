@@ -1,6 +1,7 @@
 package seedu.address.logic.command.add;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -211,6 +212,26 @@ public class ModelStub implements Model {
 
     @Override
     public FriendList getFriendList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void sortWishlist(Comparator<Activity> comparator) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void sortActivityList(Comparator<Activity> comparator) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void sortAccommodationList(Comparator<Accommodation> comparator) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void sortFriendList(Comparator<Friend> comparator) {
         throw new AssertionError("This method should not be called.");
     }
 

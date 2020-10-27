@@ -218,11 +218,27 @@ public interface Model {
 
     FriendList getFriendList();
 
+    /**
+     * Sorts the wishlist with the given comparator.
+     * Can be sorted according to cost, importance, date or name.
+     */
     void sortWishlist(Comparator<Activity> comparator);
 
+    /**
+     * Sorts the activity list with the given comparator.
+     * Can be sorted according to cost, importance, date or name.
+     */
     void sortActivityList(Comparator<Activity> comparator);
 
+    /**
+     * Sorts the accommodation list with the given comparator.
+     * Can be sorted according to cost, date or name.
+     */
     void sortAccommodationList(Comparator<Accommodation> comparator);
 
+    /**
+     * Sorts the friend list with the given comparator.
+     * Can be sorted according to name.
+     */
     void sortFriendList(Comparator<Friend> comparator);
 }
