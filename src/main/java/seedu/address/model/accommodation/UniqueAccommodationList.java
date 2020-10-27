@@ -3,6 +3,7 @@ package seedu.address.model.accommodation;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -103,6 +104,10 @@ public class UniqueAccommodationList implements Iterable<Accommodation> {
         }
 
         internalList.setAll(accommodations);
+    }
+
+    public void sort(Comparator<Accommodation> comparator) {
+        FXCollections.sort(internalList, comparator);
     }
 
     /**

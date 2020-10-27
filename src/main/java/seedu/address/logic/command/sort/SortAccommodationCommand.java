@@ -4,15 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Comparator;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.accommodation.Accommodation;
-import seedu.address.model.accommodation.UniqueAccommodationList;
-import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.TravelPlan;
+
 
 
 public class SortAccommodationCommand extends SortCommand {
@@ -45,29 +41,21 @@ public class SortAccommodationCommand extends SortCommand {
             throw new CommandException("Wishlist do not store accommodation!");
         }
 
-        TravelPlan travelPlan = (TravelPlan) model.getDirectory();
-        AccommodationList accommodationList = travelPlan.getAccommodations();
-        UniqueAccommodationList uniqueAccommodationList = accommodationList.getModifiableAccommodationList();
-        ObservableList<Accommodation> internalList = uniqueAccommodationList.getInternalList();
-
         switch (keyword) {
 
         case SortCommand.KEYWORD_COST:
             Comparator<Accommodation> costComparator = Comparator.comparingInt(Accommodation::getCostAsInt);
-            FXCollections.sort(internalList, costComparator);
-            FXCollections.sort(model.getObservableDirectory().getObservableAccommodationList(), costComparator);
+            model.sortAccommodationList(costComparator);
             return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_COST));
 
         case SortCommand.KEYWORD_DATE:
             Comparator<Accommodation> dateComparator = Comparator.comparing(d -> d.getStartDate().getValue());
-            FXCollections.sort(internalList, dateComparator);
-            FXCollections.sort(model.getObservableDirectory().getObservableAccommodationList(), dateComparator);
-            return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_DATE));
+            model.sortAccommodationList(dateComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_DATETIME));
 
         case SortCommand.KEYWORD_NAME:
-            Comparator<Accommodation> nameComapator = Comparator.comparing(d -> d.getName().toString());
-            FXCollections.sort(internalList, nameComapator);
-            FXCollections.sort(model.getObservableDirectory().getObservableAccommodationList(), nameComapator);
+            Comparator<Accommodation> nameComparator = Comparator.comparing(d -> d.getName().toString());
+            model.sortAccommodationList(nameComparator);
             return new CommandResult(String.format(MESSAGE_SORT_ACCOMMODATION_SUCCESS, SortCommand.KEYWORD_NAME));
 
         default:

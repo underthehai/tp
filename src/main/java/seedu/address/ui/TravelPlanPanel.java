@@ -17,7 +17,7 @@ import seedu.address.model.wishlist.Wishlist;
  */
 public class TravelPlanPanel extends UiPart<Region> {
     private static final String TravelPlanFXML = "TravelPlanPanel.fxml";
-    private static final String TOTAL_COST = "Total Cost: ";
+    private static final String TOTAL_COST = "Total Cost: $";
     private final Logger logger = LogsCenter.getLogger(TravelPlanPanel.class);
 
     private Directory directory;

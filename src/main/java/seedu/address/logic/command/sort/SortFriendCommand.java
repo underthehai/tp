@@ -4,15 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Comparator;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.friend.Friend;
-import seedu.address.model.friend.UniqueFriendList;
-import seedu.address.model.travelplan.FriendList;
-import seedu.address.model.travelplan.TravelPlan;
+
 
 public class SortFriendCommand extends SortCommand {
     public static final String COMMAND_WORD = "sort friend";
@@ -45,18 +41,12 @@ public class SortFriendCommand extends SortCommand {
             throw new CommandException("Wishlist do not store friends!");
         }
 
-        TravelPlan travelPlan = (TravelPlan) model.getDirectory();
-        FriendList friendList = travelPlan.getFriends();
-        UniqueFriendList uniqueFriendList = friendList.getModifiableFriendList();
-        ObservableList<Friend> internalList = uniqueFriendList.getInternalList();
-
         switch (keyword) {
 
         case SortCommand.KEYWORD_NAME:
             Comparator<Friend> nameComparator = Comparator.comparing(Friend::getNameAsString);
-            FXCollections.sort(internalList, nameComparator);
-            FXCollections.sort(model.getObservableDirectory().getObservableFriendList(), nameComparator);
-            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_COST));
+            model.sortFriendList(nameComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_NAME));
 
         default:
             throw new CommandException(MESSAGE_INVALID_KEYWORD);
