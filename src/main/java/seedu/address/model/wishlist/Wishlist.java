@@ -2,20 +2,22 @@ package seedu.address.model.wishlist;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.Directory;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
-import seedu.address.model.commons.ReadOnlyActivityList;
+import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 
 /**
  * Wraps all data at the travel plan level
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class Wishlist extends Directory implements ReadOnlyActivityList {
+public class Wishlist extends Directory {
 
     private final UniqueActivityList activities;
 
@@ -33,9 +35,9 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     public Wishlist() {}
 
     /**
-     * Creates an Wishlist using the Activitys in the {@code toBeCopied}
+     * Creates an Wishlist using the Activities in the {@code toBeCopied}
      */
-    public Wishlist(ReadOnlyActivityList toBeCopied) {
+    public Wishlist(Wishlist toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -53,10 +55,10 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     /**
      * Resets the existing data of this {@code Wishlist} with {@code newData}.
      */
-    public void resetData(ReadOnlyActivityList newData) {
+    public void resetData(Wishlist newData) {
         requireNonNull(newData);
 
-        setActivities(newData.getActivityList());
+        setActivities(newData.getObservableActivityList());
     }
 
     //// activity-level operations
@@ -109,6 +111,11 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         activities.setActivity((Activity) target, (Activity) editedTravelPlanObject);
     }
 
+    @Override
+    public Name getName() {
+        return new Name("Wishlist");
+    }
+
     /**
      * Removes {@code key} from this {@code Wishlist}.
      * {@code key} must exist in the wishlist.
@@ -117,10 +124,31 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
         activities.remove(key);
     }
 
+    public String getTotalCost() {
+        int totalCost = 0;
+        for (Activity activity : activities) {
+            totalCost += Integer.parseInt(activity.getCostAsString());
+        }
+        return Integer.toString(totalCost);
+    }
+
+    @Override
+    public WanderlustDate getStartDate() {
+        return null;
+    }
+
+    @Override
+    public WanderlustDate getEndDate() {
+        return null;
+    }
+
     @Override
     public void remove(TravelPlanObject travelPlanObject) {
-        assert travelPlanObject instanceof Activity;
         activities.remove((Activity) travelPlanObject);
+    }
+
+    public void sort(Comparator<Activity> comparator) {
+        activities.sort(comparator);
     }
 
     //// util methods
@@ -134,13 +162,16 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(" Wishlist: ");
-        getActivityList().forEach(builder::append);
+        getObservableActivityList().forEach(builder::append);
         return builder.toString();
     }
 
-    @Override
-    public ObservableList<Activity> getActivityList() {
+    public ObservableList<Activity> getObservableActivityList() {
         return activities.asUnmodifiableObservableList();
+    }
+
+    public UniqueActivityList getUniqueActivityList() {
+        return activities;
     }
 
     @Override
