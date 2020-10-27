@@ -133,35 +133,6 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Find Feature
-
-#### Implementation
-
-Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements
-`Predicate<Nameable>` and has the **test** method overriden with a custom implementations.
-
-The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:
-* loops through the **keywords** (of type `List<String>`) and return true if there is any match with the `Nameable`
-
-`Nameable` provides the following operation:
-* `Nameable#getName()` - Return the name attribute of a `TravelPlanObject`
-
-`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)`
-(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and
-automatically reflected on the Ui.
-
-The class diagram shows the relevant classes involved:
-
-![FindCommandClassDiagram](images/DGFindCommandClassDiagram.png)
-
-The following sequence diagram shows how the find operation works:
-
-![FindSequenceDiagram](images/FindSequenceDiagram.png)
-
-The following activity diagram summarizes what happens when a user executes the find command:
-
-![FindActivityDiagram](images/FindActivityDiagram.png)
-
 ### Changing Directory
 
 #### Implementation
@@ -358,6 +329,41 @@ Aspect: How to duplicate activity *(deep/shallow copy)*
     - Pros: Best of both worlds. Allows for flexibility and convenience at the same time.
     - Cons: Harder to implement. Users need a way to differentiate deep/shallow copies to avoid unintentionally editing
     a shallow copy. Potentially more edge cases to think about and handle.
+
+### Move Feature
+
+#### Implementation
+
+The move mechanism makes use of both the copy and delete mechanism.
+
+### Find Feature
+
+#### Implementation
+
+Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements 
+`Predicate<Nameable>` and has the **test** method overriden with a custom implementations.
+ 
+The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:  
+* loops through the **keywords** (of type `List<String>`) and return true if there is any match with the `Nameable`
+
+`Nameable` provides the following operation:
+* `Nameable#getName()` - Return the name attribute of a `TravelPlanObject`
+
+`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)` 
+(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and 
+automatically reflected on the Ui.
+
+The class diagram shows the relevant classes involved:
+
+![FindCommandClassDiagram](images/DGFindCommandClassDiagram.png)
+
+The following sequence diagram shows how the find operation works:
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
+
+The following activity diagram summarizes what happens when a user executes the find command:
+
+![FindActivityDiagram](images/FindActivityDiagram.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
