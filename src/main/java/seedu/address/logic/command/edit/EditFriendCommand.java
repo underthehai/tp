@@ -58,7 +58,7 @@ public class EditFriendCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!(model.getDirectory() instanceof TravelPlan)) {
+        if (!model.isDirectoryTypeTravelPlan()) {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
