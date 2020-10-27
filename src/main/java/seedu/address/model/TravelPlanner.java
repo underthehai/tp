@@ -66,8 +66,8 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     public void resetData(ReadOnlyTravelPlanner newData) {
         requireNonNull(newData);
 
-        setTravelPlans(newData.getTravelPlanList());
-        setWishlist(newData.getWishlist());
+        setTravelPlans(newData.getObservableTravelPlanList());
+        setWishlist(newData.getObservableWishlist());
     }
 
     //// person-level operations
@@ -143,8 +143,12 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
      * Returns the wishlist as a Wishlist.
      * Used to initialize the directory.
      */
-    public Wishlist getWishlistAsDirectory() {
+    public Wishlist getWishlist() {
         return wishlist;
+    }
+
+    public UniqueTravelPlanList getTravelPlanList() {
+        return travelPlans;
     }
 
     //// util methods
@@ -152,18 +156,18 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     @Override
     public String toString() {
         return travelPlans.asUnmodifiableObservableList().size() + " travel plans\n"
-                + wishlist.getActivityList().size() + " activities";
+                + wishlist.getObservableActivityList().size() + " activities";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<TravelPlan> getTravelPlanList() {
+    public ObservableList<TravelPlan> getObservableTravelPlanList() {
         return travelPlans.asUnmodifiableObservableList();
     }
 
     @Override
-    public ObservableList<Activity> getWishlist() {
-        return wishlist.getActivityList();
+    public ObservableList<Activity> getObservableWishlist() {
+        return wishlist.getObservableActivityList();
     }
 
     @Override
