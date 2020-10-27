@@ -7,7 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_FRIENDS_LISTED_OVERVIE
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.command.exceptions.CommandException;
-import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.Model;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
@@ -27,9 +26,9 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: \n"
             + "Finds activities in the current travel plan or wishlist using the format:\n"
-            + "find -activity KEYWORD [MORE_KEYWORDS]...\n"
+            + "find -activity KEYWORD [MORE_KEYWORDS]...\n\n"
             + "Finds accommodations in the current travel plan using the format:\n"
-            + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n"
+            + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n\n"
             + "Finds friends in the current travel plan using the format:\n"
             + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
 
@@ -47,9 +46,9 @@ public class FindCommand extends Command {
     public FindCommand(NameContainsKeywordsPredicate predicate, int travelPlanObjectType) {
         requireNonNull(predicate);
 
-        assert travelPlanObjectType == ParserUtil.ACTIVITY_INDEX ||
-                travelPlanObjectType == ParserUtil.ACCOMMODATION_INDEX ||
-                travelPlanObjectType == ParserUtil.FRIEND_INDEX;
+        assert travelPlanObjectType == ParserUtil.ACTIVITY_INDEX
+                || travelPlanObjectType == ParserUtil.ACCOMMODATION_INDEX
+                || travelPlanObjectType == ParserUtil.FRIEND_INDEX;
 
         this.predicate = predicate;
         this.travelPlanObjectType = travelPlanObjectType;
