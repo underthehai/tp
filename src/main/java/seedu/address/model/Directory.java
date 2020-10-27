@@ -9,7 +9,7 @@ import seedu.address.model.commons.TravelPlanObject;
  * Represents the current directory of wanderlust, which can be instance of TravelPlan or Wishlist
  */
 public abstract class Directory {
-    public abstract ObservableList<Activity> getActivityList();
+    public abstract ObservableList<Activity> getObservableActivityList();
 
     public abstract boolean isTravelPlan();
 

@@ -76,9 +76,9 @@ public class TravelPlan extends Directory implements Nameable {
      * Resets the existing data of this {@code TravelPlan} with {@code newData}.
      */
     public void resetData(TravelPlan newData) {
-        accommodations.resetData(newData.getAccommodations());
-        activities.resetData(newData.getActivities());
-        friends.resetData(newData.getFriends());
+        accommodations.resetData(newData.getAccommodationList());
+        activities.resetData(newData.getActivityList());
+        friends.resetData(newData.getFriendList());
     }
 
     /**
@@ -205,40 +205,28 @@ public class TravelPlan extends Directory implements Nameable {
 
     //// travel plan data methods
 
-    public AccommodationList getAccommodations() {
+    public AccommodationList getAccommodationList() {
         return accommodations;
     }
 
-    public ObservableList<Accommodation> getAccommodationList() {
-        return accommodations.getAccommodationList();
+    public ObservableList<Accommodation> getObservableAccommodationList() {
+        return accommodations.getObservableAccommodationList();
     }
 
-    public ObservableList<TravelPlanObject> getAccommodationTpoList() {
-        return accommodations.getTpoList();
-    }
-
-    public ActivityList getActivities() {
+    public ActivityList getActivityList() {
         return activities;
     }
 
-    public ObservableList<Activity> getActivityList() {
-        return activities.getActivityList();
+    public ObservableList<Activity> getObservableActivityList() {
+        return activities.getObservableActivityList();
     }
 
-    public ObservableList<TravelPlanObject> getActivityTpoList() {
-        return activities.getTpoList();
-    }
-
-    public FriendList getFriends() {
+    public FriendList getFriendList() {
         return friends;
     }
 
-    public ObservableList<Friend> getFriendList() {
-        return friends.getFriendList();
-    }
-
-    public ObservableList<TravelPlanObject> getFriendTpoList() {
-        return friends.getTpoList();
+    public ObservableList<Friend> getObservableFriendList() {
+        return friends.getObservableFriendList();
     }
 
     @Override
