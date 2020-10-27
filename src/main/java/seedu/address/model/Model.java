@@ -10,7 +10,12 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.travelplan.AccommodationList;
+import seedu.address.model.travelplan.ActivityList;
+import seedu.address.model.travelplan.FriendList;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.model.travelplan.UniqueTravelPlanList;
+import seedu.address.model.wishlist.Wishlist;
 
 
 /**
@@ -201,4 +206,14 @@ public interface Model {
     boolean isDirectoryTypeTravelPlan();
 
     ObservableDirectory getObservableDirectory();
+
+    UniqueTravelPlanList getTravelPlanList();
+
+    Wishlist getWishlist();
+
+    ActivityList getActivityList();
+
+    AccommodationList getAccommodationList();
+
+    FriendList getFriendList();
 }
