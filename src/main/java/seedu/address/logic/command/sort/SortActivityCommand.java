@@ -42,29 +42,21 @@ public class SortActivityCommand extends SortCommand {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (isTravelPlan) {
-            TravelPlan travelPlan = (TravelPlan) model.getDirectory();
-            ActivityList activityList = travelPlan.getActivities();
-            UniqueActivityList uniqueActivityList = activityList.getModifiableActivityList();
-            ObservableList<Activity> internalList = uniqueActivityList.getInternalList();
-
             switch (keyword) {
 
             case SortCommand.KEYWORD_COST:
                 Comparator<Activity> costComparator = Comparator.comparingInt(Activity::getCostAsInt);
-                FXCollections.sort(internalList, costComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), costComparator);
+                model.sortActivityList(costComparator);
                 return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
 
             case SortCommand.KEYWORD_IMPORTANCE:
                 Comparator<Activity> importanceComparator = Comparator.comparingInt(Activity::getImportanceAsInt);
-                FXCollections.sort(internalList, importanceComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), importanceComparator);
+                model.sortActivityList(importanceComparator);
                 return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
 
             case SortCommand.KEYWORD_DATE:
                 Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
-                FXCollections.sort(internalList, dateComparator);
-                FXCollections.sort(model.getObservableDirectory().getObservableActivityList(), dateComparator);
+                model.sortActivityList(dateComparator);
                 return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME));
 
             default:
