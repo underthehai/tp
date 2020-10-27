@@ -8,14 +8,13 @@ import javafx.collections.ObservableList;
 import seedu.address.model.Directory;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
-import seedu.address.model.commons.ReadOnlyActivityList;
 import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Wraps all data at the travel plan level
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class Wishlist extends Directory implements ReadOnlyActivityList {
+public class Wishlist extends Directory {
 
     private final UniqueActivityList activities;
 
@@ -33,9 +32,9 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     public Wishlist() {}
 
     /**
-     * Creates an Wishlist using the Activitys in the {@code toBeCopied}
+     * Creates an Wishlist using the Activities in the {@code toBeCopied}
      */
-    public Wishlist(ReadOnlyActivityList toBeCopied) {
+    public Wishlist(Wishlist toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -53,10 +52,10 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     /**
      * Resets the existing data of this {@code Wishlist} with {@code newData}.
      */
-    public void resetData(ReadOnlyActivityList newData) {
+    public void resetData(Wishlist newData) {
         requireNonNull(newData);
 
-        setActivities(newData.getActivityList());
+        setActivities(newData.getObservableActivityList());
     }
 
     //// activity-level operations
@@ -134,12 +133,11 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(" Wishlist: ");
-        getActivityList().forEach(builder::append);
+        getObservableActivityList().forEach(builder::append);
         return builder.toString();
     }
 
-    @Override
-    public ObservableList<Activity> getActivityList() {
+    public ObservableList<Activity> getObservableActivityList() {
         return activities.asUnmodifiableObservableList();
     }
 

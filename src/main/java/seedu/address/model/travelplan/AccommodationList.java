@@ -7,16 +7,15 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.accommodation.UniqueAccommodationList;
-import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of Accommodations in a travel plan
  * Duplicates are not allowed (by .isSameAccommodation comparison)
  */
-public class AccommodationList implements ReadOnlyAccommodationList {
+public class AccommodationList {
 
     public static final ObservableList<Accommodation> EMPTY_ACCOMMODATION_LIST =
-            new AccommodationList().getAccommodationList();
+            new AccommodationList().getObservableAccommodationList();
 
     private final UniqueAccommodationList accommodations;
 
@@ -36,7 +35,7 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     /**
      * Creates an AccommodationList using the Accommodations in the {@code toBeCopied}
      */
-    public AccommodationList(ReadOnlyAccommodationList toBeCopied) {
+    public AccommodationList(AccommodationList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -54,10 +53,10 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     /**
      * Resets the existing data of this {@code AccommodationList} with {@code newData}.
      */
-    public void resetData(ReadOnlyAccommodationList newData) {
+    public void resetData(AccommodationList newData) {
         requireNonNull(newData);
 
-        setAccommodations(newData.getAccommodationList());
+        setAccommodations(newData.getObservableAccommodationList());
     }
 
     //// accommodation-level operations
@@ -104,17 +103,12 @@ public class AccommodationList implements ReadOnlyAccommodationList {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(" Accommodations: ");
-        getAccommodationList().forEach(builder::append);
+        getObservableAccommodationList().forEach(builder::append);
         return builder.toString();
     }
 
-    @Override
-    public ObservableList<Accommodation> getAccommodationList() {
+    public ObservableList<Accommodation> getObservableAccommodationList() {
         return accommodations.asUnmodifiableObservableList();
-    }
-
-    public ObservableList<TravelPlanObject> getTpoList() {
-        return accommodations.asUnmodifiableObservableTpoList();
     }
 
     @Override

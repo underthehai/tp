@@ -7,16 +7,14 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
-import seedu.address.model.commons.ReadOnlyActivityList;
-import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of activities in a travel plan
  * Duplicates are not allowed (by .isSameTravelPlan comparison)
  */
-public class ActivityList implements ReadOnlyActivityList {
+public class ActivityList {
 
-    public static final ObservableList<Activity> EMPTY_ACTIVITY_LIST = new ActivityList().getActivityList();
+    public static final ObservableList<Activity> EMPTY_ACTIVITY_LIST = new ActivityList().getObservableActivityList();
     private final UniqueActivityList activities;
 
     /*
@@ -35,7 +33,7 @@ public class ActivityList implements ReadOnlyActivityList {
     /**
      * Creates an ActivityList using the Activities in the {@code toBeCopied}
      */
-    public ActivityList(ReadOnlyActivityList toBeCopied) {
+    public ActivityList(ActivityList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -53,10 +51,10 @@ public class ActivityList implements ReadOnlyActivityList {
     /**
      * Resets the existing data of this {@code ActvityList} with {@code newData}.
      */
-    public void resetData(ReadOnlyActivityList newData) {
+    public void resetData(ActivityList newData) {
         requireNonNull(newData);
 
-        setActivities(newData.getActivityList());
+        setActivities(newData.getObservableActivityList());
     }
 
     //// activity-level operations
@@ -103,17 +101,12 @@ public class ActivityList implements ReadOnlyActivityList {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(" Activities: ");
-        getActivityList().forEach(builder::append);
+        getObservableActivityList().forEach(builder::append);
         return builder.toString();
     }
 
-    @Override
-    public ObservableList<Activity> getActivityList() {
+    public ObservableList<Activity> getObservableActivityList() {
         return activities.asUnmodifiableObservableList();
-    }
-
-    public ObservableList<TravelPlanObject> getTpoList() {
-        return activities.asUnmodifiableObservableTpoList();
     }
 
     @Override
