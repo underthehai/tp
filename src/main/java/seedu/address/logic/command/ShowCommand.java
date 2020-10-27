@@ -27,7 +27,7 @@ public class ShowCommand extends Command {
             + "Example: " + COMMAND_WORD + " -activity";
 
     public static final String MESSAGE_SHOW_SUCCESS = "show: %1$s";
-    
+
     private final String travelPlanObjectString;
 
     private final int travelPlanObjectType;

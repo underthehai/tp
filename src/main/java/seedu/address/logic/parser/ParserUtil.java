@@ -5,7 +5,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.command.ShowCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
