@@ -2,6 +2,10 @@ package seedu.address.logic.command;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
+import static seedu.address.logic.parser.ParserUtil.INVALID_INDEX;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -17,15 +21,16 @@ public class ShowCommand extends Command {
     public static final String COMMAND_WORD = "show";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Show the respective travel plan object tab identified by the keyword.\n"
+            + ": Shows the respective list of travel plan object type identified by the keyword.\n"
             + "Parameters: travelPlanObjectType\n"
+            + "Valid keywords: '-activity', '-accommodation', '-friend'\n"
             + "Example: " + COMMAND_WORD + " -activity";
 
     public static final String MESSAGE_SHOW_SUCCESS = "show: %1$s";
-
+    
     private final String travelPlanObjectString;
 
-    private int travelPlanObjectType;
+    private final int travelPlanObjectType;
 
     /**
      * Constructor for ShowCommand.
@@ -33,27 +38,33 @@ public class ShowCommand extends Command {
      */
     public ShowCommand(String travelPlanObjectType) {
         travelPlanObjectString = travelPlanObjectType;
-        if (travelPlanObjectString.equals(Activity.TPO_WORD)) {
-            this.travelPlanObjectType = 0;
-        } else if (travelPlanObjectString.equals(Accommodation.TPO_WORD)) {
-            this.travelPlanObjectType = 1;
-        } else if (travelPlanObjectString.equals(Friend.TPO_WORD)) {
-            this.travelPlanObjectType = 2;
-        } else {
-            this.travelPlanObjectType = -1;
+        switch (travelPlanObjectType) {
+        case Activity.TPO_WORD:
+            this.travelPlanObjectType = ACTIVITY_INDEX;
+            break;
+        case Accommodation.TPO_WORD:
+            this.travelPlanObjectType = ACCOMMODATION_INDEX;
+            break;
+        case Friend.TPO_WORD:
+            this.travelPlanObjectType = FRIEND_INDEX;
+            break;
+        default:
+            this.travelPlanObjectType = INVALID_INDEX;
+            break;
         }
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        boolean isDirectoryTravelPlan = model.isDirectoryTypeTravelPlan();
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+        boolean isWishlist = !isTravelPlan;
 
-        if (!isDirectoryTravelPlan && travelPlanObjectType != 0) {
+        if (isWishlist && travelPlanObjectType != ACTIVITY_INDEX) {
             throw new CommandException(Messages.MESSAGE_INVALID_SHOW_AT_WISHLIST);
         }
 
-        if (travelPlanObjectType < 0) {
+        if (travelPlanObjectType == INVALID_INDEX) {
             throw new CommandException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
         }
