@@ -34,7 +34,6 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private int directoryIndex;
 
-
     // Ui
     private final FilteredList<TravelPlan> filteredTravelPlans;
     private final FilteredList<Activity> filteredWishlist;
@@ -179,8 +178,6 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
-        directory = this.travelPlanner.getWishlist();
-
         if (index == -1) {
             directoryIndex = -1;
             directory = travelPlanner.getWishlist();
