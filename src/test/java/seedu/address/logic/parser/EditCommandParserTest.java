@@ -7,8 +7,6 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.command.add.AddCommand;
-import seedu.address.logic.command.edit.EditActivityCommand;
 import seedu.address.logic.command.edit.EditCommand;
 import seedu.address.logic.command.edit.EditDescriptor;
 import seedu.address.logic.command.edit.EditFriendCommand;

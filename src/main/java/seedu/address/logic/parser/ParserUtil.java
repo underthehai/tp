@@ -35,7 +35,7 @@ public class ParserUtil {
         try {
             Integer.parseInt(oneBasedIndex);
         } catch (java.lang.NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.SPECIFY_INDEX));
+            throw new ParseException(EditActivityCommand.SPECIFY_INDEX);
         }
 
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
