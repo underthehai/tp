@@ -1,9 +1,11 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.command.edit.EditActivityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
@@ -29,6 +31,13 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
+
+        try{
+            Integer.parseInt(oneBasedIndex);
+        } catch (java.lang.NumberFormatException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.SPECIFY_INDEX));
+        }
+
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }

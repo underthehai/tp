@@ -31,7 +31,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      * and returns an EditCommand object for execution.
      * Ensures that the type of edited object, index, tags are specified and valid
      *
-     * @param  args a String that had specified an edit command
+     * @param args a String that had specified an edit command
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditCommand parse(String args) throws ParseException {
@@ -71,69 +71,52 @@ public class EditCommandParser implements Parser<EditCommand> {
     }
 
     EditActivityCommand parseActivity(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index index = ParserUtil.parseIndex(keywords[2]);
 
-            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
-                    PREFIX_LOCATION, PREFIX_DATETIME);
-            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+        String[] keywords = args.split(" ");
 
-            return new EditActivityCommand(index, editDescriptor);
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditActivityCommand.SPECIFY_INDEX));
-        }
+
+        Index index = ParserUtil.parseIndex(keywords[2]);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
+                PREFIX_LOCATION, PREFIX_DATETIME);
+        EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+
+        return new EditActivityCommand(index, editDescriptor);
+
     }
 
     EditAccommodationCommand parseAccommodation(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index index = ParserUtil.parseIndex(keywords[2]);
-            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
-                    PREFIX_START, PREFIX_END);
-            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 
-            return new EditAccommodationCommand(index, editDescriptor);
-        } catch (ParseException e) {
-            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditAccommodationCommand.MESSAGE_USAGE)));
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditAccommodationCommand.SPECIFY_INDEX));
-        }
+        String[] keywords = args.split(" ");
+        Index index = ParserUtil.parseIndex(keywords[2]);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
+                PREFIX_START, PREFIX_END);
+        EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+
+        return new EditAccommodationCommand(index, editDescriptor);
+
     }
 
     EditFriendCommand parseFriend(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index index = ParserUtil.parseIndex(keywords[2]);
-            ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
-                    PREFIX_MOBILE);
-            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
 
-            return new EditFriendCommand(index, editDescriptor);
-        } catch (ParseException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditFriendCommand.MESSAGE_USAGE));
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditFriendCommand.SPECIFY_INDEX));
-        }
+        String[] keywords = args.split(" ");
+        Index index = ParserUtil.parseIndex(keywords[2]);
+        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
+                PREFIX_MOBILE);
+        EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
+
+        return new EditFriendCommand(index, editDescriptor);
+
     }
 
     EditTravelPlanCommand parseTravelPlan(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index index = ParserUtil.parseIndex(keywords[2]);
-            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
-            EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 
-            return new EditTravelPlanCommand(index, editDescriptor);
-        } catch (ParseException e) {
-            throw new ParseException((String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditTravelPlanCommand.MESSAGE_USAGE)));
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditTravelPlanCommand.SPECIFY_INDEX));
-        }
+        String[] keywords = args.split(" ");
+        Index index = ParserUtil.parseIndex(keywords[2]);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
+        EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
+
+        return new EditTravelPlanCommand(index, editDescriptor);
+
     }
 
 
