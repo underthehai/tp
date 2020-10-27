@@ -21,6 +21,11 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
+    public static final int ACTIVITY_INDEX = 0;
+    public static final int ACCOMMODATION_INDEX = 1;
+    public static final int FRIEND_INDEX = 2;
+
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.

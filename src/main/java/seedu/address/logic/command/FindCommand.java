@@ -5,12 +5,17 @@ import static seedu.address.commons.core.Messages.MESSAGE_ACCOMMODATIONS_LISTED_
 import static seedu.address.commons.core.Messages.MESSAGE_ACTIVITIES_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_FRIENDS_LISTED_OVERVIEW;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.logic.command.exceptions.CommandException;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.Model;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all travel plan object in Wanderlust whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
+ * Wishlist can only find activity while travelplan can find all travel plan objects
  */
 public class FindCommand extends Command {
 
@@ -28,8 +33,7 @@ public class FindCommand extends Command {
             + "Finds friends in the current travel plan using the format:\n"
             + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
 
-    public static final String MISSING_KEYWORDS = "Please provide at least one keyword";
-
+    public static final String MISSING_KEYWORDS = "Please provide at least one keyword to search for";
 
     private final NameContainsKeywordsPredicate predicate;
     private final int travelPlanObjectType;
@@ -37,37 +41,48 @@ public class FindCommand extends Command {
     /**
      * Constructor for FindCommand
      *
-     * @param predicate contains a list of strings to filter travel plan object list
+     * @param predicate            contains a list of strings to filter travel plan object list
      * @param travelPlanObjectType an integer to identify the type of travel plan object to find
      */
     public FindCommand(NameContainsKeywordsPredicate predicate, int travelPlanObjectType) {
+        requireNonNull(predicate);
+
+        assert travelPlanObjectType == ParserUtil.ACTIVITY_INDEX ||
+                travelPlanObjectType == ParserUtil.ACCOMMODATION_INDEX ||
+                travelPlanObjectType == ParserUtil.FRIEND_INDEX;
+
         this.predicate = predicate;
         this.travelPlanObjectType = travelPlanObjectType;
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (!model.isDirectoryTypeTravelPlan() && this.travelPlanObjectType != 0) { //wishlist
+            throw new CommandException(Messages.WRONG_DIRECTORY);
+        }
 
         String message = "";
         int size = 0;
 
-        if (this.travelPlanObjectType == 0) { //activity
+        if (this.travelPlanObjectType == ParserUtil.ACTIVITY_INDEX) {
             model.updateFilteredActivityList(predicate);
             message = MESSAGE_ACTIVITIES_LISTED_OVERVIEW;
             size = model.getFilteredActivityList().size();
 
-        } else if (this.travelPlanObjectType == 1) { //accommodation
+        } else if (this.travelPlanObjectType == ParserUtil.ACCOMMODATION_INDEX) {
             model.updateFilteredAccommodationList(predicate);
             message = MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW;
             size = model.getFilteredAccommodationList().size();
 
 
-        } else if (this.travelPlanObjectType == 2) { //friend
+        } else if (this.travelPlanObjectType == ParserUtil.FRIEND_INDEX) {
             model.updateFilteredFriendList(predicate);
             message = MESSAGE_FRIENDS_LISTED_OVERVIEW;
             size = model.getFilteredFriendList().size();
 
+        } else {
+            assert false;
         }
 
         return new CommandResult(

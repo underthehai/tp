@@ -40,13 +40,13 @@ public class FindCommandParser implements Parser<FindCommand> {
 
             switch (travelPlanObjectType) {
             case Friend.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 2);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), ParserUtil.FRIEND_INDEX);
 
             case Activity.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 0);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), ParserUtil.ACTIVITY_INDEX);
 
             case Accommodation.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 1);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), ParserUtil.ACCOMMODATION_INDEX);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
