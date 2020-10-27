@@ -8,8 +8,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.model.Directory;
-import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.model.wishlist.Wishlist;
+
 
 
 /**
