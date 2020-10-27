@@ -63,7 +63,7 @@ Command | Parameters | Description
 `delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
 `edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
 `goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
-`find -OBJECT` | `OBJECT` activity/ accommodation/ person | Finds the given object type whose names contain any of the given keywords
+`find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ person<br/> `KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
 
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
