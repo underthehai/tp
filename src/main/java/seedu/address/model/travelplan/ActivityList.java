@@ -8,6 +8,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
+import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Represents the list of activities in a travel plan
@@ -112,6 +113,14 @@ public class ActivityList {
 
     public ObservableList<Activity> getObservableActivityList() {
         return activities.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<TravelPlanObject> getTpoList() {
+        return activities.asUnmodifiableObservableTpoList();
+    }
+
+    public UniqueActivityList getModifiableActivityList() {
+        return activities;
     }
 
     @Override

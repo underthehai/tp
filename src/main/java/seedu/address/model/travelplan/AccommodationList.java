@@ -127,4 +127,8 @@ public class AccommodationList {
     public int hashCode() {
         return accommodations.hashCode();
     }
+
+    public UniqueAccommodationList getModifiableAccommodationList() {
+        return accommodations;
+    }
 }
