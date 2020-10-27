@@ -2,6 +2,7 @@ package seedu.address.model.travelplan;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -93,6 +94,10 @@ public class ActivityList {
      */
     public void removeActivity(Activity key) {
         activities.remove(key);
+    }
+
+    public void sort(Comparator<Activity> comparator) {
+        activities.sort(comparator);
     }
 
     //// util methods

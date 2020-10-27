@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -216,4 +217,12 @@ public interface Model {
     AccommodationList getAccommodationList();
 
     FriendList getFriendList();
+
+    void sortWishlist(Comparator<Activity> comparator);
+
+    void sortActivityList(Comparator<Activity> comparator);
+
+    void sortAccommodationList(Comparator<Accommodation> comparator);
+
+    void sortFriendList(Comparator<Friend> comparator);
 }

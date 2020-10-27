@@ -2,6 +2,7 @@ package seedu.address.model.wishlist;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -120,6 +121,10 @@ public class Wishlist extends Directory {
     public void remove(TravelPlanObject travelPlanObject) {
         assert travelPlanObject instanceof Activity;
         activities.remove((Activity) travelPlanObject);
+    }
+
+    public void sort(Comparator<Activity> comparator) {
+        activities.sort(comparator);
     }
 
     //// util methods

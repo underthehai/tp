@@ -334,6 +334,16 @@ public class ModelManager implements Model {
         return friendList;
     }
 
+    public void sortWishlist(Comparator<Activity> comparator) {
+        travelPlanner.sortWishlist(comparator);
+        observableDirectory.setObservableDirectory(directory);
+    }
+
+    public void sortActivityList(Comparator<Activity> comparator) {
+        activityList.sort(comparator);
+        observableDirectory.setObservableDirectory(directory);
+    }
+
     public void sortAccommodationList(Comparator<Accommodation> comparator) {
         accommodationList.sort(comparator);
         observableDirectory.setObservableDirectory(directory);
