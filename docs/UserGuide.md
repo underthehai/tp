@@ -40,6 +40,16 @@ It is optimized for CLI users so that destinations and details can be added fast
         2. [Editing an Activity (L)](#2-editing-an-activity-l)
         3. [Editing an Accommodation (L)](#3-editing-an-accommodation-l)
         4. [Editing a Person (L)](#4-editing-a-person-l)
+    * [Show](#show)
+        1. [Showing activity tab](#1-show-activity-tab)
+        2. [Showing accommodation tab](#2-show-accommodation-tab)
+        3. [Showing friend tab](#3-show-friend-tab)
+    * [Sort](#sort)
+        1. [Sorting by cost](#1-sort-by-cost)
+        2. [Sorting by date](#2-sort-by-date)
+        3. [Sorting by importance](#3-sort-by-importance)
+        4. [Sorting by name](#4-sort-by-name)
+    
 * [FAQ \[Coming soon\]](#faq-coming-soon)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -49,16 +59,17 @@ It is optimized for CLI users so that destinations and details can be added fast
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
 
-There are a total of 5 general commands.
+There are a total of 7 general commands.
 The table briefly describes the commands and its usage. Full details will be given in the next section.
 
 Command | Parameters | Description
 ------------ | ------------- | -------------
 `add -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Creates the given object type
-`delete -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Deletes the given object type
+`delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ person/ travelplan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
 `edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
 `goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
-
+`show -OBJECT` | `OBJECT` activity/ accommodation/ friend | Navigate to the specific travel plan object tab
+`sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br> `KEYWORD` cost/name/importance/date | Sorts the specific travel plan object based on the keyword
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
 
@@ -233,7 +244,7 @@ Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/Y
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15:00`
 
-#### 3. Editing an Accommodation (L)
+### 3. Editing an Accommodation (L)
 
 Edits an existing accommodation in the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing an accommodation.
@@ -242,7 +253,7 @@ Format: `edit -accommodation INDEX n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYY
 
 Example: `edit -accommodation 3 n/The Hotel l/Bukit Timah c/60 sd/2020-10-11 ed/2020-10-15`
 
-#### 4. Editing a Friend (L)
+### 4. Editing a Friend (L)
 
 Edits an existing friend in the in the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing a friend.
@@ -250,6 +261,74 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
 Example: `edit -friend 3 n/John m/91234567 p/E7654321`
+
+##Show
+
+### 1. Showing Activity Tab
+
+Switches the current Ui view to show Activity tab under the travel plan object panel.
+This command has no effect in a wishlist as a wishlist only contains activities.
+
+Format/ Example: `show -activity`
+
+### 2. Showing Accommodation Tab
+
+Switches the current Ui view to show Accommodation tab under the travel plan object panel.
+This command has no effect in a wishlist as a wishlist does not contain Accommodation.
+
+Format/ Example: `show -accommodation`
+
+### 3. Showing Friend Tab
+
+Switches the current Ui view to show Friend tab under the travel plan object panel.
+This command has no effect in a wishlist as a  wishlist does not contain Friend.
+
+Format/ Example: `show -friend`
+
+## Sort
+
+### 1. Sorting by cost
+
+Sorts the given travel plan object list in the order of increasing cost. 
+This command is only applicable to Activity list and Accommodation list.
+
+Format: `sort -OBJECT cost`
+
+Example: `sort -activity cost`
+
+### 2. Sorting by date
+
+Sorts the given travel plan object list in the order of increasing date. 
+This command is only applicable to Activity list and Accommodation list.
+
+For Activity, the command will sort the activity list by the date and time of each activity, starting
+from the activity with the earliest date and time.
+
+For Accommodation, the command will sort the accommodation list by the start date of each accommodation, 
+starting from the accommodation with the earliest start date.
+
+Format: `sort -OBJECT date`
+
+Example: `sort -accommodation date`
+
+### 3. Sorting by importance
+
+Sorts the given travel plan object list by its importance level, starting from the smallest level of importance. 
+This command is only applicable to Activity list.
+
+Format: `sort -OBJECT importance`
+
+Example: `sort -activity importance`
+
+### 4. Sorting by name
+
+Sorts the given travel plan object list by name. This command is applicable to 
+Activity list, Accommodation list and Friend list.
+
+Format: `sort -OBJECT name`
+
+Example: `sort -friend name`
+ 
 
 --------------------------------------------------------------------------------------------------------------------
 

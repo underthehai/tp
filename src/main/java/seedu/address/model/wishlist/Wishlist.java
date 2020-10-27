@@ -9,7 +9,9 @@ import javafx.collections.ObservableList;
 import seedu.address.model.Directory;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.UniqueActivityList;
+import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 
 /**
  * Wraps all data at the travel plan level
@@ -109,6 +111,11 @@ public class Wishlist extends Directory {
         activities.setActivity((Activity) target, (Activity) editedTravelPlanObject);
     }
 
+    @Override
+    public Name getName() {
+        return new Name("Wishlist");
+    }
+
     /**
      * Removes {@code key} from this {@code Wishlist}.
      * {@code key} must exist in the wishlist.
@@ -117,9 +124,26 @@ public class Wishlist extends Directory {
         activities.remove(key);
     }
 
+    public String getTotalCost() {
+        int totalCost = 0;
+        for (Activity activity : activities) {
+            totalCost += Integer.parseInt(activity.getCostAsString());
+        }
+        return Integer.toString(totalCost);
+    }
+
+    @Override
+    public WanderlustDate getStartDate() {
+        return null;
+    }
+
+    @Override
+    public WanderlustDate getEndDate() {
+        return null;
+    }
+
     @Override
     public void remove(TravelPlanObject travelPlanObject) {
-        assert travelPlanObject instanceof Activity;
         activities.remove((Activity) travelPlanObject);
     }
 
@@ -144,6 +168,10 @@ public class Wishlist extends Directory {
 
     public ObservableList<Activity> getObservableActivityList() {
         return activities.asUnmodifiableObservableList();
+    }
+
+    public UniqueActivityList getUniqueActivityList() {
+        return activities;
     }
 
     @Override
