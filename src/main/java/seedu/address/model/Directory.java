@@ -13,6 +13,14 @@ import seedu.address.model.commons.WanderlustDate;
 public abstract class Directory {
     public abstract ObservableList<Activity> getObservableActivityList();
 
+    public abstract Name getName();
+
+    public abstract String getTotalCost();
+
+    public abstract WanderlustDate getStartDate();
+
+    public abstract WanderlustDate getEndDate();
+
     public abstract boolean isTravelPlan();
 
     public abstract boolean has(TravelPlanObject travelPlanObject);
@@ -22,13 +30,5 @@ public abstract class Directory {
     public abstract void add(TravelPlanObject travelPlanObject);
 
     public abstract void set(TravelPlanObject target, TravelPlanObject editedTravelPlanObject);
-
-    public abstract Name getName();
-
-    public abstract String getTotalCost();
-
-    public abstract WanderlustDate getStartDate();
-
-    public abstract WanderlustDate getEndDate();
 
 }

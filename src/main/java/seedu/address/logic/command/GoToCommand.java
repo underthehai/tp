@@ -19,17 +19,23 @@ public class GoToCommand extends Command {
     public static final String WISHLIST = "wishlist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Go to the directory identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: -" + COMMAND_WORD + " 1";
+            + ": Go to the wishlist directory or travel plan directory identified by the index number used in the "
+            + "displayed travel plan list.\n"
+            + "Object Type: -" + TRAVEL_PLAN + "\n"
+            + "             -" + WISHLIST + "\n"
+            + "Parameters: INDEX (must be a positive integer, not needed for wishlist)\n"
+            + "Example: " + COMMAND_WORD + " -" + TRAVEL_PLAN + " 1\n"
+            + "         " + COMMAND_WORD + " -" + WISHLIST;
 
     public static final String MESSAGE_GOTO_SUCCESS = "goto directory: %1$s";
+
+    public static final int WISHLIST_DIRECTORY = -1;
 
     private final Index targetIndex;
     private final boolean isTravelPlan;
 
     /**
-     * Constructor for GoToCommand.
+     * Constructor for GoToCommand (travel plan).
      * @param targetIndex index of travel plan to goto.
      */
     public GoToCommand(Index targetIndex, boolean isTravelPlan) {
@@ -37,22 +43,34 @@ public class GoToCommand extends Command {
         this.isTravelPlan = isTravelPlan;
     }
 
+    /**
+     * Constructor for GoToCommand (wishlist).
+     */
+    public GoToCommand(boolean isTravelPlan) {
+        this.targetIndex = null;
+        this.isTravelPlan = isTravelPlan;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         assert model != null;
+
         if (isTravelPlan) {
             List<TravelPlan> lastShownList = model.getFilteredTravelPlanList();
 
-            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            assert targetIndex != null;
+            int zeroBasedIndex = targetIndex.getZeroBased();
+
+            if (zeroBasedIndex >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
             }
 
-            TravelPlan travelPlanToGo = lastShownList.get(targetIndex.getZeroBased());
-            model.setDirectory(targetIndex.getZeroBased());
+            TravelPlan travelPlanToGo = lastShownList.get(zeroBasedIndex);
+            model.setDirectory(zeroBasedIndex);
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, TRAVEL_PLAN + " " + travelPlanToGo.getName()));
         } else {
-            model.setDirectory(-1);
+            model.setDirectory(WISHLIST_DIRECTORY);
             return new CommandResult(String.format(MESSAGE_GOTO_SUCCESS, WISHLIST));
         }
     }
