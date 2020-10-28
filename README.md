@@ -4,12 +4,12 @@ title: User Guide
 ---
 
 [![CI Status](https://github.com/AY2021S1-CS2103-T14-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103-T14-3/tp/actions)
+[![codecov](https://codecov.io/gh/AY2021S1-CS2103-T14-3/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2021S1-CS2103-T14-3/tp)
 
 ![Ui](docs/images/Ui.png)
 
 Travel inspirations come in bits and pieces.
 At the start of every travel planning, we often only have a vague idea of the activities we are interested in and not a concrete schedule that optimises our travel time and satisfaction.
-
 
 As a result, travel planning is often a hot mess with little structure.
 
