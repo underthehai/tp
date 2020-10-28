@@ -45,8 +45,7 @@ public class AccommodationCard extends UiPart<Region> {
         this.accommodation = accommodation;
         id.setText(displayedIndex + ". ");
         name.setText(accommodation.getName().toString());
-        startToEndDates.setText(accommodation.getStartDate().toString() + " to "
-                + accommodation.getEndDate().toString());
+        startToEndDates.setText(accommodation.dateString());
         cost.setText("Cost: $" + accommodation.getCost().toString());
         address.setText("Location: " + accommodation.getLocation().toString());
     }
