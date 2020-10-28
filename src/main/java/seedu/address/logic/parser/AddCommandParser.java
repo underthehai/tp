@@ -116,6 +116,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
 
+        if (startDate.getValue().compareTo(endDate.getValue()) > 0) {
+            throw new ParseException("end date should not be earlier than start date");
+        }
+
         Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
 
         return new AddAccommodationCommand(accommodation);

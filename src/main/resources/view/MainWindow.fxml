@@ -45,7 +45,7 @@
             <padding>
               <Insets left="20" />
             </padding>
-            <StackPane fx:id="travelPlanPanelPlaceholder" minHeight="50" VBox.vgrow="ALWAYS" />
+            <StackPane fx:id="travelPlanPanelPlaceholder" minHeight="50" />
             <StackPane fx:id="travelObjectListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </HBox>
