@@ -137,7 +137,7 @@ public class Accommodation extends TravelPlanObject {
                 .append("Address: ")
                 .append(getLocation()).append("\n")
                 .append("Cost: ")
-                .append(getCost());
+                .append(getCost()).append("\n");
         return builder.toString();
     }
 

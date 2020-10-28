@@ -106,8 +106,8 @@ public class ActivityList {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Activities: ");
-        getObservableActivityList().forEach(builder::append);
+        builder.append("Activities: \n");
+        getObservableActivityList().forEach(activity -> builder.append(activity).append("\n"));
         return builder.toString();
     }
 
