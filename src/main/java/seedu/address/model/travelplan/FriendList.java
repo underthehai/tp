@@ -104,8 +104,8 @@ public class FriendList {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Friends: ");
-        getObservableFriendList().forEach(builder::append);
+        builder.append("Friends: \n");
+        getObservableFriendList().forEach(friend -> builder.append(friend).append("\n"));
         return builder.toString();
     }
 
