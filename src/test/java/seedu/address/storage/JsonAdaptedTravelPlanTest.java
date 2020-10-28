@@ -26,31 +26,31 @@ public class JsonAdaptedTravelPlanTest {
     private static final String INVALID_ACCOMMODATION_NAME = "ASDF^%&";
     private static final String INVALID_FRIEND_NAME = "!@#ADSF";
 
-    private static final String VALID_NAME = AUSTRALIA_TRIP.getName().name;
-    private static final String VALID_START_DATE = AUSTRALIA_TRIP.getStartDate().date;
-    private static final String VALID_END_DATE = AUSTRALIA_TRIP.getEndDate().date;
+    private static final String VALID_NAME = AUSTRALIA_TRIP.getName().getValue();
+    private static final String VALID_START_DATE = AUSTRALIA_TRIP.getStartDate().getDate();
+    private static final String VALID_END_DATE = AUSTRALIA_TRIP.getEndDate().getDate();
     private static final List<JsonAdaptedActivity> VALID_ACTIVITIES = AUSTRALIA_TRIP.getObservableActivityList()
             .stream()
             .map(JsonAdaptedActivity::new)
             .collect(Collectors.toList());
-    private static final String VALID_ACTIVITY_LOCATION = ARCHERY.getLocation().value;
-    private static final String VALID_ACTIVITY_COST = ARCHERY.getCost().value;
-    private static final String VALID_ACTIVITY_IMPORTANCE = ARCHERY.getLevelOfImportance().value;
-    private static final String VALID_ACTIVITY_DATE_TIME = ARCHERY.getActivityDateTime().dateTime;
+    private static final String VALID_ACTIVITY_LOCATION = ARCHERY.getLocation().getValue();
+    private static final String VALID_ACTIVITY_COST = ARCHERY.getCost().getValue();
+    private static final String VALID_ACTIVITY_IMPORTANCE = ARCHERY.getLevelOfImportance().getValue();
+    private static final String VALID_ACTIVITY_DATE_TIME = ARCHERY.getActivityDateTime().getDateTime();
     private static final List<JsonAdaptedAccommodation> VALID_ACCOMMODATIONS = AUSTRALIA_TRIP
             .getObservableAccommodationList()
             .stream()
             .map(JsonAdaptedAccommodation::new)
             .collect(Collectors.toList());
-    private static final String VALID_ACCOMMODATION_START_DATE = ALICEHOTEL.getStartDate().date;
-    private static final String VALID_ACCOMMODATION_END_DATE = ALICEHOTEL.getEndDate().date;
-    private static final String VALID_ACCOMMODATION_COST = ALICEHOTEL.getCost().value;
-    private static final String VALID_ACCOMMODATION_LOCATION = ALICEHOTEL.getLocation().value;
+    private static final String VALID_ACCOMMODATION_START_DATE = ALICEHOTEL.getStartDate().getDate();
+    private static final String VALID_ACCOMMODATION_END_DATE = ALICEHOTEL.getEndDate().getDate();
+    private static final String VALID_ACCOMMODATION_COST = ALICEHOTEL.getCost().getValue();
+    private static final String VALID_ACCOMMODATION_LOCATION = ALICEHOTEL.getLocation().getValue();
     private static final List<JsonAdaptedFriend> VALID_FRIENDS = AUSTRALIA_TRIP.getObservableFriendList().stream()
             .map(JsonAdaptedFriend::new)
             .collect(Collectors.toList());
-    private static final String VALID_FRIEND_PASSPORT = ALICE.getPassport().value;
-    private static final String VALID_FRIEND_PHONE = ALICE.getMobile().value;
+    private static final String VALID_FRIEND_PASSPORT = ALICE.getPassport().getValue();
+    private static final String VALID_FRIEND_PHONE = ALICE.getMobile().getValue();
 
     @Test
     public void toModelType_validTravelPlanDetails_returnsTravelPlan() throws Exception {
