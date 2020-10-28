@@ -94,7 +94,7 @@ public class AddAccommodationCommandTest {
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the accommodation being added.
      */
     private class ModelStubAcceptingAccommodationAdded extends ModelStub {
         final ArrayList<Accommodation> accommodationsAdded = new ArrayList<>();
