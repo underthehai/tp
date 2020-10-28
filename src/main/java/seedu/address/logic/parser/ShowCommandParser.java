@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.logic.command.ShowCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -22,8 +24,7 @@ public class ShowCommandParser implements Parser<ShowCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
         }
         String[] keywords = args.split(" ");
-        String travelPlanObjectType = keywords[1].substring(1);
+        String travelPlanObjectType = removeDash(keywords[OBJECT_TYPE_POSITION], ShowCommand.MESSAGE_USAGE);
         return new ShowCommand(travelPlanObjectType);
-
     }
 }
