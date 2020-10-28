@@ -61,7 +61,7 @@ It is optimized for CLI users so that destinations and details can be added fast
     * [Help](#help)
         1. [Refer to UserGuide (G)](#1-refer-to-userguide-g)
     * [Exit](#exit)
-        1. [Exiting the application (G)](#1-exiting-the-application)
+        1. [Exiting the application (G)](#1-exiting-the-application-g)
 * [FAQ \[Coming soon\]](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -178,10 +178,10 @@ is `wishlist`.<br/>
 
 
 #### Wishlist
-![](images/WanderlustScreenshots/Goto Wishlist.png)
+![](images/WanderlustScreenshots/GotoWishlist.png)
 
 #### TravelPlan 1
-![](images/WanderlustScreenshots/Goto Travelplan.png)
+![](images/WanderlustScreenshots/GotoTravelPlan.png)
 
 
 
@@ -198,7 +198,7 @@ Format: `goto -travelplan INDEX`
 
 Example: `goto -travelplan 2`
 
-![](images/WanderlustScreenshots/Goto Travelplan.png)
+![](images/WanderlustScreenshots/GotoTravelPlan.png)
 
 ### 2. Goto Wishlist (G)
 Navigates the UI to the wishlist.
@@ -206,7 +206,7 @@ Navigates the UI to the wishlist.
 Format: `goto -wishlist`
 
 Example: `goto -wishlist`
-![](images/WanderlustScreenshots/Goto Wishlist.png)
+![](images/WanderlustScreenshots/GotoWishlist.png)
 
 
 ## Add
@@ -220,7 +220,7 @@ Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
 Example: `add -travelplan n/France sd/2020-09-15 ed/2020-09-30`
 
-![](images/WanderlustScreenshots/Add France Travelplan.png)
+![](images/WanderlustScreenshots/AddFranceTravelplan.png)
 
 
 ### 2. Adding an Activity (L)
@@ -304,7 +304,7 @@ Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/Y
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15:00`
 
-![](images/WanderlustScreenshots/Edit Activity.png)
+![](images/WanderlustScreenshots/EditActivity.png)
 
 
 ### 3. Editing an Accommodation (L)
@@ -343,7 +343,7 @@ Format: `find -activity KEYWORD [MORE_KEYWORDS]`
 
 Example: `find -activity ice`
 
-![](images/WanderlustScreenshots/Find Activity Ice.png)
+![](images/WanderlustScreenshots/FindActivityIce.png)
 
 
 ### 2. Finding accommodations (L)
@@ -380,7 +380,7 @@ This command has no effect in a wishlist as a wishlist does not contain Accommod
 
 Format/ Example: `show -accommodation`
 
-![](images/WanderlustScreenshots/Show Accommodation Tab.png)
+![](images/WanderlustScreenshots/ShowAccommodationTab.png)
 
 
 ### 3. Showing Friend Tab (L)
@@ -401,7 +401,7 @@ Format: `sort -OBJECT cost`
 
 Example: `sort -activity cost`
 
-![](images/WanderlustScreenshots/Sort Cost Activity.png)
+![](images/WanderlustScreenshots/SortCostActivity.png)
 
 
 ### 2. Sorting by date (L)
@@ -419,7 +419,7 @@ Format: `sort -OBJECT date`
 
 Example: `sort -accommodation date`
 
-![](images/WanderlustScreenshots/Sort DateTime Accommodation.png)
+![](images/WanderlustScreenshots/SortDateTimeAccommodation.png)
 
 
 ### 3. Sorting by importance (L)
