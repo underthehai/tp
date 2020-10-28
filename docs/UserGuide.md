@@ -15,11 +15,11 @@ It is optimized for CLI users so that destinations and details can be added fast
 * [Introduction](#introduction)
 * [Setting Up \[Coming soon\]](#setting-up-coming-soon)
 * [Command Summary](#command-summary)
-* [Tags](#tags)
-    * [Activity Tags](#activity-tags)
-    * [Accommodation Tags](#accommodation-tags)
-    * [Friend Tags](#friend-tags)
-    * [Travel Plan Tags](#travel-plan-tags)
+* [Parameters](#parameters)
+    * [Activity Tags](#activity-parameters)
+    * [Accommodation Tags](#accommodation-parameters)
+    * [Friend Tags](#friend-parameters)
+    * [Travel Plan Tags](#travel-plan-parameters)
 * [Features](#features)
     * [Goto](#goto)
         1. [Goto a Travel Plan (G)](#1-goto-a-travel-plan-g)
@@ -80,13 +80,13 @@ Command | Parameters | Description
 `sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` cost/ name/ importance/ date | Sorts the specific travel plan object based on the keyword
 `move ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX` index of activity in wishlist <br/>`TRAVELPLAN_INDEX` index of travelplan | Moves the specific activity from wishlist to the specific travel plan
 --------------------------------------------------------------------------------------------------------------------
-## Tags
+## Parameters
 
-The table below shows the type of tag each different object can be assigned to.
-Do note that tags are compulsory when creating the object.
+The table below shows the type of parameters each different object requires.
+Do note that parameters are compulsory when creating the object.
 
-#### Activity Tags
-Name of Tag | Description
+#### Activity Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the activity.
 `l/LOCATION` | Location/ Address of the activity.
@@ -95,8 +95,8 @@ Name of Tag | Description
 `d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
 
 
-#### Accommodation Tags
-Name of Tag | Description
+#### Accommodation Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the accommodation.
 `l/LOCATION` | Location/ Address of the accommodation.
@@ -104,15 +104,15 @@ Name of Tag | Description
 `sd/START_DATE` | Start date of accommodation in the format of DD-MM-YYYY
 `ed/END_DATE` | End date of accommodation in the format of DD-MM-YYYY
 
-#### Friend Tags
-Name of Tag | Description
+#### Friend Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the friend.
 `m/MOBILE_NUMBER` | Mobile number of the person cell mobile
 `p/PASSPORT_NUMBER` | Passport number of the person passport
 
-#### Travel Plan Tags
-Name of Tag | Description
+#### Travel Plan Parameters
+Name of Parameters | Description
 ------------ | -------------
 `n/NAME` | Name of the travel plan.
 `sd/START_DATE` | Start date of travel in the format of DD-MM-YYYY
