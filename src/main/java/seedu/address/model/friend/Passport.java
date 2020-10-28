@@ -13,7 +13,7 @@ public class Passport {
     public static final String MESSAGE_CONSTRAINTS =
             "Passport numbers should only contain 1 character and 7 numbers";
     public static final String VALIDATION_REGEX = "\\w\\d{7}";
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code Passport}.
@@ -31,6 +31,10 @@ public class Passport {
      */
     public static boolean isValidPassport(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

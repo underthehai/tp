@@ -44,11 +44,11 @@ public class JsonAdaptedActivity {
      * Converts a given {@code Activity} into this class for Jackson use.
      */
     public JsonAdaptedActivity(Activity source) {
-        name = source.getName().name;
-        location = source.getLocation().value;
-        cost = source.getCost().value;
-        importance = source.getLevelOfImportance().value;
-        dateTime = source.getActivityDateTime().dateTime;
+        name = source.getName().getValue();
+        location = source.getLocation().getValue();
+        cost = source.getCost().getValue();
+        importance = source.getLevelOfImportance().getValue();
+        dateTime = source.getActivityDateTime().getDateTime();
     }
 
     /**

@@ -122,7 +122,7 @@ public class UniqueActivityList implements Iterable<Activity> {
      */
     public ObservableList<TravelPlanObject> asUnmodifiableObservableTpoList() {
         return internalList.stream().map(item -> (TravelPlanObject) item)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
+                .collect(Collectors.collectingAndThen(Collectors.toList(), FXCollections::observableArrayList));
     }
 
     @Override

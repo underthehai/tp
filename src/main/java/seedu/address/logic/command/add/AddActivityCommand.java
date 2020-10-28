@@ -29,8 +29,8 @@ public class AddActivityCommand extends AddCommand {
             + PREFIX_NAME + "Universal Studios Singapore "
             + PREFIX_IMPORTANCE + "5 "
             + PREFIX_LOCATION + "Sentosa "
-            + PREFIX_COST + "SGD88 "
-            + PREFIX_DATETIME + "16-09-2020 "
+            + PREFIX_COST + "88 "
+            + PREFIX_DATETIME + "2020-09-16 "
             + PREFIX_TAG + "fun "
             + PREFIX_TAG + "theme park";
 
@@ -57,11 +57,14 @@ public class AddActivityCommand extends AddCommand {
             }
 
             model.addTravelPlanObject(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            assert model.getActivityList().hasActivity(toAdd) : "Activity was not added";
+
         } else {
             model.addActivity(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            assert model.getWishlist().hasActivity(toAdd) : "Activity was not added";
+
         }
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
     @Override
