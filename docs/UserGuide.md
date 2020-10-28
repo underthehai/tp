@@ -79,7 +79,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
 
-There are a total of 9 general commands.
+There are a total of 11 general commands.
 The table briefly describes the commands and its usage. Full details will be given in the next section.
 
 Command | Parameters | Description
@@ -89,6 +89,8 @@ Command | Parameters | Description
 `edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object| Edits the details of the given object type
 `goto -DIRECTORY` | `DIRECTORY` wishlist/ travelPlan with specified index | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
+`show -OBJECT` | OBJECT activity/ accommodation/ friend | Navigate to the specific travel plan object tab
+`sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` cost/ name/ importance/ date | Sorts the specific travel plan object based on the keyword
 `copy ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan | Copy over the specified activity from wishlist to the travelPlan
 `move ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan  | Move over the specified activity from wishlist to the travelPlan
 `exit` | |
