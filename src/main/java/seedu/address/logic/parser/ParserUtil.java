@@ -20,7 +20,7 @@ import seedu.address.model.friend.Passport;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned positive integer.";
     public static final int OBJECT_TYPE_POSITION = 1;
     public static final int INDEX_POSITION = 2;
 
@@ -38,7 +38,7 @@ public class ParserUtil {
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_INVALID_INDEX));
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
