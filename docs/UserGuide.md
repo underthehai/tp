@@ -79,7 +79,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
 
-There are a total of 7 general commands.
+There are a total of 9 general commands.
 The table briefly describes the commands and its usage. Full details will be given in the next section.
 
 Command | Parameters | Description
@@ -87,8 +87,12 @@ Command | Parameters | Description
 `add -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Creates the given object type
 `delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
 `edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Edits the details of the given object type
-`goto -TPLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
+`goto -DIRECTORY` | `DIRECTORY` wishlist/ travelPlan with specified index | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
+`copy ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan | Copy over the specified activity from wishlist to the travelPlan
+`move ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan  | Move over the specified activity from wishlist to the travelPlan
+`exit` | |
+`help`| |
 
 ## Directories
 
@@ -97,13 +101,15 @@ The table describes the list of commands available at each directory.
 
 Wishlist | TravelPlan
 ----------  | ---------
-`goto -OBJECT KEYWORD`|`goto -OBJECT KEYWORD`
+`goto -DIRECTORY`|`goto -DIRECTORY`
 `show -activity`| `show -OBJECT`
 `sort -activity` | `sort -OBJECT`
 `find -activity`| `find -OBJECT`
 `add -activity` |  `add -OBJECT`
 `delete -activity`| `delete -OBJECT`
 `edit -activity` | `edit -OBJECT`
+`move ACTIVITY_INDEX TRAVELPLAN INDEX`  |
+`copy ACTIVITY_INDEX TRAVELPLAN INDEX` |
 
 --------------------------------------------------------------------------------------------------------------------
 ## Parameters
@@ -122,27 +128,27 @@ Name of Parameter | Description
 
 
 #### Accommodation Parameters
-Name of Parameter | Description
------------- | -------------
-`n/NAME` | Name of the accommodation.
-`l/LOCATION` | Location/ Address of the accommodation.
-`c/cost` | Cost of the accommodation, if any.
-`sd/START_DATE` | Start date of accommodation in the format of YYYY-MM-DD
-`ed/END_DATE` | End date of accommodation in the format of YYYY-MM-DD
+Name of Parameter | Description | Requirement
+------------ | ------------- | -------
+`n/NAME` | Name of the accommodation. | 
+`l/LOCATION` | Location/ Address of the accommodation.|
+`c/cost` | Cost of the accommodation, if any. | Cost should only contain numbers, and it should be a positive integer
+`sd/START_DATE` | Start date of accommodation | Must be in the format of YYYY-MM-DD
+`ed/END_DATE` | End date of accommodation | Must be in the format of YYYY-MM-DD
 
 #### Friend Parameters
-Name of Parameter | Description
------------- | -------------
-`n/NAME` | Name of the friend.
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile
-`p/PASSPORT_NUMBER` | Passport number of the friend passport
+Name of Parameter | Description | Requirement
+------------ | ------------- | ----------
+`n/NAME` | Name of the friend. |
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be 8 digits only
+`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future)
 
 #### Travel Plan Parameters
-Name of Parameters | Description
------------- | -------------
-`n/NAME` | Name of the travel plan.
-`sd/START_DATE` | Start date of travel plan in the format of YYYY-MM-DD
-`ed/END_DATE` | End date of travel plan in the format of YYYY-MM-DD
+Name of Parameters | Description | Requirement
+------------ | ------------- | ---------
+`n/NAME` | Name of the travel plan. | 
+`sd/START_DATE` | Start date of travel plan| Must be in the format of YYYY-MM-DD
+`ed/END_DATE` | End date of travel plan | Must be in the format of YYYY-MM-DD
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -166,7 +172,7 @@ is `wishlist`.<br/>
 
 >Directories in Wanderlust include:
 >1. `wishlist`
->2. `travelplan index`<br/>
+>2. `travelplan INDEX`<br/>
 
 
 #### Wishlist
@@ -202,10 +208,11 @@ Example: `goto -wishlist`
 
 
 ## Add
+Refer to valid tags for each object [here](#parameters)
 
 ### 1. Adding a Travel Plan (G)
 Creates a new travel plan and adds it to Wanderlust’s travel planner.
-Start and end date can be optional, but they must exist as a pair. Format of date is in YYYY-MM-DD.
+Format of date is in YYYY-MM-DD.
 
 Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
@@ -276,6 +283,8 @@ Format: `delete -friend INDEX`
 Example: `delete -friend 1`
 
 ## Edit
+Refer to valid tags for each object [here](#parameters)
+
 
 ### 1. Editing a Travel Plan (G)
 
