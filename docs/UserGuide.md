@@ -58,6 +58,10 @@ It is optimized for CLI users so that destinations and details can be added fast
         1. [Copying an activity (L)](#1-copying-an-activity-l)
     * [Move](#move)
         1. [Moving an activity (L)](#1-moving-an-activity-l)
+    * [Help](#help)
+        1. [Refer to UserGuid (G)](#1-refer-to-userguide-g)
+    * [Exit](#exit)
+        1. [Exiting the application(G)](#1-exiting-the-application)
 * [FAQ \[Coming soon\]](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -446,6 +450,21 @@ This command can only be called when the directory is at the wishlist. Use `goto
 Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
 Example: `move 2 1`
+
+##Help
+
+### 1. Refer to UserGuide (G)
+
+A pop out button will provide a link to access Wanderlust UserGuide for help
+
+Format: `help`
+
+
+##Exit
+
+### 1. Exiting the application
+
+Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
