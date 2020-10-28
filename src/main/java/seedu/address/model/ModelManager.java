@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Nameable;
@@ -33,7 +34,6 @@ public class ModelManager implements Model {
     private final TravelPlanner travelPlanner;
     private final UserPrefs userPrefs;
     private int directoryIndex;
-
 
     // Ui
     private final FilteredList<TravelPlan> filteredTravelPlans;
@@ -167,6 +167,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void addActivity(Activity activity, Index travelPlanIndex) {
+        TravelPlan travelPlan = filteredTravelPlans.get(travelPlanIndex.getZeroBased());
+        travelPlan.add(activity);
+    }
+
+    @Override
     public void setActivity(Activity target, Activity editedActivity) {
         requireAllNonNull(target, editedActivity);
 
@@ -179,8 +185,6 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
-        directory = this.travelPlanner.getWishlist();
-
         if (index == -1) {
             directoryIndex = -1;
             directory = travelPlanner.getWishlist();
@@ -364,6 +368,12 @@ public class ModelManager implements Model {
     public void sortFriendList(Comparator<Friend> comparator) {
         friendList.sort(comparator);
         observableDirectory.setObservableDirectory(directory);
+    }
+
+    @Override
+    public void copyActivity(Activity activity, Index travelPlanIndex) {
+        Activity copiedActivity = new Activity(activity);
+        addActivity(copiedActivity, travelPlanIndex);
     }
 
     @Override
