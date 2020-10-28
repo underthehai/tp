@@ -213,7 +213,7 @@ public interface Model {
     boolean isDirectoryTypeTravelPlan();
 
     ObservableDirectory getObservableDirectory();
-
+    
     /**
      * Creates a deep copy of the activity and adds the deep copy to the travel plan at the
      * given index in the travel plan list.
