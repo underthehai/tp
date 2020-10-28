@@ -2,7 +2,7 @@
 layout: page
 title: User Guide
 ---
-# Wanderlust v1.2 User Guide
+# Wanderlust v1.3 User Guide
 
 ## Introduction
 
@@ -15,12 +15,12 @@ It is optimized for CLI users so that destinations and details can be added fast
 * [Introduction](#introduction)
 * [Setting Up \[Coming soon\]](#setting-up-coming-soon)
 * [Command Summary](#command-summary)
+* [Directories](#directories)
 * [Tags](#tags)
     * [Activity Tag](#activity-tag)
     * [Accommodation Tag](#accommodation-tag)
-    * [Person Tag](#person-tag)
+    * [Friend Tag](#friend-tag)
     * [Travel Plan Tag](#travel-plan-tag)
-    * [Wishlist Tag](#wishlist-tag)
 * [Features](#features)
     * [Goto](#goto)
         1. [Goto a Travel Plan (G)](#1-goto-a-travel-plan-g)
@@ -29,17 +29,17 @@ It is optimized for CLI users so that destinations and details can be added fast
         1. [Adding a Travel Plan (G)](#1-adding-a-travel-plan-g)
         2. [Adding an Activity (L)](#2-adding-an-activity-l)
         3. [Adding an Accommodation (L)](#3-adding-an-accommodation-l)
-        4. [Adding a Person (L)](#4-adding-a-person-l)
+        4. [Adding a Friend (L)](#4-adding-a-friend-l)
     * [Delete](#delete)
         1. [Deleting a Travel Plan (G)](#1-deleting-a-travel-plan-g)
         2. [Deleting an Activity (L)](#2-deleting-an-activity-l)
         3. [Deleting an Accommodation (L)](#3-deleting-an-accommodation-l)
-        4. [Deleting a Person (L)](#4-deleting-a-person-l)
+        4. [Deleting a Friend (L)](#4-deleting-a-friend-l)
     * [Edit](#edit)
         1. [Editing a Travel Plan (G)](#1-editing-a-travel-plan-g)
         2. [Editing an Activity (L)](#2-editing-an-activity-l)
         3. [Editing an Accommodation (L)](#3-editing-an-accommodation-l)
-        4. [Editing a Person (L)](#4-editing-a-person-l)
+        4. [Editing a Friend (L)](#4-editing-a-friend-l)
     * [Find](#find)
         1. [How it works](#how-it-works)
         2. [Finding activities (L)](#1-finding-activities-l)
@@ -68,13 +68,29 @@ The table briefly describes the commands and its usage. Full details will be giv
 
 Command | Parameters | Description
 ------------ | ------------- | -------------
-`add -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Creates the given object type
-`delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ person/ travelplan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
-`edit -OBJECT` | `OBJECT` activity/ accommodation/ person/ travelplan | Edits the details of the given object type
+`add -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelplan | Creates the given object type
+`delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelplan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
+`edit -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelplan | Edits the details of the given object type
 `goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend<br/> `KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
 `show -OBJECT` | `OBJECT` activity/ accommodation/ friend | Navigate to the specific travel plan object tab
 `sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br> `KEYWORD` cost/name/importance/date | Sorts the specific travel plan object based on the keyword
+--------------------------------------------------------------------------------------------------------------------
+## Directories
+
+There are two directories within Wanderlust. They are WishList and TravelPlan
+The table describes the list of commands available at each directory.
+
+Wishlist | TravelPlan
+----------  | ---------
+`goto -OBJECT KEYWORD`|`goto -OBJECT KEYWORD`
+`show -activity`| `show -OBJECT`
+`sort -activity` | `sort -OBJECT`
+`find -activity`| `find -OBJECT`
+`add -activity` |  `add -OBJECT`
+`delete -activity`| `delete -OBJECT`
+`edit -activity` | `edit -OBJECT`
+
 --------------------------------------------------------------------------------------------------------------------
 ## Tags
 
@@ -104,8 +120,8 @@ Name of Tag | Description
 Name of Tag | Description
 ------------ | -------------
 `n/NAME` | Name of the friend.
-`m/MOBILE_NUMBER` | Mobile number of the person cell mobile
-`p/PASSPORT_NUMBER` | Passport number of the person passport
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile
+`p/PASSPORT_NUMBER` | Passport number of the friend passport
 
 #### Travel Plan Tag
 Name of Tag | Description
@@ -148,7 +164,7 @@ globally and locally are tagged (G) and (L) respectively in the **features secti
 ### 1. Goto a Travel Plan (G)
 Navigates the UI to a specific travel plan.
 
-Format: `goto -travelplan index`
+Format: `goto -travelplan INDEX`
 
 Example: `goto -travelplan 2`
 
@@ -188,7 +204,7 @@ Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD
 Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2020-10-11 ed/2020-10-15`
 
 ### 4. Adding a Friend (L)
-Creates a person object that contains basic information about the user and
+Creates a friend object that contains basic information about the user and
 other travellers and adds it to the travel plan in the current directory.
 
 Format: `add -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
@@ -243,7 +259,7 @@ Example: `edit -travelplan 1 n/Paris sd/2020-10-11 ed/2020-10-15`
 
 ### 2. Editing an Activity (L)
 
-Edits an existing activity in the the travel plan/wishlist in the current directory.
+Edits an existing activity in the travel plan/wishlist in the current directory.
 
 Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
@@ -260,7 +276,7 @@ Example: `edit -accommodation 3 n/The Hotel l/Bukit Timah c/60 sd/2020-10-11 ed/
 
 ### 4. Editing a Friend (L)
 
-Edits an existing friend in the in the travel plan in the current directory.
+Edits an existing friend in the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing a friend.
 
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
