@@ -54,6 +54,10 @@ It is optimized for CLI users so that destinations and details can be added fast
         2. [Sorting by date (L)](#2-sort-by-date)
         3. [Sorting by importance (L)](#3-sort-by-importance)
         4. [Sorting by name (L)](#4-sort-by-name)
+    * [Copy](#copy)
+        1. [Copying an activity (L)](#1-copying-an-activity-l)
+    * [Move](#move)
+        1. [Moving an activity (L)](#1-moving-an-activity-l)
 * [FAQ \[Coming soon\]](#faq-coming-soon)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -369,6 +373,27 @@ Activity list, Accommodation list and Friend list.
 Format: `sort -OBJECT name`
 
 Example: `sort -friend name`
+
+## Copy
+
+### 1. Copying an Activity (L)
+
+Copies an activity at a given index from the wish list to a travel plan at a given index.
+
+Format: `copy ACTIVITY_INDEX TRAVELPLAN_INDEX`
+
+Example: `copy 2 1`
+
+## Move
+
+### 1. Moving an Activity (L)
+
+Moves an activity at a given index from the wish list to a travel plan at a given index. The moved activity will be 
+deleted from the wish list.
+
+Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
+
+Example: `move 2 1`
 
 --------------------------------------------------------------------------------------------------------------------
 
