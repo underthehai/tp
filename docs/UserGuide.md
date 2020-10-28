@@ -136,11 +136,11 @@ state of the current directory, which is changed using the goto command. On star
 is `wishlist`.<br/>
 <br/>
 
->Directories in Wanderlust include:
->1. `wishlist`
->2. `travelplan index`<br/>
-
+> Directories in Wanderlust include:
+> 1. `wishlist`
+> 2. `travelplan index`<br/>
 <br/>
+
 This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
 having to type their names in each command. This also means that **some commands can only be used locally within a
 certain directory, and responses to these commands will depend on the current directory.** Commands that can be used
