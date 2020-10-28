@@ -17,6 +17,8 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.travelplan.AccommodationList;
+import seedu.address.model.travelplan.FriendList;
 import seedu.address.testutil.builders.AccommodationBuilder;
 import seedu.address.testutil.typicals.TypicalAccommodations;
 
@@ -110,6 +112,13 @@ public class AddAccommodationCommandTest {
             requireNonNull(travelPlanObject);
             Accommodation accommodation = (Accommodation) travelPlanObject;
             accommodationsAdded.add(accommodation);
+        }
+
+        @Override
+        public AccommodationList getAccommodationList() {
+            AccommodationList accommodationList = new AccommodationList();
+            accommodationList.setAccommodations(accommodationsAdded);
+            return accommodationList;
         }
 
         @Override
