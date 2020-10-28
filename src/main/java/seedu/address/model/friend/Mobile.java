@@ -11,7 +11,7 @@ public class Mobile {
     public static final String MESSAGE_CONSTRAINTS =
             "Mobile numbers should only contain numbers, and it should be at least 8 digits long";
     public static final String VALIDATION_REGEX = "\\d{8}";
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code Mobile}.
@@ -29,6 +29,10 @@ public class Mobile {
      */
     public static boolean isValidMobile(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

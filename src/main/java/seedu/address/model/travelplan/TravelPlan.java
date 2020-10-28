@@ -1,5 +1,6 @@
 package seedu.address.model.travelplan;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -21,8 +22,6 @@ import seedu.address.model.friend.Friend;
  */
 public class TravelPlan extends Directory implements Nameable {
 
-    public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
-
     // Identity fields
     private final Name name;
     private final WanderlustDate startDate;
@@ -38,7 +37,7 @@ public class TravelPlan extends Directory implements Nameable {
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         requireAllNonNull(name, startDate, endDate);
-        checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_INVALID_STARTANDENDDATE);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -76,9 +75,9 @@ public class TravelPlan extends Directory implements Nameable {
      * Resets the existing data of this {@code TravelPlan} with {@code newData}.
      */
     public void resetData(TravelPlan newData) {
-        accommodations.resetData(newData.getAccommodations());
-        activities.resetData(newData.getActivities());
-        friends.resetData(newData.getFriends());
+        accommodations.resetData(newData.getAccommodationList());
+        activities.resetData(newData.getActivityList());
+        friends.resetData(newData.getFriendList());
     }
 
     /**
@@ -152,6 +151,23 @@ public class TravelPlan extends Directory implements Nameable {
         }
     }
 
+    /**
+     * Generates the total cost of the travel plan, considering the cost of activities and accommodations.
+     * @return String Total cost in string.
+     */
+    public String getTotalCost() {
+        int totalCost = 0;
+        for (int i = 0; i < activities.getObservableActivityList().size(); i++) {
+            Activity tempActivity = activities.getObservableActivityList().get(i);
+            totalCost += Integer.parseInt(tempActivity.getCostAsString());
+        }
+        for (int i = 0; i < accommodations.getObservableAccommodationList().size(); i++) {
+            Accommodation tempAccommodation = accommodations.getObservableAccommodationList().get(i);
+            totalCost += Integer.parseInt(tempAccommodation.getCostAsString());
+        }
+        return Integer.toString(totalCost);
+    }
+
     //// util methods
 
     //// travel plan identity methods
@@ -189,6 +205,14 @@ public class TravelPlan extends Directory implements Nameable {
                 || otherTravelPlan.getEndDate().equals(getEndDate()));
     }
 
+    public int getNumOfDays() {
+        return endDate.getValue().compareTo(startDate.getValue());
+    }
+
+    public String dateTitle() {
+        return getStartDate().toString() + " to " + getEndDate().toString() + " (" + getNumOfDays() + " days)";
+    }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -196,7 +220,8 @@ public class TravelPlan extends Directory implements Nameable {
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")
-                .append(getEndDate());
+                .append(getEndDate())
+                .append("(").append(getNumOfDays()).append(")").append("\n");
         builder.append(accommodations)
                 .append(activities)
                 .append(friends);
@@ -205,40 +230,28 @@ public class TravelPlan extends Directory implements Nameable {
 
     //// travel plan data methods
 
-    public AccommodationList getAccommodations() {
+    public AccommodationList getAccommodationList() {
         return accommodations;
     }
 
-    public ObservableList<Accommodation> getAccommodationList() {
-        return accommodations.getAccommodationList();
+    public ObservableList<Accommodation> getObservableAccommodationList() {
+        return accommodations.getObservableAccommodationList();
     }
 
-    public ObservableList<TravelPlanObject> getAccommodationTpoList() {
-        return accommodations.getTpoList();
-    }
-
-    public ActivityList getActivities() {
+    public ActivityList getActivityList() {
         return activities;
     }
 
-    public ObservableList<Activity> getActivityList() {
-        return activities.getActivityList();
+    public ObservableList<Activity> getObservableActivityList() {
+        return activities.getObservableActivityList();
     }
 
-    public ObservableList<TravelPlanObject> getActivityTpoList() {
-        return activities.getTpoList();
-    }
-
-    public FriendList getFriends() {
+    public FriendList getFriendList() {
         return friends;
     }
 
-    public ObservableList<Friend> getFriendList() {
-        return friends.getFriendList();
-    }
-
-    public ObservableList<TravelPlanObject> getFriendTpoList() {
-        return friends.getTpoList();
+    public ObservableList<Friend> getObservableFriendList() {
+        return friends.getObservableFriendList();
     }
 
     @Override

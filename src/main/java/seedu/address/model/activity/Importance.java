@@ -13,7 +13,7 @@ public class Importance {
                     + "the most important while 1 being the least important";
 
     public static final String VALIDATION_REGEX = "[1-5]";
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code Importance}.
@@ -24,6 +24,11 @@ public class Importance {
         requireNonNull(importanceLevel);
         checkArgument(isValidImportance(importanceLevel), MESSAGE_CONSTRAINTS);
         value = importanceLevel;
+    }
+
+
+    public String getValue() {
+        return value;
     }
 
     /**

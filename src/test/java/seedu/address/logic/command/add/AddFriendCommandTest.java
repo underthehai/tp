@@ -17,6 +17,7 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.friend.Friend;
+import seedu.address.model.travelplan.FriendList;
 import seedu.address.testutil.builders.FriendBuilder;
 import seedu.address.testutil.typicals.TypicalFriends;
 
@@ -92,7 +93,7 @@ public class AddFriendCommandTest {
     }
 
     /**
-     * A Model stub that always accept the activity being added.
+     * A Model stub that always accept the friend being added.
      */
     private class ModelStubAcceptingFriendAdded extends ModelStub {
         final ArrayList<Friend> friendsAdded = new ArrayList<>();
@@ -109,6 +110,13 @@ public class AddFriendCommandTest {
             requireNonNull(travelPlanObject);
             Friend friend = (Friend) travelPlanObject;
             friendsAdded.add(friend);
+        }
+
+        @Override
+        public FriendList getFriendList() {
+            FriendList friendList = new FriendList();
+            friendList.setFriends(friendsAdded);
+            return friendList;
         }
 
         @Override

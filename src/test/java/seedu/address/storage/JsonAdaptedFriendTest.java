@@ -17,9 +17,9 @@ public class JsonAdaptedFriendTest {
     private static final String INVALID_PASSPORT = "fddf934734";
     private static final String INVALID_PHONE = "+39347384";
 
-    private static final String VALID_NAME = ALICE.getName().name;
-    private static final String VALID_PASSPORT = ALICE.getPassport().value;
-    private static final String VALID_PHONE = ALICE.getMobile().value;
+    private static final String VALID_NAME = ALICE.getName().getValue();
+    private static final String VALID_PASSPORT = ALICE.getPassport().getValue();
+    private static final String VALID_PHONE = ALICE.getMobile().getValue();
 
     @Test
     public void toModelType_validFriendDetails_returnsFriend() throws Exception {

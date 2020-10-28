@@ -40,7 +40,7 @@ class UniqueFriendListTest {
     @Test
     public void contains_friendWithSameIdentityFieldsInList_returnsTrue() {
         uniqueFriendList.add(ALICE);
-        Friend editedAlice = new FriendBuilder().withName(ALICE.getName().name)
+        Friend editedAlice = new FriendBuilder().withName(ALICE.getName().getValue())
                 .build();
         assertTrue(uniqueFriendList.contains(editedAlice));
     }
@@ -83,7 +83,7 @@ class UniqueFriendListTest {
     @Test
     public void setFriend_editedFriendHasSameIdentity_success() {
         uniqueFriendList.add(ALICE);
-        Friend editedAlice = new FriendBuilder(ALICE).withMobile(BOB.getMobile().value)
+        Friend editedAlice = new FriendBuilder(ALICE).withMobile(BOB.getMobile().getValue())
                 .build();
         uniqueFriendList.setFriend(ALICE, editedAlice);
         UniqueFriendList expectedUniqueFriendList = new UniqueFriendList();

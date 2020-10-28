@@ -20,6 +20,8 @@ import seedu.address.model.friend.Passport;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final int OBJECT_TYPE_POSITION = 1;
+    public static final int INDEX_POSITION = 2;
 
     public static final int ACTIVITY_INDEX = 0;
     public static final int ACCOMMODATION_INDEX = 1;
