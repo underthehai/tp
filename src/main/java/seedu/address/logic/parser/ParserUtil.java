@@ -21,6 +21,8 @@ import seedu.address.model.friend.Passport;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final int OBJECT_TYPE_POSITION = 1;
+    public static final int INDEX_POSITION = 2;
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
