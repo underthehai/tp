@@ -20,31 +20,33 @@ public class SortCommandParser implements Parser<Command> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }
-
         try {
             String[] keywords = args.split(" ", 3);
             String travelPlanObjectType = keywords[1].substring(1);
-            String sortKeyword = keywords[2];
 
             switch (travelPlanObjectType) {
             case Activity.TPO_WORD:
-                return new SortActivityCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortActivityCommand.MESSAGE_USAGE));
+                }
+                return new SortActivityCommand(keywords[2]);
 
             case Accommodation.TPO_WORD:
-                return new SortAccommodationCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortAccommodationCommand.MESSAGE_USAGE));
+                }
+                return new SortAccommodationCommand(keywords[2]);
 
             case Friend.TPO_WORD:
-                return new SortFriendCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortFriendCommand.MESSAGE_USAGE));
+                }
+                return new SortFriendCommand(keywords[2]);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
             }
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
