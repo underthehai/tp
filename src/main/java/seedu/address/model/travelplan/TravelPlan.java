@@ -22,6 +22,9 @@ import seedu.address.model.friend.Friend;
  */
 public class TravelPlan extends Directory implements Nameable {
 
+    public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
+    public static final String TRAVEL_PLAN_WORD = "travelplan";
+
     // Identity fields
     private final Name name;
     private final WanderlustDate startDate;
@@ -217,14 +220,14 @@ public class TravelPlan extends Directory implements Nameable {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Start Date: ")
+                .append("\nStart Date: ")
                 .append(getStartDate())
-                .append(" End Date: ")
+                .append("\nEnd Date: ")
                 .append(getEndDate())
-                .append("(").append(getNumOfDays()).append(")").append("\n");
-        builder.append(accommodations)
-                .append(activities)
-                .append(friends);
+                .append("(").append(getNumOfDays()).append(")")
+                .append("\n\n" + accommodations)
+                .append("\n\n" + activities)
+                .append("\n\n" + friends);
         return builder.toString();
     }
 
