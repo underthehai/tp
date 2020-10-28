@@ -13,7 +13,7 @@ import seedu.address.model.accommodation.Accommodation;
 
 public class SortAccommodationCommand extends SortCommand {
     public static final String COMMAND_WORD = "sort accommodation";
-
+    // TODO: Add example
     public static final String MESSAGE_USAGE =
             "sort accommodation: Sorts the list of accommodation in a travel plan by the keyword input by the user.\n"
                     + "Parameters: KEYWORD (cost/date)\n";
