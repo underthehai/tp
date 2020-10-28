@@ -24,7 +24,7 @@ public class TravelPlan extends Directory implements Nameable {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
     public static final String TRAVEL_PLAN_WORD = "travelplan";
-    
+
     // Identity fields
     private final Name name;
     private final WanderlustDate startDate;
