@@ -54,7 +54,7 @@ public class SampleWanderlustDataUtil {
             new Accommodation(new Name("River Island"), new WanderlustDate("2021-07-12"),
                     new WanderlustDate("2021-08-31"), new Cost("6000"), new Location("Stardew Valley")),
             new Accommodation(new Name("Snow Cabin"), new WanderlustDate("2021-09-01"),
-                    new WanderlustDate("2020-09-25"), new Cost("200"), new Location("Ice Valley"))
+                    new WanderlustDate("2021-09-25"), new Cost("200"), new Location("Ice Valley"))
         };
     }
 
