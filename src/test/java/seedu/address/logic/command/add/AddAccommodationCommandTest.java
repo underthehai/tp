@@ -18,7 +18,6 @@ import seedu.address.model.TravelPlanner;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.AccommodationList;
-import seedu.address.model.travelplan.FriendList;
 import seedu.address.testutil.builders.AccommodationBuilder;
 import seedu.address.testutil.typicals.TypicalAccommodations;
 

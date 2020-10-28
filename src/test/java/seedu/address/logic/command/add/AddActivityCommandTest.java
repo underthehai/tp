@@ -17,7 +17,6 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
-import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
 import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.typicals.TypicalActivities;
