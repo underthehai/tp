@@ -208,5 +208,9 @@ public interface Model {
 
     ObservableDirectory getObservableDirectory();
 
+    /**
+     * Creates a deep copy of the activity and adds the deep copy to the travel plan at the
+     * given index in the travel plan list.
+     */
     void copyActivity(Activity activity, Index travelPlanIndex);
 }
