@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_MISSING_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_REDUNDANT_INDEX;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.GoToCommand;
@@ -22,28 +24,28 @@ public class GoToCommandParser implements Parser<GoToCommand> {
 
         try {
             String[] keywords = args.split(" ");
-            String directoryType = keywords[ParserUtil.OBJECT_TYPE_POSITION].substring(1);
+            String directoryType = removeDash(keywords[OBJECT_TYPE_POSITION], GoToCommand.MESSAGE_USAGE);
 
             switch (directoryType) {
             case GoToCommand.TRAVEL_PLAN:
                 if (keywords.length < 3) {
-                    throw new ParseException(MESSAGE_MISSING_INDEX);
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_MISSING_INDEX));
                 }
                 Index index = ParserUtil.parseIndex(keywords[ParserUtil.INDEX_POSITION]);
                 return new GoToCommand(index, true);
 
             case GoToCommand.WISHLIST:
                 if (keywords.length > 2) {
-                    throw new ParseException(MESSAGE_REDUNDANT_INDEX);
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_REDUNDANT_INDEX));
                 }
                 return new GoToCommand(false);
 
             default:
-                throw new ParseException(GoToCommand.MESSAGE_USAGE);
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
             }
-        } catch (ParseException pe) {
+        } catch (ArrayIndexOutOfBoundsException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE), pe);
         }
     }
 }

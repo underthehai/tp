@@ -96,7 +96,7 @@ public class Friend extends TravelPlanObject {
                 .append(getPassport())
                 .append("\n")
                 .append("Mobile phone: ")
-                .append(getMobile());
+                .append(getMobile()).append("\n");
         return builder.toString();
     }
 

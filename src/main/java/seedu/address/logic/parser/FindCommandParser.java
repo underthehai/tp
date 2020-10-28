@@ -1,6 +1,9 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import java.util.Arrays;
 
@@ -24,6 +27,8 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindCommand parse(String args) throws ParseException {
+        requireNonNull(args);
+
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
@@ -32,7 +37,7 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         try {
             String[] keywords = args.split(" ", 3);
-            String travelPlanObjectType = keywords[1].substring(1);
+            String travelPlanObjectType = removeDash(keywords[OBJECT_TYPE_POSITION], FindCommand.MESSAGE_USAGE);
 
             String findWord = keywords[2];
             String[] nameKeywords = findWord.split("\\s+");
@@ -40,13 +45,16 @@ public class FindCommandParser implements Parser<FindCommand> {
 
             switch (travelPlanObjectType) {
             case Friend.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 2);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)),
+                        ParserUtil.FRIEND_INDEX);
 
             case Activity.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 0);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)),
+                        ParserUtil.ACTIVITY_INDEX);
 
             case Accommodation.TPO_WORD:
-                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)), 1);
+                return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)),
+                        ParserUtil.ACCOMMODATION_INDEX);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
