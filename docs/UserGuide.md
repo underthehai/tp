@@ -16,11 +16,11 @@ It is optimized for CLI users so that destinations and details can be added fast
 * [Quick Start](#quick-start)
 * [Command Summary](#command-summary)
 * [Directories](#directories)
-* [Tags](#tags)
-    * [Activity Tag](#activity-tag)
-    * [Accommodation Tag](#accommodation-tag)
-    * [Friend Tag](#friend-tag)
-    * [Travel Plan Tag](#travel-plan-tag)
+* [Parameters](#parameters)
+    * [Activity Parameters](#activity-parameters)
+    * [Accommodation Parameters](#accommodation-parameters)
+    * [Friend Parameters](#friend-parameters)
+    * [Travel Plan Parameters](#travel-plan-parameters)
 * [Features](#features)
     * [Goto](#goto)
         1. [Goto a Travel Plan (G)](#1-goto-a-travel-plan-g)
@@ -36,7 +36,7 @@ It is optimized for CLI users so that destinations and details can be added fast
         3. [Deleting an Accommodation (L)](#3-deleting-an-accommodation-l)
         4. [Deleting a Friend (L)](#4-deleting-a-friend-l)
     * [Edit](#edit)
-        1. [Editing a Travel Plan (G)](#1-editing-a-travelplan-g)
+        1. [Editing a Travel Plan (G)](#1-editing-a-travel-plan-g)
         2. [Editing an Activity (L)](#2-editing-an-activity-l)
         3. [Editing an Accommodation (L)](#3-editing-an-accommodation-l)
         4. [Editing a Friend (L)](#4-editing-a-friend-l)
@@ -58,7 +58,7 @@ It is optimized for CLI users so that destinations and details can be added fast
         1. [Copying an activity (L)](#1-copying-an-activity-l)
     * [Move](#move)
         1. [Moving an activity (L)](#1-moving-an-activity-l)
-* [FAQ \[Coming soon\]](#faq-coming-soon)
+* [FAQ \[Coming soon\]](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 4. Double click to start the app.
 5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary)
 
-![Ui](images/userguidess/homescreen.png)
+![Ui](images/Ui.png)
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
@@ -80,14 +80,12 @@ The table briefly describes the commands and its usage. Full details will be giv
 
 Command | Parameters | Description
 ------------ | ------------- | -------------
-`add -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelplan | Creates the given object type
-`delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelplan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
-`edit -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelplan | Edits the details of the given object type
-`goto PLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
-`find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend<br/> `KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
-`show -OBJECT` | `OBJECT` activity/ accommodation/ friend | Navigate to the specific travel plan object tab
-`sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br> `KEYWORD` cost/name/importance/date | Sorts the specific travel plan object based on the keyword
---------------------------------------------------------------------------------------------------------------------
+`add -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Creates the given object type
+`delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
+`edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Edits the details of the given object type
+`goto -TPLAN_NAME` | `PLAN_NAME` nameOfTravelPlan/ wishlist | Navigate to the specific travel plan/ wishlist
+`find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
+
 ## Directories
 
 There are two directories within Wanderlust. They are WishList and TravelPlan
@@ -104,13 +102,13 @@ Wishlist | TravelPlan
 `edit -activity` | `edit -OBJECT`
 
 --------------------------------------------------------------------------------------------------------------------
-## Tags
+## Parameters
 
-The table below shows the type of tag each different object can be assigned to.
-Do note that tags are compulsory when creating the object.
+The table below shows the type of parameters each different object requires.
+Do note that parameters are compulsory when creating the object.
 
-#### Activity Tag
-Name of Tag | Description
+#### Activity Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the activity.
 `l/LOCATION` | Location/ Address of the activity.
@@ -119,8 +117,8 @@ Name of Tag | Description
 `d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
 
 
-#### Accommodation Tag
-Name of Tag | Description
+#### Accommodation Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the accommodation.
 `l/LOCATION` | Location/ Address of the accommodation.
@@ -128,15 +126,15 @@ Name of Tag | Description
 `sd/START_DATE` | Start date of accommodation in the format of YYYY-MM-DD
 `ed/END_DATE` | End date of accommodation in the format of YYYY-MM-DD
 
-#### Friend Tag
-Name of Tag | Description
+#### Friend Parameters
+Name of Parameter | Description
 ------------ | -------------
 `n/NAME` | Name of the friend.
 `m/MOBILE_NUMBER` | Mobile number of the friend cell mobile
 `p/PASSPORT_NUMBER` | Passport number of the friend passport
 
-#### Travel Plan Tag
-Name of Tag | Description
+#### Travel Plan Parameters
+Name of Parameters | Description
 ------------ | -------------
 `n/NAME` | Name of the travel plan.
 `sd/START_DATE` | Start date of travel plan in the format of YYYY-MM-DD
@@ -168,14 +166,13 @@ is `wishlist`.<br/>
 
 
 #### Wishlist
-![](images/userguidess/Goto Wishlist.png)
+![](images/WanderlustScreenshots/Goto Wishlist.png)
 
 #### TravelPlan 1
-![](images/userguidess/Goto Travelplan.png)
+![](images/WanderlustScreenshots/Goto Travelplan.png)
 
 
 
-<br/>
 This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
 having to type their names in each command. This also means that **some commands can only be used locally within a
 certain directory, and responses to these commands will depend on the current directory.** Commands that can be used
@@ -189,7 +186,7 @@ Format: `goto -travelplan INDEX`
 
 Example: `goto -travelplan 2`
 
-![](images/userguidess/Goto Travelplan.png)
+![](images/WanderlustScreenshots/Goto Travelplan.png)
 
 ### 2. Goto Wishlist (G)
 Navigates the UI to the wishlist.
@@ -197,7 +194,7 @@ Navigates the UI to the wishlist.
 Format: `goto -wishlist`
 
 Example: `goto -wishlist`
-![](images/userguidess/Goto Wishlist.png)
+![](images/WanderlustScreenshots/Goto Wishlist.png)
 
 
 ## Add
@@ -210,7 +207,7 @@ Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
 Example: `add -travelplan n/France sd/2020-09-15 ed/2020-09-30`
 
-![](images/userguidess/Add France Travelplan.png)
+![](images/WanderlustScreenshots/Add France Travelplan.png)
 
 
 ### 2. Adding an Activity (L)
@@ -223,7 +220,7 @@ Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2020-
 
 
 ### 3. Adding an Accommodation (L)
-Creates a new accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
+Creates an accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
 This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before adding accommodations.
 
 Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
@@ -242,7 +239,7 @@ Example: `add -friend n/John m/81234567 p/E1234567`
 
 ### 1. Deleting a Travel Plan (G)
 
-Deletes a travel plan at a given index from the travel planner.
+Deletes a travel plan at the given index from the travel planner.
 
 Format: `delete -travelplan INDEX`
 
@@ -250,7 +247,7 @@ Example: `delete -travelplan 3`
 
 ### 2. Deleting an Activity (L)
 
-Deletes an activity at a given index from the travel plan/wishlist in the current directory.
+Deletes an activity at the given index from the travel plan/wishlist in the current directory.
 
 Format: `delete -activity INDEX`
 
@@ -258,7 +255,7 @@ Example: `delete -activity 3`
 
 ### 3. Deleting an Accommodation (L)
 
-Deletes an accommodation at a given index from the travel plan in the current directory.
+Deletes the accommodation at the given index from the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before deleting accommodations.
 
 Format: `delete -accommodation INDEX`
@@ -267,7 +264,7 @@ Example: `delete -accommodation 2`
 
 ### 4. Deleting a Friend (L)
 
-Deletes a friend from at a given index from the travel plan in the current directory.
+Deletes the friend at a given index from the travel plan in the current directory.
 This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before deleting a friend.
 
 Format: `delete -friend INDEX`
@@ -276,7 +273,7 @@ Example: `delete -friend 1`
 
 ## Edit
 
-### 1. Editing a TravelPlan (G)
+### 1. Editing a Travel Plan (G)
 
 Edits an existing travel plan in the travel planner by its index.
 
@@ -292,7 +289,7 @@ Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/Y
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15:00`
 
-![](images/userguidess/Edit Activity.png)
+![](images/WanderlustScreenshots/Edit Activity.png)
 
 
 ### 3. Editing an Accommodation (L)
@@ -331,7 +328,7 @@ Format: `find -activity KEYWORD [MORE_KEYWORDS]`
 
 Example: `find -activity ice`
 
-![](images/userguidess/Find Activity Ice.png)
+![](images/WanderlustScreenshots/Find Activity Ice.png)
 
 
 ### 2. Finding accommodations (L)
@@ -368,7 +365,7 @@ This command has no effect in a wishlist as a wishlist does not contain Accommod
 
 Format/ Example: `show -accommodation`
 
-![](images/userguidess/Show Accommodation Tab.png)
+![](images/WanderlustScreenshots/Show Accommodation Tab.png)
 
 
 ### 3. Showing Friend Tab (L)
@@ -389,7 +386,7 @@ Format: `sort -OBJECT cost`
 
 Example: `sort -activity cost`
 
-![](images/userguidess/Sort Cost Activity.png)
+![](images/WanderlustScreenshots/Sort Cost Activity.png)
 
 
 ### 2. Sorting by date (L)
@@ -407,7 +404,7 @@ Format: `sort -OBJECT date`
 
 Example: `sort -accommodation date`
 
-![](images/userguidess/Sort DateTime Accommodation.png)
+![](images/WanderlustScreenshots/Sort DateTime Accommodation.png)
 
 
 ### 3. Sorting by importance (L)
@@ -443,7 +440,8 @@ Example: `copy 2 1`
 ### 1. Moving an Activity (L)
 
 Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be 
-deleted from the wish list.
+deleted from the wishlist. <br/>
+This command can only be called when the directory is at the wishlist. Use `goto -wishlist` first.
 
 Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
