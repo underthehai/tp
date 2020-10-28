@@ -378,7 +378,7 @@ Example: `sort -friend name`
 
 ### 1. Copying an Activity (L)
 
-Copies an activity at a given index from the wish list to a travel plan at a given index.
+Copies an activity at a given index from the wishlist to a travel plan at a given index.
 
 Format: `copy ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
@@ -388,7 +388,7 @@ Example: `copy 2 1`
 
 ### 1. Moving an Activity (L)
 
-Moves an activity at a given index from the wish list to a travel plan at a given index. The moved activity will be 
+Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be 
 deleted from the wish list.
 
 Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
