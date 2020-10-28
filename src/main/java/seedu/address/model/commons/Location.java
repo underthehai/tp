@@ -16,7 +16,7 @@ public class Location {
      */
     public static final String VALIDATION_REGEX = "(\\p{Graph}+\\p{Space}?)+";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code Location}.
@@ -34,6 +34,10 @@ public class Location {
      */
     public static boolean isValidLocation(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override
