@@ -40,7 +40,7 @@ public class FindCommand extends Command {
     /**
      * Constructor for FindCommand
      *
-     * @param predicate            contains a list of strings to filter travel plan object list
+     * @param predicate contains a list of strings to filter travel plan object list
      * @param travelPlanObjectType an integer to identify the type of travel plan object to find
      */
     public FindCommand(NameContainsKeywordsPredicate predicate, int travelPlanObjectType) {
@@ -64,23 +64,23 @@ public class FindCommand extends Command {
         String message = "";
         int size = 0;
 
-        if (this.travelPlanObjectType == ParserUtil.ACTIVITY_INDEX) {
+        switch (this.travelPlanObjectType) {
+        case (ParserUtil.ACTIVITY_INDEX):
             model.updateFilteredActivityList(predicate);
             message = MESSAGE_ACTIVITIES_LISTED_OVERVIEW;
             size = model.getFilteredActivityList().size();
-
-        } else if (this.travelPlanObjectType == ParserUtil.ACCOMMODATION_INDEX) {
+            break;
+        case (ParserUtil.ACCOMMODATION_INDEX):
             model.updateFilteredAccommodationList(predicate);
             message = MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW;
             size = model.getFilteredAccommodationList().size();
-
-
-        } else if (this.travelPlanObjectType == ParserUtil.FRIEND_INDEX) {
+            break;
+        case (ParserUtil.FRIEND_INDEX):
             model.updateFilteredFriendList(predicate);
             message = MESSAGE_FRIENDS_LISTED_OVERVIEW;
             size = model.getFilteredFriendList().size();
-
-        } else {
+            break;
+        default:
             assert false;
         }
 

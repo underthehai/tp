@@ -20,7 +20,7 @@ public class Messages {
     public static final String MESSAGE_ACTIVITIES_LISTED_OVERVIEW = "%1$d activities listed!";
     public static final String MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW = "%1$d accommodations listed!";
     public static final String MESSAGE_FRIENDS_LISTED_OVERVIEW = "%1$d friends listed!";
-    public static final String WRONG_DIRECTORY = "You are currently in the wishlist which can only find activity.\n"
-            + "Please goto to a travelplan to edit friend, activity or accommodation";
+    public static final String WRONG_DIRECTORY = "Please go to your desired travelplan to edit friend, activity "
+            + "or accommodation, using the goto command.";
 
 }
