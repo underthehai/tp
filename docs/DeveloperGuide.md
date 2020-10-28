@@ -280,11 +280,11 @@ Aspect: How to add `TravelPlanObject`s to the `TravelPlan` in the current `Direc
 - **Alternative 2**: Using a `AddTravelPlanObjectCommand` class.
   - Pros: Lesser repetition of code.
   - Cons: Lesser abstraction.
-  
+
 ### Deleting a TravelPlan or TravelPlanObject
-  
+
 #### Implementation
-  
+
 *Wanderlust*'s Ui allows users to delete a `TravelPlan` from the `TravelPlanner`, an `Activity` from the `Wishlist` and a `TravelPlanObject`
 from the `TravelPlan` in the current directory.
 
@@ -298,7 +298,7 @@ The activity diagram below shows a scenario whereby a user inputs the `delete` c
 
 ![DeleteActivityDiagram](images/DeleteActivityDiagram.png)
 
-The sequence diagram of the `delete` command has been shown above under the **Logic component** of the developer guide. 
+The sequence diagram of the `delete` command has been shown above under the **Logic component** of the developer guide.
 
 #### Design Consideration:
 
@@ -371,17 +371,17 @@ The move mechanism makes use of both the copy and delete mechanism.
 
 #### Implementation
 
-Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements 
+Current implementation of Find feature is facilitated by `NameContainsKeywordsPredicate` which implements
 `Predicate<Nameable>` and has the **test** method overriden with a custom implementations.
- 
-The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:  
+
+The `NameContainsKeywordsPredicate#test(Nameable)` is as follows:
 * loops through the **keywords** (of type `List<String>`) and return true if there is any match with the `Nameable`
 
 `Nameable` provides the following operation:
 * `Nameable#getName()` - Return the name attribute of a `TravelPlanObject`
 
-`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)` 
-(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and 
+`NameContainsKeywordsPredicate` will be passed to `Model#updateFilteredXYZList(Predicate)`
+(`updateFilteredActivityList`, etc.). The filtered list will then be updated according to the given `Predicate` and
 automatically reflected on the Ui.
 
 The class diagram shows the relevant classes involved:

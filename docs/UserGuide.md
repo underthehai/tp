@@ -54,7 +54,11 @@ It is optimized for CLI users so that destinations and details can be added fast
         2. [Sorting by date (L)](#2-sorting-by-date-l)
         3. [Sorting by importance (L)](#3-sorting-by-importance-l)
         4. [Sorting by name (L)](#4-sorting-by-name-l)
-* [FAQ \[Coming soon\]](#faq)
+    * [Copy](#copy)
+        1. [Copying an activity (L)](#1-copying-an-activity-l)
+    * [Move](#move)
+        1. [Moving an activity (L)](#1-moving-an-activity-l)
+* [FAQ \[Coming soon\]](#faq-coming-soon)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -346,7 +350,7 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 
 Format: `find -friend KEYWORD [MORE_KEYWORDS]`
 
-Example: `find -friend John` 
+Example: `find -friend John`
 
 ##Show
 
@@ -378,7 +382,7 @@ Format/ Example: `show -friend`
 
 ### 1. Sorting by cost (L)
 
-Sorts the given travel plan object list in the order of increasing cost. 
+Sorts the given travel plan object list in the order of increasing cost.
 This command is only applicable to Activity list and Accommodation list.
 
 Format: `sort -OBJECT cost`
@@ -390,13 +394,13 @@ Example: `sort -activity cost`
 
 ### 2. Sorting by date (L)
 
-Sorts the given travel plan object list in the order of increasing date. 
+Sorts the given travel plan object list in the order of increasing date.
 This command is only applicable to Activity list and Accommodation list.
 
 For Activity, the command will sort the activity list by the date and time of each activity, starting
 from the activity with the earliest date and time.
 
-For Accommodation, the command will sort the accommodation list by the start date of each accommodation, 
+For Accommodation, the command will sort the accommodation list by the start date of each accommodation,
 starting from the accommodation with the earliest start date.
 
 Format: `sort -OBJECT date`
@@ -408,7 +412,7 @@ Example: `sort -accommodation date`
 
 ### 3. Sorting by importance (L)
 
-Sorts the given travel plan object list by its importance level, starting from the smallest level of importance. 
+Sorts the given travel plan object list by its importance level, starting from the smallest level of importance.
 This command is only applicable to Activity list.
 
 Format: `sort -OBJECT importance`
@@ -417,12 +421,33 @@ Example: `sort -activity importance`
 
 ### 4. Sorting by name (L)
 
-Sorts the given travel plan object list by name. This command is applicable to 
+Sorts the given travel plan object list by name. This command is applicable to
 Activity list, Accommodation list and Friend list.
 
 Format: `sort -OBJECT name`
 
 Example: `sort -friend name`
+
+## Copy
+
+### 1. Copying an Activity (L)
+
+Copies an activity at a given index from the wishlist to a travel plan at a given index.
+
+Format: `copy ACTIVITY_INDEX TRAVELPLAN_INDEX`
+
+Example: `copy 2 1`
+
+## Move
+
+### 1. Moving an Activity (L)
+
+Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be 
+deleted from the wish list.
+
+Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
+
+Example: `move 2 1`
 
 --------------------------------------------------------------------------------------------------------------------
 
