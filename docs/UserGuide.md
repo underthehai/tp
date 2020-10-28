@@ -59,9 +59,9 @@ It is optimized for CLI users so that destinations and details can be added fast
     * [Move](#move)
         1. [Moving an activity (L)](#1-moving-an-activity-l)
     * [Help](#help)
-        1. [Refer to UserGuid (G)](#1-refer-to-userguide-g)
+        1. [Refer to UserGuide (G)](#1-refer-to-userguide-g)
     * [Exit](#exit)
-        1. [Exiting the application(G)](#1-exiting-the-application)
+        1. [Exiting the application (G)](#1-exiting-the-application)
 * [FAQ \[Coming soon\]](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ Command | Parameters | Description
 ------------ | ------------- | -------------
 `add -OBJECT` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Creates the given object type
 `delete -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object | Deletes the given object type
-`edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan | Edits the details of the given object type
+`edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object| Edits the details of the given object type
 `goto -DIRECTORY` | `DIRECTORY` wishlist/ travelPlan with specified index | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
 `copy ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan | Copy over the specified activity from wishlist to the travelPlan
@@ -464,14 +464,14 @@ Example: `move 2 1`
 
 ### 1. Refer to UserGuide (G)
 
-A pop out button will provide a link to access Wanderlust UserGuide for help
+A pop-up window will provide the link to access Wanderlust UserGuide for help.
 
 Format: `help`
 
 
 ##Exit
 
-### 1. Exiting the application
+### 1. Exiting the application (G)
 
 Format: `exit`
 
