@@ -8,6 +8,7 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_PERSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.command.delete.DeleteActivityCommand;
+import seedu.address.logic.command.delete.DeleteCommand;
 
 
 /**
@@ -23,12 +24,12 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -activity 1 ", new DeleteActivityCommand(INDEX_FIRST_PERSON));
+        assertWanderLustDeleteParseSuccess(parser, " -activity 1", new DeleteActivityCommand(INDEX_FIRST_PERSON));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
         assertWanderLustParseFailure(parser, " -activity a",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteActivityCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 }

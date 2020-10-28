@@ -17,4 +17,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_START = new Prefix("sd/");
     public static final Prefix PREFIX_END = new Prefix("ed/");
 
+    /* travel plan object type prefix */
+    public static final Prefix PREFIX_TPO = new Prefix("-");
 }
