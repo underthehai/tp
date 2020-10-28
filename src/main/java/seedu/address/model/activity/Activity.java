@@ -39,6 +39,17 @@ public class Activity extends TravelPlanObject {
         this.activityDateTime = activityDateTime;
     }
 
+    /**
+     * Creates a deep copy of the given activity.
+     */
+    public Activity(Activity activity) {
+        this.name = activity.name;
+        this.location = activity.location;
+        this.cost = activity.cost;
+        this.levelOfImportance = activity.levelOfImportance;
+        this.activityDateTime = activity.activityDateTime;
+    }
+
     @Override
     public Name getName() {
         return name;

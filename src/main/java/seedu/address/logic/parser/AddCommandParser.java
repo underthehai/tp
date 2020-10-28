@@ -11,6 +11,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import java.util.stream.Stream;
 
@@ -45,7 +47,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         String[] keywords = args.split(" ");
-        String addType = keywords[1].substring(1);
+        String addType = removeDash(keywords[OBJECT_TYPE_POSITION], AddCommand.MESSAGE_USAGE);
 
         switch (addType) {
 
@@ -113,6 +115,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Cost cost = ParserUtil.parseCost(argMultimap.getValue(PREFIX_COST).get());
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
+
+        if (startDate.getValue().compareTo(endDate.getValue()) > 0) {
+            throw new ParseException("end date should not be earlier than start date");
+        }
 
         Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
 

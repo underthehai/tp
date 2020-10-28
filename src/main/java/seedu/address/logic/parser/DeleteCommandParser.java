@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.ParserUtil.INDEX_POSITION;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.delete.DeleteAccommodationCommand;
@@ -31,8 +33,8 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         if (keywords.length != DeleteCommand.COMMAND_TOKENS) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         }
-        String deleteType = keywords[1].substring(1);
         try {
+            String deleteType = removeDash(keywords[OBJECT_TYPE_POSITION], DeleteCommand.MESSAGE_USAGE);
             Index index = ParserUtil.parseIndex(keywords[INDEX_POSITION]);
 
             switch (deleteType) {

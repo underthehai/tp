@@ -31,4 +31,5 @@ public abstract class Directory {
 
     public abstract void set(TravelPlanObject target, TravelPlanObject editedTravelPlanObject);
 
+    public abstract String dateTitle();
 }

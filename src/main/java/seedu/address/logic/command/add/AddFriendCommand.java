@@ -47,6 +47,8 @@ public class AddFriendCommand extends AddCommand {
         }
 
         model.addTravelPlanObject(toAdd);
+        assert model.getFriendList().hasFriend(toAdd) : "Friend was not added";
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

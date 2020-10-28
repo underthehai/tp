@@ -27,8 +27,8 @@ public class AddAccommodationCommand extends AddCommand {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Intercontinental Singapore "
             + PREFIX_LOCATION + "80 Middle Road "
-            + PREFIX_COST + "SGD250 "
-            + PREFIX_START + "15-09-2020 "
+            + PREFIX_COST + "250 "
+            + PREFIX_START + "2020-09-15 "
             + PREFIX_END + "30-09-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New accommodation added: %1$s";
@@ -53,6 +53,8 @@ public class AddAccommodationCommand extends AddCommand {
         }
 
         model.addTravelPlanObject(toAdd);
+        assert model.getAccommodationList().hasAccommodation(toAdd) : "Accommodation was not added";
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
