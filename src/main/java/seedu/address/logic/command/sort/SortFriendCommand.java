@@ -15,7 +15,7 @@ public class SortFriendCommand extends SortCommand {
 
     public static final String MESSAGE_USAGE =
             "sort friend: Sorts the list of friend in a travel plan by the keyword input by the user.\n"
-                    + "Parameters: KEYWORD (NAME)\n";
+                    + "Parameters: KEYWORD (name)\n";
 
     public static final String MESSAGE_SORT_FRIEND_SUCCESS = "Sorted list of friends by: %1$s";
 
@@ -38,7 +38,7 @@ public class SortFriendCommand extends SortCommand {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (!isTravelPlan) {
-            throw new CommandException("Wishlist do not store friends!");
+            throw new CommandException("Wishlist doesn't store friends!");
         }
 
         switch (keyword) {
