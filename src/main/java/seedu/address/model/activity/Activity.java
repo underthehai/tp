@@ -39,6 +39,17 @@ public class Activity extends TravelPlanObject {
         this.activityDateTime = activityDateTime;
     }
 
+    /**
+     * Creates a deep copy of the given activity.
+     */
+    public Activity(Activity activity) {
+        this.name = activity.name;
+        this.location = activity.location;
+        this.cost = activity.cost;
+        this.levelOfImportance = activity.levelOfImportance;
+        this.activityDateTime = activity.activityDateTime;
+    }
+
     @Override
     public Name getName() {
         return name;
@@ -52,8 +63,33 @@ public class Activity extends TravelPlanObject {
         return cost;
     }
 
+    /**
+     * Gets cost as string.
+     * @return String
+     */
+    public String getCostAsString() {
+        return cost.getValue();
+    }
+
+    /**
+     * Gets cost as an integer.
+     * @return int
+     */
+    public int getCostAsInt() {
+        return Integer.parseInt(cost.getValue());
+    }
+
+
     public Importance getLevelOfImportance() {
         return levelOfImportance;
+    }
+
+    /**
+     * Gets importance as an integer.
+     * @return int
+     */
+    public int getImportanceAsInt() {
+        return Integer.parseInt(levelOfImportance.getValue());
     }
 
     public WanderlustDateTime getActivityDateTime() {
