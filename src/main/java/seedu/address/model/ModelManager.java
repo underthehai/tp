@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Nameable;
@@ -152,6 +153,12 @@ public class ModelManager implements Model {
         travelPlanner.addActivity(activity);
         updateFilteredWishlist(PREDICATE_SHOW_ALL_ACTIVITY);
         observableDirectory.setObservableDirectory(directory);
+    }
+
+    @Override
+    public void addActivity(Activity activity, Index travelPlanIndex) {
+        TravelPlan travelPlan = filteredTravelPlans.get(travelPlanIndex.getZeroBased());
+        travelPlan.addTravelPlanObject(activity);
     }
 
     @Override
@@ -309,6 +316,12 @@ public class ModelManager implements Model {
     public void updateFilteredAccommodationList(Predicate<Nameable> predicate) {
         requireNonNull(predicate);
         filteredAccommodationList.setPredicate(predicate);
+    }
+
+    @Override
+    public void copyActivity(Activity activity, Index travelPlanIndex) {
+        Activity copiedActivity = new Activity(activity);
+        addActivity(copiedActivity, travelPlanIndex);
     }
 
     @Override

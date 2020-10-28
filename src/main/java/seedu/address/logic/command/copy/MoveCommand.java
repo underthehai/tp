@@ -51,11 +51,14 @@ public class MoveCommand extends Command {
             if (activityIndex.getZeroBased() >= filteredActivityList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
             }
+            if (travelPlanIndex.getZeroBased() >= travelPlanList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
+            }
 
             Activity activityToMove = filteredActivityList.get(activityIndex.getZeroBased());
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
 
-            travelPlan.addTravelPlanObject(activityToMove);
+            model.copyActivity(activityToMove, travelPlanIndex);
             model.deleteActivity(activityToMove);
 
             return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS, activityToMove, travelPlan));

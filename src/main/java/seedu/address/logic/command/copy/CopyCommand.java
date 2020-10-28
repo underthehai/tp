@@ -57,7 +57,7 @@ public class CopyCommand extends Command {
             Activity activityToCopy = filteredActivityList.get(activityIndex.getZeroBased());
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
 
-            travelPlan.addTravelPlanObject(activityToCopy);
+            model.copyActivity(activityToCopy, travelPlanIndex);
 
             return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS, activityToCopy, travelPlan));
         } else {
