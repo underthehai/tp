@@ -27,15 +27,16 @@ public abstract class EditCommand extends Command {
             + "Edits a friend to the current travel plan using the format:\n"
             + "edit -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
 
-    public static final String VALID_TAGS = "travelplan: n/NAME sd/START_DATE ed/END_DATE\n"
+    public static final String VALID_PARAMETERS = "travelplan: n/NAME sd/START_DATE ed/END_DATE\n"
             + "activity: n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/DATE_AND_TIME\n"
             + "accommodation: n/NAME l/LOCATION c/COST sd/START_DATE ed/END_DATE\n"
             + "friend: n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
 
-    public static final String INVALID_FIELDS = "Fields specified are invalid. Refer to the list of valid tags" + "\n"
-            + VALID_TAGS;
+    public static final String INVALID_FIELDS = "Fields specified are invalid. Refer to the list of valid parameters"
+            + "\n"
+            + VALID_PARAMETERS;
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided. Refer to the list "
-            + "of valid tags" + VALID_TAGS;
+            + "of valid parameters" + VALID_PARAMETERS;
 
 
     protected final Index targetIndex;

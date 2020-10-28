@@ -47,6 +47,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (checker.wrongFieldEdited(editType)) {
             throw new ParseException(EditCommand.INVALID_FIELDS);
         }
+
+
         try {
             switch (editType) {
 
