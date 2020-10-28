@@ -21,7 +21,7 @@ public class WanderlustDateTime {
      */
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    public final String dateTime;
+    private final String dateTime;
     private final LocalDateTime value;
 
     /**
@@ -51,6 +51,10 @@ public class WanderlustDateTime {
 
     public LocalDateTime getValue() {
         return value;
+    }
+
+    public String getDateTime() {
+        return dateTime;
     }
 
     @Override

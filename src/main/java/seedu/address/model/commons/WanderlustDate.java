@@ -22,7 +22,7 @@ public class WanderlustDate {
     public static final String VALIDATION_REGEX = "\\d{4}-[01]\\d-[0-3]\\d";
     public static final DateFormat VALID_DATE_STRING = new SimpleDateFormat("yyyy-MM-dd");
 
-    public final String date;
+    private final String date;
     private final LocalDate value;
 
     /**
@@ -54,6 +54,10 @@ public class WanderlustDate {
 
     public LocalDate getValue() {
         return value;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     @Override

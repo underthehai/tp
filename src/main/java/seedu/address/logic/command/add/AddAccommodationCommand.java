@@ -53,6 +53,8 @@ public class AddAccommodationCommand extends AddCommand {
         }
 
         model.addTravelPlanObject(toAdd);
+        assert model.getAccommodationList().hasAccommodation(toAdd) : "Accommodation was not added";
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
