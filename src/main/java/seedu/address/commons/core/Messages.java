@@ -22,5 +22,7 @@ public class Messages {
     public static final String MESSAGE_FRIENDS_LISTED_OVERVIEW = "%1$d friends listed!";
     public static final String MESSAGE_TRAVELPLANS_LISTED_OVERVIEW = "%1$d travel plans listed!";
 
+    public static final String MESSAGE_DELETE_SUCCESS = "Deleted %s:\n%1$s";
+
 
 }
