@@ -17,6 +17,7 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.travelplan.ActivityList;
 import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.typicals.TypicalActivities;
 
@@ -110,6 +111,13 @@ public class AddActivityCommandTest {
             requireNonNull(travelPlanObject);
             Activity activity = (Activity) travelPlanObject;
             activitiesAdded.add(activity);
+        }
+
+        @Override
+        public ActivityList getActivityList() {
+            ActivityList activityList = new ActivityList();
+            activityList.setActivities(activitiesAdded);
+            return activityList;
         }
 
         @Override
