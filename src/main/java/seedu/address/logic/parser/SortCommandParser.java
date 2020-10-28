@@ -27,19 +27,22 @@ public class SortCommandParser implements Parser<Command> {
             switch (travelPlanObjectType) {
             case Activity.TPO_WORD:
                 if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortActivityCommand.MESSAGE_USAGE));
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortActivityCommand.MESSAGE_USAGE));
                 }
                 return new SortActivityCommand(keywords[2]);
 
             case Accommodation.TPO_WORD:
                 if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortAccommodationCommand.MESSAGE_USAGE));
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortAccommodationCommand.MESSAGE_USAGE));
                 }
                 return new SortAccommodationCommand(keywords[2]);
 
             case Friend.TPO_WORD:
                 if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortFriendCommand.MESSAGE_USAGE));
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortFriendCommand.MESSAGE_USAGE));
                 }
                 return new SortFriendCommand(keywords[2]);
 
