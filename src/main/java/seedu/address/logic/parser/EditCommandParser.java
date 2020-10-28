@@ -11,6 +11,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.edit.EditAccommodationCommand;
@@ -41,7 +43,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditDescriptor checker = EditDescriptor.buildFromSource(argMultimap);
 
         String[] keywords = args.split(" ");
-        String editType = keywords[1].substring(1);
+        String editType = removeDash(keywords[OBJECT_TYPE_POSITION], EditCommand.MESSAGE_USAGE);
         if (checker.wrongFieldEdited(editType)) {
             throw new ParseException(EditCommand.INVALID_FIELDS);
         }
