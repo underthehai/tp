@@ -1,5 +1,6 @@
 package seedu.address.model.travelplan;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -21,8 +22,6 @@ import seedu.address.model.friend.Friend;
  */
 public class TravelPlan extends Directory implements Nameable {
 
-    public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
-
     // Identity fields
     private final Name name;
     private final WanderlustDate startDate;
@@ -38,7 +37,7 @@ public class TravelPlan extends Directory implements Nameable {
      */
     public TravelPlan(Name name, WanderlustDate startDate, WanderlustDate endDate) {
         requireAllNonNull(name, startDate, endDate);
-        checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStartAndEndDate(startDate, endDate), MESSAGE_INVALID_STARTANDENDDATE);
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -206,6 +205,14 @@ public class TravelPlan extends Directory implements Nameable {
                 || otherTravelPlan.getEndDate().equals(getEndDate()));
     }
 
+    public int getNumOfDays() {
+        return endDate.getValue().compareTo(startDate.getValue());
+    }
+
+    public String dateTitle() {
+        return getStartDate().toString() + " to " + getEndDate().toString() + " (" + getNumOfDays() + " days)";
+    }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -213,7 +220,8 @@ public class TravelPlan extends Directory implements Nameable {
                 .append(" Start Date: ")
                 .append(getStartDate())
                 .append(" End Date: ")
-                .append(getEndDate());
+                .append(getEndDate())
+                .append("(").append(getNumOfDays()).append(")").append("\n");
         builder.append(accommodations)
                 .append(activities)
                 .append(friends);

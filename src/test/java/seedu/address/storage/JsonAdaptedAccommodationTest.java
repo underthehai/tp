@@ -20,11 +20,11 @@ public class JsonAdaptedAccommodationTest {
     private static final String INVALID_COST = "-23";
     private static final String INVALID_LOCATION = " ";
 
-    private static final String VALID_NAME = ALICEHOTEL.getName().name;
-    private static final String VALID_START_DATE = ALICEHOTEL.getStartDate().date;
-    private static final String VALID_END_DATE = ALICEHOTEL.getEndDate().date;
-    private static final String VALID_COST = ALICEHOTEL.getCost().value;
-    private static final String VALID_LOCATION = ALICEHOTEL.getLocation().value;
+    private static final String VALID_NAME = ALICEHOTEL.getName().getValue();
+    private static final String VALID_START_DATE = ALICEHOTEL.getStartDate().getDate();
+    private static final String VALID_END_DATE = ALICEHOTEL.getEndDate().getDate();
+    private static final String VALID_COST = ALICEHOTEL.getCost().getValue();
+    private static final String VALID_LOCATION = ALICEHOTEL.getLocation().getValue();
 
     @Test
     public void toModelType_validAccommodationDetails_returnsAccommodation() throws Exception {
