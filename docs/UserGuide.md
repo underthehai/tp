@@ -13,7 +13,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 
 ## Table of Contents
 * [Introduction](#introduction)
-* [Setting Up \[Coming soon\]](#setting-up-coming-soon)
+* [Quick Start](#quick-start)
 * [Command Summary](#command-summary)
 * [Directories](#directories)
 * [Tags](#tags)
@@ -58,7 +58,15 @@ It is optimized for CLI users so that destinations and details can be added fast
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Setting up [Coming soon]
+## Quick Start 
+
+1. Ensure you have Java `11` or above installed in your computer.
+2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases/tag/v1.2.1)
+3. Copy the file to the folder you want to use as the _home folder_ for Wanderlust
+4. Double click to start the app.
+5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary)
+
+![Ui](images/userguidess/homescreen.png)
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
@@ -104,7 +112,7 @@ Name of Tag | Description
 `l/LOCATION` | Location/ Address of the activity.
 `i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity.
 `c/cost` | Cost of the activity, if any.
-`d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
+`d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
 
 
 #### Accommodation Tag
@@ -113,8 +121,8 @@ Name of Tag | Description
 `n/NAME` | Name of the accommodation.
 `l/LOCATION` | Location/ Address of the accommodation.
 `c/cost` | Cost of the accommodation, if any.
-`sd/START_DATE` | Start date of accommodation in the format of DD-MM-YYYY
-`ed/END_DATE` | End date of accommodation in the format of DD-MM-YYYY
+`sd/START_DATE` | Start date of accommodation in the format of YYYY-MM-DD
+`ed/END_DATE` | End date of accommodation in the format of YYYY-MM-DD
 
 #### Friend Tag
 Name of Tag | Description
@@ -127,8 +135,8 @@ Name of Tag | Description
 Name of Tag | Description
 ------------ | -------------
 `n/NAME` | Name of the travel plan.
-`sd/START_DATE` | Start date of travel in the format of DD-MM-YYYY
-`ed/END_DATE` | End date of travel in the format of DD-MM-YYYY
+`sd/START_DATE` | Start date of travel plan in the format of YYYY-MM-DD
+`ed/END_DATE` | End date of travel plan in the format of YYYY-MM-DD
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -139,7 +147,7 @@ Name of Tag | Description
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -activity n/NAME`, `NAME` is a parameter which can be used as `add -activity n/Cultural Visit`.
+  e.g. in `edit -activity INDEX n/NAME`, `NAME` and `INDEX` are parameters which can be used as `edit -activity 1  n/Cultural Visit`.
 
 </div>
 
@@ -153,6 +161,15 @@ is `wishlist`.<br/>
 >Directories in Wanderlust include:
 >1. `wishlist`
 >2. `travelplan index`<br/>
+
+
+#### Wishlist
+![](images/userguidess/Goto Wishlist.png)
+
+#### TravelPlan 1
+![](images/userguidess/Goto Travelplan.png)
+
+
 
 <br/>
 This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
@@ -168,31 +185,37 @@ Format: `goto -travelplan INDEX`
 
 Example: `goto -travelplan 2`
 
+![](images/userguidess/Goto Travelplan.png)
+
 ### 2. Goto Wishlist (G)
 Navigates the UI to the wishlist.
 
 Format: `goto -wishlist`
 
 Example: `goto -wishlist`
+![](images/userguidess/Goto Wishlist.png)
+
 
 ## Add
 
 ### 1. Adding a Travel Plan (G)
 Creates a new travel plan and adds it to Wanderlust’s travel planner.
-Start and end date can be optional, but they must exist as a pair. Format of date is in DD-MM-YYYY.
+Start and end date can be optional, but they must exist as a pair. Format of date is in YYYY-MM-DD.
 
 Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
-Example: `add -travelplan n/France sd/15-09-2020 ed/30-09-2020`
+Example: `add -travelplan n/France sd/2020-09-15 ed/2020-09-30`
+
+![](images/userguidess/Add France Travelplan.png)
 
 
 ### 2. Adding an Activity (L)
 Creates a new activity and adds it to the travel plan/wishlist in the current directory. Date and time can be optional, but they must exist as a pair.
-Format of date is in DD-MM-YYYY and format of time is HHMM (24h clock).
+Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
 
 Format: `add -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
-Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/16-09-2020 10:10`
+Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2020-06-09 10:10`
 
 
 ### 3. Adding an Accommodation (L)
@@ -209,7 +232,7 @@ other travellers and adds it to the travel plan in the current directory.
 
 Format: `add -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
 
-Example: `add -friend n/John m/81234567 p/E1234567H`
+Example: `add -friend n/John m/81234567 p/E1234567`
 
 ## Delete
 
@@ -265,6 +288,9 @@ Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/Y
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-10-11 15:00`
 
+![](images/userguidess/Edit Activity.png)
+
+
 ### 3. Editing an Accommodation (L)
 
 Edits an existing accommodation in the travel plan in the current directory.
@@ -299,7 +325,10 @@ Finds activities in the travel plan/wishlist in the current directory whose name
 
 Format: `find -activity KEYWORD [MORE_KEYWORDS]`
 
-Example: `find -activity visits`
+Example: `find -activity ice`
+
+![](images/userguidess/Find Activity Ice.png)
+
 
 ### 2. Finding accommodations (L)
 
@@ -335,6 +364,9 @@ This command has no effect in a wishlist as a wishlist does not contain Accommod
 
 Format/ Example: `show -accommodation`
 
+![](images/userguidess/Show Accommodation Tab.png)
+
+
 ### 3. Showing Friend Tab (L)
 
 Switches the current Ui view to show Friend tab under the travel plan object panel.
@@ -353,6 +385,9 @@ Format: `sort -OBJECT cost`
 
 Example: `sort -activity cost`
 
+![](images/userguidess/Sort Cost Activity.png)
+
+
 ### 2. Sorting by date (L)
 
 Sorts the given travel plan object list in the order of increasing date. 
@@ -367,6 +402,9 @@ starting from the accommodation with the earliest start date.
 Format: `sort -OBJECT date`
 
 Example: `sort -accommodation date`
+
+![](images/userguidess/Sort DateTime Accommodation.png)
+
 
 ### 3. Sorting by importance (L)
 
@@ -388,6 +426,6 @@ Example: `sort -friend name`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ [Coming soon]
+## FAQ 
 
 --------------------------------------------------------------------------------------------------------------------
