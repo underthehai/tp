@@ -10,4 +10,5 @@ import seedu.address.model.activity.Activity;
 public abstract class Directory {
     public abstract ObservableList<Activity> getActivityList();
 
+    public abstract String dateTitle();
 }

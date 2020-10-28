@@ -112,6 +112,11 @@ public class Wishlist extends Directory implements ReadOnlyActivityList {
     }
 
     @Override
+    public String dateTitle() {
+        return null;
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Wishlist // instanceof handles nulls
