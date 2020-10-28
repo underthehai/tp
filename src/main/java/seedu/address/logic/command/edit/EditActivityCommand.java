@@ -81,11 +81,12 @@ public class EditActivityCommand extends EditCommand {
         }
         if (isTravelPlan) {
             model.setTravelPlanObject(activityToEdit, editedActivity);
+            assert model.hasTravelPlanObject(editedActivity);
         } else {
             model.setActivity(activityToEdit, editedActivity);
+            assert model.hasActivity(editedActivity);
         }
 
-        assert model.hasActivity(editedActivity);
         return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
 
     }
