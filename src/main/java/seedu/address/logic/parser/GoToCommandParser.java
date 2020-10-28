@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_MISSING_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_REDUNDANT_INDEX;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.GoToCommand;
@@ -22,7 +24,7 @@ public class GoToCommandParser implements Parser<GoToCommand> {
 
         try {
             String[] keywords = args.split(" ");
-            String directoryType = keywords[ParserUtil.OBJECT_TYPE_POSITION].substring(1);
+            String directoryType = removeDash(keywords[OBJECT_TYPE_POSITION], GoToCommand.MESSAGE_USAGE);
 
             switch (directoryType) {
             case GoToCommand.TRAVEL_PLAN:
