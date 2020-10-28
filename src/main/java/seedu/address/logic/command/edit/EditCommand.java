@@ -32,7 +32,8 @@ public abstract class EditCommand extends Command {
             + "accommodation: n/NAME l/LOCATION c/COST sd/START_DATE ed/END_DATE\n"
             + "friend: n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
 
-    public static final String INVALID_FIELDS = "Fields specified are invalid. Refer to the list of valid parameters" + "\n"
+    public static final String INVALID_FIELDS = "Fields specified are invalid. Refer to the list of valid parameters" 
+            + "\n"
             + VALID_PARAMETERS;
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided. Refer to the list "
             + "of valid parameters" + VALID_PARAMETERS;
