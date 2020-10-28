@@ -41,14 +41,14 @@ It is optimized for CLI users so that destinations and details can be added fast
         3. [Editing an Accommodation (L)](#3-editing-an-accommodation-l)
         4. [Editing a Person (L)](#4-editing-a-person-l)
     * [Show](#show)
-        1. [Showing activity tab](#1-show-activity-tab)
-        2. [Showing accommodation tab](#2-show-accommodation-tab)
-        3. [Showing friend tab](#3-show-friend-tab)
+        1. [Showing activity tab (G)](#1-show-activity-tab-g)
+        2. [Showing accommodation tab (G)](#2-show-accommodation-tab-g)
+        3. [Showing friend tab (G)](#3-show-friend-tab-g)
     * [Sort](#sort)
-        1. [Sorting by cost](#1-sort-by-cost)
-        2. [Sorting by date](#2-sort-by-date)
-        3. [Sorting by importance](#3-sort-by-importance)
-        4. [Sorting by name](#4-sort-by-name)
+        1. [Sorting by cost (L)](#1-sort-by-cost-l)
+        2. [Sorting by date (L)](#2-sort-by-date-l)
+        3. [Sorting by importance (L)](#3-sort-by-importance-l)
+        4. [Sorting by name (L)](#4-sort-by-name-l)
     
 * [FAQ \[Coming soon\]](#faq-coming-soon)
 
@@ -276,12 +276,13 @@ Format/ Example: `show -activity`
 Switches the current Ui view to show Accommodation tab under the travel plan object panel.
 This command has no effect in a wishlist as a wishlist does not contain Accommodation.
 
+
 Format/ Example: `show -accommodation`
 
 ### 3. Showing Friend Tab
 
 Switches the current Ui view to show Friend tab under the travel plan object panel.
-This command has no effect in a wishlist as a  wishlist does not contain Friend.
+This command has no effect in a wishlist as a wishlist does not contain Friend.
 
 Format/ Example: `show -friend`
 
