@@ -389,8 +389,8 @@ Example: `copy 2 1`
 ### 1. Moving an Activity (L)
 
 Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be 
-deleted from the wish list. <br/>
-*This command can only be called when the directory is at the wishlist.* Use `goto -wishlist` first.
+deleted from the wishlist. <br/>
+This command can only be called when the directory is at the wishlist. Use `goto -wishlist` first.
 
 Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
