@@ -27,23 +27,23 @@ public class GoToCommandParser implements Parser<GoToCommand> {
             switch (directoryType) {
             case GoToCommand.TRAVEL_PLAN:
                 if (keywords.length < 3) {
-                    throw new ParseException(MESSAGE_MISSING_INDEX);
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_MISSING_INDEX));
                 }
                 Index index = ParserUtil.parseIndex(keywords[ParserUtil.INDEX_POSITION]);
                 return new GoToCommand(index, true);
 
             case GoToCommand.WISHLIST:
                 if (keywords.length > 2) {
-                    throw new ParseException(MESSAGE_REDUNDANT_INDEX);
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_REDUNDANT_INDEX));
                 }
                 return new GoToCommand(false);
 
             default:
-                throw new ParseException(GoToCommand.MESSAGE_USAGE);
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
             }
-        } catch (ParseException pe) {
+        } catch (ArrayIndexOutOfBoundsException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE), pe);
         }
     }
 }
