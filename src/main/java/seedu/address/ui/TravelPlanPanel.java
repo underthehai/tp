@@ -43,13 +43,13 @@ public class TravelPlanPanel extends UiPart<Region> {
      * Updates the JavaFX properties of {@code TravelPlanPanel} according to the directory.
      */
     public void update() {
+
         String cost = directory.getTotalCost();
         name.setText(directory.getName().toString());
         totalCost.setText(TOTAL_COST + cost);
 
         if (directory.isTravelPlan()) {
-            startDateToEndDate.setText(directory.getStartDate().toString() + " to "
-                    + directory.getEndDate().toString());
+            startDateToEndDate.setText(directory.dateTitle());
         } else {
             startDateToEndDate.setText("");
         }
