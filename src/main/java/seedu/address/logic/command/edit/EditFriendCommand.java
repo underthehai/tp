@@ -73,8 +73,8 @@ public class EditFriendCommand extends EditCommand {
         if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {
             throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
-
         model.setTravelPlanObject(friendToEdit, editedFriend);
+        assert model.hasTravelPlanObject(editedFriend);
         return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend));
     }
 

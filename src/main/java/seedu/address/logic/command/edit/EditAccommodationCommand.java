@@ -85,8 +85,8 @@ public class EditAccommodationCommand extends EditCommand {
                 && lastShownList.contains(editedAccommodation)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
-
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
+        assert model.hasTravelPlanObject(editedAccommodation);
 
         return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
     }

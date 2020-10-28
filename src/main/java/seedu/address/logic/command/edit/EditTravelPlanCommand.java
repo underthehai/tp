@@ -74,6 +74,7 @@ public class EditTravelPlanCommand extends EditCommand {
         }
 
         model.setTravelPlan(travelPlanToEdit, editedTravelPlan);
+        assert model.hasTravelPlan(editedTravelPlan);
         return new CommandResult(String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan));
     }
 
