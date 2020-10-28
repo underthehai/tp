@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -22,6 +23,11 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final int OBJECT_TYPE_POSITION = 1;
     public static final int INDEX_POSITION = 2;
+
+    public static final int ACTIVITY_INDEX = 0;
+    public static final int ACCOMMODATION_INDEX = 1;
+    public static final int FRIEND_INDEX = 2;
+    public static final int INVALID_INDEX = -1;
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -171,5 +177,18 @@ public class ParserUtil {
             throw new ParseException(Mobile.MESSAGE_CONSTRAINTS);
         }
         return new Mobile(trimmedMobile);
+    }
+
+    /**
+     * Removes the dash character "-" from the zeroth index of the string.
+     * @param str String of format "-string", with dash in the zeroth index.
+     * @return str without dash character in the zeroth index.
+     */
+    public static String removeDash(String str, String messageUsage) throws ParseException {
+        if (str.charAt(0) != '-') {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
+        }
+        return str.substring(1);
     }
 }
