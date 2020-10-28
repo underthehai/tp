@@ -462,7 +462,7 @@ Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
 Example: `move 2 1`
 
-##Help
+## Help
 
 ### 1. Refer to UserGuide (G)
 
@@ -471,7 +471,7 @@ A pop-up window will provide the link to access Wanderlust UserGuide for help.
 Format: `help`
 
 
-##Exit
+## Exit
 
 ### 1. Exiting the application (G)
 

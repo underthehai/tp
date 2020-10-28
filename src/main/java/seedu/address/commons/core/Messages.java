@@ -24,5 +24,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_STARTANDENDDATE = "Start Date should be before or "
             + "on the same date as End Date.";
 
+    public static final String MESSAGE_DELETE_SUCCESS = "Deleted %s:\n%1$s";
+
 
 }
