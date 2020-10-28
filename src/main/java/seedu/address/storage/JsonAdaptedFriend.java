@@ -35,9 +35,9 @@ public class JsonAdaptedFriend {
      * Converts a given {@code Friend} into this class for Jackson use.
      */
     public JsonAdaptedFriend(Friend source) {
-        name = source.getName().name;
-        passport = source.getPassport().value;
-        phone = source.getMobile().value;
+        name = source.getName().getValue();
+        passport = source.getPassport().getValue();
+        phone = source.getMobile().getValue();
     }
 
     /**

@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.Nameable;
@@ -115,6 +116,11 @@ public interface Model {
     void addActivity(Activity activity);
 
     /**
+     * Adds the given activity to the travel plan at the given index in the travel plan list.
+     */
+    void addActivity(Activity activity, Index travelPlanIndex);
+
+    /**
      * Adds the given travel plan object.
      * {@code tpObj} must not already exist in the travel plan.
      */
@@ -208,6 +214,12 @@ public interface Model {
 
     ObservableDirectory getObservableDirectory();
 
+    /**
+     * Creates a deep copy of the activity and adds the deep copy to the travel plan at the
+     * given index in the travel plan list.
+     */
+    void copyActivity(Activity activity, Index travelPlanIndex);
+
     UniqueTravelPlanList getTravelPlanList();
 
     Wishlist getWishlist();
@@ -241,4 +253,5 @@ public interface Model {
      * Can be sorted according to name.
      */
     void sortFriendList(Comparator<Friend> comparator);
+
 }

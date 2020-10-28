@@ -57,9 +57,13 @@ public class AddActivityCommand extends AddCommand {
             }
 
             model.addTravelPlanObject(toAdd);
+            assert model.getActivityList().hasActivity(toAdd) : "Activity was not added";
+
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } else {
             model.addActivity(toAdd);
+            assert model.getWishlist().hasActivity(toAdd) : "Activity was not added";
+
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         }
     }

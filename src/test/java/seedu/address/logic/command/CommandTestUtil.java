@@ -232,7 +232,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTravelPlanList().size());
 
         TravelPlan tp = model.getFilteredTravelPlanList().get(targetIndex.getZeroBased());
-        final String[] splitName = tp.getName().name.split("\\s+");
+        final String[] splitName = tp.getName().getValue().split("\\s+");
         model.updateFilteredTravelPlanList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[2])));
 
         assertEquals(1, model.getFilteredTravelPlanList().size());
@@ -262,7 +262,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < filteredList.size());
 
         TravelPlanObject travelPlanObject = filteredList.get(targetIndex.getZeroBased());
-        final String[] splitName = travelPlanObject.getName().name.split("\\s+");
+        final String[] splitName = travelPlanObject.getName().getValue().split("\\s+");
 
         switch (tpoType) {
         case "Activity":
