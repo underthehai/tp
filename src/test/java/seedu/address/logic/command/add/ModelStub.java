@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.Directory;
 import seedu.address.model.Model;
 import seedu.address.model.ObservableDirectory;
@@ -102,6 +103,12 @@ public class ModelStub implements Model {
 
     @Override
     public void addActivity(Activity activity) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+
+    @Override
+    public void addActivity(Activity activity, Index travelPlanIndex) {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -232,6 +239,11 @@ public class ModelStub implements Model {
 
     @Override
     public void sortFriendList(Comparator<Friend> comparator) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void copyActivity(Activity activity, Index travelPlanIndex) {
         throw new AssertionError("This method should not be called.");
     }
 
