@@ -60,9 +60,9 @@ public class JsonAdaptedTravelPlan {
      * Converts a given {@code TravelPlan} into this class for Jackson use.
      */
     public JsonAdaptedTravelPlan(TravelPlan source) {
-        name = source.getName().name;
-        startDate = source.getStartDate().date;
-        endDate = source.getEndDate().date;
+        name = source.getName().getValue();
+        startDate = source.getStartDate().getDate();
+        endDate = source.getEndDate().getDate();
         activities.addAll(source.getObservableActivityList().stream()
                 .map(JsonAdaptedActivity::new)
                 .collect(Collectors.toList()));

@@ -23,11 +23,11 @@ public class ActivityUtil {
      */
     public static String getActivityDetails(Activity activity) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + activity.getName().name + " ");
-        sb.append(PREFIX_COST + activity.getCost().value + " ");
-        sb.append(PREFIX_LOCATION + activity.getLocation().value + " ");
-        sb.append(PREFIX_DATETIME + activity.getActivityDateTime().dateTime + " ");
-        sb.append(PREFIX_IMPORTANCE + activity.getLevelOfImportance().value + " ");
+        sb.append(PREFIX_NAME + activity.getName().getValue() + " ");
+        sb.append(PREFIX_COST + activity.getCost().getValue() + " ");
+        sb.append(PREFIX_LOCATION + activity.getLocation().getValue() + " ");
+        sb.append(PREFIX_DATETIME + activity.getActivityDateTime().getDateTime() + " ");
+        sb.append(PREFIX_IMPORTANCE + activity.getLevelOfImportance().getValue() + " ");
         return sb.toString();
     }
 
@@ -36,13 +36,14 @@ public class ActivityUtil {
      */
     public static String getEditActivityDescriptorDetails(EditDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.name).append(" "));
-        descriptor.getCost().ifPresent(cost -> sb.append(PREFIX_COST).append(cost.value).append(" "));
-        descriptor.getLocation().ifPresent(location -> sb.append(PREFIX_LOCATION).append(location.value).append(" "));
-        descriptor.getActivityDateTime().ifPresent(date -> sb.append(PREFIX_DATETIME).append(date.dateTime)
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.getValue()).append(" "));
+        descriptor.getCost().ifPresent(cost -> sb.append(PREFIX_COST).append(cost.getValue()).append(" "));
+        descriptor.getLocation().ifPresent(location -> sb.append(PREFIX_LOCATION).append(location.getValue())
                 .append(" "));
-        descriptor.getLevelOfImportance().ifPresent(importance -> sb.append(PREFIX_DATETIME).append(importance.value)
+        descriptor.getActivityDateTime().ifPresent(date -> sb.append(PREFIX_DATETIME).append(date.getDateTime())
                 .append(" "));
+        descriptor.getLevelOfImportance().ifPresent(importance -> sb.append(PREFIX_DATETIME)
+                .append(importance.getValue()).append(" "));
         return sb.toString();
     }
 
@@ -53,7 +54,7 @@ public class ActivityUtil {
      */
     public static String getNewEditActivityDescriptorDetails(EditDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.name).append(" "));
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.getValue()).append(" "));
         return sb.toString();
     }
 }

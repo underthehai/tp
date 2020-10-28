@@ -21,11 +21,11 @@ public class JsonAdaptedActivityTest {
     private static final String INVALID_IMPORTANCE = "9";
     private static final String INVALID_DATE_TIME = "2020020214:20";
 
-    private static final String VALID_NAME = ARCHERY.getName().name;
-    private static final String VALID_LOCATION = ARCHERY.getLocation().value;
-    private static final String VALID_COST = ARCHERY.getCost().value;
-    private static final String VALID_IMPORTANCE = ARCHERY.getLevelOfImportance().value;
-    private static final String VALID_DATE_TIME = ARCHERY.getActivityDateTime().dateTime;
+    private static final String VALID_NAME = ARCHERY.getName().getValue();
+    private static final String VALID_LOCATION = ARCHERY.getLocation().getValue();
+    private static final String VALID_COST = ARCHERY.getCost().getValue();
+    private static final String VALID_IMPORTANCE = ARCHERY.getLevelOfImportance().getValue();
+    private static final String VALID_DATE_TIME = ARCHERY.getActivityDateTime().getDateTime();
 
     @Test
     public void toModelType_validActivityDetails_returnsActivity() throws Exception {

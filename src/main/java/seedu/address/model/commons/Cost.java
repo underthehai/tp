@@ -15,7 +15,7 @@ public class Cost {
 
     public static final String VALIDATION_REGEX = "\\p{Digit}+(.\\p{Digit}\\p{Digit})?";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code Cost}.
