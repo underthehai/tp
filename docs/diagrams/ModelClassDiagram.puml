@@ -5,52 +5,47 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyTravelPlanner <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class TravelPlanner
+Class ReadOnlyTravelPlanner
 Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class UniquePersonList
-}
-
-Package Tag {
-Class Tag
-}
+Package TravelPlan {
+Class TravelPlan
+Class ActivityList
+Class AccommodationList
+Class FriendList
+Class UniqueTravelPlanList
 }
 
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+TravelPlanner .up.|> ReadOnlyTravelPlanner
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" TravelPlanner
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList o--> "*" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+TravelPlanner *--> "1" UniqueTravelPlanList
+UniqueTravelPlanList o--> "*" TravelPlan
+TravelPlan *--> Name
+TravelPlan *--> "2" WanderlustDate
+TravelPlan *--> ActivityList
+TravelPlan *--> AccommodationList
+TravelPlan *--> FriendList
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Name -[hidden]right-> WanderlustDate
+WanderlustDate -[hidden]right-> ActivityList
+ActivityList -[hidden]right-> AccommodationList
+AccommodationList -[hidden]right-> FriendList
 
-ModelManager -->"1" Person : filtered list
+ModelManager -->"1" TravelPlan : filtered list
 @enduml
