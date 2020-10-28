@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
+import static seedu.address.logic.parser.ParserUtil.SORT_TYPE_POSITION;
 
 import seedu.address.logic.command.Command;
 import seedu.address.logic.command.sort.SortAccommodationCommand;
@@ -20,31 +22,36 @@ public class SortCommandParser implements Parser<Command> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-        }
-
         try {
             String[] keywords = args.split(" ", 3);
-            String travelPlanObjectType = keywords[1].substring(1);
-            String sortKeyword = keywords[2];
+            String travelPlanObjectType = keywords[OBJECT_TYPE_POSITION].substring(1);
 
             switch (travelPlanObjectType) {
             case Activity.TPO_WORD:
-                return new SortActivityCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortActivityCommand.MESSAGE_USAGE));
+                }
+                return new SortActivityCommand(keywords[SORT_TYPE_POSITION]);
 
             case Accommodation.TPO_WORD:
-                return new SortAccommodationCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortAccommodationCommand.MESSAGE_USAGE));
+                }
+                return new SortAccommodationCommand(keywords[SORT_TYPE_POSITION]);
 
             case Friend.TPO_WORD:
-                return new SortFriendCommand(sortKeyword);
+                if (keywords.length < 3) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            SortFriendCommand.MESSAGE_USAGE));
+                }
+                return new SortFriendCommand(keywords[SORT_TYPE_POSITION]);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
             }
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }

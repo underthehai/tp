@@ -15,12 +15,12 @@ public class SortActivityCommand extends SortCommand {
 
     public static final String MESSAGE_USAGE =
             "sort activity: Sorts the list of activities in a travel plan/wishlist by the keyword input by the user.\n"
-                    + "Parameters: KEYWORD (COST/IMPORTANCE/DATE)\n";
+                    + "Parameters: KEYWORD (cost/importance/datetime)\n";
 
     public static final String MESSAGE_SORT_ACTIVITY_SUCCESS = "Sorted list of activities by: %1$s";
 
     public static final String MESSAGE_INVALID_KEYWORD = "INVALID KEYWORD! "
-            + "Activity list can only sort by cost, importance or date.";
+            + "Activity list can only sort by cost, importance or datetime.";
     private final String keyword;
 
     /**
@@ -57,7 +57,7 @@ public class SortActivityCommand extends SortCommand {
             }
             return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
 
-        case SortCommand.KEYWORD_DATE:
+        case SortCommand.KEYWORD_DATETIME:
             Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
             if (isTravelPlan) {
                 model.sortActivityList(dateComparator);
