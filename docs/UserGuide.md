@@ -61,7 +61,7 @@ It is optimized for CLI users so that destinations and details can be added fast
     * [Help](#help)
         1. [Refer to UserGuide (G)](#1-refer-to-userguide-g)
     * [Exit](#exit)
-        1. [Exiting the application (G)](#1-exiting-the-application)
+        1. [Exiting the application (G)](#1-exiting-the-application-g)
 * [FAQ \[Coming soon\]](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
