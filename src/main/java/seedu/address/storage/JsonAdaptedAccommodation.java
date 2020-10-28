@@ -43,11 +43,11 @@ public class JsonAdaptedAccommodation {
      * Converts a given {@code Accommodation} into this class for Jackson use.
      */
     public JsonAdaptedAccommodation(Accommodation source) {
-        name = source.getName().name;
-        startDate = source.getStartDate().date;
-        endDate = source.getEndDate().date;
-        cost = source.getCost().value;
-        location = source.getLocation().value;
+        name = source.getName().getValue();
+        startDate = source.getStartDate().getDate();
+        endDate = source.getEndDate().getDate();
+        cost = source.getCost().getValue();
+        location = source.getLocation().getValue();
     }
 
     /**
