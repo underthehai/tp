@@ -133,7 +133,7 @@ public class Activity extends TravelPlanObject {
                 .append("Location: ").append(getLocation()).append("\n")
                 .append("Importance Level: ").append(getLevelOfImportance()).append("\n")
                 .append("Cost: ").append(getCost()).append("\n")
-                .append("Date and time: ").append(getActivityDateTime());
+                .append("Date and time: ").append(getActivityDateTime()).append("\n");
 
         return builder.toString();
     }

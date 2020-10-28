@@ -211,13 +211,13 @@ public class TravelPlan extends Directory implements Nameable {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Start Date: ")
+                .append("\nStart Date: ")
                 .append(getStartDate())
-                .append(" End Date: ")
+                .append("\nEnd Date: ")
                 .append(getEndDate());
-        builder.append(accommodations)
-                .append(activities)
-                .append(friends);
+        builder.append("\n\n" + accommodations)
+                .append("\n\n" + activities)
+                .append("\n\n" + friends);
         return builder.toString();
     }
 

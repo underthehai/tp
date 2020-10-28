@@ -29,6 +29,7 @@ import seedu.address.model.wishlist.Wishlist;
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    private static final int WISHLIST_INDEX = -1;
 
     private final TravelPlanner travelPlanner;
     private final UserPrefs userPrefs;
@@ -62,7 +63,7 @@ public class ModelManager implements Model {
         filteredTravelPlans = new FilteredList<>(this.travelPlanner.getObservableTravelPlanList());
         filteredWishlist = new FilteredList<>(this.travelPlanner.getObservableWishlist());
         directory = this.travelPlanner.getWishlist();
-        directoryIndex = -1;
+        directoryIndex = WISHLIST_INDEX;
         observableDirectory = new ObservableDirectory(directory);
         filteredActivityList = new FilteredList<>(observableDirectory.getObservableActivityList());
         filteredAccommodationList = new FilteredList<>(observableDirectory.getObservableAccommodationList());
@@ -129,6 +130,9 @@ public class ModelManager implements Model {
     @Override
     public void deleteTravelPlan(TravelPlan target) {
         travelPlanner.removeTravelPlan(target);
+        if (directory.equals(target)) {
+            setDirectory(WISHLIST_INDEX);
+        }
     }
 
     @Override
@@ -178,8 +182,8 @@ public class ModelManager implements Model {
 
     @Override
     public void setDirectory(int index) {
-        if (index == -1) {
-            directoryIndex = -1;
+        if (index == WISHLIST_INDEX) {
+            directoryIndex = WISHLIST_INDEX;
             directory = travelPlanner.getWishlist();
         } else {
             directoryIndex = index;
