@@ -120,6 +120,7 @@ The table below shows the type of parameters each different object requires.
 Do note that parameters are compulsory when creating the object.
 
 #### Activity Parameters
+
 Name of Parameter | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the activity. | Names should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
@@ -128,10 +129,10 @@ Name of Parameter | Description | Requirement
 `c/cost` | Cost of the activity, if any. | Cost should only contain numbers, and it should be a positive integer.
 `d/DATE_AND_TIME` | Date and Time intended to do the activity | Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
 
-
 #### Accommodation Parameters
+
 Name of Parameter | Description | Requirement
------------- | ------------- | -------------
+------------ | ----------- | -------------
 `n/NAME` | Name of the accommodation. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
 `l/LOCATION` | Location/ Address of the accommodation.| Location can take any values, and it should not be blank.
 `c/cost` | Cost of the accommodation, if any. | Cost should only contain numbers, and it should be a positive integer.
@@ -139,6 +140,7 @@ Name of Parameter | Description | Requirement
 `ed/END_DATE` | End date of accommodation | Must be in the format of YYYY-MM-DD.
 
 #### Friend Parameters
+
 Name of Parameter | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the friend. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
@@ -146,6 +148,7 @@ Name of Parameter | Description | Requirement
 `p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future).
 
 #### Travel Plan Parameters
+
 Name of Parameters | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the travel plan. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
@@ -480,5 +483,7 @@ Format: `exit`
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ 
+
+Coming Soon!
 
 --------------------------------------------------------------------------------------------------------------------
