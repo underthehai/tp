@@ -69,7 +69,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 ## Quick Start 
 
 1. Ensure you have Java `11` or above installed in your computer.
-2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases/tag/v1.2.1)
+2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases/tag/v1.3)
 3. Copy the file to the folder you want to use as the _home folder_ for Wanderlust
 4. Double click to start the app.
 5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary)
@@ -89,12 +89,12 @@ Command | Parameters | Description
 `edit -OBJECT INDEX` | `OBJECT` activity/ accommodation/ friend/ travelPlan <br> `INDEX` Specific number of the indexed list object| Edits the details of the given object type
 `goto -DIRECTORY` | `DIRECTORY` wishlist/ travelPlan with specified index | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
-`show -OBJECT` | OBJECT activity/ accommodation/ friend | Navigate to the specific travel plan object tab
+`show -OBJECT` | `OBJECT` activity/ accommodation/ friend | Navigate to the specific travel plan object tab
 `sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` cost/ name/ importance/ date | Sorts the specific travel plan object based on the keyword
 `copy ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan | Copy over the specified activity from wishlist to the travelPlan
 `move ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX`/ specific number of target activity `TRAVELPLAN_INDEX`/ specific number of target TravelPlan  | Move over the specified activity from wishlist to the travelPlan
-`exit` | |
-`help`| |
+`exit` | not applicable | Exit the application
+`help`| not applicable | Provide a link to access Wanderlust UserGuide for help
 
 ## Directories
 
@@ -102,7 +102,7 @@ There are two directories within Wanderlust. They are WishList and TravelPlan
 The table describes the list of commands available at each directory.
 
 Wishlist | TravelPlan
-----------  | ---------
+-------------  | -------------
 `goto -DIRECTORY`|`goto -DIRECTORY`
 `show -activity`| `show -OBJECT`
 `sort -activity` | `sort -OBJECT`
@@ -120,37 +120,37 @@ The table below shows the type of parameters each different object requires.
 Do note that parameters are compulsory when creating the object.
 
 #### Activity Parameters
-Name of Parameter | Description
------------- | -------------
-`n/NAME` | Name of the activity.
-`l/LOCATION` | Location/ Address of the activity.
-`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity.
-`c/cost` | Cost of the activity, if any.
-`d/DATE_AND_TIME` | Date and Time intended to do the activity. Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
+Name of Parameter | Description | Requirement
+------------ | ------------- | -------------
+`n/NAME` | Name of the activity. | Names should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
+`l/LOCATION` | Location/ Address of the activity. | Location can take any values, and it should not be blank.
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity. | Importance Level should only contain numbers, and it should range from 1 - 5, with 5 being the most important while 1 being the least important.
+`c/cost` | Cost of the activity, if any. | Cost should only contain numbers, and it should be a positive integer.
+`d/DATE_AND_TIME` | Date and Time intended to do the activity | Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).
 
 
 #### Accommodation Parameters
 Name of Parameter | Description | Requirement
------------- | ------------- | -------
-`n/NAME` | Name of the accommodation. | 
-`l/LOCATION` | Location/ Address of the accommodation.|
-`c/cost` | Cost of the accommodation, if any. | Cost should only contain numbers, and it should be a positive integer
-`sd/START_DATE` | Start date of accommodation | Must be in the format of YYYY-MM-DD
-`ed/END_DATE` | End date of accommodation | Must be in the format of YYYY-MM-DD
+------------ | ------------- | -------------
+`n/NAME` | Name of the accommodation. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
+`l/LOCATION` | Location/ Address of the accommodation.| Location can take any values, and it should not be blank.
+`c/cost` | Cost of the accommodation, if any. | Cost should only contain numbers, and it should be a positive integer.
+`sd/START_DATE` | Start date of accommodation | Must be in the format of YYYY-MM-DD.
+`ed/END_DATE` | End date of accommodation | Must be in the format of YYYY-MM-DD.
 
 #### Friend Parameters
 Name of Parameter | Description | Requirement
------------- | ------------- | ----------
-`n/NAME` | Name of the friend. |
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be 8 digits only
-`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future)
+------------ | ------------- | -------------
+`n/NAME` | Name of the friend. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be 8 digits only.
+`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future).
 
 #### Travel Plan Parameters
 Name of Parameters | Description | Requirement
------------- | ------------- | ---------
-`n/NAME` | Name of the travel plan. | 
-`sd/START_DATE` | Start date of travel plan| Must be in the format of YYYY-MM-DD
-`ed/END_DATE` | End date of travel plan | Must be in the format of YYYY-MM-DD
+------------ | ------------- | -------------
+`n/NAME` | Name of the travel plan. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
+`sd/START_DATE` | Start date of travel plan| Must be in the format of YYYY-MM-DD.
+`ed/END_DATE` | End date of travel plan | Must be in the format of YYYY-MM-DD.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -364,7 +364,7 @@ Format: `find -friend KEYWORD [MORE_KEYWORDS]`
 
 Example: `find -friend John`
 
-##Show
+## Show
 
 ### 1. Showing Activity Tab (L)
 
