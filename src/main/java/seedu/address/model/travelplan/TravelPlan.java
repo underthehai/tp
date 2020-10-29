@@ -224,10 +224,10 @@ public class TravelPlan extends Directory implements Nameable {
                 .append(getStartDate())
                 .append("\nEnd Date: ")
                 .append(getEndDate())
-                .append("(").append(getNumOfDays()).append(")")
+                .append("\n(").append(getNumOfDays()).append(" days)")
                 .append("\n\n" + accommodations)
-                .append("\n\n" + activities)
-                .append("\n\n" + friends);
+                .append(activities)
+                .append(friends);
         return builder.toString();
     }
 
