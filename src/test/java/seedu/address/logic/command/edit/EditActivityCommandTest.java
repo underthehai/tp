@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.command.CommandTestUtil.DESC_SKI;
 import static seedu.address.logic.command.CommandTestUtil.DESC_ZOO;
+import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_ZOO;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
@@ -72,9 +73,9 @@ public class EditActivityCommandTest {
     public void execute_filteredList_success() {
 
         Activity activityInFilteredList = model.getFilteredActivityList().get(INDEX_FIRST.getZeroBased());
-        Activity editedActivity = new ActivityBuilder(activityInFilteredList).withName(VALID_NAME_ZOO).build();
+        Activity editedActivity = new ActivityBuilder(activityInFilteredList).withName(VALID_NAME_AMY).build();
         EditActivityCommand editActivityCommand = new EditActivityCommand(INDEX_FIRST,
-                new EditActivityDescriptorBuilder().withName(VALID_NAME_ZOO).build());
+                new EditActivityDescriptorBuilder().withName(VALID_NAME_AMY).build());
 
         String expectedMessage = String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity);
 

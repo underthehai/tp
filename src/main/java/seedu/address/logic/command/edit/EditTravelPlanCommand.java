@@ -21,7 +21,7 @@ import seedu.address.model.travelplan.TravelPlan;
 
 
 /**
- * Edits an existing TravelPlan in the address book.
+ * Edits an existing TravelPlan in Wanderlust.
  * A travelplan contains the field name, start date and end date
  */
 public class EditTravelPlanCommand extends EditCommand {
@@ -49,6 +49,9 @@ public class EditTravelPlanCommand extends EditCommand {
      */
     public EditTravelPlanCommand(Index targetIndex, EditDescriptor editTravelPlanDescriptor) {
         super(targetIndex);
+
+        assert !editTravelPlanDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editTravelPlanDescriptor = editTravelPlanDescriptor;
     }
@@ -57,6 +60,7 @@ public class EditTravelPlanCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<TravelPlan> lastShownList = model.getFilteredTravelPlanList();
+
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
@@ -70,6 +74,7 @@ public class EditTravelPlanCommand extends EditCommand {
         }
 
         model.setTravelPlan(travelPlanToEdit, editedTravelPlan);
+        assert model.hasTravelPlan(editedTravelPlan);
         return new CommandResult(String.format(MESSAGE_EDIT_TRAVELPLAN_SUCCESS, editedTravelPlan));
     }
 
