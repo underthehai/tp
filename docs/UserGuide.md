@@ -75,7 +75,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 ## Quick Start 
 
 1. Ensure you have Java `11` or above installed in your computer.
-2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases/tag/v1.3)
+2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases)
 3. Copy the file to the folder you want to use as the _home folder_ for Wanderlust
 4. Run java -jar Wanderlust.jar in the command prompt to start the application
 5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary)
@@ -416,14 +416,14 @@ Example: `find -friend John`
 ### 1. Showing Activity Tab (L)
 
 Switches the current Ui view to show Activity tab under the travel plan object panel.
-This command has no effect in a wishlist as a wishlist only contains activities.
+This command is available within both wishlist and travelPlan directory.
 
 Format/ Example: `show -activity`
 
 ### 2. Showing Accommodation Tab (L)
 
 Switches the current Ui view to show Accommodation tab under the travel plan object panel.
-This command has no effect in a wishlist as a wishlist does not contain Accommodation.
+This command is only available within a travelPlan directory.
 
 Format/ Example: `show -accommodation`
 
@@ -433,7 +433,7 @@ Format/ Example: `show -accommodation`
 ### 3. Showing Friend Tab (L)
 
 Switches the current Ui view to show Friend tab under the travel plan object panel.
-This command has no effect in a wishlist as a  wishlist does not contain Friend.
+This command is only available within a travelPlan directory.
 
 Format/ Example: `show -friend`
 
