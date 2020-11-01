@@ -413,6 +413,21 @@ public class ModelManager implements Model {
         return true;
     }
 
+    /**
+     * Checks if activity object date time is within the model's travel plan start and end date.
+     * @return true if activity date is within travel plan start date and end date range.
+     */
+    public boolean isValidActivityDate(WanderlustDateTime activityDateTime, WanderlustDate startDate,
+                                       WanderlustDate endDate) {
+        if (activityDateTime.getValue().toLocalDate().isBefore(startDate.getValue())
+                || activityDateTime.getValue().toLocalDate().isAfter(endDate.getValue())) {
+            return false;
+        }
+
+        return true;
+    }
+
+
 
     @Override
     public void copyActivity(Activity activity, Index travelPlanIndex) {

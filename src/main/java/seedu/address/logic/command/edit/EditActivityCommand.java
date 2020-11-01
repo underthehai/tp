@@ -113,10 +113,14 @@ public class EditActivityCommand extends EditCommand {
         WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime()
                 .orElse(activityToEdit.getActivityDateTime());
 
-        boolean isDateInTravelPlanDate = model.isValidActivityDate(updatedActivityDateTime);
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
 
-        if (!isDateInTravelPlanDate) {
-            throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+        if (isTravelPlan) {
+            boolean isDateInTravelPlanDate = model.isValidActivityDate(updatedActivityDateTime);
+
+            if (!isDateInTravelPlanDate) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+            }
         }
 
         return new Activity(updatedName, updatedLocation, updatedCost, updatedLevelOfImportance,

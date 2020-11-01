@@ -11,6 +11,8 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
 
 
@@ -24,6 +26,8 @@ public class CopyCommand extends Command {
 
     public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity %1$s to travel plan %1$s";
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before copying activities";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "specified travel plan's start date and end date.";
 
     private final Index activityIndex;
     private final Index travelPlanIndex;
@@ -31,7 +35,7 @@ public class CopyCommand extends Command {
     /**
      * Constructor for MoveCommand.
      *
-     * @param activityIndex index of activity to be copied.
+     * @param targetIndex index of activity to be copied.
      * @param travelPlanIndex index of travel plan to add activity to.
      */
     public CopyCommand(Index targetIndex, Index travelPlanIndex) {
@@ -56,6 +60,17 @@ public class CopyCommand extends Command {
 
             Activity activityToCopy = filteredActivityList.get(activityIndex.getZeroBased());
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
+
+            WanderlustDate travelPlanStartDate = travelPlan.getStartDate();
+            WanderlustDate travelPlanEndDate = travelPlan.getEndDate();
+            WanderlustDateTime activityDateTime = activityToCopy.getActivityDateTime();
+
+            boolean isValidActivityDateTime = model.isValidActivityDate(activityDateTime,
+                    travelPlanStartDate, travelPlanEndDate);
+
+            if (!isValidActivityDateTime) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+            }
 
             model.copyActivity(activityToCopy, travelPlanIndex);
 

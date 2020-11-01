@@ -16,6 +16,7 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.ActivityList;
 import seedu.address.testutil.builders.ActivityBuilder;
@@ -118,6 +119,11 @@ public class AddActivityCommandTest {
             ActivityList activityList = new ActivityList();
             activityList.setActivities(activitiesAdded);
             return activityList;
+        }
+
+        @Override
+        public boolean isValidActivityDate(WanderlustDateTime activityDateTime) {
+            return true;
         }
 
         @Override

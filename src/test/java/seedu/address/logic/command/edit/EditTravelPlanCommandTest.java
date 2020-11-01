@@ -85,7 +85,7 @@ public class EditTravelPlanCommandTest {
     @Test
     public void execute_duplicateTravelPlanFilteredList_failure() {
 
-        // edit TravelPlan in filtered list into a duplicate in address book
+        // edit TravelPlan in filtered list into a duplicate in Wanderlust
         TravelPlan travelPlanInList = model.getFilteredTravelPlanList().get(INDEX_SECOND.getZeroBased());
         EditTravelPlanCommand editTravelPlanCommand = new EditTravelPlanCommand(INDEX_FIRST,
                 new EditTravelPlanDescriptorBuilder(travelPlanInList).build());

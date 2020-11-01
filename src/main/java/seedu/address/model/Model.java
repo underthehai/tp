@@ -267,4 +267,10 @@ public interface Model {
      * @return true if activity date is within travel plan start date and end date range.
      */
     boolean isValidActivityDate(WanderlustDateTime activityDateTime);
+
+    /**
+     * Checks if activity object date time is within the model's travel plan start and end date.
+     * @return true if activity date is within travel plan start date and end date range.
+     */
+    boolean isValidActivityDate(WanderlustDateTime activityDateTime, WanderlustDate startDate, WanderlustDate endDate);
 }

@@ -17,6 +17,7 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.testutil.builders.AccommodationBuilder;
 import seedu.address.testutil.typicals.TypicalAccommodations;
@@ -123,6 +124,11 @@ public class AddAccommodationCommandTest {
         @Override
         public ReadOnlyTravelPlanner getTravelPlanner() {
             return new TravelPlanner();
+        }
+
+        @Override
+        public boolean isValidAccommodationDate(WanderlustDate startDate, WanderlustDate endDate) {
+            return true;
         }
     }
 }
