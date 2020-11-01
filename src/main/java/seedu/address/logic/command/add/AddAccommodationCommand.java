@@ -1,12 +1,13 @@
 package seedu.address.logic.command.add;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -32,7 +33,6 @@ public class AddAccommodationCommand extends AddCommand {
             + PREFIX_END + "30-09-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New accommodation added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the travel plan";
 
     private final Accommodation toAdd;
 
@@ -55,7 +55,7 @@ public class AddAccommodationCommand extends AddCommand {
         model.addTravelPlanObject(toAdd);
         assert model.getAccommodationList().hasAccommodation(toAdd) : "Accommodation was not added";
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ACCOMMODATION_INDEX);
     }
 
     @Override

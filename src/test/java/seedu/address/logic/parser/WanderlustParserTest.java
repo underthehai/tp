@@ -18,7 +18,6 @@ import seedu.address.logic.command.ClearCommand;
 import seedu.address.logic.command.ExitCommand;
 import seedu.address.logic.command.FindCommand;
 import seedu.address.logic.command.HelpCommand;
-import seedu.address.logic.command.ListCommand;
 import seedu.address.logic.command.add.AddActivityCommand;
 import seedu.address.logic.command.delete.DeleteActivityCommand;
 import seedu.address.logic.command.delete.DeleteCommand;
@@ -88,12 +87,6 @@ public class WanderlustParserTest {
     public void parseCommand_help() throws Exception {
         assertTrue(wanderlustParser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(wanderlustParser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
-    }
-
-    @Test
-    public void parseCommand_list() throws Exception {
-        assertTrue(wanderlustParser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
-        assertTrue(wanderlustParser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
     @Test

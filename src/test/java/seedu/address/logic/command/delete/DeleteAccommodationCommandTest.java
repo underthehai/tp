@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.command.CommandTestUtil.showTpoAtIndex;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
@@ -48,7 +49,7 @@ public class DeleteAccommodationCommandTest {
         expectedModel.setDirectory(0);
         expectedModel.deleteTravelPlanObject(accommodationToDelete);
 
-        assertCommandSuccess(deleteAccommodationCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteAccommodationCommand, model, expectedMessage, expectedModel, ACCOMMODATION_INDEX);
     }
 
     @Test
@@ -75,7 +76,7 @@ public class DeleteAccommodationCommandTest {
         expectedModel.deleteTravelPlanObject(accommodationToDelete);
         showNoAccommodationList(expectedModel);
 
-        assertCommandSuccess(deleteAccommodationCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteAccommodationCommand, model, expectedMessage, expectedModel, ACCOMMODATION_INDEX);
     }
 
     @Test

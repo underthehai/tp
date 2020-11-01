@@ -1,6 +1,7 @@
 package seedu.address.logic.command.sort;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
 
 import java.util.Comparator;
 
@@ -46,7 +47,20 @@ public class SortFriendCommand extends SortCommand {
         case SortCommand.KEYWORD_NAME:
             Comparator<Friend> nameComparator = Comparator.comparing(Friend::getNameAsString);
             model.sortFriendList(nameComparator);
-            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_NAME));
+            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_NAME),
+                    FRIEND_INDEX);
+
+        case SortCommand.KEYWORD_MOBILE:
+            Comparator<Friend> mobileComparator = Comparator.comparing(f -> f.getMobile().getValue());
+            model.sortFriendList(mobileComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_MOBILE),
+                    FRIEND_INDEX);
+
+        case SortCommand.KEYWORD_PASSPORT:
+            Comparator<Friend> passportComparator = Comparator.comparing(f -> f.getPassport().getValue());
+            model.sortFriendList(passportComparator);
+            return new CommandResult(String.format(MESSAGE_SORT_FRIEND_SUCCESS, SortCommand.KEYWORD_PASSPORT),
+                    FRIEND_INDEX);
 
         default:
             throw new CommandException(MESSAGE_INVALID_KEYWORD);

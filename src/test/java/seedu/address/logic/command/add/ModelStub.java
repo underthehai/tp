@@ -82,6 +82,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public boolean hasTravelPlanObject(TravelPlanObject tPObj, int travelPlanIndex) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public void deleteTravelPlan(TravelPlan target) {
         throw new AssertionError("This method should not be called.");
     }

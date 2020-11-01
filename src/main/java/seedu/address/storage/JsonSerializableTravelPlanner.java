@@ -21,7 +21,7 @@ import seedu.address.model.travelplan.TravelPlan;
 public class JsonSerializableTravelPlanner {
 
     public static final String MESSAGE_DUPLICATE_TRAVEL_PLAN = "Travel plans list contains duplicate travel plan(s).";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "Wishlist contains duplicate activity";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "Wishlist contains duplicate activity.";
 
     private final List<JsonAdaptedTravelPlan> travelPlans = new ArrayList<>();
     private final List<JsonAdaptedActivity> wishlist = new ArrayList<>();

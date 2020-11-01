@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -35,7 +37,6 @@ public class AddActivityCommand extends AddCommand {
             + PREFIX_TAG + "theme park";
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
 
     private final Activity toAdd;
 
@@ -60,11 +61,14 @@ public class AddActivityCommand extends AddCommand {
             assert model.getActivityList().hasActivity(toAdd) : "Activity was not added";
 
         } else {
+            if (model.hasActivity(toAdd)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.addActivity(toAdd);
             assert model.getWishlist().hasActivity(toAdd) : "Activity was not added";
 
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ACTIVITY_INDEX);
     }
 
     @Override

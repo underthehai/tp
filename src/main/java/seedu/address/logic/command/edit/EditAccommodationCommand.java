@@ -6,6 +6,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 
 import java.util.List;
 
@@ -44,8 +46,6 @@ public class EditAccommodationCommand extends EditCommand {
 
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the "
-            + "accommodation list";
 
     private final Index targetIndex;
     private final EditDescriptor editAccommodationDescriptor;
@@ -82,13 +82,14 @@ public class EditAccommodationCommand extends EditCommand {
         Accommodation editedAccommodation = createEditedAccommodation(accommodationToEdit, editAccommodationDescriptor);
 
         if (!accommodationToEdit.isSameAccommodation(editedAccommodation)
-                && lastShownList.contains(editedAccommodation)) {
+                && model.hasTravelPlanObject(editedAccommodation)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
         assert model.hasTravelPlanObject(editedAccommodation);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation),
+                ACCOMMODATION_INDEX);
     }
 
     /**
