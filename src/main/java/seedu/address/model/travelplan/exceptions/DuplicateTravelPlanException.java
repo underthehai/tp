@@ -9,6 +9,6 @@ import seedu.address.commons.exceptions.DuplicateException;
  */
 public class DuplicateTravelPlanException extends DuplicateException {
     public DuplicateTravelPlanException() {
-        super("Operation would result in duplicate persons");
+        super("Operation would result in duplicate travel plans");
     }
 }
