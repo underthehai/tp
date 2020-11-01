@@ -107,8 +107,8 @@ public class AccommodationList {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Accommodations: ");
-        getObservableAccommodationList().forEach(builder::append);
+        builder.append("Accommodations: \n");
+        getObservableAccommodationList().forEach(accommodation -> builder.append(accommodation).append("\n"));
         return builder.toString();
     }
 

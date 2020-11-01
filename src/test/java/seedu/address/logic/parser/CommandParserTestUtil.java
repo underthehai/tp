@@ -108,7 +108,7 @@ public class CommandParserTestUtil {
         try {
             parser.parse(userInput);
             throw new AssertionError("The expected ParseException was not thrown.");
-        } catch (seedu.address.logic.parser.exceptions.ParseException pe) {
+        } catch (ParseException pe) {
             assertEquals(expectedMessage, pe.getMessage());
         }
     }
