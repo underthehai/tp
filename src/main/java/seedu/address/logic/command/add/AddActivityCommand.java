@@ -12,6 +12,7 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 
 public class AddActivityCommand extends AddCommand {
     public static final String COMMAND_WORD = "activity";
@@ -36,8 +37,11 @@ public class AddActivityCommand extends AddCommand {
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "travel plan's start date and end date.";
 
     private final Activity toAdd;
+    private final WanderlustDateTime activityDateTime;
 
     /**
      * Creates an AddActivityCommand to add the specified {@code Activity}
@@ -45,6 +49,7 @@ public class AddActivityCommand extends AddCommand {
     public AddActivityCommand(Activity activity) {
         requireNonNull(activity);
         toAdd = activity;
+        activityDateTime = activity.getActivityDateTime();
     }
 
     @Override
@@ -54,6 +59,12 @@ public class AddActivityCommand extends AddCommand {
         if (isTravelPlan) {
             if (model.hasTravelPlanObject(toAdd)) {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
+
+            boolean isDateInTravelPlanDate = model.isValidActivityDate(activityDateTime);
+
+            if (!isDateInTravelPlanDate) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
             }
 
             model.addTravelPlanObject(toAdd);

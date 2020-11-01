@@ -15,8 +15,10 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
@@ -373,6 +375,44 @@ public class ModelManager implements Model {
         friendList.sort(comparator);
         observableDirectory.setObservableDirectory(directory);
     }
+
+    /**
+     * Checks if accommodation object date is within the model's travel plan start and end date.
+     * @return false if accommodation start date and end date is within travel plan start date and end date.
+     */
+    public boolean isValidAccommodationDate(WanderlustDate startDate, WanderlustDate endDate) {
+        WanderlustDate travelPlanStartDate = directory.getStartDate();
+        WanderlustDate travelPlanEndDate = directory.getEndDate();
+
+        if (startDate.getValue().isBefore(travelPlanStartDate.getValue())
+                || startDate.getValue().isAfter(travelPlanEndDate.getValue())) {
+            return false;
+        }
+
+        if (endDate.getValue().isBefore(travelPlanStartDate.getValue())
+                || endDate.getValue().isAfter(travelPlanEndDate.getValue())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if activity object date time is within the model's travel plan start and end date.
+     * @return true if activity date is within travel plan start date and end date range.
+     */
+    public boolean isValidActivityDate(WanderlustDateTime activityDateTime) {
+        WanderlustDate travelPlanStartDate = directory.getStartDate();
+        WanderlustDate travelPlanEndDate = directory.getEndDate();
+
+        if (activityDateTime.getValue().toLocalDate().isBefore(travelPlanStartDate.getValue())
+            || activityDateTime.getValue().toLocalDate().isAfter(travelPlanEndDate.getValue())) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     @Override
     public void copyActivity(Activity activity, Index travelPlanIndex) {

@@ -46,6 +46,8 @@ public class EditActivityCommand extends EditCommand {
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list.";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "travel plan's start date and end date.";
 
     private final Index targetIndex;
     private final EditDescriptor editActivityDescriptor;
@@ -74,7 +76,7 @@ public class EditActivityCommand extends EditCommand {
         }
 
         Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
+        Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor, model);
 
         if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
@@ -98,8 +100,8 @@ public class EditActivityCommand extends EditCommand {
      * @param editActivityDescriptor contains updated fields
      * @return Activity to be updated in the activity list
      */
-    private static Activity createEditedActivity(Activity activityToEdit,
-                                                 EditDescriptor editActivityDescriptor) {
+    private static Activity createEditedActivity(Activity activityToEdit, EditDescriptor editActivityDescriptor,
+                                                 Model model) throws CommandException {
         assert activityToEdit != null;
 
         Name updatedName = editActivityDescriptor.getName().orElse(activityToEdit.getName());
@@ -110,6 +112,12 @@ public class EditActivityCommand extends EditCommand {
                 .orElse(activityToEdit.getLevelOfImportance());
         WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime()
                 .orElse(activityToEdit.getActivityDateTime());
+
+        boolean isDateInTravelPlanDate = model.isValidActivityDate(updatedActivityDateTime);
+
+        if (!isDateInTravelPlanDate) {
+            throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+        }
 
         return new Activity(updatedName, updatedLocation, updatedCost, updatedLevelOfImportance,
                 updatedActivityDateTime);
