@@ -11,8 +11,8 @@ public class Passport {
 
     //TODO: follow passport conventions
     public static final String MESSAGE_CONSTRAINTS =
-            "Passport numbers should only contain 1 character and 7 numbers";
-    public static final String VALIDATION_REGEX = "\\w\\d{7}";
+            "Passport numbers should only contain 1 capital letter and 7 numbers";
+    public static final String VALIDATION_REGEX = "[A-Z]\\d{7}";
     private final String value;
 
     /**
