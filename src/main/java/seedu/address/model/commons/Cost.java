@@ -33,8 +33,7 @@ public class Cost {
      */
     public static boolean isValidCost(String test) {
         try {
-            Double.parseDouble(test);
-            return test.matches(VALIDATION_REGEX);
+            return test.matches(VALIDATION_REGEX) && Double.parseDouble(test) <= Integer.MAX_VALUE;
         } catch (NumberFormatException e) {
             return false;
         }
