@@ -93,7 +93,7 @@ Command | Description
 `add -travelplan n/Singapore sd/2021-05-05 ed/2021-06-06` | Adds a Singapore travelPlan to the travelPlan list 
 `goto -travelplan 1` | Go to the Singapore travelplan
 `add -friend n/Tom p/S1234567 m/12345678` | Add a friend name `Tom` with passport number `S1234567` and mobile number `12345678`
-`add -friend n/Jerry p/S4538201 m/89201987` | Add a friend name `Tom` with passport number `S4538201` and mobile number `89201987`
+`add -friend n/Jerry p/S4538201 m/89201987` | Add a friend name `Jerry` with passport number `S4538201` and mobile number `89201987`
 `find -friend tom` | Finds all friend with name tom
 `delete -friend 1` | Removes friend at index 1 in the friendlist shown
 `show -Activity` | Switch to the activity tab
@@ -175,6 +175,10 @@ Name of Parameter | Description | Requirement
 `m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be 8 digits only.
 `p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future).
 
+**Notes about Friend:**<br>
+
+* Passport is case-insensitive
+
 #### Travel Plan Parameters
 
 Name of Parameters | Description | Requirement
@@ -224,7 +228,8 @@ is `wishlist`.<br/>
 
 This allows users to easily add, delete, view and edit information within the wishlist or a specific travel plan without
 having to type their directory names in each command. This also means that **some commands can only be used locally within a
-certain directory, and responses to these commands will depend on the current directory.** 
+certain directory, and responses to these commands will depend on the current directory.** They will be marked with (G) for global
+commands and (L) for local commands.
 
 
 ### 1. Goto a Travel Plan (G)
