@@ -5,7 +5,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDAT
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.Period;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
