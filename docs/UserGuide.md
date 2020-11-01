@@ -68,7 +68,7 @@ It is optimized for CLI users so that destinations and details can be added fast
         1. [Refer to UserGuide (G)](#1-refer-to-userguide-g)
     * [Exit](#exit)
         1. [Exiting the application (G)](#1-exiting-the-application-g)
-* [FAQ \[Coming soon\]](#faq)
+* [FAQ](#faq)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -141,7 +141,7 @@ Wishlist | TravelPlan
 ## Parameters
 
 The table below shows the type of parameters each different object requires.
-Do note that parameters are compulsory when creating the object.
+Do note that all parameters stated are compulsory when creating the object.
 
 #### Activity Parameters
 
@@ -186,6 +186,10 @@ Name of Parameters | Description | Requirement
 `n/NAME` | Name of the travel plan. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
 `sd/START_DATE` | Start date of travel plan| Must be in the format of YYYY-MM-DD.
 `ed/END_DATE` | End date of travel plan | Must be in the format of YYYY-MM-DD.
+
+**Notes about Travel Plan:**<br>
+
+* Start date of Travel Plan must be either current date or any date after current date
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -552,6 +556,8 @@ Format: `exit`
 
 ## FAQ 
 
-Coming Soon!
+Q: How do I remove existing data when I start the app and start with a blank travelplanner?
+
+A: Type `clear` in the command to remove all preexisting data.
 
 --------------------------------------------------------------------------------------------------------------------
