@@ -17,10 +17,10 @@ import seedu.address.model.travelplan.TravelPlan;
 public class DeleteTravelPlanCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "travelplan";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the travel plan identified by the index number used in the displayed travel planner list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_USAGE =
+            "Delete a travel plan by its index in the displayed travel plan list using the format:\n"
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
+            + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_TRAVELPLAN_SUCCESS = "Deleted Travel Plan: %1$s";
 

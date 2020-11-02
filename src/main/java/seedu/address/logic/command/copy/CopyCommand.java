@@ -17,10 +17,10 @@ import seedu.address.model.travelplan.TravelPlan;
 public class CopyCommand extends Command {
     public static final String COMMAND_WORD = "copy";
 
-    public static final String MESSAGE_USAGE =
-            "copy: Copies the activity identified by the index number used in the wish list to the travel plan "
-                    + "identified by the index number used in the travel planner.\n"
-                    + "Parameters: INDEX (must be a positive integer)\n";
+    public static final String MESSAGE_USAGE = "Copy an activity identified by its index number "
+            + "used in the wish list to a travel plan "
+            + "identified by its index number in the travel planner using the following format:\n"
+            + "copy ACTIVITY_INDEX TRAVELPLAN_INDEX\n";
 
     public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity %1$s to travel plan %1$s";
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before copying activities";

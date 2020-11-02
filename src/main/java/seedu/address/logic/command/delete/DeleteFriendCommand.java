@@ -17,10 +17,10 @@ import seedu.address.model.commons.TravelPlanObject;
 public class DeleteFriendCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "friend";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the friend identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_USAGE =
+            "Delete a friend by its index in the displayed friend list using the format:\n"
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
+            + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_FRIEND_SUCCESS = "Deleted Friend: %1$s";
 

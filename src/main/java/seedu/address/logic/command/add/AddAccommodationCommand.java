@@ -12,24 +12,30 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.commons.WanderlustDate;
 
 public class AddAccommodationCommand extends AddCommand {
+
     public static final String COMMAND_WORD = "accommodation";
 
-    public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
-            + ": Adds an accommodation to the current travel plan\n"
-            + "Parameters: "
+    public static final String MESSAGE_FORMAT =
+            "Add an accommodation to the current travel plan using the format:\n"
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + "NAME "
             + PREFIX_LOCATION + "LOCATION "
             + PREFIX_COST + "COST "
-            + PREFIX_START + "START_DATE "
-            + PREFIX_END + "END_DATE "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "Intercontinental Singapore "
+            + PREFIX_START + WanderlustDate.FORMAT + " "
+            + PREFIX_END + WanderlustDate.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
+            + PREFIX_NAME + "Intercontinental "
             + PREFIX_LOCATION + "80 Middle Road "
             + PREFIX_COST + "250 "
             + PREFIX_START + "2020-09-15 "
-            + PREFIX_END + "30-09-2020 ";
+            + PREFIX_END + "2020-09-30";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New accommodation added: %1$s";
     public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the travel plan";

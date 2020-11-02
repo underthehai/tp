@@ -46,9 +46,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
 
             }
-        } catch (ParseException pe) {
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         }
     }
 

@@ -25,18 +25,23 @@ import seedu.address.model.travelplan.TravelPlan;
  * A travelplan contains the field name, start date and end date
  */
 public class EditTravelPlanCommand extends EditCommand {
+
     public static final String COMMAND_WORD = "travelplan";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the travel plan identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_START + "START_DATE] "
-            + "[" + PREFIX_END + "END_DATE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Trip to Japan "
-            + PREFIX_START + "2020-01-20 "
-            + PREFIX_END + " 2020-01-30";
+    public static final String MESSAGE_FORMAT = "Edit a travel plan in the travel planner "
+            + "by its index in the displayed travel plan list using the format:\n"
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_START + WanderlustDate.FORMAT + " "
+            + PREFIX_END + WanderlustDate.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1 "
+            + PREFIX_NAME + " France "
+            + PREFIX_START + "2020-09-15 "
+            + PREFIX_END + "2020-09-30 ";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
     public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";

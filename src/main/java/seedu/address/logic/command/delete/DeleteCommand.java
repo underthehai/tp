@@ -13,9 +13,11 @@ public abstract class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the activity identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n";
+    public static final String MESSAGE_USAGE =
+            "Delete a travel plan by its index in the displayed travel plan list\n"
+            + "or an activity/accommodation/friend by its index in its displayed list\n"
+            + "using the following as an example:\n"
+            + DeleteActivityCommand.MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
@@ -24,7 +26,6 @@ public abstract class DeleteCommand extends Command {
     public DeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
-
 
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
