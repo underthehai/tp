@@ -25,7 +25,7 @@ public class FindCommand extends Command {
             + "whose names contain any of the specified keywords (case-insensitive) "
             + "using the following as an example:\n"
             + "find -activity KEYWORD [MORE_KEYWORDS]";
-  
+
     public static final String MISSING_KEYWORDS = "Please provide at least one keyword to search for";
 
     private final NameContainsKeywordsPredicate predicate;

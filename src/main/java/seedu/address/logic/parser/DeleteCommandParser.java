@@ -11,7 +11,6 @@ import seedu.address.logic.command.delete.DeleteActivityCommand;
 import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.command.delete.DeleteFriendCommand;
 import seedu.address.logic.command.delete.DeleteTravelPlanCommand;
-import seedu.address.logic.parser.exceptions.InvalidIndexException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;

@@ -66,7 +66,7 @@ It is optimized for CLI users so that destinations and details can be added fast
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick Start 
+## Quick Start
 
 1. Ensure you have Java `11` or above installed in your computer.
 2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases/tag/v1.3)
@@ -457,7 +457,7 @@ Example: `copy 2 1`
 
 ### 1. Moving an Activity (L)
 
-Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be 
+Moves an activity at a given index from the wishlist to a travel plan at a given index. The moved activity will be
 deleted from the wishlist. <br/>
 This command can only be called when the directory is at the wishlist. Use `goto -wishlist` first.
 
@@ -482,7 +482,7 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ 
+## FAQ
 
 Coming Soon!
 
