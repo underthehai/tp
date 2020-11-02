@@ -12,12 +12,16 @@ public abstract class SortCommand extends Command {
     public static final String KEYWORD_COST = "cost";
     public static final String KEYWORD_IMPORTANCE = "importance";
     public static final String KEYWORD_DATE = "date";
-    public static final String KEYWORD_DATETIME = "date and time";
+    public static final String KEYWORD_DATETIME = "datetime";
 
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": sort the respective list based on the keyword input.\n"
-            + "Parameters: travelPlanObjectType, sort keywords\n"
+            + ": Sort the respective object type list based on the keyword input.\n"
+            + "Object Type: -activity\n"
+            + "             -accommodation\n"
+            + "             -friend\n"
+            + "Sorting Keyword: " + KEYWORD_NAME + ", " + KEYWORD_COST + ", " + KEYWORD_IMPORTANCE + ", " + KEYWORD_DATE
+            + ", " + KEYWORD_DATETIME + "\n"
             + "Example: " + COMMAND_WORD + " -activity cost";
 
     private final String sortKeyword;

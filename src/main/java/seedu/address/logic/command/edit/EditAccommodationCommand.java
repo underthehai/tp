@@ -19,7 +19,6 @@ import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
-import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.
@@ -58,9 +57,14 @@ public class EditAccommodationCommand extends EditCommand {
 
     /**
      * Constructor for edit accommodation
+     *
+     * @param editAccommodationDescriptor should contain valid edited fields
      */
     public EditAccommodationCommand(Index targetIndex, EditDescriptor editAccommodationDescriptor) {
         super(targetIndex);
+
+        assert !editAccommodationDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editAccommodationDescriptor = editAccommodationDescriptor;
     }
@@ -69,7 +73,7 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!(model.getDirectory() instanceof TravelPlan)) {
+        if (!model.isDirectoryTypeTravelPlan()) {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
@@ -86,8 +90,8 @@ public class EditAccommodationCommand extends EditCommand {
                 && lastShownList.contains(editedAccommodation)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
-
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
+        assert model.hasTravelPlanObject(editedAccommodation);
 
         return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
     }

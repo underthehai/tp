@@ -24,7 +24,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -activity 1 ", new DeleteActivityCommand(INDEX_FIRST_PERSON));
+        assertWanderLustDeleteParseSuccess(parser, " -activity 1", new DeleteActivityCommand(INDEX_FIRST_PERSON));
     }
 
     @Test

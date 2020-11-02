@@ -15,13 +15,23 @@ public abstract class EditCommand extends Command {
 
     public static final String SPECIFY_INDEX = "Please Specify the index";
     public static final String MESSAGE_WRONG_DIRECTORY = "Please go to a travelplan directory to use this command";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " with optional fields\n"
             + EditTravelPlanCommand.MESSAGE_FORMAT + "\n"
             + EditActivityCommand.MESSAGE_FORMAT + "\n"
             + EditAccommodationCommand.MESSAGE_FORMAT + "\n"
             + EditFriendCommand.MESSAGE_FORMAT;
+
+    public static final String VALID_PARAMETERS = "travelplan: n/NAME sd/START_DATE ed/END_DATE\n"
+            + "activity: n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/DATE_AND_TIME\n"
+            + "accommodation: n/NAME l/LOCATION c/COST sd/START_DATE ed/END_DATE\n"
+            + "friend: n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
+
+    public static final String INVALID_FIELDS = "Fields specified are invalid. Refer to the list of valid parameters"
+            + "\n"
+            + VALID_PARAMETERS;
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided. Refer to the list "
+            + "of valid parameters" + VALID_PARAMETERS;
 
 
     protected final Index targetIndex;

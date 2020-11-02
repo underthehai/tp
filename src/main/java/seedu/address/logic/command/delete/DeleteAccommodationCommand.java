@@ -1,6 +1,7 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 
 import java.util.List;
 
@@ -9,20 +10,20 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.TravelPlanObject;
 
 /**
  * Deletes an accommodation in a travel plan identified using the index from the travel plan.
  */
 public class DeleteAccommodationCommand extends DeleteCommand {
-    public static final String COMMAND_WORD = "accommodation";
 
     public static final String MESSAGE_USAGE =
             "Delete an accommodation by its index in the displayed accommodation list using the format:\n"
             + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
             + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_ACCOMMODATION_SUCCESS = "Deleted Accommodation: %1$s";
+    public static final String MESSAGE_DELETE_ACCOMMODATION_SUCCESS = "Deleted Accommodation:\n%1$s";
 
     private final Index targetIndex;
 
@@ -38,7 +39,7 @@ public class DeleteAccommodationCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<? extends TravelPlanObject> filteredAccommodationList = model.getFilteredAccommodationList();
+        List<Accommodation> filteredAccommodationList = model.getFilteredAccommodationList();
 
         if (targetIndex.getZeroBased() >= filteredAccommodationList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
@@ -47,6 +48,8 @@ public class DeleteAccommodationCommand extends DeleteCommand {
         TravelPlanObject accommodationToDelete = filteredAccommodationList.get(targetIndex.getZeroBased());
 
         model.deleteTravelPlanObject(accommodationToDelete);
+        assert !model.getAccommodationList().hasAccommodation((Accommodation) accommodationToDelete)
+                : "Accommodation was not deleted!";
         return new CommandResult(String.format(MESSAGE_DELETE_ACCOMMODATION_SUCCESS, accommodationToDelete));
     }
 

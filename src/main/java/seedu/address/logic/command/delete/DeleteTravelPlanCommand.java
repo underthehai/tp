@@ -1,6 +1,7 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import seedu.address.model.travelplan.TravelPlan;
  * Deletes a travel plan in the travel planner identified using the index from the travel planner list.
  */
 public class DeleteTravelPlanCommand extends DeleteCommand {
+
     public static final String COMMAND_WORD = "travelplan";
 
     public static final String MESSAGE_USAGE =
@@ -22,7 +24,7 @@ public class DeleteTravelPlanCommand extends DeleteCommand {
             + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
             + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_TRAVELPLAN_SUCCESS = "Deleted Travel Plan: %1$s";
+    public static final String MESSAGE_DELETE_TRAVELPLAN_SUCCESS = "Deleted Travel Plan:\n%1$s";
 
     private final Index targetIndex;
 
@@ -38,14 +40,16 @@ public class DeleteTravelPlanCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<TravelPlan> lastShownList = model.getFilteredTravelPlanList();
+        List<TravelPlan> filteredTravelPlanList = model.getFilteredTravelPlanList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredTravelPlanList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
         }
 
-        TravelPlan travelPlanToDelete = lastShownList.get(targetIndex.getZeroBased());
+        TravelPlan travelPlanToDelete = filteredTravelPlanList.get(targetIndex.getZeroBased());
         model.deleteTravelPlan(travelPlanToDelete);
+        assert !model.getTravelPlanList().contains(travelPlanToDelete)
+                : "Travel plan was not deleted!";
         return new CommandResult(String.format(MESSAGE_DELETE_TRAVELPLAN_SUCCESS, travelPlanToDelete));
     }
 

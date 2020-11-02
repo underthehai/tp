@@ -20,9 +20,10 @@ public class Messages {
     public static final String MESSAGE_ACTIVITIES_LISTED_OVERVIEW = "%1$d activities listed!";
     public static final String MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW = "%1$d accommodations listed!";
     public static final String MESSAGE_FRIENDS_LISTED_OVERVIEW = "%1$d friends listed!";
+    public static final String WRONG_DIRECTORY = "Please go to your desired travelplan to edit friend, activity "
+            + "or accommodation, using the goto command.";
     public static final String MESSAGE_TRAVELPLANS_LISTED_OVERVIEW = "%1$d travel plans listed!";
     public static final String MESSAGE_INVALID_STARTANDENDDATE = "Start Date should be before or "
             + "on the same date as End Date.";
-
-
+    public static final String MESSAGE_DELETE_SUCCESS = "Deleted %s:\n%1$s";
 }

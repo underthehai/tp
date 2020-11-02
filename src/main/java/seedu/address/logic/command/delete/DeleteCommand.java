@@ -1,10 +1,14 @@
 package seedu.address.logic.command.delete;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.Command;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.activity.Activity;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Deletes a travel plan object identified using it's displayed index from the travel plans.
@@ -19,7 +23,7 @@ public abstract class DeleteCommand extends Command {
             + "using the following as an example:\n"
             + DeleteActivityCommand.MESSAGE_EXAMPLE;
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final int COMMAND_TOKENS = 3;
 
     protected final Index targetIndex;
 

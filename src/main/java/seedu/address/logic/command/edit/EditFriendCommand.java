@@ -16,7 +16,6 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
-import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Edits existing Friend in the address book. This command can only be used within the travel plan directory.
@@ -52,6 +51,9 @@ public class EditFriendCommand extends EditCommand {
      */
     public EditFriendCommand(Index targetIndex, EditDescriptor editFriendDescriptor) {
         super(targetIndex);
+
+        assert !editFriendDescriptor.wrongFieldEdited(COMMAND_WORD);
+
         this.targetIndex = targetIndex;
         this.editFriendDescriptor = editFriendDescriptor;
     }
@@ -60,7 +62,7 @@ public class EditFriendCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!(model.getDirectory() instanceof TravelPlan)) {
+        if (!model.isDirectoryTypeTravelPlan()) {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
@@ -76,8 +78,8 @@ public class EditFriendCommand extends EditCommand {
         if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {
             throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
-
         model.setTravelPlanObject(friendToEdit, editedFriend);
+        assert model.hasTravelPlanObject(editedFriend);
         return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend));
     }
 
