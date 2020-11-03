@@ -1,30 +1,29 @@
 package seedu.address.logic.command;
 
-import static seedu.address.commons.core.Messages.*;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_ACTIVITIES_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_FRIENDS_LISTED_OVERVIEW;
 import static seedu.address.logic.command.CommandTestUtil.assertFindCommandSuccess;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.parser.FindCommandParser;
-import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.activity.Activity;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 
 /**
  * Tests the properties of find command
- * Only full words will be matched e.g. `Han` will not match `Hans`
  */
 public class FindCommandTest {
 
@@ -47,7 +46,8 @@ public class FindCommandTest {
         int expectedSize = expectedModel.getFilteredFriendList().size();
         String expectedMessage = String.format(MESSAGE_FRIENDS_LISTED_OVERVIEW, expectedSize);
 
-        FindCommand findFriendCommand = new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.FRIEND_INDEX);
+        FindCommand findFriendCommand = new FindCommand(new NameContainsKeywordsPredicate(keywords),
+                ParserUtil.FRIEND_INDEX);
         assertFindCommandSuccess(findFriendCommand, ParserUtil.FRIEND_INDEX, model, expectedMessage, expectedModel);
     }
 
@@ -83,7 +83,8 @@ public class FindCommandTest {
         int expectedSize = expectedModel.getFilteredFriendList().size();
         String expectedMessage = String.format(MESSAGE_FRIENDS_LISTED_OVERVIEW, expectedSize);
 
-        FindCommand findFriendCommand = new FindCommand(testPredicate, ParserUtil.FRIEND_INDEX); //actual model uses predicate
+        //actual model uses predicate
+        FindCommand findFriendCommand = new FindCommand(testPredicate, ParserUtil.FRIEND_INDEX);
         assertFindCommandSuccess(findFriendCommand, ParserUtil.FRIEND_INDEX, model, expectedMessage, expectedModel);
     }
 
@@ -93,8 +94,11 @@ public class FindCommandTest {
     @Test
     public void execute_findDifferentOrder_success() {
 
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Arrays.asList("alice benson"));
-        NameContainsKeywordsPredicate testPredicate = new NameContainsKeywordsPredicate(Arrays.asList("benson alice"));
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(
+                Arrays.asList("alice", "benson"));
+
+        NameContainsKeywordsPredicate testPredicate = new NameContainsKeywordsPredicate(
+                Arrays.asList("benson", "alice"));
 
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(0);
@@ -102,7 +106,8 @@ public class FindCommandTest {
         int expectedSize = expectedModel.getFilteredFriendList().size();
         String expectedMessage = String.format(MESSAGE_FRIENDS_LISTED_OVERVIEW, expectedSize);
 
-        FindCommand findFriendCommand = new FindCommand(testPredicate, ParserUtil.FRIEND_INDEX); //actual model uses predicate
+        //actual model uses predicate
+        FindCommand findFriendCommand = new FindCommand(testPredicate, ParserUtil.FRIEND_INDEX);
         assertFindCommandSuccess(findFriendCommand, ParserUtil.FRIEND_INDEX, model, expectedMessage, expectedModel);
     }
 
@@ -117,8 +122,10 @@ public class FindCommandTest {
         int expectedSize = expectedModel.getFilteredAccommodationList().size();
         String expectedMessage = String.format(MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW, expectedSize);
 
-        FindCommand findAccommodation = new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACCOMMODATION_INDEX);
-        assertFindCommandSuccess(findAccommodation, ParserUtil.ACCOMMODATION_INDEX, model, expectedMessage, expectedModel);
+        FindCommand findAccommodation = new FindCommand(new NameContainsKeywordsPredicate(keywords),
+                ParserUtil.ACCOMMODATION_INDEX);
+        assertFindCommandSuccess(findAccommodation, ParserUtil.ACCOMMODATION_INDEX, model, expectedMessage,
+                expectedModel);
     }
 
     @Test
@@ -132,8 +139,47 @@ public class FindCommandTest {
         int expectedSize = expectedModel.getFilteredActivityList().size();
         String expectedMessage = String.format(MESSAGE_ACTIVITIES_LISTED_OVERVIEW, expectedSize);
 
-        FindCommand findAccommodation = new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACTIVITY_INDEX);
+        FindCommand findAccommodation = new FindCommand(new NameContainsKeywordsPredicate(keywords),
+                ParserUtil.ACTIVITY_INDEX);
         assertFindCommandSuccess(findAccommodation, ParserUtil.ACTIVITY_INDEX, model, expectedMessage, expectedModel);
+    }
+
+    /**
+     * Only Activity with name matching "archery" should appear in filtered acitivity list
+     * DonutDate Activity should not be in the list
+     */
+    @Test
+    public void execute_findCorrectActivity() {
+        List<String> keywords = Arrays.asList("archery");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        Activity archery = expectedModel.getFilteredActivityList().get(0); //archery activity
+        Activity donutDate = expectedModel.getFilteredActivityList().get(3); //donutdate activity
+        expectedModel.updateFilteredActivityList(predicate);
+
+        assertTrue(expectedModel.getFilteredActivityList().contains(archery));
+        assertFalse(expectedModel.getFilteredActivityList().contains(donutDate));
+
+    }
+
+    /**
+     * Only full words will be matched
+     * Archery Activity should not match 'archerys'
+     */
+    @Test
+    public void execute_findMatchFullWord() {
+        List<String> keywords = Arrays.asList("archerys");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+
+        ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
+        expectedModel.setDirectory(0);
+        Activity archery = expectedModel.getFilteredActivityList().get(0); //archery activity
+        expectedModel.updateFilteredActivityList(predicate);
+
+        assertFalse(expectedModel.getFilteredActivityList().contains(archery));
+
     }
 
 }

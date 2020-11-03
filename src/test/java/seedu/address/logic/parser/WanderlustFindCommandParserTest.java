@@ -84,18 +84,19 @@ public class WanderlustFindCommandParserTest {
     @Test
     public void parse_findMissingType_failure() {
         String missingTypeInput = "find ice";
-        String expectedErrorMessage = "Invalid command format! \n" +
-                "find: Finds all travel plan object whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n" +
-                "Parameters: KEYWORD [MORE_KEYWORDS]...\n" +
-                "Example: \n" +
-                "Finds activities in the current travel plan or wishlist using the format:\n" +
-                "find -activity KEYWORD [MORE_KEYWORDS]...\n" +
-                "\n" +
-                "Finds accommodations in the current travel plan using the format:\n" +
-                "find -accommodation KEYWORD [MORE_KEYWORDS]...\n" +
-                "\n" +
-                "Finds friends in the current travel plan using the format:\n" +
-                "find -friend KEYWORD [MORE_KEYWORDS]...\n";
+        String expectedErrorMessage = "Invalid command format! \n"
+                + "find: Finds all travel plan object whose names contain any of the specified keywords "
+                + "(case-insensitive) and displays them as a list with index numbers.\n"
+                + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+                + "Example: \n"
+                + "Finds activities in the current travel plan or wishlist using the format:\n"
+                + "find -activity KEYWORD [MORE_KEYWORDS]...\n"
+                + "\n"
+                + "Finds accommodations in the current travel plan using the format:\n"
+                + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n"
+                + "\n"
+                + "Finds friends in the current travel plan using the format:\n"
+                + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
 
         assertWanderlustFindParseFailure(parser, missingTypeInput, expectedErrorMessage);
     }
@@ -107,18 +108,20 @@ public class WanderlustFindCommandParserTest {
     public void parse_findInvalidInputFormat_failure() {
         String invalidInput = "find activity foo bar baz"; //missing dash
 
-        String expectedErrorMessage = "Invalid command format! \n" +
-                "find: Finds all travel plan object whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n" +
-                "Parameters: KEYWORD [MORE_KEYWORDS]...\n" +
-                "Example: \n" +
-                "Finds activities in the current travel plan or wishlist using the format:\n" +
-                "find -activity KEYWORD [MORE_KEYWORDS]...\n" +
-                "\n" +
-                "Finds accommodations in the current travel plan using the format:\n" +
-                "find -accommodation KEYWORD [MORE_KEYWORDS]...\n" +
-                "\n" +
-                "Finds friends in the current travel plan using the format:\n" +
-                "find -friend KEYWORD [MORE_KEYWORDS]...\n";
+        String expectedErrorMessage = "Invalid command format! \n"
+                + "find: Finds all travel plan object whose names contain any of the specified keywords "
+                + "(case-insensitive) and displays them as a list with index numbers.\n"
+                + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+                + "Example: \n"
+                + "Finds activities in the current travel plan or wishlist using the format:\n"
+                + "find -activity KEYWORD [MORE_KEYWORDS]...\n"
+                + "\n"
+                + "Finds accommodations in the current travel plan using the format:\n"
+                + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n"
+                + "\n"
+                + "Finds friends in the current travel plan using the format:\n"
+                + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
+
 
         assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
 

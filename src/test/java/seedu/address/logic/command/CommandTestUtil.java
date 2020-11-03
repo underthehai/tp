@@ -283,7 +283,7 @@ public class CommandTestUtil {
 
     /**
      * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
-     * that takes a string {@code expectedMessage}.
+     * Integer index @code{index} indicates the type of Travel Plan Object to find in the model 
      */
     public static void assertFindCommandSuccess(Command command, int index, Model actualModel, String expectedMessage,
                                                 Model expectedModel) {

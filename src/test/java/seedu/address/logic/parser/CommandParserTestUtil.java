@@ -44,14 +44,15 @@ public class CommandParserTestUtil {
     /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
-     @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
-     assertEquals(expectedMessage, pe.getMessage());
-     }
-     }
-
-     /**
-      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
-      * equals to {@code expectedMessage}.
+     *
+     * @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
+     * assertEquals(expectedMessage, pe.getMessage());
+     * }
+     * }
+     * <p>
+     * /**
+     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
+     * equals to {@code expectedMessage}.
      */
     public static void assertWanderLustParseFailure(DeleteCommandParser parser, String userInput,
                                                     String expectedMessage) {
@@ -78,11 +79,11 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the FindCommand parsing oof {@code userInput} by {@code parser} failed
+     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} failed
      * and the error message equals to {@code expectedMessage}
      */
     public static void assertWanderlustFindParseFailure(FindCommandParser parser, String userInput,
-                                                        String expectedMessage){
+                                                        String expectedMessage) {
         try {
             parser.parse(userInput);
             throw new AssertionError("The expected ParseException was not thrown.");
@@ -105,9 +106,9 @@ public class CommandParserTestUtil {
         }
     }
 
-     /**
-      * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
-      * and the error message equals to {@code expectedMessage}.
+    /**
+     * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
+     * and the error message equals to {@code expectedMessage}.
      */
     public static void assertWanderLustParseEditCommandFailure(EditCommandParser parser, String userInput,
                                                                String expectedMessage) {
