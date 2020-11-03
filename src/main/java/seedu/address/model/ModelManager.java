@@ -384,13 +384,11 @@ public class ModelManager implements Model {
         WanderlustDate travelPlanStartDate = directory.getStartDate();
         WanderlustDate travelPlanEndDate = directory.getEndDate();
 
-        if (startDate.getValue().isBefore(travelPlanStartDate.getValue())
-                || startDate.getValue().isAfter(travelPlanEndDate.getValue())) {
+        if (startDate.isBefore(travelPlanStartDate) || startDate.isAfter(travelPlanEndDate)) {
             return false;
         }
 
-        if (endDate.getValue().isBefore(travelPlanStartDate.getValue())
-                || endDate.getValue().isAfter(travelPlanEndDate.getValue())) {
+        if (endDate.isBefore(travelPlanStartDate) || endDate.isAfter(travelPlanEndDate)) {
             return false;
         }
 
@@ -405,8 +403,7 @@ public class ModelManager implements Model {
         WanderlustDate travelPlanStartDate = directory.getStartDate();
         WanderlustDate travelPlanEndDate = directory.getEndDate();
 
-        if (activityDateTime.getValue().toLocalDate().isBefore(travelPlanStartDate.getValue())
-            || activityDateTime.getValue().toLocalDate().isAfter(travelPlanEndDate.getValue())) {
+        if (activityDateTime.isBefore(travelPlanStartDate) || activityDateTime.isAfter(travelPlanEndDate)) {
             return false;
         }
 
@@ -420,8 +417,8 @@ public class ModelManager implements Model {
     public boolean isValidActivityDate(WanderlustDateTime activityDateTime, TravelPlan travelPlan) {
         WanderlustDate travelPlanStartDate = travelPlan.getStartDate();
         WanderlustDate travelPlanEndDate = travelPlan.getEndDate();
-        if (activityDateTime.getValue().toLocalDate().isBefore(travelPlanStartDate.getValue())
-                || activityDateTime.getValue().toLocalDate().isAfter(travelPlanEndDate.getValue())) {
+        if (activityDateTime.isBefore(travelPlanStartDate)
+                || activityDateTime.isAfter(travelPlanEndDate)) {
             return false;
         }
 
