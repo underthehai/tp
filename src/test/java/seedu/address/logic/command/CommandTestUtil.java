@@ -281,4 +281,14 @@ public class CommandTestUtil {
         assertEquals(1, filteredList.size());
     }
 
+    /**
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
+     * that takes a string {@code expectedMessage}.
+     */
+    public static void assertFindCommandSuccess(Command command, int index, Model actualModel, String expectedMessage,
+                                                Model expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, index);
+        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
 }

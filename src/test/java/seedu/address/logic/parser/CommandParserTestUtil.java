@@ -42,20 +42,6 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} is successful and the command created
-     * equals to {@code expectedCommand}.
-     */
-    public static void assertFindParseSuccess(FindCommandParser parser, String userInput,
-                                              FindCommand expectedCommand) {
-        try {
-            FindCommand command = parser.parse(userInput);
-            assertEquals(expectedCommand, command);
-        } catch (ParseException pe) {
-            throw new IllegalArgumentException("Invalid userInput.", pe);
-        }
-    }
-
-    /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
      @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
@@ -78,6 +64,34 @@ public class CommandParserTestUtil {
     }
 
     /**
+     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} is successful and the command created
+     * equals to {@code expectedCommand}.
+     */
+    public static void assertWanderlustFindParseSuccess(FindCommandParser parser, String userInput,
+                                                        FindCommand expectedCommand) {
+        try {
+            FindCommand command = parser.parse(userInput);
+            assertEquals(expectedCommand, command);
+        } catch (ParseException pe) {
+            throw new IllegalArgumentException("Invalid userInput.", pe);
+        }
+    }
+
+    /**
+     * Asserts that the FindCommand parsing oof {@code userInput} by {@code parser} failed
+     * and the error message equals to {@code expectedMessage}
+     */
+    public static void assertWanderlustFindParseFailure(FindCommandParser parser, String userInput,
+                                                        String expectedMessage){
+        try {
+            parser.parse(userInput);
+            throw new AssertionError("The expected ParseException was not thrown.");
+        } catch (ParseException pe) {
+            assertEquals(expectedMessage, pe.getMessage());
+        }
+    }
+
+    /**
      * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is
      * successful and the command created equals to {@code expectedCommand}.
      */
@@ -90,14 +104,6 @@ public class CommandParserTestUtil {
             throw new IllegalArgumentException("Invalid userInput.", pe);
         }
     }
-
-    /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
-     * equals to {@code expectedMessage}.
-     @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
-     assertEquals(expectedMessage, pe.getMessage());
-     }
-     }
 
      /**
       * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
