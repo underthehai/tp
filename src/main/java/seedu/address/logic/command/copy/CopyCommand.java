@@ -12,7 +12,6 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.WanderlustDateTime;
-import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
 
 
@@ -61,12 +60,10 @@ public class CopyCommand extends Command {
             Activity activityToCopy = filteredActivityList.get(activityIndex.getZeroBased());
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
 
-            WanderlustDate travelPlanStartDate = travelPlan.getStartDate();
-            WanderlustDate travelPlanEndDate = travelPlan.getEndDate();
             WanderlustDateTime activityDateTime = activityToCopy.getActivityDateTime();
 
             boolean isValidActivityDateTime = model.isValidActivityDate(activityDateTime,
-                    travelPlanStartDate, travelPlanEndDate);
+                    travelPlan);
 
             if (!isValidActivityDateTime) {
                 throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);

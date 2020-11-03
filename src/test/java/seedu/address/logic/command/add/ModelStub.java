@@ -260,8 +260,7 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public boolean isValidActivityDate(WanderlustDateTime activityDateTime,
-                                       WanderlustDate startDate, WanderlustDate endDate) {
+    public boolean isValidActivityDate(WanderlustDateTime activityDateTime, TravelPlan travelPlan) {
         throw new AssertionError("This method should not be called.");
     }
 
