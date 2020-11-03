@@ -12,13 +12,13 @@ import seedu.address.model.TravelPlanner;
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
+    public static final String MESSAGE_SUCCESS = "Wanderlust has been cleared!";
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setTravelPlanner(new TravelPlanner(null));
+        model.setTravelPlanner(new TravelPlanner());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
