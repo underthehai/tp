@@ -92,8 +92,8 @@ Command | Description
 `clear` | Remove all preset data from Wanderlust
 `add -travelplan n/Singapore sd/2021-05-05 ed/2021-06-06` | Adds a Singapore travelPlan to the travelPlan list 
 `goto -travelplan 1` | Go to the Singapore travelplan
-`add -friend n/Tom p/S1234567 m/12345678` | Add a friend name `Tom` with passport number `S1234567` and mobile number `12345678`
-`add -friend n/Jerry p/S4538201 m/89201987` | Add a friend name `Jerry` with passport number `S4538201` and mobile number `89201987`
+`add -friend n/Tom p/S1234567K m/84329182` | Add a friend name `Tom` with passport number `S1234567K` and mobile number `84329182`
+`add -friend n/Jerry p/S4538201A m/89201987` | Add a friend name `Jerry` with passport number `S4538201A` and mobile number `89201987`
 `find -friend tom` | Finds all friend with name tom
 `delete -friend 1` | Removes friend at index 1 in the friendlist shown
 `show -Activity` | Switch to the activity tab
@@ -155,7 +155,7 @@ Name of Parameter | Description | Requirement
 
 **Notes about Activity:**<br>
 
-* Different Activity can have the same datetime within _Wanderlust_ travelplanner
+* Different Activity can have the same datetime within _Wanderlust_ travelPlan and wishlist.
 
 #### Accommodation Parameters
 
@@ -167,17 +167,22 @@ Name of Parameter | Description | Requirement
 `sd/START_DATE` | Start date of accommodation | Must be in the format of YYYY-MM-DD.
 `ed/END_DATE` | End date of accommodation | Must be in the format of YYYY-MM-DD.
 
+
+**Notes about Accommodation:**<br>
+
+* Different Accommodation can have start date and end date overlap within _Wanderlust_ travelPlan.
+
 #### Friend Parameters
 
 Name of Parameter | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the friend. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be 8 digits only.
-`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should only contain 1 character and 7 numbers (To be updated with standard passport conventions in the future).
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be valid Singapore mobile number that follows the format 1 specific digit from [89] and 7 more digits.
+`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should follow the format: 1 specific character from [STFG] + 7 digits + 1 ending specific character from [A-Z].
 
 **Notes about Friend:**<br>
 
-* Passport is case-insensitive
+* Passport is case-sensitive
 
 #### Travel Plan Parameters
 
@@ -271,7 +276,7 @@ Example: `add -travelplan n/France sd/2020-09-15 ed/2020-09-30`
 ### 2. Adding an Activity (L)
 Creates a new activity and adds it to the travel plan/wishlist in the current directory.
 Format of date is in YYYY-MM-DD and format of time is HH:MM (24h clock).<br/>
-Activities can have the same datetime within the travelplanner.
+Activities can have the same datetime within the travelPlan or wishlist in _Wanderlust_.
 
 
 Format: `add -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
@@ -293,7 +298,7 @@ other travellers and adds it to the travel plan in the current directory.
 
 Format: `add -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
 
-Example: `add -friend n/John m/81234567 p/E1234567`
+Example: `add -friend n/John m/81234567 p/S1234567K`
 
 ## Delete
 
@@ -370,7 +375,7 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
-Example: `edit -friend 3 n/John m/91234567 p/E7654321`
+Example: `edit -friend 3 n/John m/81234567 p/S7654321K`
 
 ## Find
 
@@ -556,7 +561,7 @@ Format: `exit`
 
 ## FAQ 
 
-Q: How do I remove existing data when I start the app and start with a blank travelplanner?
+Q: How do I remove existing data when I start the app and start with a blank travelPlanner?
 
 A: Type `clear` in the command to remove all preexisting data.
 
