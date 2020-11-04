@@ -381,6 +381,7 @@ Format/ Example: `show -activity`
 Switches the current Ui view to show Accommodation tab under the travel plan object panel.
 This command has no effect in a wishlist as a wishlist does not contain Accommodation.
 
+
 Format/ Example: `show -accommodation`
 
 ![](images/WanderlustScreenshots/ShowAccommodationTab.png)
@@ -389,7 +390,7 @@ Format/ Example: `show -accommodation`
 ### 3. Showing Friend Tab (L)
 
 Switches the current Ui view to show Friend tab under the travel plan object panel.
-This command has no effect in a wishlist as a  wishlist does not contain Friend.
+This command has no effect in a wishlist as a wishlist does not contain Friend.
 
 Format/ Example: `show -friend`
 

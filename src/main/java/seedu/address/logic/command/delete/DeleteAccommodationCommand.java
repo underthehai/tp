@@ -2,6 +2,7 @@ package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 
 import java.util.List;
 
@@ -50,7 +51,8 @@ public class DeleteAccommodationCommand extends DeleteCommand {
         model.deleteTravelPlanObject(accommodationToDelete);
         assert !model.getAccommodationList().hasAccommodation((Accommodation) accommodationToDelete)
                 : "Accommodation was not deleted!";
-        return new CommandResult(String.format(MESSAGE_DELETE_ACCOMMODATION_SUCCESS, accommodationToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_ACCOMMODATION_SUCCESS, accommodationToDelete),
+                ACCOMMODATION_INDEX);
     }
 
     @Override

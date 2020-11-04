@@ -24,17 +24,17 @@ import seedu.address.testutil.builders.TravelPlanBuilder;
 public class TypicalTravelPlans {
 
     public static final TravelPlan AUSTRALIA_TRIP = new TravelPlanBuilder().withName("Trip to Australia")
-            .withStartDate("2020-01-01").withEndDate("2020-12-12")
+            .withStartDate("2021-01-01").withEndDate("2021-12-12")
             .withAccommodationList(getTypicalAccommodationList(1))
             .withActivityList(getTypicalActivityList(1))
             .withFriendList(getTypicalFriendList(1)).build();
     public static final TravelPlan BOSTON_TRIP = new TravelPlanBuilder().withName("Trip to Boston")
-            .withStartDate("2020-03-03").withEndDate("2021-11-11")
+            .withStartDate("2021-01-03").withEndDate("2021-11-11")
             .withAccommodationList(getTypicalAccommodationList(2))
             .withActivityList(getTypicalActivityList(2))
             .withFriendList(getTypicalFriendList(2)).build();
     public static final TravelPlan SINGAPORE_TRIP = new TravelPlanBuilder().withName("Trip to Singapore")
-            .withStartDate("2020-02-02").withEndDate("2020-02-03")
+            .withStartDate("2021-01-01").withEndDate("2020-12-31")
             .withAccommodationList(getTypicalAccommodationList(1))
             .withActivityList(getTypicalActivityList(1))
             .withFriendList(getTypicalFriendList(1)).build();

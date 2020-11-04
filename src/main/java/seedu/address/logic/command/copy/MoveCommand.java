@@ -1,6 +1,7 @@
 package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.travelplan.TravelPlan;
 
 
@@ -23,8 +25,10 @@ public class MoveCommand extends Command {
                     + "After moving, the activity will be deleted from the wish list."
                     + "Parameters: INDEX (must be a positive integer)\n";
 
-    public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity %1$s to travel plan %1$s";
+    public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity:\n%1$s\nTo travel plan:\n%1$s";
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before moving activities";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "specified travel plan's start date and end date.";
 
     private final Index activityIndex;
     private final Index travelPlanIndex;
@@ -32,7 +36,7 @@ public class MoveCommand extends Command {
     /**
      * Constructor for MoveCommand.
      *
-     * @param activityIndex index of activity to be moved.
+     * @param targetIndex index of activity to be moved.
      * @param travelPlanIndex index of travel plan to add activity to.
      */
     public MoveCommand(Index targetIndex, Index travelPlanIndex) {
@@ -42,9 +46,11 @@ public class MoveCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (!isTravelPlan) {
+
             List<Activity> filteredActivityList = model.getFilteredActivityList();
             List<TravelPlan> travelPlanList = model.getFilteredTravelPlanList();
 
@@ -57,6 +63,18 @@ public class MoveCommand extends Command {
 
             Activity activityToMove = filteredActivityList.get(activityIndex.getZeroBased());
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
+
+            WanderlustDateTime activityDateTime = activityToMove.getActivityDateTime();
+
+            boolean isValidActivityDateTime = model.isValidActivityDate(activityDateTime,
+                    travelPlan);
+
+            if (!isValidActivityDateTime) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+            }
+            if (model.hasTravelPlanObject(activityToMove, travelPlanIndex.getZeroBased())) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
 
             model.copyActivity(activityToMove, travelPlanIndex);
             model.deleteActivity(activityToMove);

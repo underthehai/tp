@@ -1,6 +1,7 @@
 package seedu.address.logic.command.sort;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.Comparator;
 
@@ -49,7 +50,7 @@ public class SortActivityCommand extends SortCommand {
             return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
 
         case SortCommand.KEYWORD_IMPORTANCE:
-            Comparator<Activity> importanceComparator = Comparator.comparingInt(Activity::getImportanceAsInt);
+            Comparator<Activity> importanceComparator = Comparator.comparingInt(a -> -a.getImportanceAsInt());
             if (isTravelPlan) {
                 model.sortActivityList(importanceComparator);
             } else {
@@ -73,7 +74,8 @@ public class SortActivityCommand extends SortCommand {
             } else {
                 model.sortWishlist(nameComparator);
             }
-            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_NAME));
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_NAME),
+                    ACTIVITY_INDEX);
 
         default:
             throw new CommandException(MESSAGE_INVALID_KEYWORD);

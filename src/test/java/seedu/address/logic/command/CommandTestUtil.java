@@ -40,30 +40,30 @@ public class CommandTestUtil {
     //Travel Plan
     public static final String VALID_NAME_EUROPE = "Europe Trip";
     public static final String VALID_NAME_NYC = "New York City";
-    public static final String VALID_START_DATE_EUROPE = "2020-12-31";
+    public static final String VALID_START_DATE_EUROPE = "2021-12-31";
     public static final String VALID_START_DATE_NYC = "2021-01-01";
-    public static final String VALID_END_DATE_EUROPE = "2021-01-31";
-    public static final String VALID_END_DATE_NYC = "2021-02-02";
+    public static final String VALID_END_DATE_EUROPE = "2021-12-31";
+    public static final String VALID_END_DATE_NYC = "2021-12-02";
 
     //Activity
     public static final String VALID_NAME_ZOO = "Singapore Mandai Zoo";
     public static final String VALID_LOCATION_ZOO = "124 Mandai Road";
     public static final String VALID_COST_ZOO = "100";
     public static final String VALID_LEVELOFIMPORTANCE_ZOO = "3";
-    public static final String VALID_ACTIVITYDATETIME_ZOO = "2020-10-10 12:00";
+    public static final String VALID_ACTIVITYDATETIME_ZOO = "2021-06-03 12:00";
 
     public static final String VALID_NAME_SKI = "Gore Mountain Ski Resort";
     public static final String VALID_LOCATION_SKI = "124 Ski Avenue";
     public static final String VALID_COST_SKI = "200";
     public static final String VALID_LEVELOFIMPORTANCE_SKI = "5";
-    public static final String VALID_ACTIVITYDATETIME_SKI = "2020-12-10 12:00";
+    public static final String VALID_ACTIVITYDATETIME_SKI = "2021-12-10 12:00";
 
     //Accommodation
     public static final String VALID_NAME_HOME = "Singapore";
     public static final String VALID_LOCATION_HOME = "123 Singapore Road";
     public static final String VALID_COST_HOME = "0";
     public static final String VALID_START_DATE_HOME = "2021-01-05";
-    public static final String VALID_END_DATE_HOME = "2021-12-31";
+    public static final String VALID_END_DATE_HOME = "2021-05-31";
 
     public static final String VALID_NAME_INN = "Lloyd's Inn";
     public static final String VALID_LOCATION_INN = "2 Lloyd Rd";
@@ -204,6 +204,17 @@ public class CommandTestUtil {
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
                                             Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
+        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
+    /**
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
+     * that takes a string {@code expectedMessage} and integer {@code tpoType}. Used when command results in
+     * change in tabs (between activity, accommodation and friend tabs).
+     */
+    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
+                                            Model expectedModel, int tpoType) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, tpoType);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 

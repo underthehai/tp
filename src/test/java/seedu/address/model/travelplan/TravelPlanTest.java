@@ -34,13 +34,8 @@ public class TravelPlanTest {
         // null -> returns false
         assertFalse(AUSTRALIA_TRIP.isSameTravelPlan(null));
 
-        // different startDate and endDate -> returns false
-        TravelPlan editedAustraliaTrip = new TravelPlanBuilder(AUSTRALIA_TRIP).withStartDate(VALID_START_DATE_B)
-                .withEndDate(VALID_END_DATE_B).build();
-        assertFalse(AUSTRALIA_TRIP.isSameTravelPlan(editedAustraliaTrip));
-
         // different name -> returns false
-        editedAustraliaTrip = new TravelPlanBuilder(AUSTRALIA_TRIP).withName(VALID_NAME_B).build();
+        TravelPlan editedAustraliaTrip = new TravelPlanBuilder(AUSTRALIA_TRIP).withName(VALID_NAME_B).build();
         assertFalse(AUSTRALIA_TRIP.isSameTravelPlan(editedAustraliaTrip));
 
         // same name, same start date, different attributes -> returns true

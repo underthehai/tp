@@ -14,8 +14,10 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
@@ -78,6 +80,11 @@ public class ModelStub implements Model {
 
     @Override
     public boolean hasTravelPlanObject(TravelPlanObject tPObj) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public boolean hasTravelPlanObject(TravelPlanObject tPObj, int travelPlanIndex) {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -246,6 +253,22 @@ public class ModelStub implements Model {
     public void copyActivity(Activity activity, Index travelPlanIndex) {
         throw new AssertionError("This method should not be called.");
     }
+
+    @Override
+    public boolean isValidAccommodationDate(WanderlustDate startDate, WanderlustDate endDate) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public boolean isValidActivityDate(WanderlustDateTime activityDateTime) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public boolean isValidActivityDate(WanderlustDateTime activityDateTime, TravelPlan travelPlan) {
+        throw new AssertionError("This method should not be called.");
+    }
+
 
     @Override
     public boolean isDirectoryTypeTravelPlan() {
