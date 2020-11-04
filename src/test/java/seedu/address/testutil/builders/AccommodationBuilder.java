@@ -9,8 +9,8 @@ import seedu.address.model.commons.WanderlustDate;
 public class AccommodationBuilder {
 
     public static final String DEFAULT_NAME = "Barry's Farmhouse";
-    public static final String DEFAULT_START_DATE = "2020-10-10";
-    public static final String DEFAULT_END_DATE = "2020-11-11";
+    public static final String DEFAULT_START_DATE = "2021-05-10";
+    public static final String DEFAULT_END_DATE = "2021-05-11";
     public static final String DEFAULT_LOCATION = "100 Acre Woods";
     public static final String DEFAULT_COST = "123";
 

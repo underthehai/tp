@@ -25,7 +25,7 @@ public class AddFriendCommand extends AddCommand {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_MOBILE + "91234567 "
-            + PREFIX_PASSPORT + "p1234567 ";
+            + PREFIX_PASSPORT + "E1234567R ";
 
     public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
 

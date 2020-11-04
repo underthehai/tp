@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDAT
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 import seedu.address.model.commons.Cost;
@@ -93,8 +94,8 @@ public class Accommodation extends TravelPlanObject {
                 && otherAccommodation.getEndDate().equals(getEndDate());
     }
 
-    public int getNumOfDays() {
-        return endDate.getValue().compareTo(startDate.getValue());
+    public long getNumOfDays() {
+        return ChronoUnit.DAYS.between(startDate.getValue(), endDate.getValue());
     }
 
     public String dateString() {
