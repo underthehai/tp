@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -23,16 +22,13 @@ public class AddActivityCommand extends AddCommand {
             + PREFIX_IMPORTANCE + "LEVEL_OF_IMPORTANCE "
             + PREFIX_LOCATION + "LOCATION "
             + PREFIX_COST + "COST "
-            + PREFIX_DATETIME + "DATE "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + PREFIX_DATETIME + "DATE\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Universal Studios Singapore "
             + PREFIX_IMPORTANCE + "5 "
             + PREFIX_LOCATION + "Sentosa "
             + PREFIX_COST + "88 "
-            + PREFIX_DATETIME + "2020-09-16 "
-            + PREFIX_TAG + "fun "
-            + PREFIX_TAG + "theme park";
+            + PREFIX_DATETIME + "2020-09-16 ";
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
