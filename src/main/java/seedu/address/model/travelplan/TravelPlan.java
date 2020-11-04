@@ -1,5 +1,6 @@
 package seedu.address.model.travelplan;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -209,8 +210,8 @@ public class TravelPlan extends Directory implements Nameable {
                 && otherTravelPlan.getName().equals(getName());
     }
 
-    public int getNumOfDays() {
-        return endDate.getValue().compareTo(startDate.getValue());
+    public long getNumOfDays() {
+        return startDate.getValue().until(endDate.getValue(), DAYS);
     }
 
     public String dateTitle() {
