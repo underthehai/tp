@@ -13,10 +13,10 @@ import seedu.address.model.accommodation.Accommodation;
 
 public class SortAccommodationCommand extends SortCommand {
     public static final String COMMAND_WORD = "sort accommodation";
-
+    // TODO: Add example
     public static final String MESSAGE_USAGE =
             "sort accommodation: Sorts the list of accommodation in a travel plan by the keyword input by the user.\n"
-                    + "Parameters: KEYWORD (COST/DATE)\n";
+                    + "Parameters: KEYWORD (cost/date)\n";
 
     public static final String MESSAGE_SORT_ACCOMMODATION_SUCCESS = "Sorted list of accommodation by: %1$s";
 
@@ -38,7 +38,7 @@ public class SortAccommodationCommand extends SortCommand {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (!isTravelPlan) {
-            throw new CommandException("Wishlist do not store accommodation!");
+            throw new CommandException("Wishlist doesn't store accommodation!");
         }
 
         switch (keyword) {

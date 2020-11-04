@@ -1,6 +1,7 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 
 import java.util.List;
 
@@ -16,13 +17,12 @@ import seedu.address.model.commons.TravelPlanObject;
  * Deletes an activity in a travel plan or wishlist identified using the index from the travel plan or wishlist.
  */
 public class DeleteActivityCommand extends DeleteCommand {
-    public static final String COMMAND_WORD = "activity";
-
     public static final String MESSAGE_USAGE =
-            "delete: Deletes the activity identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n";
+            "delete: Deletes the activity identified by the index number used in the displayed activity list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_TPO + Activity.TPO_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_ACTIVITY_SUCCESS = "Deleted Activity: %1$s";
+    public static final String MESSAGE_DELETE_ACTIVITY_SUCCESS = "Deleted Activity:\n%1$s";
 
     private final Index targetIndex;
 
@@ -49,6 +49,8 @@ public class DeleteActivityCommand extends DeleteCommand {
             TravelPlanObject activityToDelete = filteredActivityList.get(targetIndex.getZeroBased());
 
             model.deleteTravelPlanObject(activityToDelete);
+            assert !model.getActivityList().hasActivity((Activity) activityToDelete)
+                    : "Activity was not deleted!";
             return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
         } else {
             List<Activity> filteredWishList = model.getFilteredWishlist();
@@ -60,6 +62,8 @@ public class DeleteActivityCommand extends DeleteCommand {
             Activity activityToDelete = filteredWishList.get(targetIndex.getZeroBased());
 
             model.deleteActivity(activityToDelete);
+            assert !model.getWishlist().hasActivity(activityToDelete)
+                    : "Activity was not deleted!";
             return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
         }
     }
