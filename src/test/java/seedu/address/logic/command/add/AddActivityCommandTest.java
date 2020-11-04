@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.ActivityList;
 import seedu.address.testutil.builders.ActivityBuilder;
@@ -47,7 +49,7 @@ public class AddActivityCommandTest {
         AddActivityCommand addActivityCommand = new AddActivityCommand(validActivity);
         ModelStub modelStub = new ModelStubWithActivity(validActivity);
 
-        assertThrows(CommandException.class, AddActivityCommand.MESSAGE_DUPLICATE_ACTIVITY, () ->
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ACTIVITY, () ->
                 addActivityCommand.execute(modelStub));
     }
 
@@ -118,6 +120,11 @@ public class AddActivityCommandTest {
             ActivityList activityList = new ActivityList();
             activityList.setActivities(activitiesAdded);
             return activityList;
+        }
+
+        @Override
+        public boolean isValidActivityDate(WanderlustDateTime activityDateTime) {
+            return true;
         }
 
         @Override

@@ -6,6 +6,7 @@ import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.command.CommandTestUtil.showTpoAtIndex;
 import static seedu.address.logic.command.CommandTestUtil.showTravelPlanAtIndex;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
@@ -56,7 +57,7 @@ public class DeleteActivityCommandTest {
         expectedModel.setDirectory(0);
         expectedModel.deleteTravelPlanObject(activityToDelete);
 
-        assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
 
     @Test
@@ -84,7 +85,7 @@ public class DeleteActivityCommandTest {
         expectedModel.deleteTravelPlanObject(activityToDelete);
         showNoActivityList(expectedModel);
 
-        assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
 
     @Test

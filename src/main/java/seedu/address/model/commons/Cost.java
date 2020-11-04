@@ -11,7 +11,7 @@ public class Cost {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Cost should only contain numbers, and it should be a positive integer";
+            "Cost should only contain positive integer/double and must not exceed MAX_VALUE";
 
     public static final String VALIDATION_REGEX = "\\p{Digit}+(.\\p{Digit}\\p{Digit})?";
 
@@ -32,7 +32,11 @@ public class Cost {
      * Returns true if a given string is a valid cost.
      */
     public static boolean isValidCost(String test) {
-        return test.matches(VALIDATION_REGEX);
+        try {
+            return test.matches(VALIDATION_REGEX) && Double.parseDouble(test) <= Integer.MAX_VALUE;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public String getValue() {

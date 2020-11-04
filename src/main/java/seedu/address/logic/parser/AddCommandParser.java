@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
@@ -10,7 +12,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
@@ -77,7 +78,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddActivityCommand parseActivity(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
-                        PREFIX_DATETIME, PREFIX_TAG);
+                        PREFIX_DATETIME);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
                 PREFIX_DATETIME) || !argMultimap.getPreamble().equals("-activity")) {
@@ -116,9 +117,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
 
-        if (startDate.getValue().compareTo(endDate.getValue()) > 0) {
-            throw new ParseException("end date should not be earlier than start date");
+        if (!Accommodation.isValidStartAndEndDate(startDate, endDate)) {
+            throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
         }
+
 
         Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
 
@@ -167,6 +169,15 @@ public class AddCommandParser implements Parser<AddCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
+
+        if (!TravelPlan.isValidStartAndEndDate(startDate, endDate)) {
+            throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
+        }
+
+        if (!TravelPlan.isStartDateAfterToday(startDate)) {
+            throw new ParseException(MESSAGE_INVALID_START_DATE);
+        }
+
 
         TravelPlan travelPlan = new TravelPlan(name, startDate, endDate);
 
