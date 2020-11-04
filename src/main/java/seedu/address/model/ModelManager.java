@@ -117,6 +117,7 @@ public class ModelManager implements Model {
     @Override
     public void setTravelPlanner(ReadOnlyTravelPlanner travelPlanner) {
         this.travelPlanner.resetData(travelPlanner);
+        setDirectory(WISHLIST_INDEX);
     }
 
     @Override
