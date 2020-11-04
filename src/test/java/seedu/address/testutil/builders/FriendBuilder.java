@@ -11,7 +11,7 @@ import seedu.address.model.friend.Passport;
 public class FriendBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PASSPORT = "S1233567A";
+    public static final String DEFAULT_PASSPORT = "E1233567A";
     public static final String DEFAULT_MOBILE = "85355255";
 
     private Name name;

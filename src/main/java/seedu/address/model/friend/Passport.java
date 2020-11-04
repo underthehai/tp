@@ -9,10 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Passport {
 
-    //TODO: follow passport conventions
     public static final String MESSAGE_CONSTRAINTS =
-            "Passport numbers should be in the form [STFG] + 7 numbers + [A-Z]";
-    public static final String VALIDATION_REGEX = "[STFG]\\d{7}[A-Z]";
+            "Passport numbers should be in the form [E] + 7 numbers + [A-Z]";
+    public static final String VALIDATION_REGEX = "[E]\\d{7}[A-Z]";
     private final String value;
 
     /**

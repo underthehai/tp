@@ -22,32 +22,32 @@ public class TypicalFriends {
 
     //Friend
     public static final Friend ALICE = new FriendBuilder().withName("Alice Pauline")
-            .withPassport("S1234567A")
+            .withPassport("E1234567A")
             .withMobile("94351253").build();
     public static final Friend BENSON = new FriendBuilder().withName("Benson Meier")
-            .withPassport("S1234567B")
+            .withPassport("E1234567B")
             .withMobile("98765432").build();
     public static final Friend CARL = new FriendBuilder().withName("Carl Kurz")
-            .withPassport("S1234567C")
+            .withPassport("E1234567C")
             .withMobile("95352563").build();
     public static final Friend DANIEL = new FriendBuilder().withName("Daniel Meier")
-            .withPassport("S1234567D")
+            .withPassport("E1234567D")
             .withMobile("87652533").build();
 
     public static final Friend ELLE = new FriendBuilder().withName("Elle Meyer")
-            .withPassport("S1234567E")
+            .withPassport("E1234567E")
             .withMobile("94822241").build();
     public static final Friend FIONA = new FriendBuilder().withName("Fiona Kunz")
-            .withPassport("F7654321F")
+            .withPassport("E7654321F")
             .withMobile("94822427").build();
     public static final Friend GEORGE = new FriendBuilder().withName("George Best")
-            .withPassport("G7654321G")
+            .withPassport("E7654321G")
             .withMobile("94824142").build();
     public static final Friend HOON = new FriendBuilder().withName("Hoon Meier")
-            .withPassport("S7654321H")
+            .withPassport("E7654321H")
             .withMobile("84824224").build();
     public static final Friend IDA = new FriendBuilder().withName("Ida Mueller")
-            .withPassport("S7654321I")
+            .withPassport("E7654321I")
             .withMobile("84821631").build();
 
     // Manually added - Friends' details found in {@code CommandTestUtil}

@@ -38,8 +38,8 @@ class PassportTest {
         assertFalse(Passport.isValidPassport("1242A93842033123")); //character is not at the start
 
         // valid mobile numbers
-        assertTrue(Passport.isValidPassport("S6249932A")); // [STFG] + 7 numbers + [A-Z]
-        assertTrue(Passport.isValidPassport("S3121534B"));
+        assertTrue(Passport.isValidPassport("E6249932A")); // [E] + 7 numbers + [A-Z]
+        assertTrue(Passport.isValidPassport("E3121534B"));
 
     }
 }
