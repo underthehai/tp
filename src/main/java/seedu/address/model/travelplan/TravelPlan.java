@@ -1,10 +1,11 @@
 package seedu.address.model.travelplan;
 
-import static java.time.temporal.ChronoUnit.DAYS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
@@ -92,6 +93,14 @@ public class TravelPlan extends Directory implements Nameable {
      */
     public static boolean isValidStartAndEndDate(WanderlustDate startDate, WanderlustDate endDate) {
         return startDate.getValue().compareTo(endDate.getValue()) <= 0;
+    }
+
+    /**
+     * Returns true if the start date is set on today's date or after today's date. Prevent any date inputs that are
+     * too old (Etc, 1111-11-11)
+     */
+    public static boolean isStartDateAfterToday(WanderlustDate startDate) {
+        return startDate.getValue().compareTo(LocalDate.now()) >= 0;
     }
 
     //// travel plan object-level operations
@@ -211,8 +220,11 @@ public class TravelPlan extends Directory implements Nameable {
     }
 
     public long getNumOfDays() {
-        return startDate.getValue().until(endDate.getValue(), DAYS);
+        return ChronoUnit.DAYS.between(startDate.getValue(), endDate.getValue());
     }
+
+
+
 
     public String dateTitle() {
         return getStartDate().toString() + " to " + getEndDate().toString() + " (" + getNumOfDays() + " days)";

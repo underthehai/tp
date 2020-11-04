@@ -9,8 +9,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
+import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Nameable;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.friend.Friend;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.model.travelplan.ActivityList;
@@ -259,4 +261,21 @@ public interface Model {
      */
     void sortFriendList(Comparator<Friend> comparator);
 
+    /**
+     * Checks if accommodation object date is within the model's travel plan start and end date.
+     * @return false if accommodation start date and end date is within travel plan start date and end date.
+     */
+    boolean isValidAccommodationDate(WanderlustDate startDate, WanderlustDate endDate);
+
+    /**
+     * Checks if activity object date time is within the model's travel plan start and end date.
+     * @return true if activity date is within travel plan start date and end date range.
+     */
+    boolean isValidActivityDate(WanderlustDateTime activityDateTime);
+
+    /**
+     * Checks if activity object date time is within the model's travel plan start and end date.
+     * @return true if activity date is within travel plan start date and end date range.
+     */
+    boolean isValidActivityDate(WanderlustDateTime activityDateTime, TravelPlan travelPlan);
 }
