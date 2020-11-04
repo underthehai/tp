@@ -6,6 +6,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import java.util.List;
 
@@ -49,6 +51,7 @@ public class EditActivityCommand extends EditCommand {
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "travel plan's start date and end date.";
 
+
     private final Index targetIndex;
     private final EditDescriptor editActivityDescriptor;
 
@@ -78,18 +81,21 @@ public class EditActivityCommand extends EditCommand {
         Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
         Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor, model);
 
-        if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
-        }
         if (isTravelPlan) {
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasTravelPlanObject(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.setTravelPlanObject(activityToEdit, editedActivity);
             assert model.hasTravelPlanObject(editedActivity);
         } else {
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.setActivity(activityToEdit, editedActivity);
             assert model.hasActivity(editedActivity);
         }
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity), ACTIVITY_INDEX);
 
     }
 

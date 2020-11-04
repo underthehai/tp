@@ -34,6 +34,6 @@ public class CostTest {
         // valid Cost numbers
         assertTrue(Cost.isValidCost("911"));
         assertTrue(Cost.isValidCost("93121534"));
-        assertTrue(Cost.isValidCost("124293842033123")); // long Cost numbers
+        assertFalse(Cost.isValidCost("124293842033123")); // long Cost numbers
     }
 }

@@ -229,6 +229,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasTravelPlanObject(TravelPlanObject tPObj, int travelPlanIndex) {
+        requireNonNull(tPObj);
+        return filteredTravelPlans.get(travelPlanIndex).has(tPObj);
+    }
+
+    @Override
     public void deleteTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
         directory.remove(tPObj);

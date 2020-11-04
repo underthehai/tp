@@ -14,14 +14,15 @@ import seedu.address.model.commons.TravelPlanObject;
 public class Friend extends TravelPlanObject {
 
     public static final String TPO_WORD = "friend";
+    public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in the travel plan! "
+            + "Friends cannot have the same passport number.";
 
     // Identity fields
-    private final Name name;
+    private final Passport passport;
 
     // Data fields
-    private final Passport passport;
+    private final Name name; // name can be the same for different friends
     private final Mobile mobile;
-
 
     /**
      * Every field must be present and not null.
@@ -51,7 +52,7 @@ public class Friend extends TravelPlanObject {
     }
 
     /**
-     * Returns true if both friends are of the same name
+     * Returns true if both friends have the same passport or same mobile.
      */
     public boolean isSameFriend(Friend otherFriend) {
         if (otherFriend == this) {
@@ -59,7 +60,7 @@ public class Friend extends TravelPlanObject {
         }
 
         return otherFriend != null
-                && otherFriend.getName().equals(getName());
+                && otherFriend.getPassport().equals(getPassport());
     }
 
     /**

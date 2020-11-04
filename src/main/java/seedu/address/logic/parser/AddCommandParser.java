@@ -12,7 +12,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
@@ -79,7 +78,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddActivityCommand parseActivity(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
-                        PREFIX_DATETIME, PREFIX_TAG);
+                        PREFIX_DATETIME);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_LOCATION, PREFIX_COST,
                 PREFIX_DATETIME) || !argMultimap.getPreamble().equals("-activity")) {

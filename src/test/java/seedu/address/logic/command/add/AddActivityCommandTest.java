@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class AddActivityCommandTest {
         AddActivityCommand addActivityCommand = new AddActivityCommand(validActivity);
         ModelStub modelStub = new ModelStubWithActivity(validActivity);
 
-        assertThrows(CommandException.class, AddActivityCommand.MESSAGE_DUPLICATE_ACTIVITY, () ->
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ACTIVITY, () ->
                 addActivityCommand.execute(modelStub));
     }
 
