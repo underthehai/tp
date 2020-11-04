@@ -47,7 +47,8 @@ public class EditActivityCommand extends EditCommand {
             + PREFIX_DATETIME + " 2020-05-05 14:30";
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list.";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
+            + "Activities with the same name, location and datetime are considered duplicates.";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "travel plan's start date and end date.";
 

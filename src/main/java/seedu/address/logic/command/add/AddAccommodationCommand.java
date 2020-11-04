@@ -34,8 +34,8 @@ public class AddAccommodationCommand extends AddCommand {
             + PREFIX_END + "30-09-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New accommodation added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the "
-        + "travel plan.";
+    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the accommodation"
+            + " list. Accommodations with the same name, start date and end date are considered duplicates.";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACCOMMODATION = "The accommodation start date and/or end date"
             + " must be within the travel plan's start date and end date.";
 

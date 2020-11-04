@@ -48,7 +48,8 @@ public class EditAccommodationCommand extends EditCommand {
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
     public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the "
-            + "accommodation list";
+            + "accommodation list. Accommodations with the same name, start date and end date are considered "
+            + "duplicates.";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACCOMMODATION = "The accommodation start date and/or end date"
             + " must be within the travel plan's start date and end date.";
 

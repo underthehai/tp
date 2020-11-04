@@ -34,7 +34,8 @@ public class AddActivityCommand extends AddCommand {
             + PREFIX_DATETIME + "2020-09-16 ";
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
+            + "Activities with the same name, location and datetime are considered duplicates.";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "travel plan's start date and end date.";
 
