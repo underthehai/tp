@@ -34,7 +34,7 @@ It is written in Java, and has about 16 kLOC.
         - Justifications: As our target users are travel goers, they would likely want a delete feature to remove any unwanted `travelplan` or `travelplanobject` that
         they have added. For example, a user may have added in an activity, but realised he does not want to do this activity, and hence will require the delete feature to remove the particular activity.
         
-        -Highlights:
+        - Highlights:
             - This enhancement involves full-stack development in all 4 components of Wanderlust: `Ui`, `Logic`, `Model` and `Storage`.
             - This enhancement requires a high level `deletecommand`, which is extended from 4 subclasses `DeleteActivityCommand`, `DeleteAccommodationCommand`, `DeleteFriendCommand`, `DeleteTravelplanCommand`.
             This is to ensure abstraction.
