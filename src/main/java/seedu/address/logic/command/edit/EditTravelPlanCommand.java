@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import java.util.List;
 
@@ -41,7 +42,6 @@ public class EditTravelPlanCommand extends EditCommand {
             + PREFIX_END + " 2020-01-30";
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
-    public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";
 
     private final Index targetIndex;
     private final EditDescriptor editTravelPlanDescriptor;

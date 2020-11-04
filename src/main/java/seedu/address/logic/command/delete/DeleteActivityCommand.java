@@ -2,6 +2,7 @@ package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class DeleteActivityCommand extends DeleteCommand {
             model.deleteTravelPlanObject(activityToDelete);
             assert !model.getActivityList().hasActivity((Activity) activityToDelete)
                     : "Activity was not deleted!";
-            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
+            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete), ACTIVITY_INDEX);
         } else {
             List<Activity> filteredWishList = model.getFilteredWishlist();
 

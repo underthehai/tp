@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 
 import java.util.List;
 
@@ -86,13 +88,14 @@ public class EditAccommodationCommand extends EditCommand {
                 model);
 
         if (!accommodationToEdit.isSameAccommodation(editedAccommodation)
-                && lastShownList.contains(editedAccommodation)) {
+                && model.hasTravelPlanObject(editedAccommodation)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
         }
         model.setTravelPlanObject(accommodationToEdit, editedAccommodation);
         assert model.hasTravelPlanObject(editedAccommodation);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACCOMMODATION_SUCCESS, editedAccommodation),
+                ACCOMMODATION_INDEX);
     }
 
     /**

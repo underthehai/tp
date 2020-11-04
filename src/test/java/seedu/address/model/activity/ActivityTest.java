@@ -19,8 +19,8 @@ public class ActivityTest {
         // null -> returns false
         assertFalse(ZOO.isSameActivity(null));
 
-        // different Cost and Location -> returns true
-        Activity editedZoo = new ActivityBuilder(ZOO).withCost("10").withLocation("123 Pasir Ris Road").build();
+        // different Cost -> returns true
+        Activity editedZoo = new ActivityBuilder(ZOO).withCost("10").build();
         assertTrue(ZOO.isSameActivity(editedZoo));
 
         // different name -> returns false

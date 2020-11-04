@@ -1,5 +1,6 @@
 package seedu.address.model.travelplan;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -26,13 +27,16 @@ public class TravelPlan extends Directory implements Nameable {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
     public static final String TRAVEL_PLAN_WORD = "travelplan";
+    public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travel plan already exists in the travel planner. "
+            + "Travel plans cannot have the same name.";
+
 
     // Identity fields
     private final Name name;
-    private final WanderlustDate startDate;
-    private final WanderlustDate endDate;
 
     // Data fields
+    private final WanderlustDate startDate;
+    private final WanderlustDate endDate;
     private final ActivityList activities = new ActivityList();
     private final AccommodationList accommodations = new AccommodationList();
     private final FriendList friends = new FriendList();
@@ -213,13 +217,12 @@ public class TravelPlan extends Directory implements Nameable {
         }
 
         return otherTravelPlan != null
-                && otherTravelPlan.getName().equals(getName())
-                && (otherTravelPlan.getStartDate().equals(getStartDate())
-                || otherTravelPlan.getEndDate().equals(getEndDate()));
+                && otherTravelPlan.getName().equals(getName());
     }
 
     public long getNumOfDays() {
-        return ChronoUnit.DAYS.between(startDate.getValue(), endDate.getValue());
+        return startDate.getValue().until(endDate.getValue(), DAYS);
+
     }
 
 

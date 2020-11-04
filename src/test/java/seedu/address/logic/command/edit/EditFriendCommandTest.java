@@ -7,8 +7,9 @@ import static seedu.address.logic.command.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.command.edit.EditFriendCommand.MESSAGE_DUPLICATE_FRIEND;
 import static seedu.address.logic.command.edit.EditFriendCommand.MESSAGE_EDIT_FRIEND_SUCCESS;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
+import static seedu.address.model.friend.Friend.MESSAGE_DUPLICATE_FRIEND;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
@@ -49,7 +50,7 @@ public class EditFriendCommandTest {
         expectedModel.setDirectory(1);
         expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
-        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel, FRIEND_INDEX);
     }
 
     @Test
@@ -61,7 +62,7 @@ public class EditFriendCommandTest {
 
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
 
-        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel, FRIEND_INDEX);
     }
 
     @Test
@@ -79,7 +80,7 @@ public class EditFriendCommandTest {
 
         expectedModel.setTravelPlanObject(model.getFilteredFriendList().get(0), editedFriend);
 
-        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editFriendCommand, model, expectedMessage, expectedModel, FRIEND_INDEX);
     }
 
     @Test

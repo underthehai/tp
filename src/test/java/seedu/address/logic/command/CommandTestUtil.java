@@ -208,6 +208,17 @@ public class CommandTestUtil {
     }
 
     /**
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
+     * that takes a string {@code expectedMessage} and integer {@code tpoType}. Used when command results in
+     * change in tabs (between activity, accommodation and friend tabs).
+     */
+    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
+                                            Model expectedModel, int tpoType) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, tpoType);
+        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
+    /**
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>

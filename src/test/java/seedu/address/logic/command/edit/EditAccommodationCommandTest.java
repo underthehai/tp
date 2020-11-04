@@ -7,8 +7,9 @@ import static seedu.address.logic.command.CommandTestUtil.DESC_INN;
 import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_INN;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.command.edit.EditAccommodationCommand.MESSAGE_DUPLICATE_ACCOMMODATION;
 import static seedu.address.logic.command.edit.EditAccommodationCommand.MESSAGE_EDIT_ACCOMMODATION_SUCCESS;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
@@ -50,7 +51,7 @@ public class EditAccommodationCommandTest {
         expectedModel.setDirectory(1);
         expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
 
-        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel, ACCOMMODATION_INDEX);
     }
 
     @Test
@@ -64,7 +65,7 @@ public class EditAccommodationCommandTest {
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(1);
 
-        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel, ACCOMMODATION_INDEX);
     }
 
     @Test
@@ -83,7 +84,7 @@ public class EditAccommodationCommandTest {
         expectedModel.setDirectory(1);
         expectedModel.setTravelPlanObject(model.getFilteredAccommodationList().get(0), editedAccommodation);
 
-        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editAccommodationCommand, model, expectedMessage, expectedModel, ACCOMMODATION_INDEX);
     }
 
     @Test

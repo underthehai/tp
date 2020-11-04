@@ -16,6 +16,8 @@ import seedu.address.model.commons.TravelPlanObject;
 public class Activity extends TravelPlanObject {
 
     public static final String TPO_WORD = "activity";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
+            + "Activities with the same name, location and datetime are considered duplicates.";
 
     //Identity fields
     private final Name name;
@@ -106,7 +108,9 @@ public class Activity extends TravelPlanObject {
         }
 
         return otherActivity != null
-                && otherActivity.getName().equals(getName());
+                && otherActivity.getName().equals(getName())
+                && otherActivity.getLocation().equals(getLocation())
+                && otherActivity.getActivityDateTime().equals(getActivityDateTime());
     }
 
     /**

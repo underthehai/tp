@@ -1,12 +1,13 @@
 package seedu.address.logic.command.add;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -37,6 +38,7 @@ public class AddAccommodationCommand extends AddCommand {
         + "travel plan.";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACCOMMODATION = "The accommodation start date and/or end date"
             + " must be within the travel plan's start date and end date.";
+
 
     private final Accommodation toAdd;
     private final WanderlustDate startDate;
@@ -69,7 +71,7 @@ public class AddAccommodationCommand extends AddCommand {
         model.addTravelPlanObject(toAdd);
         assert model.getAccommodationList().hasAccommodation(toAdd) : "Accommodation was not added";
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ACCOMMODATION_INDEX);
     }
 
     @Override
