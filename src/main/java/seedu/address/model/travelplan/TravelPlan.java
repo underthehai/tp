@@ -1,6 +1,5 @@
 package seedu.address.model.travelplan;
 
-import static java.time.temporal.ChronoUnit.DAYS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
