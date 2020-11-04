@@ -74,11 +74,11 @@ public class CommandTestUtil {
     //Friend
     public static final String VALID_NAME_AMY = "Amy Choo";
     public static final String VALID_MOBILE_AMY = "81234567";
-    public static final String VALID_PASSPORT_AMY = "A1234567";
+    public static final String VALID_PASSPORT_AMY = "E1234567T";
 
     public static final String VALID_NAME_BOB = "Bob Tan";
     public static final String VALID_MOBILE_BOB = "91238765";
-    public static final String VALID_PASSPORT_BOB = "E1443482";
+    public static final String VALID_PASSPORT_BOB = "E1443482G";
 
     //With Prefix Travel Plan
     public static final String NAME_DESC_EUROPE = " " + PREFIX_NAME + VALID_NAME_EUROPE;
