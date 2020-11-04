@@ -218,11 +218,12 @@ public class TravelPlan extends Directory implements Nameable {
         return otherTravelPlan != null
                 && otherTravelPlan.getName().equals(getName());
     }
-
+    
     public long getNumOfDays() {
-        return startDate.getValue().until(endDate.getValue(), DAYS);
-
+        return ChronoUnit.DAYS.between(startDate.getValue(), endDate.getValue());
     }
+
+
 
 
     public String dateTitle() {
