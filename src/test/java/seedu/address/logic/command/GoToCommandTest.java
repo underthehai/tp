@@ -14,7 +14,7 @@ public class GoToCommandTest {
         try {
             Index index = TypicalIndexes.INDEX_FIRST_PERSON;
             GoToCommand expectedCommand = new GoToCommand(index, true);
-            Assertions.assertTrue(expectedCommand.equals(new GoToCommandParser().parse(" -activity 1")));
+            Assertions.assertTrue(expectedCommand.equals(new GoToCommandParser().parse(" -travelplan 1")));
         } catch (ParseException pe) {
             System.out.println("Invalid index!");
         }
@@ -24,9 +24,9 @@ public class GoToCommandTest {
     public void execute_goto_failure() {
         try {
             Index index = TypicalIndexes.INDEX_FIRST_PERSON;
-            GoToCommand expectedCommand = new GoToCommand(index, false);
+            GoToCommand expectedCommand = new GoToCommand(index, true);
             Assertions.assertFalse(expectedCommand.equals(new GoToCommandParser()
-                    .parse(" -travelplan 1")));
+                    .parse(" -travelplan 2")));
         } catch (ParseException pe) {
             System.out.println("Invalid index!");
         }
