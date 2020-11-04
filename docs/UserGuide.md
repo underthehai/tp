@@ -92,8 +92,8 @@ Command | Description
 `clear` | Remove all preset data from Wanderlust
 `add -travelplan n/Singapore sd/2021-05-05 ed/2021-06-06` | Adds a Singapore travelPlan to the travelPlan list 
 `goto -travelplan 1` | Go to the Singapore travelplan
-`add -friend n/Tom p/S1234567K m/84329182` | Add a friend name `Tom` with passport number `S1234567K` and mobile number `84329182`
-`add -friend n/Jerry p/S4538201A m/89201987` | Add a friend name `Jerry` with passport number `S4538201A` and mobile number `89201987`
+`add -friend n/Tom p/E1234567K m/84329182` | Add a friend name `Tom` with passport number `E1234567K` and mobile number `84329182`
+`add -friend n/Jerry p/E4538201A m/89201987` | Add a friend name `Jerry` with passport number `E4538201A` and mobile number `89201987`
 `find -friend tom` | Finds all friend with name tom
 `delete -friend 1` | Removes friend at index 1 in the friendlist shown
 `show -Activity` | Switch to the activity tab
@@ -123,7 +123,7 @@ Command | Parameters | Description
 ## Directories
 
 There are two directories within Wanderlust. They are WishList and TravelPlan
-The table describes the list of commands available at each directory.
+The table compares a list of commands available at each directory.
 
 Wishlist | TravelPlan
 -------------  | -------------
@@ -134,14 +134,15 @@ Wishlist | TravelPlan
 `add -activity` |  `add -OBJECT`
 `delete -activity`| `delete -OBJECT`
 `edit -activity` | `edit -OBJECT`
-`move ACTIVITY_INDEX TRAVELPLAN INDEX`  |
-`copy ACTIVITY_INDEX TRAVELPLAN INDEX` |
+`move ACTIVITY_INDEX TRAVELPLAN INDEX`  | Not Applicable
+`copy ACTIVITY_INDEX TRAVELPLAN INDEX` | Not Applicable
 
 --------------------------------------------------------------------------------------------------------------------
 ## Parameters
 
 The table below shows the type of parameters each different object requires.
 Do note that all parameters stated are compulsory when creating the object.
+Declaration of the parameters strictly follows the format given.
 
 #### Activity Parameters
 
@@ -177,8 +178,8 @@ Name of Parameter | Description | Requirement
 Name of Parameter | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the friend. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Must be valid Singapore mobile number that follows the format 1 specific digit from [89] and 7 more digits.
-`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should follow the format: 1 specific character from [STFG] + 7 digits + 1 ending specific character from [A-Z].
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Mobile numbers should only contain numbers, and it should be at least 8 digits long
+`p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should be in the form [E] + 7 numbers + [A-Z]
 
 **Notes about Friend:**<br>
 
@@ -194,7 +195,7 @@ Name of Parameters | Description | Requirement
 
 **Notes about Travel Plan:**<br>
 
-* Start date of Travel Plan must be either current date or any date after current date
+* Start date of Travel Plan must be either current date or any date after current date.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -298,7 +299,7 @@ other travellers and adds it to the travel plan in the current directory.
 
 Format: `add -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
 
-Example: `add -friend n/John m/81234567 p/S1234567K`
+Example: `add -friend n/John m/81234567 p/E1234567K`
 
 ## Delete
 
@@ -375,7 +376,7 @@ This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLA
 
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER​`
 
-Example: `edit -friend 3 n/John m/81234567 p/S7654321K`
+Example: `edit -friend 3 n/John m/81234567 p/E7654321K`
 
 ## Find
 
