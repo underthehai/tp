@@ -81,9 +81,14 @@ public interface Model {
     boolean hasActivity(Activity activity);
 
     /**
-     * Returns true if a travel plan object with the same identity as {@code tPObj} exists in the travel plan.
+     * Returns true if a travel plan object with the same identity as {@code tPObj} exists in the directory.
      */
     boolean hasTravelPlanObject(TravelPlanObject tPObj);
+
+    /**
+     * Returns true if a travel plan object with the same identity as {@code tPObj} exists in the travel plan.
+     */
+    boolean hasTravelPlanObject(TravelPlanObject tPObj, int travelPlanIndex);
 
     /**
      * Deletes the given travel plan.

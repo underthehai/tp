@@ -2,6 +2,7 @@ package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class DeleteFriendCommand extends DeleteCommand {
         model.deleteTravelPlanObject(friendToDelete);
         assert !model.getFriendList().hasFriend((Friend) friendToDelete)
                 : "Friend was not deleted!";
-        return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete), FRIEND_INDEX);
     }
 
     @Override

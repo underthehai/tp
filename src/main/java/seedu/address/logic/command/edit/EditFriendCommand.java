@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
+import static seedu.address.model.friend.Friend.MESSAGE_DUPLICATE_FRIEND;
 
 import java.util.List;
 
@@ -36,7 +38,6 @@ public class EditFriendCommand extends EditCommand {
             + PREFIX_MOBILE + "81234567 ";
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
-    public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in friend list.";
 
     private final Index targetIndex;
     private final EditDescriptor editFriendDescriptor;
@@ -61,21 +62,22 @@ public class EditFriendCommand extends EditCommand {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
-        List<Friend> lastShownList = model.getFilteredFriendList();
+        List<Friend> filteredFriendList = model.getFilteredFriendList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredFriendList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
-        Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
+        Friend friendToEdit = filteredFriendList.get(targetIndex.getZeroBased());
         Friend editedFriend = createEditedFriend(friendToEdit, editFriendDescriptor);
 
-        if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {
+        if (!friendToEdit.isSameFriend(editedFriend) && model.hasTravelPlanObject(editedFriend)) {
             throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
+
         model.setTravelPlanObject(friendToEdit, editedFriend);
         assert model.hasTravelPlanObject(editedFriend);
-        return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend));
+        return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend), FRIEND_INDEX);
     }
 
     /**
