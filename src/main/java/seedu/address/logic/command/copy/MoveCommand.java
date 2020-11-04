@@ -23,7 +23,7 @@ public class MoveCommand extends Command {
                     + "After moving, the activity will be deleted from the wish list."
                     + "Parameters: INDEX (must be a positive integer)\n";
 
-    public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity %1$s to travel plan %1$s";
+    public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity %1$s to travel plan %2$s";
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before moving activities";
 
     private final Index activityIndex;
@@ -61,7 +61,11 @@ public class MoveCommand extends Command {
             model.copyActivity(activityToMove, travelPlanIndex);
             model.deleteActivity(activityToMove);
 
-            return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS, activityToMove, travelPlan));
+            assert travelPlan.getActivityList().hasActivity(activityToMove) : "Activity was not moved";
+            assert !model.getWishlist().hasActivity(activityToMove) : "Activity was not deleted after moving";
+
+            return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS,
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }

@@ -22,7 +22,7 @@ public class CopyCommand extends Command {
                     + "identified by the index number used in the travel planner.\n"
                     + "Parameters: INDEX (must be a positive integer)\n";
 
-    public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity %1$s to travel plan %1$s";
+    public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity %1$s to travel plan %2$s";
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before copying activities";
 
     private final Index activityIndex;
@@ -58,8 +58,10 @@ public class CopyCommand extends Command {
             TravelPlan travelPlan = travelPlanList.get(travelPlanIndex.getZeroBased());
 
             model.copyActivity(activityToCopy, travelPlanIndex);
+            assert travelPlan.getActivityList().hasActivity(activityToCopy) : "Activity was not copied";
 
-            return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS, activityToCopy, travelPlan));
+            return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS,
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
