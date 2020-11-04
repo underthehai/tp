@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,6 +15,7 @@ import seedu.address.model.travelplan.TravelPlan;
  * Represents an observable view of the current directory.
  */
 public class ObservableDirectory {
+    private static final String TOTAL_COST = "Total Cost: $";
 
     private ObservableList<Activity> observableActivityList = FXCollections.observableArrayList();
     private ObservableList<Accommodation> observableAccommodationList = FXCollections.observableArrayList();
@@ -24,7 +24,6 @@ public class ObservableDirectory {
     private ObjectProperty<Directory> dir = new SimpleObjectProperty<>();
     private StringProperty observableCost = new SimpleStringProperty();
 
-    private static final String TOTAL_COST = "Total Cost: $";
 
     /**
      * Instantiates an observable view of the current directory.
