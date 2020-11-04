@@ -12,7 +12,6 @@ import seedu.address.logic.command.ExitCommand;
 import seedu.address.logic.command.FindCommand;
 import seedu.address.logic.command.GoToCommand;
 import seedu.address.logic.command.HelpCommand;
-import seedu.address.logic.command.ListCommand;
 import seedu.address.logic.command.ShowCommand;
 import seedu.address.logic.command.add.AddCommand;
 import seedu.address.logic.command.copy.CopyCommand;
@@ -64,9 +63,6 @@ public class WanderlustParser {
 
             case FindCommand.COMMAND_WORD:
                 return new FindCommandParser().parse(arguments);
-
-            case ListCommand.COMMAND_WORD:
-                return new ListCommand();
 
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
