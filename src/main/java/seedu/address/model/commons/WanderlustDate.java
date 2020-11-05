@@ -14,7 +14,9 @@ import java.time.format.DateTimeFormatter;
  * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDate(String)}
  */
 public class WanderlustDate {
-    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format YYYY-MM-DD.";
+
+    public static final String FORMAT = "YYYY-MM-DD";
+    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format " + FORMAT;
 
     /**
      * Dates must be in the format YYYY-MM-DD.
