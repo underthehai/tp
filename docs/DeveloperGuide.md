@@ -107,7 +107,7 @@ The `Model`,
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `friend` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `friend` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -218,9 +218,14 @@ Hence, child classes of EditCommand accounts for editing valid types of field. E
 - `EditTravelPlanCommand`
 
 `EditCommand` accounts for duplicated objects.
-`Activity` and `Friend` contain duplicates when two instances have the same name.
+
+`Activity` contain duplicates when two instances have the same name.
+
+`Friend` contain duplicates when two instances have the same passport number.
+
 `Accommodation` contains duplicates when two instances have the same name, startDate and endDate
-`TravelPlan` contains duplicates when two instances have the same name and same startDate or endDate
+
+`TravelPlan` contains duplicates when two instances have the same name
 When the editing of an object results in a duplicated edited object within travelplan list or travelplan object list, an error will be thrown.
 
 Given below is the class diagram showing relevant classes involved
@@ -236,6 +241,12 @@ The TravelPlan Object or TravelPlan by calling `Logic#execute()` which returns a
 show a message about the successful edited object.
 
 ![EditSequenceDiagram](images/EditSequenceDiagram.png)
+
+* Note: Due to limitation of PlantUML which do not have an `sd reference frame` implementation, 
+the image below contains further details from the `execute` reference frame from the above sequence diagram.
+
+![EditSequenceDiagram](images/EditSequenceRef.png)
+
 
 ### Design Consideration
 Aspect: How edit executes
@@ -507,13 +518,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to add an activity.
-    * 1a2. Wanderlust shows an error message.
-
-    Use case ends.
-
-* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+* 1a. User <ins>navigates to the wishlist (UC2)</ins>.
 
     Use case resumes at step 2.
 
@@ -534,7 +539,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
+* 1a. User is at the wishlist.
     * 1a1. User requests to add accommodation.
     * 1a2. Wanderlust shows an error message.
 
@@ -545,20 +550,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC06 - Add a person**
+**Use case: UC06 - Add a friend**
 
 **MSS**
 
 1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to add a person
-3.  Wanderlust shows the added person in the current travel plan
+2.  User requests to add a friend
+3.  Wanderlust shows the added friend in the current travel plan
 
     Use case ends.
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to add a person.
+* 1a. User is at the wishlist.
+    * 1a1. User requests to add a friend.
     * 1a2. Wanderlust shows an error message.
 
     Use case ends.
@@ -601,13 +606,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to delete an activity.
-    * 1a2. Wanderlust shows an error message.
-
-    Use case ends.
-
-* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+* 1a. User <ins>navigates to the wishlist (UC2)</ins>.
 
     Use case resumes at step 2.
 
@@ -633,7 +632,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
+* 1a. User is at the wishlist.
     * 1a1. User requests to delete accommodation.
     * 1a2. Wanderlust shows an error message.
 
@@ -649,20 +648,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC10 - Delete a person**
+**Use case: UC10 - Delete a friend**
 
 **MSS**
 
 1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to delete a person
-3.  Wanderlust shows that the person has been deleted
+2.  User requests to delete a friend
+3.  Wanderlust shows that the friend has been deleted
 
     Use case ends.
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to delete a person.
+* 1a. User is at the wishlist.
+    * 1a1. User requests to delete a friend.
     * 1a2. Wanderlust shows an error message.
 
     Use case ends.
@@ -672,7 +671,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2b. The person specified does not exist.
+* 2b. The friend specified does not exist.
     * 2b1. Wanderlust shows an error message.
 
       Use case ends.
@@ -689,7 +688,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-*  1a. User is at the top directory.
+*  1a. User is at the wishlist.
 
      Use case resumes at step 2.
 
@@ -715,13 +714,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to edit an activity.
-    * 1a2. Wanderlust shows an error message.
-
-     Use case ends.
-
-* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+* 1a. User <ins>navigates to the wishlist (UC2)</ins>.
 
      Use case resumes at step 2.
 
@@ -747,8 +740,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to edit accommodation.
+* 1a. User is at the wishlist.
+    * 1a1. User requests to edit an accommodation.
     * 1a2. Wanderlust shows an error message.
 
     Use case ends.
@@ -763,20 +756,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC14 - Edit a person**
+**Use case: UC14 - Edit a friend**
 
 **MSS**
 
 1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to edit a person
-3.  Wanderlust shows that the person has been edited
+2.  User requests to edit a friend
+3.  Wanderlust shows that the friend has been edited
 
     Use case ends.
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to edit a person.
+* 1a. User is at the wishlist.
+    * 1a1. User requests to edit a friend.
     * 1a2. Wanderlust shows an error message.
 
     Use case ends.
@@ -786,7 +779,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2b. The person specified does not exist.
+* 2b. The friend specified does not exist.
     * 2b1. Wanderlust shows an error message.
 
       Use case ends.
@@ -803,13 +796,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to view activities.
-    * 1a2. Wanderlust shows an error message.
-
-    Use case ends.
-
-* 1b. User <ins>navigates to the wishlist (UC2)</ins>.
+* 1a. User <ins>navigates to the wishlist (UC2)</ins>.
 
     Use case resumes at step 2.
 
@@ -830,12 +817,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User is at the top directory.
-    * 1a1. User requests to view contacts.
-    * 1a2. Wanderlust shows an error message.
-
-    Use case ends.
-
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
 
@@ -852,12 +833,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 **Extensions**
-
-* 1a. User is at the top directory.
-    * 1a1. User requests to view accommodation.
-    * 1a2. Wanderlust shows an error message.
-
-    Use case ends.
 
 * 2a. The input command format is invalid.
     * 2a1. Wanderlust shows an error message.
@@ -879,15 +854,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Wishlist**: A list of potential activities
 * **Travel plan**: A list of accommodations and activities in a specified location that include `name`, `start_date` and `end_date`
-* **Activity**: Minimally includes the `name`, we can add information about `name`, `cost`, `location`, `datetime`, `importance`
-* **Accommodation**: Minimally includes the `name`, we can add information about `location`, `cost`, `startdate` and `enddate` to it
-* **Person**: Contains information about a given person `name`, `mobile number` and `passport number`
-* **Directory**: The three possible directories are `travelplan`, `wishlist`
+* **Activity**: Include `name`, `cost`, `location`, `datetime`, `importance`
+* **Accommodation**: Include `name`, `location`, `cost`, `startdate` and `enddate` to it
+* **Friend**: Contains information about a given friend `name`, `mobile number` and `passport number`
+* **Directory**: The two possible directories are `travelplan`, `wishlist`
 * **Navigate**: Use the `goto` command to move between directories
-* **View**: Use the `show` command to provide a list of specified travelplan object
+* **View**: Use the `show` command to provide a list of specified travel plan object
 
 *{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
@@ -916,4 +890,3 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
