@@ -1,7 +1,6 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
@@ -18,10 +17,16 @@ import seedu.address.model.commons.TravelPlanObject;
  * Deletes an activity in a travel plan or wishlist identified using the index from the travel plan or wishlist.
  */
 public class DeleteActivityCommand extends DeleteCommand {
+
+    public static final String COMMAND_WORD = "activity";
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
+
     public static final String MESSAGE_USAGE =
-            "delete: Deletes the activity identified by the index number used in the displayed activity list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_TPO + Activity.TPO_WORD + " 1";
+            "Delete an activity by its index in the displayed activity list using the format:\n"
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
+            + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_DELETE_ACTIVITY_SUCCESS = "Deleted Activity:\n%1$s";
 

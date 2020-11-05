@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
-import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -16,22 +15,27 @@ import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.WanderlustDateTime;
 
 public class AddActivityCommand extends AddCommand {
+
     public static final String COMMAND_WORD = "activity";
 
-    public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
-            + ": Adds an activity to the current travel plan or wishlist\n"
-            + "Parameters: "
+    public static final String MESSAGE_FORMAT =
+            "Add an activity to the current travel plan or wishlist using the format:\n"
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + "NAME "
             + PREFIX_IMPORTANCE + "LEVEL_OF_IMPORTANCE "
             + PREFIX_LOCATION + "LOCATION "
             + PREFIX_COST + "COST "
-            + PREFIX_DATETIME + "DATE\n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_DATETIME + WanderlustDateTime.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + "Universal Studios Singapore "
             + PREFIX_IMPORTANCE + "5 "
             + PREFIX_LOCATION + "Sentosa "
             + PREFIX_COST + "88 "
-            + PREFIX_DATETIME + "2020-09-16 ";
+            + PREFIX_DATETIME + "2021-09-16 ";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
