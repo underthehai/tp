@@ -76,7 +76,8 @@ public class CopyCommand extends Command {
             }
 
             model.copyActivity(activityToCopy, travelPlanIndex);
-            assert travelPlan.getActivityList().hasActivity(activityToCopy) : "Activity was not copied";
+            assert model.hasTravelPlanObject(activityToCopy, travelPlanIndex.getZeroBased())
+                    : "Activity was not copied";
 
             return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS,
                     activityIndex.getOneBased(), travelPlanIndex.getOneBased()));

@@ -79,8 +79,8 @@ public class MoveCommand extends Command {
             model.copyActivity(activityToMove, travelPlanIndex);
             model.deleteActivity(activityToMove);
 
-            assert travelPlan.getActivityList().hasActivity(activityToMove) : "Activity was not moved";
-            assert !model.getWishlist().hasActivity(activityToMove) : "Activity was not deleted after moving";
+            assert model.hasTravelPlanObject(activityToMove, travelPlanIndex.getZeroBased()) : "Activity was not moved";
+            assert !model.hasActivity(activityToMove) : "Activity was not deleted after moving";
 
             return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS,
                     activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
