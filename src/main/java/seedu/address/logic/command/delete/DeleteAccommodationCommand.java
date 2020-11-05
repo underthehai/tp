@@ -1,6 +1,7 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 
 import java.util.List;
 
