@@ -54,6 +54,24 @@ public class WanderlustDate {
         }
     }
 
+    /**
+     * Checks if the current WanderlustDate comes before the given WanderlustDate chronologically.
+     * @return true if current WanderlustDate is before the given WanderlustDate.
+     */
+    public boolean isBefore(WanderlustDate toCompare) {
+        return value.isBefore(toCompare.getValue());
+    }
+
+    /**
+     * Checks if the current WanderlustDate comes after the given WanderlustDate chronologically.
+     * @return true if current WanderlustDate is after the given WanderlustDate.
+     */
+    public boolean isAfter(WanderlustDate toCompare) {
+        return value.isAfter(toCompare.getValue());
+    }
+
+
+
     public LocalDate getValue() {
         return value;
     }

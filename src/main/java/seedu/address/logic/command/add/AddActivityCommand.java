@@ -37,9 +37,14 @@ public class AddActivityCommand extends AddCommand {
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the travel plan";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
+            + "Activities with the same name, location and datetime are considered duplicates.";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "travel plan's start date and end date.";
+
 
     private final Activity toAdd;
+    private final WanderlustDateTime activityDateTime;
 
     /**
      * Creates an AddActivityCommand to add the specified {@code Activity}
@@ -47,6 +52,7 @@ public class AddActivityCommand extends AddCommand {
     public AddActivityCommand(Activity activity) {
         requireNonNull(activity);
         toAdd = activity;
+        activityDateTime = activity.getActivityDateTime();
     }
 
     @Override
@@ -58,15 +64,24 @@ public class AddActivityCommand extends AddCommand {
                 throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
             }
 
+            boolean isDateInTravelPlanDate = model.isValidActivityDate(activityDateTime);
+
+            if (!isDateInTravelPlanDate) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+            }
+
             model.addTravelPlanObject(toAdd);
             assert model.getActivityList().hasActivity(toAdd) : "Activity was not added";
 
         } else {
+            if (model.hasActivity(toAdd)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.addActivity(toAdd);
             assert model.getWishlist().hasActivity(toAdd) : "Activity was not added";
 
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ACTIVITY_INDEX);
     }
 
     @Override

@@ -56,7 +56,7 @@ public class DeleteActivityCommand extends DeleteCommand {
             model.deleteTravelPlanObject(activityToDelete);
             assert !model.getActivityList().hasActivity((Activity) activityToDelete)
                     : "Activity was not deleted!";
-            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
+            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete), ACTIVITY_INDEX);
         } else {
             List<Activity> filteredWishList = model.getFilteredWishlist();
 

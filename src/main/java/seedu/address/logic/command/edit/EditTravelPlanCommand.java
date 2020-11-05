@@ -1,9 +1,12 @@
 package seedu.address.logic.command.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import java.util.List;
 
@@ -44,7 +47,6 @@ public class EditTravelPlanCommand extends EditCommand {
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_TRAVELPLAN_SUCCESS = "Edited Travel Plan: %1$s";
-    public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travelplan already exists in Wanderlust.";
 
     private final Index targetIndex;
     private final EditDescriptor editTravelPlanDescriptor;
@@ -90,14 +92,26 @@ public class EditTravelPlanCommand extends EditCommand {
      * @param editTravelPlanDescriptor contains updated fields
      * @return TravelPlan to be updated in the travelplan list
      */
-    private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit,
-                                                     EditDescriptor editTravelPlanDescriptor) {
+    private static TravelPlan createEditedTravelPlan(
+            TravelPlan travelPlanToEdit, EditDescriptor editTravelPlanDescriptor) throws CommandException {
         assert travelPlanToEdit != null;
 
         Name updatedName = editTravelPlanDescriptor.getName().orElse(travelPlanToEdit.getName());
         WanderlustDate updatedStartDate = editTravelPlanDescriptor.getStartDate()
                 .orElse(travelPlanToEdit.getStartDate());
         WanderlustDate updatedEndDate = editTravelPlanDescriptor.getEndDate().orElse(travelPlanToEdit.getEndDate());
+
+        boolean isValidDate = TravelPlan.isValidStartAndEndDate(updatedStartDate, updatedEndDate);
+
+        if (!isValidDate) {
+            throw new CommandException(MESSAGE_INVALID_STARTANDENDDATE);
+        }
+
+        boolean isValidStartDate = TravelPlan.isStartDateAfterToday(updatedStartDate);
+
+        if (!isValidStartDate) {
+            throw new CommandException(MESSAGE_INVALID_START_DATE);
+        }
 
         //obtain data list from original travelplan
         ActivityList activities = travelPlanToEdit.getActivityList();

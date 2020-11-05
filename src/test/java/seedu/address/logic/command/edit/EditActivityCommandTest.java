@@ -8,8 +8,9 @@ import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_ZOO;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.command.edit.EditActivityCommand.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.logic.command.edit.EditActivityCommand.MESSAGE_EDIT_ACTIVITY_SUCCESS;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
@@ -53,7 +54,7 @@ public class EditActivityCommandTest {
 
         expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
-        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
 
     @Test
@@ -66,7 +67,7 @@ public class EditActivityCommandTest {
         ModelManager expectedModel = new ModelManager(new TravelPlanner(model.getTravelPlanner()), new UserPrefs());
         expectedModel.setDirectory(0);
 
-        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
 
     @Test
@@ -84,7 +85,7 @@ public class EditActivityCommandTest {
 
         expectedModel.setTravelPlanObject(model.getFilteredActivityList().get(0), editedActivity);
 
-        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
 
 

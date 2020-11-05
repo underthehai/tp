@@ -51,7 +51,7 @@ public class DeleteFriendCommand extends DeleteCommand {
         model.deleteTravelPlanObject(friendToDelete);
         assert !model.getFriendList().hasFriend((Friend) friendToDelete)
                 : "Friend was not deleted!";
-        return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_FRIEND_SUCCESS, friendToDelete), FRIEND_INDEX);
     }
 
     @Override

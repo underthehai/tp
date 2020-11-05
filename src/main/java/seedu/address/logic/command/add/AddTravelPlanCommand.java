@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -31,7 +32,6 @@ public class AddTravelPlanCommand extends AddCommand {
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New travel plan added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TRAVEL_PLAN = "This travel plan already exists in the travel planner";
 
     private final TravelPlan toAdd;
 
@@ -48,7 +48,7 @@ public class AddTravelPlanCommand extends AddCommand {
         requireNonNull(model);
 
         if (model.hasTravelPlan(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TRAVEL_PLAN);
+            throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
 
         model.addTravelPlan(toAdd);

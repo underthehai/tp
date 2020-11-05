@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.friend.Friend.MESSAGE_DUPLICATE_FRIEND;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class AddFriendCommandTest {
         AddFriendCommand addFriendCommand = new AddFriendCommand(validFriend);
         ModelStub modelStub = new ModelStubWithActivity(validFriend);
 
-        assertThrows(CommandException.class, AddFriendCommand.MESSAGE_DUPLICATE_FRIEND, () ->
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_FRIEND, () ->
                 addFriendCommand.execute(modelStub));
     }
 

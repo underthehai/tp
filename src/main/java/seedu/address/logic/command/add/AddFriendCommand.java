@@ -1,10 +1,11 @@
 package seedu.address.logic.command.add;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
+import static seedu.address.model.friend.Friend.MESSAGE_DUPLICATE_FRIEND;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -31,7 +32,6 @@ public class AddFriendCommand extends AddCommand {
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
-    public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in the travel plan";
 
     private final Friend toAdd;
 
@@ -54,7 +54,7 @@ public class AddFriendCommand extends AddCommand {
         model.addTravelPlanObject(toAdd);
         assert model.getFriendList().hasFriend(toAdd) : "Friend was not added";
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), FRIEND_INDEX);
     }
 
     @Override
