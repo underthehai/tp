@@ -130,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
         travelPlannerPanel = new TravelPlannerPanel(logic.getFilteredTravelPlanList());
         travelPlannerPanelPlaceholder.getChildren().add(travelPlannerPanel.getRoot());
 
-        travelPlanPanel = new TravelPlanPanel(logic.getDirectory());
+        travelPlanPanel = new TravelPlanPanel(logic.getObservableDirectory());
         travelPlanPanelPlaceholder.getChildren().add(travelPlanPanel.getRoot());
         ObservableDirectory dir = logic.getObservableDirectory();
         dir.get().addListener((v, oldValue, newValue) -> handleDirectoryChange(newValue));
@@ -151,16 +151,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleDirectoryChange(Directory directory) {
-        travelPlanPanel.setDirectory(directory);
-        if (directory instanceof Wishlist) {
-            travelPlanObjectListPanel.setActivityTabVisibleOnly();
-        } else {
-            travelPlanObjectListPanel.setAllTabsVisible();
-        }
-    }
-
-    private void handleCostChange(Directory directory) {
-        travelPlanPanel.setDirectory(directory);
+        travelPlanPanel.update(directory);
         if (directory instanceof Wishlist) {
             travelPlanObjectListPanel.setActivityTabVisibleOnly();
         } else {
