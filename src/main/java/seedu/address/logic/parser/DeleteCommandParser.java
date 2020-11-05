@@ -11,7 +11,6 @@ import seedu.address.logic.command.delete.DeleteActivityCommand;
 import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.command.delete.DeleteFriendCommand;
 import seedu.address.logic.command.delete.DeleteTravelPlanCommand;
-import seedu.address.logic.parser.exceptions.InvalidIndexException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.activity.Activity;
@@ -54,8 +53,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
             }
-        } catch (InvalidIndexException ex) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         }
     }
 
