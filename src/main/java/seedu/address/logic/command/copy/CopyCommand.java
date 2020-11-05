@@ -24,7 +24,9 @@ public class CopyCommand extends Command {
             + "identified by its index number in the travel planner using the following format:\n"
             + "copy ACTIVITY_INDEX TRAVELPLAN_INDEX\n";
 
-    public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity:\n%1$s\nTo travel plan:\n%1$s";
+
+    public static final String MESSAGE_COPY_ACTIVITY_SUCCESS = "Copied activity %1$s to travel plan %2$s";
+
     public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before copying activities";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "specified travel plan's start date and end date.";
@@ -74,8 +76,11 @@ public class CopyCommand extends Command {
             }
 
             model.copyActivity(activityToCopy, travelPlanIndex);
+            assert model.hasTravelPlanObject(activityToCopy, travelPlanIndex.getZeroBased())
+                    : "Activity was not copied";
 
-            return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS, activityToCopy, travelPlan));
+            return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS,
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
