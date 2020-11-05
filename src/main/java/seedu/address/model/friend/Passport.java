@@ -9,10 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Passport {
 
-    //TODO: follow passport conventions
     public static final String MESSAGE_CONSTRAINTS =
-            "Passport numbers should only contain 1 character and 7 numbers";
-    public static final String VALIDATION_REGEX = "\\w\\d{7}";
+            "Passport numbers should be in the form [E] + 7 numbers + [A-Z]";
+    public static final String VALIDATION_REGEX = "[E]\\d{7}[A-Z]";
     private final String value;
 
     /**

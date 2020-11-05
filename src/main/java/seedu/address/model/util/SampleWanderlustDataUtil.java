@@ -23,20 +23,20 @@ public class SampleWanderlustDataUtil {
 
     public static Friend[] getSampleFriends1() {
         return new Friend[] {
-            new Friend(new Name("Alex Yeoh"), new Passport("M1234567"), new Mobile("87438807")),
-            new Friend(new Name("Bernice Yu"), new Passport("E1234567"), new Mobile("99272758")),
-            new Friend(new Name("Charlotte Oliveiro"), new Passport("C1234567"), new Mobile("93210283")),
-            new Friend(new Name("David Li"), new Passport("D1234567"), new Mobile("99103182"))
+            new Friend(new Name("Alex Yeoh"), new Passport("E1234567R"), new Mobile("87438807")),
+            new Friend(new Name("Bernice Yu"), new Passport("E1234567J"), new Mobile("99272758")),
+            new Friend(new Name("Charlotte Oliveiro"), new Passport("E1234567U"), new Mobile("93210283")),
+            new Friend(new Name("David Li"), new Passport("E1234567W"), new Mobile("99103182"))
         };
     }
 
     public static Friend[] getSampleFriends2() {
         return new Friend[] {
-            new Friend(new Name("Lye Yi Xian"), new Passport("G7654321"), new Mobile("92421847")),
-            new Friend(new Name("Teo Jia Wei"), new Passport("S7654321"), new Mobile("81238032")),
-            new Friend(new Name("Timothy Ong"), new Passport("R7654321"), new Mobile("91274810")),
-            new Friend(new Name("Lim Hai Shan"), new Passport("B7654321"), new Mobile("89002939")),
-            new Friend(new Name("Jeanne Toh"), new Passport("J7654321"), new Mobile("88234200"))
+            new Friend(new Name("Lye Yi Xian"), new Passport("E7654321T"), new Mobile("92421847")),
+            new Friend(new Name("Teo Jia Wei"), new Passport("E7654321J"), new Mobile("81238032")),
+            new Friend(new Name("Timothy Ong"), new Passport("E7654321E"), new Mobile("91274810")),
+            new Friend(new Name("Lim Hai Shan"), new Passport("E7654521E"), new Mobile("89002939")),
+            new Friend(new Name("Jeanne Toh"), new Passport("E7654321W"), new Mobile("88234200"))
         };
     }
 

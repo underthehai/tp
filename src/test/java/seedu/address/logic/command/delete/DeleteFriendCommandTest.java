@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.command.CommandTestUtil.showTpoAtIndex;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_TEN;
@@ -47,7 +48,7 @@ public class DeleteFriendCommandTest {
         expectedModel.setDirectory(0);
         expectedModel.deleteTravelPlanObject(friendToDelete);
 
-        assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel, FRIEND_INDEX);
     }
 
     @Test
@@ -73,7 +74,7 @@ public class DeleteFriendCommandTest {
         expectedModel.deleteTravelPlanObject(friendToDelete);
         showNoFriendList(expectedModel);
 
-        assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteFriendCommand, model, expectedMessage, expectedModel, FRIEND_INDEX);
     }
 
     @Test

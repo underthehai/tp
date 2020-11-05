@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.commons.exceptions.DuplicateException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
@@ -57,6 +58,9 @@ public class JsonTravelPlannerStorage implements TravelPlannerStorage {
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);
+        } catch (DuplicateException dupEx) {
+            logger.info("Duplicate objects found in " + filePath + ": \n" + dupEx.getMessage());
+            throw new DataConversionException(dupEx);
         }
     }
 

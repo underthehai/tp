@@ -29,7 +29,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertWanderLustParseFailure(parser, " -activity a",
+        assertWanderLustParseFailure(parser, " -activiti 1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 }

@@ -5,28 +5,33 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.TravelPlan;
 
 public class AddTravelPlanCommand extends AddCommand {
+
     public static final String COMMAND_WORD = "travelplan";
 
-    public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
-            + ": Adds a travel plan to the travel planner\n"
-            + "Parameters: "
+    public static final String MESSAGE_FORMAT = "Add a travel plan to the travel planner using the format:\n"
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + "NAME "
-            + PREFIX_START + "START_DATE "
-            + PREFIX_END + "END_DATE "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "France "
-            + PREFIX_START + "15-09-2020 "
-            + PREFIX_END + "30-09-2020 ";
+            + PREFIX_START + WanderlustDate.FORMAT + " "
+            + PREFIX_END + WanderlustDate.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
+            + PREFIX_NAME + " France "
+            + PREFIX_START + "2021-09-15 "
+            + PREFIX_END + "2021-09-30 ";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New travel plan added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TRAVEL_PLAN = "This travel plan already exists in the travel planner";
 
     private final TravelPlan toAdd;
 
@@ -43,7 +48,7 @@ public class AddTravelPlanCommand extends AddCommand {
         requireNonNull(model);
 
         if (model.hasTravelPlan(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TRAVEL_PLAN);
+            throw new CommandException(MESSAGE_DUPLICATE_TRAVELPLAN);
         }
 
         model.addTravelPlan(toAdd);

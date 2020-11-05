@@ -13,7 +13,7 @@ public class ActivityBuilder {
     public static final String DEFAULT_LOCATION = "33 Spring Valley";
     public static final String DEFAULT_COST = "100";
     public static final String DEFAULT_LEVELOFIMPORTANCE = "2";
-    public static final String DEFAULT_ACTIVITYDATETIME = "2020-10-10 11:00";
+    public static final String DEFAULT_ACTIVITYDATETIME = "2021-10-10 11:00";
 
 
     private Name name;

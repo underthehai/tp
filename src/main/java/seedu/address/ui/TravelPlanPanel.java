@@ -8,7 +8,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.model.Directory;
-
+import seedu.address.model.ObservableDirectory;
 
 
 /**
@@ -16,10 +16,9 @@ import seedu.address.model.Directory;
  */
 public class TravelPlanPanel extends UiPart<Region> {
     private static final String TravelPlanFXML = "TravelPlanPanel.fxml";
-    private static final String TOTAL_COST = "Total Cost: $";
     private final Logger logger = LogsCenter.getLogger(TravelPlanPanel.class);
 
-    private Directory directory;
+    private ObservableDirectory dir;
 
     private Logic logic;
 
@@ -33,20 +32,18 @@ public class TravelPlanPanel extends UiPart<Region> {
     /**
      * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
      */
-    public TravelPlanPanel(Directory directory) {
+    public TravelPlanPanel(ObservableDirectory dir) {
         super(TravelPlanFXML);
-        this.directory = directory;
-        update();
+        this.dir = dir;
+        totalCost.textProperty().bind(dir.getObservableCost());
+        update(dir.get().getValue());
     }
 
     /**
      * Updates the JavaFX properties of {@code TravelPlanPanel} according to the directory.
      */
-    public void update() {
-
-        String cost = directory.getTotalCost();
+    public void update(Directory directory) {
         name.setText(directory.getName().toString());
-        totalCost.setText(TOTAL_COST + cost);
 
         if (directory.isTravelPlan()) {
             startDateToEndDate.setText(directory.dateTitle());
@@ -55,9 +52,4 @@ public class TravelPlanPanel extends UiPart<Region> {
         }
     }
 
-
-    public void setDirectory(Directory directory) {
-        this.directory = directory;
-        update();
-    }
 }

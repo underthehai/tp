@@ -6,6 +6,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import java.util.List;
 
@@ -29,23 +31,31 @@ import seedu.address.model.commons.Name;
 public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the activity identified by the index number used in the displayed activity list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
-            + "[" + PREFIX_COST + "COST] "
-            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
-            + "[" + PREFIX_DATETIME + "DATETIME]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Ice Fishing "
-            + PREFIX_IMPORTANCE + "2 "
-            + PREFIX_LOCATION + "Ice Park "
-            + PREFIX_COST + "50 "
-            + PREFIX_DATETIME + " 2020-05-05 14:30";
+    public static final String MESSAGE_FORMAT = "Edit an activity in the current travel plan or "
+            + "wishlist by its index in the displayed activity list using the format:\n"
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_IMPORTANCE + "LEVEL_OF_IMPORTANCE "
+            + PREFIX_LOCATION + "LOCATION "
+            + PREFIX_COST + "COST "
+            + PREFIX_DATETIME + WanderlustDateTime.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1 "
+            + PREFIX_NAME + "Universal Studios Singapore "
+            + PREFIX_IMPORTANCE + "5 "
+            + PREFIX_LOCATION + "Sentosa "
+            + PREFIX_COST + "88 "
+            + PREFIX_DATETIME + "2021-09-16 ";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
-    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list.";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
+            + "Activities with the same name, location and datetime are considered duplicates.";
+    public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
+            + "travel plan's start date and end date.";
+
 
     private final Index targetIndex;
     private final EditDescriptor editActivityDescriptor;
@@ -74,20 +84,23 @@ public class EditActivityCommand extends EditCommand {
         }
 
         Activity activityToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor);
+        Activity editedActivity = createEditedActivity(activityToEdit, editActivityDescriptor, model);
 
-        if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
-        }
         if (isTravelPlan) {
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasTravelPlanObject(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.setTravelPlanObject(activityToEdit, editedActivity);
             assert model.hasTravelPlanObject(editedActivity);
         } else {
+            if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(editedActivity)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            }
             model.setActivity(activityToEdit, editedActivity);
             assert model.hasActivity(editedActivity);
         }
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity), ACTIVITY_INDEX);
 
     }
 
@@ -98,8 +111,8 @@ public class EditActivityCommand extends EditCommand {
      * @param editActivityDescriptor contains updated fields
      * @return Activity to be updated in the activity list
      */
-    private static Activity createEditedActivity(Activity activityToEdit,
-                                                 EditDescriptor editActivityDescriptor) {
+    private static Activity createEditedActivity(Activity activityToEdit, EditDescriptor editActivityDescriptor,
+                                                 Model model) throws CommandException {
         assert activityToEdit != null;
 
         Name updatedName = editActivityDescriptor.getName().orElse(activityToEdit.getName());
@@ -110,6 +123,16 @@ public class EditActivityCommand extends EditCommand {
                 .orElse(activityToEdit.getLevelOfImportance());
         WanderlustDateTime updatedActivityDateTime = editActivityDescriptor.getActivityDateTime()
                 .orElse(activityToEdit.getActivityDateTime());
+
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+
+        if (isTravelPlan) {
+            boolean isDateInTravelPlanDate = model.isValidActivityDate(updatedActivityDateTime);
+
+            if (!isDateInTravelPlanDate) {
+                throw new CommandException(MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY);
+            }
+        }
 
         return new Activity(updatedName, updatedLocation, updatedCost, updatedLevelOfImportance,
                 updatedActivityDateTime);
