@@ -18,14 +18,11 @@ public class GoToCommand extends Command {
     public static final String TRAVEL_PLAN = "travelplan";
     public static final String WISHLIST = "wishlist";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Go to the wishlist directory or travel plan directory identified by the index number used in the "
-            + "displayed travel plan list.\n"
-            + "Object Type: -" + TRAVEL_PLAN + "\n"
-            + "             -" + WISHLIST + "\n"
-            + "Parameters: INDEX (must be a positive integer, not needed for wishlist)\n"
-            + "Example: " + COMMAND_WORD + " -" + TRAVEL_PLAN + " 1\n"
-            + "         " + COMMAND_WORD + " -" + WISHLIST;
+    public static final String MESSAGE_USAGE = "Go to the wishlist directory using the following command:\n"
+            + "goto -wishlist\n"
+            + "Go to the travel plan directory identified by its index number used in the "
+            + "displayed travel plan list using the following format:\n"
+            + "goto -travelplan INDEX";
 
     public static final String MESSAGE_GOTO_SUCCESS = "goto directory: %1$s";
 

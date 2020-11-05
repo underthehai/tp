@@ -20,7 +20,7 @@ public class ConstructorUtils {
     public static final String VALID_PASSPORT_A = "A1234567";
     public static final String VALID_PASSPORT_B = "B1234567";
     public static final String VALID_COST_A = "100";
-    public static final String VALID_COST_B = "255.50";
+    public static final String VALID_COST_B = "255";
     public static final AccommodationList VALID_ACCOMMODATION_LIST_A = getTypicalAccommodationList(1);
     public static final AccommodationList VALID_ACCOMMODATION_LIST_B = getTypicalAccommodationList(2);
     public static final ActivityList VALID_ACTIVITY_LIST_A = getTypicalActivityList(1);
