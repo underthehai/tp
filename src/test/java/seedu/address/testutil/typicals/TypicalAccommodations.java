@@ -22,26 +22,26 @@ import seedu.address.testutil.builders.AccommodationBuilder;
 public class TypicalAccommodations {
 
     public static final Accommodation ALICEHOTEL = new AccommodationBuilder().withName("Alice Hotel")
-            .withStartDate("2020-01-01").withEndDate("2020-02-02")
+            .withStartDate("2021-01-01").withEndDate("2021-02-02")
             .withCost("100").withLocation("109 Alice Avenue").build();
     public static final Accommodation BOBHOTEL = new AccommodationBuilder().withName("Hostel by Bob")
-            .withStartDate("2020-02-02").withEndDate("2020-03-03")
+            .withStartDate("2021-06-06").withEndDate("2021-06-07")
             .withCost("200").withLocation("9 Balestier Road").build();
     public static final Accommodation CARLHOTEL = new AccommodationBuilder().withName("Carl's Farmhouse")
-            .withStartDate("2020-03-03").withEndDate("2020-04-04")
+            .withStartDate("2021-05-05").withEndDate("2021-07-07")
             .withCost("300").withLocation("999 Calihan Street").build();
     public static final Accommodation DANHOTEL = new AccommodationBuilder().withName("Danny's Lodge")
-            .withStartDate("2020-04-04").withEndDate("2020-05-05")
+            .withStartDate("2021-06-06").withEndDate("2021-08-08")
             .withCost("400").withLocation("1 Den Street").build();
 
     public static final Accommodation ELLEHOTEL = new AccommodationBuilder().withName("Elle's")
-            .withStartDate("2020-05-05").withEndDate("2020-06-06")
+            .withStartDate("2021-05-05").withEndDate("2021-06-06")
             .withCost("500").withLocation("333 Elmo's World").build();
     public static final Accommodation FIONAHOTEL = new AccommodationBuilder().withName("Fiona Hotel")
-            .withStartDate("2020-06-06").withEndDate("2020-07-07")
+            .withStartDate("2021-06-06").withEndDate("2021-07-07")
             .withCost("600").withLocation("Fall Home").build();
     public static final Accommodation GEORGEHOTEL = new AccommodationBuilder().withName("George and Georgina")
-            .withStartDate("2020-07-07").withEndDate("2020-08-08")
+            .withStartDate("2021-07-07").withEndDate("2021-08-08")
             .withCost("700").withLocation("7 GeorgeTown").build();
 
     // Manually added - Accommodations' details found in {@code CommandTestUtil}

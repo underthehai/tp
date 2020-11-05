@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MOBILE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
+import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
+import static seedu.address.model.friend.Friend.MESSAGE_DUPLICATE_FRIEND;
 
 import java.util.List;
 
@@ -22,21 +24,25 @@ import seedu.address.model.friend.Passport;
  * A friend contains the field name, passport, mobile
  */
 public class EditFriendCommand extends EditCommand {
+
     public static final String COMMAND_WORD = "friend";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the friend identified by the index number used in the displayed friend list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PASSPORT + "PASSPORT] "
-            + "[" + PREFIX_MOBILE + "MOBILE_PHONE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "John "
-            + PREFIX_PASSPORT + "E1234567 "
-            + PREFIX_MOBILE + "81234567 ";
+    public static final String MESSAGE_FORMAT = "Edit a friend in the current travel plan "
+            + "by its index in the displayed friend list using the format:\n"
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_MOBILE + "MOBILE_NUMBER "
+            + PREFIX_PASSPORT + "PASSPORT_NUMBER ";
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1 "
+            + PREFIX_NAME + "John Doe "
+            + PREFIX_MOBILE + "91234567 "
+            + PREFIX_PASSPORT + "E1234567K";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_FRIEND_SUCCESS = "Edited Friend: %1$s";
-    public static final String MESSAGE_DUPLICATE_FRIEND = "This friend already exists in friend list.";
 
     private final Index targetIndex;
     private final EditDescriptor editFriendDescriptor;
@@ -61,21 +67,22 @@ public class EditFriendCommand extends EditCommand {
             throw new CommandException(MESSAGE_WRONG_DIRECTORY);
         }
 
-        List<Friend> lastShownList = model.getFilteredFriendList();
+        List<Friend> filteredFriendList = model.getFilteredFriendList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= filteredFriendList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
         }
 
-        Friend friendToEdit = lastShownList.get(targetIndex.getZeroBased());
+        Friend friendToEdit = filteredFriendList.get(targetIndex.getZeroBased());
         Friend editedFriend = createEditedFriend(friendToEdit, editFriendDescriptor);
 
-        if (!friendToEdit.isSameFriend(editedFriend) && lastShownList.contains(editedFriend)) {
+        if (!friendToEdit.isSameFriend(editedFriend) && model.hasTravelPlanObject(editedFriend)) {
             throw new CommandException(MESSAGE_DUPLICATE_FRIEND);
         }
+
         model.setTravelPlanObject(friendToEdit, editedFriend);
         assert model.hasTravelPlanObject(editedFriend);
-        return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend));
+        return new CommandResult(String.format(MESSAGE_EDIT_FRIEND_SUCCESS, editedFriend), FRIEND_INDEX);
     }
 
     /**

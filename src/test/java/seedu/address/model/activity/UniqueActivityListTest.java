@@ -39,7 +39,8 @@ public class UniqueActivityListTest {
     @Test
     public void contains_activityWithSameIdentityFieldsInList_returnsTrue() {
         uniqueActivityList.add(ZOO);
-        Activity editedZoo = new ActivityBuilder(ZOO).withLocation("2020-10-10 12:00").build();
+        Activity editedZoo = new ActivityBuilder(ZOO).withLocation(ZOO.getLocation().getValue())
+                .withName(ZOO.getName().getValue()).withDateTime(ZOO.getActivityDateTime().getDateTime()).build();
         assertTrue(uniqueActivityList.contains(editedZoo));
     }
 

@@ -15,6 +15,8 @@ public abstract class Command {
             + "COMMAND_WORD -travelplan\n"
             + "COMMAND_WORD -wishlist\n";
 
+    public static final String COMMAND_SEPARATOR = " -";
+
     /**
      * Executes the command and returns the result message.
      *
