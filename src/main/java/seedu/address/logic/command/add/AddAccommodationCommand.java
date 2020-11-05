@@ -32,8 +32,8 @@ public class AddAccommodationCommand extends AddCommand {
             + PREFIX_NAME + "Intercontinental "
             + PREFIX_LOCATION + "80 Middle Road "
             + PREFIX_COST + "250 "
-            + PREFIX_START + "2020-09-15 "
-            + PREFIX_END + "2020-09-30";
+            + PREFIX_START + "2021-09-15 "
+            + PREFIX_END + "2021-09-30";
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 

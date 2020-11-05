@@ -25,8 +25,8 @@ public class AddTravelPlanCommand extends AddCommand {
     public static final String MESSAGE_EXAMPLE = "Example: "
             + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + " France "
-            + PREFIX_START + "2020-09-15 "
-            + PREFIX_END + "2020-09-30 ";
+            + PREFIX_START + "2021-09-15 "
+            + PREFIX_END + "2021-09-30 ";
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 

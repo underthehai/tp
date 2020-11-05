@@ -26,7 +26,7 @@ public class AddFriendCommand extends AddCommand {
             + AddCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_MOBILE + "91234567 "
-            + PREFIX_PASSPORT + "p12345678";
+            + PREFIX_PASSPORT + "E1234567K";
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 

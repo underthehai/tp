@@ -42,8 +42,8 @@ public class EditAccommodationCommand extends EditCommand {
             + PREFIX_NAME + "Hard Rock Hotel "
             + PREFIX_LOCATION + "Sentosa "
             + PREFIX_COST + "500 "
-            + PREFIX_START + "2020-07-10 "
-            + PREFIX_END + "2020-07-20";
+            + PREFIX_START + "2021-07-10 "
+            + PREFIX_END + "2021-07-20";
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 

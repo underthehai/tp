@@ -32,7 +32,7 @@ public class AddActivityCommand extends AddCommand {
             + PREFIX_IMPORTANCE + "5 "
             + PREFIX_LOCATION + "Sentosa "
             + PREFIX_COST + "88 "
-            + PREFIX_DATETIME + "2020-09-16 ";
+            + PREFIX_DATETIME + "2021-09-16 ";
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
