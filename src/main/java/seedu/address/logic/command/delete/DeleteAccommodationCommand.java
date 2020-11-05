@@ -1,7 +1,6 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 
 import java.util.List;
@@ -19,10 +18,10 @@ import seedu.address.model.commons.TravelPlanObject;
  */
 public class DeleteAccommodationCommand extends DeleteCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the accommodation identified by the index number used in the displayed accommodation list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_TPO + Accommodation.TPO_WORD + " 1";
+    public static final String MESSAGE_USAGE =
+            "Delete an accommodation by its index in the displayed accommodation list using the format:\n"
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
+            + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_ACCOMMODATION_SUCCESS = "Deleted Accommodation:\n%1$s";
 
