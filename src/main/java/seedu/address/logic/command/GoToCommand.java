@@ -44,7 +44,9 @@ public class GoToCommand extends Command {
      * Constructor for GoToCommand (wishlist).
      */
     public GoToCommand(boolean isTravelPlan) {
-        this.targetIndex = null;
+        // TODO: change to this because test case in GoToCommandParserTest not passing
+        //  (NullPointerException for .equals())
+        this.targetIndex = Index.fromZeroBased(0);
         this.isTravelPlan = isTravelPlan;
     }
 
