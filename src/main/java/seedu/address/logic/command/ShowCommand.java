@@ -20,6 +20,8 @@ import seedu.address.model.friend.Friend;
 public class ShowCommand extends Command {
     public static final String COMMAND_WORD = "show";
 
+    public static final int COMMAND_TOKENS = 2;
+
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Shows the respective list of travel plan object type identified by the keyword.\n"
             + "Parameters: travelPlanObjectType\n"
@@ -58,9 +60,8 @@ public class ShowCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
-        boolean isWishlist = !isTravelPlan;
 
-        if (isWishlist && travelPlanObjectType != ACTIVITY_INDEX) {
+        if (!isTravelPlan && travelPlanObjectType != ACTIVITY_INDEX) {
             throw new CommandException(Messages.MESSAGE_INVALID_SHOW_AT_WISHLIST);
         }
 
@@ -73,12 +74,15 @@ public class ShowCommand extends Command {
         case Activity.TPO_WORD:
             model.updateFilteredActivityList(Model.PREDICATE_SHOW_ALL);
             break;
+
         case Accommodation.TPO_WORD:
             model.updateFilteredAccommodationList(Model.PREDICATE_SHOW_ALL);
             break;
+
         case Friend.TPO_WORD:
             model.updateFilteredFriendList(Model.PREDICATE_SHOW_ALL);
             break;
+
         default:
             throw new CommandException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
