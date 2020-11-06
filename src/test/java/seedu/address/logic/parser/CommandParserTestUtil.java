@@ -91,14 +91,6 @@ public class CommandParserTestUtil {
         }
     }
 
-    /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
-     * equals to {@code expectedMessage}.
-     @@ -35,4 +51,18 @@ public static void assertParseFailure(WanderlustParser parser, String userInput, String ex
-     assertEquals(expectedMessage, pe.getMessage());
-     }
-     }
-
      /**
       * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
       * and the error message equals to {@code expectedMessage}.

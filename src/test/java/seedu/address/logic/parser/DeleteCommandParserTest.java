@@ -7,7 +7,15 @@ import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.command.delete.*;
+import seedu.address.logic.command.delete.DeleteAccommodationCommand;
+import seedu.address.logic.command.delete.DeleteActivityCommand;
+import seedu.address.logic.command.delete.DeleteCommand;
+import seedu.address.logic.command.delete.DeleteFriendCommand;
+import seedu.address.logic.command.delete.DeleteTravelPlanCommand;
+
+
+
+
 
 
 /**
