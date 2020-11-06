@@ -21,7 +21,7 @@ public class CostTest {
     @Test
     public void isValidCost() {
         // null Cost number
-        assertThrows(NullPointerException.class, () -> Cost.isValidCost(null));
+        assertFalse(Cost.isValidCost(null));
 
         // invalid Cost numbers
         assertFalse(Cost.isValidCost("")); // empty string

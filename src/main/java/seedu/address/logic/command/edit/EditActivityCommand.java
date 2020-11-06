@@ -31,20 +31,24 @@ import seedu.address.model.commons.Name;
 public class EditActivityCommand extends EditCommand {
     public static final String COMMAND_WORD = "activity";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the activity identified by the index number used in the displayed activity list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
-            + "[" + PREFIX_COST + "COST] "
-            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE] "
-            + "[" + PREFIX_DATETIME + "DATETIME]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Ice Fishing "
-            + PREFIX_IMPORTANCE + "2 "
-            + PREFIX_LOCATION + "Ice Park "
-            + PREFIX_COST + "50 "
-            + PREFIX_DATETIME + " 2020-05-05 14:30";
+    public static final String MESSAGE_FORMAT = "Edit an activity in the current travel plan or "
+            + "wishlist by its index in the displayed activity list using the format:\n"
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_IMPORTANCE + "LEVEL_OF_IMPORTANCE "
+            + PREFIX_LOCATION + "LOCATION "
+            + PREFIX_COST + "COST "
+            + PREFIX_DATETIME + WanderlustDateTime.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1 "
+            + PREFIX_NAME + "Universal Studios Singapore "
+            + PREFIX_IMPORTANCE + "5 "
+            + PREFIX_LOCATION + "Sentosa "
+            + PREFIX_COST + "88 "
+            + PREFIX_DATETIME + "2021-09-16 ";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited Activity: %1$s";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the activity list. "
