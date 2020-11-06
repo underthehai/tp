@@ -31,7 +31,7 @@ public abstract class EditCommand extends Command {
             + "\n"
             + VALID_PARAMETERS;
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided. Refer to the list "
-            + "of valid parameters" + VALID_PARAMETERS;
+            + "of valid parameters\n" + VALID_PARAMETERS;
 
 
     protected final Index targetIndex;
