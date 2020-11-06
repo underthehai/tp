@@ -12,7 +12,7 @@ public class GoToCommandTest {
     @Test
     public void execute_goto_success() {
         try {
-            Index index = TypicalIndexes.INDEX_FIRST_PERSON;
+            Index index = TypicalIndexes.INDEX_FIRST;
             GoToCommand expectedCommand = new GoToCommand(index, true);
             Assertions.assertTrue(expectedCommand.equals(new GoToCommandParser().parse(" -activity 1")));
         } catch (ParseException pe) {
@@ -23,7 +23,7 @@ public class GoToCommandTest {
     @Test
     public void execute_goto_failure() {
         try {
-            Index index = TypicalIndexes.INDEX_FIRST_PERSON;
+            Index index = TypicalIndexes.INDEX_FIRST;
             GoToCommand expectedCommand = new GoToCommand(index, false);
             Assertions.assertFalse(expectedCommand.equals(new GoToCommandParser()
                     .parse(" -travelplan 1")));
