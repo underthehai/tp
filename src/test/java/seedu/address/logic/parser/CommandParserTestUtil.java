@@ -91,9 +91,9 @@ public class CommandParserTestUtil {
         }
     }
 
-     /**
-      * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
-      * and the error message equals to {@code expectedMessage}.
+    /**
+     * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
+     * and the error message equals to {@code expectedMessage}.
      */
     public static void assertWanderLustParseEditCommandFailure(EditCommandParser parser, String userInput,
                                                                String expectedMessage) {
