@@ -1,10 +1,7 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.commons.core.Messages.*;
 import static seedu.address.logic.command.CommandTestUtil.COMMAND_PREFIX_DESC;
 import static seedu.address.logic.command.CommandTestUtil.END_DATE_DESC_EUROPE;
 import static seedu.address.logic.command.CommandTestUtil.NAME_DESC_EUROPE;
@@ -64,10 +61,10 @@ public class LogicManagerTest {
         assertCommandException(deleteActivityCommand, MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
 
         String deleteAccommodationCommand = "delete -accommodation 9";
-        assertCommandException(deleteAccommodationCommand, MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
+        assertCommandException(deleteAccommodationCommand, MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
 
         String deleteFriendCommand = "delete -friend 9";
-        assertCommandException(deleteFriendCommand, MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX);
+        assertCommandException(deleteFriendCommand, MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
     }
 
     @Test
