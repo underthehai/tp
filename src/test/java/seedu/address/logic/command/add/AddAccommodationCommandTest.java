@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import seedu.address.model.ReadOnlyTravelPlanner;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.accommodation.Accommodation;
 import seedu.address.model.commons.TravelPlanObject;
+import seedu.address.model.commons.WanderlustDate;
 import seedu.address.model.travelplan.AccommodationList;
 import seedu.address.testutil.builders.AccommodationBuilder;
 import seedu.address.testutil.typicals.TypicalAccommodations;
@@ -47,7 +49,7 @@ public class AddAccommodationCommandTest {
         AddAccommodationCommand addAccommodationCommand = new AddAccommodationCommand(validAccommodation);
         ModelStub modelStub = new ModelStubWithAccommodation(validAccommodation);
 
-        assertThrows(CommandException.class, AddAccommodationCommand.MESSAGE_DUPLICATE_ACCOMMODATION, () ->
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ACCOMMODATION, () ->
                 addAccommodationCommand.execute(modelStub));
     }
 
@@ -123,6 +125,11 @@ public class AddAccommodationCommandTest {
         @Override
         public ReadOnlyTravelPlanner getTravelPlanner() {
             return new TravelPlanner();
+        }
+
+        @Override
+        public boolean isValidAccommodationDate(WanderlustDate startDate, WanderlustDate endDate) {
+            return true;
         }
     }
 }

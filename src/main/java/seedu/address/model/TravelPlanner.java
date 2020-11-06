@@ -14,7 +14,7 @@ import seedu.address.model.wishlist.Wishlist;
 
 /**
  * Wraps all data at the travel planner level
- * Duplicates are not allowed (by .isSameTravelPlan comparison)
+ * Duplicates are not allowed (by .isSameTravelPlan & .isSameActivity comparison)
  */
 public class TravelPlanner implements ReadOnlyTravelPlanner {
 
@@ -36,7 +36,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     public TravelPlanner() {}
 
     /**
-     * Creates a TravelPlanner using the TravelPlans in the {@code toBeCopied}
+     * Creates a TravelPlanner using the TravelPlans and Wishlist in the {@code toBeCopied}
      */
     public TravelPlanner(ReadOnlyTravelPlanner toBeCopied) {
         this();
@@ -98,6 +98,7 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
 
     /**
      * Adds an activity to the wishlist.
+     * The activity must not already exist in the wishlist.
      */
     public void addActivity(Activity activity) {
         wishlist.addActivity(activity);
@@ -141,17 +142,22 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     }
 
     /**
-     * Returns the wishlist as a Wishlist.
-     * Used to initialize the directory.
+     * Returns the wishlist as {@code Wishlist}.
      */
     public Wishlist getWishlist() {
         return wishlist;
     }
 
+    /**
+     * Returns travel plans as {@code UniqueTravelPlanList}.
+     */
     public UniqueTravelPlanList getTravelPlanList() {
         return travelPlans;
     }
 
+    /**
+     * Sorts the wishlist according to the given comparator.
+     */
     public void sortWishlist(Comparator<Activity> comparator) {
         wishlist.sort(comparator);
     }
@@ -162,7 +168,6 @@ public class TravelPlanner implements ReadOnlyTravelPlanner {
     public String toString() {
         return travelPlans.asUnmodifiableObservableList().size() + " travel plans\n"
                 + wishlist.getObservableActivityList().size() + " activities";
-        // TODO: refine later
     }
 
     @Override

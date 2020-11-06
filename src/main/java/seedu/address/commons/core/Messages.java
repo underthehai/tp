@@ -25,5 +25,7 @@ public class Messages {
     public static final String MESSAGE_TRAVELPLANS_LISTED_OVERVIEW = "%1$d travel plans listed!";
     public static final String MESSAGE_INVALID_STARTANDENDDATE = "Start Date should be before or "
             + "on the same date as End Date.";
+    public static final String MESSAGE_INVALID_START_DATE = "Start Date can only be today's date or any date "
+            + "after today's date.";
     public static final String MESSAGE_DELETE_SUCCESS = "Deleted %s:\n%1$s";
 }

@@ -38,8 +38,8 @@ class PassportTest {
         assertFalse(Passport.isValidPassport("1242A93842033123")); //character is not at the start
 
         // valid mobile numbers
-        assertTrue(Passport.isValidPassport("S6249932")); // exactly 1 character and 7 digits
-        assertTrue(Passport.isValidPassport("A3121534"));
+        assertTrue(Passport.isValidPassport("E6249932A")); // [E] + 7 numbers + [A-Z]
+        assertTrue(Passport.isValidPassport("E3121534B"));
 
     }
 }

@@ -67,7 +67,7 @@ public class AccommodationTest {
         assertFalse(ALICEHOTEL.equals(editedAlice));
 
         // different end date -> returns false
-        editedAlice = new AccommodationBuilder(ALICEHOTEL).withEndDate("2020-12-31").build();
+        editedAlice = new AccommodationBuilder(ALICEHOTEL).withEndDate("2021-05-31").build();
         assertFalse(ALICEHOTEL.equals(editedAlice));
     }
 }
