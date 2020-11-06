@@ -14,7 +14,9 @@ import java.time.format.DateTimeFormatter;
  * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDate(String)}
  */
 public class WanderlustDate {
-    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format YYYY-MM-DD.";
+
+    public static final String FORMAT = "YYYY-MM-DD";
+    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format " + FORMAT;
 
     /**
      * Dates must be in the format YYYY-MM-DD.
@@ -51,6 +53,24 @@ public class WanderlustDate {
             return false;
         }
     }
+
+    /**
+     * Checks if the current WanderlustDate comes before the given WanderlustDate chronologically.
+     * @return true if current WanderlustDate is before the given WanderlustDate.
+     */
+    public boolean isBefore(WanderlustDate toCompare) {
+        return value.isBefore(toCompare.getValue());
+    }
+
+    /**
+     * Checks if the current WanderlustDate comes after the given WanderlustDate chronologically.
+     * @return true if current WanderlustDate is after the given WanderlustDate.
+     */
+    public boolean isAfter(WanderlustDate toCompare) {
+        return value.isAfter(toCompare.getValue());
+    }
+
+
 
     public LocalDate getValue() {
         return value;

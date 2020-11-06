@@ -1,7 +1,6 @@
 package seedu.address.logic.command.delete;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TPO;
 
 import java.util.List;
 
@@ -16,10 +15,13 @@ import seedu.address.model.travelplan.TravelPlan;
  * Deletes a travel plan in the travel planner identified using the index from the travel planner list.
  */
 public class DeleteTravelPlanCommand extends DeleteCommand {
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the travel plan identified by the index number used in the displayed travel plan list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_TPO + TravelPlan.TRAVEL_PLAN_WORD + " 1";
+
+    public static final String COMMAND_WORD = "travelplan";
+
+    public static final String MESSAGE_USAGE =
+            "Delete a travel plan by its index in the displayed travel plan list using the format:\n"
+            + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX\n"
+            + "Example: " + DeleteCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_TRAVELPLAN_SUCCESS = "Deleted Travel Plan:\n%1$s";
 

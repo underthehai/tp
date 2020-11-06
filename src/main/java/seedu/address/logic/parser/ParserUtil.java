@@ -162,7 +162,7 @@ public class ParserUtil {
         requireNonNull(dateTime);
         String trimmedDateTime = dateTime.trim();
         if (!WanderlustDateTime.isValidWanderlustDateTime(trimmedDateTime)) {
-            throw new ParseException(WanderlustDate.MESSAGE_CONSTRAINTS);
+            throw new ParseException(WanderlustDateTime.MESSAGE_CONSTRAINTS);
         }
         return new WanderlustDateTime(trimmedDateTime);
     }

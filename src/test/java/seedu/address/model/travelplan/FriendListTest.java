@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.ConstructorUtils.VALID_PHONE_B;
+import static seedu.address.testutil.ConstructorUtils.VALID_NAME_B;
 import static seedu.address.testutil.typicals.TypicalFriends.ALICE;
 import static seedu.address.testutil.typicals.TypicalFriends.getTypicalFriendList;
 
@@ -45,7 +45,7 @@ public class FriendListTest {
     @Test
     public void resetData_withDuplicateFriends_throwsDuplicateFriendException() {
         // Two friends with the same identity fields
-        Friend editedAlice = new FriendBuilder(ALICE).withMobile(VALID_PHONE_B).build();
+        Friend editedAlice = new FriendBuilder(ALICE).withName(VALID_NAME_B).build();
         List<Friend> newFriends = Arrays.asList(ALICE, editedAlice);
         FriendListStub newData = new FriendListStub(newFriends);
 
@@ -71,7 +71,7 @@ public class FriendListTest {
     @Test
     public void hasFriend_friendWithSameIdentityFieldsInFriendList_returnsTrue() {
         friendList.addFriend(ALICE);
-        Friend editedAlice = new FriendBuilder(ALICE).withMobile(VALID_PHONE_B).build();
+        Friend editedAlice = new FriendBuilder(ALICE).withName(VALID_NAME_B).build();
         assertTrue(friendList.hasFriend(editedAlice));
     }
 

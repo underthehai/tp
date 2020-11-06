@@ -13,6 +13,8 @@ public abstract class SortCommand extends Command {
     public static final String KEYWORD_IMPORTANCE = "importance";
     public static final String KEYWORD_DATE = "date";
     public static final String KEYWORD_DATETIME = "datetime";
+    public static final String KEYWORD_PASSPORT = "passport";
+    public static final String KEYWORD_MOBILE = "mobile";
 
 
     public static final String MESSAGE_USAGE = COMMAND_WORD

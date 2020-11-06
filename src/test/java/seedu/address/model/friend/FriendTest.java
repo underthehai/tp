@@ -23,23 +23,29 @@ class FriendTest {
         assertFalse(TypicalFriends.ALICE.isSameFriend(null));
         Friend editedAlice;
 
-        // different name -> returns false
-        editedAlice = new FriendBuilder(TypicalFriends.ALICE).withName(VALID_NAME_BOB).build();
+        // different passport -> returns false
+        editedAlice = new FriendBuilder(TypicalFriends.ALICE).withPassport(VALID_PASSPORT_BOB).build();
         assertFalse(TypicalFriends.ALICE.isSameFriend(editedAlice));
 
-        // same name with different mobile and passport -> returns true
+        // same name with different mobile and passport -> returns false
         editedAlice = new FriendBuilder(TypicalFriends.ALICE).withMobile(VALID_MOBILE_BOB)
                 .withPassport(VALID_PASSPORT_BOB).build();
 
-        assertTrue(TypicalFriends.ALICE.isSameFriend(editedAlice));
+        assertFalse(TypicalFriends.ALICE.isSameFriend(editedAlice));
 
         // same name, same passport with different mobile -> returns true
         editedAlice = new FriendBuilder(TypicalFriends.ALICE).withMobile(VALID_MOBILE_BOB).build();
 
         assertTrue(TypicalFriends.ALICE.isSameFriend(editedAlice));
 
-        // same name, same mobile, different passport -> returns true
+        // same name, same mobile, different passport -> returns false
         editedAlice = new FriendBuilder(TypicalFriends.ALICE).withPassport(VALID_PASSPORT_BOB).build();
+
+        assertFalse(TypicalFriends.ALICE.isSameFriend(editedAlice));
+
+        // different name, different mobile, same passport -> returns true
+        editedAlice = new FriendBuilder(TypicalFriends.ALICE).withName(VALID_NAME_BOB).withMobile(VALID_MOBILE_BOB)
+                .build();
 
         assertTrue(TypicalFriends.ALICE.isSameFriend(editedAlice));
 

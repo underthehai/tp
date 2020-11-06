@@ -9,12 +9,17 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import seedu.address.model.commons.WanderlustDate;
+
+
 /**
  * Represents a Activity's date time in a travel plan.
  * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDateTime(String)}
  */
 public class WanderlustDateTime {
-    public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format YYYY-MM-DD HH:mm.";
+
+    public static final String FORMAT = "YYYY-MM-DD HH:mm";
+    public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format " + FORMAT;
 
     /**
      * Date time must be in the format YYYY-MM-DD HH:mm.
@@ -55,6 +60,22 @@ public class WanderlustDateTime {
 
     public String getDateTime() {
         return dateTime;
+    }
+
+    /**
+     * Checks if the current WanderlustDateTime comes before the given WanderlustDate chronologically.
+     * @return true if current WanderlustDateTime is before the given WanderlustDate.
+     */
+    public boolean isBefore(WanderlustDate toCompare) {
+        return value.toLocalDate().isBefore(toCompare.getValue());
+    }
+
+    /**
+     * Checks if the current WanderlustDateTime comes after the given WanderlustDate chronologically.
+     * @return true if current WanderlustDateTime is after the given WanderlustDate.
+     */
+    public boolean isAfter(WanderlustDate toCompare) {
+        return value.toLocalDate().isAfter(toCompare.getValue());
     }
 
     @Override

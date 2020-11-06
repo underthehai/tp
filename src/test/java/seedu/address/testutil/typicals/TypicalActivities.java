@@ -23,21 +23,21 @@ import seedu.address.testutil.builders.ActivityBuilder;
 public class TypicalActivities {
 
     public static final Activity ARCHERY = new ActivityBuilder().withName("Archery")
-            .withCost("100.50").withLevelOfImportance("1")
+            .withCost("100").withLevelOfImportance("1")
             .withLocation("92 Archery Avenue")
-            .withDateTime("2020-09-09 09:00").build();
+            .withDateTime("2021-05-05 09:00").build();
     public static final Activity BUNGEEJUMPING = new ActivityBuilder().withName("Bungee Jumping")
-            .withCost("225.99").withLevelOfImportance("5")
+            .withCost("225").withLevelOfImportance("5")
             .withLocation("1 BungeeJump Gateway")
-            .withDateTime("2020-01-01 14:00").build();
+            .withDateTime("2021-06-06 14:00").build();
     public static final Activity CAMPING = new ActivityBuilder().withName("Camping")
             .withCost("10").withLevelOfImportance("2")
             .withLocation("100 Secret Woods")
-            .withDateTime("2020-10-11 20:00").build();
+            .withDateTime("2021-05-31 20:00").build();
     public static final Activity DONUTDATE = new ActivityBuilder().withName("Donut Date")
             .withCost("2").withLevelOfImportance("1")
             .withLocation("Dunkin Donut Palace")
-            .withDateTime("2020-11-11 11:00").build();
+            .withDateTime("2021-06-02 11:00").build();
 
     public static final Activity ZOO = new ActivityBuilder().withName(VALID_NAME_ZOO)
             .withCost(VALID_COST_ZOO).withLevelOfImportance(VALID_LEVELOFIMPORTANCE_ZOO)
@@ -46,7 +46,7 @@ public class TypicalActivities {
     public static final Activity THEMEPARK = new ActivityBuilder().withName("Universal Studios Singapore")
             .withCost("80").withLevelOfImportance("5")
             .withLocation("8 Sentosa Gateway")
-            .withDateTime("2020-10-11 12:00").build();
+            .withDateTime("2021-10-11 12:00").build();
     public static final Activity SKI = new ActivityBuilder().withName(VALID_NAME_SKI)
             .withCost(VALID_COST_SKI).withLevelOfImportance(VALID_LEVELOFIMPORTANCE_SKI)
             .withLocation(VALID_LOCATION_SKI)
@@ -54,7 +54,7 @@ public class TypicalActivities {
     public static final Activity HIKING = new ActivityBuilder().withName("Treetop Walk")
             .withCost("0").withLevelOfImportance("2")
             .withLocation("601 Island Club Rd")
-            .withDateTime("2020-01-10 12:00").build();
+            .withDateTime("2021-06-10 12:00").build();
 
     private TypicalActivities() {} // prevents instantiation
 
