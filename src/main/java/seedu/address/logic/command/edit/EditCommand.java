@@ -6,7 +6,6 @@ import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 
-
 /**
  * Edits a person identified using it's displayed index from the address book.
  */
@@ -17,15 +16,11 @@ public abstract class EditCommand extends Command {
     public static final String SPECIFY_INDEX = "Please Specify the index";
     public static final String MESSAGE_WRONG_DIRECTORY = "Please go to a travelplan directory to use this command";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "\n"
-            + "Edits a travel plan to the travel planner using the format:\n"
-            + "edit -travelplan n/NAME sd/START_DATE ed/END_DATE\n"
-            + "Edits an activity to the current travel plan using the format:\n"
-            + "edit -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/DATE_AND_TIME\n"
-            + "Edits an accommodation to the current travel plan using the format:\n"
-            + "edit -accommodation n/NAME l/LOCATION c/COST sd/START_DATE ed/END_DATE\n"
-            + "Edits a friend to the current travel plan using the format:\n"
-            + "edit -friend n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " with optional fields\n"
+            + EditTravelPlanCommand.MESSAGE_FORMAT + "\n"
+            + EditActivityCommand.MESSAGE_FORMAT + "\n"
+            + EditAccommodationCommand.MESSAGE_FORMAT + "\n"
+            + EditFriendCommand.MESSAGE_FORMAT;
 
     public static final String VALID_PARAMETERS = "travelplan: n/NAME sd/START_DATE ed/END_DATE\n"
             + "activity: n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/DATE_AND_TIME\n"
@@ -44,7 +39,6 @@ public abstract class EditCommand extends Command {
     public EditCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
-
 
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;

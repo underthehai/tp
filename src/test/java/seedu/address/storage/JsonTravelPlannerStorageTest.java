@@ -3,6 +3,8 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
+import static seedu.address.testutil.typicals.TypicalActivities.ZOO;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.AUSTRALIA_TRIP;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.SINGAPORE_TRIP;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
@@ -78,6 +80,12 @@ public class JsonTravelPlannerStorageTest {
         // Modify data, overwrite existing file, and read back
         original.addTravelPlan(SINGAPORE_TRIP);
         original.removeTravelPlan(AUSTRALIA_TRIP);
+        jsonTravelPlannerStorage.saveTravelPlanner(original, filePath);
+        readBack = jsonTravelPlannerStorage.readTravelPlanner(filePath).get();
+        assertEquals(original, new TravelPlanner(readBack));
+
+        original.addActivity(ZOO);
+        original.removeActivity(ARCHERY);
         jsonTravelPlannerStorage.saveTravelPlanner(original, filePath);
         readBack = jsonTravelPlannerStorage.readTravelPlanner(filePath).get();
         assertEquals(original, new TravelPlanner(readBack));

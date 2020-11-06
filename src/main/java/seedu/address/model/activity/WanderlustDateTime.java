@@ -17,7 +17,9 @@ import seedu.address.model.commons.WanderlustDate;
  * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDateTime(String)}
  */
 public class WanderlustDateTime {
-    public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format YYYY-MM-DD HH:mm.";
+
+    public static final String FORMAT = "YYYY-MM-DD HH:mm";
+    public static final String MESSAGE_CONSTRAINTS = "Date Time should be of the format " + FORMAT;
 
     /**
      * Date time must be in the format YYYY-MM-DD HH:mm.

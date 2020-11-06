@@ -23,11 +23,11 @@ import seedu.address.testutil.builders.ActivityBuilder;
 public class TypicalActivities {
 
     public static final Activity ARCHERY = new ActivityBuilder().withName("Archery")
-            .withCost("100.50").withLevelOfImportance("1")
+            .withCost("100").withLevelOfImportance("1")
             .withLocation("92 Archery Avenue")
             .withDateTime("2021-05-05 09:00").build();
     public static final Activity BUNGEEJUMPING = new ActivityBuilder().withName("Bungee Jumping")
-            .withCost("225.99").withLevelOfImportance("5")
+            .withCost("225").withLevelOfImportance("5")
             .withLocation("1 BungeeJump Gateway")
             .withDateTime("2021-06-06 14:00").build();
     public static final Activity CAMPING = new ActivityBuilder().withName("Camping")

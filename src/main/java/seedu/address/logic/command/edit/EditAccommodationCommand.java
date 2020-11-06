@@ -28,22 +28,27 @@ import seedu.address.model.commons.WanderlustDate;
  * An accommodation contains the field name, location, cost, start date and end date
  */
 public class EditAccommodationCommand extends EditCommand {
+
     public static final String COMMAND_WORD = "accommodation";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the accommodation identified by the index number used in the displayed accommodation list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
-            + "[" + PREFIX_COST + "COST]"
-            + "[" + PREFIX_START + "START_DATE] "
-            + "[" + PREFIX_END + "END_DATE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+    public static final String MESSAGE_FORMAT = "Edit an accommodation in the travel plan by its index in the "
+            + "displayed accommodation list using the format:\n"
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " INDEX "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_LOCATION + "LOCATION "
+            + PREFIX_COST + "COST "
+            + PREFIX_START + WanderlustDate.FORMAT + " "
+            + PREFIX_END + WanderlustDate.FORMAT;
+
+    public static final String MESSAGE_EXAMPLE = "Example: "
+            + EditCommand.COMMAND_WORD + COMMAND_SEPARATOR + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "Hard Rock Hotel "
             + PREFIX_LOCATION + "Sentosa "
             + PREFIX_COST + "500 "
-            + PREFIX_START + "2020-07-10 "
-            + PREFIX_END + "2020-07-20";
+            + PREFIX_START + "2021-07-10 "
+            + PREFIX_END + "2021-07-20";
+
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
 
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
