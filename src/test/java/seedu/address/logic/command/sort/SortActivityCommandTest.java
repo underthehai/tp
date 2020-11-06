@@ -1,20 +1,23 @@
 package seedu.address.logic.command.sort;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
+import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
+
+import java.util.Comparator;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.activity.Activity;
 
-import java.util.Comparator;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.command.CommandTestUtil.*;
-import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
-import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
 public class SortActivityCommandTest {
 
@@ -48,7 +51,7 @@ public class SortActivityCommandTest {
         Comparator<Activity> nameComparator = Comparator.comparing(d -> d.getName().toString());
 
         expectedModel.setDirectory(0);
-        expectedModel.sortWishlist(nameComparator);
+        expectedModel.sortActivityList(nameComparator);
 
         assertCommandSuccess(sortActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
@@ -65,7 +68,7 @@ public class SortActivityCommandTest {
         Comparator<Activity> costComparator = Comparator.comparingInt(c -> -c.getCostAsInt());
 
         expectedModel.setDirectory(0);
-        expectedModel.sortWishlist(costComparator);
+        expectedModel.sortActivityList(costComparator);
 
         assertCommandSuccess(sortActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
@@ -82,7 +85,7 @@ public class SortActivityCommandTest {
         Comparator<Activity> importanceComparator = Comparator.comparing(i -> -i.getImportanceAsInt());
 
         expectedModel.setDirectory(0);
-        expectedModel.sortWishlist(importanceComparator);
+        expectedModel.sortActivityList(importanceComparator);
 
         assertCommandSuccess(sortActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }
@@ -99,7 +102,7 @@ public class SortActivityCommandTest {
         Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
 
         expectedModel.setDirectory(0);
-        expectedModel.sortWishlist(dateComparator);
+        expectedModel.sortActivityList(dateComparator);
 
         assertCommandSuccess(sortActivityCommand, model, expectedMessage, expectedModel, ACTIVITY_INDEX);
     }

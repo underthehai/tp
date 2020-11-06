@@ -1,15 +1,15 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertSortParserFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertSortParserSuccess;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.command.sort.SortAccommodationCommand;
 import seedu.address.logic.command.sort.SortActivityCommand;
 import seedu.address.logic.command.sort.SortCommand;
 import seedu.address.logic.command.sort.SortFriendCommand;
-
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertSortParserFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertSortParserSuccess;
 
 public class SortCommandParserTest {
     private SortCommandParser parser = new SortCommandParser();
