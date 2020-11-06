@@ -88,14 +88,21 @@ public class WanderlustFindCommandParserTest {
     }
 
     @Test
-    public void parse_findInvalidInputFormat_failure() {
+    public void parse_findMissingDash_failure() {
         String invalidInput = "find activity foo bar baz"; //missing dash
-
         String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
 
         assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
 
     }
 
+    @Test
+    public void parse_findInvalidInputFormat_failure() {
+        String invalidInput = "find";
+        String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MISSING_KEYWORDS);
+
+        assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
+
+    }
 
 }
