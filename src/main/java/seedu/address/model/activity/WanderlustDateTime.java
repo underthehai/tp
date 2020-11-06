@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import seedu.address.model.commons.WanderlustDate;
 
@@ -49,7 +50,7 @@ public class WanderlustDateTime {
         try {
             VALID_DATE_STRING.parse(test);
             return true;
-        } catch (ParseException e) {
+        } catch (ParseException | DateTimeParseException e) {
             return false;
         }
     }

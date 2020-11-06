@@ -13,6 +13,7 @@ import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_
 
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -79,8 +80,10 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!model.isDirectoryTypeTravelPlan()) {
-            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+
+        if (!isTravelPlan) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         List<Accommodation> lastShownList = model.getFilteredAccommodationList();
