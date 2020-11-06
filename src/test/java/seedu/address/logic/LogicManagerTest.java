@@ -1,7 +1,9 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.core.Messages.*;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST;
+import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.command.CommandTestUtil.COMMAND_PREFIX_DESC;
 import static seedu.address.logic.command.CommandTestUtil.END_DATE_DESC_EUROPE;
 import static seedu.address.logic.command.CommandTestUtil.NAME_DESC_EUROPE;
