@@ -3,7 +3,10 @@ package seedu.address.logic.command.edit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.command.CommandTestUtil.*;
+import static seedu.address.logic.command.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.command.CommandTestUtil.VALID_COST_SKI;
+import static seedu.address.logic.command.CommandTestUtil.VALID_LOCATION_HOME;
+import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.testutil.Assert.assertThrows;
 

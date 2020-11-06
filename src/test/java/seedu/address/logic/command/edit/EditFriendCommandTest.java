@@ -25,8 +25,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.friend.Friend;
-import seedu.address.testutil.builders.FriendBuilder;
 import seedu.address.testutil.EditFriendDescriptorBuilder;
+import seedu.address.testutil.builders.FriendBuilder;
 
 public class EditFriendCommandTest {
     private Model model;

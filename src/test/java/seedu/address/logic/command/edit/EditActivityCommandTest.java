@@ -26,8 +26,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.activity.Activity;
-import seedu.address.testutil.builders.ActivityBuilder;
 import seedu.address.testutil.EditActivityDescriptorBuilder;
+import seedu.address.testutil.builders.ActivityBuilder;
 
 //temp handling within travelplan only, wishlist directory tests to be added
 public class EditActivityCommandTest {

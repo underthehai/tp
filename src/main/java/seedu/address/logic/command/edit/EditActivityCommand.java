@@ -107,7 +107,7 @@ public class EditActivityCommand extends EditCommand {
     /**
      * Creates and returns a {@code Activity} with the details of {@code activityToEdit}
      *
-     * @param activityToEdit         contains the old fields
+     * @param activityToEdit contains the old fields
      * @param editActivityDescriptor contains updated fields
      * @return Activity to be updated in the activity list
      */

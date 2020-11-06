@@ -15,6 +15,7 @@ import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.command.edit.EditAccommodationCommand;
 import seedu.address.logic.command.edit.EditActivityCommand;
 import seedu.address.logic.command.edit.EditCommand;
@@ -31,7 +32,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
-     * Ensures that the type of edited object, index, tags are specified and valid
+     * Ensures that the type of edited object, index, parameters are specified and valid
      *
      * @param args a String that had specified an edit command
      * @throws ParseException if the user input does not conform the expected format
@@ -44,10 +45,14 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         String[] keywords = args.split(" ");
         String editType = removeDash(keywords[OBJECT_TYPE_POSITION], EditCommand.MESSAGE_USAGE);
+
         if (checker.wrongFieldEdited(editType)) {
             throw new ParseException(EditCommand.INVALID_FIELDS);
         }
 
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[2]) && !keywords[2].equals("0")) {
+            throw new ParseException(EditCommand.SPECIFY_INDEX);
+        }
 
         try {
             switch (editType) {
@@ -76,7 +81,6 @@ public class EditCommandParser implements Parser<EditCommand> {
     EditActivityCommand parseActivity(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-
 
         Index index = ParserUtil.parseIndex(keywords[2]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,

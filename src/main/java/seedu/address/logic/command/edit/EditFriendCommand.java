@@ -20,8 +20,8 @@ import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
 
 /**
- * Edits existing Friend in the address book. This command can only be used within the travel plan directory.
- * A friend contains the field name, passport, mobile
+ * Edits existing Friend in wanderlust. This command can only be used within the travel plan directory.
+ * A friend contains the parameters: name, passport, mobile
  */
 public class EditFriendCommand extends EditCommand {
 
@@ -88,7 +88,7 @@ public class EditFriendCommand extends EditCommand {
     /**
      * Creates and returns a {@code Friend} with the details of {@code friendToEdit}
      *
-     * @param friendToEdit         contains the old fields
+     * @param friendToEdit contains the old fields
      * @param editFriendDescriptor contains updated fields
      * @return Friend to be updated in the friend list
      */

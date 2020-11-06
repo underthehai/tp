@@ -26,7 +26,7 @@ import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
 
 /**
- * Class to build description
+ * Class to build parameters based on description from user input
  */
 public class EditDescriptor {
 
@@ -97,10 +97,10 @@ public class EditDescriptor {
     }
 
     /**
-     * Provides editdescriptor for edit commands
+     * Provides editdescriptor to construct edited objects in edit commands
      *
-     * @param source of tokenized fields that are valid according to the type specified
-     * @return editdescriptor
+     * @param source of tokenized parameters that are valid according to specified types
+     * @return editdescriptor that contains all the parameters to be edited
      */
     public static EditDescriptor buildFromSource(ArgumentMultimap source) throws ParseException {
 

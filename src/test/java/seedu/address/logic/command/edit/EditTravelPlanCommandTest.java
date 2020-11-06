@@ -24,8 +24,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.travelplan.TravelPlan;
-import seedu.address.testutil.builders.TravelPlanBuilder;
 import seedu.address.testutil.EditTravelPlanDescriptorBuilder;
+import seedu.address.testutil.builders.TravelPlanBuilder;
 
 public class EditTravelPlanCommandTest {
 

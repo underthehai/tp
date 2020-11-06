@@ -68,14 +68,14 @@ public class EditCommandParserTest {
 
     /** Missing Index*/
     @Test
-    public void parse_MissingIndex_failure() {
+    public void parse_missingIndex_failure() {
         assertWanderLustParseEditCommandFailure(parser, "edit -activity i/2",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_INVALID_INDEX));
     }
 
     /** Edit type unspecified*/
     @Test
-    public void parse_MissingEditType_failure() {
+    public void parse_missingEditType_failure() {
         assertWanderLustParseEditCommandFailure(parser, "edit 1 i/2",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
     }
@@ -85,5 +85,11 @@ public class EditCommandParserTest {
         assertWanderLustParseEditCommandFailure(parser, "edit -friend 1 i/2",
                 INVALID_FIELDS);
     }
+    @Test
+    public void parse_invalidFormat_failure() {
+        assertWanderLustParseEditCommandFailure(parser, "edit friend 1 n/alice",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+    }
+
 
 }
