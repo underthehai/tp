@@ -69,7 +69,8 @@ public class FindCommandTest {
     }
 
     /**
-     * The search is case-insensitive. `alice` will match `Alice`
+     * The search is case-insensitive.
+     * `alice` will match `Alice`
      */
     @Test
     public void execute_findCaseInsensitive_success() {
@@ -89,7 +90,8 @@ public class FindCommandTest {
     }
 
     /**
-     * The order of the keywords does not matter. e.g. `alice benson` will match `benson alice`
+     * The order of the keywords does not matter.
+     * e.g. `alice benson` will match `benson alice`
      */
     @Test
     public void execute_findDifferentOrder_success() {
@@ -145,7 +147,7 @@ public class FindCommandTest {
     }
 
     /**
-     * Only Activity with name matching "archery" should appear in filtered acitivity list
+     * Only Activity with name matching "archery" should appear in filtered activity list
      * DonutDate Activity should not be in the list
      */
     @Test

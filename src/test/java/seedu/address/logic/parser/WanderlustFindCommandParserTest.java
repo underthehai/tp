@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderlustFindParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderlustFindParseSuccess;
 
@@ -78,50 +79,19 @@ public class WanderlustFindCommandParserTest {
 
     }
 
-    /**
-     * TODO: update error message
-     */
     @Test
     public void parse_findMissingType_failure() {
         String missingTypeInput = "find ice";
-        String expectedErrorMessage = "Invalid command format! \n"
-                + "find: Finds all travel plan object whose names contain any of the specified keywords "
-                + "(case-insensitive) and displays them as a list with index numbers.\n"
-                + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-                + "Example: \n"
-                + "Finds activities in the current travel plan or wishlist using the format:\n"
-                + "find -activity KEYWORD [MORE_KEYWORDS]...\n"
-                + "\n"
-                + "Finds accommodations in the current travel plan using the format:\n"
-                + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n"
-                + "\n"
-                + "Finds friends in the current travel plan using the format:\n"
-                + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
+        String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
 
         assertWanderlustFindParseFailure(parser, missingTypeInput, expectedErrorMessage);
     }
 
-    /**
-     * TODO: update error message
-     */
     @Test
     public void parse_findInvalidInputFormat_failure() {
         String invalidInput = "find activity foo bar baz"; //missing dash
 
-        String expectedErrorMessage = "Invalid command format! \n"
-                + "find: Finds all travel plan object whose names contain any of the specified keywords "
-                + "(case-insensitive) and displays them as a list with index numbers.\n"
-                + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-                + "Example: \n"
-                + "Finds activities in the current travel plan or wishlist using the format:\n"
-                + "find -activity KEYWORD [MORE_KEYWORDS]...\n"
-                + "\n"
-                + "Finds accommodations in the current travel plan using the format:\n"
-                + "find -accommodation KEYWORD [MORE_KEYWORDS]...\n"
-                + "\n"
-                + "Finds friends in the current travel plan using the format:\n"
-                + "find -friend KEYWORD [MORE_KEYWORDS]...\n";
-
+        String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
 
         assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
 
