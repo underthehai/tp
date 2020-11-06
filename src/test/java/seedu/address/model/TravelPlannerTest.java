@@ -35,6 +35,13 @@ public class TravelPlannerTest {
     }
 
     @Test
+    public void constructor_withValidReadOnlyTravelPlanner() {
+        TravelPlanner newData = getTypicalTravelPlanner();
+        TravelPlanner newTravelPlanner = new TravelPlanner(newData);
+        assertEquals(newData, newTravelPlanner);
+    }
+
+    @Test
     public void resetData_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> travelPlanner.resetData(null));
     }
