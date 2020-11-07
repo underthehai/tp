@@ -71,6 +71,9 @@ public class Wishlist extends Directory {
         return activities.contains(activity);
     }
 
+    /**
+     *  {@see hasActivity}
+     */
     @Override
     public boolean has(TravelPlanObject travelPlanObject) {
         requireNonNull(travelPlanObject);
@@ -86,6 +89,9 @@ public class Wishlist extends Directory {
         activities.add(p);
     }
 
+    /**
+     *  {@see addActivity}
+     */
     @Override
     public void add(TravelPlanObject travelPlanObject) {
         assert travelPlanObject instanceof Activity;
@@ -104,6 +110,9 @@ public class Wishlist extends Directory {
         activities.setActivity(target, editedActivity);
     }
 
+    /**
+     *  {@see setActivity}
+     */
     @Override
     public void set(TravelPlanObject target, TravelPlanObject editedTravelPlanObject) {
         requireNonNull(editedTravelPlanObject);
@@ -142,6 +151,9 @@ public class Wishlist extends Directory {
         return null;
     }
 
+    /**
+     *  {@see removeActivity}
+     */
     @Override
     public void remove(TravelPlanObject travelPlanObject) {
         activities.remove((Activity) travelPlanObject);

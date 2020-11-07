@@ -41,6 +41,12 @@ public class DeleteAccommodationCommand extends DeleteCommand {
         requireNonNull(model);
         List<Accommodation> filteredAccommodationList = model.getFilteredAccommodationList();
 
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+
+        if (!isTravelPlan) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
+        }
+
         if (targetIndex.getZeroBased() >= filteredAccommodationList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX);
         }

@@ -92,7 +92,6 @@ public class GoToCommandTest {
 
         @Override
         public void setDirectory(int index) {
-
         }
     }
 }
