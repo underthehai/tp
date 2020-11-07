@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Activity's level of Importance in the travel plan.
+ * Represents an Activity's level of Importance in the Wanderlust.
  * Guarantees: immutable; is valid as declared in {@link #isValidImportance(String)}
  */
 public class Importance {
