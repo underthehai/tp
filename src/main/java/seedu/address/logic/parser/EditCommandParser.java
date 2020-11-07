@@ -35,7 +35,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      * Ensures that the type of edited object, index, parameters are specified and valid
      *
      * @param args a String that had specified an edit command
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
@@ -50,7 +50,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(EditCommand.INVALID_FIELDS);
         }
 
-        if (!StringUtil.isNonZeroUnsignedInteger(keywords[2]) && !keywords[2].equals("0")) {
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.COMMAND_TOKEN])
+                && !keywords[EditCommand.COMMAND_TOKEN].equals("0")) {
             throw new ParseException(EditCommand.SPECIFY_INDEX);
         }
 
@@ -78,11 +79,14 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
     }
 
+    /**
+     * Parses input that specified an Activity type
+     */
     EditActivityCommand parseActivity(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
 
-        Index index = ParserUtil.parseIndex(keywords[2]);
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                 PREFIX_LOCATION, PREFIX_DATETIME);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -91,10 +95,13 @@ public class EditCommandParser implements Parser<EditCommand> {
 
     }
 
+    /**
+     * Parses input that specified an Accommodation type
+     */
     EditAccommodationCommand parseAccommodation(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[2]);
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
                 PREFIX_START, PREFIX_END);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -103,10 +110,13 @@ public class EditCommandParser implements Parser<EditCommand> {
 
     }
 
+    /**
+     * Parses input that specified a Friend type
+     */
     EditFriendCommand parseFriend(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[2]);
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
                 PREFIX_MOBILE);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
@@ -115,10 +125,13 @@ public class EditCommandParser implements Parser<EditCommand> {
 
     }
 
+    /**
+     * Parses input that specified a TravelPlan type
+     */
     EditTravelPlanCommand parseTravelPlan(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[2]);
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 

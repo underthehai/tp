@@ -16,14 +16,18 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.accommodation.Accommodation;
+import seedu.address.model.activity.Activity;
 import seedu.address.model.activity.Importance;
 import seedu.address.model.activity.WanderlustDateTime;
 import seedu.address.model.commons.Cost;
 import seedu.address.model.commons.Location;
 import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
+import seedu.address.model.friend.Friend;
 import seedu.address.model.friend.Mobile;
 import seedu.address.model.friend.Passport;
+import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Class to build parameters based on description from user input
@@ -80,16 +84,16 @@ public class EditDescriptor {
     public boolean wrongFieldEdited(String type) {
 
         switch (type) {
-        case "activity":
+        case Activity.TPO_WORD:
             return CollectionUtil.isAnyNonNull(mobile, passport, startDate, endDate);
 
-        case "accommodation":
+        case Accommodation.TPO_WORD:
             return CollectionUtil.isAnyNonNull(levelOfImportance, activityDateTime, mobile, passport);
 
-        case "friend":
+        case Friend.TPO_WORD:
             return CollectionUtil.isAnyNonNull(location, cost, levelOfImportance, activityDateTime, startDate, endDate);
 
-        case "travelplan":
+        case TravelPlan.TRAVEL_PLAN_WORD:
             return CollectionUtil.isAnyNonNull(location, cost, levelOfImportance, activityDateTime, mobile, passport);
         default:
             return false;
@@ -104,44 +108,44 @@ public class EditDescriptor {
      */
     public static EditDescriptor buildFromSource(ArgumentMultimap source) throws ParseException {
 
-        EditDescriptor editItemnDescriptor = new EditDescriptor();
+        EditDescriptor editItemDescriptor = new EditDescriptor();
 
         if (source.getValue(PREFIX_NAME).isPresent()) {
-            editItemnDescriptor.setName(ParserUtil.parseName(source.getValue(PREFIX_NAME).get()));
+            editItemDescriptor.setName(ParserUtil.parseName(source.getValue(PREFIX_NAME).get()));
         }
 
         if (source.getValue(PREFIX_LOCATION).isPresent()) {
-            editItemnDescriptor.setLocation(ParserUtil.parseLocation(source.getValue(PREFIX_LOCATION).get()));
+            editItemDescriptor.setLocation(ParserUtil.parseLocation(source.getValue(PREFIX_LOCATION).get()));
         }
         if (source.getValue(PREFIX_COST).isPresent()) {
-            editItemnDescriptor.setCost(ParserUtil.parseCost(source.getValue(PREFIX_COST).get()));
+            editItemDescriptor.setCost(ParserUtil.parseCost(source.getValue(PREFIX_COST).get()));
         }
         if (source.getValue(PREFIX_START).isPresent()) {
-            editItemnDescriptor.setStartDate(ParserUtil.parseDate(source.getValue(PREFIX_START).get()));
+            editItemDescriptor.setStartDate(ParserUtil.parseDate(source.getValue(PREFIX_START).get()));
         }
         if (source.getValue(PREFIX_END).isPresent()) {
-            editItemnDescriptor.setEndDate(ParserUtil.parseDate(source.getValue(PREFIX_END).get()));
+            editItemDescriptor.setEndDate(ParserUtil.parseDate(source.getValue(PREFIX_END).get()));
         }
         if (source.getValue(PREFIX_PASSPORT).isPresent()) {
-            editItemnDescriptor.setPassport(ParserUtil.parsePassport(source.getValue(PREFIX_PASSPORT).get()));
+            editItemDescriptor.setPassport(ParserUtil.parsePassport(source.getValue(PREFIX_PASSPORT).get()));
         }
         if (source.getValue(PREFIX_MOBILE).isPresent()) {
-            editItemnDescriptor.setMobile(ParserUtil.parseMobile(source.getValue(PREFIX_MOBILE).get()));
+            editItemDescriptor.setMobile(ParserUtil.parseMobile(source.getValue(PREFIX_MOBILE).get()));
         }
         if (source.getValue(PREFIX_IMPORTANCE).isPresent()) {
-            editItemnDescriptor.setLevelOfImportance(ParserUtil.parseImportance(source
+            editItemDescriptor.setLevelOfImportance(ParserUtil.parseImportance(source
                     .getValue(PREFIX_IMPORTANCE).get()));
         }
         if (source.getValue(PREFIX_DATETIME).isPresent()) {
-            editItemnDescriptor.setActivityDateTime(ParserUtil.parseActivityDateTime(source.getValue(PREFIX_DATETIME)
+            editItemDescriptor.setActivityDateTime(ParserUtil.parseActivityDateTime(source.getValue(PREFIX_DATETIME)
                     .get()));
         }
 
-        if (!editItemnDescriptor.isAnyFieldEdited()) {
+        if (!editItemDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return editItemnDescriptor;
+        return editItemDescriptor;
 
     }
 

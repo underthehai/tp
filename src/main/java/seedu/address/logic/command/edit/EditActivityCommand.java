@@ -109,7 +109,7 @@ public class EditActivityCommand extends EditCommand {
      *
      * @param activityToEdit contains the old fields
      * @param editActivityDescriptor contains updated fields
-     * @return Activity to be updated in the activity list
+     * @return Activity to be updated in the activity list in current directory
      */
     private static Activity createEditedActivity(Activity activityToEdit, EditDescriptor editActivityDescriptor,
                                                  Model model) throws CommandException {
