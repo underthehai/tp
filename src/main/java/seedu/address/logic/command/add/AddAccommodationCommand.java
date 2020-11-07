@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -63,6 +64,13 @@ public class AddAccommodationCommand extends AddCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+
+        if (!isTravelPlan) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
+        }
+
 
         if (model.hasTravelPlanObject(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ACCOMMODATION);
