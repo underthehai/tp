@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
@@ -14,7 +13,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
-import static seedu.address.model.commons.WanderlustDate.isDateAfterToday;
 import static seedu.address.model.commons.WanderlustDate.isValidStartAndEndDate;
 
 import java.util.stream.Stream;
@@ -123,7 +121,6 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
         }
 
-
         Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
 
         return new AddAccommodationCommand(accommodation);
@@ -174,10 +171,6 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         if (!isValidStartAndEndDate(startDate, endDate)) {
             throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
-        }
-
-        if (!isDateAfterToday(startDate)) {
-            throw new ParseException(MESSAGE_INVALID_START_DATE);
         }
 
         TravelPlan travelPlan = new TravelPlan(name, startDate, endDate);
