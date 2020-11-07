@@ -809,9 +809,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to view contacts
-3.  Wanderlust shows the list of contacts
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>.
+2.  User requests to view contacts.
+3.  Wanderlust shows the list of contacts.
 
     Use case ends.
 
@@ -826,9 +826,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to view accommodation
-3.  Wanderlust shows the list of accommodation
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>.
+2.  User requests to view accommodation.
+3.  Wanderlust shows the list of accommodation.
 
     Use case ends.
 
@@ -838,6 +838,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. Wanderlust shows an error message.
 
       Use case ends.
+
+**Use case: UC18 - Clear the travel planner**
+
+**MSS**
+
+1.  User requests to clear the travel planner.
+2.  Wanderlust clears the travel planner.
+
+    Use case ends.
 
 *{More to be added}*
 
