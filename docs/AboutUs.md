@@ -22,7 +22,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/underthehai.png" width="200px">
 
-[[github](http://github.com/underthehai)]
+[[github](http://github.com/underthehai)][[PPP](team/underthehai.html)]
 
 * Role: Developer (In charge of Model)
 * Responsibilities: Testing
@@ -31,7 +31,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/lyeyixian.png" width="200px">
 
-[[github](http://github.com/lyeyixian)]
+[[github](http://github.com/lyeyixian)][[PPP](team/lyeyixian.html)]
 
 * Role: Team Lead (In charge of Storage)
 * Responsibilities: Integration, Deliverables and deadlines
@@ -40,7 +40,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/jiaweiteo.png" width="200px">
 
-[[github](https://github.com/jiaweiteo)]
+[[github](https://github.com/jiaweiteo)][[PPP](team/jiaweiteo.html)]
 
 * Role: Developer (In charge of Model)
 * Responsibilities: Scheduling and tracking, Documentation, Integration
@@ -49,7 +49,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/timjkong.png" width="200px">
 
-[[github](http://github.com/timjkong)]
+[[github](http://github.com/timjkong)][[PPP](team/timjkong.html)]
 
 * Role:  Developer (In charge of Logic)
 * Responsibilities: Code quality
@@ -58,7 +58,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/jeannetoh99.png" width="200px">
 
-[[github](http://github.com/jeannetoh99)]
+[[github](http://github.com/jeannetoh99)][[PPP](team/jeannetoh99.html)]
 
 * Role: Developer (In charge of Ui)
 * Responsibilities: Documentation
