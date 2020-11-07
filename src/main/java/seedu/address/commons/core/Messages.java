@@ -10,7 +10,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_ACCOMMODATION_DISPLAYED_INDEX =
             "The accommodation index provided is invalid";
     public static final String MESSAGE_MISSING_INDEX = "The index is missing!";
-    public static final String MESSAGE_REDUNDANT_INDEX = "Index not needed here!";
+    public static final String MESSAGE_REDUNDANT_INDEX = "No need specify index when going to wishlist!";
     public static final String MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX = "The activity index provided is invalid";
     public static final String MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX = "The friend index provided is invalid";
     public static final String MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX = "The travel plan index provided is invalid";
