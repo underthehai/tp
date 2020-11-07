@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseEditCommandFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderLustParseEditCommandSuccess;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertEditParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertEditParseSuccess;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
 
@@ -22,14 +22,14 @@ public class EditCommandParserTest {
 
         EditDescriptor editDescriptor = new EditDescriptor();
         editDescriptor.setName(new Name("Bobby"));
-        assertWanderLustParseEditCommandSuccess(parser, " -friend 1 n/Bobby",
+        assertEditParseSuccess(parser, " -friend 1 n/Bobby",
                 new EditFriendCommand(INDEX_FIRST, editDescriptor));
     }
 
     //Parse EditActivity
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertWanderLustParseEditCommandFailure(parser, " -activity i/2",
+        assertEditParseFailure(parser, " -activity i/2",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_INVALID_INDEX));
     }
 }
