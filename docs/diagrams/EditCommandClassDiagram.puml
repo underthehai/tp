@@ -10,7 +10,7 @@ Abstract EditCommand
 
 Command <|-- EditCommand
 
-EditCommand -down- Index :target
+EditCommand -left- Index :target
 
 EditCommand <|-- EditActivityCommand
 EditCommand <|-- EditAccommodationCommand
@@ -19,10 +19,10 @@ EditCommand <|-- EditTravelPlanCommand
 
 Class EditDescriptor
 
-EditAccommodationCommand -[#blue]- EditDescriptor
-EditActivityCommand -[#blue]- EditDescriptor
-EditFriendCommand -[#blue]- EditDescriptor
-EditTravelPlanCommand -[#blue]- EditDescriptor
+EditAccommodationCommand -[#grey]- EditDescriptor
+EditActivityCommand -[#grey]- EditDescriptor
+EditFriendCommand -[#grey]- EditDescriptor
+EditTravelPlanCommand -[#grey]- EditDescriptor
 
 
 
