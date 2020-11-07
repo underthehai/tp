@@ -32,6 +32,8 @@ This application is part of my team project for an Introduction to Software Engi
     * What it does: Binds the TextProperty to the StringProperty of Cost in ObservableDirectory, so it correctly updates when changes happened
     * Highlight: The problem we faced here is that we accidentally increased the coupling of classes in Ui, in particular TravelPlanPanel and TravelPlanObjectListPanel. 
                  We managed to solve it by binding properties of JavaFX.
+                 
+<div style="page-break-after: always;"></div>
 
 * **Enhancements to existing features**:
   * Update Model and ModelManager to fit Wanderlust's implementations [\#75](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/75)
