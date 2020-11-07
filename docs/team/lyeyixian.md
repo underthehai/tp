@@ -18,12 +18,11 @@ This application is part of my team project for an Introduction to Software Engi
 * **Major Enhancement**: 
   * Added TravelPlanner and its relevant classes [\#56](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/56)
     * What it does: The main class of Wanderlust which wraps all the other travel plan objects
-  * Added Directory abstract class
+  * Added Directory abstract class [\#159](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/159)
     * What it does: Facilitate the switching of view between each TravelPlan and Wishlist
     * Highlight: Initially, encounter issue of needing to typecast everything as Wanderlust have different travel plan objects. 
                  But we eventually figure out a way to work around it by utilising polymorphism and successfully remove 
                  typecasting when using CRUD method on different travel plan objects.
-    * Relevant PR: [\#159](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/159)
 
 * **Minor Enhancement**:
   * Helped in implementation of ObservableDirectory and Ui component [\#112](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/112)
