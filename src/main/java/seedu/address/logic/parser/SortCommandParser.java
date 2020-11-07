@@ -26,7 +26,7 @@ public class SortCommandParser implements Parser<Command> {
             String[] keywords = args.split(" ");
             String travelPlanObjectType = keywords[OBJECT_TYPE_POSITION].substring(1);
 
-            if (keywords.length != 3) {
+            if (keywords.length != SortCommand.COMMAND_TOKENS) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                         SortCommand.MESSAGE_USAGE));
             }
