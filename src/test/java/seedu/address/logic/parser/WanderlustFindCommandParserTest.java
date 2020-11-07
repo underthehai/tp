@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderlustFindParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertWanderlustFindParseSuccess;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertFindParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertFindParseSuccess;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ public class WanderlustFindCommandParserTest {
     public void parse_validArgs_returnsFindCommand() {
         List<String> keywords = Arrays.asList("foo", "bar", "baz"); //find activity
 
-        assertWanderlustFindParseSuccess(parser, "find -activity foo bar baz",
+        assertFindParseSuccess(parser, "find -activity foo bar baz",
                 new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACTIVITY_INDEX));
     }
 
@@ -31,7 +31,7 @@ public class WanderlustFindCommandParserTest {
 
         List<String> keywords = Arrays.asList("tom");
 
-        assertWanderlustFindParseSuccess(parser, "find -friend tom",
+        assertFindParseSuccess(parser, "find -friend tom",
                 new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.FRIEND_INDEX));
 
     }
@@ -41,7 +41,7 @@ public class WanderlustFindCommandParserTest {
 
         List<String> keywords = Arrays.asList("inn");
 
-        assertWanderlustFindParseSuccess(parser, "find -accommodation inn",
+        assertFindParseSuccess(parser, "find -accommodation inn",
                 new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACCOMMODATION_INDEX));
 
     }
@@ -51,7 +51,7 @@ public class WanderlustFindCommandParserTest {
 
         List<String> keywords = Arrays.asList("skating");
 
-        assertWanderlustFindParseSuccess(parser, "find -activity skating",
+        assertFindParseSuccess(parser, "find -activity skating",
                 new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACTIVITY_INDEX));
 
     }
@@ -61,7 +61,7 @@ public class WanderlustFindCommandParserTest {
 
         List<String> keywords = Arrays.asList("skating", "eating");
 
-        assertWanderlustFindParseSuccess(parser, "find -activity skating eating",
+        assertFindParseSuccess(parser, "find -activity skating eating",
                 new FindCommand(new NameContainsKeywordsPredicate(keywords), ParserUtil.ACTIVITY_INDEX));
 
     }
@@ -84,7 +84,7 @@ public class WanderlustFindCommandParserTest {
         String missingTypeInput = "find ice";
         String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
 
-        assertWanderlustFindParseFailure(parser, missingTypeInput, expectedErrorMessage);
+        assertFindParseFailure(parser, missingTypeInput, expectedErrorMessage);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class WanderlustFindCommandParserTest {
         String invalidInput = "find activity foo bar baz"; //missing dash
         String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
 
-        assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
+        assertFindParseFailure(parser, invalidInput, expectedErrorMessage);
 
     }
 
@@ -101,7 +101,7 @@ public class WanderlustFindCommandParserTest {
         String invalidInput = "find";
         String expectedErrorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MISSING_KEYWORDS);
 
-        assertWanderlustFindParseFailure(parser, invalidInput, expectedErrorMessage);
+        assertFindParseFailure(parser, invalidInput, expectedErrorMessage);
 
     }
 
