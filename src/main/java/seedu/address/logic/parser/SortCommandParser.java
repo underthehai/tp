@@ -23,34 +23,28 @@ public class SortCommandParser implements Parser<Command> {
      */
     public Command parse(String args) throws ParseException {
         try {
-            String[] keywords = args.split(" ", 3);
+            String[] keywords = args.split(" ");
             String travelPlanObjectType = keywords[OBJECT_TYPE_POSITION].substring(1);
+
+            if (keywords.length != 3) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SortCommand.MESSAGE_USAGE));
+            }
 
             switch (travelPlanObjectType) {
             case Activity.TPO_WORD:
-                if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            SortActivityCommand.MESSAGE_USAGE));
-                }
                 return new SortActivityCommand(keywords[SORT_TYPE_POSITION]);
 
             case Accommodation.TPO_WORD:
-                if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            SortAccommodationCommand.MESSAGE_USAGE));
-                }
                 return new SortAccommodationCommand(keywords[SORT_TYPE_POSITION]);
 
             case Friend.TPO_WORD:
-                if (keywords.length < 3) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            SortFriendCommand.MESSAGE_USAGE));
-                }
                 return new SortFriendCommand(keywords[SORT_TYPE_POSITION]);
 
             default:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
             }
+
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));

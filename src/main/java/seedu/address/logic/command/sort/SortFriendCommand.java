@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.ParserUtil.FRIEND_INDEX;
 
 import java.util.Comparator;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -21,7 +22,7 @@ public class SortFriendCommand extends SortCommand {
     public static final String MESSAGE_SORT_FRIEND_SUCCESS = "Sorted list of friends by: %1$s";
 
     public static final String MESSAGE_INVALID_KEYWORD = "INVALID KEYWORD! "
-            + "Friend list can only sort by name.";
+            + "Friend list can only sort by name/mobile/passport.";
 
     private final String keyword;
 
@@ -39,7 +40,7 @@ public class SortFriendCommand extends SortCommand {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
         if (!isTravelPlan) {
-            throw new CommandException("Wishlist doesn't store friends!");
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         switch (keyword) {
