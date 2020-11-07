@@ -61,7 +61,7 @@ public class ShowCommand extends Command {
         boolean isWishlist = !isTravelPlan;
 
         if (isWishlist && travelPlanObjectType != ACTIVITY_INDEX) {
-            throw new CommandException(Messages.MESSAGE_INVALID_SHOW_AT_WISHLIST);
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         if (travelPlanObjectType == INVALID_INDEX) {
