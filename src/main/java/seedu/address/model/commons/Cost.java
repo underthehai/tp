@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents activity's or accommodation's cost in the travel plan.
+ * Represents activity's or accommodation's cost in the Wanderlust.
  * Guarantees: immutable; is valid as declared in {@link #isValidCost(String)}
  */
 public class Cost {
