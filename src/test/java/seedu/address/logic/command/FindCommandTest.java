@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_ACTIVITIES_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_FRIENDS_LISTED_OVERVIEW;
+import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertFindCommandSuccess;
 import static seedu.address.testutil.typicals.TypicalTravelPlans.getTypicalTravelPlanner;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -49,6 +51,21 @@ public class FindCommandTest {
         FindCommand findFriendCommand = new FindCommand(new NameContainsKeywordsPredicate(keywords),
                 ParserUtil.FRIEND_INDEX);
         assertFindCommandSuccess(findFriendCommand, ParserUtil.FRIEND_INDEX, model, expectedMessage, expectedModel);
+    }
+
+    /** Finding friend in wishlist will throw an error */
+    @Test
+    public void execute_findFriendWrongDirectory_failure() {
+        model.setDirectory(-1);
+
+        List<String> keywords = Arrays.asList("Alice");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+
+        FindCommand findFriendCommand = new FindCommand(predicate,
+                ParserUtil.FRIEND_INDEX);
+        String expectedMessage = Messages.WRONG_DIRECTORY;
+
+        assertCommandFailure(findFriendCommand, model, expectedMessage);
     }
 
     /**
@@ -128,6 +145,21 @@ public class FindCommandTest {
                 ParserUtil.ACCOMMODATION_INDEX);
         assertFindCommandSuccess(findAccommodation, ParserUtil.ACCOMMODATION_INDEX, model, expectedMessage,
                 expectedModel);
+    }
+
+    /** Finding accommodation in wishlist will throw an error */
+    @Test
+    public void execute_findAccommodationWrongDirectory_failure() {
+        model.setDirectory(-1);
+
+        List<String> keywords = Arrays.asList("inn");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+
+        FindCommand findAccommodationCommand = new FindCommand(predicate,
+                ParserUtil.ACCOMMODATION_INDEX);
+        String expectedMessage = Messages.WRONG_DIRECTORY;
+
+        assertCommandFailure(findAccommodationCommand, model, expectedMessage);
     }
 
     @Test
