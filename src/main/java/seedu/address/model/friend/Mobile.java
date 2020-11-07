@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Mobile {
     public static final String MESSAGE_CONSTRAINTS =
             "Mobile numbers should only contain numbers starting with 8 or 9 (SG mobile number), "
-                    + "and it should be at least 8 digits long";
+                    + "and it should only be 8 digits long";
     public static final String VALIDATION_REGEX = "[89]\\d{7}";
     private final String value;
 
