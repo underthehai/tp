@@ -25,8 +25,8 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 
 /**
- * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.
- * An accommodation contains the field name, location, cost, start date and end date
+ * Edits existing Accommodation in the wanderlust. This command can only be used within the travel plan directory.
+ * An accommodation contains the parameters: name, location, cost, start date and end date
  */
 public class EditAccommodationCommand extends EditCommand {
 
@@ -110,7 +110,7 @@ public class EditAccommodationCommand extends EditCommand {
     /**
      * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}
      *
-     * @param accommodationToEdit         contains the old fields
+     * @param accommodationToEdit contains the old fields
      * @param editAccommodationDescriptor contains updated fields
      * @return Accommodation to be updated in the accommodation list
      */
