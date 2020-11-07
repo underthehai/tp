@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import seedu.address.logic.command.Command;
 import seedu.address.logic.command.FindCommand;
-import seedu.address.logic.command.ShowCommand;
 import seedu.address.logic.command.GoToCommand;
+import seedu.address.logic.command.ShowCommand;
 import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.command.edit.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -85,6 +85,7 @@ public class CommandParserTestUtil {
         }
     }
 
+    /**
      * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is
      * successful and the command created equals to {@code expectedCommand}.
      */
@@ -112,6 +113,7 @@ public class CommandParserTestUtil {
         }
     }
 
+    /**
      * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
      * and the error message equals to {@code expectedMessage}.
      */

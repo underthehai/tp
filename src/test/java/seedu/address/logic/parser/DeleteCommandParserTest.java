@@ -52,7 +52,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-      assertDeleteParseFailure(parser, " -activiti 1",
+        assertDeleteParseFailure(parser, " -activiti 1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
