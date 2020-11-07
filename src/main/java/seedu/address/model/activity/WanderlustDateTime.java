@@ -14,7 +14,7 @@ import seedu.address.model.commons.WanderlustDate;
 
 
 /**
- * Represents a Activity's date time in a travel plan.
+ * Represents a Activity's date time in Wanderlust.
  * Guarantees: immutable; is valid as declared in {@link #isValidWanderlustDateTime(String)}
  */
 public class WanderlustDateTime {
