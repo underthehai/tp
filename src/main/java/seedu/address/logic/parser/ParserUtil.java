@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
+import java.time.format.DateTimeParseException;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.InvalidIndexException;
@@ -112,7 +114,8 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code activityDateTime} is invalid.
      */
-    public static WanderlustDateTime parseActivityDateTime(String activityDateTime) throws ParseException {
+    public static WanderlustDateTime parseActivityDateTime(String activityDateTime)
+            throws ParseException, DateTimeParseException {
         requireNonNull(activityDateTime);
         String trimmedActivityDateTime = activityDateTime.trim();
         if (!WanderlustDateTime.isValidWanderlustDateTime(trimmedActivityDateTime)) {
