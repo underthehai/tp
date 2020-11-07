@@ -31,22 +31,22 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validActivityArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -activity 1", new DeleteActivityCommand(INDEX_FIRST));
+        assertDeleteParseSuccess(parser, " -activity 1", new DeleteActivityCommand(INDEX_FIRST));
     }
 
     @Test
     public void parse_validAccommodationArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -accommodation 1",
+        assertDeleteParseSuccess(parser, " -accommodation 1",
                 new DeleteAccommodationCommand(INDEX_FIRST));
     }
     @Test
     public void parse_validFriendArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -friend 1", new DeleteFriendCommand(INDEX_FIRST));
+        assertDeleteParseSuccess(parser, " -friend 1", new DeleteFriendCommand(INDEX_FIRST));
     }
 
     @Test
     public void parse_validTravelPlanArgs_returnsDeleteCommand() {
-        assertWanderLustDeleteParseSuccess(parser, " -travelplan 1", new DeleteTravelPlanCommand(INDEX_FIRST));
+        assertDeleteParseSuccess(parser, " -travelplan 1", new DeleteTravelPlanCommand(INDEX_FIRST));
     }
 
 
@@ -58,7 +58,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgsLength_throwsParseException() {
-        assertWanderLustParseFailure(parser, " -activity 1 asdasd",
+        assertDeleteParseFailure(parser, " -activity 1 asdasd",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 }
