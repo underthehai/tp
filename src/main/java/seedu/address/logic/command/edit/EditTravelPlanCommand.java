@@ -6,6 +6,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
+import static seedu.address.model.commons.WanderlustDate.isDateAfterToday;
+import static seedu.address.model.commons.WanderlustDate.isValidStartAndEndDate;
 import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import java.util.List;
@@ -101,13 +103,13 @@ public class EditTravelPlanCommand extends EditCommand {
                 .orElse(travelPlanToEdit.getStartDate());
         WanderlustDate updatedEndDate = editTravelPlanDescriptor.getEndDate().orElse(travelPlanToEdit.getEndDate());
 
-        boolean isValidDate = TravelPlan.isValidStartAndEndDate(updatedStartDate, updatedEndDate);
+        boolean isValidDate = isValidStartAndEndDate(updatedStartDate, updatedEndDate);
 
         if (!isValidDate) {
             throw new CommandException(MESSAGE_INVALID_STARTANDENDDATE);
         }
 
-        boolean isValidStartDate = TravelPlan.isStartDateAfterToday(updatedStartDate);
+        boolean isValidStartDate = isDateAfterToday(updatedStartDate);
 
         if (!isValidStartDate) {
             throw new CommandException(MESSAGE_INVALID_START_DATE);
