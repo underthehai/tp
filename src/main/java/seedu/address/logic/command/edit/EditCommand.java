@@ -12,6 +12,7 @@ import seedu.address.model.Model;
 public abstract class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
+    public static final int COMMAND_TOKEN = 2;
 
     public static final String SPECIFY_INDEX = "Please Specify the index";
     public static final String MESSAGE_WRONG_DIRECTORY = "Please go to a travelplan directory to use this command";
