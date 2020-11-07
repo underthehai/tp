@@ -16,12 +16,12 @@ public class SortActivityCommand extends SortCommand {
 
     public static final String MESSAGE_USAGE =
             "sort activity: Sorts the list of activities in a travel plan/wishlist by the keyword input by the user.\n"
-                    + "Parameters: KEYWORD (cost/importance/datetime)\n";
+                    + "Parameters: KEYWORD (name/cost/importance/datetime)\n";
 
     public static final String MESSAGE_SORT_ACTIVITY_SUCCESS = "Sorted list of activities by: %1$s";
 
     public static final String MESSAGE_INVALID_KEYWORD = "INVALID KEYWORD! "
-            + "Activity list can only sort by cost, importance or datetime.";
+            + "Activity list can only sort by name/cost/importance/datetime.";
     private final String keyword;
 
     /**
@@ -41,13 +41,14 @@ public class SortActivityCommand extends SortCommand {
         switch (keyword) {
 
         case SortCommand.KEYWORD_COST:
-            Comparator<Activity> costComparator = Comparator.comparingInt(Activity::getCostAsInt);
+            Comparator<Activity> costComparator = Comparator.comparingInt(c -> -c.getCostAsInt());
             if (isTravelPlan) {
                 model.sortActivityList(costComparator);
             } else {
                 model.sortWishlist(costComparator);
             }
-            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST));
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_COST),
+                    ACTIVITY_INDEX);
 
         case SortCommand.KEYWORD_IMPORTANCE:
             Comparator<Activity> importanceComparator = Comparator.comparingInt(a -> -a.getImportanceAsInt());
@@ -56,7 +57,8 @@ public class SortActivityCommand extends SortCommand {
             } else {
                 model.sortWishlist(importanceComparator);
             }
-            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE));
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_IMPORTANCE),
+                    ACTIVITY_INDEX);
 
         case SortCommand.KEYWORD_DATETIME:
             Comparator<Activity> dateComparator = Comparator.comparing(d -> d.getActivityDateTime().getValue());
@@ -65,7 +67,8 @@ public class SortActivityCommand extends SortCommand {
             } else {
                 model.sortWishlist(dateComparator);
             }
-            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME));
+            return new CommandResult(String.format(MESSAGE_SORT_ACTIVITY_SUCCESS, SortCommand.KEYWORD_DATETIME),
+                    ACTIVITY_INDEX);
 
         case SortCommand.KEYWORD_NAME:
             Comparator<Activity> nameComparator = Comparator.comparing(d -> d.getName().toString());
