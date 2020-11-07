@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import seedu.address.logic.command.Command;
 import seedu.address.logic.command.FindCommand;
 import seedu.address.logic.command.GoToCommand;
-import seedu.address.logic.command.delete.DeleteActivityCommand;
+import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.command.edit.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -19,7 +19,7 @@ public class CommandParserTestUtil {
      * and the command created equals to {@code expectedCommand}.
      */
     public static void assertDeleteParseSuccess(DeleteCommandParser parser, String userInput,
-                                                DeleteActivityCommand expectedCommand) {
+                                                DeleteCommand expectedCommand) {
         try {
             Command command = parser.parse(userInput);
             assertEquals(expectedCommand, command);
