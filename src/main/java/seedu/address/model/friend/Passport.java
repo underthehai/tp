@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's passport in the travel plan.
+ * Represents a Friend's passport in the travel plan.
  * Guarantees: immutable; is valid as declared in {@link #isValidPassport(String)}
  */
 public class Passport {
