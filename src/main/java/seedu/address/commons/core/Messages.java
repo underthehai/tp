@@ -16,8 +16,6 @@ public class Messages {
     public static final String MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST = "The wishlist only stores activities,"
             + " not accommodations or friends!";
     public static final String MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX = "The travel plan index provided is invalid";
-    public static final String MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST = "The wishlist only stores activities,"
-            + " not accommodations or friends!";
     public static final String MESSAGE_INVALID_INDEX = "The index provided is invalid!";
     public static final String MESSAGE_ACTIVITIES_LISTED_OVERVIEW = "%1$d activities listed!";
     public static final String MESSAGE_ACCOMMODATIONS_LISTED_OVERVIEW = "%1$d accommodations listed!";

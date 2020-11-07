@@ -29,8 +29,8 @@ public class CommandParserTestUtil {
             throw new IllegalArgumentException("Invalid userInput.", pe);
         }
     }
-  
-      /**
+
+    /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
      */
@@ -99,7 +99,7 @@ public class CommandParserTestUtil {
             throw new IllegalArgumentException("Invalid userInput.", pe);
         }
     }
-  
+
     /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
@@ -113,7 +113,7 @@ public class CommandParserTestUtil {
             assertEquals(expectedMessage, pe.getMessage());
         }
     }
-  
+
     /**
      * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is
      * successful and the command created equals to {@code expectedCommand}.
