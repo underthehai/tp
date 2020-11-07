@@ -219,6 +219,9 @@ public interface Model {
      */
     boolean isDirectoryTypeTravelPlan();
 
+    /**
+     * Returns the observable directory that is being observed by the Ui.
+     */
     ObservableDirectory getObservableDirectory();
 
     /**
