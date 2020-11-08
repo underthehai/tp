@@ -7,7 +7,7 @@ title: Toh Xuan Ning Jeanne's Project Portfolio Page
 
 WanderLust is a desktop travel-planning application that allows users to plan their trips in a structured and efficient manner.
 It is optimised for CLI-proficient users, and comes with a GUI created with JavaFX.
-It is written in Java, and has approximately 16 kLOC. 
+It is written in Java, and has approximately 16 kLOC.
 
 This application is part of my team project for an Introduction to Software Engineering (CS2103) module taken at NUS.
 
@@ -15,22 +15,22 @@ This application is part of my team project for an Introduction to Software Engi
 
 * Code contributed: [RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jeannetoh99)
 
-* **Major Enhancements**: 
+* **Major Enhancements**:
     - Implemented **UI**
-        - What it does: 
-        - Justifications: 
+        - What it does:
+        - Justifications:
         - Highlights: example
             - example
         - Relevant pull requests: [\#81](), [\#113](), [\#193]()
-        
+
     - Add **TravelPlan and Wishlist Packages** in model
         - What it does:
         - Justifications:
-        - Highlights: 
+        - Highlights:
         - Relevant pull requests: [\#59]()
-        
+
     - Linked Up Ui with Logic, Model and MainApp [\#88]()
-        
+
 * **Minor Enhancements**:
     - Implemented WanderlustDate in model [\#59](), [\#78](), [\#79]()
     - Added **SampleWanderlustDataUtil** in Model [\#81]()
@@ -53,7 +53,7 @@ This application is part of my team project for an Introduction to Software Engi
 
 * **Contributions to Documentation**:
   * User Guide:
-    * Added documentations for `show` and `move` features ([\#18](), [\#186]()) 
+    * Added documentations for `show` and `move` features ([\#18](), [\#186]())
     * Added documentations for `goto` feature (the part explaining about directories in Wanderlust, written in a shared
     document before UG was transferred to UserGuide.md)
     * Added documentations for Table of Contents ([\#18]())
@@ -68,7 +68,7 @@ This application is part of my team project for an Introduction to Software Engi
     *
 
 * **Community**:
-  * Total PRs reviewed: 
+  * Total PRs reviewed:
   * PRs reviewed with non-trivial review comments: ([\#]())
   * Contributed to forum discussions: ([\#]())
   * Reported bugs and suggestions for other teams in the class: [Reported 7 Bugs in PED](https://github.com/jeannetoh99/ped/issues)
