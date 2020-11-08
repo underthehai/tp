@@ -10,7 +10,7 @@
     <padding>
         <Insets top="10" bottom="10" />
     </padding>
-    <HBox spacing="5" alignment="CENTER_LEFT">
+    <HBox spacing="5" alignment="TOP_LEFT">
         <Label fx:id="id" styleClass="cell_medium_label">
             <minWidth>
                 <!-- Ensures that the label text is never truncated -->
