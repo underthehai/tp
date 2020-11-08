@@ -37,17 +37,9 @@ It is written in Java, and has about 16 kLOC.
         - Highlights:
             - This enhancement transcends across 3 components of Wanderlust: `Ui`, `Logic`, `Model`
             - Furthermore, this enhancement required the creation of a high level component `directory` that is linked to the 4 components so that users are able to navigate between `travelplan/wishlist`.
-            This enhancement required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to architecture design of the code.
-            - This enhancement was contributed together as a team, with @lyeyixian and @jeannetoh building on the `Model` and `Ui` aspect respectively.
+              This enhancement required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to the architecture design of the code.
         - Relevant pull requests: [\#108](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/108), [\#100](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/100)
-        
-    - Implemented **time logic**
-        - What it does: Prevent users from entering invalid dates that does not make sense. For example, if a user have a `travelplan` from 1 December 2020 to 31 December 2020, it will be irrational for him to add an `activity` or `accommodation`
-        that is not within the range of the `travelplan`.
-        - Justifications: I decided to implement this logic to ensure the coherence of the application, so that users can have a proper `travelplan` depicting accurate dates and prevent any irrational timeline from happening in the `travelplan`.
-        This is aimed at our target users, who are travelgoers planning for trips and hence, a comprehensive and well-structured time logic is needed in the applicaiton.
-        
-        - Relevant pull requests: [\#242](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/242)
+
         
 - **Minor Enhancement**:
     - Implemented **Command Line Tab Management**
@@ -57,13 +49,16 @@ It is written in Java, and has about 16 kLOC.
     - Implemented **feature for the Graphical User Interface**:
         - What it does: GUI shows the total cost of each `travelplan`. This is done by adding the cost of activities and accommodation in the `travelplan`.    
         - Relevant pull requests: [\#157](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/157), [\#158](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/158)
-    
+
+    - Implemented **time logic**
+        - What it does: Prevent users from entering invalid dates that does not make sense. For example, if a user have a `travelplan` from 1 December 2020 to 31 December 2020, it will be irrational for him to add an `activity` or `accommodation`
+        that is not within the range of the `travelplan`.
+        - Relevant pull requests: [\#242](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/242)    
      
 * **Project management**:
   * Provide direction during weekly meetings.
   * Delegate tasks weekly to team members.
   * Schedule weekly meetings.
-  * Create the template for the implementation aspect of developer guide.
 
 * **Enhancements to existing features**:
   * Modified the delete feature from AB3 to fit Wanderlust  ([\#84](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/84)) [\#264](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/264)
