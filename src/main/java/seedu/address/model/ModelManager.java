@@ -143,13 +143,14 @@ public class ModelManager implements Model {
     public void addTravelPlan(TravelPlan travelPlan) {
         travelPlanner.addTravelPlan(travelPlan);
         updateFilteredTravelPlanList(PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+        setDirectory(filteredTravelPlans.indexOf(travelPlan));
     }
 
     @Override
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);
         travelPlanner.setTravelPlan(target, editedTravelPlan);
-        setDirectory(directoryIndex);
+        setDirectory(filteredTravelPlans.indexOf(editedTravelPlan));
     }
 
     //=========== Wishlist =============================================================
