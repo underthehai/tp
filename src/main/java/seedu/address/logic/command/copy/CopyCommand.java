@@ -60,9 +60,7 @@ public class CopyCommand extends Command {
                 throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
             }
             if (travelPlanIndex.getZeroBased() >= travelPlanList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX + " " +
-                        travelPlanIndex.getZeroBased()
-                        + " " + travelPlanList.size());
+                throw new CommandException(Messages.MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX);
             }
 
             Activity activityToCopy = filteredActivityList.get(activityIndex.getZeroBased());
