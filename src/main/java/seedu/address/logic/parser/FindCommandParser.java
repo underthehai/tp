@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.FIND_WORD_POSITION;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
@@ -39,7 +40,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             String[] keywords = args.split(" ", FindCommand.COMMAND_TOKEN);
             String travelPlanObjectType = removeDash(keywords[OBJECT_TYPE_POSITION], FindCommand.MESSAGE_USAGE);
 
-            String findWord = keywords[2];
+            String findWord = keywords[FIND_WORD_POSITION];
             String[] nameKeywords = findWord.split("\\s+");
 
 

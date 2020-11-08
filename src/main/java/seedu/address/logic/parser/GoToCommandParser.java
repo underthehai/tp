@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.GoToCommand;
+import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -28,15 +29,18 @@ public class GoToCommandParser implements Parser<GoToCommand> {
 
             switch (directoryType) {
             case GoToCommand.TRAVEL_PLAN:
-                if (keywords.length < 3) {
+                if (keywords.length < GoToCommand.COMMAND_TOKENS_TRAVELPLAN) {
                     throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_MISSING_INDEX));
+                }
+                if (keywords.length != GoToCommand.COMMAND_TOKENS_TRAVELPLAN) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
                 }
                 Index index = ParserUtil.parseIndex(keywords[ParserUtil.INDEX_POSITION]);
                 return new GoToCommand(index, true);
 
             case GoToCommand.WISHLIST:
-                if (keywords.length > 2) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_REDUNDANT_INDEX));
+                if (keywords.length != GoToCommand.COMMAND_TOKENS_WISHLIST) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
                 }
                 return new GoToCommand(false);
 
