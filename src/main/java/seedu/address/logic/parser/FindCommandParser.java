@@ -60,7 +60,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
 
             }
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MISSING_KEYWORDS));
         }

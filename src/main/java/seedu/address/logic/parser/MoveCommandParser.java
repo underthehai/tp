@@ -17,16 +17,14 @@ public class MoveCommandParser implements Parser<MoveCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public MoveCommand parse(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index activityIndex = ParserUtil.parseIndex(keywords[1]);
-            Index travelPlanIndex = ParserUtil.parseIndex(keywords[2]);
-
-            return new MoveCommand(activityIndex, travelPlanIndex);
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MoveCommand.MESSAGE_USAGE), pe);
+        String[] keywords = args.split(" ");
+        if (keywords.length != MoveCommand.COMMAND_TOKENS) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MoveCommand.MESSAGE_USAGE));
         }
+        Index activityIndex = ParserUtil.parseIndex(keywords[1]);
+        Index travelPlanIndex = ParserUtil.parseIndex(keywords[2]);
+
+        return new MoveCommand(activityIndex, travelPlanIndex);
     }
 
 }

@@ -19,6 +19,9 @@ import seedu.address.model.travelplan.TravelPlan;
 public class MoveCommand extends Command {
     public static final String COMMAND_WORD = "move";
 
+    public static final int COMMAND_TOKENS = 3;
+
+
     public static final String MESSAGE_USAGE = "Move an activity identified by its index number "
             + "used in the wish list to a travel plan "
             + "identified by its index number in the travel planner using the following format:\n"

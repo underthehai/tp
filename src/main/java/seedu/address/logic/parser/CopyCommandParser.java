@@ -17,16 +17,15 @@ public class CopyCommandParser implements Parser<CopyCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public CopyCommand parse(String args) throws ParseException {
-        try {
-            String[] keywords = args.split(" ");
-            Index activityIndex = ParserUtil.parseIndex(keywords[1]);
-            Index travelPlanIndex = ParserUtil.parseIndex(keywords[2]);
-
-            return new CopyCommand(activityIndex, travelPlanIndex);
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, CopyCommand.MESSAGE_USAGE), pe);
+        String[] keywords = args.split(" ");
+        if (keywords.length != CopyCommand.COMMAND_TOKENS) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CopyCommand.MESSAGE_USAGE));
         }
+
+        Index activityIndex = ParserUtil.parseIndex(keywords[1]);
+        Index travelPlanIndex = ParserUtil.parseIndex(keywords[2]);
+
+        return new CopyCommand(activityIndex, travelPlanIndex);
     }
 
 }

@@ -47,26 +47,31 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        String[] keywords = args.split(" ");
-        String addType = removeDash(keywords[OBJECT_TYPE_POSITION], AddCommand.MESSAGE_USAGE);
+        try {
+            String[] keywords = args.split(" ");
 
-        switch (addType) {
+            String addType = removeDash(keywords[OBJECT_TYPE_POSITION], AddCommand.MESSAGE_USAGE);
 
-        case AddActivityCommand.COMMAND_WORD:
-            return parseActivity(args);
+            switch (addType) {
 
-        case AddAccommodationCommand.COMMAND_WORD:
-            return parseAccommodation(args);
+            case AddActivityCommand.COMMAND_WORD:
+                return parseActivity(args);
 
-        case AddFriendCommand.COMMAND_WORD:
-            return parseFriend(args);
+            case AddAccommodationCommand.COMMAND_WORD:
+                return parseAccommodation(args);
 
-        case AddTravelPlanCommand.COMMAND_WORD:
-            return parseTravelPlan(args);
+            case AddFriendCommand.COMMAND_WORD:
+                return parseFriend(args);
 
-        default:
+            case AddTravelPlanCommand.COMMAND_WORD:
+                return parseTravelPlan(args);
+
+            default:
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
         }
     }
 
