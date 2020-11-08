@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.util.StringUtil.isWithinCharacterLimit;
 
 import java.time.format.DateTimeParseException;
 
@@ -61,6 +62,9 @@ public class ParserUtil {
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
+        if (!isWithinCharacterLimit(trimmedName, Name.CHARACTER_LIMIT)) {
+            throw new ParseException(Name.MESSAGE_NAME_EXCEEDS_CHARACTER_LIMIT);
+        }
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
@@ -76,6 +80,9 @@ public class ParserUtil {
     public static Location parseLocation(String location) throws ParseException {
         requireNonNull(location);
         String trimmedLocation = location.trim();
+        if (!isWithinCharacterLimit(trimmedLocation, Location.CHARACTER_LIMIT)) {
+            throw new ParseException(Location.MESSAGE_LOCATION_EXCEEDS_CHARACTER_LIMIT);
+        }
         if (!Location.isValidLocation(trimmedLocation)) {
             throw new ParseException(Location.MESSAGE_CONSTRAINTS);
         }

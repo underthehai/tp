@@ -23,24 +23,102 @@ Class FriendList
 Class UniqueTravelPlanList
 }
 
+Package Wishlist {
+Class Wishlist
+}
+
+Package Activity {
+Class UniqueActivityList
+Class Activity
+Class Importance
+Class WanderlustDateTime
+}
+
+Package Accommodation {
+Class UniqueAccommodationList
+Class Accommodation
+}
+
+Package Friend {
+Class UniqueFriendList
+Class Friend
+Class Passport
+Class Mobile
+}
+
+Package Commons {
+Class Name
+Class Location
+Class Cost
+Class WanderlustDate
+Interface Nameable <<Interface>>
+Class "{abstract}\nTravelPlanObject" as TravelPlanObject
+Class NameContainsKeywordsPredicate
+}
+
+Package Util {
+Class SampleWanderlustDataUtil
+}
+
+Class "{abstract}\nDirectory" as Directory
+Class ObservableDirectory
+
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
 TravelPlanner .up.|> ReadOnlyTravelPlanner
-
 ModelManager .up.|> Model
 Model .right.> ObservableList
 ModelManager o--> "1" TravelPlanner
-ModelManager o-left-> "1" UserPrefs
+ModelManager o-right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
+ModelManager -left-> Directory
+UserPrefs -[hidden]right-> ReadOnlyTravelPlanner
+ObservableDirectory -down-> Directory
+ModelManager -left-> ObservableDirectory
+
+TravelPlanner -left-> Wishlist
+Wishlist -up-|> Directory
+Wishlist -down-> UniqueActivityList
 
 TravelPlanner *--> "1" UniqueTravelPlanList
 UniqueTravelPlanList o--> "*" TravelPlan
+TravelPlan -up-|> Directory
 TravelPlan *--> Name
 TravelPlan *--> "2" WanderlustDate
 TravelPlan *--> ActivityList
 TravelPlan *--> AccommodationList
 TravelPlan *--> FriendList
+ActivityList -down-> UniqueActivityList
+AccommodationList -down-> UniqueAccommodationList
+FriendList -down-> UniqueFriendList
+
+UniqueActivityList o-down-> "*" Activity
+Activity *-left-> Importance
+Activity *-up->"1" WanderlustDateTime
+Activity -down-|> TravelPlanObject
+Activity *-down-> Name
+Activity *-down-> Location
+Activity *-down-> Cost
+
+UniqueAccommodationList o-down-> "*" Accommodation
+Accommodation -down-|> TravelPlanObject
+Accommodation *-down-> Name
+Accommodation *-down-> Location
+Accommodation *-down-> Cost
+Accommodation *-down->"2" WanderlustDate
+
+UniqueFriendList o-down-> "*" Friend
+Friend *-down-> Passport
+Friend *-down-> Mobile
+Friend -down-|> TravelPlanObject
+Friend *-down-> Name
+
+TravelPlanObject ..|> Nameable
+NameContainsKeywordsPredicate .up.> Nameable
+Cost -[hidden]right-> Location
+Location -[hidden]right-> Name
+TravelPlanObject -[hidden]up-> WanderlustDate
 
 Name -[hidden]right-> WanderlustDate
 WanderlustDate -[hidden]right-> ActivityList
@@ -48,4 +126,10 @@ ActivityList -[hidden]right-> AccommodationList
 AccommodationList -[hidden]right-> FriendList
 
 ModelManager -->"1" TravelPlan : filtered list
+ModelManager -->"2" Activity : filtered list
+ModelManager -->"1" Accommodation : filtered list
+ModelManager -->"1" Friend : filtered list
+ModelManager --> ActivityList
+ModelManager --> AccommodationList
+ModelManager --> FriendList
 @enduml
