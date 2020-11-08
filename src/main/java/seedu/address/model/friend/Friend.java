@@ -50,7 +50,7 @@ public class Friend extends TravelPlanObject {
     }
 
     /**
-     * Returns true if both friends have the same passport or same mobile.
+     * Returns true if both friends have the same passport.
      */
     public boolean isSameFriend(Friend otherFriend) {
         if (otherFriend == this) {
