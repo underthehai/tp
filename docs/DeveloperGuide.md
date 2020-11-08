@@ -249,7 +249,7 @@ show a message about the successful edited object.
 
 ![EditSequenceDiagram](images/EditSequenceDiagram.png)
 
-* Note: Due to limitation of PlantUML which do not have an `sd reference frame` implementation, 
+* Note: Due to limitation of PlantUML which do not have an `sd reference frame` implementation,
 the image below contains further details from the `execute` reference frame from the above sequence diagram.
 
 ![EditSequenceDiagram](images/EditSequenceRef.png)
