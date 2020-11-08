@@ -158,9 +158,9 @@ Name of Parameter | Description | Format
 ------------ | ------------- | -------------
 `n/NAME` | Name of the activity. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
 `l/LOCATION` | Location/ Address of the activity | {::nomarkdown}<ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>{:/}
-`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity | <ul><li>Should only contain numbers</li><li>Should range from 1 - 5 <br/>(most important = 5, least important = 1)</li></ul>
-`c/COST` | Cost of the activity | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
-`d/DATE_AND_TIME` | Date and Time for the activity | <ul><li>Format is `YYYY-MM-DD HH:MM` <br/>(24h clock)</li></ul>
+`i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity | {::nomarkdown}<ul><li>Should only contain numbers</li><li>Should range from 1 - 5 <br/>(most important = 5, least important = 1)</li></ul>{:/}
+`c/COST` | Cost of the activity | {::nomarkdown}<ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>{:/}
+`d/DATE_AND_TIME` | Date and Time for the activity | {::nomarkdown}<ul><li>Format is `YYYY-MM-DD HH:MM` <br/>(24h clock)</li></ul>{:/}
 
 **Notes about Activity:**<br>
 
@@ -174,12 +174,11 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ----------- | -------------
-`n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
-`l/LOCATION` | Location/ Address of the accommodation | <ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>
-`c/COST` | Cost of the accommodation | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
-`sd/START_DATE` | Start date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
-`ed/END_DATE` | End date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
-
+`n/NAME` | Name of the accommodation | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
+`l/LOCATION` | Location/ Address of the accommodation | {::nomarkdown}<ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>{:/}
+`c/COST` | Cost of the accommodation | {::nomarkdown}<ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>{:/}
+`sd/START_DATE` | Start date of accommodation | {::nomarkdown}<ul><li>Format is <code>YYYY-MM-DD</code></li></ul>{:/}
+`ed/END_DATE` | End date of accommodation | {::nomarkdown}<ul><li>Format is <code>YYYY-MM-DD</code></li></ul>{:/}
 
 **Notes about Accommodation:**<br>
 
@@ -191,9 +190,9 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ------------- | -------------
-`n/NAME` | Name of the friend. | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | <ul><li>Should only contain numbers starting with 8 or 9 <br/>(SG mobile number)</li><li>Should be 8 digits long</li></ul>
-`p/PASSPORT_NUMBER` | Passport number of the friend passport | <ul><li>Should be in the form `[E] + 7 numbers + [A-Z]`</li></ul>
+`n/NAME` | Name of the friend. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | {::nomarkdown}<ul><li>Should only contain numbers starting with 8 or 9 <br/>(SG mobile number)</li><li>Should be 8 digits long</li></ul>{:/}
+`p/PASSPORT_NUMBER` | Passport number of the friend passport | {::nomarkdown}<ul><li>Should be in the form <code>[E] + 7 numbers + [A-Z]</code></li></ul>{:/}
 
 **Notes about Friend:**<br>
 
@@ -203,9 +202,9 @@ Name of Parameter | Description | Format
 
 Name of Parameters | Description | Format
 ------------ | ------------- | -------------
-`n/NAME` | Name of the travel plan. | <ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
-`sd/START_DATE` | Start date of travel plan| <ul><li>Format is `YYYY-MM-DD`</li></ul>
-`ed/END_DATE` | End date of travel plan | <ul><li>Format is `YYYY-MM-DD`</li></ul>
+`n/NAME` | Name of the travel plan. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
+`sd/START_DATE` | Start date of travel plan| {::nomarkdown}<ul><li>Format is <code>YYYY-MM-DD</code></li></ul>{:/}
+`ed/END_DATE` | End date of travel plan | {::nomarkdown}<ul><li>Format is <code>YYYY-MM-DD</code></li></ul>{:/}
 
 **Notes about Travel Plan:**<br>
 
