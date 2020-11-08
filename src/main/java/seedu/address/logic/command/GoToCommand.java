@@ -27,6 +27,8 @@ public class GoToCommand extends Command {
     public static final String MESSAGE_GOTO_SUCCESS = "goto directory: %1$s";
 
     public static final int WISHLIST_DIRECTORY = -1;
+    public static final int COMMAND_TOKENS_TRAVELPLAN = 3;
+    public static final int COMMAND_TOKENS_WISHLIST = 2;
 
     private final Index targetIndex;
     private final boolean isTravelPlan;
