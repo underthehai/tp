@@ -29,14 +29,15 @@ public class ParserUtil {
     public static final int INDEX_POSITION = 2;
     public static final int SORT_TYPE_POSITION = 2;
     public static final int FIND_WORD_POSITION = 2;
-
+    
     public static final int ACTIVITY_INDEX = 0;
     public static final int ACCOMMODATION_INDEX = 1;
     public static final int FRIEND_INDEX = 2;
     public static final int INVALID_INDEX = -1;
 
+    // For copy and move commands
     public static final int ACTIVITY_INDEX_POSITION = 1;
-    public static final int TRAVELPLAN_INDEX_POSITION = 1;
+    public static final int TRAVELPLAN_INDEX_POSITION = 2;
 
 
     /**
