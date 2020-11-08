@@ -432,7 +432,7 @@ The following activity diagram summarizes what happens when a user executes the 
 
 **Target user profile**:
 
-* Has a need to their store travel plans in an organised manner
+* Has a need to store their travel plans in an organised manner
 * Has a need to store activities that they may visit as a wishlist
 * Prefers desktop apps over other types
 * Can type fast

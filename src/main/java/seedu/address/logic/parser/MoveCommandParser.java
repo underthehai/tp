@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX_POSITION;
+import static seedu.address.logic.parser.ParserUtil.TRAVELPLAN_INDEX_POSITION;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.copy.MoveCommand;
@@ -21,8 +23,8 @@ public class MoveCommandParser implements Parser<MoveCommand> {
         if (keywords.length != MoveCommand.COMMAND_TOKENS) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MoveCommand.MESSAGE_USAGE));
         }
-        Index activityIndex = ParserUtil.parseIndex(keywords[1]);
-        Index travelPlanIndex = ParserUtil.parseIndex(keywords[2]);
+        Index activityIndex = ParserUtil.parseIndex(keywords[ACTIVITY_INDEX_POSITION]);
+        Index travelPlanIndex = ParserUtil.parseIndex(keywords[TRAVELPLAN_INDEX_POSITION]);
 
         return new MoveCommand(activityIndex, travelPlanIndex);
     }
