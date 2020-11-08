@@ -13,6 +13,7 @@ import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_
 
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.CommandResult;
 import seedu.address.logic.command.exceptions.CommandException;
@@ -24,8 +25,8 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.WanderlustDate;
 
 /**
- * Edits existing Accommodation in the address book. This command can only be used within the travel plan directory.
- * An accommodation contains the field name, location, cost, start date and end date
+ * Edits existing Accommodation in the wanderlust. This command can only be used within the travel plan directory.
+ * An accommodation contains the parameters: name, location, cost, start date and end date
  */
 public class EditAccommodationCommand extends EditCommand {
 
@@ -79,8 +80,10 @@ public class EditAccommodationCommand extends EditCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!model.isDirectoryTypeTravelPlan()) {
-            throw new CommandException(MESSAGE_WRONG_DIRECTORY);
+        boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+
+        if (!isTravelPlan) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         List<Accommodation> lastShownList = model.getFilteredAccommodationList();
@@ -107,7 +110,7 @@ public class EditAccommodationCommand extends EditCommand {
     /**
      * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}
      *
-     * @param accommodationToEdit         contains the old fields
+     * @param accommodationToEdit contains the old fields
      * @param editAccommodationDescriptor contains updated fields
      * @return Accommodation to be updated in the accommodation list
      */

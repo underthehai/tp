@@ -10,7 +10,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.commons.TravelPlanObject;
 
 /**
- * Represents an Activity in the travel plan.
+ * Represents an Activity in Wanderlust.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Activity extends TravelPlanObject {
@@ -45,11 +45,11 @@ public class Activity extends TravelPlanObject {
      * Creates a deep copy of the given activity.
      */
     public Activity(Activity activity) {
-        this.name = activity.name;
-        this.location = activity.location;
-        this.cost = activity.cost;
-        this.levelOfImportance = activity.levelOfImportance;
-        this.activityDateTime = activity.activityDateTime;
+        this.name = activity.getName();
+        this.location = activity.getLocation();
+        this.cost = activity.getCost();
+        this.levelOfImportance = activity.getLevelOfImportance();
+        this.activityDateTime = activity.getActivityDateTime();
     }
 
     @Override
@@ -66,16 +66,16 @@ public class Activity extends TravelPlanObject {
     }
 
     /**
-     * Gets cost as string.
-     * @return String
+     * Returns cost as string.
+     * @return String value.
      */
     public String getCostAsString() {
         return cost.getValue();
     }
 
     /**
-     * Gets cost as an integer.
-     * @return int
+     * Returns cost as an integer.
+     * @return int value.
      */
     public int getCostAsInt() {
         return Integer.parseInt(cost.getValue());
@@ -87,8 +87,8 @@ public class Activity extends TravelPlanObject {
     }
 
     /**
-     * Gets importance as an integer.
-     * @return int
+     * Returns importance as an integer.
+     * @return int value.
      */
     public int getImportanceAsInt() {
         return Integer.parseInt(levelOfImportance.getValue());

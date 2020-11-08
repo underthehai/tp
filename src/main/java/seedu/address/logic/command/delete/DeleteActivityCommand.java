@@ -45,33 +45,22 @@ public class DeleteActivityCommand extends DeleteCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         boolean isTravelPlan = model.isDirectoryTypeTravelPlan();
+        List<Activity> activityList;
         if (isTravelPlan) {
-            List<? extends TravelPlanObject> filteredActivityList = model.getFilteredActivityList();
-
-            if (targetIndex.getZeroBased() >= filteredActivityList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
-            }
-
-            TravelPlanObject activityToDelete = filteredActivityList.get(targetIndex.getZeroBased());
-
-            model.deleteTravelPlanObject(activityToDelete);
-            assert !model.getActivityList().hasActivity((Activity) activityToDelete)
-                    : "Activity was not deleted!";
-            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete), ACTIVITY_INDEX);
+            activityList = model.getFilteredActivityList();
         } else {
-            List<Activity> filteredWishList = model.getFilteredWishlist();
-
-            if (targetIndex.getZeroBased() >= filteredWishList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
-            }
-
-            Activity activityToDelete = filteredWishList.get(targetIndex.getZeroBased());
-
-            model.deleteActivity(activityToDelete);
-            assert !model.getWishlist().hasActivity(activityToDelete)
-                    : "Activity was not deleted!";
-            return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete));
+            activityList = model.getFilteredWishlist();
         }
+
+        if (targetIndex.getZeroBased() >= activityList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
+        }
+
+        TravelPlanObject activityToDelete = activityList.get(targetIndex.getZeroBased());
+
+        model.deleteTravelPlanObject(activityToDelete);
+
+        return new CommandResult(String.format(MESSAGE_DELETE_ACTIVITY_SUCCESS, activityToDelete), ACTIVITY_INDEX);
     }
 
     @Override
