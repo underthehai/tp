@@ -11,7 +11,6 @@ import seedu.address.logic.Logic;
 import seedu.address.model.Directory;
 import seedu.address.model.ObservableDirectory;
 
-
 /**
  * Panel containing basic information of a Travel Plan.
  */
@@ -31,7 +30,7 @@ public class TravelPlanPanel extends UiPart<Region> {
     private Label totalCost;
 
     /**
-     * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
+     * Creates a {@code TravelPlanPanel} with the given {@code ObservableList}.
      */
     public TravelPlanPanel(ObservableDirectory dir) {
         super(TravelPlanFXML);
