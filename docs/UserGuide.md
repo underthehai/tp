@@ -152,8 +152,8 @@ Declaration of the parameters strictly follows the format given.
 
 Name of Parameter | Description | Format
 ------------ | ------------- | -------------
-`n/NAME` | Name of the activity. | <ul><li>Should only contain alphanumeric characters, punctuations and spaces</li><li>Should not be blank</li></ul>
-`l/LOCATION` | Location/ Address of the activity | <ul><li>Can take any values</li><li>Should not be blank</li></ul>
+`n/NAME` | Name of the activity. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, punctuations and spaces</li><li>Should not be blank</li></ul>{:/}
+`l/LOCATION` | Location/ Address of the activity | {::nomarkdown}<ul><li>Can take any values</li><li>Should not be blank</li></ul>{:/}
 `i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity | <ul><li>Should only contain numbers</li><li>Should range from 1 - 5 <br/>(most important = 5, least important = 1)</li></ul>
 `c/COST` | Cost of the activity | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
 `d/DATE_AND_TIME` | Date and Time for the activity | <ul><li>Format is `YYYY-MM-DD HH:MM` <br/>(24h clock)</li></ul>
