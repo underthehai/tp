@@ -34,6 +34,10 @@ public class ParserUtil {
     public static final int FRIEND_INDEX = 2;
     public static final int INVALID_INDEX = -1;
 
+    public static final int ACTIVITY_INDEX_POSITION = 1;
+    public static final int TRAVELPLAN_INDEX_POSITION = 1;
+
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
