@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents activity's or accommodation's or friend's name in the Travel Plan and also travel plan's name.
+ * Represents activity's or accommodation's or friend's or travel plan's name in Wanderlust.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
 public class Name {
