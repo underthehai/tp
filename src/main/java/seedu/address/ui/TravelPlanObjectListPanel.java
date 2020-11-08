@@ -43,7 +43,7 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
 
 
     /**
-     * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
+     * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}s.
      */
     public TravelPlanObjectListPanel(ObservableList<Activity> activities, ObservableList<Accommodation> accommodations,
             ObservableList<Friend> friends, TravelPlanPanel travelPlanPanel) {
@@ -69,10 +69,16 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
         pane.getSelectionModel().select(index);
     }
 
+    /**
+     * Sets the travel plan object panel to only show the activities tab.
+     */
     public void setActivityTabVisibleOnly() {
         pane.getTabs().removeAll(accommodationTab, friendTab);
     }
 
+    /**
+     * Sets the travel plan object panel to show all activities, accommodations and friends tab.
+     */
     public void setAllTabsVisible() {
         if (pane.getTabs().size() == 1) {
             pane.getTabs().add(accommodationTab);
@@ -81,7 +87,7 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the {@code ActivityCard}.
+     * Custom {@code ListCell} that displays the graphics of an {@code Activity} using the {@code ActivityCard}.
      */
     class ActivityListViewCell extends ListCell<Activity> {
         @Override
@@ -98,7 +104,7 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the
+     * Custom {@code ListCell} that displays the graphics of an {@code Accommodation} using the
      * {@code AccommodationCard}.
      */
     class AccommodationListViewCell extends ListCell<Accommodation> {
@@ -116,7 +122,7 @@ public class TravelPlanObjectListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code TravelPlanObject} using the {@code FriendCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Friend} using the {@code FriendCard}.
      */
     class FriendListViewCell extends ListCell<Friend> {
         @Override

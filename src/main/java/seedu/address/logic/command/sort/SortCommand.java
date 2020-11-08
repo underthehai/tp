@@ -16,6 +16,7 @@ public abstract class SortCommand extends Command {
     public static final String KEYWORD_PASSPORT = "passport";
     public static final String KEYWORD_MOBILE = "mobile";
 
+    public static final int COMMAND_TOKENS = 3;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sort the respective object type list based on the keyword input.\n"
@@ -23,7 +24,7 @@ public abstract class SortCommand extends Command {
             + "             -accommodation\n"
             + "             -friend\n"
             + "Sorting Keyword: " + KEYWORD_NAME + ", " + KEYWORD_COST + ", " + KEYWORD_IMPORTANCE + ", " + KEYWORD_DATE
-            + ", " + KEYWORD_DATETIME + KEYWORD_MOBILE + ", " + KEYWORD_PASSPORT + "\n"
+            + ", " + KEYWORD_DATETIME + ", " + KEYWORD_MOBILE + ", " + KEYWORD_PASSPORT + "\n"
             + "Example: " + COMMAND_WORD + " -activity cost";
 
     private final String sortKeyword;

@@ -219,6 +219,9 @@ public interface Model {
      */
     boolean isDirectoryTypeTravelPlan();
 
+    /**
+     * Returns the {@code ObservableDirectory}.
+     */
     ObservableDirectory getObservableDirectory();
 
     /**
@@ -227,14 +230,29 @@ public interface Model {
      */
     void copyActivity(Activity activity, Index travelPlanIndex);
 
+    /**
+     * Returns the travel plan list as {@code UniqueTravelPlanList}.
+     */
     UniqueTravelPlanList getTravelPlanList();
 
+    /**
+     * Returns the wishlist as {@code Wishlist}.
+     */
     Wishlist getWishlist();
 
+    /**
+     * Returns the activity list as {@code ActivityList}.
+     */
     ActivityList getActivityList();
 
+    /**
+     * Returns the accommodation list as {@code AccommodationList}.
+     */
     AccommodationList getAccommodationList();
 
+    /**
+     * Returns the friend list as {@code FriendList}.
+     */
     FriendList getFriendList();
 
     /**

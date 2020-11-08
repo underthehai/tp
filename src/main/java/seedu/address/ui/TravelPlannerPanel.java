@@ -12,7 +12,7 @@ import seedu.address.model.travelplan.TravelPlan;
 import seedu.address.ui.cards.NameCard;
 
 /**
- * Panel containing basic information of a Travel Plan.
+ * Panel containing the wishlist and list of travel plans in the travel planner.
  */
 public class TravelPlannerPanel extends UiPart<Region> {
     private static final String FXML = "TravelPlannerPanel.fxml";
@@ -22,7 +22,7 @@ public class TravelPlannerPanel extends UiPart<Region> {
     private ListView<TravelPlan> travelPlanListView;
 
     /**
-     * Creates a {@code TravelPlanObjectListPanel} with the given {@code ObservableList}.
+     * Creates a {@code TraverPlannerPannel} with the given {@code ObservableList}.
      */
     public TravelPlannerPanel(ObservableList<TravelPlan> travelPlanList) {
         super(FXML);

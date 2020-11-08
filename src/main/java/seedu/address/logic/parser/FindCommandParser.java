@@ -36,7 +36,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         try {
-            String[] keywords = args.split(" ", 3);
+            String[] keywords = args.split(" ", FindCommand.COMMAND_TOKEN);
             String travelPlanObjectType = removeDash(keywords[OBJECT_TYPE_POSITION], FindCommand.MESSAGE_USAGE);
 
             String findWord = keywords[2];
@@ -60,7 +60,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
 
             }
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MISSING_KEYWORDS));
         }

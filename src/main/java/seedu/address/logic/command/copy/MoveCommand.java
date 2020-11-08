@@ -2,7 +2,7 @@ package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
-import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
 
 import java.util.List;
 
@@ -19,6 +19,9 @@ import seedu.address.model.travelplan.TravelPlan;
 
 public class MoveCommand extends Command {
     public static final String COMMAND_WORD = "move";
+
+    public static final int COMMAND_TOKENS = 3;
+
 
     public static final String MESSAGE_USAGE = "Move an activity identified by its index number "
             + "used in the wish list to a travel plan "

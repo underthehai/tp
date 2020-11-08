@@ -19,6 +19,7 @@ import seedu.address.model.commons.NameContainsKeywordsPredicate;
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
+    public static final int COMMAND_TOKEN = 3;
 
     public static final String MESSAGE_USAGE = "Find all activities/accommodations/friends "
             + "in the travel plan/wishlist in the current directory "
@@ -52,7 +53,7 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         if (!model.isDirectoryTypeTravelPlan() && this.travelPlanObjectType != 0) { //wishlist
-            throw new CommandException(Messages.WRONG_DIRECTORY);
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         String message = "";

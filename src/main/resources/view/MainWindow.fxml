@@ -37,19 +37,19 @@
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
-          <VBox fx:id="travelPlanner" styleClass="pane-without-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+          <VBox fx:id="travelPlanner" styleClass="pane-without-border" minWidth="290" VBox.vgrow="ALWAYS">
             <StackPane fx:id="travelPlannerPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="travelObjectList" minWidth="400" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+          <VBox fx:id="travelObjectList" minWidth="690" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <padding>
               <Insets left="20" />
             </padding>
-            <StackPane fx:id="travelPlanPanelPlaceholder"/>
+            <StackPane fx:id="travelPlanPanelPlaceholder" />
             <StackPane fx:id="travelObjectListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </HBox>
 
-        <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" minHeight="150" prefHeight="150" prefWidth="-1">
+        <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" minHeight="150" prefHeight="150">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>

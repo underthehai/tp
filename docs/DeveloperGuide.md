@@ -7,6 +7,20 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Introduction**
+
+### Purpose
+This document is written to describe the architecture and software design decisions for the desktop application, _wanderlust_.
+
+### Scope
+The goal of this document is to cover the high-level system architecture and design. It will also cover the implementation of each feature in _wanderlust_.
+
+### Audience
+The intended audience is any person who is looking to understand the system architecture and design of _wanderlust_.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -23,7 +37,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103-T14-3/tp/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103-T14-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
@@ -106,13 +120,6 @@ The `Model`,
 * exposes unmodifiable `ObservableList<TravelPlan>`, `ObservableList<Activity>`, `ObservableList<Accommodation>`, `ObservableList<Friend>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `friend` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `friend` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
-
-
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
@@ -146,7 +153,7 @@ can use the `goto` command to navigate to their desired directory.
 components. `TravelPlannerPanel` highlights the directory we are currently in, `TravelPlanPanel` displays the `name` of the
 directory and if it is a *travelplan*, it will show the `date` of the *travelplan* as well. Lastly, `TravelPlanObjectListPanel`
 displays the respective `activity`, `accommodation` and `friend` list in the UI of a particular directory. Do note that
-`wishlist` should not contain any `accommodation` or `friend` list. (The UI should not be displaying anything)
+`wishlist` do not contain any `accommodation` or `friend` list. (The UI will not display any list)
 
 Both `TravelPlannerPanel` and `TravelPlanObjectListPanel` make use of JavaFX's `ListView` to display the list of `travelplan`
 or `activity`/`accommodation`/`friend` respectively.
@@ -309,7 +316,7 @@ The activity diagram below shows a scenario whereby a user inputs the `delete` c
 
 ![DeleteActivityDiagram](images/DeleteActivityDiagram.png)
 
-The sequence diagram of the `delete` command has been shown above under the **Logic component** of the developer guide.
+The sequence diagram of the `delete` command has been shown above under the [Logic Component](#logic-component) of the developer guide.
 
 #### Design Consideration:
 
@@ -425,15 +432,17 @@ The following activity diagram summarizes what happens when a user executes the 
 
 **Target user profile**:
 
-* Need a place to their store travel plans in an organised manner
-* prefer desktop apps over other types
-* CLI proficient
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Has a need to store their travel plans in an organised manner
+* Has a need to store activities that they may visit as a wishlist
+* Prefers desktop apps over other types
+* Can type fast
+* Prefers typing to mouse interactions
+* Is reasonably comfortable using CLI apps
+
 
 **Value proposition**:
-* Manage travel plans faster and wishlist faster than using Excel sheets/Mouse-driven Apps
-
+* Manage travel plans faster than using a typical mouse/GUI driven app.
+Removes the need for a physical travel planner. Increase the motivation to plan travelling by making planning easier and interactive.
 
 ### User stories
 
@@ -442,23 +451,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | read the user guide            | be familiar with the usages and features                |
-| `* * *`  | user                                       | save travel activities in a wishlist               | use it for future travel plans      |
+| `* * *`  | user                                       | save activities in a wishlist               | use it for future travel plans      |
 | `* * *`  | user                                       | add items to a travel plan             | note down important items related to my travel plan      |
 | `* * *`  | user                                       | delete an item       | remove unwanted items              |
 | `* * *`  | user                                       | modify an item       | edit any last minute changes              |
-| `* * *`  | frequent user                                       | have a list of items    | easily see my travel plans              |
+| `* * *`  | frequent user                              | have a list of items    | easily see my travel plans              |
 | `* * *`  | user                                       | be able to switch between travel plans   | navigate to travel plans easily              |
-| `* *`    | user                                       | add notes to each travel plan  | refer to them while travelling                          |
 | `* *`    | user                                       | input accommodation details         | easily remember where I am going to stay           |
 | `* *`    | user                                       | input cost of activity  | track the price of each activities easily                      |
-| `* *`    | user                                       | input timing to an activity         | create a schedule for my travel plan               |
-| `* *`    | user                                       | record essential personal details         | have a easy time in making bookings using these details             |
+| `* *`    | user                                       | input timing to an activity         | plan a schedule for my travel plan               |
+| `* *`    | user                                       | record particulars of my friends travelling with me         | make group reservations/ bookings more convenient.  |
 | `* *`    | user                                       | sort items  | view my items in a preferred manner            |
 | `* *`    | user                                       | create priority levels for activities | rank the level of importance of each activities    |
-| `*`      | advanced user                              | have shortcuts for commands  | execute commands faster proficiently    |
 | `*`      | user                                       | have a feature to search  | find and filter my desired items efficiently  |
-
-*{More to be added}*
+| `*`      | user                                       | have a move and copy feature | move/copy activities in my wishlist to my travel plan easily  |
+| `*`      | user                                       | be able to switch tabs | view my activities, accommodation and friends easily |
 
 
 ### Use cases
@@ -469,8 +476,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to navigate to a specific travel plan
-2.  Wanderlust shows that the current directory is on that travel plan
+1.  User requests to navigate to a specific travel plan.
+2.  Wanderlust navigates to the travel plan that user requested.
 
     Use case ends.
 
@@ -485,9 +492,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to navigate to the wishlist
-2.  Wanderlust shows that the current directory is on the wishlist
+1.  User requests to navigate to the wishlist.
+2.  Wanderlust navigates to wishlist.
 
+    Use case ends.
+    
+**Extensions**
+
+* 1a. User is already on wishlist.
+    * 1a1. Wanderlust remains on wishlist.
+    
     Use case ends.
 
 **Use case: UC03 - Add a travel plan**
@@ -495,7 +509,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to add a travel plan
-2.  Wanderlust shows the newly created travel plan
+2.  Wanderlust creates the newly travel plan and directs user to the new travel plan.
 
     Use case ends.
 
@@ -510,9 +524,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to add an activity
-3.  Wanderlust shows the added activities in the current directory
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to add an activity.
+3.  Wanderlust shows the added activities in the current directory.
 
     Use case ends.
 
@@ -531,9 +545,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to add an accommodation
-3.  Wanderlust shows the added accommodation in the current travel plan
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to add an accommodation.
+3.  Wanderlust shows the added accommodation in the current travel plan.
 
     Use case ends.
 
@@ -554,9 +568,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to add a friend
-3.  Wanderlust shows the added friend in the current travel plan
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to add a friend.
+3.  Wanderlust shows the added friend in the current travel plan.
 
     Use case ends.
 
@@ -577,7 +591,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to delete a travel plan
+1.  User requests to delete a travel plan.
 2.  Wanderlust shows that the travel plan has been deleted.
 
     Use case ends.
@@ -598,9 +612,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to delete an activity
-3.  Wanderlust shows that the activity has been deleted
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to delete an activity.
+3.  Wanderlust shows that the activity has been deleted.
 
     Use case ends.
 
@@ -624,9 +638,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to delete an accommodation
-3.  Wanderlust shows that the accommodation has been deleted
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to delete an accommodation.
+3.  Wanderlust shows that the accommodation has been deleted.
 
     Use case ends.
 
@@ -652,9 +666,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to delete a friend
-3.  Wanderlust shows that the friend has been deleted
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to delete a friend.
+3.  Wanderlust shows that the friend has been deleted.
 
     Use case ends.
 
@@ -680,9 +694,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User <ins>navigates to a specific travel plan (UC1)</ins>
-2. User requests to edit travel plan
-3. Wanderlust shows that the travel plan has been edited
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to edit travel plan.
+3. Wanderlust shows that the travel plan has been edited.
 
    Use case ends.
 
@@ -706,15 +720,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to edit an activity
-3.  Wanderlust shows that the activity has been edited
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to edit an activity.
+3.  Wanderlust shows that the activity has been edited.
 
      Use case ends.
 
 **Extensions**
 
-* 1a. User <ins>navigates to the wishlist (UC2)</ins>.
+* 1a. User <ins>navigates to the wishlist (UC2).</ins>.
 
      Use case resumes at step 2.
 
@@ -732,9 +746,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to edit an accommodation
-3.  Wanderlust shows that the accommodation has been edited
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to edit an accommodation.
+3.  Wanderlust shows that the accommodation has been edited.
 
     Use case ends.
 
@@ -760,9 +774,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to edit a friend
-3.  Wanderlust shows that the friend has been edited
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to edit a friend.
+3.  Wanderlust shows that the friend has been edited.
 
     Use case ends.
 
@@ -788,9 +802,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to view activities
-3.  Wanderlust shows the list of activities
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to view activities.
+3.  Wanderlust shows the list of activities.
 
     Use case ends.
 
@@ -805,13 +819,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC16 - View contacts in travel plan**
+**Use case: UC16 - View friends in travel plan**
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to view contacts
-3.  Wanderlust shows the list of contacts
+
+1.  User <ins>navigates to a specific travel plan (UC1)</ins>.
+2.  User requests to view friends.
+3.  Wanderlust shows the list of friends.
 
     Use case ends.
 
@@ -822,13 +837,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC17 - View accommodation in travel plan**
+**Use case: UC17 - View accommodations in travel plan**
 
 **MSS**
 
-1.  User <ins>navigates to a specific travel plan (UC1)</ins>
-2.  User requests to view accommodation
-3.  Wanderlust shows the list of accommodation
+1.  User <ins>navigates to a specific travel plan (UC1).</ins>
+2.  User requests to view accommodation.
+3.  Wanderlust shows the list of accommodation.
 
     Use case ends.
 
@@ -838,6 +853,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. Wanderlust shows an error message.
 
       Use case ends.
+
+**Use case: UC18 - Clear the travel planner**
+
+**MSS**
+
+1.  User requests to clear the travel planner.
+2.  Wanderlust clears the travel planner.
+
+    Use case ends.
 
 *{More to be added}*
 
@@ -850,6 +874,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 5.  Should be a single-user product.
 6.  Users familiar with JSON should be able to read and edit the storage file.
 7.  Should work without internet connection.
+8.  Should not crash when data is given in compatible formats.
+9.  The app should be accessible via the downloaded JAR file without any other installations needed.
+
 
 ### Glossary
 
@@ -879,14 +906,262 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   a. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   b. Run jar file in command prompt and enter `java -jar wanderlust.jar`: Expected: Shows the GUI with a set of sample data. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   a. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   b. Re-launch the app by running the jar file in the command prompt and enter `java -jar wanderlust.jar`.<br>
        Expected: The most recent window size and location is retained.
+       
+### Delete
 
+1. Deleting an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `friend` as an example.
+
+   a. Prerequisites: Show all friends using the `show -friend` command. Multiple Friends in the list.
+
+   b. Test case: `delete -friend 1`<br>
+      Expected: First Friend is deleted from the friend list. Details of the deleted friend shown in the status message.
+
+   c. Test case: `delete -friend 0`<br>
+      Expected: No Friend is deleted. Error details shown in the status message.
+
+   d. Other incorrect delete commands to try: `delete`, `delete -friend x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+      
+2. Deleting a travelplan.
+
+    a. Test case: `delete -travelplan 1`<br>
+      Expected: First travel plan is deleted from the travel plan list. Details of the deleted travel plan shown in the status message.
+      
+    c. Test case: `delete -travelplan 0`<br>
+        Expected: No travel plan is deleted. Error details shown in the status message.
+    
+    d. Other incorrect delete commands to try: `delete`, `delete -travelplan x`, `...` (where x is larger than the list size)<br>
+        Expected: Similar to previous.
+            
+
+### Add
+
+1. Adding an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `friend` as an example.
+
+   a. Prerequisites: Navigate to a valid directory using `goto -travelplan x` (where x is a valid index)
+   
+   b. Test case: `add -friend n/Tom p/E1234567X m/81234567`<br>
+      Expected: New Friend is added to the friend list. Details of the added friend shown in the status message.
+
+   c. Test case: `add n/Jerry p/E1234567M m/81234561`<br>
+      Expected: Add object type is not specified. No Friend is added. Error details shown in the status message.
+    
+   d. Test case: `add -friend n/Spark p/E1234567A m/81234568 i/2`<br>
+      Expected: Importance parameter is not valid for Friend. No Friend is added. Error details shown in the status message.
+
+   e. Other incorrect add commands to try: `add`, `add -friend n/Harry`<br>
+      Expected: Error message is thrown.
+      
+2. Adding a travel plan.
+
+    a. Test case: `add -travelplan n/Europe Trip sd/2021-01-10 ed/2021-02-10`<br>
+       Expected: New travel plan is add to the travel plan list. Details of the travel plan shown in the status message.
+      
+    b. Test case: `add n/Europe Trip sd/2021-01-10 ed/2021-02-10`<br>
+       Expected: Add object type is not specified. No travel plan is added. Error details shown in the status message.
+    
+    c. Test case: `add n/Europe Trip sd/2021-01-10 ed/2021-02-10 c/1000`<br>
+       Expected: Cost parameter is not valid for travel plan. No trave plan is added. Error details shown in the status message.
+       
+    d. Other incorrect add commands to try: `add`, `add -travelplan n/Europe`<br>
+        Expected: Similar to previous.
+            
+
+### Edit
+ - Note `x` refers to a valid index
+ 
+1. Editing an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `activity` as an example.
+    
+   a. Test case: `edit -activity x i/4`<br>
+      Expected: Edit activity at specified index `x`. Activity selected has updated importance of `4` Details of the activity is shown in the status message.
+
+   b. Test case: `edit -activity x p/E1234593P`<br>
+      Expected: Passport parameter is not valid for Activity. No Activity is edited. Error details shown in the status message.
+
+   c. Test case: `edit x n/Ice Skating`<br>
+      Expected: Edit object type is not specified. No Activity is edited. Error details shown in the status message.
+    
+   d. Other incorrect add commands to try: `edit -activity`<br>
+      Expected: Error message is thrown.
+      
+2. Editing a travel plan
+
+   a. Test case: `edit -travelplan x n/New Trip`<br>
+      Expected: Edit the travel plan at specified index `x`. Travel plan selected has updated name of `new Trip` Details of the travel plan is shown in the status message.
+
+   b. Test case: `edit -travelplan x c/123`<br>
+      Expected: Cost parameter is not valid for travel plan. No travel plan is edited. Error details shown in the status message.
+
+   c. Test case: `edit x n/Europe`<br>
+      Expected: Edit object type is not specified. No travel plan is edited. Error details shown in the status message.
+    
+   d. Other incorrect add commands to try: `edit -travelplan`<br>
+      Expected: Error message is thrown.
+
+### Show
+
+1. Showing an activity/accommodation/friend while in a travel plan directory. We will use `accommodation` as an example.
+
+   a. Prerequisites: Currently in a travel plan directory.
+   
+   b. Test case: `show -accommodation`<br>
+      Expected: Show the accommodation list in the accommodation tab.
+      
+   c. Test case: `show -accommodation 1`<br>
+      Expected: Invalid command format. Error details shown in the status message.
+      
+   d. Test case: `show -accommodation` while in wishlist. <br>
+      Expected: `show` command is not valid in wishlist. Error details shown in the status message.
+    
+   e. Other incorrect show commands to try: `show -accommodation c/20`<br>
+      Expected: Error message is thrown.
+
+### Find
+ - Note `y` refers to keyword provided by user
+ - Use the `show` command to view back the unfiltered list.
+ 
+1. Finding an activity/accommodation/friend while in a travel plan directory. We will use `activity` as an example.
+
+   a. Prerequisites: Show list of activity using `show -activity` command. Currently in a travel plan directory.
+   
+   b. Test case: `find -activity y`<br>
+      Expected: Find all activities that contain y. Activity tab will be updated and display the activites that matches the keyword(s) `y`.
+
+   c. Test case: `find -activity`<br>
+      Expected: Cannot have empty field for the keyword. Error details shown in the status message.
+
+   c. Other incorrect add commands to try: `find`, `find -travelplan`<br>
+      Expected: Invalid command format. Error message is thrown.
+
+2. Finding an activity while in a wishlist.
+
+   a. Prerequisites: Currently in the `wishlist` directory.
+   
+   b. Test case: `find -activity y`<br>
+      Expected: Find all activities that contain y. Activity tab will be updated and display the activites that matches the keyword(s) `y`.
+
+   c. Test case: `find -activity`<br>
+      Expected: Cannot have empty field for the keyword. Error details shown in the status message.
+      
+   d. Test case: `find -accommodation y`<br>
+      Expected: Accommodation is not valid in wishlist. Error details shown in the status message.
+
+   c. Other incorrect add commands to try: `find`, `find -friend y`<br>
+      Expected: Invalid command. Error message is thrown.
+
+### Goto
+
+1. Navigate to a `travelplan` or `wishlist` directory. 
+   
+   a. Test case: `goto -travelplan x` (where x is a valid index)<br>
+      Expected: Navigates to the `travelplan` at specified index `x` . Details of the `travelplan` is shown in the status message.
+
+   b. Test case: `goto -wishlist` (where x is a valid index)<br>
+      Expected: Navigates to the `wishlist`. Details of `wishlist` is shown in the status message.
+
+   c. Test case: `goto -travel plan 0`<br>
+      Expected: Index is invalid, need to start from 1. Directory remains the same. Error details shown in the status message.
+    
+   d. Test case: `goto -wishlist 1`<br>
+      Expected: Index not required for `wishlist`. Directory remains the same. Error details shown in the status message.
+
+   e. Other incorrect add commands to try: `goto`, `goto -random`<br>
+      Expected: Error message is thrown.
+
+### Sort
+
+1. Sorting an activity/accommodation/friend list while in a `travelplan` directory. We will use `accommodation` as an example.
+
+   a. Prerequisites: Currently in a `travelplan` directory.
+   
+   b. Test case: `sort -accommodation cost`<br>
+      Expected: Tab switches to `accommodation` tab and returns a sorted list of `accommodation` in the order of decreasing cost.
+      
+   c. Test case: `sort -accommodation mobile`<br>
+      Expected: `mobile` is not a valid sort keyword for `accommodation`. Error details shown in the status message.
+      
+   d. Other incorrect sort commands to try: `sort`, `sort -accommdoation 1`<br>
+      Expected: Error message is thrown.
+      
+2. Sorting an activity list in a `wishlist` directory.
+   
+   a. Prerequisites: Currently in a `wishlist` directory.
+   
+   b. Test case: `sort -activity datetime`<br>
+      Expected: `wishlist` returns a sorted list of `activities` in the order of increasing date and time.
+      
+   c. Test case: `sort -activity mobile`<br>
+      Expected: `mobile` is not a valid sort keyword for `activity`. Error details shown in the status message.
+      
+   d. Test case: `sort -accommodation name`<br>
+      Expected: `name` is not a valid sort keyword for `activity`. Error details shown in the status message.
+      
+   e. Other incorrect sort commands to try: `sort`, `sort -friend name`<br>
+      Expected: Error message is thrown.
+      
+### Copy
+
+1. Copy an activity from the `wishlist` to the specific `travelplan` directory.
+ - Note `x` refers to the index of the activity in the `wishlist`.
+ - Note `y` refers to the index of the `travelplan`.
+
+   a. Prerequisites: Currently in a `wishlist` directory.
+   
+   b. Test case: `copy x y`<br>
+      Expected: `activity` at index `x` in the `wishlist` is copied to the `travelplan` at index `y`.
+   
+   c. Test case:  `copy x y` (Where `x` is more than the size of the activity list in the `wishlist)
+      Expected: Invalid index provided. Error details shown in the status message.
+      
+   c. Test case:  `copy x y` (Where `y` is more than the total number of travel plans)
+      Expected: Invalid index provided. Error details shown in the status message.
+      
+   d. Test case: `copy x y` (When in a `travelplan` directory).
+      Expected: Invalid command call at `travelplan` directory. `Copy` can only be called in `wishlist` directory. Error details shown in the status message.
+      
+   e. Other incorrect copy commands to try: `copy`, `copy x`, `copy y`<br>
+      Expected: Error message is thrown.
+      
+### Move
+
+1. Move an activity from the `wishlist` to the specific `travelplan` directory. The activity will be deleted from the `wishlist`.
+ - Note `x` refers to the index of the activity in the `wishlist`.
+ - Note `y` refers to the index of the `travelplan`.
+
+   a. Prerequisites: Currently in a `wishlist` directory.
+   
+   b. Test case: `move x y`<br>
+      Expected: `activity` at index `x` in the `wishlist` is copied to the `travelplan` at index `y`.
+   
+   c. Test case:  `move x y` (Where `x` is more than the size of the activity list in the `wishlist)
+      Expected: Invalid index provided. Error details shown in the status message.
+      
+   c. Test case:  `move x y` (Where `y` is more than the total number of travel plans)
+      Expected: Invalid index provided. Error details shown in the status message.
+      
+   d. Test case: `move x y` (When in a `travelplan` directory).
+      Expected: Invalid command call at `travelplan` directory. `Copy` can only be called in `wishlist` directory. Error details shown in the status message.
+      
+   e. Other incorrect copy commands to try: `move`, `move x`, `move y`<br>
+      Expected: Error message is thrown.
+      
+### Clear
+
+1. Clear the entire data in wanderlust and returns an empty travel planner.
+
+    a. Test case: `clear`<br>
+       Expected: Returns an empty travel planner. Existing data is wiped.
+       
+       
+## *Appendix: Effort*
+//TODO:
