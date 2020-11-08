@@ -37,5 +37,5 @@ public class Messages {
             + "Friends cannot have the same passport number.";
     public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travel plan already exists in the travel planner. "
             + "Travel plans cannot have the same name.";
-
+    public static final String MESSAGE_STRING_EXCEED_CHARACTER_LIMIT = "%s exceeds character limit of %d characters!";
 }
