@@ -29,7 +29,7 @@ public class ParserUtil {
     public static final int INDEX_POSITION = 2;
     public static final int SORT_TYPE_POSITION = 2;
     public static final int FIND_WORD_POSITION = 2;
-    
+
     public static final int ACTIVITY_INDEX = 0;
     public static final int ACCOMMODATION_INDEX = 1;
     public static final int FRIEND_INDEX = 2;
