@@ -33,7 +33,7 @@ public class AddFriendCommand extends AddCommand {
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
-    
+
     private final Friend toAdd;
 
     /**
