@@ -7,6 +7,7 @@ import static seedu.address.logic.command.CommandTestUtil.VALID_NAME_NYC;
 import static seedu.address.logic.command.CommandTestUtil.VALID_START_DATE_EUROPE;
 import static seedu.address.logic.command.CommandTestUtil.VALID_START_DATE_NYC;
 import static seedu.address.testutil.typicals.TypicalAccommodations.getTypicalAccommodationList;
+import static seedu.address.testutil.typicals.TypicalActivities.ARCHERY;
 import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivities1;
 import static seedu.address.testutil.typicals.TypicalActivities.getTypicalActivityList;
 import static seedu.address.testutil.typicals.TypicalFriends.getTypicalFriendList;
@@ -38,6 +39,9 @@ public class TypicalTravelPlans {
             .withAccommodationList(getTypicalAccommodationList(1))
             .withActivityList(getTypicalActivityList(1))
             .withFriendList(getTypicalFriendList(1)).build();
+    public static final TravelPlan FEB_TRIP = new TravelPlanBuilder().withName("Trip in February")
+            .withStartDate("2021-02-01").withEndDate("2020-02-20")
+            .build();
 
     // Manually added - TravelPlans' details found in {@code CommandTestUtil}
     public static final TravelPlan EUROPE = new TravelPlanBuilder().withName(VALID_NAME_EUROPE)
@@ -60,6 +64,13 @@ public class TypicalTravelPlans {
         for (TravelPlan travelPlan : getTypicalTravelPlans()) {
             travelPlanner.addTravelPlan(new TravelPlanBuilder(travelPlan).build());
         }
+        return travelPlanner;
+    }
+
+    public static TravelPlanner getInvalidDateTestTravelPlanner() {
+        TravelPlanner travelPlanner = new TravelPlanner();
+        travelPlanner.addActivity(ARCHERY);
+        travelPlanner.addTravelPlan(FEB_TRIP);
         return travelPlanner;
     }
 

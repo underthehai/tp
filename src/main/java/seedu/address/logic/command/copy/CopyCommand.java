@@ -1,6 +1,7 @@
 package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
 
 import java.util.List;
@@ -80,7 +81,7 @@ public class CopyCommand extends Command {
                     : "Activity was not copied";
 
             return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS,
-                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()), ACTIVITY_INDEX);
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
