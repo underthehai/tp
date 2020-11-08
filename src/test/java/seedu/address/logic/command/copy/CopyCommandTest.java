@@ -2,6 +2,7 @@ package seedu.address.logic.command.copy;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.command.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
@@ -54,7 +55,7 @@ public class CopyCommandTest {
     @Test
     public void execute_duplicateActivity_success() {
         CopyCommand copyCommand = new CopyCommand(INDEX_FIRST, INDEX_FIRST);
-        assertCommandFailure(copyCommand, model, Activity.MESSAGE_DUPLICATE_ACTIVITY);
+        assertCommandFailure(copyCommand, model, MESSAGE_DUPLICATE_ACTIVITY);
     }
 
     @Test

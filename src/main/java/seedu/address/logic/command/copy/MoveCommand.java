@@ -1,8 +1,8 @@
 package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
 
