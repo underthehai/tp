@@ -166,7 +166,7 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ----------- | -------------
-`n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
+`n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
 `l/LOCATION` | Location/ Address of the accommodation | <ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>
 `c/COST` | Cost of the accommodation | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
 `sd/START_DATE` | Start date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
