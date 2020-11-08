@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
@@ -14,6 +13,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
+import static seedu.address.model.commons.WanderlustDate.isValidStartAndEndDate;
 
 import java.util.stream.Stream;
 
@@ -47,26 +47,31 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        String[] keywords = args.split(" ");
-        String addType = removeDash(keywords[OBJECT_TYPE_POSITION], AddCommand.MESSAGE_USAGE);
+        try {
+            String[] keywords = args.split(" ");
 
-        switch (addType) {
+            String addType = removeDash(keywords[OBJECT_TYPE_POSITION], AddCommand.MESSAGE_USAGE);
 
-        case AddActivityCommand.COMMAND_WORD:
-            return parseActivity(args);
+            switch (addType) {
 
-        case AddAccommodationCommand.COMMAND_WORD:
-            return parseAccommodation(args);
+            case AddActivityCommand.COMMAND_WORD:
+                return parseActivity(args);
 
-        case AddFriendCommand.COMMAND_WORD:
-            return parseFriend(args);
+            case AddAccommodationCommand.COMMAND_WORD:
+                return parseAccommodation(args);
 
-        case AddTravelPlanCommand.COMMAND_WORD:
-            return parseTravelPlan(args);
+            case AddFriendCommand.COMMAND_WORD:
+                return parseFriend(args);
 
-        default:
+            case AddTravelPlanCommand.COMMAND_WORD:
+                return parseTravelPlan(args);
+
+            default:
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
         }
     }
 
@@ -117,10 +122,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
 
-        if (!Accommodation.isValidStartAndEndDate(startDate, endDate)) {
+        if (!isValidStartAndEndDate(startDate, endDate)) {
             throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
         }
-
 
         Accommodation accommodation = new Accommodation(name, startDate, endDate, cost, location);
 
@@ -170,14 +174,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         WanderlustDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START).get());
         WanderlustDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END).get());
 
-        if (!TravelPlan.isValidStartAndEndDate(startDate, endDate)) {
+        if (!isValidStartAndEndDate(startDate, endDate)) {
             throw new ParseException(MESSAGE_INVALID_STARTANDENDDATE);
         }
-
-        if (!TravelPlan.isStartDateAfterToday(startDate)) {
-            throw new ParseException(MESSAGE_INVALID_START_DATE);
-        }
-
 
         TravelPlan travelPlan = new TravelPlan(name, startDate, endDate);
 

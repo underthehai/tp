@@ -53,7 +53,7 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         if (!model.isDirectoryTypeTravelPlan() && this.travelPlanObjectType != 0) { //wishlist
-            throw new CommandException(Messages.WRONG_DIRECTORY);
+            throw new CommandException(Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST);
         }
 
         String message = "";
