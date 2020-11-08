@@ -2,6 +2,7 @@ package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
 
@@ -23,13 +24,13 @@ public class MoveCommand extends Command {
 
 
     public static final String MESSAGE_USAGE = "Move an activity identified by its index number "
-            + "used in the wish list to a travel plan "
+            + "used in the wishlist to a travel plan "
             + "identified by its index number in the travel planner using the following format:\n"
             + "move ACTIVITY_INDEX TRAVELPLAN_INDEX\n";
 
     public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity %1$s to travel plan %2$s";
 
-    public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before moving activities";
+    public static final String MESSAGE_NOT_WISHLIST = "Please goto wishlist before moving activities";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "specified travel plan's start date and end date.";
 
@@ -86,7 +87,7 @@ public class MoveCommand extends Command {
             assert !model.hasActivity(activityToMove) : "Activity was not deleted after moving";
 
             return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS,
-                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()), ACTIVITY_INDEX);
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
@@ -95,7 +96,7 @@ public class MoveCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof CopyCommand // instanceof handles nulls
+                || (other instanceof MoveCommand // instanceof handles nulls
                 && activityIndex.equals(((MoveCommand) other).activityIndex)
                 && travelPlanIndex.equals(((MoveCommand) other).travelPlanIndex)); // state check
     }

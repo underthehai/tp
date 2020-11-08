@@ -1,7 +1,9 @@
 package seedu.address.model.commons;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_STRING_EXCEED_CHARACTER_LIMIT;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.StringUtil.isWithinCharacterLimit;
 
 /**
  * Represents activity's or accommodation's or friend's or travel plan's name in Wanderlust.
@@ -9,8 +11,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Name {
 
+    public static final int CHARACTER_LIMIT = 80;
+
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.";
+    public static final String MESSAGE_NAME_EXCEEDS_CHARACTER_LIMIT =
+            String.format(MESSAGE_STRING_EXCEED_CHARACTER_LIMIT, "Name", CHARACTER_LIMIT);
 
     /*
      * The first character of the Name must not be a whitespace,
@@ -27,6 +33,7 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
+        checkArgument(isWithinCharacterLimit(name, CHARACTER_LIMIT), MESSAGE_NAME_EXCEEDS_CHARACTER_LIMIT);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         this.value = name;
     }
