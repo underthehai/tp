@@ -25,7 +25,7 @@ import seedu.address.logic.command.edit.EditTravelPlanCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new EditCommand object
+ * Parses input arguments and creates a new EditCommand object.
  */
 public class EditCommandParser implements Parser<EditCommand> {
 
@@ -39,24 +39,25 @@ public class EditCommandParser implements Parser<EditCommand> {
      */
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
+
+        String[] keywords = args.split(" ");
+
+        if (keywords.length < EditCommand.MINIMUM_LENGTH) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
+
+        String editType = removeDash(keywords[OBJECT_TYPE_POSITION], EditCommand.MESSAGE_USAGE);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                 PREFIX_LOCATION, PREFIX_DATETIME, PREFIX_PASSPORT, PREFIX_MOBILE, PREFIX_START, PREFIX_END);
         EditDescriptor checker = EditDescriptor.buildFromSource(argMultimap);
 
-        String[] keywords = args.split(" ");
-        String editType = removeDash(keywords[OBJECT_TYPE_POSITION], EditCommand.MESSAGE_USAGE);
-
         if (checker.wrongFieldEdited(editType)) {
-            throw new ParseException(EditCommand.INVALID_FIELDS);
-        }
-
-        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.COMMAND_TOKEN])
-                && !keywords[EditCommand.COMMAND_TOKEN].equals("0")) {
-            throw new ParseException(EditCommand.SPECIFY_INDEX);
+            throw new ParseException(EditCommand.INVALID_PARAMETERS);
         }
 
         try {
             switch (editType) {
+
 
             case EditActivityCommand.COMMAND_WORD:
                 return parseActivity(args);
@@ -75,18 +76,23 @@ public class EditCommandParser implements Parser<EditCommand> {
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.SPECIFY_INDEX));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
     }
 
     /**
-     * Parses input that specified an Activity type
+     * Parses input that specified an Activity type.
      */
     EditActivityCommand parseActivity(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
 
-        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
+                && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
+            throw new ParseException(EditActivityCommand.MESSAGE_USAGE);
+        }
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
+
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_IMPORTANCE, PREFIX_COST,
                 PREFIX_LOCATION, PREFIX_DATETIME);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -96,12 +102,16 @@ public class EditCommandParser implements Parser<EditCommand> {
     }
 
     /**
-     * Parses input that specified an Accommodation type
+     * Parses input that specified an Accommodation type.
      */
     EditAccommodationCommand parseAccommodation(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
+                && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
+            throw new ParseException(EditAccommodationCommand.MESSAGE_USAGE);
+        }
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
                 PREFIX_START, PREFIX_END);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
@@ -111,12 +121,16 @@ public class EditCommandParser implements Parser<EditCommand> {
     }
 
     /**
-     * Parses input that specified a Friend type
+     * Parses input that specified a Friend type.
      */
     EditFriendCommand parseFriend(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
+                && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
+            throw new ParseException(EditFriendCommand.MESSAGE_USAGE);
+        }
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
                 PREFIX_MOBILE);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argumentMultimap);
@@ -126,12 +140,16 @@ public class EditCommandParser implements Parser<EditCommand> {
     }
 
     /**
-     * Parses input that specified a TravelPlan type
+     * Parses input that specified a TravelPlan type.
      */
     EditTravelPlanCommand parseTravelPlan(String args) throws ParseException {
 
         String[] keywords = args.split(" ");
-        Index index = ParserUtil.parseIndex(keywords[EditCommand.COMMAND_TOKEN]);
+        if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
+                && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
+            throw new ParseException(EditTravelPlanCommand.MESSAGE_USAGE);
+        }
+        Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
         EditDescriptor editDescriptor = EditDescriptor.buildFromSource(argMultimap);
 

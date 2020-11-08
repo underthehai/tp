@@ -1,9 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.command.edit.EditCommand.INVALID_FIELDS;
+import static seedu.address.logic.command.edit.EditCommand.INVALID_PARAMETERS;
 import static seedu.address.logic.command.edit.EditCommand.MESSAGE_USAGE;
-import static seedu.address.logic.command.edit.EditCommand.SPECIFY_INDEX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertEditParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertEditParseSuccess;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST;
@@ -70,7 +69,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingIndex_failure() {
         assertEditParseFailure(parser, "edit -activity i/2",
-                SPECIFY_INDEX);
+                EditActivityCommand.MESSAGE_USAGE);
     }
 
     /** Edit type unspecified*/
@@ -83,7 +82,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_incorrectFieldSpecified_failure() {
         assertEditParseFailure(parser, "edit -friend 1 i/2",
-                INVALID_FIELDS);
+                INVALID_PARAMETERS);
     }
     @Test
     public void parse_invalidFormat_failure() {
