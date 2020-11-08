@@ -2,13 +2,11 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_MISSING_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_REDUNDANT_INDEX;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.GoToCommand;
-import seedu.address.logic.command.delete.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
