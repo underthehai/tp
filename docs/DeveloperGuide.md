@@ -1361,7 +1361,7 @@ enhanced to handle the complex `Model` of _wanderlust_.
 There was significant effort placed in creating the logic for _wanderlust. The `Logic` of _wanderlust is responsible for 
 at least 3x the `Logic` of AB3. It has to account for the logic of `travelplan`, `wishlist`, `activity`, `accommodation` and `friend` whilst 
 AB3 handles `Person`. Furthermore, additional logic was implemented to account for the navigation of directories and travel plans.
-For example, `ObservableDirectory` class was created to keep track of what `travelplan` the user is currently on so that the `Ui` will be 
+For example, `ObservableDirectory` class was created to keep track of what directory the user is currently on so that the `Ui` will be 
 able to display the correct `travelplan` or `wishlist`.
 
 Additional efforts were also put into validating user input and ensuring that _wanderlust_'s parser can handle unexpected input smoothly.
@@ -1376,16 +1376,16 @@ Furthermore, complex attributes such as `wanderlustdate` and `wanderlustdatetime
 Significant time and effort were put into discussing and planning the best way to represent each new attribute in the JSON file.
 
 ### Ui
-The `Ui` component took us the most amount of time. We have to redesign the entire AB3 Ui to fit _wanderlust_ desigin. 
+The `Ui` component took us the most amount of time. We have to redesign the entire AB3 Ui to fit _wanderlust_ design. 
 Alot of effort was placed in planning the structure of the `Ui` so that our user interface will be user-friendly and appealing.
 Furthermore, additional logic of navigating between travel plans and switching between the activity/accommodation/friend tabs was implemented 
 so that users can use the application smoothly. We also spent a considerable amount of time in studying javafxml so that we are able to implement an 
-entirely new UI with icons and navigation options, making it a more intractive experience for the users as compared to the single page view of AB3's Ui.
+entirely new UI with icons and navigation options, making it a more interactive experience for the users as compared to the single page view of AB3's Ui.
 
 ### Overall
 All in all, this project was a challenging one for the _wanderlust_ team. We started off with many ideas and features that were seemed
 very appealing. However, we eventually decided that they were not suitable due to time constraints. In the first iteration, time and effort were placed
 in brainstorming and coming up with a concrete and feasible product. Throughout the weeks, we made consistent efforts to study the source code, modify existing features and
-create new features for _wanderlust_. There were high standards placed amongst us in ensuring that all of us put in time and effort in building _wanderlust).
+create new features for _wanderlust_. There were high standards placed amongst us in ensuring that all of us put in time and effort in building _wanderlust_.
 Rigorous testing, trial and error were fundamental in the process so that we can deliver _wanderlust_ within the timeline. Whilst _wanderlust_ may not be
-the perfect travel planner application, this journey was a memorable one filled with teamwork and perseverance, and we are all pround of the end product.
+the perfect travel planner application, this journey was a memorable one filled with teamwork and perseverance, and we are all proud of the end product.
