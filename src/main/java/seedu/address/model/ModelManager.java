@@ -143,13 +143,14 @@ public class ModelManager implements Model {
     public void addTravelPlan(TravelPlan travelPlan) {
         travelPlanner.addTravelPlan(travelPlan);
         updateFilteredTravelPlanList(PREDICATE_SHOW_ALL_TRAVEL_PLAN);
+        setDirectory(filteredTravelPlans.indexOf(travelPlan));
     }
 
     @Override
     public void setTravelPlan(TravelPlan target, TravelPlan editedTravelPlan) {
         requireAllNonNull(target, editedTravelPlan);
         travelPlanner.setTravelPlan(target, editedTravelPlan);
-        setDirectory(directoryIndex);
+        setDirectory(filteredTravelPlans.indexOf(editedTravelPlan));
     }
 
     //=========== Wishlist =============================================================
@@ -187,8 +188,13 @@ public class ModelManager implements Model {
         observableDirectory.setObservableDirectory(directory);
     }
 
-    //=========== Directory =============================================================
+    @Override
+    public void copyActivity(Activity activity, Index travelPlanIndex) {
+        Activity copiedActivity = new Activity(activity);
+        addActivity(copiedActivity, travelPlanIndex);
+    }
 
+    //=========== Directory =============================================================
 
     @Override
     public void setDirectory(int index) {
@@ -428,16 +434,7 @@ public class ModelManager implements Model {
                 || activityDateTime.isAfter(travelPlanEndDate)) {
             return false;
         }
-
         return true;
-    }
-
-
-
-    @Override
-    public void copyActivity(Activity activity, Index travelPlanIndex) {
-        Activity copiedActivity = new Activity(activity);
-        addActivity(copiedActivity, travelPlanIndex);
     }
 
     @Override
