@@ -25,7 +25,7 @@ import seedu.address.model.travelplan.TravelPlan;
 
 /**
  * Edits an existing TravelPlan in Wanderlust.
- * A travelplan contains the field name, start date and end date
+ * A travelplan contains the parameters: name, start date and end date
  */
 public class EditTravelPlanCommand extends EditCommand {
 
@@ -88,12 +88,12 @@ public class EditTravelPlanCommand extends EditCommand {
     /**
      * Creates and returns a {@code TravelPlan} with the details of {@code travelPlanToEdit}
      *
-     * @param travelPlanToEdit         contains the old fields
+     * @param travelPlanToEdit contains the old fields
      * @param editTravelPlanDescriptor contains updated fields
      * @return TravelPlan to be updated in the travelplan list
      */
-    private static TravelPlan createEditedTravelPlan(
-            TravelPlan travelPlanToEdit, EditDescriptor editTravelPlanDescriptor) throws CommandException {
+    private static TravelPlan createEditedTravelPlan(TravelPlan travelPlanToEdit,
+                                                     EditDescriptor editTravelPlanDescriptor) throws CommandException {
         assert travelPlanToEdit != null;
 
         Name updatedName = editTravelPlanDescriptor.getName().orElse(travelPlanToEdit.getName());
@@ -113,7 +113,6 @@ public class EditTravelPlanCommand extends EditCommand {
             throw new CommandException(MESSAGE_INVALID_START_DATE);
         }
 
-        //obtain data list from original travelplan
         ActivityList activities = travelPlanToEdit.getActivityList();
         AccommodationList accommodations = travelPlanToEdit.getAccommodationList();
         FriendList friends = travelPlanToEdit.getFriendList();

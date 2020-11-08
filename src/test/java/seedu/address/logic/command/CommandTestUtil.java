@@ -20,16 +20,16 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.command.edit.EditDescriptor;
-import seedu.address.logic.command.edit.builder.EditAccommodationDescriptorBuilder;
-import seedu.address.logic.command.edit.builder.EditActivityDescriptorBuilder;
-import seedu.address.logic.command.edit.builder.EditFriendDescriptorBuilder;
-import seedu.address.logic.command.edit.builder.EditTravelPlanDescriptorBuilder;
 import seedu.address.logic.command.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.TravelPlanner;
 import seedu.address.model.commons.NameContainsKeywordsPredicate;
 import seedu.address.model.commons.TravelPlanObject;
 import seedu.address.model.travelplan.TravelPlan;
+import seedu.address.testutil.EditAccommodationDescriptorBuilder;
+import seedu.address.testutil.EditActivityDescriptorBuilder;
+import seedu.address.testutil.EditFriendDescriptorBuilder;
+import seedu.address.testutil.EditTravelPlanDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -290,6 +290,16 @@ public class CommandTestUtil {
         }
 
         assertEquals(1, filteredList.size());
+    }
+
+    /**
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
+     * Integer index @code{index} indicates the type of Travel Plan Object to find in the model
+     */
+    public static void assertFindCommandSuccess(Command command, int index, Model actualModel, String expectedMessage,
+                                                Model expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, index);
+        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 
 }

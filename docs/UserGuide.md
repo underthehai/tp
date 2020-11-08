@@ -178,12 +178,12 @@ Name of Parameter | Description | Requirement
 Name of Parameter | Description | Requirement
 ------------ | ------------- | -------------
 `n/NAME` | Name of the friend. | Name should only contain alphanumeric characters, punctuations and spaces, and it should not be blank.
-`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Mobile numbers should only contain numbers, and it should be at least 8 digits long
+`m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | Mobile numbers should only contain numbers starting with 8 or 9 (SG mobile number) and it should only be 8 digits long.
 `p/PASSPORT_NUMBER` | Passport number of the friend passport | Passport numbers should be in the form [E] + 7 numbers + [A-Z]
 
 **Notes about Friend:**<br>
 
-* Passport is case-sensitive
+* Passport is case-sensitive and regarded as the identity
 
 #### Travel Plan Parameters
 
@@ -282,7 +282,7 @@ Activities can have the same datetime within the travelPlan or wishlist in _Wand
 
 Format: `add -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
-Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2020-06-09 10:10`
+Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2021-06-09 10:10`
 
 
 ### 3. Adding an Accommodation (L)
@@ -291,7 +291,7 @@ This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN
 
 Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
 
-Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2020-10-11 ed/2020-10-15`
+Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2021-10-11 ed/2021-10-15`
 
 ### 4. Adding a Friend (L)
 Creates a friend object that contains basic information about the user and
