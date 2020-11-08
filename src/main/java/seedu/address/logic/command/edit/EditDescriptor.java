@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
 import java.util.Optional;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ParserUtil;
@@ -142,7 +143,8 @@ public class EditDescriptor {
         }
 
         if (!editItemDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditCommand.MESSAGE_NOT_EDITED));
         }
 
         return editItemDescriptor;

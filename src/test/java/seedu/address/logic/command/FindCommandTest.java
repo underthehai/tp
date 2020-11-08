@@ -63,7 +63,7 @@ public class FindCommandTest {
 
         FindCommand findFriendCommand = new FindCommand(predicate,
                 ParserUtil.FRIEND_INDEX);
-        String expectedMessage = Messages.WRONG_DIRECTORY;
+        String expectedMessage = Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST;
 
         assertCommandFailure(findFriendCommand, model, expectedMessage);
     }
@@ -157,7 +157,7 @@ public class FindCommandTest {
 
         FindCommand findAccommodationCommand = new FindCommand(predicate,
                 ParserUtil.ACCOMMODATION_INDEX);
-        String expectedMessage = Messages.WRONG_DIRECTORY;
+        String expectedMessage = Messages.MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST;
 
         assertCommandFailure(findAccommodationCommand, model, expectedMessage);
     }
