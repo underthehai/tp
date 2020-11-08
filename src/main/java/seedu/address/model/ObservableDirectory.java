@@ -75,7 +75,7 @@ public class ObservableDirectory {
     }
 
     /**
-     * Sets the observable directory to the observe the specified directory.
+     * Sets the observable directory to observe the specified directory.
      */
     public void setObservableDirectory(Directory directory) {
         dir.setValue(directory);
