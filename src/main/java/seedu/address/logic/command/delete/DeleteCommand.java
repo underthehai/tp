@@ -14,9 +14,9 @@ public abstract class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE =
-            "Delete a travel plan by its index in the displayed travel plan list\n"
-            + "or an activity/accommodation/friend by its index in its displayed list\n"
-            + "using the following as an example:\n"
+            "Delete a travel plan by its index in the displayed travel plan list "
+            + "or an activity/accommodation/friend by its index in its displayed list "
+            + "using the following as an example.\n"
             + DeleteActivityCommand.MESSAGE_EXAMPLE;
 
     public static final int COMMAND_TOKENS = 3;
