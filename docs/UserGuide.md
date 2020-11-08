@@ -117,7 +117,7 @@ Command | Parameters | Description
 `goto -DIRECTORY` | `DIRECTORY` wishlist/ travelPlan with `INDEX` | Navigate to the specific travel plan/ wishlist
 `find -OBJECT KEYWORD` | `OBJECT` activity/ accommodation/ friend <br/>`KEYWORD` keywords to search for  | Finds the given object type whose names contain any of the given keywords
 `show -OBJECT` | `OBJECT` activity/ accommodation/ friend | Navigate to the specific travel plan object tab
-`sort -OBJECT KEYWORD` |`OBJECT` activity/ accommodation/ friend <br/>`TYPE` cost/ name/ importance/ date | Sorts the specific travel plan object with respect to the given type
+`sort -OBJECT TYPE` |`OBJECT` activity/ accommodation/ friend <br/>`TYPE` cost/ name/ importance/ date/ passport/ mobile | Sorts the specific travel plan object with respect to the given type
 `copy ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX` specific number of target activity <br/>`TRAVELPLAN_INDEX` specific number of target TravelPlan | Copy the specified activity from wishlist to the travelPlan
 `move ACTIVITY_INDEX TRAVELPLAN_INDEX` | `ACTIVITY_INDEX` specific number of target activity <br/>`TRAVELPLAN_INDEX` specific number of target TravelPlan | Move the specified activity from wishlist to the travelPlan
 `clear` | not applicable | Clear all data
@@ -155,7 +155,7 @@ Name of Parameter | Description | Format
 `n/NAME` | Name of the activity. | <ul><li>Should only contain alphanumeric characters, punctuations and spaces</li><li>Should not be blank</li></ul>
 `l/LOCATION` | Location/ Address of the activity | <ul><li>Can take any values</li><li>Should not be blank</li></ul>
 `i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity | <ul><li>Should only contain numbers</li><li>Should range from 1 - 5 <br/>(most important = 5, least important = 1)</li></ul>
-`c/COST` | Cost of the activity | <ul><li>Should only contain numbers</li><li>Should be a positive integer</li></ul>
+`c/COST` | Cost of the activity | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
 `d/DATE_AND_TIME` | Date and Time for the activity | <ul><li>Format is `YYYY-MM-DD HH:MM` <br/>(24h clock)</li></ul>
 
 **Notes about Activity:**<br>
@@ -168,7 +168,7 @@ Name of Parameter | Description | Format
 ------------ | ----------- | -------------
 `n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, punctuations and spaces</li><li>Should not be blank</li></ul>
 `l/LOCATION` | Location/ Address of the accommodation | <ul><li>Can take any values</li><li>Should not be blank</li></ul>
-`c/COST` | Cost of the accommodation | <ul><li>Should only contain numbers</li><li>Should be a positive integer</li></ul>
+`c/COST` | Cost of the accommodation | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
 `sd/START_DATE` | Start date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
 `ed/END_DATE` | End date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
 
@@ -199,7 +199,7 @@ Name of Parameters | Description | Format
 
 **Notes about Travel Plan:**<br>
 
-* Start date of Travel Plan must be either current date or any date after current date.
+* Start date of Travel Plan can be any valid date as long as start date is before end date.
 
 --------------------------------------------------------------------------------------------------------------------
 
