@@ -88,7 +88,7 @@ public class Wishlist extends Directory {
     }
 
     @Override
-    public void addTpoObject(TravelPlanObject travelPlanObject) {
+    public void addTpo(TravelPlanObject travelPlanObject) {
         assert travelPlanObject instanceof Activity;
         activities.add((Activity) travelPlanObject);
     }

@@ -80,7 +80,7 @@ public class WishlistTest {
 
     @Test
     public void contains_activityInWishlist_returnsTrue() {
-        wishlist.addTpoObject(ARCHERY);
+        wishlist.addTpo(ARCHERY);
         assertTrue(wishlist.contains(ARCHERY));
     }
 

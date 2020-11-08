@@ -58,7 +58,7 @@ public abstract class Directory {
      * Adds a travel plan object to its corresponding travel plan object list in the current directory.
      * The travel plan object must not already exist in its corresponding list.
      */
-    public abstract void addTpoObject(TravelPlanObject travelPlanObject);
+    public abstract void addTpo(TravelPlanObject travelPlanObject);
 
     /**
      * Replaces the given travel plan object {@code target} in the corresponding travel plan object list in the current
