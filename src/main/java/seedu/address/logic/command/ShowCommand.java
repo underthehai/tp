@@ -22,11 +22,11 @@ public class ShowCommand extends Command {
 
     public static final int COMMAND_TOKENS = 2;
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Shows the respective list of travel plan object type identified by the keyword.\n"
-            + "Parameters: travelPlanObjectType\n"
-            + "Valid keywords: '-activity', '-accommodation', '-friend'\n"
-            + "Example: " + COMMAND_WORD + " -activity";
+    public static final String MESSAGE_USAGE = "Show the list of activities/accommodations/friends in the travel plan "
+            + "in the current directory using the respective commands:\n"
+            + COMMAND_WORD + COMMAND_SEPARATOR + Activity.TPO_WORD + "\n"
+            + COMMAND_WORD + COMMAND_SEPARATOR + Accommodation.TPO_WORD + "\n"
+            + COMMAND_WORD + COMMAND_SEPARATOR + Friend.TPO_WORD + "\n";
 
     public static final String MESSAGE_SHOW_SUCCESS = "show: %1$s";
 
