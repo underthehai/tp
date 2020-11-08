@@ -187,7 +187,7 @@ Name of Parameter | Description | Format
 
 **Notes about Friend:**<br>
 
-* Passport is case-sensitive
+* Passport is case-sensitive and regarded as the identity
 
 #### Travel Plan Parameters
 
@@ -289,8 +289,7 @@ Activities can have the same datetime within the travelPlan or wishlist in _Wand
 
 Format: `add -activity n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/YYYY-MM-DD HH:mm`
 
-Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2020-12-09 10:10`
-
+Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2021-06-09 10:10`
 
 ### 3. Adding an Accommodation (L)
 Creates an accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
@@ -299,7 +298,7 @@ This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN
 
 Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
 
-Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2020-12-11 ed/2020-12-15`
+Example: `add -accommodation n/St Regis Hotel l/Orchard Road c/250 sd/2021-10-11 ed/2021-10-15`
 
 ### 4. Adding a Friend (L)
 Creates a friend object that contains basic information about the user and
