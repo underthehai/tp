@@ -82,6 +82,10 @@ public class UniqueFriendList implements Iterable<Friend> {
         }
     }
 
+    /**
+     * Replaces the content of this list with another UniqueFriendList {@code replacement}
+     * @param replacement must not be null.
+     */
     public void setFriends(UniqueFriendList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

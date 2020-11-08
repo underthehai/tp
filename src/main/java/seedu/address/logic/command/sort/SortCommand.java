@@ -16,6 +16,7 @@ public abstract class SortCommand extends Command {
     public static final String KEYWORD_PASSPORT = "passport";
     public static final String KEYWORD_MOBILE = "mobile";
 
+    public static final int COMMAND_TOKENS = 3;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sort the respective object type list based on the keyword input.\n"
