@@ -12,20 +12,20 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 - Code contributed: [RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=underthehai)
 
-* **Major Enhancements**: 
+* **Major Enhancements**:
     - Modified **Edit Feature** from AB3 to Wanderlust
-        - What it does: 
-        - Justifications: 
+        - What it does:
+        - Justifications:
         - Highlights: example
             - example
         - Relevant pull requests: [\#96](), [\#101]()
-        
+
     - Modified **Find Feature** from AB3 to Wanderlust
         - What it does:
         - Justifications:
-        - Highlights: 
+        - Highlights:
         - Relevant pull requests: [\#137]()
-        
+
 * **Minor Enhancements**:
     - Implemented Friend in model [\#54]()
 
@@ -40,7 +40,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 * **Enhancements to existing features**:
   * Updated the Edit and Find features [\#96](), [\#137]()
-  
+
 * **Documentation**:
   * User Guide:
     * Added documentation for quick start and tutorial guide section [\#244]()
@@ -50,5 +50,5 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX.
     * Add UML diagram [\#145]()
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): 
+  * PRs reviewed (with non-trivial review comments):
   * Reported bugs and suggestions for other teams in the class [Reported 11 Bugs in PED](https://github.com/underthehai/ped/issues)
