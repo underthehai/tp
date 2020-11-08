@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_MISSING_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_REDUNDANT_INDEX;
 import static seedu.address.logic.parser.ParserUtil.OBJECT_TYPE_POSITION;
 import static seedu.address.logic.parser.ParserUtil.removeDash;
 
@@ -28,15 +27,18 @@ public class GoToCommandParser implements Parser<GoToCommand> {
 
             switch (directoryType) {
             case GoToCommand.TRAVEL_PLAN:
-                if (keywords.length < 3) {
+                if (keywords.length < GoToCommand.COMMAND_TOKENS_TRAVELPLAN) {
                     throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_MISSING_INDEX));
+                }
+                if (keywords.length != GoToCommand.COMMAND_TOKENS_TRAVELPLAN) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
                 }
                 Index index = ParserUtil.parseIndex(keywords[ParserUtil.INDEX_POSITION]);
                 return new GoToCommand(index, true);
 
             case GoToCommand.WISHLIST:
-                if (keywords.length > 2) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_REDUNDANT_INDEX));
+                if (keywords.length != GoToCommand.COMMAND_TOKENS_WISHLIST) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
                 }
                 return new GoToCommand(false);
 

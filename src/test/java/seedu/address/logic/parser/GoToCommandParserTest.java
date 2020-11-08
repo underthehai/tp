@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_MISSING_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_REDUNDANT_INDEX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseGoToFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseGoToSuccess;
 import static seedu.address.testutil.typicals.TypicalIndexes.INDEX_FIRST_TRAVELPLAN;
@@ -34,7 +33,7 @@ public class GoToCommandParserTest {
     @Test
     public void parse_redundantWishlistArgs_throwsParseException() {
         assertParseGoToFailure(parser, " -wishlist 1",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_REDUNDANT_INDEX));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoToCommand.MESSAGE_USAGE));
     }
 
     @Test
