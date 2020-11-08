@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.command.edit.EditCommand.INVALID_FIELDS;
+import static seedu.address.logic.command.edit.EditCommand.INVALID_PARAMETERS;
 import static seedu.address.logic.command.edit.EditCommand.MESSAGE_USAGE;
 import static seedu.address.logic.command.edit.EditCommand.SPECIFY_INDEX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertEditParseFailure;
@@ -83,7 +83,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_incorrectFieldSpecified_failure() {
         assertEditParseFailure(parser, "edit -friend 1 i/2",
-                INVALID_FIELDS);
+                INVALID_PARAMETERS);
     }
     @Test
     public void parse_invalidFormat_failure() {
