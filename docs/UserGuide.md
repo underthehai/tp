@@ -76,13 +76,13 @@ It is optimized for CLI users so that destinations and details can be added fast
 
 1. Ensure you have Java `11` or above installed in your computer.
 
-2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases)
+2. Download the latest `Wanderlust.jar` [here](https://github.com/AY2021S1-CS2103-T14-3/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for Wanderlust
+3. Copy the file to the folder you want to use as the _home folder_ for Wanderlust.
 
-4. Run java -jar wanderlust.jar in the command prompt to start the application
+4. Run `java -jar wanderlust.jar` in the command prompt to start the application.
 
-5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary)
+5. Type the command in the command box and press Enter to execute. You can find the list of commands available in the [Command Summary](#command-summary).
 
 ![Ui](images/Ui.png)
 --------------------------------------------------------------------------------------------------------------------
@@ -152,8 +152,7 @@ Declaration of the parameters strictly follows the format given.
 
 Name of Parameter | Description | Format
 ------------ | ------------- | -------------
-
-`n/NAME` | Name of the activity. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
+`n/NAME` | Name of the activity. | {::nomarkdown}<ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>{:/}
 `l/LOCATION` | Location/ Address of the activity | {::nomarkdown}<ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>{:/}
 `i/LEVEL_OF_IMPORTANCE` | The priority assigned to the activity | <ul><li>Should only contain numbers</li><li>Should range from 1 - 5 <br/>(most important = 5, least important = 1)</li></ul>
 `c/COST` | Cost of the activity | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
@@ -167,7 +166,7 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ----------- | -------------
-`n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
+`n/NAME` | Name of the accommodation | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
 `l/LOCATION` | Location/ Address of the accommodation | <ul><li>Can take any values</li><li>Should not be blank</li><li>Maximum size of 200 characters</li></ul>
 `c/COST` | Cost of the accommodation | <ul><li>Should only contain positive integer not exceeding MAX_INT</li></ul>
 `sd/START_DATE` | Start date of accommodation | <ul><li>Format is `YYYY-MM-DD`</li></ul>
@@ -182,7 +181,7 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ------------- | -------------
-`n/NAME` | Name of the friend. | <ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
+`n/NAME` | Name of the friend. | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
 `m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | <ul><li>Should only contain numbers starting with 8 or 9 <br/>(SG mobile number)</li><li>Should be 8 digits long</li></ul>
 `p/PASSPORT_NUMBER` | Passport number of the friend passport | <ul><li>Should be in the form `[E] + 7 numbers + [A-Z]`</li></ul>
 
@@ -257,7 +256,6 @@ Format: `goto -travelplan INDEX`
 
 Example: `goto -travelplan 1`
 
-![](images/WanderlustScreenshots/GotoTravelPlan.png)
 
 ### 2. Goto Wishlist (G)
 Navigates the UI to the wishlist.
@@ -265,7 +263,6 @@ Navigates the UI to the wishlist.
 Format: `goto -wishlist`
 
 Example: `goto -wishlist`
-![](images/WanderlustScreenshots/GotoWishlist.png)
 
 
 ## Add
@@ -278,8 +275,6 @@ Format of date is in YYYY-MM-DD.
 Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
 Example: `add -travelplan n/France sd/2021-09-15 ed/2021-09-30`
-
-![](images/WanderlustScreenshots/AddFranceTravelplan.png)
 
 
 ### 2. Adding an Activity (L)
@@ -294,7 +289,7 @@ Example: `add -activity n/Universal Studios Singapore i/5 l/Sentosa c/88 d/2021-
 ### 3. Adding an Accommodation (L)
 Creates an accommodation that contains information about the place of stay and adds it to the travel plan in the current directory.
 
-This command can only be used within a travel plan. Use goto NAME_OF_TRAVEL_PLAN before adding accommodations.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before adding accommodations.
 
 Format: `add -accommodation n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
 
@@ -330,7 +325,7 @@ Example: `delete -activity 1`
 
 Deletes the accommodation at the given index from the travel plan in the current directory.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before deleting accommodations.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before deleting accommodations.
 
 Format: `delete -accommodation INDEX`
 
@@ -340,7 +335,7 @@ Example: `delete -accommodation 1`
 
 Deletes the friend at a given index from the travel plan in the current directory.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before deleting a friend.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before deleting a friend.
 
 Format: `delete -friend INDEX`
 
@@ -366,14 +361,11 @@ Format: `edit -activity INDEX n/NAME i/LEVEL_OF_IMPORTANCE l/LOCATION c/COST d/Y
 
 Example: `edit -activity 3 n/Visit theme park i/5 l/Sensota c/80 d/2020-12-11 15:00`
 
-![](images/WanderlustScreenshots/EditActivity.png)
-
-
 ### 3. Editing an Accommodation (L)
 
 Edits an existing accommodation in the travel plan in the current directory.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing an accommodation.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before editing an accommodation.
 
 Format: `edit -accommodation INDEX n/NAME l/LOCATION c/COST sd/YYYY-MM-DD ed/YYYY-MM-DD`
 
@@ -383,7 +375,7 @@ Example: `edit -accommodation 3 n/The Hotel l/Bukit Timah c/60 sd/2020-12-11 ed/
 
 Edits an existing friend in the travel plan in the current directory.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before editing a friend.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before editing a friend.
 
 Format: `edit -friend INDEX n/NAME m/MOBILE_NUMBER p/PASSPORT_NUMBER`
 
@@ -407,14 +399,11 @@ Format: `find -activity KEYWORD [MORE_KEYWORDS]`
 
 Example: `find -activity bungee visit eat`
 
-![](images/WanderlustScreenshots/FindActivity.png)
-
-
 ### 2. Finding accommodations (L)
 
 Finds accommodations in the travel plan in the current directory whose names contain any of the given keywords.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before finding accommodations.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before finding accommodations.
 
 Format: `find -accommodation KEYWORD [MORE_KEYWORDS]`
 
@@ -424,7 +413,7 @@ Example: `find -accommodation hotel`
 
 Finds friends in the travel plan in the current directory whose names contain any of the given keywords.
 
-This command can only be used within a travel plan. Use `goto NAME_OF_TRAVEL_PLAN` before finding friends.
+This command can only be used within a travel plan. Use `goto -travelplan INDEX` before finding friends.
 
 Format: `find -friend KEYWORD [MORE_KEYWORDS]`
 
@@ -448,9 +437,6 @@ This command is only available within a travelPlan directory.
 
 Format/ Example: `show -accommodation`
 
-![](images/WanderlustScreenshots/ShowAccommodationTab.png)
-
-
 ### 3. Showing Friend Tab (L)
 
 Switches the current Ui view to show Friend tab under the travel plan object panel.
@@ -470,9 +456,6 @@ This command is only applicable to Activity list and Accommodation list.
 Format: `sort -OBJECT cost`
 
 Example: `sort -activity cost`
-
-![](images/WanderlustScreenshots/SortCostActivity.png)
-
 
 ### 2. Sorting by date (L)
 
@@ -516,8 +499,6 @@ Format: `sort -OBJECT name`
 
 Example: `sort -friend name`
 
-![](images/WanderlustScreenshots/SortFriendName.png)
-
 ### 6. Sorting by passport (L)
 
 Sorts the given travel plan object list by passport. 
@@ -550,6 +531,7 @@ Format: `copy ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
 Example: `copy 2 1`
 
+
 ## Move
 
 ### 1. Moving an Activity (L)
@@ -562,6 +544,7 @@ This command can only be called when the directory is at the wishlist. Use `goto
 Format: `move ACTIVITY_INDEX TRAVELPLAN_INDEX`
 
 Example: `move 2 1`
+
 
 ## Clear
 
