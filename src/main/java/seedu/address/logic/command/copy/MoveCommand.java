@@ -1,7 +1,8 @@
 package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ import seedu.address.model.travelplan.TravelPlan;
 
 public class MoveCommand extends Command {
     public static final String COMMAND_WORD = "move";
+
+    public static final int COMMAND_TOKENS = 3;
+
 
     public static final String MESSAGE_USAGE = "Move an activity identified by its index number "
             + "used in the wish list to a travel plan "
@@ -83,7 +87,7 @@ public class MoveCommand extends Command {
             assert !model.hasActivity(activityToMove) : "Activity was not deleted after moving";
 
             return new CommandResult(String.format(MESSAGE_MOVE_ACTIVITY_SUCCESS,
-                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()), ACTIVITY_INDEX);
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
@@ -92,7 +96,7 @@ public class MoveCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof CopyCommand // instanceof handles nulls
+                || (other instanceof MoveCommand // instanceof handles nulls
                 && activityIndex.equals(((MoveCommand) other).activityIndex)
                 && travelPlanIndex.equals(((MoveCommand) other).travelPlanIndex)); // state check
     }

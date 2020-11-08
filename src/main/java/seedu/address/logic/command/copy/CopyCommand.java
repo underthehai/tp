@@ -1,7 +1,8 @@
 package seedu.address.logic.command.copy;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.activity.Activity.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ACTIVITY;
+import static seedu.address.logic.parser.ParserUtil.ACTIVITY_INDEX;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ import seedu.address.model.travelplan.TravelPlan;
 public class CopyCommand extends Command {
     public static final String COMMAND_WORD = "copy";
 
+    public static final int COMMAND_TOKENS = 3;
+
     public static final String MESSAGE_USAGE = "Copy an activity identified by its index number "
             + "used in the wishlist to a travel plan "
             + "identified by its index number in the travel planner using the following format:\n"
@@ -35,7 +38,7 @@ public class CopyCommand extends Command {
     private final Index travelPlanIndex;
 
     /**
-     * Constructor for MoveCommand.
+     * Constructor for CopyCommand.
      *
      * @param targetIndex index of activity to be copied.
      * @param travelPlanIndex index of travel plan to add activity to.
@@ -80,7 +83,7 @@ public class CopyCommand extends Command {
                     : "Activity was not copied";
 
             return new CommandResult(String.format(MESSAGE_COPY_ACTIVITY_SUCCESS,
-                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()));
+                    activityIndex.getOneBased(), travelPlanIndex.getOneBased()), ACTIVITY_INDEX);
         } else {
             throw new CommandException(MESSAGE_NOT_WISHLIST);
         }
