@@ -249,7 +249,7 @@ show a message about the successful edited object.
 
 ![EditSequenceDiagram](images/EditSequenceDiagram.png)
 
-* Note: Due to limitation of PlantUML which do not have an `sd reference frame` implementation, 
+* Note: Due to limitation of PlantUML which do not have an `sd reference frame` implementation,
 the image below contains further details from the `execute` reference frame from the above sequence diagram.
 
 ![EditSequenceDiagram](images/EditSequenceRef.png)
@@ -496,12 +496,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  Wanderlust navigates to wishlist.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. User is already on wishlist.
     * 1a1. Wanderlust remains on wishlist.
-    
+
     Use case ends.
 
 **Use case: UC03 - Add a travel plan**
@@ -847,10 +847,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Extensions**
+    **Extensions**
 
-* 2a. The input command format is invalid.
-    * 2a1. Wanderlust shows an error message.
+    * 2a. The input command format is invalid.
+        * 2a1. Wanderlust shows an error message.
 
       Use case ends.
 
@@ -863,12 +863,186 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-*{More to be added}*
+**Use case: UC19 - Sort activity list in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to sort activity list by cost.
+3. Wanderlust returns sorted list of activities by decreasing cost.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+    Use case ends.
+
+**Use case: UC20 - Sort accommodation list in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to sort accommodation list by date.
+3. Wanderlust returns sorted list of accommodation by date in chronological order.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+* 2b. User is still in wishlist.
+    *2b1. Wanderlust shows an error message.
+
+    Use case ends.
+
+**Use case: UC21 - Sort friend list in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to sort friend list by name.
+3. Wanderlust returns sorted list of name in alphabetical order.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+* 2b. User is still in wishlist.
+    *2b1. Wanderlust shows an error message.
+
+    Use case ends.
+
+**Use case: UC22 - Find activity in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to find activities according to keyword.
+3. Wanderlust returns a filtered list of activities that contain the keyword.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+* 2b. Activity list do not contain the keyword input by user.
+    * 2b1. Wanderlust returns an empty list.
+
+    Use case ends.
+
+**Use case: UC23 - Find accommodation in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to find accommodation according to keyword.
+3. Wanderlust returns a filtered list of accommodation that contain the keyword.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+* 2b. Accommodation list do not contain the keyword input by user.
+    * 2b1. Wanderlust returns an empty list.
+
+    Use case ends.
+
+**Use case: UC24 - Find friend in travel plan**
+
+**MSS**
+
+1. User <ins>navigates to a specific travel plan (UC1).</ins>
+2. User requests to find friends according to keyword.
+3. Wanderlust returns a filtered list of friends that contain the keyword.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+* 2b. friend list do not contain the keyword input by user.
+    * 2b1. Wanderlust returns an empty list.
+
+    Use case ends.
+
+**Use case: UC25 - Move activity from wishlist to travel plan**
+
+**MSS**
+
+1. User is at wishlist directory.
+2. User requests to move an activity from wishlist to his desired travel plan.
+3. Wanderlust transfers the activity to the desired travel plan, deleting the specific activity from the wishlist.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User is at a travel plan.
+    * 1a1. Wanderlust shows an error message when user request to move an activity in a travel plan.
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+    Use case ends.
+
+**Use case: UC26 - Copy activity from wishlist to travel plan**
+
+**MSS**
+
+1. User is at wishlist directory.
+2. User requests to copy an activity from wishlist to his desired travel plan.
+3. Wanderlust copies the activity to the desired travel plan.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User is at a travel plan.
+    * 1a1. Wanderlust shows an error message when user request to copy an activity in a travel plan.
+
+* 2a. The input command format is invalid.
+    * 2a1. Wanderlust shows an error message.
+
+    Use case ends.
+
+**Use case: UC27 - Help**
+
+**MSS**
+
+1. User requests for help to input specific commands.
+2. Wanderlust shows a pop-up window, containing a link to Wanderlust's user guide for help.
+
+    Use case ends.
+
+**Use case: UC28 - Exit**
+
+**MSS**
+
+1. User requests to exit Wanderlust.
+2. Wanderlust shuts down.
+
+    Use case ends.
+
 
 ### Non-Functional Requirements
 
 1.  Should work on any mainstream OS_ as long as it has Java `11` or above installed.
-2.  The travel planner should be able to hold up to 1000 activities without a noticeable sluggishness in performance for typical usage.
+2.  The travel planner should be able to hold up to 1000 travel plans without a noticeable sluggishness in performance for typical usage.
 3.  Should be able to respond to user commands within 1 second.
 4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 5.  Should be a single-user product.
@@ -916,7 +1090,7 @@ testers are expected to do more *exploratory* testing.
 
    b. Re-launch the app by running the jar file in the command prompt and enter `java -jar wanderlust.jar`.<br>
        Expected: The most recent window size and location is retained.
-       
+
 ### Delete
 
 1. Deleting an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `friend` as an example.
@@ -931,57 +1105,57 @@ testers are expected to do more *exploratory* testing.
 
    d. Other incorrect delete commands to try: `delete`, `delete -friend x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-      
+
 2. Deleting a travelplan.
 
     a. Test case: `delete -travelplan 1`<br>
       Expected: First travel plan is deleted from the travel plan list. Details of the deleted travel plan shown in the status message.
-      
+
     c. Test case: `delete -travelplan 0`<br>
         Expected: No travel plan is deleted. Error details shown in the status message.
-    
+
     d. Other incorrect delete commands to try: `delete`, `delete -travelplan x`, `...` (where x is larger than the list size)<br>
         Expected: Similar to previous.
-            
+
 
 ### Add
 
 1. Adding an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `friend` as an example.
 
    a. Prerequisites: Navigate to a valid directory using `goto -travelplan x` (where x is a valid index)
-   
+
    b. Test case: `add -friend n/Tom p/E1234567X m/81234567`<br>
       Expected: New Friend is added to the friend list. Details of the added friend shown in the status message.
 
    c. Test case: `add n/Jerry p/E1234567M m/81234561`<br>
       Expected: Add object type is not specified. No Friend is added. Error details shown in the status message.
-    
+
    d. Test case: `add -friend n/Spark p/E1234567A m/81234568 i/2`<br>
       Expected: Importance parameter is not valid for Friend. No Friend is added. Error details shown in the status message.
 
    e. Other incorrect add commands to try: `add`, `add -friend n/Harry`<br>
       Expected: Error message is thrown.
-      
+
 2. Adding a travel plan.
 
     a. Test case: `add -travelplan n/Europe Trip sd/2021-01-10 ed/2021-02-10`<br>
        Expected: New travel plan is add to the travel plan list. Details of the travel plan shown in the status message.
-      
+
     b. Test case: `add n/Europe Trip sd/2021-01-10 ed/2021-02-10`<br>
        Expected: Add object type is not specified. No travel plan is added. Error details shown in the status message.
-    
+
     c. Test case: `add n/Europe Trip sd/2021-01-10 ed/2021-02-10 c/1000`<br>
        Expected: Cost parameter is not valid for travel plan. No trave plan is added. Error details shown in the status message.
-       
+
     d. Other incorrect add commands to try: `add`, `add -travelplan n/Europe`<br>
         Expected: Similar to previous.
-            
+
 
 ### Edit
  - Note `x` refers to a valid index
- 
+
 1. Editing an activity/accommodation/friend while all activities/accommodation/friends are being shown. We will use `activity` as an example.
-    
+
    a. Test case: `edit -activity x i/4`<br>
       Expected: Edit activity at specified index `x`. Activity selected has updated importance of `4` Details of the activity is shown in the status message.
 
@@ -990,10 +1164,10 @@ testers are expected to do more *exploratory* testing.
 
    c. Test case: `edit x n/Ice Skating`<br>
       Expected: Edit object type is not specified. No Activity is edited. Error details shown in the status message.
-    
+
    d. Other incorrect add commands to try: `edit -activity`<br>
       Expected: Error message is thrown.
-      
+
 2. Editing a travel plan
 
    a. Test case: `edit -travelplan x n/New Trip`<br>
@@ -1004,7 +1178,7 @@ testers are expected to do more *exploratory* testing.
 
    c. Test case: `edit x n/Europe`<br>
       Expected: Edit object type is not specified. No travel plan is edited. Error details shown in the status message.
-    
+
    d. Other incorrect add commands to try: `edit -travelplan`<br>
       Expected: Error message is thrown.
 
@@ -1013,27 +1187,27 @@ testers are expected to do more *exploratory* testing.
 1. Showing an activity/accommodation/friend while in a travel plan directory. We will use `accommodation` as an example.
 
    a. Prerequisites: Currently in a travel plan directory.
-   
+
    b. Test case: `show -accommodation`<br>
       Expected: Show the accommodation list in the accommodation tab.
-      
+
    c. Test case: `show -accommodation 1`<br>
       Expected: Invalid command format. Error details shown in the status message.
-      
+
    d. Test case: `show -accommodation` while in wishlist. <br>
       Expected: `show` command is not valid in wishlist. Error details shown in the status message.
-    
+
    e. Other incorrect show commands to try: `show -accommodation c/20`<br>
       Expected: Error message is thrown.
 
 ### Find
  - Note `y` refers to keyword provided by user
  - Use the `show` command to view back the unfiltered list.
- 
+
 1. Finding an activity/accommodation/friend while in a travel plan directory. We will use `activity` as an example.
 
    a. Prerequisites: Show list of activity using `show -activity` command. Currently in a travel plan directory.
-   
+
    b. Test case: `find -activity y`<br>
       Expected: Find all activities that contain y. Activity tab will be updated and display the activites that matches the keyword(s) `y`.
 
@@ -1046,13 +1220,13 @@ testers are expected to do more *exploratory* testing.
 2. Finding an activity while in a wishlist.
 
    a. Prerequisites: Currently in the `wishlist` directory.
-   
+
    b. Test case: `find -activity y`<br>
       Expected: Find all activities that contain y. Activity tab will be updated and display the activites that matches the keyword(s) `y`.
 
    c. Test case: `find -activity`<br>
       Expected: Cannot have empty field for the keyword. Error details shown in the status message.
-      
+
    d. Test case: `find -accommodation y`<br>
       Expected: Accommodation is not valid in wishlist. Error details shown in the status message.
 
@@ -1061,8 +1235,8 @@ testers are expected to do more *exploratory* testing.
 
 ### Goto
 
-1. Navigate to a `travelplan` or `wishlist` directory. 
-   
+1. Navigate to a `travelplan` or `wishlist` directory.
+
    a. Test case: `goto -travelplan x` (where x is a valid index)<br>
       Expected: Navigates to the `travelplan` at specified index `x` . Details of the `travelplan` is shown in the status message.
 
@@ -1071,7 +1245,7 @@ testers are expected to do more *exploratory* testing.
 
    c. Test case: `goto -travel plan 0`<br>
       Expected: Index is invalid, need to start from 1. Directory remains the same. Error details shown in the status message.
-    
+
    d. Test case: `goto -wishlist 1`<br>
       Expected: Index not required for `wishlist`. Directory remains the same. Error details shown in the status message.
 
@@ -1083,32 +1257,32 @@ testers are expected to do more *exploratory* testing.
 1. Sorting an activity/accommodation/friend list while in a `travelplan` directory. We will use `accommodation` as an example.
 
    a. Prerequisites: Currently in a `travelplan` directory.
-   
+
    b. Test case: `sort -accommodation cost`<br>
       Expected: Tab switches to `accommodation` tab and returns a sorted list of `accommodation` in the order of decreasing cost.
-      
+
    c. Test case: `sort -accommodation mobile`<br>
       Expected: `mobile` is not a valid sort keyword for `accommodation`. Error details shown in the status message.
-      
+
    d. Other incorrect sort commands to try: `sort`, `sort -accommdoation 1`<br>
       Expected: Error message is thrown.
-      
+
 2. Sorting an activity list in a `wishlist` directory.
-   
+
    a. Prerequisites: Currently in a `wishlist` directory.
-   
+
    b. Test case: `sort -activity datetime`<br>
       Expected: `wishlist` returns a sorted list of `activities` in the order of increasing date and time.
-      
+
    c. Test case: `sort -activity mobile`<br>
       Expected: `mobile` is not a valid sort keyword for `activity`. Error details shown in the status message.
-      
+
    d. Test case: `sort -accommodation name`<br>
       Expected: `name` is not a valid sort keyword for `activity`. Error details shown in the status message.
-      
+
    e. Other incorrect sort commands to try: `sort`, `sort -friend name`<br>
       Expected: Error message is thrown.
-      
+
 ### Copy
 
 1. Copy an activity from the `wishlist` to the specific `travelplan` directory.
@@ -1116,22 +1290,22 @@ testers are expected to do more *exploratory* testing.
  - Note `y` refers to the index of the `travelplan`.
 
    a. Prerequisites: Currently in a `wishlist` directory.
-   
+
    b. Test case: `copy x y`<br>
       Expected: `activity` at index `x` in the `wishlist` is copied to the `travelplan` at index `y`.
-   
+
    c. Test case:  `copy x y` (Where `x` is more than the size of the activity list in the `wishlist)
       Expected: Invalid index provided. Error details shown in the status message.
-      
+
    c. Test case:  `copy x y` (Where `y` is more than the total number of travel plans)
       Expected: Invalid index provided. Error details shown in the status message.
-      
+
    d. Test case: `copy x y` (When in a `travelplan` directory).
       Expected: Invalid command call at `travelplan` directory. `Copy` can only be called in `wishlist` directory. Error details shown in the status message.
-      
+
    e. Other incorrect copy commands to try: `copy`, `copy x`, `copy y`<br>
       Expected: Error message is thrown.
-      
+
 ### Move
 
 1. Move an activity from the `wishlist` to the specific `travelplan` directory. The activity will be deleted from the `wishlist`.
@@ -1139,29 +1313,79 @@ testers are expected to do more *exploratory* testing.
  - Note `y` refers to the index of the `travelplan`.
 
    a. Prerequisites: Currently in a `wishlist` directory.
-   
+
    b. Test case: `move x y`<br>
       Expected: `activity` at index `x` in the `wishlist` is copied to the `travelplan` at index `y`.
-   
+
    c. Test case:  `move x y` (Where `x` is more than the size of the activity list in the `wishlist)
       Expected: Invalid index provided. Error details shown in the status message.
-      
+
    c. Test case:  `move x y` (Where `y` is more than the total number of travel plans)
       Expected: Invalid index provided. Error details shown in the status message.
-      
+
    d. Test case: `move x y` (When in a `travelplan` directory).
       Expected: Invalid command call at `travelplan` directory. `Copy` can only be called in `wishlist` directory. Error details shown in the status message.
-      
+
    e. Other incorrect copy commands to try: `move`, `move x`, `move y`<br>
       Expected: Error message is thrown.
-      
+
 ### Clear
 
 1. Clear the entire data in wanderlust and returns an empty travel planner.
 
     a. Test case: `clear`<br>
        Expected: Returns an empty travel planner. Existing data is wiped.
-       
-       
+
+
 ## *Appendix: Effort*
-//TODO:
+
+### Model
+The `Model` of _wanderlust_ is much more complex than AB3. In AB3, the model is only in charge of the Person class, which takes in simple attributes
+relating to Person objects.
+
+In _wanderlust_, each travel plan handles a total of 3 different objects, namely, Activity, Accommodation and Friend. Furthermore,
+_wanderlust_ also have an exclusive wishlist that keep track of Activity objects. Essentially, it is similar to one large model
+handling 3 x AB3. Complex attributes such as `Cost` is also implemented so that _wanderlust_ can calculate the total cost of the `travelplan`.
+Furthermore, the attributes of the different classes have to interact with one another to ensure that they are cohesive.
+For instance, we have to make sure any `activty`/`accommodation` date is within the range of the `travelplan`'s date. The logic behind can be
+implemented in many ways and we went through a variety of approaches to simplify the logic.
+
+Lastly, the `Model` of _wanderlust_ support higher level features and commands such as sorting, moving and navigating to
+different directories that were not present in AB3.
+
+### Logic
+The complexity of `Logic` was more advanced than AB3. _wanderlust_'s `Logic` supports
+many more commands compared to AB3, such as `sort`, `goto`, `copy`, `move`, `show` commands. Existing commands from AB3 were also
+enhanced to handle the complex `Model` of _wanderlust_.
+
+There was significant effort placed in creating the logic for _wanderlust. The `Logic` of _wanderlust is responsible for
+at least 3x the `Logic` of AB3. It has to account for the logic of `travelplan`, `wishlist`, `activity`, `accommodation` and `friend` whilst
+AB3 handles `Person`. Furthermore, additional logic was implemented to account for the navigation of directories and travel plans.
+For example, `ObservableDirectory` class was created to keep track of what directory the user is currently on so that the `Ui` will be
+able to display the correct `travelplan` or `wishlist`.
+
+Additional efforts were also put into validating user input and ensuring that _wanderlust_'s parser can handle unexpected input smoothly.
+
+### Storage
+The `Storage` was extended to store more classes of _wanderlust_. `activity`, `accommodation`, and `friend` objects have to be organised and
+stored in a `travelplan`, and all these data will be placed in a JSON file in an organised manner. Essentially, the JSON file will contain
+data of various `travelplan`s and a `wishlist`, and each `travelplan` will contain more data regarding `activity`, `accommodation`, and `friend`,
+with each `travelplan` object storing its own attributes as well.
+
+Furthermore, complex attributes such as `wanderlustdate` and `wanderlustdatetime` have to be stored in the JSON file in an approriate format.
+Significant time and effort were put into discussing and planning the best way to represent each new attribute in the JSON file.
+
+### Ui
+The `Ui` component took us the most amount of time. We have to redesign the entire AB3 Ui to fit _wanderlust_ design.
+Alot of effort was placed in planning the structure of the `Ui` so that our user interface will be user-friendly and appealing.
+Furthermore, additional logic of navigating between travel plans and switching between the activity/accommodation/friend tabs was implemented
+so that users can use the application smoothly. We also spent a considerable amount of time in studying javafxml so that we are able to implement an
+entirely new UI with icons and navigation options, making it a more interactive experience for the users as compared to the single page view of AB3's Ui.
+
+### Overall
+All in all, this project was a challenging one for the _wanderlust_ team. We started off with many ideas and features that were seemed
+very appealing. However, we eventually decided that they were not suitable due to time constraints. In the first iteration, time and effort were placed
+in brainstorming and coming up with a concrete and feasible product. Throughout the weeks, we made consistent efforts to study the source code, modify existing features and
+create new features for _wanderlust_. There were high standards placed amongst us in ensuring that all of us put in time and effort in building _wanderlust_.
+Rigorous testing, trial and error were fundamental in the process so that we can deliver _wanderlust_ within the timeline. Whilst _wanderlust_ may not be
+the perfect travel planner application, this journey was a memorable one filled with teamwork and perseverance, and we are all proud of the end product.
