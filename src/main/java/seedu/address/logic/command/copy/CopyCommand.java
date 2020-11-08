@@ -19,6 +19,8 @@ import seedu.address.model.travelplan.TravelPlan;
 public class CopyCommand extends Command {
     public static final String COMMAND_WORD = "copy";
 
+    public static final int COMMAND_TOKENS = 3;
+
     public static final String MESSAGE_USAGE = "Copy an activity identified by its index number "
             + "used in the wishlist to a travel plan "
             + "identified by its index number in the travel planner using the following format:\n"
@@ -35,7 +37,7 @@ public class CopyCommand extends Command {
     private final Index travelPlanIndex;
 
     /**
-     * Constructor for MoveCommand.
+     * Constructor for CopyCommand.
      *
      * @param targetIndex index of activity to be copied.
      * @param travelPlanIndex index of travel plan to add activity to.
