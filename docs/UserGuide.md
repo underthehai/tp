@@ -276,7 +276,7 @@ Format of date is in YYYY-MM-DD.
 
 Format: `add -travelplan n/NAME sd/START_DATE ed/END_DATE`
 
-Example: `add -travelplan n/France sd/2020-09-15 ed/2020-09-30`
+Example: `add -travelplan n/France sd/2021-09-15 ed/2021-09-30`
 
 ![](images/WanderlustScreenshots/AddFranceTravelplan.png)
 
@@ -405,9 +405,9 @@ Finds activities in the travel plan/wishlist in the current directory whose name
 
 Format: `find -activity KEYWORD [MORE_KEYWORDS]`
 
-Example: `find -activity ice`
+Example: `find -activity bungee visit eat`
 
-![](images/WanderlustScreenshots/FindActivityIce.png)
+![](images/WanderlustScreenshots/FindActivity.png)
 
 
 ### 2. Finding accommodations (L)
@@ -515,6 +515,8 @@ This command is applicable to Activity list, Accommodation list and Friend list.
 Format: `sort -OBJECT name`
 
 Example: `sort -friend name`
+
+![](images/WanderlustScreenshots/SortFriendName.png)
 
 ### 6. Sorting by passport (L)
 
