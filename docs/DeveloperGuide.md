@@ -890,7 +890,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Run jar file in command prompt: Expected: Shows the GUI with a set of sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -898,4 +898,98 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+       
+### Deleting
 
+1. Deleting a friend while all friends are being shown
+
+   1. Prerequisites: Show all friends using the `show -friend` command. Multiple Friends in the list.
+
+   1. Test case: `delete -friend 1`<br>
+      Expected: First Friend is deleted from the friend list. Details of the deleted friend shown in the status message.
+
+   1. Test case: `delete 0`<br>
+      Expected: No Friend is deleted. Error details shown in the status message.
+
+   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### Adding
+
+1. Adding a friend while in a travel plan directory.
+
+   1. Prerequisites: Navigate to a valid directory using `goto -travelplan x` (where x is a valid index)
+   
+   1. Test case: `add -friend n/Tom p/E1234567X m/81234567`<br>
+      Expected: New Friend is added to the friend list. Details of the added friend shown in the status message.
+
+   1. Test case: `add n/Jerry p/E1234567M m/81234561`<br>
+      Expected: Add object type is not specified. No Friend is added. Error details shown in the status message.
+    
+   1. Test case: `add -friend n/Spark p/E1234567A m/81234568 i/2`<br>
+      Expected: Importance parameter is not valid for Friend. No Friend is added. Error details shown in the status message.
+
+   1. Other incorrect add commands to try: `add`, `add -friend n/Harry`<br>
+      Expected: Error message is thrown.
+
+### Edit
+ - Note `x` refers to a valid index
+ 
+1. Editing Activity
+    
+   1. Test case: `edit -activity x i/4`<br>
+      Expected: Edit activity at specified index `x`. Activity selected has updated importance of `4` Details of the activity is shown in the status message.
+
+   1. Test case: `edit -activity x p/E1234593P`<br>
+      Expected: Passport parameter is not valid for Activity. No Activity is added. Error details shown in the status message.
+
+   1. Test case: `edit x n/Ice Skating`<br>
+      Expected: Edit object type is not specified. No Activity is edited. Error details shown in the status message.
+    
+   1. Other incorrect add commands to try: `edit -activity`<br>
+      Expected: Error message is thrown.
+
+### Show
+
+1. Show Accommodation while in a travel plan directory.
+
+   1. Prerequisites: Currently in a travel plan directory
+   
+   1. Test case: `show -accommodation x`<br>
+      Expected: Show the accommodation list in the accommodation tab.
+
+### Find
+ - Note `y` refers to keyword provided by user
+ 
+1. Find Activity while in the wishlist/travelplan directory.
+
+   1. Prerequisites: Show list of activity using `show -activity` command.
+   
+   1. Test case: `find -activity y`<br>
+      Expected: Find all activities that contain y. Activity tab will be updated and displaythe activites that matches the keyword(s) `y`.
+
+   1. Other incorrect add commands to try: `find`<br>
+      Expected: Keyword is not provided. Error message is thrown.
+
+
+### Goto
+
+1. Goto TravelPlan while in the wishlist directory.
+
+   1. Prerequisites: Currently in the wishlist directory
+   
+   1. Test case: `goto -travelplan x` (where x is a valid index)<br>
+      Expected: Goto the the travelplan at specified index `x` . Details of the travelplan is shown in the status message.
+
+   1. Test case: `goto -travel plan 0`<br>
+      Expected: Index is invalid, need to start from 1. Directory remains the same. Error details shown in the status message.
+    
+   1. Test case: `goto -wishlist`<br>
+      Expected: No change is expected.
+
+   1. Other incorrect add commands to try: `goto`, `goto -random`<br>
+      Expected: Error message is thrown.
+
+
+## *Appendix: Effort*
+//TODO:

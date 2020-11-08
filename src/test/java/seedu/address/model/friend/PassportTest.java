@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 class PassportTest {
 
     @Test
-    void isValidPassport() {
-    }
-
-    @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Passport(null));
     }
@@ -24,10 +20,10 @@ class PassportTest {
     }
 
     @Test
-    void isValidMobile() {
-        assertThrows(NullPointerException.class, () -> Mobile.isValidMobile(null));
+    void isValidPassport() {
+        assertThrows(NullPointerException.class, () -> Passport.isValidPassport(null));
 
-        // invalid phone numbers
+        // invalid passport numbers
         assertFalse(Passport.isValidPassport("")); // empty string
         assertFalse(Passport.isValidPassport(" ")); // spaces only
         assertFalse(Passport.isValidPassport("S9138")); // less than 7 digits
@@ -37,7 +33,7 @@ class PassportTest {
         assertFalse(Passport.isValidPassport("S124293842033123")); // more than 7 digits
         assertFalse(Passport.isValidPassport("1242A93842033123")); //character is not at the start
 
-        // valid mobile numbers
+        // valid passport numbers
         assertTrue(Passport.isValidPassport("E6249932A")); // [E] + 7 numbers + [A-Z]
         assertTrue(Passport.isValidPassport("E3121534B"));
 
