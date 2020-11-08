@@ -36,7 +36,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         try {
-            String[] keywords = args.split(" ", 3);
+            String[] keywords = args.split(" ", FindCommand.COMMAND_TOKEN);
             String travelPlanObjectType = removeDash(keywords[OBJECT_TYPE_POSITION], FindCommand.MESSAGE_USAGE);
 
             String findWord = keywords[2];
