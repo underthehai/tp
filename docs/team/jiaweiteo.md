@@ -27,7 +27,7 @@ It is written in Java, and has about 16 kLOC.
             `Ui` on the new activity, the corresponding activity list in `Storage` must be updated and synced with the sorted ordered list reflected in the `Ui`.
 
     - Implemented **navigation feature** [\#108](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/108), [\#100](https://github.com/AY2021S1-CS2103-T14-3/tp/pull/100)
-        - What it does: Allows users to navigate to different `travelplan` or `wishlist` using the Command Line input. The Graphics User Interface will then update to the desired directory that the user navigated to.
+        - What it does: Allows users to navigate to different `travelplan` or `wishlist` using the Command Line input.
         - Justifications: Users will like to navigate to their desired `travelplan` or `wishlist` so that they are able to view the content in the directory on the application and plan their travel visually.
         This enhancement improved the product significantly as it provides user a convenient and fast way to go to their desired `travelplan/wishlist`, improving users' experience.
 
