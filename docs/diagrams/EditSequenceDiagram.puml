@@ -40,7 +40,10 @@ activate EditCommandParser
 create EditDescriptor
 
 EditCommandParser -> EditDescriptor : buildFromSource(i/2 n/Ice Skating)
+activate EditDescriptor
+
 EditDescriptor --> EditCommandParser : editActivityDescriptor
+deactivate EditDescriptor
 
 create EditActivityCommand
 EditCommandParser -> EditActivityCommand
@@ -63,13 +66,11 @@ destroy EditCommandParser
 WanderlustParser --> LogicManager : editCommand
 deactivate WanderlustParser
 
-LogicManager -> EditActivityCommand : execute()
-
 activate EditActivityCommand
-ref over EditActivityCommand, Model : execute
-EditActivityCommand --> LogicManager: CommandResult
-deactivate EditActivityCommand
-
+activate Model
+ref over LogicManager, EditActivityCommand, Model : execute
 [<--LogicManager
+deactivate EditActivityCommand
+deactivate Model
 deactivate LogicManager
 @enduml
