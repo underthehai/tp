@@ -95,14 +95,14 @@ get you started on _Wanderlust_. It does not contain all the commands that _Wand
 Command | Description
 ------------ | -------------
 `clear` | Remove all preset data from Wanderlust
-`add -travelplan n/Singapore sd/2021-05-05 ed/2021-06-06` | Adds a Singapore travel plan to the travel plan list 
+`add -travelplan n/Singapore sd/2021-05-05 ed/2021-06-06` | Adds a Singapore travel plan to the travel plan list
 `goto -travelplan 1` | Go to the Singapore travel plan
 `add -friend n/Tom p/E1234567K m/84329182` | Add a friend name `Tom` with passport number `E1234567K` and mobile number `84329182`
 `add -accommodation n/Lloyd's Inn l/Singapore c/200 sd/2021-01-01 ed/2021-01-02` | Add an accommodation name `Lloyd's Inn` with location at `Singapore` and a cost of `200`, and the start date of `2021-01-01` and end date of `2021-01-02`
 `find -friend tom` | Finds all friend with name tom
 `delete -friend 1` | Removes friend at index 1 in the friend list shown
 `show -activity` | Switch to the activity tab
- 
+
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command Summary
@@ -224,8 +224,8 @@ Name of Parameters | Description | Format
 
 **Notes about the feature section:**<br>
 
-* Commands that can be used globally and locally are tagged `(G)` for global and `(L)` for local respectively in the **features section** of this user guide. 
-<br/> e.g `Adding a Travel Plan (G)`  
+* Commands that can be used globally and locally are tagged `(G)` for global and `(L)` for local respectively in the **features section** of this user guide.
+<br/> e.g `Adding a Travel Plan (G)`
 
 * Global commands can be used anywhere within Wanderlust.
 
@@ -503,7 +503,7 @@ Example: `sort -activity importance`
 
 ### 5. Sorting by name (L)
 
-Sorts the given travel plan object list by name. 
+Sorts the given travel plan object list by name.
 
 This command is applicable to Activity list, Accommodation list and Friend list.
 
@@ -513,7 +513,7 @@ Example: `sort -friend name`
 
 ### 6. Sorting by passport (L)
 
-Sorts the given travel plan object list by passport. 
+Sorts the given travel plan object list by passport.
 
 This command is only applicable to Friend list.
 
@@ -523,7 +523,7 @@ Example: `sort -friend passport`
 
 ### 7. Sorting by mobile (L)
 
-Sorts the given travel plan object list by mobile. 
+Sorts the given travel plan object list by mobile.
 
 This command is only applicable to Friend list.
 
