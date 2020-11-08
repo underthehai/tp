@@ -37,7 +37,7 @@
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
-          <VBox fx:id="travelPlanner" styleClass="pane-without-border" minWidth="290" prefWidth="300" VBox.vgrow="ALWAYS">
+          <VBox fx:id="travelPlanner" styleClass="pane-without-border" minWidth="290" VBox.vgrow="ALWAYS">
             <StackPane fx:id="travelPlannerPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
           <VBox fx:id="travelObjectList" minWidth="690" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
