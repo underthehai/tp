@@ -21,9 +21,6 @@ import seedu.address.model.commons.WanderlustDate;
 public class Accommodation extends TravelPlanObject {
 
     public static final String TPO_WORD = "accommodation";
-    public static final String MESSAGE_DUPLICATE_ACCOMMODATION = "This accommodation already exists in the "
-            + "accommodation list. Accommodations with the same name, start date and end date are considered "
-            + "duplicates.";
 
     // identity fields
     private final Name name;
