@@ -1,12 +1,12 @@
 package seedu.address.logic.command.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_TRAVELPLAN;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_STARTANDENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.model.commons.WanderlustDate.isValidStartAndEndDate;
-import static seedu.address.model.travelplan.TravelPlan.MESSAGE_DUPLICATE_TRAVELPLAN;
 
 import java.util.List;
 

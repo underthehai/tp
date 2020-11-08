@@ -27,8 +27,6 @@ public class TravelPlan extends Directory implements Nameable {
 
     public static final String MESSAGE_CONSTRAINTS = "Start Date should be before or on the same date as End Date.";
     public static final String TRAVEL_PLAN_WORD = "travelplan";
-    public static final String MESSAGE_DUPLICATE_TRAVELPLAN = "This travel plan already exists in the travel planner. "
-            + "Travel plans cannot have the same name.";
 
 
     // Identity fields
