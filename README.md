@@ -19,10 +19,9 @@ Relevant information can be retrieved right when and where you need them. With W
 
 #### Site Map
 
-* [User Guide](/docs/UserGuide.md)
-* [Developer Guide](/docs/DeveloperGuide.md)
-* [About Us](/docs/AboutUs.md)
-* [Contact Us](/docs/ContactUs.md)
+* [User Guide](https://ay2021s1-cs2103-t14-3.github.io/tp/UserGuide.html)
+* [Developer Guide](https://ay2021s1-cs2103-t14-3.github.io/tp/DeveloperGuide.html)
+* [About Us](https://ay2021s1-cs2103-t14-3.github.io/tp/AboutUs.html)
 
 #### Acknowledgement
 
