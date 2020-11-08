@@ -7,7 +7,7 @@ title: Teo Jia Wei's Project Portfolio Page
 
 WanderLust is a desktop travel planner application. It allows users to plan their trips in a structured and efficient manner.
 The user interacts with it using a CLI, and it has a GUI created with JavaFX.
-It is written in Java, and has about 16 kLOC.
+It is written in Java, and has about 18 kLOC.
 
 ## Summary of Contributions
 
