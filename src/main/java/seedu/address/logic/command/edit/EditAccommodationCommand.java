@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.address.logic.parser.ParserUtil.ACCOMMODATION_INDEX;
 import static seedu.address.model.accommodation.Accommodation.MESSAGE_DUPLICATE_ACCOMMODATION;
+import static seedu.address.model.commons.WanderlustDate.isValidStartAndEndDate;
 
 import java.util.List;
 
@@ -127,7 +128,7 @@ public class EditAccommodationCommand extends EditCommand {
         WanderlustDate updatedEndDate = editAccommodationDescriptor.getEndDate()
                 .orElse(accommodationToEdit.getEndDate());
 
-        boolean isValidDate = Accommodation.isValidStartAndEndDate(updatedStartDate, updatedEndDate);
+        boolean isValidDate = isValidStartAndEndDate(updatedStartDate, updatedEndDate);
 
         if (!isValidDate) {
             throw new CommandException(MESSAGE_INVALID_STARTANDENDDATE);
