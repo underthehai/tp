@@ -3,6 +3,7 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
@@ -46,8 +47,10 @@ public class TravelPlanPanel extends UiPart<Region> {
         name.setText(directory.getName().toString());
 
         if (directory.isTravelPlan()) {
+            startDateToEndDate.setPadding(new Insets(0, 0, 0, 20));
             startDateToEndDate.setText(directory.getDateTitle());
         } else {
+            startDateToEndDate.setPadding(new Insets(0, 0, 0, 0));
             startDateToEndDate.setText("");
         }
     }
