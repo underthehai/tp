@@ -19,6 +19,7 @@ import seedu.address.model.commons.NameContainsKeywordsPredicate;
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
+    public static final int COMMAND_TOKEN = 3;
 
     public static final String MESSAGE_USAGE = "Find all activities/accommodations/friends "
             + "in the travel plan/wishlist in the current directory "
