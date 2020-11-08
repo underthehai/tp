@@ -70,7 +70,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingIndex_failure() {
         assertEditParseFailure(parser, "edit -activity i/2",
-                SPECIFY_INDEX);
+                EditActivityCommand.MESSAGE_USAGE);
     }
 
     /** Edit type unspecified*/

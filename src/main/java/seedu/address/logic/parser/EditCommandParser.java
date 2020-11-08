@@ -89,7 +89,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
                 && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
-            throw new ParseException(EditCommand.SPECIFY_INDEX);
+            throw new ParseException(EditActivityCommand.MESSAGE_USAGE);
         }
         Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
 
@@ -109,7 +109,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         String[] keywords = args.split(" ");
         if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
                 && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
-            throw new ParseException(EditCommand.SPECIFY_INDEX);
+            throw new ParseException(EditAccommodationCommand.MESSAGE_USAGE);
         }
         Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COST, PREFIX_LOCATION,
@@ -128,7 +128,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         String[] keywords = args.split(" ");
         if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
                 && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
-            throw new ParseException(EditCommand.SPECIFY_INDEX);
+            throw new ParseException(EditFriendCommand.MESSAGE_USAGE);
         }
         Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PASSPORT,
@@ -147,7 +147,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         String[] keywords = args.split(" ");
         if (!StringUtil.isNonZeroUnsignedInteger(keywords[EditCommand.INDEX_POSITION])
                 && !keywords[EditCommand.INDEX_POSITION].equals("0")) {
-            throw new ParseException(EditCommand.SPECIFY_INDEX);
+            throw new ParseException(EditTravelPlanCommand.MESSAGE_USAGE);
         }
         Index index = ParserUtil.parseIndex(keywords[EditCommand.INDEX_POSITION]);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START, PREFIX_END);
