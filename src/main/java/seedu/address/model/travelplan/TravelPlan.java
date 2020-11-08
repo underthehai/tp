@@ -124,7 +124,7 @@ public class TravelPlan extends Directory implements Nameable {
      * The travel plan object must not already exist in its corresponding list.
      */
     @Override
-    public void addTpoObject(TravelPlanObject travelPlanObject) {
+    public void addTpo(TravelPlanObject travelPlanObject) {
         if (travelPlanObject instanceof Accommodation) {
             accommodations.addAccommodation((Accommodation) travelPlanObject);
         } else if (travelPlanObject instanceof Activity) {

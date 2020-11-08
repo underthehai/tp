@@ -79,13 +79,6 @@ public class WanderlustDate {
     }
 
     /**
-     * Returns true if the date is set on today's date or after today's date.
-     */
-    public static boolean isDateAfterToday(WanderlustDate startDate) {
-        return startDate.getValue().compareTo(LocalDate.now()) >= 0;
-    }
-
-    /**
      * Return number of days between {@code startDate} and {@code endDate} inclusive.
      * @return Number of days between {@code startDate} and {@code endDate} inclusive.
      */

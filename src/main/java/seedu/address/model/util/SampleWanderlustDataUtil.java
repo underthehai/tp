@@ -87,13 +87,13 @@ public class SampleWanderlustDataUtil {
     public static TravelPlan getSampleTravelPlan(TravelPlan sampleTravelPlan, Activity[] sampleActivities,
             Accommodation[] sampleAccommodations, Friend[] sampleFriends) {
         for (Friend sampleFriend : sampleFriends) {
-            sampleTravelPlan.addTpoObject(sampleFriend);
+            sampleTravelPlan.addTpo(sampleFriend);
         }
         for (Activity sampleActivity : sampleActivities) {
-            sampleTravelPlan.addTpoObject(sampleActivity);
+            sampleTravelPlan.addTpo(sampleActivity);
         }
         for (Accommodation sampleAccommodation : sampleAccommodations) {
-            sampleTravelPlan.addTpoObject(sampleAccommodation);
+            sampleTravelPlan.addTpo(sampleAccommodation);
         }
         return sampleTravelPlan;
     }

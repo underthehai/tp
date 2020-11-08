@@ -176,7 +176,7 @@ public class ModelManager implements Model {
     @Override
     public void addActivity(Activity activity, Index travelPlanIndex) {
         TravelPlan travelPlan = filteredTravelPlans.get(travelPlanIndex.getZeroBased());
-        travelPlan.addTpoObject(activity);
+        travelPlan.addTpo(activity);
     }
 
     @Override
@@ -245,7 +245,7 @@ public class ModelManager implements Model {
     @Override
     public void addTravelPlanObject(TravelPlanObject tPObj) {
         requireNonNull(tPObj);
-        directory.addTpoObject(tPObj);
+        directory.addTpo(tPObj);
         observableDirectory.setObservableDirectory(directory);
     }
 
