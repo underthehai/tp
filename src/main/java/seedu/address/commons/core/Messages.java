@@ -14,7 +14,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX = "The activity index provided is invalid";
     public static final String MESSAGE_INVALID_FRIEND_DISPLAYED_INDEX = "The friend index provided is invalid";
     public static final String MESSAGE_INVALID_TRAVEL_PLAN_OBJECT_AT_WISHLIST = "The wishlist only stores activities,"
-            + " not accommodations or friends!";
+            + " not accommodations or friends! Use the goto command to navigate to a travel plan to "
+            + "perform commands for accommodation/friend.";
     public static final String MESSAGE_INVALID_TRAVELPLAN_DISPLAYED_INDEX = "The travel plan index provided is invalid";
     public static final String MESSAGE_INVALID_INDEX = "The index provided is invalid!";
     public static final String MESSAGE_ACTIVITIES_LISTED_OVERVIEW = "%1$d activities listed!";
