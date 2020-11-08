@@ -188,8 +188,13 @@ public class ModelManager implements Model {
         observableDirectory.setObservableDirectory(directory);
     }
 
-    //=========== Directory =============================================================
+    @Override
+    public void copyActivity(Activity activity, Index travelPlanIndex) {
+        Activity copiedActivity = new Activity(activity);
+        addActivity(copiedActivity, travelPlanIndex);
+    }
 
+    //=========== Directory =============================================================
 
     @Override
     public void setDirectory(int index) {
@@ -429,16 +434,7 @@ public class ModelManager implements Model {
                 || activityDateTime.isAfter(travelPlanEndDate)) {
             return false;
         }
-
         return true;
-    }
-
-
-
-    @Override
-    public void copyActivity(Activity activity, Index travelPlanIndex) {
-        Activity copiedActivity = new Activity(activity);
-        addActivity(copiedActivity, travelPlanIndex);
     }
 
     @Override
