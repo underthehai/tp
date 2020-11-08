@@ -181,7 +181,7 @@ Name of Parameter | Description | Format
 
 Name of Parameter | Description | Format
 ------------ | ------------- | -------------
-`n/NAME` | Name of the friend. | <ul><li>Should only contain alphanumeric characters, `,`, `'` and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
+`n/NAME` | Name of the friend. | <ul><li>Should only contain alphanumeric characters, <code>,</code>, <code>'</code> and spaces</li><li>Should not be blank</li><li>Maximum size of 80 characters</li></ul>
 `m/MOBILE_NUMBER` | Mobile number of the friend cell mobile | <ul><li>Should only contain numbers starting with 8 or 9 <br/>(SG mobile number)</li><li>Should be 8 digits long</li></ul>
 `p/PASSPORT_NUMBER` | Passport number of the friend passport | <ul><li>Should be in the form `[E] + 7 numbers + [A-Z]`</li></ul>
 
