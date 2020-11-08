@@ -53,14 +53,13 @@ public class EditAccommodationCommand extends EditCommand {
 
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT + "\n" + MESSAGE_EXAMPLE;
 
-
     public static final String MESSAGE_EDIT_ACCOMMODATION_SUCCESS = "Edited Accommodation: %1$s";
 
     private final Index targetIndex;
     private final EditDescriptor editAccommodationDescriptor;
 
     /**
-     * Constructor for edit accommodation
+     * Constructor for edit accommodation.
      *
      * @param editAccommodationDescriptor should contain valid edited fields
      */
@@ -105,7 +104,7 @@ public class EditAccommodationCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}
+     * Creates and returns a {@code Accommodation} with the details of {@code accommodationToEdit}.
      *
      * @param accommodationToEdit contains the old fields
      * @param editAccommodationDescriptor contains updated fields
