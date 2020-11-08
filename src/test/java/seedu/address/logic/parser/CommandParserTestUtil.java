@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class CommandParserTestUtil {
 
+
     /**
      * Asserts that the DeleteCommand parsing of {@code userInput} by {@code parser} is successful
      * and the command created equals to {@code expectedCommand}.
@@ -31,8 +32,8 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
-     * equals to {@code expectedMessage}.
+     * Asserts that the DeleteCommand parsing of {@code userInput} by {@code parser} is unsuccessful
+     * and the error message equals to {@code expectedMessage}.
      */
     public static void assertDeleteParseFailure(DeleteCommandParser parser, String userInput,
                                                 String expectedMessage) {
@@ -59,7 +60,22 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} is successful and the command created
+     * Asserts that the FindCommand parsing of {@code userInput} by {@code parser} failed
+     * and the error message equals to {@code expectedMessage}
+     */
+    public static void assertFindParseFailure(FindCommandParser parser, String userInput,
+                                              String expectedMessage) {
+        try {
+            parser.parse(userInput);
+            throw new AssertionError("The expected ParseException was not thrown.");
+        } catch (ParseException pe) {
+            assertEquals(expectedMessage, pe.getMessage());
+        }
+    }
+
+
+    /**
+     * Asserts that the SortCommand parsing of {@code userInput} by {@code parser} is successful and the command created
      * equals to {@code expectedCommand}.
      */
     public static void assertSortParserSuccess(SortCommandParser parser, String userInput,
@@ -73,11 +89,11 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
+     * Asserts that the SortCommand parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
      */
     public static void assertSortParserFailure(SortCommandParser parser, String userInput,
-                                                    String expectedMessage) {
+                                               String expectedMessage) {
         try {
             parser.parse(userInput);
             throw new AssertionError("The expected ParseException was not thrown.");
@@ -101,11 +117,11 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
+     * Asserts that the ShowCommand parsing of {@code userInput} by {@code parser} is unsuccessful and the error message
      * equals to {@code expectedMessage}.
      */
     public static void assertShowParseFailure(ShowCommandParser parser, String userInput,
-                                                          String expectedMessage) {
+                                              String expectedMessage) {
         try {
             parser.parse(userInput);
             throw new AssertionError("The expected ParseException was not thrown.");
@@ -115,7 +131,7 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing an EditCommand of {@code userInput} by {@code parser} is
+     * Asserts that the EditCommand parsing of {@code userInput} by {@code parser} is
      * successful and the command created equals to {@code expectedCommand}.
      */
     public static void assertEditParseSuccess(EditCommandParser parser, String userInput,
@@ -129,7 +145,7 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of an EditCommand {@code userInput} by {@code parser} is unsuccessful
+     * Asserts that the EditCommand parsing of {@code userInput} by {@code parser} is unsuccessful
      * and the error message equals to {@code expectedMessage}.
      */
     public static void assertEditParseFailure(EditCommandParser parser, String userInput,
@@ -146,7 +162,8 @@ public class CommandParserTestUtil {
      * Asserts that the parsing of an GoToCommand {@code userInput} by {@code parser} is successful and the command
      * created equals to {@code expectedCommand}.
      */
-    public static void assertParseGoToSuccess(GoToCommandParser parser, String userInput, GoToCommand expectedCommand) {
+    public static void assertParseGoToSuccess(GoToCommandParser parser, String userInput, GoToCommand
+            expectedCommand) {
         try {
             GoToCommand command = parser.parse(userInput);
             assertEquals(expectedCommand, command);
@@ -156,8 +173,8 @@ public class CommandParserTestUtil {
     }
 
     /**
-     * Asserts that the parsing of {@code userInput} by {@code parser} is unsuccessful and the error message equals to
-     * {@code expectedMessage}.
+     * Asserts that the GoTo parsing of {@code userInput} by {@code parser} is unsuccessful
+     * and the error message equals to {@code expectedMessage}.
      */
     public static void assertParseGoToFailure(GoToCommandParser parser, String userInput, String expectedMessage) {
         try {
@@ -167,5 +184,4 @@ public class CommandParserTestUtil {
             assertEquals(expectedMessage, pe.getMessage());
         }
     }
-
 }
