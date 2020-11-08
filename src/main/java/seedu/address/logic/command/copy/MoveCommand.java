@@ -24,13 +24,13 @@ public class MoveCommand extends Command {
 
 
     public static final String MESSAGE_USAGE = "Move an activity identified by its index number "
-            + "used in the wish list to a travel plan "
+            + "used in the wishlist to a travel plan "
             + "identified by its index number in the travel planner using the following format:\n"
             + "move ACTIVITY_INDEX TRAVELPLAN_INDEX\n";
 
     public static final String MESSAGE_MOVE_ACTIVITY_SUCCESS = "Moved activity %1$s to travel plan %2$s";
 
-    public static final String MESSAGE_NOT_WISHLIST = "Please goto wish list before moving activities";
+    public static final String MESSAGE_NOT_WISHLIST = "Please goto wishlist before moving activities";
     public static final String MESSAGE_DATE_NOT_IN_RANGE_ACTIVITY = "The activity date and time must be within the "
             + "specified travel plan's start date and end date.";
 
